@@ -1,0 +1,9 @@
+---
+title: "Advanced Regression Analysis"
+author: "SEOYEON CHOI"
+date: "2022-09-01"
+categories: [Advanced Regression Analysis]
+image: "image.jpg"
+---
+
+This is posts of Advanced Regression Analysis.

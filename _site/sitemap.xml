@@ -1,19 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://seoyeonc.github.io/md/posts/post-with-code/index.html</loc>
-    <lastmod>2022-11-25T09:14:41.987Z</lastmod>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-10-05-ml-(5주차)_10월05일.html</loc>
+    <lastmod>2022-11-25T22:28:45.363Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/md/posts/welcome/index.html</loc>
-    <lastmod>2022-11-25T09:14:42.261Z</lastmod>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-09-07-ml.html</loc>
+    <lastmod>2022-11-25T22:28:45.645Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-11-21-ml-(11주차)_11월16일.html</loc>
+    <lastmod>2022-11-25T22:28:46.442Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-10-19-ml_(7주차).html</loc>
+    <lastmod>2022-11-25T22:28:47.204Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-10-05-ml-HW.html</loc>
+    <lastmod>2022-11-25T22:28:47.511Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-09-29-ml_4주차_9월28일.html</loc>
+    <lastmod>2022-11-25T22:28:53.017Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-11-02-ml-중간고사_대체과제.html</loc>
+    <lastmod>2022-11-25T22:28:53.671Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-11-09-ml-(10주차)_11월9일.html</loc>
+    <lastmod>2022-11-25T22:28:54.390Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-10-26-ml_(8주차)_10월26일(2).html</loc>
+    <lastmod>2022-11-25T22:28:54.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-09-19-Assignment-1-Copy1.html</loc>
+    <lastmod>2022-11-25T22:28:56.052Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml/index.html</loc>
+    <lastmod>2022-11-25T22:28:56.291Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-09-14-ml_2주차_9월14일.html</loc>
+    <lastmod>2022-11-25T22:29:09.353Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-09-21-ml_3주차_9월21일.html</loc>
+    <lastmod>2022-11-25T22:29:10.984Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-10-26-ml_(8주차)_10월26일(1).html</loc>
+    <lastmod>2022-11-25T22:29:12.929Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-10-12-ml-(6주차)_10월12일.html</loc>
+    <lastmod>2022-11-25T22:29:13.897Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-11-02-ml_(9주차)_10월31일.html</loc>
+    <lastmod>2022-11-25T22:29:14.411Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml/2022-09-07-ml_1주차_9월7일.html</loc>
+    <lastmod>2022-11-25T22:29:15.522Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/rl/2022-10-23-rl-HW2.html</loc>
+    <lastmod>2022-11-25T22:29:16.406Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/rl/index.html</loc>
+    <lastmod>2022-11-25T22:29:16.664Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/rl/2022-09-21-rl_CH03, CH04.html</loc>
+    <lastmod>2022-11-25T22:29:17.190Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/rl/2022-09-21-rl_HW1.html</loc>
+    <lastmod>2022-11-25T22:29:17.783Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/rl/2022-11-14-rl_CH06, CH07.html</loc>
+    <lastmod>2022-11-25T22:29:18.320Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/index.html</loc>
-    <lastmod>2022-11-25T09:14:42.515Z</lastmod>
+    <lastmod>2022-11-25T22:29:18.651Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/about.html</loc>
-    <lastmod>2022-11-25T09:14:42.760Z</lastmod>
+    <lastmod>2022-11-25T22:29:18.898Z</lastmod>
   </url>
 </urlset>

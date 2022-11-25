@@ -16,7 +16,7 @@ website:
 format:
   html:
     theme:
-        light: morph
+        light: Pulse
     css: styles.css
     toc: true
     code-fold: false
