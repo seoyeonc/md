@@ -13,14 +13,13 @@ website:
     search: true
     contents: auto
     
-    format:
-      html:
-        theme: 
-            light: superhero
-            dark: darkly
-        css: styles.css
-        toc: true
-        code-fold: false
-        code-line-numbers: false
-        code-copy: true
-        fontsize: 0.9em
+format:
+  html:
+    theme:
+        light: morph
+    css: styles.css
+    toc: true
+    code-fold: false
+    code-line-numbers: false
+    code-copy: true
+    fontsize: 0.9em
