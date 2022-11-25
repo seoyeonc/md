@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="SEOYEON CHOI">
+<meta name="dcterms.date" content="2022-11-21">
 
-<title>Master's Degree – ml-(11주차_11월16일</title>
+<title>Master’s Degree - 기계학습 특강 (11주차) 11월16일</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -159,7 +161,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"></h1>
+      <h1 class="quarto-secondary-nav-title">기계학습 특강 (11주차) 11월16일</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -167,7 +169,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title d-none d-lg-block">기계학습 특강 (11주차) 11월16일</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Special Topics in Machine Learning</div>
+                <div class="quarto-category">순환신경망</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>SEOYEON CHOI </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 21, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -200,22 +234,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-09-21-rl_과제.html" class="sidebar-item-text sidebar-link">Regression HW 1</a>
+  <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">Regression HW 1</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-10-23-rl-과제2.html" class="sidebar-item-text sidebar-link">Regression HW 2</a>
+  <a href="../../posts/rl/2022-10-23-rl-HW2.html" class="sidebar-item-text sidebar-link">Regression HW 2</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-09-21-rl_실습.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습</a>
+  <a href="../../posts/rl/2022-09-21-rl_CH03, CH04.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH03, CH04</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-11-14-rl_실습_6,7장.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습</a>
+  <a href="../../posts/rl/2022-11-14-rl_CH06, CH07.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH06, CH07</a>
   </div>
 </li>
       </ul>
@@ -321,9 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#기계학습-특강-11주차-11월16일" id="toc-기계학습-특강-11주차-11월16일" class="nav-link active" data-scroll-target="#기계학습-특강-11주차-11월16일">기계학습 특강 (11주차) 11월16일</a>
-  <ul class="collapse">
-  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import">import</a></li>
+  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">import</a></li>
   <li><a href="#define-some-funtions" id="toc-define-some-funtions" class="nav-link" data-scroll-target="#define-some-funtions">Define some funtions</a></li>
   <li><a href="#exam4-abacad-2" id="toc-exam4-abacad-2" class="nav-link" data-scroll-target="#exam4-abacad-2">Exam4: AbAcAd (2)</a>
   <ul class="collapse">
@@ -374,7 +406,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#lstm이-강한이유" id="toc-lstm이-강한이유" class="nav-link" data-scroll-target="#lstm이-강한이유">LSTM이 강한이유</a></li>
   </ul></li>
   <li><a href="#참고자료들" id="toc-참고자료들" class="nav-link" data-scroll-target="#참고자료들">참고자료들</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -383,19 +414,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="기계학습-특강-11주차-11월16일" class="level1">
-<h1>기계학습 특강 (11주차) 11월16일</h1>
-<blockquote class="blockquote">
-<p>순환신경망– abc예제, abdc예제, abcde예제, AbAcAd예제</p>
-</blockquote>
-<ul>
-<li>toc:true</li>
-<li>branch: master</li>
-<li>badges: true</li>
-<li>comments: false</li>
-<li>author: 최서연</li>
-<li>categories: [Special Topics in Machine Learning, 순환신경망, abdc예제, abcde예제, AbAcAd예제]</li>
-</ul>
+
+<p>(11주차) 11월16일 [순환신경망– abc예제, abdc예제, abcde예제, AbAcAd예제]</p>
 <section id="import" class="level2">
 <h2 class="anchored" data-anchor-id="import">import</h2>
 <div class="cell" data-execution_count="1">
@@ -2508,7 +2528,6 @@ second row: gt=tensor([ 0.9970, -0.9554]), ct=tensor([ 0.3592, -0.9373]), ht=ten
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

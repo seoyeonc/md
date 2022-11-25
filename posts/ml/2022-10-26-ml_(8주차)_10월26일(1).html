@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="SEOYEON CHOI">
+<meta name="dcterms.date" content="2022-10-26">
 
-<title>Master's Degree – ml_(8주차_10월26일(1</title>
+<title>Master’s Degree - 기계학습 특강 (8주차) 10월26일–(1)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -162,7 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"></h1>
+      <h1 class="quarto-secondary-nav-title">기계학습 특강 (8주차) 10월26일–(1)</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -170,7 +172,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title d-none d-lg-block">기계학습 특강 (8주차) 10월26일–(1)</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Special Topics in Machine Learning</div>
+                <div class="quarto-category">이미지자료분석</div>
+                <div class="quarto-category">CNN 다중클래스 분류</div>
+                <div class="quarto-category">fastai metric</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>SEOYEON CHOI </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 26, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -203,22 +239,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-09-21-rl_과제.html" class="sidebar-item-text sidebar-link">Regression HW 1</a>
+  <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">Regression HW 1</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-10-23-rl-과제2.html" class="sidebar-item-text sidebar-link">Regression HW 2</a>
+  <a href="../../posts/rl/2022-10-23-rl-HW2.html" class="sidebar-item-text sidebar-link">Regression HW 2</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-09-21-rl_실습.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습</a>
+  <a href="../../posts/rl/2022-09-21-rl_CH03, CH04.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH03, CH04</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-11-14-rl_실습_6,7장.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습</a>
+  <a href="../../posts/rl/2022-11-14-rl_CH06, CH07.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH06, CH07</a>
   </div>
 </li>
       </ul>
@@ -324,9 +360,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#기계학습-특강-8주차-10월26일1" id="toc-기계학습-특강-8주차-10월26일1" class="nav-link active" data-scroll-target="#기계학습-특강-8주차-10월26일1">기계학습 특강 (8주차) 10월26일–(1)</a>
-  <ul class="collapse">
-  <li><a href="#imports" id="toc-imports" class="nav-link" data-scroll-target="#imports">imports</a></li>
+  <li><a href="#imports" id="toc-imports" class="nav-link active" data-scroll-target="#imports">imports</a></li>
   <li><a href="#cnn-다중클래스-분류" id="toc-cnn-다중클래스-분류" class="nav-link" data-scroll-target="#cnn-다중클래스-분류">CNN 다중클래스 분류</a>
   <ul class="collapse">
   <li><a href="#결론-그냥-외우세요" id="toc-결론-그냥-외우세요" class="nav-link" data-scroll-target="#결론-그냥-외우세요">결론 (그냥 외우세요)</a></li>
@@ -345,7 +379,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#fastai지원-메트릭이용-올바른-사용1" id="toc-fastai지원-메트릭이용-올바른-사용1" class="nav-link" data-scroll-target="#fastai지원-메트릭이용-올바른-사용1">fastai지원 메트릭이용– 올바른 사용(1)</a></li>
   <li><a href="#fastai지원-메트릭이용-올바른-사용2" id="toc-fastai지원-메트릭이용-올바른-사용2" class="nav-link" data-scroll-target="#fastai지원-메트릭이용-올바른-사용2">fastai지원 메트릭이용– 올바른 사용(2)</a></li>
   </ul></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -354,19 +387,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="기계학습-특강-8주차-10월26일1" class="level1">
-<h1>기계학습 특강 (8주차) 10월26일–(1)</h1>
-<blockquote class="blockquote">
-<p>이미지자료분석 - CNN 다중클래스 분류, fastai metric 사용</p>
-</blockquote>
-<ul>
-<li>toc:true</li>
-<li>branch: master</li>
-<li>badges: true</li>
-<li>comments: false</li>
-<li>author: 최서연</li>
-<li>categories: [Special Topics in Machine Learning, 이미지자료분석, CNN 다중클래스분류, fastai metric]</li>
-</ul>
+
+<p>(8주차) 10월26일–(1) [이미지자료분석 - CNN 다중클래스 분류, fastai metric 사용]</p>
 <section id="imports" class="level2">
 <h2 class="anchored" data-anchor-id="imports">imports</h2>
 <div class="cell" data-execution_count="1">
@@ -2209,7 +2231,6 @@ Examples::
 </div>
 
 
-</section>
 </section>
 </section>
 

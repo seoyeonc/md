@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="SEOYEON CHOI">
+<meta name="dcterms.date" content="2022-09-07">
 
-<title>Master's Degree – ml_1주차_9월7일</title>
+<title>Master’s Degree - 기계학습 특강 (1주차) 9월7일</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -161,7 +163,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"></h1>
+      <h1 class="quarto-secondary-nav-title">기계학습 특강 (1주차) 9월7일</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -169,7 +171,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title d-none d-lg-block">기계학습 특강 (1주차) 9월7일</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Special Topics in Machine Learning</div>
+                <div class="quarto-category">pytorch</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>SEOYEON CHOI </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 7, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -202,22 +236,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-09-21-rl_과제.html" class="sidebar-item-text sidebar-link">Regression HW 1</a>
+  <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">Regression HW 1</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-10-23-rl-과제2.html" class="sidebar-item-text sidebar-link">Regression HW 2</a>
+  <a href="../../posts/rl/2022-10-23-rl-HW2.html" class="sidebar-item-text sidebar-link">Regression HW 2</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-09-21-rl_실습.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습</a>
+  <a href="../../posts/rl/2022-09-21-rl_CH03, CH04.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH03, CH04</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-11-14-rl_실습_6,7장.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습</a>
+  <a href="../../posts/rl/2022-11-14-rl_CH06, CH07.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH06, CH07</a>
   </div>
 </li>
       </ul>
@@ -323,15 +357,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#기계학습-특강-1주차-9월7일" id="toc-기계학습-특강-1주차-9월7일" class="nav-link active" data-scroll-target="#기계학습-특강-1주차-9월7일">기계학습 특강 (1주차) 9월7일</a>
-  <ul class="collapse">
-  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import">import</a></li>
+  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">import</a></li>
   <li><a href="#학습" id="toc-학습" class="nav-link" data-scroll-target="#학습">학습</a></li>
   <li><a href="#기존-데이터를-잘-맞추는지-확인" id="toc-기존-데이터를-잘-맞추는지-확인" class="nav-link" data-scroll-target="#기존-데이터를-잘-맞추는지-확인">기존 데이터를 잘 맞추는지 확인</a></li>
   <li><a href="#오답분석" id="toc-오답분석" class="nav-link" data-scroll-target="#오답분석">오답분석</a></li>
   <li><a href="#좋은-모델인가" id="toc-좋은-모델인가" class="nav-link" data-scroll-target="#좋은-모델인가">좋은 모델인가?</a></li>
   <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework">homework</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -340,16 +371,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="기계학습-특강-1주차-9월7일" class="level1">
-<h1>기계학습 특강 (1주차) 9월7일</h1>
-<ul>
-<li>toc:true</li>
-<li>branch: master</li>
-<li>badges: true</li>
-<li>comments: false</li>
-<li>author: 최서연</li>
-<li>categories: [Special Topics in Machine Learning, pytorch]</li>
-</ul>
+
+<p>(1주차) 9월7일 [pytorch]</p>
 <blockquote class="blockquote">
 <p>우리의 1차 목표: 이미지 -&gt; 개/고양이 판단하는 모형을 채용하고, 그 모형에 데이터를 넣어서 학습하고, 그 모형의 결과를 판단하고 싶다. (즉 클래시파이어를 만든다는 소리)</p>
 </blockquote>
@@ -880,7 +903,6 @@ ImageDataLoaders<span class="ansi-blue-fg">.</span>from_name_func<span class="an
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
