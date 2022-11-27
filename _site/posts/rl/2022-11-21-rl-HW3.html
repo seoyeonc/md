@@ -281,7 +281,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-11-29-13wk-2-final.html" class="sidebar-item-text sidebar-link">final</a>
+  <a href="../../posts/ml/2022-11-29-13wk-2-final.html" class="sidebar-item-text sidebar-link">Deep Learning final example</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -2241,7 +2241,7 @@ F-statistic: 23.05 on 3 and 6 DF,  p-value: 0.001079</code></pre>
 </div>
 <p><span class="math inline">\(H_0 : \beta_1 = \beta_2 = \beta_3\)</span></p>
 <p><span class="math inline">\(T= (0,1,-1,0) (0,0,1,-1)\)</span></p>
-<p>$y= _0 + _1 x_1 + _1 x_2 + _1 x_3 + = _0 + _1(x_1+x_2+x_3)</p>
+<p><span class="math inline">\(y= \beta_0 + \beta_1 x_1 + \beta_1 x_2 + \beta_1 x_3 + \epsilon = \beta_0 + \beta_1(x_1+x_2+x_3)\)</span></p>
 <div class="cell" data-execution_count="120">
 <div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>), dt<span class="sc">$</span>x1<span class="sc">+</span>dt<span class="sc">$</span>x2<span class="sc">+</span>dt<span class="sc">$</span>x3), <span class="at">ncol=</span><span class="dv">2</span>)</span>
 <span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div>
