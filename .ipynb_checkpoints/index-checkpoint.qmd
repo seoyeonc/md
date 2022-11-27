@@ -1,5 +1,5 @@
 ---
-title: "Master's Degree"
+title: "Master's degree"
 listing:
   contents: posts
   sort: "date desc"
