@@ -281,6 +281,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-29-13wk-2-final.html" class="sidebar-item-text sidebar-link">final</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ml/2022-11-02-ml-중간고사_대체과제.html" class="sidebar-item-text sidebar-link">기계학습 특강</a>
   </div>
 </li>
@@ -2624,16 +2629,7 @@ F-statistic: 23.05 on 3 and 6 DF,  p-value: 0.001079</code></pre>
 </section>
 <section id="cove-hatbeta-mathbbo_ntimesk1" class="level6">
 <h6 class="anchored" data-anchor-id="cove-hatbeta-mathbbo_ntimesk1">(3) <span class="math inline">\(Cov(e, \hat{\beta}) = \mathbb{O}_{n\times(k+1)}\)</span></h6>
-<p><span class="math inline">\(E((e - E(e))(\hat{\beta} - E(\hat{\beta})))\)</span></p>
-<p>$ = E(e( - E())$</p>
-<p><span class="math inline">\(\star E(e) = [I_n - X(X^\top X)^{-1} X^\top] E(y) = [I_n - X(X^\top X)^{-1} X^\top (X\beta)] = 0_n\)</span></p>
-<p>$ = E([I_n - X(X<sup>X)</sup>{-1} X^]y( - E())$</p>
-<p>$ = [I_n - X(X<sup>X)</sup>{-1} X^]E(y( - E()))$</p>
-<p>$ = [I_n - X(X<sup>X)</sup>{-1} X^]E(y( - ))$</p>
-<p>$ = [I_n - X(X<sup>X)</sup>{-1} X^]E(y)( - )$</p>
-<p>$ = [I_n - X(X<sup>X)</sup>{-1} X^]X( - )$</p>
-<p>$ = <em>{n n} </em>{n (k+1)}$</p>
-<p>$ = _{n (k+1)}$</p>
+<p><span class="math inline">\(Cov((I-H)\bf{y},(X^\top X)^{-1} y) = (I-H) Cov(y,y) X (X^\top X)^{-1} = (I - X(X^\top X)^{-1} X^\top ) X (X^\top X)^{-1} \sigma^2 = \{ X(X^\top X)^{-1} - X(X^\top X)^{-1} \} \sigma^2 = \mathbb{O}_{n \times ([+1)}\)</span></p>
 </section>
 <section id="covepsilon-hatbeta-sigma2-xxtop-x-1" class="level6">
 <h6 class="anchored" data-anchor-id="covepsilon-hatbeta-sigma2-xxtop-x-1">(4) <span class="math inline">\(Cov(\epsilon, \hat{\beta}) = \sigma^2 X(X^\top X)^{-1}\)</span></h6>

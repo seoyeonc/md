@@ -281,6 +281,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-29-13wk-2-final.html" class="sidebar-item-text sidebar-link">final</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ml/2022-11-02-ml-중간고사_대체과제.html" class="sidebar-item-text sidebar-link active">기계학습 특강</a>
   </div>
 </li>
@@ -380,7 +385,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <p>중간고사 대체과제</p>
-<div class="cell" data-execution_count="98">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -390,7 +395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="크롤링을-통한-이미지-분석-및-cam"><code>1</code>. 크롤링을 통한 이미지 분석 및 CAM</h2>
 <p><code>(1)</code> 두 가지 키워드로 크롤링을 수행하여 이미지자료를 모아라. (키워드는 각자 마음에 드는 것으로 설정할 것)</p>
 <p><strong><em>힌트1: <code>hynn</code>, <code>iu</code> 라는 키워드로 크롤링하여 이미지자료를 모으는 코드</em></strong></p>
-<div class="cell" data-execution_count="99">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 크롤링에 필요한 준비작업들</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#!pip install -Uqq duckduckgo_search</span></span>
@@ -823,11 +828,11 @@ torch.Size([8, 1024])</code></pre>
 <h2 class="anchored" data-anchor-id="overparameterized-model"><code>2</code>. Overparameterized Model</h2>
 <p>(풀이 있음)</p>
 <p>아래와 같은 자료가 있다고 가정하자.</p>
-<div class="cell" data-execution_count="504">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.rand([<span class="dv">1000</span>,<span class="dv">1</span>])<span class="op">*</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fl">3.14</span> <span class="op">+</span> <span class="fl">6.28</span><span class="op">*</span>x <span class="op">+</span> torch.randn([<span class="dv">1000</span>,<span class="dv">1</span>]) </span></code></pre></div>
 </div>
-<div class="cell" data-outputid="ef02a5b0-eb98-4e8c-8624-c46df3434932" data-execution_count="505">
+<div class="cell" data-outputid="ef02a5b0-eb98-4e8c-8624-c46df3434932" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-11-02-ml-중간고사_대체과제_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
@@ -837,20 +842,20 @@ torch.Size([8, 1024])</code></pre>
 <ul>
 <li><span class="math inline">\(y_i = \beta_0 + \beta_1 x_i + \epsilon_i,\quad \epsilon_i \sim N(0,\sigma^2)\)</span></li>
 </ul>
-<div class="cell" data-execution_count="506">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>net <span class="op">=</span> torch.nn.Linear(in_features<span class="op">=</span><span class="dv">1</span>,out_features<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="507">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>optimizr <span class="op">=</span> torch.optim.SGD(net.parameters(),lr<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">10</span>) </span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="508">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,net(x).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-11-02-ml-중간고사_대체과제_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="509">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoc <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    yhat <span class="op">=</span> net(x) </span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> torch.mean((yhat<span class="op">-</span>y)<span class="op">**</span><span class="dv">2</span>)</span>
@@ -858,40 +863,40 @@ torch.Size([8, 1024])</code></pre>
 <span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    optimizr.step()</span>
 <span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    optimizr.zero_grad() </span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="510">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,net(x).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-11-02-ml-중간고사_대체과제_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="511">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>net.weight.data, net.bias.data</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="511">
-<pre><code>(tensor([[6.2915]]), tensor([3.2051]))</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>(tensor([[6.2839]]), tensor([3.1322]))</code></pre>
 </div>
 </div>
 <p><code>(2)</code> 아래의 모형을 가정하고 <span class="math inline">\(\beta_0\)</span>를 파이토치를 이용하여 추정하라.</p>
 <ul>
 <li><span class="math inline">\(y_i = \beta_0 + \epsilon_i,\quad \epsilon_i \sim N(0,\sigma^2)\)</span></li>
 </ul>
-<div class="cell" data-execution_count="512">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>W0hat <span class="op">=</span> torch.tensor([<span class="fl">0.0</span>], requires_grad<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="513">
+<div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>W0hat</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="513">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>tensor([0.], requires_grad=True)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="514">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,(<span class="dv">0</span><span class="op">*</span>x<span class="op">+</span>W0hat).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-11-02-ml-중간고사_대체과제_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="515">
+<div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoc <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    yhat <span class="op">=</span> <span class="dv">0</span> <span class="op">*</span> x <span class="op">+</span> W0hat</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> torch.mean((y<span class="op">-</span>yhat)<span class="op">**</span><span class="dv">2</span>)</span>
@@ -899,37 +904,37 @@ torch.Size([8, 1024])</code></pre>
 <span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    W0hat.data <span class="op">=</span> W0hat.data <span class="op">-</span> <span class="fl">0.1</span><span class="op">*</span>W0hat.grad</span>
 <span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    W0hat.grad <span class="op">=</span> <span class="va">None</span></span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="516">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,(<span class="dv">0</span><span class="op">*</span>x<span class="op">+</span>W0hat).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-11-02-ml-중간고사_대체과제_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="517">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>W0hat</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="517">
-<pre><code>tensor([3.1945], requires_grad=True)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>tensor([3.1188], requires_grad=True)</code></pre>
 </div>
 </div>
 <p><code>(3)</code> 아래의 모형을 가정하고 <span class="math inline">\(\beta_1\)</span>을 파이토치를 이용하여 추정하라.</p>
 <ul>
 <li><span class="math inline">\(y_i = \beta_1x_i + \epsilon_i \quad \epsilon_i \sim N(0,\sigma^2)\)</span></li>
 </ul>
-<div class="cell" data-execution_count="518">
+<div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>net <span class="op">=</span> torch.nn.Linear(<span class="dv">1</span>,<span class="dv">1</span>,bias <span class="op">=</span> <span class="va">False</span>)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="519">
+<div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,net(x).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-11-02-ml-중간고사_대체과제_files/figure-html/cell-39-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="520">
+<div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>optimizr <span class="op">=</span> torch.optim.SGD(net.parameters(),lr<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">10</span>) </span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="521">
+<div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoc <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    yhat <span class="op">=</span> net(x) </span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> torch.mean((y<span class="op">-</span>yhat)<span class="op">**</span><span class="dv">2</span>)</span>
@@ -937,17 +942,17 @@ torch.Size([8, 1024])</code></pre>
 <span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>    optimizr.step()</span>
 <span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>    optimizr.zero_grad() </span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="522">
+<div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,net(x).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-11-02-ml-중간고사_대체과제_files/figure-html/cell-42-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="523">
+<div class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>net.weight.data</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="523">
-<pre><code>tensor([[6.2754]])</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>tensor([[6.2637]])</code></pre>
 </div>
 </div>
 <p><code>(4)</code> 아래의 모형을 가정하고 <span class="math inline">\(\alpha_0,\beta_0,\beta_1\)</span>을 파이토치를 이용하여 추정하라.</p>
