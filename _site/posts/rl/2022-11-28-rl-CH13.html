@@ -398,12 +398,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>chapter 13</p>
 <section id="가변수" class="level1">
 <h1>가변수</h1>
-<div class="cell" data-execution_count="26">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 </div>
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
-<div class="cell" data-execution_count="27">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">26</span>,<span class="dv">21</span>,<span class="dv">30</span>,<span class="dv">22</span>,<span class="dv">1</span>,<span class="dv">12</span>,<span class="dv">19</span>,<span class="dv">4</span>,<span class="dv">16</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="dv">28</span>,<span class="dv">15</span>,<span class="dv">11</span>,<span class="dv">38</span>,<span class="dv">31</span>,<span class="dv">21</span>,<span class="dv">20</span>,<span class="dv">13</span>,<span class="dv">30</span>,<span class="dv">14</span>),</span>
@@ -430,7 +430,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>M은 0, F는 1-&gt; 강의록과 같음</li>
 </ul>
-<div class="cell" data-execution_count="28">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 
@@ -451,7 +451,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="29">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contrasts</span>(<span class="fu">factor</span>(dt<span class="sc">$</span>x2))</span></code></pre></div>
 <div class="cell-output cell-output-display">
 
@@ -468,10 +468,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>잘 부여되었나 확인 필요 - <strong>chracter일때는 이 함수를 사용해도 의미가 없어서 factor로 바꿔서 해줘야 한다.</strong></p>
-<div class="cell" data-execution_count="30">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x1<span class="sc">+</span>x2, dt)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="31">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
@@ -512,7 +512,7 @@ F-statistic: 75.72 on 2 and 17 DF,  p-value: 3.42e-09</code></pre>
 <p><span class="math inline">\(x_2 = 1\)</span>, F</p>
 <p><span class="math inline">\(E(y|M) : \beta_0 + \beta_1x_1\)</span></p>
 <p><span class="math inline">\(E(y|F) : \beta_0 + \beta_1x_1+ \beta_2 = (\beta_0 + \beta_2) + \beta_1x_1\)</span></p>
-<div class="cell" data-execution_count="32">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(x1, y, <span class="at">col=</span>x2)) <span class="sc">+</span> </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
@@ -523,10 +523,10 @@ F-statistic: 75.72 on 2 and 17 DF,  p-value: 3.42e-09</code></pre>
 <p><img src="2022-11-28-rl-CH13_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="33">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x1<span class="sc">+</span>x2, dt)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="34">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
@@ -551,7 +551,7 @@ F-statistic: 75.72 on 2 and 17 DF,  p-value: 3.42e-09</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\beta_2\)</span>가 유의함을 확인함(3.13e-05) - 남성과 여성이 차이가 있다.</p>
-<div class="cell" data-execution_count="35">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(x1, y, <span class="at">col=</span>x2)) <span class="sc">+</span> </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
@@ -566,11 +566,11 @@ F-statistic: 75.72 on 2 and 17 DF,  p-value: 3.42e-09</code></pre>
 <p>기울기 차이 고려 안해서 기울기는 같을 것</p>
 <section id="교호작용" class="level3">
 <h3 class="anchored" data-anchor-id="교호작용">교호작용</h3>
-<div class="cell" data-execution_count="36">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x1<span class="sc">*</span>x2, dt)</span></code></pre></div>
 </div>
 <p>곱하기로 교호작용 표현</p>
-<div class="cell" data-execution_count="37">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
@@ -770,7 +770,7 @@ F-statistic: 79.06 on 2 and 5 DF,  p-value: 0.0001645</code></pre>
 <div class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>dt2<span class="sc">$</span>y <span class="ot">&lt;-</span> <span class="fu">predict</span>(m, <span class="at">newdata =</span> dt2)</span></code></pre></div>
 </div>
-<p>** this is the predicted line of multiple linear regression**</p>
+<p><strong>this is the predicted line of multiple linear regression</strong></p>
 <div class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dt, <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> y)) <span class="sc">+</span> </span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">'steelblue'</span>) <span class="sc">+</span></span>
