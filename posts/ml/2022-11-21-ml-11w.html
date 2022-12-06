@@ -259,6 +259,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-05-rl-CH11.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH11</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/rl/2022-11-28-rl-CH13.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH13</a>
   </div>
 </li>
@@ -438,7 +443,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>기계학습 특강 (11주차) 11월16일 [순환신경망– abc예제, abdc예제, abcde예제, AbAcAd예제]</p>
 <section id="import" class="level2">
 <h2 class="anchored" data-anchor-id="import">import</h2>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
@@ -446,7 +451,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="define-some-funtions" class="level2">
 <h2 class="anchored" data-anchor-id="define-some-funtions">Define some funtions</h2>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(txt,mapping):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [mapping[key] <span class="cf">for</span> key <span class="kw">in</span> txt] </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sig <span class="op">=</span> torch.nn.Sigmoid()</span>
@@ -459,30 +464,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="data" class="level3">
 <h3 class="anchored" data-anchor-id="data">data</h3>
 <p><code>-</code> 기존의 정리방식</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> <span class="bu">list</span>(<span class="st">'AbAcAd'</span>)<span class="op">*</span><span class="dv">100</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>txt[:<span class="dv">10</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>['A', 'b', 'A', 'c', 'A', 'd', 'A', 'b', 'A', 'c']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>txt_x <span class="op">=</span> txt[:<span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>txt_y <span class="op">=</span> txt[<span class="dv">1</span>:]</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>txt_x[:<span class="dv">5</span>],txt_y[:<span class="dv">5</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>(['A', 'b', 'A', 'c', 'A'], ['b', 'A', 'c', 'A', 'd'])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.nn.functional.one_hot(torch.tensor(f(txt_x,{<span class="st">'A'</span>:<span class="dv">0</span>,<span class="st">'b'</span>:<span class="dv">1</span>,<span class="st">'c'</span>:<span class="dv">2</span>,<span class="st">'d'</span>:<span class="dv">3</span>}))).<span class="bu">float</span>()</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.nn.functional.one_hot(torch.tensor(f(txt_y,{<span class="st">'A'</span>:<span class="dv">0</span>,<span class="st">'b'</span>:<span class="dv">1</span>,<span class="st">'c'</span>:<span class="dv">2</span>,<span class="st">'d'</span>:<span class="dv">3</span>}))).<span class="bu">float</span>()</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x,y</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>(tensor([[1., 0., 0., 0.],
          [0., 1., 0., 0.],
          [1., 0., 0., 0.],
@@ -1807,23 +1812,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="exam6-abcdabcd">Exam6: abcdabcD</h2>
 <section id="data-2" class="level3">
 <h3 class="anchored" data-anchor-id="data-2">data</h3>
-<div class="cell" data-execution_count="50">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb174"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb174-1"><a href="#cb174-1" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> <span class="bu">list</span>(<span class="st">'abcdabcD'</span>)<span class="op">*</span><span class="dv">100</span></span>
 <span id="cb174-2"><a href="#cb174-2" aria-hidden="true" tabindex="-1"></a>txt[:<span class="dv">8</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="50">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>['a', 'b', 'c', 'd', 'a', 'b', 'c', 'D']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="51">
+<div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb176"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a>txt_x <span class="op">=</span> txt[:<span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb176-2"><a href="#cb176-2" aria-hidden="true" tabindex="-1"></a>txt_y <span class="op">=</span> txt[<span class="dv">1</span>:]</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="52">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb177"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {<span class="st">'a'</span>:<span class="dv">0</span>, <span class="st">'b'</span>:<span class="dv">1</span>, <span class="st">'c'</span>:<span class="dv">2</span>, <span class="st">'d'</span>:<span class="dv">3</span>, <span class="st">'D'</span>:<span class="dv">4</span>}</span>
 <span id="cb177-2"><a href="#cb177-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.nn.functional.one_hot(torch.tensor(f(txt_x,mapping))).<span class="bu">float</span>()</span>
 <span id="cb177-3"><a href="#cb177-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.nn.functional.one_hot(torch.tensor(f(txt_y,mapping))).<span class="bu">float</span>()</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="53">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb178"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb178-1"><a href="#cb178-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>x.to(<span class="st">"cuda:0"</span>)</span>
 <span id="cb178-2"><a href="#cb178-2" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>y.to(<span class="st">"cuda:0"</span>)</span></code></pre></div>
 </div>
@@ -1831,7 +1836,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="rnn-vs-lstm-성능비교실험-1" class="level3">
 <h3 class="anchored" data-anchor-id="rnn-vs-lstm-성능비교실험-1">RNN vs LSTM 성능비교실험</h3>
 <p><code>-</code> RNN</p>
-<div class="cell">
+<div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb179"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">5</span>,<span class="dv">5</span>,figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">10</span>))</span>
 <span id="cb179-2"><a href="#cb179-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
 <span id="cb179-3"><a href="#cb179-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
@@ -1856,9 +1861,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb179-22"><a href="#cb179-22" aria-hidden="true" tabindex="-1"></a>        ax[i][j].matshow(combind.to(<span class="st">"cpu"</span>).data[<span class="op">-</span><span class="dv">8</span>:],cmap<span class="op">=</span><span class="st">'bwr'</span>,vmin<span class="op">=-</span><span class="dv">1</span>,vmax<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb179-23"><a href="#cb179-23" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="vs">r"$RNN$"</span>,size<span class="op">=</span><span class="dv">20</span>)</span>
 <span id="cb179-24"><a href="#cb179-24" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2022-11-21-ml-11w_files/figure-html/cell-133-output-1.png" class="img-fluid"></p>
+</div>
 </div>
 <p><code>-</code> LSTM</p>
-<div class="cell">
+<div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb180"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb180-1"><a href="#cb180-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">5</span>,<span class="dv">5</span>,figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">10</span>))</span>
 <span id="cb180-2"><a href="#cb180-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
 <span id="cb180-3"><a href="#cb180-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
@@ -1883,6 +1891,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb180-22"><a href="#cb180-22" aria-hidden="true" tabindex="-1"></a>        ax[i][j].matshow(combind.to(<span class="st">"cpu"</span>).data[<span class="op">-</span><span class="dv">8</span>:],cmap<span class="op">=</span><span class="st">'bwr'</span>,vmin<span class="op">=-</span><span class="dv">1</span>,vmax<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb180-23"><a href="#cb180-23" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="vs">r"$LSTM$"</span>,size<span class="op">=</span><span class="dv">20</span>)</span>
 <span id="cb180-24"><a href="#cb180-24" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2022-11-21-ml-11w_files/figure-html/cell-134-output-1.png" class="img-fluid"></p>
+</div>
 </div>
 <p><code>-</code> 관찰1: LSTM이 확실히 장기기억에 강하다.</p>
 <p><code>-</code> 관찰2: LSTM은 hidden에 0이 잘 나온다.</p>

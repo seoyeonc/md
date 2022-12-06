@@ -259,6 +259,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-05-rl-CH11.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH11</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/rl/2022-11-28-rl-CH13.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH13</a>
   </div>
 </li>
@@ -421,7 +426,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>기계학습 특강 (10주차) 11월9일 [순환신경망– abc예제, abdc예제, abcde예제, AbAcAd예제]</p>
 <section id="import" class="level2">
 <h2 class="anchored" data-anchor-id="import">import</h2>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -429,7 +434,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <hr>
 <p>선행학습</p>
-<div class="cell" data-tags="[]" data-execution_count="22">
+<div class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="st">'123'</span>:</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -569,81 +574,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>9월27일 강의노트 중 “<code>net.parameters()</code>의 의미?”를 설명한다.</p>
 <p><code>-</code> iterator, generator의 개념필요 - https://guebin.github.io/IP2022/2022/06/06/(14주차)-6월6일.html, 클래스공부 8단계 참고</p>
 <p><code>-</code> 탐구시작: 네트워크 생성</p>
-<div class="cell" data-outputid="e3999737-d510-4b23-865f-43c0db09de14" data-execution_count="3">
+<div class="cell" data-outputid="e3999737-d510-4b23-865f-43c0db09de14" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>net <span class="op">=</span> torch.nn.Linear(in_features<span class="op">=</span><span class="dv">1</span>,out_features<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>net.weight</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>Parameter containing:
-tensor([[-0.3783]], requires_grad=True)</code></pre>
+tensor([[0.7520]], requires_grad=True)</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="8a859e5d-339d-41ea-a4f7-abd5c1c38bbc" data-execution_count="4">
+<div class="cell" data-outputid="8a859e5d-339d-41ea-a4f7-abd5c1c38bbc" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>net.bias</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>Parameter containing:
-tensor([0.7503], requires_grad=True)</code></pre>
+tensor([-0.8206], requires_grad=True)</code></pre>
 </div>
 </div>
 <p><code>-</code> torch.optim.SGD? 를 확인하면 params에 대한설명에 아래와 같이 되어있음</p>
 <pre><code>params (iterable): iterable of parameters to optimize or dicts defining
         parameter groups</code></pre>
-<div class="cell" data-execution_count="66">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>net.parameters() <span class="co">## generator = </span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="67">
-<pre><code>&lt;generator object Module.parameters at 0x7f0f0d6d7cd0&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>&lt;generator object Module.parameters at 0x7f6e8ac0f9d0&gt;</code></pre>
 </div>
 </div>
 <p><code>-</code> 설명을 읽어보면 params에 iterable object를 넣으라고 되어있음 (iterable object는 숨겨진 명령어로 <code>__iter__</code>를 가지고 있는 오브젝트를 의미)</p>
-<div class="cell" data-outputid="9eecd8b0-63f8-4fcc-b1dd-7f6ac3cb6ade" data-execution_count="5">
+<div class="cell" data-outputid="9eecd8b0-63f8-4fcc-b1dd-7f6ac3cb6ade" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span>(<span class="bu">dir</span>(net.parameters())) <span class="op">&amp;</span> {<span class="st">'__iter__'</span>}</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>{'__iter__'}</code></pre>
 </div>
 </div>
 <p><code>-</code> 무슨의미?</p>
-<div class="cell" data-outputid="e1135893-a573-43ec-aa63-98fbe8fbaf61" data-execution_count="6">
+<div class="cell" data-outputid="e1135893-a573-43ec-aa63-98fbe8fbaf61" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> param <span class="kw">in</span> net.parameters():</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(param)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter containing:
-tensor([[-0.3783]], requires_grad=True)
+tensor([[0.7520]], requires_grad=True)
 Parameter containing:
-tensor([0.7503], requires_grad=True)</code></pre>
+tensor([-0.8206], requires_grad=True)</code></pre>
 </div>
 </div>
 <p><code>-</code> 그냥 이건 이런느낌인데?</p>
-<div class="cell" data-outputid="5010f2a4-e376-42d4-a46c-6eada6c8ec42" data-execution_count="7">
+<div class="cell" data-outputid="5010f2a4-e376-42d4-a46c-6eada6c8ec42" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> param <span class="kw">in</span> [net.weight,net.bias]:</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(param)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter containing:
-tensor([[-0.3783]], requires_grad=True)
+tensor([[0.7520]], requires_grad=True)
 Parameter containing:
-tensor([0.7503], requires_grad=True)</code></pre>
+tensor([-0.8206], requires_grad=True)</code></pre>
 </div>
 </div>
 <p>결론: <code>net.parameters()</code>는 net오브젝트에서 학습할 파라메터를 모두 모아 리스트같은 iterable object로 만드는 함수라 이해할 수 있다.</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>yhat <span class="op">=</span> net(x)</span></code></pre></div>
 <p>꼭 이런 식으로 정의할 필요는 없다</p>
 <p><code>-</code> 응용예제1</p>
-<div class="cell" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/guebin/DL2022/master/_notebooks/2022-09-22-regression.csv"</span>) </span>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/guebin/DL2022_backup/master/_notebooks/2022-09-22-regression.csv"</span>) </span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>torch.tensor(df.x).<span class="bu">float</span>().reshape(<span class="dv">100</span>,<span class="dv">1</span>)</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>torch.tensor(df.y).<span class="bu">float</span>().reshape(<span class="dv">100</span>,<span class="dv">1</span>)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="70">
+<div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> torch.tensor(<span class="op">-</span><span class="fl">5.0</span>,requires_grad<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> torch.tensor(<span class="fl">10.0</span>,requires_grad<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>optimizr <span class="op">=</span> torch.optim.SGD([b,w],lr<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">10</span>) <span class="co">## 이렇게 전달하면 됩니당!!</span></span></code></pre></div>
 </div>
-<div class="cell" data-outputid="022e7c60-a39a-4668-e5a6-700dcb0366ec" data-execution_count="71">
+<div class="cell" data-outputid="022e7c60-a39a-4668-e5a6-700dcb0366ec" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,(w<span class="op">*</span>x<span class="op">+</span>b).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-11-09-ml-10w_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="72">
+<div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoc <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">30</span>):</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## step1</span></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    yhat <span class="op">=</span> b<span class="op">+</span> w<span class="op">*</span>x </span>
@@ -655,7 +660,7 @@ tensor([0.7503], requires_grad=True)</code></pre>
 <span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>    optimizr.step()</span>
 <span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>    optimizr.zero_grad()</span></code></pre></div>
 </div>
-<div class="cell" data-outputid="10a339e2-1b2c-4360-81ff-b50142988da0" data-execution_count="73">
+<div class="cell" data-outputid="10a339e2-1b2c-4360-81ff-b50142988da0" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>)</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,(w<span class="op">*</span>x<span class="op">+</span>b).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
@@ -663,31 +668,31 @@ tensor([0.7503], requires_grad=True)</code></pre>
 </div>
 </div>
 <p><code>-</code> 응용예제2</p>
-<div class="cell" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/guebin/DL2022/master/_notebooks/2022-09-22-regression.csv"</span>) </span>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/guebin/DL2022_backup/master/_notebooks/2022-09-22-regression.csv"</span>) </span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.tensor(df.x).<span class="bu">float</span>().reshape(<span class="dv">100</span>,<span class="dv">1</span>)</span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor(df.y).<span class="bu">float</span>().reshape(<span class="dv">100</span>,<span class="dv">1</span>)</span>
 <span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> torch.concat([torch.ones_like(x),x],axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="75">
+<div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>What <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="fl">5.0</span>],[<span class="fl">10.0</span>]],requires_grad<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>optimizr <span class="op">=</span> torch.optim.SGD([What],lr<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">10</span>) <span class="co"># What은 iterable 하지 않지만 [What]은 iterable 함</span></span></code></pre></div>
 </div>
-<div class="cell" data-outputid="d3d3b7fe-7bba-4365-b90a-ac3cc6ab3275" data-execution_count="76">
+<div class="cell" data-outputid="d3d3b7fe-7bba-4365-b90a-ac3cc6ab3275" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>What</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="76">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>tensor([[-5.],
         [10.]], requires_grad=True)</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="7b404ff3-9f41-4c0a-9a69-48252df16914" data-execution_count="77">
+<div class="cell" data-outputid="7b404ff3-9f41-4c0a-9a69-48252df16914" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>)</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,(X<span class="op">@</span>What).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-11-09-ml-10w_files/figure-html/cell-37-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="78">
+<div class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoc <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">30</span>):</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## step1</span></span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    yhat <span class="op">=</span> X<span class="op">@</span>What </span>
@@ -699,7 +704,7 @@ tensor([0.7503], requires_grad=True)</code></pre>
 <span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>    optimizr.step()</span>
 <span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>    optimizr.zero_grad() </span></code></pre></div>
 </div>
-<div class="cell" data-outputid="e05b9024-e210-437a-9560-97368739c922" data-execution_count="79">
+<div class="cell" data-outputid="e05b9024-e210-437a-9560-97368739c922" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>)</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,(X<span class="op">@</span>What).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
@@ -709,11 +714,11 @@ tensor([0.7503], requires_grad=True)</code></pre>
 <section id="스스로-학습-중간고사-대체과제" class="level3">
 <h3 class="anchored" data-anchor-id="스스로-학습-중간고사-대체과제">스스로 학습 (중간고사 대체과제)</h3>
 <p>아래와 같은 자료가 있다고 가정하자.</p>
-<div class="cell" data-execution_count="80">
+<div class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.rand([<span class="dv">1000</span>,<span class="dv">1</span>])<span class="op">*</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span></span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fl">3.14</span> <span class="op">+</span> <span class="fl">6.28</span><span class="op">*</span>x <span class="op">+</span> torch.randn([<span class="dv">1000</span>,<span class="dv">1</span>]) </span></code></pre></div>
 </div>
-<div class="cell" data-outputid="56d28607-5f71-46b6-8df3-18265f94e2f0" data-execution_count="81">
+<div class="cell" data-outputid="56d28607-5f71-46b6-8df3-18265f94e2f0" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-11-09-ml-10w_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
@@ -724,7 +729,7 @@ tensor([0.7503], requires_grad=True)</code></pre>
 <li><span class="math inline">\(y_i = \alpha_0+\beta_0+ \beta_1x_i + \alpha_1x_i + \epsilon_i \quad \epsilon_i \sim N(0,\sigma^2)\)</span></li>
 </ul>
 <p>아래는 이를 수행하기 위한 코드이다. ???를 적절히 채워서 코드를 완성하라.</p>
-<div class="cell" data-execution_count="82">
+<div class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>alpha0 <span class="op">=</span> torch.tensor([<span class="fl">0.5</span>], requires_grad<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>alpha1 <span class="op">=</span> torch.tensor([[<span class="fl">0.5</span>]], requires_grad<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>beta0 <span class="op">=</span> torch.tensor([<span class="fl">0.7</span>], requires_grad<span class="op">=</span><span class="va">True</span>)</span>
@@ -1328,7 +1333,7 @@ tensor([0.7503], requires_grad=True)</code></pre>
 </section>
 <section id="개의-은닉노드를-이용한-풀이" class="level3">
 <h3 class="anchored" data-anchor-id="개의-은닉노드를-이용한-풀이">3개의 은닉노드를 이용한 풀이</h3>
-<p>a,b,c,d,e 를 표현함에 있어서 3개의 은닉노드면 충분하다. - 1개의 은닉노드 -&gt; 2개의 문자를 표현할 수 있음. - 2개의 은닉노드 -&gt; 4개의 문자를 표현할 수 있음. - 3개의 은닉노드 -&gt; 8개의 문자를 표현할 수 있음.</p>
+<p>a,b,c,d,e 를 표현함에 있어서 3개의 은닉노드면 충분하다. - 1개의 은닉노드 -&gt; 2개의 문자를 표현할 수 있음. (<span class="math inline">\(2^1\)</span>) - 2개의 은닉노드 -&gt; 4개의 문자를 표현할 수 있음. (<span class="math inline">\(2^2\)</span>) - 3개의 은닉노드 -&gt; 8개의 문자를 표현할 수 있음. (<span class="math inline">\(2^3\)</span>)</p>
 <div class="cell" data-outputid="c75bceeb-69f1-45d4-ef2e-20316168e81b" data-execution_count="154">
 <div class="sourceCode cell-code" id="cb168"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {<span class="st">'a'</span>:<span class="dv">0</span>,<span class="st">'b'</span>:<span class="dv">1</span>,<span class="st">'c'</span>:<span class="dv">2</span>,<span class="st">'d'</span>:<span class="dv">3</span>,<span class="st">'e'</span>:<span class="dv">4</span>}</span>
 <span id="cb168-2"><a href="#cb168-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.tensor(f(txt_x,mapping))</span>

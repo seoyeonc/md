@@ -263,6 +263,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-05-rl-CH11.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH11</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/rl/2022-11-28-rl-CH13.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH13</a>
   </div>
 </li>
@@ -405,7 +410,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>기계학습 특강 (9주차) 11월02일 [순환신경망– ab예제, embedding layer]</p>
 <section id="import" class="level2">
 <h2 class="anchored" data-anchor-id="import">import</h2>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
@@ -414,16 +419,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="define-some-funtions" class="level2">
 <h2 class="anchored" data-anchor-id="define-some-funtions">Define some funtions</h2>
 <p><code>-</code> 활성화함수들</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sig <span class="op">=</span> torch.nn.Sigmoid()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>soft <span class="op">=</span> torch.nn.Softmax(dim<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>tanh <span class="op">=</span> torch.nn.Tanh()</span></code></pre></div>
 </div>
-<div class="cell" data-outputid="829ef65b-a891-4ca0-e9a2-768cd0a28fea" data-execution_count="3">
+<div class="cell" data-outputid="829ef65b-a891-4ca0-e9a2-768cd0a28fea" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>_x <span class="op">=</span> torch.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">100</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.plot(_x,tanh(_x))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"tanh(x)"</span>, size<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>Text(0.5, 1.0, 'tanh(x)')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -432,12 +437,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>hyperblic tangent(https://en.wikipedia.org/wiki/Hyperbolic_functions) - sigmoid(범위가0 ~ 1)와 차이점(범위가 -1 ~ 1)</p>
 <p><code>-</code> 문자열 -&gt; 숫자로 바꾸는 함수</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(txt,mapping):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [mapping[key] <span class="cf">for</span> key <span class="kw">in</span> txt] </span></code></pre></div>
 </div>
 <p>(사용예시1)</p>
-<div class="cell" data-outputid="828d13ec-cf8a-4788-986b-0691a66272ca" data-execution_count="5">
+<div class="cell" data-outputid="828d13ec-cf8a-4788-986b-0691a66272ca" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'a'</span>]</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {<span class="st">'a'</span>:<span class="dv">33</span>,<span class="st">'b'</span>:<span class="op">-</span><span class="dv">22</span>}</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'변환전: </span><span class="sc">%s</span><span class="st">'</span><span class="op">%</span> txt)</span>
@@ -448,7 +453,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>(사용예시2)</p>
-<div class="cell" data-outputid="dfc29b42-ab60-4f52-df14-63e0fd01f2e2" data-execution_count="6">
+<div class="cell" data-outputid="dfc29b42-ab60-4f52-df14-63e0fd01f2e2" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'a'</span>]</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {<span class="st">'a'</span>:[<span class="dv">1</span>,<span class="dv">0</span>],<span class="st">'b'</span>:[<span class="dv">0</span>,<span class="dv">1</span>]}</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'변환전: </span><span class="sc">%s</span><span class="st">'</span><span class="op">%</span> txt)</span>
@@ -463,20 +468,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="exam1-ab">Exam1: ab</h2>
 <section id="data" class="level3">
 <h3 class="anchored" data-anchor-id="data">data</h3>
-<div class="cell" data-outputid="876f8b4c-0c5b-40c8-c5f8-ff7f64de2eec" data-execution_count="7">
+<div class="cell" data-outputid="876f8b4c-0c5b-40c8-c5f8-ff7f64de2eec" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> <span class="bu">list</span>(<span class="st">'ab'</span>)<span class="op">*</span><span class="dv">100</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>txt[:<span class="dv">10</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>['a', 'b', 'a', 'b', 'a', 'b', 'a', 'b', 'a', 'b']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>txt_x <span class="op">=</span> txt[:<span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>txt_y <span class="op">=</span> txt[<span class="dv">1</span>:]</span></code></pre></div>
 </div>
-<div class="cell" data-outputid="4fed8299-c9c3-4641-ba9b-68dafedccdab" data-execution_count="9">
+<div class="cell" data-outputid="4fed8299-c9c3-4641-ba9b-68dafedccdab" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>txt_x[:<span class="dv">5</span>],txt_y[:<span class="dv">5</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>(['a', 'b', 'a', 'b', 'a'], ['b', 'a', 'b', 'a', 'b'])</code></pre>
 </div>
 </div>
@@ -486,7 +491,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="풀이1-1개의-파라메터-실패" class="level4">
 <h4 class="anchored" data-anchor-id="풀이1-1개의-파라메터-실패"><strong><em>(풀이1) 1개의 파라메터 – 실패</em></strong></h4>
 <p><code>-</code> 데이터정리</p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.tensor(f(txt_x,{<span class="st">'a'</span>:<span class="dv">0</span>,<span class="st">'b'</span>:<span class="dv">1</span>})).<span class="bu">float</span>().reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor(f(txt_y,{<span class="st">'a'</span>:<span class="dv">0</span>,<span class="st">'b'</span>:<span class="dv">1</span>})).<span class="bu">float</span>().reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span></code></pre></div>
 </div>
@@ -1292,18 +1297,18 @@ $</li>
 <section id="연습-ab문제-소프트맥스로-확장한-것-다시-풀이" class="level3">
 <h3 class="anchored" data-anchor-id="연습-ab문제-소프트맥스로-확장한-것-다시-풀이">연습 (ab문제 소프트맥스로 확장한 것 다시 풀이)</h3>
 <p><code>-</code> 맵핑</p>
-<div class="cell" data-outputid="35cffdb9-dfb5-4df9-de2f-af4ecd6f23fb" data-execution_count="76">
+<div class="cell" data-outputid="35cffdb9-dfb5-4df9-de2f-af4ecd6f23fb" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {<span class="st">'a'</span>:<span class="dv">0</span>,<span class="st">'b'</span>:<span class="dv">1</span>}</span>
 <span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.tensor(f(txt_x,mapping))</span>
 <span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor(f(txt_y,mapping))</span>
 <span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a>x[:<span class="dv">5</span>],y[:<span class="dv">5</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="76">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>(tensor([0, 1, 0, 1, 0]), tensor([1, 0, 1, 0, 1]))</code></pre>
 </div>
 </div>
 <p><code>-</code> torch.nn.Embedding 을 넣은 네트워크</p>
 <p>num_embedding이 2인 이유 a,b만 있어서</p>
-<div class="cell" data-execution_count="77">
+<div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>net <span class="op">=</span> torch.nn.Sequential(</span>
 <span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>    torch.nn.Embedding(num_embeddings<span class="op">=</span><span class="dv">2</span>,embedding_dim<span class="op">=</span><span class="dv">1</span>),</span>
 <span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>    torch.nn.Tanh(),</span>
@@ -1313,7 +1318,7 @@ $</li>
 <span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a>optimizr <span class="op">=</span> torch.optim.Adam(net.parameters())</span></code></pre></div>
 </div>
 <p><code>-</code> 학습</p>
-<div class="cell" data-execution_count="78">
+<div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoc <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5000</span>):</span>
 <span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 1</span></span>
 <span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>    yhat <span class="op">=</span> net(x)</span>
@@ -1325,20 +1330,30 @@ $</li>
 <span id="cb110-9"><a href="#cb110-9" aria-hidden="true" tabindex="-1"></a>    optimizr.step()</span>
 <span id="cb110-10"><a href="#cb110-10" aria-hidden="true" tabindex="-1"></a>    optimizr.zero_grad()</span></code></pre></div>
 </div>
-<div class="cell" data-outputid="9f46661b-7d66-419b-dedd-b6972e7136b1" data-execution_count="79">
+<div class="cell" data-outputid="9f46661b-7d66-419b-dedd-b6972e7136b1" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y[:<span class="dv">5</span>],<span class="st">'o'</span>)</span>
 <span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>plt.plot(soft(net(x[:<span class="dv">5</span>]))[:,<span class="dv">1</span>].data,<span class="st">'--r'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-11-02-ml_9w_files/figure-html/cell-74-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-outputid="b0bf590c-9b00-4305-a01b-0ae12a632bb1" data-execution_count="80">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(soft(net(x[:<span class="dv">5</span>])).data)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="80">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7fe52160a2b0&gt;</code></pre>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>soft(net(x[:<span class="dv">5</span>]))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>tensor([[0.0040, 0.9960],
+        [0.9960, 0.0040],
+        [0.0040, 0.9960],
+        [0.9960, 0.0040],
+        [0.0040, 0.9960]], grad_fn=&lt;SoftmaxBackward0&gt;)</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="b0bf590c-9b00-4305-a01b-0ae12a632bb1" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(soft(net(x[:<span class="dv">5</span>])).data)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>&lt;matplotlib.image.AxesImage at 0x7f1d7067ac50&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-75-output-2.png" class="img-fluid"></p>
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-76-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 
