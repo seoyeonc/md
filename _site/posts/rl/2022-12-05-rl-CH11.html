@@ -280,6 +280,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-07-13wk.html" class="sidebar-item-text sidebar-link">A1: 깊은복사와 얕은복사 (12주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ml/2022-09-19-Assignment-1-Copy1.html" class="sidebar-item-text sidebar-link">Assignment 1</a>
   </div>
 </li>
@@ -383,6 +388,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#변수선택" id="toc-변수선택" class="nav-link active" data-scroll-target="#변수선택">변수선택</a>
   <ul class="collapse">
+  <li><a href="#후진제거법" id="toc-후진제거법" class="nav-link" data-scroll-target="#후진제거법">후진제거법</a></li>
   <li><a href="#단계적선택법" id="toc-단계적선택법" class="nav-link" data-scroll-target="#단계적선택법">단계적선택법</a></li>
   </ul></li>
   </ul>
@@ -407,12 +413,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">y  =</span> <span class="fu">c</span>(<span class="fl">78.5</span>,<span class="fl">74.3</span>,<span class="fl">104.3</span>,<span class="fl">87.6</span>,<span class="fl">95.9</span>,<span class="fl">109.2</span>,<span class="fl">102.7</span>,<span class="fl">72.5</span>,<span class="fl">93.1</span>,<span class="fl">115.9</span>,<span class="fl">83.8</span>,<span class="fl">113.3</span>,<span class="fl">109.4</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
+<p>산점도</p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(dt, <span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-12-05-rl-CH11_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
 </div>
 </div>
+<p>x2/x4 음의 상관관계 보임 등 확인</p>
+<p>상관게수</p>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dt)</span></code></pre></div>
 <div class="cell-output cell-output-display">
@@ -432,6 +441,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 </div>
+<p>x1/x3 cor 크고</p>
+<p>y와의 상관계수 중 x4가 가장 큼</p>
+<p>Full model</p>
 <div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>., dt)  <span class="do">##FM</span></span></code></pre></div>
 </div>
@@ -461,6 +473,10 @@ Multiple R-squared:  0.9824,    Adjusted R-squared:  0.9736
 F-statistic: 111.5 on 4 and 8 DF,  p-value: 4.756e-07</code></pre>
 </div>
 </div>
+<p>x1만 유의함, 나머지는 유의하지 않음</p>
+<p>모형이 복잡해지면 분산이 커져서 유의미하지 않다는 결과 나올 수도</p>
+<p>아니면 선형변수간 상관관계가 높을때 (모형은 유의하지만 변수가 유의하지 않음-&gt; 다중공선성 존재, 변수선택과정 필요</p>
+<p>t value squre = F value -&gt; 가장 작은 거 찾았더니 x3, x3이 가장 유의하지 않음 -&gt; 제거</p>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m)</span></code></pre></div>
 <div class="cell-output cell-output-display">
@@ -481,10 +497,10 @@ F-statistic: 111.5 on 4 and 8 DF,  p-value: 4.756e-07</code></pre>
 </table>
 </div>
 </div>
+<section id="후진제거법" class="level3">
+<h3 class="anchored" data-anchor-id="후진제거법">후진제거법</h3>
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">##### 후진제거법</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m) <span class="co">#x3 제거</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># drop1(m, test = "F")</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m) <span class="co">#x3 제거</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -509,10 +525,41 @@ Multiple R-squared:  0.9824,    Adjusted R-squared:  0.9736
 F-statistic: 111.5 on 4 and 8 DF,  p-value: 4.756e-07</code></pre>
 </div>
 </div>
+<div class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fl">2.083</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<div class="cell-output cell-output-display">
+4.338889
+</div>
+</div>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">update</span>(m, <span class="sc">~</span> . <span class="sc">-</span>x3)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)  <span class="co">#x4 제거</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># drop1(m1, test = "F")</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">drop1</span>(m, <span class="at">test =</span> <span class="st">"F"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+<caption>A anova: 5 × 6</caption>
+<thead>
+    <tr><th></th><th scope="col">Df</th><th scope="col">Sum of Sq</th><th scope="col">RSS</th><th scope="col">AIC</th><th scope="col">F value</th><th scope="col">Pr(&gt;F)</th></tr>
+    <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">&lt;none&gt;</th><td>NA</td><td>        NA</td><td>47.86364</td><td>26.94429</td><td>        NA</td><td>        NA</td></tr>
+    <tr><th scope="row">x1</th><td> 1</td><td>25.9509114</td><td>73.81455</td><td>30.57588</td><td>4.33747400</td><td>0.07082169</td></tr>
+    <tr><th scope="row">x2</th><td> 1</td><td> 2.9724782</td><td>50.83612</td><td>25.72755</td><td>0.49682444</td><td>0.50090110</td></tr>
+    <tr><th scope="row">x3</th><td> 1</td><td> 0.1090900</td><td>47.97273</td><td>24.97388</td><td>0.01823347</td><td>0.89592269</td></tr>
+    <tr><th scope="row">x4</th><td> 1</td><td> 0.2469747</td><td>48.11061</td><td>25.01120</td><td>0.04127972</td><td>0.84407147</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>각 값은 해당 변수가 없을떄의 결과임</p>
+<p>RSS는 SSE임 - 47.86364 모두 포함할 떄의 SSE, - 각 줄은 해당 변수가 없을 때의 SSE값임(차이가 클수록 의미있는 변수) - 25.9509114+ 47.86364=73.81455</p>
+<p>AIC</p>
+<p>F value 부분 f 검정의 f 값</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">update</span>(m, <span class="sc">~</span> . <span class="sc">-</span>x3)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)  <span class="co">#x4 제거</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -536,12 +583,32 @@ Multiple R-squared:  0.9823,    Adjusted R-squared:  0.9764
 F-statistic: 166.8 on 3 and 9 DF,  p-value: 3.323e-08</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">update</span>(m1, <span class="sc">~</span> . <span class="sc">-</span>x4)</span></code></pre></div>
+<p>부분 F 검정, t value 가장 작은 것은 x4임</p>
+<p>alpha_B = 0.05라 놓고 p값중 이보다 크거나 작은 거 찾기</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">drop1</span>(m1, <span class="at">test =</span> <span class="st">"F"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+<caption>A anova: 4 × 6</caption>
+<thead>
+    <tr><th></th><th scope="col">Df</th><th scope="col">Sum of Sq</th><th scope="col">RSS</th><th scope="col">AIC</th><th scope="col">F value</th><th scope="col">Pr(&gt;F)</th></tr>
+    <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">&lt;none&gt;</th><td>NA</td><td>        NA</td><td> 47.97273</td><td>24.97388</td><td>        NA</td><td>          NA</td></tr>
+    <tr><th scope="row">x1</th><td> 1</td><td>820.907402</td><td>868.88013</td><td>60.62933</td><td>154.007635</td><td>5.780764e-07</td></tr>
+    <tr><th scope="row">x2</th><td> 1</td><td> 26.789383</td><td> 74.76211</td><td>28.74170</td><td>  5.025865</td><td>5.168735e-02</td></tr>
+    <tr><th scope="row">x4</th><td> 1</td><td>  9.931754</td><td> 57.90448</td><td>25.41999</td><td>  1.863262</td><td>2.053954e-01</td></tr>
+</tbody>
+</table>
 </div>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)  <span class="co">#x4 제거</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># drop1(m2, test = "F")</span></span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">update</span>(m1, <span class="sc">~</span> . <span class="sc">-</span>x4)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)  <span class="co">#x4 제거</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -564,14 +631,33 @@ Multiple R-squared:  0.9787,    Adjusted R-squared:  0.9744
 F-statistic: 229.5 on 2 and 10 DF,  p-value: 4.407e-09</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">##### 전진선택법 </span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> dt)</span></code></pre></div>
-</div>
+<p>t value 보니 x1이 가장 작지만 유의확률 작음 제거 불가, 과정 멈추기</p>
 <div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m0, </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4,</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">test =</span> <span class="st">"F"</span>)  <span class="do">## x4추가</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">drop1</span>(m2, <span class="at">test =</span> <span class="st">"F"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+<caption>A anova: 3 × 6</caption>
+<thead>
+    <tr><th></th><th scope="col">Df</th><th scope="col">Sum of Sq</th><th scope="col">RSS</th><th scope="col">AIC</th><th scope="col">F value</th><th scope="col">Pr(&gt;F)</th></tr>
+    <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">&lt;none&gt;</th><td>NA</td><td>       NA</td><td>  57.90448</td><td>25.41999</td><td>      NA</td><td>          NA</td></tr>
+    <tr><th scope="row">x1</th><td> 1</td><td> 848.4319</td><td> 906.33634</td><td>59.17799</td><td>146.5227</td><td>2.692212e-07</td></tr>
+    <tr><th scope="row">x2</th><td> 1</td><td>1207.7823</td><td>1265.68675</td><td>63.51947</td><td>208.5818</td><td>5.028960e-08</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="do">##### 전진선택법 </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> dt)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m0, </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">test =</span> <span class="st">"F"</span>)  <span class="do">## x4추가</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -590,11 +676,14 @@ F-statistic: 229.5 on 2 and 10 DF,  p-value: 4.407e-09</code></pre>
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">update</span>(m0, <span class="sc">~</span> . <span class="sc">+</span>x4)</span></code></pre></div>
+<p>절편만 있는 모형에서 시작</p>
+<p>RSS는 SST로 시작(설명 변수 없는 SSE니까) 사실 SSE</p>
+<p>x4의 f value가장 큼</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">update</span>(m0, <span class="sc">~</span> . <span class="sc">+</span>x4)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span></code></pre></div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -616,10 +705,10 @@ Multiple R-squared:  0.6745,    Adjusted R-squared:  0.645
 F-statistic:  22.8 on 1 and 11 DF,  p-value: 0.0005762</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m1, </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4,</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">test =</span> <span class="st">"F"</span>)  <span class="do">## x1추가</span></span></code></pre></div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m1, </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">test =</span> <span class="st">"F"</span>)  <span class="do">## x1추가</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -637,11 +726,11 @@ F-statistic:  22.8 on 1 and 11 DF,  p-value: 0.0005762</code></pre>
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">update</span>(m1, <span class="sc">~</span> . <span class="sc">+</span>x1)</span></code></pre></div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">update</span>(m1, <span class="sc">~</span> . <span class="sc">+</span>x1)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span></code></pre></div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -664,10 +753,10 @@ Multiple R-squared:  0.9725,    Adjusted R-squared:  0.967
 F-statistic: 176.6 on 2 and 10 DF,  p-value: 1.581e-08</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m2, </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4,</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">test =</span> <span class="st">"F"</span>)  <span class="do">## stop</span></span></code></pre></div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m2, </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">test =</span> <span class="st">"F"</span>)  <span class="do">## stop</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -684,15 +773,17 @@ F-statistic: 176.6 on 2 and 10 DF,  p-value: 1.581e-08</code></pre>
 </table>
 </div>
 </div>
+<p>모두 0.05보다 p값이 큼, 멈추자</p>
+</section>
 <section id="단계적선택법" class="level2">
 <h2 class="anchored" data-anchor-id="단계적선택법">단계적선택법</h2>
 <div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> dt)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> dt)</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m0, </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4,</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">test =</span> <span class="st">"F"</span>)  <span class="do">## x4추가</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m0, </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">test =</span> <span class="st">"F"</span>)  <span class="do">## x4추가</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -712,10 +803,10 @@ F-statistic: 176.6 on 2 and 10 DF,  p-value: 1.581e-08</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">update</span>(m0, <span class="sc">~</span> . <span class="sc">+</span>x4)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">update</span>(m0, <span class="sc">~</span> . <span class="sc">+</span>x4)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span></code></pre></div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -737,10 +828,10 @@ Multiple R-squared:  0.6745,    Adjusted R-squared:  0.645
 F-statistic:  22.8 on 1 and 11 DF,  p-value: 0.0005762</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m1, </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4,</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">test =</span> <span class="st">"F"</span>)  <span class="do">## x1추가</span></span></code></pre></div>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m1, </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4,</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">test =</span> <span class="st">"F"</span>)  <span class="do">## x1추가</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -758,11 +849,11 @@ F-statistic:  22.8 on 1 and 11 DF,  p-value: 0.0005762</code></pre>
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">update</span>(m1, <span class="sc">~</span> . <span class="sc">+</span>x1)</span></code></pre></div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">update</span>(m1, <span class="sc">~</span> . <span class="sc">+</span>x1)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)  <span class="co">#제거 없음</span></span></code></pre></div>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)  <span class="co">#제거 없음</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -785,10 +876,10 @@ Multiple R-squared:  0.9725,    Adjusted R-squared:  0.967
 F-statistic: 176.6 on 2 and 10 DF,  p-value: 1.581e-08</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m2, </span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4,</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">test =</span> <span class="st">"F"</span>)  <span class="do">## x2추가</span></span></code></pre></div>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m2, </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">test =</span> <span class="st">"F"</span>)  <span class="do">## x2추가</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -805,11 +896,11 @@ F-statistic: 176.6 on 2 and 10 DF,  p-value: 1.581e-08</code></pre>
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">update</span>(m2, <span class="sc">~</span> . <span class="sc">+</span>x2)</span></code></pre></div>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">update</span>(m2, <span class="sc">~</span> . <span class="sc">+</span>x2)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m3)  <span class="co">#x4 제거</span></span></code></pre></div>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m3)  <span class="co">#x4 제거</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -833,13 +924,13 @@ Multiple R-squared:  0.9823,    Adjusted R-squared:  0.9764
 F-statistic: 166.8 on 3 and 9 DF,  p-value: 3.323e-08</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">update</span>(m3, <span class="sc">~</span> . <span class="sc">-</span>x4)</span></code></pre></div>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">update</span>(m3, <span class="sc">~</span> . <span class="sc">-</span>x4)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m4, </span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4,</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">test =</span> <span class="st">"F"</span>) <span class="co">#stop</span></span></code></pre></div>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m4, </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4,</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">test =</span> <span class="st">"F"</span>) <span class="co">#stop</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -856,24 +947,25 @@ F-statistic: 166.8 on 3 and 9 DF,  p-value: 3.323e-08</code></pre>
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("leaps")</span></span></code></pre></div>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("leaps")</span></span></code></pre></div>
 </div>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaps)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">regsubsets</span>(y<span class="sc">~</span>., <span class="at">data=</span>dt, <span class="at">nbest=</span><span class="dv">1</span>,<span class="at">nvmax=</span><span class="dv">4</span>,</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>                <span class="co"># method=c("exhaustive","backward", </span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>                <span class="co">#          "forward", "seqrep")</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">method=</span><span class="st">'forward'</span>,</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>                )</span></code></pre></div>
+</div>
+<p>full model, nbest = 1개만 추가 nvmax 최대 4개 포함 가능</p>
 <div class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaps)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit)</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">regsubsets</span>(y<span class="sc">~</span>., <span class="at">data=</span>dt, <span class="at">nbest=</span><span class="dv">1</span>,<span class="at">nvmax=</span><span class="dv">4</span>,</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>                <span class="co"># method=c("exhaustive","backward", </span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>                <span class="co">#          "forward", "seqrep")</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">method=</span><span class="st">'forward'</span>,</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>                )</span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit)</span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(a)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(a)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 8
  $ which : logi [1:4, 1:5] TRUE TRUE TRUE TRUE FALSE TRUE ...
@@ -924,9 +1016,9 @@ F-statistic: 166.8 on 3 and 9 DF,  p-value: 3.323e-08</code></pre>
  - attr(*, "class")= chr "summary.regsubsets"</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">summary</span>(fit),</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">round</span>(<span class="fu">cbind</span>(which,rss,rsq,adjr2, cp, bic),<span class="dv">3</span>))</span></code></pre></div>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">summary</span>(fit),</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">round</span>(<span class="fu">cbind</span>(which,rss,rsq,adjr2, cp, bic),<span class="dv">3</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -943,9 +1035,14 @@ F-statistic: 166.8 on 3 and 9 DF,  p-value: 3.323e-08</code></pre>
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Backward - AIC</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>model_back <span class="ot">=</span> <span class="fu">step</span>(m, <span class="at">direction =</span> <span class="st">"backward"</span>)</span></code></pre></div>
+<p>설명변수 하나 썼을때, 2개 썼을때,,, 선택되는 변수들</p>
+<p>설명변수2개.3개일때 Radj별로 차이 없어서 BIC 기준으로 2번째 꺼 선택</p>
+<p>cp &lt;= p+1(각 줄의 cp가 2,3,4,5보다 커야 함) -&gt; 2번째꺼 선택!</p>
+<p>step- r 기본 함수</p>
+<p>m은 꼭 full model로 적어주기</p>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Backward - AIC</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>model_back <span class="ot">=</span> <span class="fu">step</span>(m, <span class="at">direction =</span> <span class="st">"backward"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Start:  AIC=26.94
 y ~ x1 + x2 + x3 + x4
@@ -967,8 +1064,10 @@ y ~ x1 + x2 + x4
 - x1    1    820.91 868.88 60.629</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_back)</span></code></pre></div>
+<p>AIC 가장 작게하는 모형 기준으로 정렬되어 있음</p>
+<p>24.97 가장 작아 최종 모형 결정됌</p>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_back)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -992,12 +1091,12 @@ Multiple R-squared:  0.9823,    Adjusted R-squared:  0.9764
 F-statistic: 166.8 on 3 and 9 DF,  p-value: 3.323e-08</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Forward - AIC</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>model_forward <span class="ot">=</span> <span class="fu">step</span>(</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  m0, </span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4, </span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"forward"</span>)</span></code></pre></div>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Forward - AIC</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>model_forward <span class="ot">=</span> <span class="fu">step</span>(</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  m0, </span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">scope =</span> y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4, </span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"forward"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Start:  AIC=71.44
 y ~ 1
@@ -1034,8 +1133,9 @@ y ~ x4 + x1 + x2
 + x3    1   0.10909 47.864 26.944</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_forward)</span></code></pre></div>
+<p>정해진 식에서 설명변수만 추가하고</p>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_forward)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -1059,12 +1159,12 @@ Multiple R-squared:  0.9823,    Adjusted R-squared:  0.9764
 F-statistic: 166.8 on 3 and 9 DF,  p-value: 3.323e-08</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Step - AIC</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>model_step <span class="ot">=</span> <span class="fu">step</span>(</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  m0, </span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">scope =</span>  y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4, </span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"both"</span>)</span></code></pre></div>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Step - AIC</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>model_step <span class="ot">=</span> <span class="fu">step</span>(</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  m0, </span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">scope =</span>  y <span class="sc">~</span>  x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3<span class="sc">+</span> x4, </span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"both"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Start:  AIC=71.44
 y ~ 1
@@ -1107,8 +1207,8 @@ y ~ x4 + x1 + x2
 - x1    1    820.91 868.88 60.629</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_step)</span></code></pre></div>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_step)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -1132,8 +1232,8 @@ Multiple R-squared:  0.9823,    Adjusted R-squared:  0.9764
 F-statistic: 166.8 on 3 and 9 DF,  p-value: 3.323e-08</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code></pre></div>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   32 obs. of  11 variables:
  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
@@ -1149,8 +1249,8 @@ F-statistic: 166.8 on 3 and 9 DF,  p-value: 3.323e-08</code></pre>
  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">cor</span>(mtcars),<span class="dv">2</span>)</span></code></pre></div>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">cor</span>(mtcars),<span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -1174,11 +1274,11 @@ F-statistic: 166.8 on 3 and 9 DF,  p-value: 3.323e-08</code></pre>
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>m_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg<span class="sc">~</span>., mtcars)</span></code></pre></div>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>m_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg<span class="sc">~</span>., mtcars)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m_full)</span></code></pre></div>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m_full)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -1209,14 +1309,16 @@ Multiple R-squared:  0.869, Adjusted R-squared:  0.8066
 F-statistic: 13.93 on 10 and 21 DF,  p-value: 3.793e-07</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">regsubsets</span>(mpg<span class="sc">~</span>., <span class="at">data=</span>mtcars, <span class="at">nbest=</span><span class="dv">1</span>,<span class="at">nvmax=</span><span class="dv">9</span>,</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>                <span class="co"># method=c("exhaustive","backward", "forward", "seqrep")</span></span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">method=</span><span class="st">'exhaustive'</span>,</span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>모형은 유의한데 변수들은 유의하지 않아 다중공선성 의심</p>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">regsubsets</span>(mpg<span class="sc">~</span>., <span class="at">data=</span>mtcars, <span class="at">nbest=</span><span class="dv">1</span>,<span class="at">nvmax=</span><span class="dv">9</span>,</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>                <span class="co"># method=c("exhaustive","backward", "forward", "seqrep")</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">method=</span><span class="st">'exhaustive'</span>,</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<p>변수 9개 이용 best 1개만 뽑기</p>
+<div class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Subset selection object
 Call: regsubsets.formula(mpg ~ ., data = mtcars, nbest = 1, nvmax = 9, 
@@ -1247,9 +1349,9 @@ Selection Algorithm: exhaustive
 9  ( 1 ) " " "*"  "*" "*"  "*" "*"  "*" "*" "*"  "*" </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">summary</span>(fit),</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">round</span>(<span class="fu">cbind</span>(which,rss,rsq,adjr2, cp, bic),<span class="dv">3</span>))</span></code></pre></div>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">summary</span>(fit),</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">round</span>(<span class="fu">cbind</span>(which,rss,rsq,adjr2, cp, bic),<span class="dv">3</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -1271,11 +1373,16 @@ Selection Algorithm: exhaustive
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>fit_4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg<span class="sc">~</span>hp<span class="sc">+</span>wt<span class="sc">+</span>qsec<span class="sc">+</span>am, mtcars)</span></code></pre></div>
+<p>3번째 줄이 cp 가장 작음</p>
+<p>rss = sse</p>
+<p>3,4,5 들이 좋은 모형이라 할 수 있다.</p>
+<p>BIC -46.773(3번째)가 가장 큼 절댓값으로</p>
+<p>4번이 좋은 모형으로 본다면?</p>
+<div class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>fit_4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg<span class="sc">~</span>hp<span class="sc">+</span>wt<span class="sc">+</span>qsec<span class="sc">+</span>am, mtcars)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_4)</span></code></pre></div>
+<div class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_4)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
