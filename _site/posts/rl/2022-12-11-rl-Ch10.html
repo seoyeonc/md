@@ -356,6 +356,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-13-final_seoyeon.html" class="sidebar-item-text sidebar-link">Finalterm</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ml/2022-10-05-ml-HW.html" class="sidebar-item-text sidebar-link">Homework</a>
   </div>
 </li>
@@ -396,7 +401,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-12-14--study.html" class="sidebar-item-text sidebar-link">study</a>
+  <a href="../../posts/ml/2022-12-14-study.html" class="sidebar-item-text sidebar-link">study</a>
   </div>
 </li>
       </ul>
@@ -418,6 +423,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#잔차residual" id="toc-잔차residual" class="nav-link" data-scroll-target="#잔차residual">잔차(Residual)</a></li>
   <li><a href="#표준화잔차standardized-residual" id="toc-표준화잔차standardized-residual" class="nav-link" data-scroll-target="#표준화잔차standardized-residual">표준화잔차(standardized residual)</a></li>
   <li><a href="#예제-10.1" id="toc-예제-10.1" class="nav-link" data-scroll-target="#예제-10.1">예제 10.1</a></li>
+  <li><a href="#영향점influential-observation" id="toc-영향점influential-observation" class="nav-link" data-scroll-target="#영향점influential-observation">영향점(influential observation)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -570,6 +576,7 @@ F-statistic:  13.2 on 1 and 19 DF,  p-value: 0.001769</code></pre>
 11.0229306447968
 </div>
 </div>
+<p>손계산</p>
 <div class="cell" data-execution_count="91">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">=</span> df<span class="sc">$</span>y <span class="sc">-</span> (<span class="fl">109.874</span> <span class="sc">-</span> <span class="fl">1.127</span><span class="sc">*</span>df<span class="sc">$</span>x)</span></code></pre></div>
 </div>
@@ -650,9 +657,32 @@ F-statistic:  13.2 on 1 and 19 DF,  p-value: 0.001769</code></pre>
 </div>
 </div>
 <p>19번째가 ri2 t보다 크니까 이상점</p>
+<div class="cell" data-execution_count="105">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">influence.measures</span>( model))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Potentially influential observations of
+     lm(formula = y ~ x, data = df) :
+
+   dfb.1_ dfb.x   dffit   cov.r   cook.d hat    
+18  0.83  -1.11_* -1.16_*  2.96_*  0.68   0.65_*
+19  0.14   0.27    0.85    0.40_*  0.22   0.05  </code></pre>
+</div>
+</div>
+</section>
+<section id="영향점influential-observation" class="level3">
+<h3 class="anchored" data-anchor-id="영향점influential-observation">영향점(influential observation)</h3>
+<section id="diffits" class="level4">
+<h4 class="anchored" data-anchor-id="diffits">DIFFITS</h4>
+<p><span class="math inline">\(DIFFITS(i) = (\frac{h_{ii}}{10h_{ii}})^{1/2} r^{*}_i\)</span></p>
+<p><span class="math inline">\(DIFFITS(i) \ge 2(\frac{p+1}{n})^{1/2}\)</span> 이 되는 i번째 관측칠가 영향점이라고 말함</p>
+</section>
+<section id="cook의-통계량" class="level4">
+<h4 class="anchored" data-anchor-id="cook의-통계량">Cook의 통계량</h4>
+<p><span class="math inline">\(D(i) = \frac{r^2_i}{p+1} \frac{h_{ii}}{1-h_{ii}}\)</span></p>
+<p>대략적으로 <span class="math inline">\(D(i) \ge F_{0.5}(p+1,n-p-1)\)</span>이면 영향을 크게 주는 측정값으로 의심</p>
 <p>h</p>
 <div class="cell" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hatvalues</span>(model)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hatvalues</span>(model)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .dl-inline {width: auto; margin:0; padding: 0}
@@ -664,7 +694,7 @@ F-statistic:  13.2 on 1 and 19 DF,  p-value: 0.001769</code></pre>
 </div>
 <p>diffits</p>
 <div class="cell" data-execution_count="108">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dffits</span>(model)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dffits</span>(model)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .dl-inline {width: auto; margin:0; padding: 0}
@@ -676,7 +706,7 @@ F-statistic:  13.2 on 1 and 19 DF,  p-value: 0.001769</code></pre>
 </div>
 <p>cooksdistance, D</p>
 <div class="cell" data-execution_count="109">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cooks.distance</span>(model)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cooks.distance</span>(model)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .dl-inline {width: auto; margin:0; padding: 0}
@@ -688,7 +718,7 @@ F-statistic:  13.2 on 1 and 19 DF,  p-value: 0.001769</code></pre>
 </div>
 <p>COVRATIO</p>
 <div class="cell" data-execution_count="110">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">covratio</span>(model) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">covratio</span>(model) </span></code></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .dl-inline {width: auto; margin:0; padding: 0}
@@ -699,7 +729,7 @@ F-statistic:  13.2 on 1 and 19 DF,  p-value: 0.001769</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">influence.measures</span>( model)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">influence.measures</span>( model)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Influence measures of
      lm(formula = y ~ x, data = df) :
@@ -728,19 +758,9 @@ F-statistic:  13.2 on 1 and 19 DF,  p-value: 0.001769</code></pre>
 21  0.02791 -0.01622  0.03298 1.187 5.74e-04 0.0628    </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="105">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">influence.measures</span>( model))</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Potentially influential observations of
-     lm(formula = y ~ x, data = df) :
-
-   dfb.1_ dfb.x   dffit   cov.r   cook.d hat    
-18  0.83  -1.11_* -1.16_*  2.96_*  0.68   0.65_*
-19  0.14   0.27    0.85    0.40_*  0.22   0.05  </code></pre>
-</div>
-</div>
 
 
+</section>
 </section>
 </section>
 

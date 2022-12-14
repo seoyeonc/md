@@ -409,7 +409,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#abcde-를-표현함에-있어서-3개의-은닉노드면-충분하다." id="toc-abcde-를-표현함에-있어서-3개의-은닉노드면-충분하다." class="nav-link active" data-scroll-target="#abcde-를-표현함에-있어서-3개의-은닉노드면-충분하다.">a,b,c,d,e 를 표현함에 있어서 3개의 은닉노드면 충분하다.</a></li>
-  <li><a href="#torch.nn.rnn42는-torch.nn.rnncell42의-batch-버전이다." id="toc-torch.nn.rnn42는-torch.nn.rnncell42의-batch-버전이다." class="nav-link" data-scroll-target="#torch.nn.rnn42는-torch.nn.rnncell42의-batch-버전이다.">torch.nn.RNN(4,2)는 torch.nn.RNNCell(4,2)의 batch 버전이다.</a>
+  <li><a href="#torch.nn.rnn42는-torch.nn.rnncell42의-batch-버전이다." id="toc-torch.nn.rnn42는-torch.nn.rnncell42의-batch-버전이다." class="nav-link" data-scroll-target="#torch.nn.rnn42는-torch.nn.rnncell42의-batch-버전이다.">torch.nn.RNN(4,2)는 torch.nn.RNNCell(4,2)의 batch 버전이다.</a></li>
+  <li><a href="#torch.nn.lstm에서-batch-size" id="toc-torch.nn.lstm에서-batch-size" class="nav-link" data-scroll-target="#torch.nn.lstm에서-batch-size">torch.nn.LSTM에서 batch size</a>
   <ul class="collapse">
   <li><a href="#임베딩" id="toc-임베딩" class="nav-link" data-scroll-target="#임베딩">임베딩</a></li>
   <li><a href="#두-개의-은닉노드-이용" id="toc-두-개의-은닉노드-이용" class="nav-link" data-scroll-target="#두-개의-은닉노드-이용">두 개의 은닉노드 이용</a></li>
@@ -417,7 +418,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#순환신경망-rnn-1" id="toc-순환신경망-rnn-1" class="nav-link" data-scroll-target="#순환신경망-rnn-1">순환신경망 RNN</a></li>
   <li><a href="#lstm" id="toc-lstm" class="nav-link" data-scroll-target="#lstm">LSTM</a></li>
   </ul></li>
-  <li><a href="#주-할-차례" id="toc-주-할-차례" class="nav-link" data-scroll-target="#주-할-차례">12주 할 차례</a></li>
   </ul>
 </nav>
     </div>
@@ -441,6 +441,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="torch.nn.rnn42는-torch.nn.rnncell42의-batch-버전이다." class="level1">
 <h1>torch.nn.RNN(4,2)는 torch.nn.RNNCell(4,2)의 batch 버전이다.</h1>
 <p>(for문이 포함된 버전이다)</p>
+</section>
+<section id="torch.nn.lstm에서-batch-size" class="level1">
+<h1>torch.nn.LSTM에서 batch size</h1>
+<p>batch size = 전체데이터는 몇 개의 시계열이 있는지 = 전체 데이터를 몇개의 시계열로 쪼갤지</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -773,12 +777,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
          7.5295e-05]], device='cuda:0', grad_fn=&lt;SoftmaxBackward0&gt;)</code></pre>
 </div>
 </div>
-</section>
-</section>
-<section id="주-할-차례" class="level1">
-<h1>12주 할 차례</h1>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
