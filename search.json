@@ -357,6 +357,97 @@
     "text": "참고자료들\n\nhttps://colah.github.io/posts/2015-08-Understanding-LSTMs/\nhttps://pytorch.org/docs/stable/generated/torch.nn.LSTM.html\nhttps://arxiv.org/abs/1402.1128"
   },
   {
+    "objectID": "posts/ml/2022-12-21-Extra-2.html",
+    "href": "posts/ml/2022-12-21-Extra-2.html",
+    "title": "Extra-2: 생성모형(GAN)",
+    "section": "",
+    "text": "GAN– MNIST 3/7"
+  },
+  {
+    "objectID": "posts/ml/2022-12-21-Extra-2.html#생성모형이란-쉬운-설명",
+    "href": "posts/ml/2022-12-21-Extra-2.html#생성모형이란-쉬운-설명",
+    "title": "Extra-2: 생성모형(GAN)",
+    "section": "생성모형이란? (쉬운 설명)",
+    "text": "생성모형이란? (쉬운 설명)\n\n만들수 없다면 이해하지 못한 것이다, 리처드 파인만 (천재 물리학자)\n\n- 사진속에 들어있는 동물이 개인지 고양이인지 맞출수 있는 기계와 개와 고양이를 그릴수 있는 기계중 어떤것이 더 시각적보에 대한 이해가 깊다고 볼수 있는가?\n- 진정으로 인공지능이 이미지를 이해했다면, 이미지를 만들수도 있어야 한다. \\(\\to\\) 이미지를 생성하는 모형을 만들어보자 \\(\\to\\) 성공"
+  },
+  {
+    "objectID": "posts/ml/2022-12-21-Extra-2.html#gan의-응용분야",
+    "href": "posts/ml/2022-12-21-Extra-2.html#gan의-응용분야",
+    "title": "Extra-2: 생성모형(GAN)",
+    "section": "GAN의 응용분야",
+    "text": "GAN의 응용분야\n- 내가 찍은 사진이 피카소의 화풍으로 표현된다면?\n- 퀸의 라이브에이드가 4k로 나온다면?\n- 1920년대 서울의 모습이 칼라로 복원된다면?\n- 딥페이크: 유명인의 가짜 포르노, 가짜뉴스, 협박(거짓기소)\n- 게임영상 (파이널판타지)\n- 거북이의 커버..\n- 너무 많아요….."
+  },
+  {
+    "objectID": "posts/ml/2022-12-21-Extra-2.html#생성모형이란-통계학과-버전의-설명",
+    "href": "posts/ml/2022-12-21-Extra-2.html#생성모형이란-통계학과-버전의-설명",
+    "title": "Extra-2: 생성모형(GAN)",
+    "section": "생성모형이란? 통계학과 버전의 설명",
+    "text": "생성모형이란? 통계학과 버전의 설명\n\n제한된 정보만으로 어떤 문제를 풀 때, 그 과정에서 원래의 문제보다 일반적인 문제를 풀지 말고, 가능한 원래의 문제를 직접 풀어야한다. 배프닉 (SVM 창시자)\n\n- 이미지 \\(\\boldsymbol{x}\\)가 주어졌을 경우 라벨을 \\(y\\)라고 하자.\n- 이미지를 보고 라벨을 맞추는 일은 \\(p(y| \\boldsymbol{x})\\)에 관심이 있다.\n- 이미지를 생성하는 일은 \\(p(\\boldsymbol{x},y)\\)에 관심이 있는것이다.\n- 데이터의 생성확률 \\(p(\\boldsymbol{x},y)\\)을 알면 클래스의 사후확률 \\(p(y|\\boldsymbol{x})\\)를 알 수 있음. (아래의 수식 참고) 하지만 역은 불가능\n\\[p(y|x) = \\frac{p(x,y)}{p(x)} = \\frac{p(x,y)}{\\sum_{y}p(x,y)} \\]\n\n즉 이미지를 생성하는일은 분류문제보다 더 어려운 일이라 해석가능\n\n- 따라서 배프닉의 원리에 의하면 식별적 분류가 생성적 분류보다 바람직한 접근법이라 할 수 있음.\n- 하지만 다양한 현실문제에서 생성모형이 유용할때가 많다."
+  },
+  {
+    "objectID": "posts/ml/2022-12-21-Extra-2.html#gan의-원리",
+    "href": "posts/ml/2022-12-21-Extra-2.html#gan의-원리",
+    "title": "Extra-2: 생성모형(GAN)",
+    "section": "GAN의 원리",
+    "text": "GAN의 원리\n- GAN은 생성모형중 하나임\n- GAN의 원리는 경찰과 위조지폐범이 서로 선의의(?) 경쟁을 통하여 서로 발전하는 모형으로 설명할 수 있다.\n\nThe generative model can be thought of as analogous to a team of counterfeiters, trying to produce fake currency and use it without detection, while the discriminative model is analogous to the police, trying to detect the counterfeit currency. Competition in this game drives both teams to improve their methods until the counterfeits are indistiguishable from the genuine articles.\n\n- 서로 적대적인(adversarial) 네트워크(network)를 동시에 학습시켜 가짜이미지를 만든다(generate)\n- 무식한 상황극..\n\n위조범: 가짜돈을 만들어서 부자가 되어야지! (가짜돈을 그림)\n경찰: (위조범이 만든 돈을 보고) 이건 가짜다!\n위조범: 걸렸군.. 더 정교하게 만들어야지..\n경찰: 이건 진짠가?… –> 상사에게 혼남. 그것도 구분못하냐고\n위조범: 더 정교하게 만들자..\n경찰: 더 판별능력을 업그레이드 하자!\n반복..\n\n- 굉장히 우수한 경찰조차도 진짜와 가짜를 구분하지 못할때(=진짜 이미지를 0.5의 확률로만 진짜라고 말할때 = 가짜 이미지를 0.5의 확률로만 가짜라고 말할때) 학습을 멈춘다."
+  },
+  {
+    "objectID": "posts/ml/2022-12-21-Extra-2.html#import",
+    "href": "posts/ml/2022-12-21-Extra-2.html#import",
+    "title": "Extra-2: 생성모형(GAN)",
+    "section": "import",
+    "text": "import\n\nimport torch \nfrom fastai.vision.all import *"
+  },
+  {
+    "objectID": "posts/ml/2022-12-21-Extra-2.html#data",
+    "href": "posts/ml/2022-12-21-Extra-2.html#data",
+    "title": "Extra-2: 생성모형(GAN)",
+    "section": "data",
+    "text": "data\n\npath = untar_data(URLs.MNIST_SAMPLE)\n\n\nthrees = (path/'train'/'3').ls()\n\n\nX = torch.stack([tensor(Image.open(i)) for i in threes]).float()/255\n\n\nX.shape\n\ntorch.Size([6131, 28, 28])\n\n\n\nplt.imshow(X[0])\n\n<matplotlib.image.AxesImage at 0x7f981c427ac0>\n\n\n\n\n\n- MLP를 이용해 학습하기 위해 X의 차원을 변경\n\nX=X.reshape(6131,28*28)\nX.shape\n\ntorch.Size([6131, 784])"
+  },
+  {
+    "objectID": "posts/ml/2022-12-21-Extra-2.html#위조지폐범의-설계-noise-to-가짜이미지를-만들어-내는-네트워크를-만들자.",
+    "href": "posts/ml/2022-12-21-Extra-2.html#위조지폐범의-설계-noise-to-가짜이미지를-만들어-내는-네트워크를-만들자.",
+    "title": "Extra-2: 생성모형(GAN)",
+    "section": "위조지폐범의 설계: noise \\(\\to\\) 가짜이미지를 만들어 내는 네트워크를 만들자.",
+    "text": "위조지폐범의 설계: noise \\(\\to\\) 가짜이미지를 만들어 내는 네트워크를 만들자.\n- 네트워크의 입력? 적당한 벡터, 혹은 매트릭스에 노이즈(랜덤으로 채운 어떠한 숫자들)를 채운것\n- 네트워크의 출력? (28,28)의 텐서, 784의 벡터\n\nnet1 = torch.nn.Sequential(torch.nn.Linear(in_features=28, out_features=64),\n                           torch.nn.ReLU(),\n                           torch.nn.Linear(in_features=64, out_features=64), \n                           torch.nn.ReLU(),\n                           torch.nn.Linear(in_features=64, out_features=784),\n                           torch.nn.Sigmoid()) ## 마지막의 시그모이드는 출력이 0~1사이로 나오게 하기 위함 \ncounterfeiter = net1"
+  },
+  {
+    "objectID": "posts/ml/2022-12-21-Extra-2.html#경찰의-설계-진짜이미지는-1-가짜이미지는-0으로-판별하는-dnn을-만들자.",
+    "href": "posts/ml/2022-12-21-Extra-2.html#경찰의-설계-진짜이미지는-1-가짜이미지는-0으로-판별하는-dnn을-만들자.",
+    "title": "Extra-2: 생성모형(GAN)",
+    "section": "경찰의 설계: 진짜이미지는 1, 가짜이미지는 0으로 판별하는 DNN을 만들자.",
+    "text": "경찰의 설계: 진짜이미지는 1, 가짜이미지는 0으로 판별하는 DNN을 만들자.\n- 네트워크의 입력? (28,28)의 텐서, 혹은 784의 벡터\n- 네트워크의 출력? yhat (y는 0 or 1)\n\nnet2 = torch.nn.Sequential(torch.nn.Linear(in_features=784,out_features=64),\n                           torch.nn.ReLU(),\n                           torch.nn.Linear(in_features=64,out_features=28),\n                           torch.nn.ReLU(),\n                           torch.nn.Linear(in_features=28,out_features=1),\n                           torch.nn.Sigmoid()\n                           )\npolice = net2"
+  },
+  {
+    "objectID": "posts/ml/2022-12-21-Extra-2.html#스토리전개",
+    "href": "posts/ml/2022-12-21-Extra-2.html#스토리전개",
+    "title": "Extra-2: 생성모형(GAN)",
+    "section": "스토리전개",
+    "text": "스토리전개\n- 아래는 진짜이미지\n\nrealimage=X[0].reshape(28,28)\nplt.imshow(realimage)\n\n<matplotlib.image.AxesImage at 0x7f981d1e6190>\n\n\n\n\n\n- 위와 같은 진짜 이미지를 경찰이 봤음 \\(\\to\\) yhat이 나오겠죠?\n\npolicehat_from_realimage = police(realimage.reshape(-1))\npolicehat_from_realimage\n\ntensor([0.5241], grad_fn=<SigmoidBackward0>)\n\n\n\n진짜 이미지일수록 policehat_from_realimage \\(\\approx\\) 1 이어야 함\n하지만 그렇지 못함 (배운것이 없는 무능한 경찰)\n\n- 이번에는 가짜이미지를 경찰이 봤다고 생각해보자.\n(step1) 랜덤으로 아무숫자나 28개를 생성한다.\n\nerr= torch.randn(28)\nerr\n\ntensor([-0.8568, -2.2982,  0.3489, -1.5801,  1.8611,  0.9158, -0.2985,  1.1087,\n         1.3798,  1.4870, -0.4455,  0.2140,  1.0784,  1.4805, -1.4886,  0.5036,\n         0.3742, -0.7351,  1.0031,  0.4538,  1.5372,  1.0739,  0.7793, -1.5347,\n        -0.5060,  0.0113,  0.2833, -0.8466])\n\n\n(step2) 위조범은 err를 입력으로 받고 가짜이미지를 만든다.\n\ncouterfeiter_output = counterfeiter(err)\nfakeimage=couterfeiter_output.reshape(28,28)\nplt.imshow(fakeimage.detach())\n\n<matplotlib.image.AxesImage at 0x7f981f4261c0>\n\n\n\n\n\n\n누가봐도 가짜자료임\n위조범의 실력이 형편없음\n\n(step3) 위조범이 생성한 이미지를 경찰한테 넘긴다.\n\npolicehat_from_fakeimage = police(couterfeiter_output)\n#policehat_from_fakeimage = police(fakeimage.detach().reshape(-1))\npolicehat_from_fakeimage\n\ntensor([0.5290], grad_fn=<SigmoidBackward0>)\n\n\n- 경찰의 실력도 형편없고 위조범의 실력도 형편없다."
+  },
+  {
+    "objectID": "posts/ml/2022-12-21-Extra-2.html#경찰네트워크의-실력을-향상시키자.",
+    "href": "posts/ml/2022-12-21-Extra-2.html#경찰네트워크의-실력을-향상시키자.",
+    "title": "Extra-2: 생성모형(GAN)",
+    "section": "경찰네트워크의 실력을 향상시키자.",
+    "text": "경찰네트워크의 실력을 향상시키자.\n- 데이터 정리 - 원래 \\(n=6131\\)개의 이미지 자료가 있음. 이를 \\({\\bf X}\\)라고 하자. 따라서 \\({\\bf X}\\)의 차원은 (6131,784). - 위조범이 만든 가짜자료를 원래 자료와 같은 숫자인 6131개 만듬. 이 가짜자료를 \\(\\tilde{\\bf X}\\)라고 하자. 따라서 \\(\\tilde{\\bf X}\\)의 차원은 (6131,784). - 진짜자료는 1, 가짜자료는 0으로 라벨링.\n\nX.shape\n\ntorch.Size([6131, 784])\n\n\n\nerr= torch.randn(6131,28)\ncounterfeiter_output = counterfeiter(err) # counterfeiter_output를 Xtilde로 생각하면 된다. \n\n\nreal_label=torch.tensor([[1.0]]*6131) ## y=1 \nfake_label=torch.tensor([[0.0]]*6131) ## y=0\n\n- step1: yhat, 경찰의 예측\n\npolicehat_from_realimage = police(X) \npolicehat_from_fakeimage = police(counterfeiter_output) \n\n- step2: 손실함수? 경찰의 미덕은 (1) 가짜를 가짜라고 하고 (2) 진짜를 진짜라 해야한다.\n\nloss_fn = torch.nn.BCELoss() \n\n\nloss_of_police =\\\nloss_fn(policehat_from_fakeimage,fake_label)+\\\nloss_fn(policehat_from_realimage,real_label)\n\nloss_of_police\n\ntensor(1.4023, grad_fn=<AddBackward0>)\n\n\n- step3~4는 미분이후 업데이트\n- 옵티마이저를 설계하자.\n\noptimizer_of_police = torch.optim.Adam(police.parameters())\n\n- for 문을 돌리자.\n\nfor i in range(50): \n    ## 1 yhat \n    policehat_from_realimage = police(X) \n    \n    #policehat_from_fakeimage = police(Xitlde)\n    err= torch.randn(6131,28)\n    counterfeiter_output = counterfeiter(err) # counterfeiter_output를 Xtilde로 생각하면 된다. \n    policehat_from_fakeimage= police(counterfeiter_output)\n    \n    ## 2 loss \n    loss_of_police =\\\n    loss_fn(policehat_from_fakeimage,fake_label)+\\\n    loss_fn(policehat_from_realimage,real_label)\n    \n    ## 3 back propagation \n    loss_of_police.backward()\n    \n    ## 4 update\n    optimizer_of_police.step()\n    optimizer_of_police.zero_grad()\n\n- 훈련된 경찰의 성능을 살펴보자.\n\npolice(counterfeiter_output)\n\ntensor([[0.0061],\n        [0.0061],\n        [0.0061],\n        ...,\n        [0.0062],\n        [0.0061],\n        [0.0061]], grad_fn=<SigmoidBackward0>)\n\n\n\npolice(X)\n\ntensor([[0.9999],\n        [0.9989],\n        [0.9995],\n        ...,\n        [0.9969],\n        [0.9995],\n        [0.9973]], grad_fn=<SigmoidBackward0>)\n\n\n- 우수한 경찰 (비록 위조범의 수준이 낮긴하지만)"
+  },
+  {
+    "objectID": "posts/ml/2022-12-21-Extra-2.html#위조범네트워크의-성능을-향상시키자.",
+    "href": "posts/ml/2022-12-21-Extra-2.html#위조범네트워크의-성능을-향상시키자.",
+    "title": "Extra-2: 생성모형(GAN)",
+    "section": "위조범네트워크의 성능을 향상시키자.",
+    "text": "위조범네트워크의 성능을 향상시키자.\n- 자료구조: X는 임의의 에러이미지, net(X)는 fakeimage\n\nerr=torch.randn(6131,28) \ncounterfeiter_output= counterfeiter(err) \n\n- 손실함수: 잘 훈련된 경찰조차도 잘못된 판단을 내릴만큼 가짜지폐를 잘 만들면 위조범의 실력이 우수하다 볼 수 있음\n\npolicehat_from_fakeimage = police(counterfeiter_output) \nloss_of_counterfeiter = loss_fn(policehat_from_fakeimage,real_label) ## 가짜이미지를 보고 경찰이 진짜라고 믿으면 위조범의 실력이 좋은것임  \n\n- 옵티마이저\n\noptimizer_of_counterfeiter = torch.optim.Adam(counterfeiter.parameters())\n\n- 학습\n\nfor i in range(50): \n    ## 1 \n    err=torch.randn(6131,28) \n    counterfeiter_output= counterfeiter(err)  \n    policehat_from_fakeimage = police(counterfeiter_output) \n    ## 2 \n    loss_of_counterfeiter = loss_fn(policehat_from_fakeimage,real_label)\n    ## 3 \n    loss_of_counterfeiter.backward()\n    ## 4 \n    optimizer_of_counterfeiter.step()\n    optimizer_of_counterfeiter.zero_grad()\n\n- 위조범의 실력향상을 감상해보자.\n\nplt.imshow(counterfeiter_output[0].reshape(28,28).data)\n\n<matplotlib.image.AxesImage at 0x7f981397ae20>"
+  },
+  {
+    "objectID": "posts/ml/2022-12-21-Extra-2.html#두-적대적-네트워크를-경쟁시키자.",
+    "href": "posts/ml/2022-12-21-Extra-2.html#두-적대적-네트워크를-경쟁시키자.",
+    "title": "Extra-2: 생성모형(GAN)",
+    "section": "두 적대적 네트워크를 경쟁시키자.",
+    "text": "두 적대적 네트워크를 경쟁시키자.\n\nfor k in range(100): \n    for i in range(50): \n        ## 1 yhat \n        policehat_from_realimage = police(X) \n    \n        #policehat_from_fakeimage = police(Xitlde)\n        err= torch.randn(6131,28)\n        counterfeiter_output = counterfeiter(err) # counterfeiter_output를 Xtilde로 생각하면 된다. \n        policehat_from_fakeimage= police(counterfeiter_output)\n    \n        ## 2 loss \n        loss_of_police =\\\n        loss_fn(policehat_from_fakeimage,fake_label)+\\\n        loss_fn(policehat_from_realimage,real_label)\n    \n        ## 3 back propagation \n        loss_of_police.backward()\n    \n        ## 4 update\n        optimizer_of_police.step()\n        optimizer_of_police.zero_grad()\n        \n    for i in range(50): \n        ## 1 \n        err=torch.randn(6131,28) \n        counterfeiter_output= counterfeiter(err)  \n        policehat_from_fakeimage = police(counterfeiter_output) \n        ## 2 \n        loss_of_counterfeiter = loss_fn(policehat_from_fakeimage,real_label)\n        ## 3 \n        loss_of_counterfeiter.backward()\n        ## 4 \n        optimizer_of_counterfeiter.step()\n        optimizer_of_counterfeiter.zero_grad()        \n\n- 위조범의 최종적 실력향상감상\n\nplt.imshow(counterfeiter_output[0].reshape(28,28).data)\n\n<matplotlib.image.AxesImage at 0x7f9813856970>"
+  },
+  {
     "objectID": "posts/ml/2022-12-14-study.html",
     "href": "posts/ml/2022-12-14-study.html",
     "title": "study",
@@ -1043,6 +1134,62 @@
     "text": "결론\n- 우리가 사용했던 어떠한 것들이 뷰가 나올지 카피가 나올지 사실 잘 모른다. (그래서 원리를 이해해도 대응할 방법이 사실없음)\n\n예시1\n\na=np.array([1,2,3,4])\nb=a[:3]\n\n\na\n\narray([1, 2, 3, 4])\n\n\n\nb\n\narray([1, 2, 3])\n\n\n\ntest(a,b)\n\n뷰\n\n\n\nc=a[[0,1,2]]\nc\n\narray([1, 2, 3])\n\n\n\ntest(a,c)\n\n카피, 혹은 아무 관련없는 오브젝트\n\n\n\nd = a[3]\n\n\ntest(a,d)\n\n카피, 혹은 아무 관련없는 오브젝트\n\n\n\n\n예시2\n\na=np.array([[1,2],[3,4]])\na\n\narray([[1, 2],\n       [3, 4]])\n\n\n\nb=a.flatten()\nc=a.ravel()\nd=a.reshape(-1)\n\n\ntest(a,b)\n\n카피, 혹은 아무 관련없는 오브젝트\n\n\n\ntest(a,c)\n\n뷰\n\n\n\ntest(a,d)\n\n뷰\n\n\n\ntest(c,d)\n\n공통의 base를 가짐\n\n\n\ntest(b,c)\n\n카피, 혹은 아무 관련없는 오브젝트"
   },
   {
+    "objectID": "posts/ml/2022-12-23-Extra-3.html",
+    "href": "posts/ml/2022-12-23-Extra-3.html",
+    "title": "Extra-3: 딥러닝의 기초 (5)",
+    "section": "",
+    "text": "벡터미분, 역전파와 기울기 소멸"
+  },
+  {
+    "objectID": "posts/ml/2022-12-23-Extra-3.html#예시-2021-빅데이터분석-중간고사-문제-2-b",
+    "href": "posts/ml/2022-12-23-Extra-3.html#예시-2021-빅데이터분석-중간고사-문제-2-b",
+    "title": "Extra-3: 딥러닝의 기초 (5)",
+    "section": "예시: 2021 빅데이터분석 중간고사 문제 2-(b)",
+    "text": "예시: 2021 빅데이터분석 중간고사 문제 2-(b)\n- 미분계수를 계산하는 문제였음..\n\nhttps://guebin.github.io/BDA2021/2021/11/09/mid.html\n\n- 체인룰을 이용하여 미분계수를 계산하여 보자.\n\nones= torch.ones(5)\nx = torch.tensor([11.0,12.0,13.0,14.0,15.0])\nX = torch.vstack([ones,x]).T\ny = torch.tensor([17.7,18.5,21.2,23.6,24.2])\n\n\nW = torch.tensor([3.0,3.0]) \n\n\nu = X@W \nv = y-u \nloss = v.T @ v \n\n\nloss\n\ntensor(2212.1799)\n\n\n- $loss $ 의 계산\n\nX.T @ -torch.eye(5) @ (2*v) \n\ntensor([ 209.6000, 2748.5999])\n\n\n- 참고로 중간고사 답은\n\nX.T @ -torch.eye(5)@ (2*v) / 5 \n\ntensor([ 41.9200, 549.7200])\n\n\n입니다.\n- 확인\n\n_W = torch.tensor([3.0,3.0],requires_grad=True) \n\n\n_loss = (y-X@_W).T @ (y-X@_W)\n\n\n_loss.backward()\n\n\n_W.grad.data\n\ntensor([ 209.6000, 2748.5999])\n\n\n- \\(\\frac{\\partial}{\\partial \\bf v} loss= 2{\\bf v}\\) 임을 확인하라.\n\nv\n\ntensor([-18.3000, -20.5000, -20.8000, -21.4000, -23.8000])\n\n\n\n_v= torch.tensor([-18.3000, -20.5000, -20.8000, -21.4000, -23.8000],requires_grad=True)\n\n\n_loss = _v.T @ _v \n\n\n_loss.backward() \n\n\n_v.grad.data, v \n\n(tensor([-36.6000, -41.0000, -41.6000, -42.8000, -47.6000]),\n tensor([-18.3000, -20.5000, -20.8000, -21.4000, -23.8000]))\n\n\n- \\(\\frac{\\partial }{\\partial {\\bf u}}{\\bf v}^\\top\\) 의 계산\n\n_u = torch.tensor([36., 39., 42., 45., 48.],requires_grad=True)\n_u\n\ntensor([36., 39., 42., 45., 48.], requires_grad=True)\n\n\n\n_v = y - _u ### 이전의 _v와 또다른 임시 _v \n\n\n(_v.T).backward()\n\nRuntimeError: grad can be implicitly created only for scalar outputs\n\n\n\n사실 토치에서는 스칼라아웃풋에 대해서만 미분을 계산할 수 있음\n\n그런데 \\(\\frac{\\partial}{\\partial {\\bf u}}{\\bf v}^\\top=\\frac{\\partial}{\\partial {\\bf u}}(v_1,v_2,v_3,v_4,v_5)=\\big(\\frac{\\partial}{\\partial {\\bf u}}v_1,\\frac{\\partial}{\\partial {\\bf u}}v_2,\\frac{\\partial}{\\partial {\\bf u}}v_3,\\frac{\\partial}{\\partial {\\bf u}}v_4,\\frac{\\partial}{\\partial {\\bf u}}v_5\\big)\\) 이므로\n조금 귀찮은 과정을 거친다면 아래와 같은 알고리즘으로 계산할 수 있다.\n\n\\(\\frac{\\partial }{\\partial {\\bf u}} {\\bf v}^\\top\\)의 결과를 저장할 매트릭스를 만든다. 적당히 A라고 만들자.\n_u 하나를 임시로 만든다. 그리고 \\(v_1\\)을 _u로 미분하고 그 결과를 A의 첫번째 칼럼에 기록한다.\n_u를 또하나 임시로 만들고 \\(v_2\\)를 _u로 미분한뒤 그 결과를 A의 두번째 칼럼에 기록한다.\n(1)-(2)와 같은 작업을 \\(v_5\\)까지 반복한다.\n\n(0)을 수행\n\nA = torch.zeros((5,5))\nA\n\ntensor([[0., 0., 0., 0., 0.],\n        [0., 0., 0., 0., 0.],\n        [0., 0., 0., 0., 0.],\n        [0., 0., 0., 0., 0.],\n        [0., 0., 0., 0., 0.]])\n\n\n(1)을 수행\n\nu,v \n\n(tensor([36., 39., 42., 45., 48.]),\n tensor([-18.3000, -20.5000, -20.8000, -21.4000, -23.8000]))\n\n\n\n_u = torch.tensor([36., 39., 42., 45., 48.],requires_grad=True)\nv1 = (y-_u)[0]\n\n\n이때 \\(v_1=g(f({\\bf u}))\\)와 같이 표현할 수 있다. 여기에서 \\(f((u_1,\\dots,u_5)^\\top)=(y_1-u_1,\\dots,y_5-u_5)^\\top\\), 그리고 \\(g((v_1,\\dots,v_n)^\\top)=v_1\\) 라고 생각한다. 즉 \\(f\\)는 벡터 뺄셈을 수행하는 함수이고, \\(g\\)는 프로젝션 함수이다. 즉 \\(f:\\mathbb{R}^5 \\to \\mathbb{R}^5\\)인 함수이고, \\(g:\\mathbb{R}^5 \\to \\mathbb{R}\\)인 함수이다.\n\n\nv1.backward()\n\n\n_u.grad.data\n\ntensor([-1., -0., -0., -0., -0.])\n\n\n\nA[:,0]= _u.grad.data\n\n\nA\n\ntensor([[-1.,  0.,  0.,  0.,  0.],\n        [-0.,  0.,  0.,  0.,  0.],\n        [-0.,  0.,  0.,  0.,  0.],\n        [-0.,  0.,  0.,  0.,  0.],\n        [-0.,  0.,  0.,  0.,  0.]])\n\n\n(2)를 수행\n\n_u = torch.tensor([36., 39., 42., 45., 48.],requires_grad=True)\nv2 = (y-_u)[1]\n\n\nv2.backward()\n\n\n_u.grad.data\n\ntensor([-0., -1., -0., -0., -0.])\n\n\n\nA[:,1]= _u.grad.data\nA\n\ntensor([[-1., -0.,  0.,  0.,  0.],\n        [-0., -1.,  0.,  0.,  0.],\n        [-0., -0.,  0.,  0.,  0.],\n        [-0., -0.,  0.,  0.,  0.],\n        [-0., -0.,  0.,  0.,  0.]])\n\n\n(3)을 수행 // 그냥 (1)~(2)도 새로 수행하자.\n\nfor i in range(5): \n    _u = torch.tensor([36., 39., 42., 45., 48.],requires_grad=True)\n    _v = (y-_u)[i]\n    _v.backward()\n    A[:,i]= _u.grad.data\n\n\nA\n\ntensor([[-1., -0., -0., -0., -0.],\n        [-0., -1., -0., -0., -0.],\n        [-0., -0., -1., -0., -0.],\n        [-0., -0., -0., -1., -0.],\n        [-0., -0., -0., -0., -1.]])\n\n\n\n이론적인 결과인 \\(-{\\bf I}\\)와 일치한다.\n\n- \\(\\frac{\\partial }{\\partial {\\bf W}}{\\bf u}^\\top\\)의 계산\n\\(\\frac{\\partial }{\\partial {\\bf W}}{\\bf u}^\\top = \\frac{\\partial }{\\partial {\\bf W}}(u_1,\\dots,u_5)=\\big(\\frac{\\partial }{\\partial {\\bf W}}u_1,\\dots,\\frac{\\partial }{\\partial {\\bf W}}u_5 \\big)\\)\n\nB = torch.zeros((2,5))\nB\n\ntensor([[0., 0., 0., 0., 0.],\n        [0., 0., 0., 0., 0.]])\n\n\n\nW\n\ntensor([3., 3.])\n\n\n\n_W = torch.tensor([3., 3.],requires_grad=True)\n_W\n\ntensor([3., 3.], requires_grad=True)\n\n\n\nfor i in range(5): \n    _W = torch.tensor([3., 3.],requires_grad=True)\n    _u = (X@_W)[i]\n    _u.backward()\n    B[:,i]= _W.grad.data\n\n\nB # X의 트랜스포즈\n\ntensor([[ 1.,  1.,  1.,  1.,  1.],\n        [11., 12., 13., 14., 15.]])\n\n\n\nX\n\ntensor([[ 1., 11.],\n        [ 1., 12.],\n        [ 1., 13.],\n        [ 1., 14.],\n        [ 1., 15.]])\n\n\n\n이론적인 결과와 일치"
+  },
+  {
+    "objectID": "posts/ml/2022-12-23-Extra-3.html#잠깐-생각해보자..",
+    "href": "posts/ml/2022-12-23-Extra-3.html#잠깐-생각해보자..",
+    "title": "Extra-3: 딥러닝의 기초 (5)",
+    "section": "잠깐 생각해보자..",
+    "text": "잠깐 생각해보자..\n- 결국 위의 예제에 한정하여 임의의 \\({\\bf \\hat{W}}\\)에 대한 \\(\\frac{\\partial}{\\partial {\\bf \\hat W}}loss\\)는 아래와 같이 계산할 수 있다.\n\n(단계1) \\(2{\\bf v}\\)를 계산하고\n(단계2) (단계1)의 결과 앞에 \\(-{\\bf I}\\)를 곱하고\n(단계3) (단계2)의 결과 앞에 \\({\\bf X}^\\top\\)를 곱한다.\n\n- step1에서 \\({\\bf v}\\)는 어떻게 알지?\n\nX \\(\\to\\) u=X@W \\(\\to\\) v = y-u\n그런데 이것은 우리가 loss를 구하기 위해서 이미 계산해야 하는것 아니었나?\nstep1: yhat, step2: loss, step3: derivate, step4: update\n\n- (중요) step2에서 loss만 구해서 저장할 생각 하지말고 중간과정을 다 저장해라. (그중에 v와 같이 필요한것이 있을테니까) 그리고 그걸 적당한 방법을 통하여 이용하여 보자.\n\nbackprogation 알고리즘 모티브\n- 아래와 같이 함수의 변환을 아키텍처로 이해하자. (함수의입력=레이어의입력, 함수의출력=레이어의출력)\n\n\\({\\bf X} \\overset{l1}{\\to} {\\bf X}{\\bf W} \\overset{l2}{\\to} {\\bf y} -{\\bf X}{\\bf W} \\overset{l3}{\\to} ({\\bf y}-{\\bf X}{\\bf W})^\\top ({\\bf y}-{\\bf X}{\\bf W})\\)\n\n- 그런데 위의 계산과정을 아래와 같이 요약할 수도 있다. (\\({\\bf X} \\to {\\bf \\hat y} \\to loss\\)가 아니라 \\({\\bf W} \\to loss({\\bf W})\\)로 생각해보세요)\n\n\\({\\bf W} \\overset{l1}{\\to} {\\bf u} \\overset{l2}{\\to} {\\bf v} \\overset{l3}{\\to} loss\\)\n\n- 그렇다면 아래와 같은 사실을 관찰할 수 있다.\n\n(단계1) \\(2{\\bf v}\\)는 function of \\({\\bf v}\\)이고, \\({\\bf v}\\)는 l3의 입력 (혹은 l2의 출력)\n(단계2) \\(-{\\bf I}\\)는 function of \\({\\bf u}\\)이고, \\({\\bf u}\\)는 l2의 입력 (혹은 l1의 출력)\n(단계3) 마찬가지의 논리로 \\({\\bf X}^\\top\\)는 function of \\({\\bf W}\\)로 해석할 수 있다.\n\n- 요약: \\(2{\\bf v},-{\\bf I}, {\\bf X}^\\top\\)와 같은 핵심적인 값들이 사실 각 층의 입/출력 값들의 함수꼴로 표현가능하다. \\(\\to\\) 각 층의 입/출력 값들을 모두 기록하면 미분계산을 유리하게 할 수 있다.\n\n문득의문: 각 층의 입출력값 \\({\\bf v}, {\\bf u}, {\\bf W}\\)로 부터 \\(2{\\bf v}, -{\\bf I}, {\\bf X}^\\top\\) 를 만들어내는 방법을 모른다면 헛수고 아닌가?\n의문해결: 어차피 우리가 쓰는 층은 선형+(렐루, 시그모이드, …) 정도가 전부임. 따라서 변환규칙은 미리 계산할 수 있음.\n\n- 결국\n(1) 순전파를 하면서 입출력값을 모두 저장하고\n(2) 그에 대응하는 층별 미분계수값 \\(2{\\bf v}, -{\\bf I}, {\\bf X}^\\top\\) 를 구하고\n(3) 층별미분계수값을 다시 곱하면 (그러니까 \\({\\bf X}^\\top (-{\\bf I}) 2{\\bf v}\\) 를 계산) 된다.\n\n\nbackpropagation\n(1) 순전파를 계산하고 각 층별 입출력 값을 기록\n\nyhat = net(X)\nloss = loss_fn(yhat,y)\n\n(2) 역전파를 수행하여 손실함수의 미분값을 계산\n\nloss.backward()\n\n- 참고로 (1)에서 층별 입출력값은 GPU의 메모리에 기록된다.. 무려 GPU 메모리..\n- 작동원리를 GPU의 관점에서 요약 (슬기로운 GPU 활용)\ngpu특징: 큰 차원의 매트릭스 곱셈 전문가 (원리? 어마어마한 코어숫자)\n\n아키텍처 설정: 모형의 파라메터값을 GPU 메모리에 올림 // net.to(\"cuda:0\")\n순전파 계산: 중간 계산결과를 모두 GPU메모리에 저장 (순전파 계산을 위해서라면 굳이 GPU에 있을 필요는 없으나 후에 역전파를 계산하기 위한 대비) // net(X)\n오차 및 손실함수 계산: loss = loss_fn(yhat,y)\n역전파 계산: 순전파단계에서 저장된 계산결과를 활용하여 손실함수의 미분값을 계산 // loss.backward()\n다음 순전파 계산: 이전값은 삭제하고 새로운 중간계산결과를 GPU메모리에 올림\n반복."
+  },
+  {
+    "objectID": "posts/ml/2022-12-23-Extra-3.html#some-comments",
+    "href": "posts/ml/2022-12-23-Extra-3.html#some-comments",
+    "title": "Extra-3: 딥러닝의 기초 (5)",
+    "section": "some comments",
+    "text": "some comments\n- 역전파기법은 체인룰 + \\(\\alpha\\) 이다.\n- 오차역전파기법이라는 용어를 쓰는 사람도 있다.\n- 이미 훈련한 네트워크에 입력 \\(X\\)를 넣어 결과값만 확인하고 싶을 경우 순전파만 사용하면 되고, 이 상황에서는 좋은 GPU가 필요 없다."
+  },
+  {
+    "objectID": "posts/ml/2022-12-23-Extra-3.html#고요속의-외침",
+    "href": "posts/ml/2022-12-23-Extra-3.html#고요속의-외침",
+    "title": "Extra-3: 딥러닝의 기초 (5)",
+    "section": "고요속의 외침",
+    "text": "고요속의 외침\n- https://www.youtube.com/watch?v=ouitOnaDtFY\n- 중간에 한명이라도 잘못 말한다면.."
+  },
+  {
+    "objectID": "posts/ml/2022-12-23-Extra-3.html#정의",
+    "href": "posts/ml/2022-12-23-Extra-3.html#정의",
+    "title": "Extra-3: 딥러닝의 기초 (5)",
+    "section": "정의",
+    "text": "정의\n- In machine learning, the vanishing gradient problem is encountered when training artificial neural networks with gradient-based learning methods and backpropagation."
+  },
+  {
+    "objectID": "posts/ml/2022-12-23-Extra-3.html#이해",
+    "href": "posts/ml/2022-12-23-Extra-3.html#이해",
+    "title": "Extra-3: 딥러닝의 기초 (5)",
+    "section": "이해",
+    "text": "이해\n- 당연한것 아닌가?\n\n그레디언트 기반의 학습 (그레디언트 기반의 옵티마이저): 손실함수의 기울기를 통하여 업데이트 하는 방식\n역전파: 손실함수의 기울기를 구하는 테크닉 (체인룰 + \\(\\alpha\\)). 구체적으로는 (1) 손실함수를 여러단계로 쪼개고 (2) 각 단계의 미분값을 각각 구하고 (3) 그것들을 모두 곱하여 기울기를 계산한다.\n0 근처의 숫자를 계속 곱하면 터지거나 0으로 간다. (사실 안정적인 기울기가 나올 것이라고 생각하는것 자체가 이상함)\n\n\nimport numpy as np \n\n\ngrads = np.random.uniform(low=-2,high=2,size=100) \ngrads\n\narray([-0.04807346, -1.29968172,  0.60383275, -1.11097504, -1.44903838,\n       -1.81770819, -0.82995838, -0.30307517, -1.62486386,  1.14841271,\n        0.05317044, -1.63595745, -1.27254039, -0.2793212 ,  1.4193291 ,\n       -1.87957006, -1.50413435, -1.6143583 , -1.97979251, -0.1319077 ,\n       -0.36277507,  0.24188449,  0.8205258 , -1.15353317, -0.94630341,\n        0.60335535, -1.4326661 ,  1.27171997,  1.51390194, -0.3285052 ,\n       -1.56389259, -1.55964141,  0.29636461, -0.74477874, -1.6119124 ,\n        0.01097634, -0.25255016,  1.80684873,  0.90766818, -0.25062987,\n       -0.74179267, -0.50494702,  1.89992546, -0.2911778 ,  0.3116119 ,\n        1.63679034,  0.86030588, -1.10851323, -1.13171181, -1.58949804,\n        0.82233945, -1.81269013, -0.31257892,  1.00176613, -0.49897359,\n       -1.05885742,  0.49664799, -1.02531506, -0.81051658, -1.34188376,\n       -1.98882591,  0.32634551,  1.39557143, -1.13150272, -1.5616825 ,\n       -0.0478864 , -1.34446087, -0.56475749, -1.90177931, -0.38516623,\n        0.75889489, -1.86710065, -1.85428312,  1.82248239,  1.04363342,\n        1.08128997, -0.36466711, -1.99204485,  0.81840524, -1.11993576,\n       -0.53666968, -0.09132125,  1.57303259,  1.82113986,  0.31948837,\n        0.34639304, -1.68151764,  1.0845407 , -0.01560537,  0.73393873,\n        0.85033511,  1.98350062, -0.45107395,  1.45704639,  1.48581033,\n       -1.57196761,  0.92182647,  0.78667051, -1.01047196, -0.13306075])\n\n\n\ngrads.prod()\n\n-3.5832605040779705e-14\n\n\n\n기울기가 소멸함\n\n\ngrads = np.random.uniform(low=-5,high=5,size=100) \ngrads.prod()\n\n2.2118230498890502e+26\n\n\n\n기울기가 폭발함.\n\n\ngrads = np.random.uniform(low=-1,high=3.5,size=100) \ngrads.prod()\n\n5.058085058858178e-07\n\n\n- 도깨비: 기울기가 소멸하기도 하고 터지기도 한다."
+  },
+  {
+    "objectID": "posts/ml/2022-12-23-Extra-3.html#해결책-기울기-소멸에-대한-해결책",
+    "href": "posts/ml/2022-12-23-Extra-3.html#해결책-기울기-소멸에-대한-해결책",
+    "title": "Extra-3: 딥러닝의 기초 (5)",
+    "section": "해결책 (기울기 소멸에 대한 해결책)",
+    "text": "해결책 (기울기 소멸에 대한 해결책)\n- Multi-level hierarchy\n\n여러층을 쪼개서 학습하자 \\(\\to\\) 어떻게? 사전학습, 층벼학습\n기울기소실문제를 해결하여 딥러닝을 유행시킨 태초의(?) 방법임.\n결국 입력자료를 바꾼뒤에 학습하는 형태\n\n- Gradient clipping\n\n너무 큰 값의 기울기는 사용하지 말자. (기울기 폭발에 대한 대비책)\n\n- Faster hardware\n\nGPU를 중심으로 한 테크닉\n근본적인 문제해결책은 아니라는 힌튼의 비판\nCPU를 쓸때보다 GPU를 쓰면 약간 더 깊은 모형을 학습할 수 있다 정도?\n\n- Residual Networks, LSTM\n\n아키텍처를 변경하는 방법\n\n- Other activation functions\n\n렐루의 개발\n\n- 배치정규화\n\n어쩌다보니 되는것.\n배치정규화는 원래 공변량 쉬프트를 잡기 위한 방법임. 그런데 기울기 소멸에도 효과가 있음. 현재는 기울기소멸문제에 대한 해결책으로 빠짐없이 언급되고 있음. 2015년의 원래 논문에는 기울기소멸에 대한 언급은 없었음. (https://arxiv.org/pdf/1502.03167.pdf)\n심지어 배치정규화는 오버피팅을 잡는효과도 있음 (이것은 논문에 언급했음)\n\n- 기울기를 안구하면 안되나?\n\n베이지안 최적화기법: (https://arxiv.org/pdf/1807.02811.pdf) \\(\\to\\) GPU를 어떻게 쓰지? \\(\\to\\) 느리다"
+  },
+  {
     "objectID": "posts/ml/2022-11-02-ml_9w.html",
     "href": "posts/ml/2022-11-02-ml_9w.html",
     "title": "RNN (9주차)",
@@ -1705,7 +1852,7 @@
     "href": "index.html",
     "title": ";)",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 21, 2022\n\n\nExtra-1: 추천시스템\n\n\nEOYEON CHOI\n\n\n\n\nDec 13, 2022\n\n\nFinalterm\n\n\nSEOYEON CHOI\n\n\n\n\nDec 11, 2022\n\n\n고급회귀분석 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nstudy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRNN (13주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRegression HW 4\n\n\nSEOYEON CHOI\n\n\n\n\nDec 7, 2022\n\n\nA1: 깊은복사와 얕은복사 (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 5, 2022\n\n\n고급회귀분석 실습 CH11\n\n\nSEOYEON CHOI\n\n\n\n\nNov 30, 2022\n\n\nRNN (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 29, 2022\n\n\nDeep Learning final example\n\n\nSEOYEON CHOI\n\n\n\n\nNov 28, 2022\n\n\n고급회귀분석 실습 CH13\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRNN (11주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRegression HW 3\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\n고급회귀분석 실습 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nNov 14, 2022\n\n\n고급회귀분석 실습 CH06, CH07\n\n\nSEOYEON CHOI\n\n\n\n\nNov 9, 2022\n\n\nRNN (10주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nMidterm\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nRNN (9주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 1\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 23, 2022\n\n\nRegression HW 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 19, 2022\n\n\nCNN (7주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 12, 2022\n\n\nDNN (6주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nHomework\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nDNN (5주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 29, 2022\n\n\nDNN (4주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nDNN (3주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\n고급회귀분석 실습 CH03, CH04\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nRegression HW 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 19, 2022\n\n\nAssignment 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 14, 2022\n\n\nDNN (2주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nIntro\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nDNN (1주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nSpecial Topics in Machine Learning\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nAdvanced Regression Analysis\n\n\nSEOYEON CHOI\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 21, 2022\n\n\nExtra-1: 추천시스템\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-2: 생성모형(GAN)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-3: 딥러닝의 기초 (5)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 13, 2022\n\n\nFinalterm\n\n\nSEOYEON CHOI\n\n\n\n\nDec 11, 2022\n\n\n고급회귀분석 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nstudy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRNN (13주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRegression HW 4\n\n\nSEOYEON CHOI\n\n\n\n\nDec 7, 2022\n\n\nA1: 깊은복사와 얕은복사 (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 5, 2022\n\n\n고급회귀분석 실습 CH11\n\n\nSEOYEON CHOI\n\n\n\n\nNov 30, 2022\n\n\nRNN (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 29, 2022\n\n\nDeep Learning final example\n\n\nSEOYEON CHOI\n\n\n\n\nNov 28, 2022\n\n\n고급회귀분석 실습 CH13\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRNN (11주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRegression HW 3\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\n고급회귀분석 실습 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nNov 14, 2022\n\n\n고급회귀분석 실습 CH06, CH07\n\n\nSEOYEON CHOI\n\n\n\n\nNov 9, 2022\n\n\nRNN (10주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nMidterm\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nRNN (9주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 1\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 23, 2022\n\n\nRegression HW 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 19, 2022\n\n\nCNN (7주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 12, 2022\n\n\nDNN (6주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nHomework\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nDNN (5주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 29, 2022\n\n\nDNN (4주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nDNN (3주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\n고급회귀분석 실습 CH03, CH04\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nRegression HW 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 19, 2022\n\n\nAssignment 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 14, 2022\n\n\nDNN (2주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nIntro\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nDNN (1주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nSpecial Topics in Machine Learning\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nAdvanced Regression Analysis\n\n\nSEOYEON CHOI\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
