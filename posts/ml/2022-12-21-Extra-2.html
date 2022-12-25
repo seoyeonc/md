@@ -429,8 +429,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
-  <li><a href="#gan-intro" id="toc-gan-intro" class="nav-link" data-scroll-target="#gan-intro">GAN intro</a>
+  <li><a href="#gan-intro" id="toc-gan-intro" class="nav-link active" data-scroll-target="#gan-intro">GAN intro</a>
   <ul class="collapse">
   <li><a href="#생성모형이란-쉬운-설명" id="toc-생성모형이란-쉬운-설명" class="nav-link" data-scroll-target="#생성모형이란-쉬운-설명">생성모형이란? (쉬운 설명)</a></li>
   <li><a href="#gan의-응용분야" id="toc-gan의-응용분야" class="nav-link" data-scroll-target="#gan의-응용분야">GAN의 응용분야</a></li>
@@ -460,13 +459,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote class="blockquote">
 <p>GAN– MNIST 3/7</p>
 </blockquote>
-<section id="강의영상" class="level1">
-<h1>강의영상</h1>
-<blockquote class="blockquote">
-<p><a href="https://youtube.com/playlist?list=PLQqh36zP38-zxItJIxWLab09dTIZjXXfm" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-zxItJIxWLab09dTIZjXXfm</a></p>
-</blockquote>
-<p>이 강의는 2021년 빅데이터분석의 강의노트 및 강의영상을 편집하여 만들었습니다.</p>
-</section>
 <section id="gan-intro" class="level1">
 <h1>GAN intro</h1>
 <p><code>-</code> 저자: 이안굿펠로우 - 천재임 - 지도교수가 요수아 벤지오</p>
@@ -533,42 +525,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>GAN의 구현</h1>
 <section id="import" class="level2">
 <h2 class="anchored" data-anchor-id="import">import</h2>
-<div class="cell" data-execution_count="158">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.vision.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/home/csy/anaconda3/envs/py37/lib/python3.7/site-packages/tqdm/auto.py:22: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm</code></pre>
+</div>
 </div>
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">data</h2>
-<div class="cell" data-execution_count="159">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> untar_data(URLs.MNIST_SAMPLE)</span></code></pre></div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> untar_data(URLs.MNIST_SAMPLE)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="160">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>threes <span class="op">=</span> (path<span class="op">/</span><span class="st">'train'</span><span class="op">/</span><span class="st">'3'</span>).ls()</span></code></pre></div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>threes <span class="op">=</span> (path<span class="op">/</span><span class="st">'train'</span><span class="op">/</span><span class="st">'3'</span>).ls()</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="161">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> torch.stack([tensor(Image.<span class="bu">open</span>(i)) <span class="cf">for</span> i <span class="kw">in</span> threes]).<span class="bu">float</span>()<span class="op">/</span><span class="dv">255</span></span></code></pre></div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> torch.stack([tensor(Image.<span class="bu">open</span>(i)) <span class="cf">for</span> i <span class="kw">in</span> threes]).<span class="bu">float</span>()<span class="op">/</span><span class="dv">255</span></span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="162">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>X.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="162">
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>X.shape</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>torch.Size([6131, 28, 28])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="163">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(X[<span class="dv">0</span>])</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="163">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7f981c427ac0&gt;</code></pre>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(X[<span class="dv">0</span>])</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>&lt;matplotlib.image.AxesImage at 0x7f36568083d0&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-12-21-Extra-2_files/figure-html/cell-7-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p><code>-</code> MLP를 이용해 학습하기 위해 X의 차원을 변경</p>
-<div class="cell" data-execution_count="164">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X<span class="op">=</span>X.reshape(<span class="dv">6131</span>,<span class="dv">28</span><span class="op">*</span><span class="dv">28</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>X.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="164">
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>X<span class="op">=</span>X.reshape(<span class="dv">6131</span>,<span class="dv">28</span><span class="op">*</span><span class="dv">28</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>X.shape</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>torch.Size([6131, 784])</code></pre>
 </div>
 </div>
@@ -577,50 +573,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="위조지폐범의-설계-noise-to-가짜이미지를-만들어-내는-네트워크를-만들자.">위조지폐범의 설계: noise <span class="math inline">\(\to\)</span> 가짜이미지를 만들어 내는 네트워크를 만들자.</h2>
 <p><code>-</code> 네트워크의 입력? 적당한 벡터, 혹은 매트릭스에 노이즈(랜덤으로 채운 어떠한 숫자들)를 채운것</p>
 <p><code>-</code> 네트워크의 출력? (28,28)의 텐서, 784의 벡터</p>
-<div class="cell" data-execution_count="165">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>net1 <span class="op">=</span> torch.nn.Sequential(torch.nn.Linear(in_features<span class="op">=</span><span class="dv">28</span>, out_features<span class="op">=</span><span class="dv">64</span>),</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                           torch.nn.ReLU(),</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                           torch.nn.Linear(in_features<span class="op">=</span><span class="dv">64</span>, out_features<span class="op">=</span><span class="dv">64</span>), </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                           torch.nn.ReLU(),</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                           torch.nn.Linear(in_features<span class="op">=</span><span class="dv">64</span>, out_features<span class="op">=</span><span class="dv">784</span>),</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                           torch.nn.Sigmoid()) <span class="co">## 마지막의 시그모이드는 출력이 0~1사이로 나오게 하기 위함 </span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>counterfeiter <span class="op">=</span> net1 </span></code></pre></div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>net1 <span class="op">=</span> torch.nn.Sequential(torch.nn.Linear(in_features<span class="op">=</span><span class="dv">28</span>, out_features<span class="op">=</span><span class="dv">64</span>),</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                           torch.nn.ReLU(),</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                           torch.nn.Linear(in_features<span class="op">=</span><span class="dv">64</span>, out_features<span class="op">=</span><span class="dv">64</span>), </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                           torch.nn.ReLU(),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                           torch.nn.Linear(in_features<span class="op">=</span><span class="dv">64</span>, out_features<span class="op">=</span><span class="dv">784</span>),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                           torch.nn.Sigmoid()) <span class="co">## 마지막의 시그모이드는 출력이 0~1사이로 나오게 하기 위함 </span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>counterfeiter <span class="op">=</span> net1 </span></code></pre></div>
 </div>
 </section>
 <section id="경찰의-설계-진짜이미지는-1-가짜이미지는-0으로-판별하는-dnn을-만들자." class="level2">
 <h2 class="anchored" data-anchor-id="경찰의-설계-진짜이미지는-1-가짜이미지는-0으로-판별하는-dnn을-만들자.">경찰의 설계: 진짜이미지는 1, 가짜이미지는 0으로 판별하는 DNN을 만들자.</h2>
 <p><code>-</code> 네트워크의 입력? (28,28)의 텐서, 혹은 784의 벡터</p>
 <p><code>-</code> 네트워크의 출력? yhat (y는 0 or 1)</p>
-<div class="cell" data-execution_count="166">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>net2 <span class="op">=</span> torch.nn.Sequential(torch.nn.Linear(in_features<span class="op">=</span><span class="dv">784</span>,out_features<span class="op">=</span><span class="dv">64</span>),</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                           torch.nn.ReLU(),</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                           torch.nn.Linear(in_features<span class="op">=</span><span class="dv">64</span>,out_features<span class="op">=</span><span class="dv">28</span>),</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                           torch.nn.ReLU(),</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                           torch.nn.Linear(in_features<span class="op">=</span><span class="dv">28</span>,out_features<span class="op">=</span><span class="dv">1</span>),</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                           torch.nn.Sigmoid()</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                           )</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>police <span class="op">=</span> net2 </span></code></pre></div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>net2 <span class="op">=</span> torch.nn.Sequential(torch.nn.Linear(in_features<span class="op">=</span><span class="dv">784</span>,out_features<span class="op">=</span><span class="dv">64</span>),</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                           torch.nn.ReLU(),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                           torch.nn.Linear(in_features<span class="op">=</span><span class="dv">64</span>,out_features<span class="op">=</span><span class="dv">28</span>),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                           torch.nn.ReLU(),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                           torch.nn.Linear(in_features<span class="op">=</span><span class="dv">28</span>,out_features<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                           torch.nn.Sigmoid()</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                           )</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>police <span class="op">=</span> net2 </span></code></pre></div>
 </div>
 </section>
 <section id="스토리전개" class="level2">
 <h2 class="anchored" data-anchor-id="스토리전개">스토리전개</h2>
 <p><code>-</code> 아래는 진짜이미지</p>
-<div class="cell" data-execution_count="167">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>realimage<span class="op">=</span>X[<span class="dv">0</span>].reshape(<span class="dv">28</span>,<span class="dv">28</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(realimage)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="167">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7f981d1e6190&gt;</code></pre>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>realimage<span class="op">=</span>X[<span class="dv">0</span>].reshape(<span class="dv">28</span>,<span class="dv">28</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(realimage)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>&lt;matplotlib.image.AxesImage at 0x7f365676c850&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-12-21-Extra-2_files/figure-html/cell-11-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p><code>-</code> 위와 같은 진짜 이미지를 경찰이 봤음 <span class="math inline">\(\to\)</span> yhat이 나오겠죠?</p>
-<div class="cell" data-execution_count="168">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>policehat_from_realimage <span class="op">=</span> police(realimage.reshape(<span class="op">-</span><span class="dv">1</span>))</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>policehat_from_realimage</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="168">
-<pre><code>tensor([0.5241], grad_fn=&lt;SigmoidBackward0&gt;)</code></pre>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>policehat_from_realimage <span class="op">=</span> police(realimage.reshape(<span class="op">-</span><span class="dv">1</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>policehat_from_realimage</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>tensor([0.5015], grad_fn=&lt;SigmoidBackward0&gt;)</code></pre>
 </div>
 </div>
 <ul>
@@ -629,23 +625,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><code>-</code> 이번에는 가짜이미지를 경찰이 봤다고 생각해보자.</p>
 <p>(step1) 랜덤으로 아무숫자나 28개를 생성한다.</p>
-<div class="cell" data-execution_count="169">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>err<span class="op">=</span> torch.randn(<span class="dv">28</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>err</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="169">
-<pre><code>tensor([-0.8568, -2.2982,  0.3489, -1.5801,  1.8611,  0.9158, -0.2985,  1.1087,
-         1.3798,  1.4870, -0.4455,  0.2140,  1.0784,  1.4805, -1.4886,  0.5036,
-         0.3742, -0.7351,  1.0031,  0.4538,  1.5372,  1.0739,  0.7793, -1.5347,
-        -0.5060,  0.0113,  0.2833, -0.8466])</code></pre>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>err<span class="op">=</span> torch.randn(<span class="dv">28</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>err</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>tensor([ 3.0166, -1.1472, -0.0645,  1.1425, -0.5632, -1.7625,  0.4353,  0.2066,
+        -0.4214,  0.2895, -1.7030, -0.8060,  0.4684,  0.5643, -0.2158,  0.9998,
+        -1.0958, -1.5119, -1.5331,  1.0283,  0.0254,  0.6410,  0.8624,  1.0544,
+        -0.6116,  0.5087, -0.0657, -0.7712])</code></pre>
 </div>
 </div>
 <p>(step2) 위조범은 err를 입력으로 받고 가짜이미지를 만든다.</p>
-<div class="cell" data-execution_count="170">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>couterfeiter_output <span class="op">=</span> counterfeiter(err)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>fakeimage<span class="op">=</span>couterfeiter_output.reshape(<span class="dv">28</span>,<span class="dv">28</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plt.imshow(fakeimage.detach())</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="170">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7f981f4261c0&gt;</code></pre>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>couterfeiter_output <span class="op">=</span> counterfeiter(err)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>fakeimage<span class="op">=</span>couterfeiter_output.reshape(<span class="dv">28</span>,<span class="dv">28</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>plt.imshow(fakeimage.detach())</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>&lt;matplotlib.image.AxesImage at 0x7f36563d4550&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-12-21-Extra-2_files/figure-html/cell-14-output-2.png" class="img-fluid"></p>
@@ -656,12 +652,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>위조범의 실력이 형편없음</li>
 </ul>
 <p>(step3) 위조범이 생성한 이미지를 경찰한테 넘긴다.</p>
-<div class="cell" data-execution_count="171">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>policehat_from_fakeimage <span class="op">=</span> police(couterfeiter_output)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#policehat_from_fakeimage = police(fakeimage.detach().reshape(-1))</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>policehat_from_fakeimage</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="171">
-<pre><code>tensor([0.5290], grad_fn=&lt;SigmoidBackward0&gt;)</code></pre>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>policehat_from_fakeimage <span class="op">=</span> police(couterfeiter_output)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#policehat_from_fakeimage = police(fakeimage.detach().reshape(-1))</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>policehat_from_fakeimage</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>tensor([0.5014], grad_fn=&lt;SigmoidBackward0&gt;)</code></pre>
 </div>
 </div>
 <p><code>-</code> 경찰의 실력도 형편없고 위조범의 실력도 형편없다.</p>
@@ -669,90 +665,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="경찰네트워크의-실력을-향상시키자." class="level2">
 <h2 class="anchored" data-anchor-id="경찰네트워크의-실력을-향상시키자.">경찰네트워크의 실력을 향상시키자.</h2>
 <p><code>-</code> 데이터 정리 - 원래 <span class="math inline">\(n=6131\)</span>개의 이미지 자료가 있음. 이를 <span class="math inline">\({\bf X}\)</span>라고 하자. 따라서 <span class="math inline">\({\bf X}\)</span>의 차원은 (6131,784). - 위조범이 만든 가짜자료를 원래 자료와 같은 숫자인 6131개 만듬. 이 가짜자료를 <span class="math inline">\(\tilde{\bf X}\)</span>라고 하자. 따라서 <span class="math inline">\(\tilde{\bf X}\)</span>의 차원은 (6131,784). - 진짜자료는 1, 가짜자료는 0으로 라벨링.</p>
-<div class="cell" data-execution_count="172">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>X.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="172">
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>X.shape</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>torch.Size([6131, 784])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="173">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>err<span class="op">=</span> torch.randn(<span class="dv">6131</span>,<span class="dv">28</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>counterfeiter_output <span class="op">=</span> counterfeiter(err) <span class="co"># counterfeiter_output를 Xtilde로 생각하면 된다. </span></span></code></pre></div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>err<span class="op">=</span> torch.randn(<span class="dv">6131</span>,<span class="dv">28</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>counterfeiter_output <span class="op">=</span> counterfeiter(err) <span class="co"># counterfeiter_output를 Xtilde로 생각하면 된다. </span></span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="174">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>real_label<span class="op">=</span>torch.tensor([[<span class="fl">1.0</span>]]<span class="op">*</span><span class="dv">6131</span>) <span class="co">## y=1 </span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>fake_label<span class="op">=</span>torch.tensor([[<span class="fl">0.0</span>]]<span class="op">*</span><span class="dv">6131</span>) <span class="co">## y=0</span></span></code></pre></div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>real_label<span class="op">=</span>torch.tensor([[<span class="fl">1.0</span>]]<span class="op">*</span><span class="dv">6131</span>) <span class="co">## y=1 </span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>fake_label<span class="op">=</span>torch.tensor([[<span class="fl">0.0</span>]]<span class="op">*</span><span class="dv">6131</span>) <span class="co">## y=0</span></span></code></pre></div>
 </div>
 <p><code>-</code> step1: yhat, 경찰의 예측</p>
-<div class="cell" data-execution_count="175">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>policehat_from_realimage <span class="op">=</span> police(X) </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>policehat_from_fakeimage <span class="op">=</span> police(counterfeiter_output) </span></code></pre></div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>policehat_from_realimage <span class="op">=</span> police(X) </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>policehat_from_fakeimage <span class="op">=</span> police(counterfeiter_output) </span></code></pre></div>
 </div>
 <p><code>-</code> step2: 손실함수? 경찰의 미덕은 (1) 가짜를 가짜라고 하고 (2) 진짜를 진짜라 해야한다.</p>
-<div class="cell" data-execution_count="176">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>loss_fn <span class="op">=</span> torch.nn.BCELoss() </span></code></pre></div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>loss_fn <span class="op">=</span> torch.nn.BCELoss() </span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="181">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>loss_of_police <span class="op">=\</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>loss_fn(policehat_from_fakeimage,fake_label)<span class="op">+\</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>loss_fn(policehat_from_realimage,real_label)</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>loss_of_police</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="181">
-<pre><code>tensor(1.4023, grad_fn=&lt;AddBackward0&gt;)</code></pre>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>loss_of_police <span class="op">=\</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>loss_fn(policehat_from_fakeimage,fake_label)<span class="op">+\</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>loss_fn(policehat_from_realimage,real_label)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>loss_of_police</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>tensor(1.3793, grad_fn=&lt;AddBackward0&gt;)</code></pre>
 </div>
 </div>
 <p><code>-</code> step3~4는 미분이후 업데이트</p>
 <p><code>-</code> 옵티마이저를 설계하자.</p>
-<div class="cell" data-execution_count="182">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>optimizer_of_police <span class="op">=</span> torch.optim.Adam(police.parameters())</span></code></pre></div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>optimizer_of_police <span class="op">=</span> torch.optim.Adam(police.parameters())</span></code></pre></div>
 </div>
 <p><code>-</code> for 문을 돌리자.</p>
-<div class="cell" data-execution_count="183">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): </span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 1 yhat </span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    policehat_from_realimage <span class="op">=</span> police(X) </span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#policehat_from_fakeimage = police(Xitlde)</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    err<span class="op">=</span> torch.randn(<span class="dv">6131</span>,<span class="dv">28</span>)</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    counterfeiter_output <span class="op">=</span> counterfeiter(err) <span class="co"># counterfeiter_output를 Xtilde로 생각하면 된다. </span></span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    policehat_from_fakeimage<span class="op">=</span> police(counterfeiter_output)</span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 2 loss </span></span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    loss_of_police <span class="op">=\</span></span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    loss_fn(policehat_from_fakeimage,fake_label)<span class="op">+\</span></span>
-<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    loss_fn(policehat_from_realimage,real_label)</span>
-<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 3 back propagation </span></span>
-<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>    loss_of_police.backward()</span>
-<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 4 update</span></span>
-<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>    optimizer_of_police.step()</span>
-<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>    optimizer_of_police.zero_grad()</span></code></pre></div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 1 yhat </span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    policehat_from_realimage <span class="op">=</span> police(X) </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#policehat_from_fakeimage = police(Xitlde)</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    err<span class="op">=</span> torch.randn(<span class="dv">6131</span>,<span class="dv">28</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    counterfeiter_output <span class="op">=</span> counterfeiter(err) <span class="co"># counterfeiter_output를 Xtilde로 생각하면 된다. </span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    policehat_from_fakeimage<span class="op">=</span> police(counterfeiter_output)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 2 loss </span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    loss_of_police <span class="op">=\</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    loss_fn(policehat_from_fakeimage,fake_label)<span class="op">+\</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>    loss_fn(policehat_from_realimage,real_label)</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 3 back propagation </span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    loss_of_police.backward()</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 4 update</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>    optimizer_of_police.step()</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>    optimizer_of_police.zero_grad()</span></code></pre></div>
 </div>
 <p><code>-</code> 훈련된 경찰의 성능을 살펴보자.</p>
-<div class="cell" data-execution_count="185">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>police(counterfeiter_output)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="185">
-<pre><code>tensor([[0.0061],
-        [0.0061],
-        [0.0061],
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>police(counterfeiter_output)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>tensor([[0.0022],
+        [0.0022],
+        [0.0023],
         ...,
-        [0.0062],
-        [0.0061],
-        [0.0061]], grad_fn=&lt;SigmoidBackward0&gt;)</code></pre>
+        [0.0022],
+        [0.0022],
+        [0.0022]], grad_fn=&lt;SigmoidBackward0&gt;)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="186">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>police(X)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="186">
-<pre><code>tensor([[0.9999],
-        [0.9989],
-        [0.9995],
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>police(X)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>tensor([[0.9996],
+        [0.9991],
+        [0.9994],
         ...,
-        [0.9969],
-        [0.9995],
-        [0.9973]], grad_fn=&lt;SigmoidBackward0&gt;)</code></pre>
+        [0.9992],
+        [0.9902],
+        [0.9917]], grad_fn=&lt;SigmoidBackward0&gt;)</code></pre>
 </div>
 </div>
 <p><code>-</code> 우수한 경찰 (비록 위조범의 수준이 낮긴하지만)</p>
@@ -760,39 +756,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="위조범네트워크의-성능을-향상시키자." class="level2">
 <h2 class="anchored" data-anchor-id="위조범네트워크의-성능을-향상시키자.">위조범네트워크의 성능을 향상시키자.</h2>
 <p><code>-</code> 자료구조: X는 임의의 에러이미지, net(X)는 fakeimage</p>
-<div class="cell" data-execution_count="187">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>err<span class="op">=</span>torch.randn(<span class="dv">6131</span>,<span class="dv">28</span>) </span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>counterfeiter_output<span class="op">=</span> counterfeiter(err) </span></code></pre></div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>err<span class="op">=</span>torch.randn(<span class="dv">6131</span>,<span class="dv">28</span>) </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>counterfeiter_output<span class="op">=</span> counterfeiter(err) </span></code></pre></div>
 </div>
 <p><code>-</code> 손실함수: 잘 훈련된 경찰조차도 잘못된 판단을 내릴만큼 가짜지폐를 잘 만들면 위조범의 실력이 우수하다 볼 수 있음</p>
-<div class="cell" data-execution_count="188">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>policehat_from_fakeimage <span class="op">=</span> police(counterfeiter_output) </span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>loss_of_counterfeiter <span class="op">=</span> loss_fn(policehat_from_fakeimage,real_label) <span class="co">## 가짜이미지를 보고 경찰이 진짜라고 믿으면 위조범의 실력이 좋은것임  </span></span></code></pre></div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>policehat_from_fakeimage <span class="op">=</span> police(counterfeiter_output) </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>loss_of_counterfeiter <span class="op">=</span> loss_fn(policehat_from_fakeimage,real_label) <span class="co">## 가짜이미지를 보고 경찰이 진짜라고 믿으면 위조범의 실력이 좋은것임  </span></span></code></pre></div>
 </div>
 <p><code>-</code> 옵티마이저</p>
-<div class="cell" data-execution_count="189">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>optimizer_of_counterfeiter <span class="op">=</span> torch.optim.Adam(counterfeiter.parameters())</span></code></pre></div>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>optimizer_of_counterfeiter <span class="op">=</span> torch.optim.Adam(counterfeiter.parameters())</span></code></pre></div>
 </div>
 <p><code>-</code> 학습</p>
-<div class="cell" data-execution_count="190">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): </span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 1 </span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    err<span class="op">=</span>torch.randn(<span class="dv">6131</span>,<span class="dv">28</span>) </span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    counterfeiter_output<span class="op">=</span> counterfeiter(err)  </span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    policehat_from_fakeimage <span class="op">=</span> police(counterfeiter_output) </span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 2 </span></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    loss_of_counterfeiter <span class="op">=</span> loss_fn(policehat_from_fakeimage,real_label)</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 3 </span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    loss_of_counterfeiter.backward()</span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 4 </span></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    optimizer_of_counterfeiter.step()</span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    optimizer_of_counterfeiter.zero_grad()</span></code></pre></div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 1 </span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    err<span class="op">=</span>torch.randn(<span class="dv">6131</span>,<span class="dv">28</span>) </span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    counterfeiter_output<span class="op">=</span> counterfeiter(err)  </span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    policehat_from_fakeimage <span class="op">=</span> police(counterfeiter_output) </span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 2 </span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    loss_of_counterfeiter <span class="op">=</span> loss_fn(policehat_from_fakeimage,real_label)</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 3 </span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    loss_of_counterfeiter.backward()</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 4 </span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>    optimizer_of_counterfeiter.step()</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>    optimizer_of_counterfeiter.zero_grad()</span></code></pre></div>
 </div>
 <p><code>-</code> 위조범의 실력향상을 감상해보자.</p>
-<div class="cell" data-execution_count="195">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(counterfeiter_output[<span class="dv">0</span>].reshape(<span class="dv">28</span>,<span class="dv">28</span>).data)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="195">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7f981397ae20&gt;</code></pre>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(counterfeiter_output[<span class="dv">0</span>].reshape(<span class="dv">28</span>,<span class="dv">28</span>).data)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>&lt;matplotlib.image.AxesImage at 0x7f36562f7410&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-12-21-Extra-2_files/figure-html/cell-30-output-2.png" class="img-fluid"></p>
@@ -801,47 +797,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="두-적대적-네트워크를-경쟁시키자." class="level2">
 <h2 class="anchored" data-anchor-id="두-적대적-네트워크를-경쟁시키자.">두 적대적 네트워크를 경쟁시키자.</h2>
-<div class="cell" data-execution_count="196">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>): </span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): </span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 1 yhat </span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>        policehat_from_realimage <span class="op">=</span> police(X) </span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">#policehat_from_fakeimage = police(Xitlde)</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>        err<span class="op">=</span> torch.randn(<span class="dv">6131</span>,<span class="dv">28</span>)</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>        counterfeiter_output <span class="op">=</span> counterfeiter(err) <span class="co"># counterfeiter_output를 Xtilde로 생각하면 된다. </span></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>        policehat_from_fakeimage<span class="op">=</span> police(counterfeiter_output)</span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 2 loss </span></span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>        loss_of_police <span class="op">=\</span></span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>        loss_fn(policehat_from_fakeimage,fake_label)<span class="op">+\</span></span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>        loss_fn(policehat_from_realimage,real_label)</span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 3 back propagation </span></span>
-<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>        loss_of_police.backward()</span>
-<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 4 update</span></span>
-<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>        optimizer_of_police.step()</span>
-<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>        optimizer_of_police.zero_grad()</span>
-<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): </span>
-<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 1 </span></span>
-<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>        err<span class="op">=</span>torch.randn(<span class="dv">6131</span>,<span class="dv">28</span>) </span>
-<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>        counterfeiter_output<span class="op">=</span> counterfeiter(err)  </span>
-<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>        policehat_from_fakeimage <span class="op">=</span> police(counterfeiter_output) </span>
-<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 2 </span></span>
-<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a>        loss_of_counterfeiter <span class="op">=</span> loss_fn(policehat_from_fakeimage,real_label)</span>
-<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 3 </span></span>
-<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a>        loss_of_counterfeiter.backward()</span>
-<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 4 </span></span>
-<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a>        optimizer_of_counterfeiter.step()</span>
-<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a>        optimizer_of_counterfeiter.zero_grad()        </span></code></pre></div>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>): </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 1 yhat </span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>        policehat_from_realimage <span class="op">=</span> police(X) </span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">#policehat_from_fakeimage = police(Xitlde)</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>        err<span class="op">=</span> torch.randn(<span class="dv">6131</span>,<span class="dv">28</span>)</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>        counterfeiter_output <span class="op">=</span> counterfeiter(err) <span class="co"># counterfeiter_output를 Xtilde로 생각하면 된다. </span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>        policehat_from_fakeimage<span class="op">=</span> police(counterfeiter_output)</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 2 loss </span></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>        loss_of_police <span class="op">=\</span></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>        loss_fn(policehat_from_fakeimage,fake_label)<span class="op">+\</span></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>        loss_fn(policehat_from_realimage,real_label)</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 3 back propagation </span></span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>        loss_of_police.backward()</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 4 update</span></span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>        optimizer_of_police.step()</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>        optimizer_of_police.zero_grad()</span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): </span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 1 </span></span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>        err<span class="op">=</span>torch.randn(<span class="dv">6131</span>,<span class="dv">28</span>) </span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>        counterfeiter_output<span class="op">=</span> counterfeiter(err)  </span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a>        policehat_from_fakeimage <span class="op">=</span> police(counterfeiter_output) </span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 2 </span></span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a>        loss_of_counterfeiter <span class="op">=</span> loss_fn(policehat_from_fakeimage,real_label)</span>
+<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 3 </span></span>
+<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a>        loss_of_counterfeiter.backward()</span>
+<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 4 </span></span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>        optimizer_of_counterfeiter.step()</span>
+<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a>        optimizer_of_counterfeiter.zero_grad()        </span></code></pre></div>
 </div>
 <p><code>-</code> 위조범의 최종적 실력향상감상</p>
-<div class="cell" data-execution_count="198">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(counterfeiter_output[<span class="dv">0</span>].reshape(<span class="dv">28</span>,<span class="dv">28</span>).data)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="198">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7f9813856970&gt;</code></pre>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(counterfeiter_output[<span class="dv">0</span>].reshape(<span class="dv">28</span>,<span class="dv">28</span>).data)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>&lt;matplotlib.image.AxesImage at 0x7f365528e7d0&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-12-21-Extra-2_files/figure-html/cell-32-output-2.png" class="img-fluid"></p>
