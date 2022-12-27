@@ -1,0 +1,8 @@
+---
+title: "Coding Test"
+author: "SEOYEON CHOI"
+date: "2022-12-28"
+categories: [Coding Test]
+---
+
+Let's prepare the coding test.
