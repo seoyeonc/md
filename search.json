@@ -620,7 +620,7 @@
     "href": "posts/ml/index.html",
     "title": "Special Topics in Machine Learning",
     "section": "",
-    "text": "This is posts of Special Topics in Machine Learning."
+    "text": "Those are posts of Special Topics in Machine Learning."
   },
   {
     "objectID": "posts/ml/2022-10-26-ml_8w_1.html",
@@ -1442,6 +1442,13 @@
     "text": "잡담4: 우린 뭘 해야 할까 (학석사 레벨에서..)\n- 능력1: 코드이해력 (= 구현능력 = 코드 베끼는 능력)\n\n이미지분석? 해봤음. 텍스트자료? 해봤음. 시계열? 해봤음. 등등등등? 다 해본적 있음. 어떤 원리인지 정확하게 몰라도 다 해본적 있고 그래서 일할 수 있음!!\n돌아가는 코드 최대한 많이 모아놓으세요. torch, fastai, pytorch lightning, tensorflow, keras 등등\n\n- 능력2: 최신트렌드를 파악할 수 있는 힘 (= 논문이해력)\n\n공부, 공부, 공부… A to Z 까지 수식 다 뜯어보고 코드 다 뜯어보면서 집요하게 공부해야함. (LSTM에서 했던것 처럼!) 물론 차근차근 알려주면 수업이 있다면 좋겠지 그런데 보통은 적당히 두리뭉실하게 설명하지 detail 하게 설명하는 수업은 잘 없음. (지루하거든요)\n수식이나 코드중 하나라도 볼 줄 모르면 능력2를 얻는것 자체가 불가능."
   },
   {
+    "objectID": "posts/ts/index.html",
+    "href": "posts/ts/index.html",
+    "title": "Theoritical Statistics",
+    "section": "",
+    "text": "Those are posts of Theoritical Statistics.\n[https://seoyeonc.github.io/chch/theoritical%20statistics/2022/04/17/ts-3%EC%9E%A5%EA%B3%BC%EC%A0%9C.html]"
+  },
+  {
     "objectID": "posts/rl/2022-11-28-rl-CH13.html",
     "href": "posts/rl/2022-11-28-rl-CH13.html",
     "title": "고급회귀분석 실습 CH13",
@@ -1488,7 +1495,7 @@
     "href": "posts/rl/index.html",
     "title": "Advanced Regression Analysis",
     "section": "",
-    "text": "This is posts of Advanced Regression Analysis."
+    "text": "Those are posts of Advanced Regression Analysis."
   },
   {
     "objectID": "posts/rl/2022-11-21-rl-HW3.html",
@@ -1852,7 +1859,7 @@
     "href": "index.html",
     "title": ";)",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 21, 2022\n\n\nExtra-1: 추천시스템\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-2: 생성모형(GAN)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-3: 딥러닝의 기초 (5)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 13, 2022\n\n\nFinalterm\n\n\nSEOYEON CHOI\n\n\n\n\nDec 11, 2022\n\n\n고급회귀분석 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nstudy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRNN (13주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRegression HW 4\n\n\nSEOYEON CHOI\n\n\n\n\nDec 7, 2022\n\n\nA1: 깊은복사와 얕은복사 (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 5, 2022\n\n\n고급회귀분석 실습 CH11\n\n\nSEOYEON CHOI\n\n\n\n\nNov 30, 2022\n\n\nRNN (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 29, 2022\n\n\nDeep Learning final example\n\n\nSEOYEON CHOI\n\n\n\n\nNov 28, 2022\n\n\n고급회귀분석 실습 CH13\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRNN (11주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRegression HW 3\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\n고급회귀분석 실습 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nNov 14, 2022\n\n\n고급회귀분석 실습 CH06, CH07\n\n\nSEOYEON CHOI\n\n\n\n\nNov 9, 2022\n\n\nRNN (10주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nMidterm\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nRNN (9주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 1\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 23, 2022\n\n\nRegression HW 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 19, 2022\n\n\nCNN (7주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 12, 2022\n\n\nDNN (6주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nHomework\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nDNN (5주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 29, 2022\n\n\nDNN (4주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nDNN (3주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\n고급회귀분석 실습 CH03, CH04\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nRegression HW 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 19, 2022\n\n\nAssignment 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 14, 2022\n\n\nDNN (2주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nIntro\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nDNN (1주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nSpecial Topics in Machine Learning\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nAdvanced Regression Analysis\n\n\nSEOYEON CHOI\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 27, 2022\n\n\nTheoritical Statistics\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-1: 추천시스템\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-2: 생성모형(GAN)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-3: 딥러닝의 기초 (5)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 13, 2022\n\n\nFinalterm\n\n\nSEOYEON CHOI\n\n\n\n\nDec 11, 2022\n\n\n고급회귀분석 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nstudy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRNN (13주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRegression HW 4\n\n\nSEOYEON CHOI\n\n\n\n\nDec 7, 2022\n\n\nA1: 깊은복사와 얕은복사 (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 5, 2022\n\n\n고급회귀분석 실습 CH11\n\n\nSEOYEON CHOI\n\n\n\n\nNov 30, 2022\n\n\nRNN (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 29, 2022\n\n\nDeep Learning final example\n\n\nSEOYEON CHOI\n\n\n\n\nNov 28, 2022\n\n\n고급회귀분석 실습 CH13\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRNN (11주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRegression HW 3\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\n고급회귀분석 실습 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nNov 14, 2022\n\n\n고급회귀분석 실습 CH06, CH07\n\n\nSEOYEON CHOI\n\n\n\n\nNov 9, 2022\n\n\nRNN (10주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nMidterm\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nRNN (9주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 1\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 23, 2022\n\n\nRegression HW 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 19, 2022\n\n\nCNN (7주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 12, 2022\n\n\nDNN (6주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nHomework\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nDNN (5주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 29, 2022\n\n\nDNN (4주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nDNN (3주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\n고급회귀분석 실습 CH03, CH04\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nRegression HW 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 19, 2022\n\n\nAssignment 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 14, 2022\n\n\nDNN (2주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nIntro\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nDNN (1주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nSpecial Topics in Machine Learning\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nAdvanced Regression Analysis\n\n\nSEOYEON CHOI\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
