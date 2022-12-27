@@ -1,0 +1,10 @@
+---
+title: "Theoritical Statistics"
+author: "SEOYEON CHOI"
+date: "2022-12-27"
+categories: [Theoritical Statistics]
+---
+
+Those are posts of Theoritical Statistics.
+
+[https://seoyeonc.github.io/chch/theoritical%20statistics/2022/04/17/ts-3%EC%9E%A5%EA%B3%BC%EC%A0%9C.html]

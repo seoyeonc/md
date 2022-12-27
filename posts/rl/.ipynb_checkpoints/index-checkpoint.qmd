@@ -6,4 +6,4 @@ categories: [Advanced Regression Analysis]
 image: "image.jpg"
 ---
 
-This is posts of Advanced Regression Analysis.
+Those are posts of Advanced Regression Analysis.

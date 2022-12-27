@@ -5,4 +5,4 @@ date: "2022-09-01"
 categories: [Special Topics in Machine Learning]
 ---
 
-This is posts of Special Topics in Machine Learning.
+Those are posts of Special Topics in Machine Learning.
