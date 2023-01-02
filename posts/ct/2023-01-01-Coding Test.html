@@ -496,8 +496,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="example-거스름돈" class="level2">
 <h2 class="anchored" data-anchor-id="example-거스름돈">Example 거스름돈</h2>
 <p>당신은 음식점의 계산을 도와주는 점원이다. 카운터에는 거스름돈으로 사용할 500원, 100원, 50월, 10원짜라 동전이 무한히 존재한다고 가정한다. 손님에게 거슬러 줘야 할 돈이 N원일 때 거슬러 줘야 할 동전의 최소 개수를 구하라. 단, 거슬러 줘야 할 돈 N은 항상 10의 배수이다.</p>
-<p><strong>해설</strong> - 최소 동전 개수 <span class="math inline">\(\to\)</span> ‘가장 큰 화폐 단위부터’ 돈을 거슬러 주는 것</p>
-<p>이 예제가 그리디 알고리즘이 가능한 이유 - 가지고 있는 동전 중에서 큰 단위가 항상 작은 단위의 배수이므로 작은 단위의 동전들을 종합해 다른 해가 나올 수 없기 때문이다. - 대부분의 그리디 알고리즘 문제에서는 이처럼 문제 풀이를 위한 최소한의 아이디어를 떠올리고 이것이 정당한지 검토할 수 있어야 답을 도출할 수 있다.</p>
+<p><strong>해설</strong> * 최소 동전 개수 <span class="math inline">\(\to\)</span> ‘가장 큰 화폐 단위부터’ 돈을 거슬러 주는 것</p>
+<p>이 예제가 그리디 알고리즘이 가능한 이유 * 가지고 있는 동전 중에서 큰 단위가 항상 작은 단위의 배수이므로 작은 단위의 동전들을 종합해 다른 해가 나올 수 없기 때문이다. * 대부분의 그리디 알고리즘 문제에서는 이처럼 문제 풀이를 위한 최소한의 아이디어를 떠올리고 이것이 정당한지 검토할 수 있어야 답을 도출할 수 있다.</p>
 <section id="answer" class="level3">
 <h3 class="anchored" data-anchor-id="answer">Answer</h3>
 <div class="cell" data-execution_count="38">
@@ -585,9 +585,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="큰-수의-법칙">큰 수의 법칙</h2>
 <p>’큰 수의 법칙’은 일반적으로 통계 분야에서 다루어지는 내용이지만 동빈이는 본인만의 방식으로 다르게 사용하고 있다. 동빈이의 큰 수의 법칙은 다양한 수로 이루어진 배열이 있을 때 주어진 수들을 M번 더하여 가장 큰 수를 만드는 법칙이다. 단 배열의 특정한 인덱스(번호)에 해당하는 수가 연속해서 K번 초과하여 더해질 수 없는 것이 이 법칙의 특징이다.</p>
 <p>배열의 크기 N, 숫자가 더해지는 횟수 M, 그리고 K가 주어질 떄 동빈이의 큰 수의 법칙에 따른 결과를 출력하시오.</p>
-<p>입력 조건 - 첫쨰 줄에 <span class="math inline">\(N(2\le N \le 1,000), M(1 \le M \le 10,000), K(1 \le K \le 10,000)\)</span>의 자연수가 주어지며, 각 자연수는 공백으로 구분한다. - 둘째 줄에 N개의 자연수가 주어진다. 각 자연수는 공백으로 구분한다. 단, 각각의 자연수는 1 이상 10,000 이하의 수로 주어진다. - 입력으로 주어지는 K는 항상 M보다 작거나 같다.</p>
-<p>출력 조건 - 첫째 줄에 동빈이의 큰 수의 법칙에 따라 더해진 답을 출력한다.</p>
-<p><strong>해설</strong> - ’가장 큰 수를 K번 더하고 두 번째로 큰 수를 한 번 더하는 연산’을 반복 - 반복되는 수열에 대해서 파악하기</p>
+<p>입력 조건 * 첫쨰 줄에 <span class="math inline">\(N(2\le N \le 1,000), M(1 \le M \le 10,000), K(1 \le K \le 10,000)\)</span>의 자연수가 주어지며, 각 자연수는 공백으로 구분한다. * 둘째 줄에 N개의 자연수가 주어진다. 각 자연수는 공백으로 구분한다. 단, 각각의 자연수는 1 이상 10,000 이하의 수로 주어진다. * 입력으로 주어지는 K는 항상 M보다 작거나 같다.</p>
+<p>출력 조건 * 첫째 줄에 동빈이의 큰 수의 법칙에 따라 더해진 답을 출력한다.</p>
+<p><strong>해설</strong> * ’가장 큰 수를 K번 더하고 두 번째로 큰 수를 한 번 더하는 연산’을 반복 * 반복되는 수열에 대해서 파악하기</p>
 <p>가장 큰 수가 더해지는 횟수 <span class="math display">\[int(M / (K + 1)) * K + M \% (K + 1)\]</span></p>
 <section id="answer-1" class="level3">
 <h3 class="anchored" data-anchor-id="answer-1">Answer 1</h3>
@@ -753,7 +753,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="sourceCode" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>count <span class="op">+=</span> m <span class="op">%</span> (k<span class="op">+</span><span class="dv">1</span>)</span></code></pre></div>
-<p>m이 k+1로 나눠지지 않는 경우 - 여기선 한 번에 돌아가지 않는데,, if문을 써야하는 것은 아닌지?</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>m이 k+1로 나눠지지 않는 경우: 여기선 한 번에 돌아가지 않는데,, if문을 써야하는 것은 아닌지?</p>
+</div>
+</div>
 <div class="cell" data-execution_count="96">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>n, m, k <span class="op">=</span> <span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">input</span>().split())</span></code></pre></div>
 <div class="cell-output cell-output-stdin">
@@ -819,9 +831,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="숫자-카드-게임" class="level2">
 <h2 class="anchored" data-anchor-id="숫자-카드-게임">숫자 카드 게임</h2>
 <p>숫자 카드 게임은 여러 개의 숫자 카드 중에서 가장 높은 숫자가 쓰인 카드 한 장을 뽑는 게임이다. 단, 게임의 룰을 지키며 카드를 뽑아야 하고 룰은 다음과 같다. 1. 숫자가 쓰인 카드들이 <span class="math inline">\(N \times M\)</span> 형태로 놓여 있다. 이때 N은 행의 개수를 의미하며, M은 열의 개수를 의미한다. 2. 먼저 뽑고자 하는 카드가 포함되어 있는 행을 선택한다. 3. 그다음 선택된 행에 초함된 카드들 중 가장 숫자가 낮은 카드를 뽑아야 한다. 4. 따라서 처음에 카드를 골라낼 행을 선택할 때, 이후에 해당 행에서 가장 숫자가 낮은 카드를 뽑을 것을 고려하여 최종적으로 가장 높은 숫자의 카드를 뽑을 수 있도록 정략을 세워야 한다.</p>
-<p>입력 조건 - 첫째 줄에 숫자 카드들이 놓인 행의 개수 N과 열의 개수 M이 공백을 기준으로 하여 각각 자연수로 주어진다.(<span class="math inline">\(1 \le N, M \le 100\)</span>) - 둘째 줄부터 N개의 줄에 걸쳐 각 카드에 적힌 숫자가 주어진다. 각 숫자는 1 이상 10,000 이햐의 자연수이다.</p>
-<p>출력 조건 - 첫째 줄에 게임의 룰에 맞게 선택한 카드에 적힌 숫자를 출력한다.</p>
-<p><strong>문제 해설</strong> - ’각 행마다 가장 작을 수를 찾은 뒤에 그 수 중에서 가장 큰 수’를 찾는 것</p>
+<p>입력 조건 * 첫째 줄에 숫자 카드들이 놓인 행의 개수 N과 열의 개수 M이 공백을 기준으로 하여 각각 자연수로 주어진다.(<span class="math inline">\(1 \le N, M \le 100\)</span>) * 둘째 줄부터 N개의 줄에 걸쳐 각 카드에 적힌 숫자가 주어진다. 각 숫자는 1 이상 10,000 이햐의 자연수이다.</p>
+<p>출력 조건 * 첫째 줄에 게임의 룰에 맞게 선택한 카드에 적힌 숫자를 출력한다.</p>
+<p><strong>문제 해설</strong> * ’각 행마다 가장 작을 수를 찾은 뒤에 그 수 중에서 가장 큰 수’를 찾는 것</p>
 <section id="answer-1-1" class="level3">
 <h3 class="anchored" data-anchor-id="answer-1-1">Answer 1</h3>
 <ul>
@@ -1023,9 +1035,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="이-될-때까지">1이 될 때까지</h2>
 <p>어떠한 수 N이 1이 될 떄까지 다음의 두 과정 중 하나를 반복적으로 선택하여 수행하려고 한다. 단, 두 번째 연산은 N이 K로 나누어 쩔어질 때만 선택할 수 있다. 1. N에서 1을 뺀다. 2. N을 K로 나눈다.</p>
 <p>N과 K가 주어질 때 N이 1이 될 때까지 1번 혹은 2번의 과정을 수행해야 하는 최소 횟수를 구하는 프로그램을 작성하시오.</p>
-<p>입력 조건 - 첫째 줄에 <span class="math inline">\(N(2 \le N \le 100,000)\)</span>과 <span class="math inline">\(K(2 \le K \le 100,000)\)</span>가 공백으로 구분되며 각각 자연수로 주어진다. 이때 입력으로 주어지는 N은 항상 K보다 크거나 같다.</p>
-<p>출력 조건 - 첫째 줄에 N이 1이 될 때까지 1번 혹은 2번의 과정을 수행해야 하는 횟수의 최솟값을 출력한다.</p>
-<p><strong>문제 해설</strong> - ‘최대한 많이 나누기’</p>
+<p>입력 조건 * 첫째 줄에 <span class="math inline">\(N(2 \le N \le 100,000)\)</span>과 <span class="math inline">\(K(2 \le K \le 100,000)\)</span>가 공백으로 구분되며 각각 자연수로 주어진다. 이때 입력으로 주어지는 N은 항상 K보다 크거나 같다.</p>
+<p>출력 조건 * 첫째 줄에 N이 1이 될 때까지 1번 혹은 2번의 과정을 수행해야 하는 횟수의 최솟값을 출력한다.</p>
+<p><strong>문제 해설</strong> * ‘최대한 많이 나누기’</p>
 <section id="answer-1-2" class="level3">
 <h3 class="anchored" data-anchor-id="answer-1-2">Answer 1</h3>
 <ul>
