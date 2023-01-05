@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="SEOYEON CHOI">
-<meta name="dcterms.date" content="2023-01-05">
+<meta name="dcterms.date" content="2023-01-06">
 
 <title>Seoyeon’s Blog for classes - Theoritical Statistics HW2</title>
 <style>
@@ -129,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 5, 2023</p>
+        <p class="date">January 6, 2023</p>
       </div>
     </div>
     
@@ -489,20 +489,53 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(x\)</span>에 대한 <span class="math inline">\(Y\)</span>의 조건부 기댓값 <span class="math inline">\(E(Y|x)\)</span>를 구하라.</p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(E(Y|x) = \int^\infty_{-\infty} y f_{Y|X} (y) dy = \int^\infty_{-\infty} y \frac{f(X,y)}{f_X(X)}dy\)</span></p>
-<p><span class="math inline">\(\star f_X(X) = \int f(x,y) dy = \int^\infty_{-\infty} 4I(0&lt;x&lt;1,1&lt;y&lt;2x)dy\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(f_X(X) = \int f(x,y) dy = \int^\infty_{-\infty} 4I(0&lt;x&lt;1,1&lt;y&lt;2x)dy\)</span></p>
 <p>$ = 4I(0&lt;x&lt;1)_{-&lt; y &lt; , 1&lt;y&lt;2x} I(1&lt;y&lt;2x)dy$</p>
 <p>$ = 4I(0&lt;x&lt;1)^{2x}_1 a dy = 4I(0&lt;x&lt;1)[y]^{2x}_1$</p>
 <p>$ = 4(2x-1)I(0&lt;x&lt;1)$</p>
+<p><span class="math inline">\(\star\)</span></p>
+<p>$ = ^_{-} y dy$</p>
+<p>$ = _{-&lt; y&lt; , 1&lt;y&lt;2x} y dy = ^{2x}_1 y dy$</p>
+<p>$ = [ y^2]^{2x}_1$</p>
+<p>$ = ((4x^2-1))$</p>
+<p><span class="math inline">\(\star 4x^2 - 1 = (2x+1)(2x-1)\)</span></p>
+<p>$ = I(0&lt;x&lt;1)$</p>
 </section>
 <section id="section-4" class="level2">
 <h2 class="anchored" data-anchor-id="section-4">(2)</h2>
 <p><span class="math inline">\(y\)</span>에 대한 <span class="math inline">\(X\)</span>의 조건부 기댓값 <span class="math inline">\(E(X|y)\)</span>를 구하라.</p>
 <p><strong>Answer</strong></p>
+<p><span class="math inline">\(E(X|Y=y) = \int^\infty_{-\infty} x f_{X|Y}(x|y) dx = \int^\infty_{-\infty} x\frac{f(x,y}{f(y)} dx\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(f_Y(Y) = \int^\infty_{-\infty} f(x,y) dy = \int^\infty_{-\infty} 4I(0&lt;x&lt;1,1&lt;y&lt;2x) dx\)</span></p>
+<p>$ = 4<em>{-&lt;x&lt;, 0&lt;x&lt;1, 1&lt;y&lt;2x} 1 dx = ^1</em>{} 4I(1&lt;y&lt;2) dx [4x]^1_{}$</p>
+<p>$ = (4-2y)I(1&lt;y&lt;2$</p>
+<p><span class="math inline">\(\star\)</span></p>
+<p>$ = ^_{-} x dx$</p>
+<p>$ = <em>{-x&lt;, 0&lt;x&lt;1,1&lt;y&lt;2x,1&lt;y&lt;2} x dx = ^1</em>{} xI(1&lt;y&lt;2) dx$</p>
+<p>$ = [x^2]^1_{} = ( - )$</p>
+<p>$ = ()$</p>
+<p><span class="math inline">\(\star 4-y^2 = (2+y)(2-y)\)</span></p>
+<p>$ = 4(2+y)I(1&lt;y&lt;2)$</p>
 </section>
 <section id="section-5" class="level2">
 <h2 class="anchored" data-anchor-id="section-5">(3)</h2>
 <p><span class="math inline">\(x\)</span>에 관한 <span class="math inline">\(Y\)</span>의 조건부 분산 <span class="math inline">\(E[Y - E(Y|x)|x]^2\)</span>을 구하라.</p>
 <p><strong>Answer</strong></p>
+<p><span class="math inline">\(E[(Y - E(Y|X=x))^2|X=x]\)</span></p>
+<p>$ = E(Y^2|X=x) - { E(Y|X=x) }^2$</p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(E(Y^2|X=x) = \int Y^2 f_{Y|X}(y) dy = \int^\infty_{-\infty} y^2 \frac{f(x,y)}{f_X(X)}dy\)</span></p>
+<p>$ = ^_{-} y^2 dy$</p>
+<p>$ = I(0&lt;x&lt;0 _{-&lt; y&lt;, 1&lt;y&lt;2x} y^2 dy$</p>
+<p>$ = I(0&lt;x&lt;1)^{2x}_1 y^2 dy$</p>
+<p>$ = I(0&lt;x&lt;1) [ y^2]^{2x}_1$</p>
+<p>$ = I (0&lt;x&lt;1)(8x^3-1)$</p>
+<p>$ = I(0&lt;x&lt;1)$</p>
+<p><span class="math inline">\(\star\)</span></p>
+<p>$ = ( - ) I(0&lt;x&lt;1)$</p>
+<p><span class="math inline">\(\frac{(2x-1)^2}{12}I(0&lt;x&lt;1)\)</span></p>
 
 
 </section>
