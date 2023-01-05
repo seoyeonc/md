@@ -385,6 +385,11 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW2.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ts/2022-12-31-ts_1.html" class="sidebar-item-text sidebar-link">확률변수와 확률분포</a>
   </div>
 </li>
@@ -522,6 +527,7 @@ ul.task-list li input[type="checkbox"] {
 <ol type="a">
 <li><span class="math inline">\(X\)</span>의 주변분포를 구하시오.</li>
 </ol>
+<p><strong>Answer</strong></p>
 <p><span class="math inline">\(F_X(X)\)</span></p>
 <ul>
 <li><span class="math inline">\(P(X=0) = \frac{1}{9} + \frac{1}{9} = \frac{2}{9}\)</span></li>
@@ -531,6 +537,7 @@ ul.task-list li input[type="checkbox"] {
 <ol start="2" type="a">
 <li><span class="math inline">\(Y\)</span>의 주변분포를 구하시오.</li>
 </ol>
+<p><strong>Answer</strong></p>
 <p><span class="math inline">\(F_Y(Y)\)</span></p>
 <ul>
 <li><span class="math inline">\(P(Y=10) = \frac{1}{9} + \frac{1}{6} = \frac{15}{54} = \frac{5}{18}\)</span></li>
@@ -540,6 +547,7 @@ ul.task-list li input[type="checkbox"] {
 <ol start="3" type="a">
 <li><span class="math inline">\(Y=0\)</span> 일 때 <span class="math inline">\(X\)</span>의 조건부분포를 구하시오</li>
 </ol>
+<p><strong>Answer</strong></p>
 <p><span class="math inline">\(F_X(Y=10|X=0) = \frac{1/9}{5/18} = \frac{2}{5}\)</span></p>
 <p><span class="math inline">\(F_X(Y=1-|X=1) = \frac{1/6}{5/18} = \frac{3}{5}\)</span></p>
 <p><span class="math inline">\(F_X(Y = 10|X = 2) = \frac{0}{5/18} = 0\)</span></p>
@@ -547,6 +555,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="section-2" class="level1">
 <h1>3.</h1>
 <p>두 연속형 확률변수 <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>의 결합확률밀도함수 <span class="math inline">\(f(x,y) = 2I(0&lt;x&lt;y&lt;1)\)</span>일 때, <span class="math inline">\(X\)</span>의 주변확률밀도함수를 구하고, <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>는 서로 독립인지 확인하시오.</p>
+<p><strong>Answer</strong></p>
 <p><span class="math inline">\(f_X(X) = \int^1_x 2 dy = [ 2y]^1_x = 2(1-x)\)</span></p>
 <p><span class="math inline">\(f_Y(Y) \int^y_0 2 dx = [2x]^y_0 = 2y\)</span></p>
 <p><span class="math inline">\(f_{XY}(X,Y) \neq f_X(X)\times f_Y(Y)\)</span></p>
@@ -555,6 +564,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="section-3" class="level1">
 <h1>4.</h1>
 <p>두 연속형 확률변수 <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>의 결합확률밀도함수 <span class="math inline">\(f(x,y) = 2xe^{x+2y}I(0&lt;x&lt;\inf, 0&lt; y&lt; \inf)\)</span> 일 때, <span class="math inline">\(Y\)</span>의 주변확률밀도함수를 구하고, <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>는 서로 독립인지 확인하시오.</p>
+<p><strong>Answer</strong></p>
 <p><span class="math inline">\(f_Y(Y) = \int^{\infty}_0 2xe^{-(x+2y)} dx\)</span></p>
 <p>$ = [-2xe^{x+2y}]^{}_0 - ^{}_0 -2 e^{-(x+2y)} dx$</p>
 <p>$ = 2[-e^{-(x+2y)}]^{}_0 = 2e^{-2y}$</p>
