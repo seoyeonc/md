@@ -22,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -417,6 +480,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">(2)</a></li>
   <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">(3)</a></li>
   </ul></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">2.41</a></li>
   </ul>
 </nav>
     </div>
@@ -536,9 +600,33 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(\star\)</span></p>
 <p>$ = ( - ) I(0&lt;x&lt;1)$</p>
 <p><span class="math inline">\(\frac{(2x-1)^2}{12}I(0&lt;x&lt;1)\)</span></p>
-
-
 </section>
+</section>
+<section id="section-6" class="level1">
+<h1>2.41</h1>
+<p>확률변수 <span class="math inline">\(X\)</span>의 확률밀도함수가</p>
+<p><span class="math display">\[f(x) = \begin{cases} \frac{1}{18} , &amp; x=1,3\text{인 경우} \\ \frac{16}{18}, &amp; x=2\text{인 경우} \end{cases}\]</span></p>
+<p>로 주어졌을때, <span class="math inline">\(P(|X-E(X)|\ge \delta ) = Var(X)\delta^2\)</span>을 만족하는 <span class="math inline">\(\delta\)</span>를 찾아라.</p>
+<p><strong>Answer</strong></p>
+<p><span class="math inline">\(P(X-E(X)|\ge \delta) \le \frac{var(X)}{\delta^2}\)</span></p>
+<p><span class="math inline">\(E(X) = 1 \times \frac{1}{18} + 2 \times \frac{16}{18} + 3 \times \frac{1}{18} = \frac{36}{18} = 2\)</span></p>
+<p><span class="math inline">\(var(X) = E(X-E(X)^2) = (1-2)^2\times \frac{1}{18} + (2-2)^2 \times \frac{16}{18} + (3-2)^2 \times \frac{1}{18} = \frac{1}{9}\)</span></p>
+<p><span class="math inline">\(P(|X-2| \ge \delta) = \frac{1}{9 \delta}\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(x - 2 \ge \delta\)</span></p>
+<p><span class="math inline">\(x-2 \le -\delta\)</span></p>
+<p><span class="math inline">\(\delta = 1\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(P(X \ge 3) + P(X \le 1) = \frac{1}{9}\)</span></p>
+<p>마코프 확률부등식에 따라</p>
+<p><span class="math inline">\(\frac{1}{\delta} = \frac{var(X)}{\delta^2}\)</span></p>
+<p><span class="math inline">\(\delta = var(X)\)</span></p>
+<p><span class="math inline">\(\therefore \delta = \frac{1}{9}\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
