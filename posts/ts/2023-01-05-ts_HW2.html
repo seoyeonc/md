@@ -457,9 +457,9 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(Cov(X,Y) = E((X-\mu_X)(Y - \mu_Y)) = E(XY) - E(X)E(Y)\)</span> 를 증명하라.</p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(E(XY - X\mu_Y - Y\mu_X + \mu_X\mu_Y)\)</span></p>
-<p>$ = E(XY) - _YE(X) - _XE(Y) + _x _Y$</p>
-<p>$ = E(XY) - E(X)E(Y) - E(X)E(Y) + E(X)E(Y)$</p>
-<p>$ = E(XY) - E(X)E(Y)$</p>
+<p><span class="math inline">\(= E(XY) - \mu_YE(X) - \mu_XE(Y) + \mu_x \mu_Y\)</span></p>
+<p><span class="math inline">\(= E(XY) - E(X)E(Y) - E(X)E(Y) + E(X)E(Y)\)</span></p>
+<p><span class="math inline">\(= E(XY) - E(X)E(Y)\)</span></p>
 </section>
 <section id="수업-과제-3." class="level1">
 <h1>수업 과제 3.</h1>
@@ -473,8 +473,7 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(E(X_i) = \lambda(i=a,\dots,n)\)</span></p>
 <p><span class="math inline">\(E(\sum^n_{i=1} a_i X_i) = E(a_1 X_1 + a_2 X_2 + \dots + a_n X_n)\)</span></p>
-<p><span class="math inline">\(a_1 E(X_1) + a_2E(X_2) + \dots + a_n E(X_n)\)</span></p>
-<p>$ = (a_1 + + a_n)$</p>
+<p><span class="math inline">\(a_1 E(X_1) + a_2E(X_2) + \dots + a_n E(X_n) = \lambda(a_1 + \dots + a_n)\)</span></p>
 <p><span class="math inline">\(\lambda = \lambda(a_1 + \dots + a_n)\)</span></p>
 <p><span class="math inline">\(\therefore \sum^n_{i=1} a_i = 1\)</span></p>
 </section>
@@ -487,10 +486,10 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(Cov(X+Y,X-Y) = E((X+Y)(X-Y)) - E(X+Y)E(X-Y)\)</span></p>
 <p><span class="math inline">\(\star Var(X) = E(X^2) - E(X)^2\)</span></p>
 <p><span class="math inline">\(\star Var(Y) = E(Y^2) - E(Y)^2\)</span></p>
-<p>$ = E(X^2 - Y^2) - (E(X) + E(Y))(E(X)-E(Y))$</p>
-<p>$ = E(X^2) - E(Y^2) - E(X)^2 + E(Y)^2$</p>
-<p>$ = { E(X^2) - E(X)^2 } - { E(Y^2) - E(Y)^2 }$</p>
-<p>$ = Var(X) - Var(Y)$</p>
+<p><span class="math inline">\(= E(X^2 - Y^2) - (E(X) + E(Y))(E(X)-E(Y))\)</span></p>
+<p><span class="math inline">\(= E(X^2) - E(Y^2) - E(X)^2 + E(Y)^2\)</span></p>
+<p><span class="math inline">\(= \{ E(X^2) - E(X)^2 \} - \{ E(Y^2) - E(Y)^2 \}\)</span></p>
+<p><span class="math inline">\(= Var(X) - Var(Y)\)</span></p>
 </section>
 <section id="section-2" class="level1">
 <h1>2.40</h1>
@@ -504,16 +503,16 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(E(Y|x) = \int^\infty_{-\infty} y f_{Y|X} (y) dy = \int^\infty_{-\infty} y \frac{f(X,y)}{f_X(X)}dy\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
 <p><span class="math inline">\(f_X(X) = \int f(x,y) dy = \int^\infty_{-\infty} 4I(0&lt;x&lt;1,1&lt;y&lt;2x)dy\)</span></p>
-<p>$ = 4I(0&lt;x&lt;1)_{-&lt; y &lt; , 1&lt;y&lt;2x} I(1&lt;y&lt;2x)dy$</p>
-<p>$ = 4I(0&lt;x&lt;1)^{2x}_1 a dy = 4I(0&lt;x&lt;1)[y]^{2x}_1$</p>
-<p>$ = 4(2x-1)I(0&lt;x&lt;1)$</p>
+<p><span class="math inline">\(= 4I(0&lt;x&lt;1)\int_{-\infty &lt; y &lt; \infty , 1&lt;y&lt;2x} I(1&lt;y&lt;2x)dy\)</span></p>
+<p><span class="math inline">\(= 4I(0&lt;x&lt;1)\int^{2x}_1 a dy = 4I(0&lt;x&lt;1)[y]^{2x}_1\)</span></p>
+<p><span class="math inline">\(= 4(2x-1)I(0&lt;x&lt;1)\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
-<p>$ = ^_{-} y dy$</p>
-<p>$ = _{-&lt; y&lt; , 1&lt;y&lt;2x} y dy = ^{2x}_1 y dy$</p>
-<p>$ = [ y^2]^{2x}_1$</p>
-<p>$ = ((4x^2-1))$</p>
+<p><span class="math inline">\(= \int^\infty_{-\infty} y \frac{4I(0&lt;x&lt;1,1&lt;y&lt;2x)}{4(2x-1)I(0&lt;x&lt;1)} dy\)</span></p>
+<p><span class="math inline">\(= \int_{-\infty &lt; y&lt; \infty, 1&lt;y&lt;2x} y \frac{I(0&lt;x&lt;1)}{2x-1} dy = \frac{I(0&lt;x&lt;1)}{2x-1} \int^{2x}_1 y dy\)</span></p>
+<p><span class="math inline">\(= \frac{I(0,x&lt;1)}{2x-1} [\frac{1}{2} y^2]^{2x}_1\)</span></p>
+<p><span class="math inline">\(= \frac{I(0&lt;x&lt;1)}{2x-1}(\frac{1}{2}(4x^2-1))\)</span></p>
 <p><span class="math inline">\(\star 4x^2 - 1 = (2x+1)(2x-1)\)</span></p>
-<p>$ = I(0&lt;x&lt;1)$</p>
+<p><span class="math inline">\(= \frac{2x+1}{2}I(0&lt;x&lt;1)\)</span></p>
 </section>
 <section id="section-4" class="level2">
 <h2 class="anchored" data-anchor-id="section-4">(2)</h2>
@@ -522,32 +521,31 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(E(X|Y=y) = \int^\infty_{-\infty} x f_{X|Y}(x|y) dx = \int^\infty_{-\infty} x\frac{f(x,y}{f(y)} dx\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
 <p><span class="math inline">\(f_Y(Y) = \int^\infty_{-\infty} f(x,y) dy = \int^\infty_{-\infty} 4I(0&lt;x&lt;1,1&lt;y&lt;2x) dx\)</span></p>
-<p>$ = 4<em>{-&lt;x&lt;, 0&lt;x&lt;1, 1&lt;y&lt;2x} 1 dx = ^1</em>{} 4I(1&lt;y&lt;2) dx [4x]^1_{}$</p>
-<p>$ = (4-2y)I(1&lt;y&lt;2$</p>
+<p><span class="math inline">\(= 4\int_{-\infty &lt;x&lt;\infty, 0&lt;x&lt;1, 1&lt;y&lt;2x} 1 dx = \int^1_{\frac{y}{2}} 4I(1&lt;y&lt;2) dx [4x]^1_{\frac{y}{2}}\)</span></p>
+<p><span class="math inline">\(= (4-2y)I(1&lt;y&lt;2\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
-<p>$ = ^_{-} x dx$</p>
-<p>$ = <em>{-x&lt;, 0&lt;x&lt;1,1&lt;y&lt;2x,1&lt;y&lt;2} x dx = ^1</em>{} xI(1&lt;y&lt;2) dx$</p>
-<p>$ = [x^2]^1_{} = ( - )$</p>
-<p>$ = ()$</p>
+<p><span class="math inline">\(= \int^\infty_{-\infty} x \frac{4I(0&lt;x&lt;1,1&lt;y&lt;2x)}{(4-2y)I(1&lt;y&lt;2)} dx\)</span></p>
+<p><span class="math inline">\(= \frac{4}{4-2y} \int_{-\infty x&lt;\infty, 0&lt;x&lt;1,1&lt;y&lt;2x,1&lt;y&lt;2} x dx = \frac{4}{4-2y} \int^1_{\frac{y}{2}} xI(1&lt;y&lt;2) dx\)</span></p>
+<p><span class="math inline">\(= \frac{4}{4-2y}[\frac{1}{2}x^2]^1_{\frac{y}{2}} = \frac{4}{4-2y} (\frac{1}{2} - \frac{y^2}{8})\)</span></p>
+<p><span class="math inline">\(= \frac{4}{2(2-y)}(\frac{4-y^2}{8})\)</span></p>
 <p><span class="math inline">\(\star 4-y^2 = (2+y)(2-y)\)</span></p>
-<p>$ = 4(2+y)I(1&lt;y&lt;2)$</p>
+<p><span class="math inline">\(= 4(2+y)I(1&lt;y&lt;2)\)</span></p>
 </section>
 <section id="section-5" class="level2">
 <h2 class="anchored" data-anchor-id="section-5">(3)</h2>
 <p><span class="math inline">\(x\)</span>에 관한 <span class="math inline">\(Y\)</span>의 조건부 분산 <span class="math inline">\(E[Y - E(Y|x)|x]^2\)</span>을 구하라.</p>
 <p><strong>Answer</strong></p>
-<p><span class="math inline">\(E[(Y - E(Y|X=x))^2|X=x]\)</span></p>
-<p>$ = E(Y^2|X=x) - { E(Y|X=x) }^2$</p>
+<p><span class="math inline">\(E[(Y - E(Y|X=x))^2|X=x] = E(Y^2|X=x) - \{ E(Y|X=x) \}^2\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
 <p><span class="math inline">\(E(Y^2|X=x) = \int Y^2 f_{Y|X}(y) dy = \int^\infty_{-\infty} y^2 \frac{f(x,y)}{f_X(X)}dy\)</span></p>
-<p>$ = ^_{-} y^2 dy$</p>
-<p>$ = I(0&lt;x&lt;0 _{-&lt; y&lt;, 1&lt;y&lt;2x} y^2 dy$</p>
-<p>$ = I(0&lt;x&lt;1)^{2x}_1 y^2 dy$</p>
-<p>$ = I(0&lt;x&lt;1) [ y^2]^{2x}_1$</p>
-<p>$ = I (0&lt;x&lt;1)(8x^3-1)$</p>
-<p>$ = I(0&lt;x&lt;1)$</p>
+<p><span class="math inline">\(= \int^\infty_{-\infty} y^2 \frac{4I(0&lt;x&lt;1,1&lt;y&lt;2x)}{4(2x-1)I(0&lt;x&lt;1)} dy\)</span></p>
+<p><span class="math inline">\(= \frac{1}{2x-1} I(0&lt;x&lt;0 \int_{-\infty &lt; y&lt;\infty, 1&lt;y&lt;2x} y^2 dy\)</span></p>
+<p><span class="math inline">\(= \frac{1}{2x-1} I(0&lt;x&lt;1)\int^{2x}_1 y^2 dy\)</span></p>
+<p><span class="math inline">\(= \frac{1}{2x-1}I(0&lt;x&lt;1) [\frac{1}{3} y^2]^{2x}_1\)</span></p>
+<p><span class="math inline">\(= \frac{1}{2x-1} I (0&lt;x&lt;1)\frac{1}{3}(8x^3-1)\)</span></p>
+<p><span class="math inline">\(= \frac{4x^2 + 2x+1}{3} I(0&lt;x&lt;1)\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
-<p>$ = ( - ) I(0&lt;x&lt;1)$</p>
+<p><span class="math inline">\(= (\frac{4x^2 + 2x + 1}{3} - \frac{(2x+ 1)^2}{2^2}) I(0&lt;x&lt;1)\)</span></p>
 <p><span class="math inline">\(\frac{(2x-1)^2}{12}I(0&lt;x&lt;1)\)</span></p>
 </section>
 </section>
@@ -577,11 +575,11 @@ ul.task-list li input[type="checkbox"] {
 <p>확률밀도함수가 <span class="math inline">\(f_X(x) = \frac{1}{2},-1&lt;x&lt;1\)</span>인 확률변수의 적률생성함수를 계산하라.</p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(M_X(t) = E(e^{tx})\)</span></p>
-<p>$ = ^{}_{-} e^{tx} f_X(x) dx$</p>
-<p>$ = ^{}_{-} e^{tx} I (-1&lt;x&lt;1) dx$</p>
-<p>$ = ^1_{-1} e^{tx} dx$</p>
-<p>$ = [ e^{tx}]^1_{-1}$</p>
-<p>$ = ( e^t - e^{-t})$</p>
+<p><span class="math inline">\(= \int^{\infty}_{-\infty} e^{tx} f_X(x) dx\)</span></p>
+<p><span class="math inline">\(= \int^{\infty}_{-\infty} e^{tx} \frac{1}{2} I (-1&lt;x&lt;1) dx\)</span></p>
+<p><span class="math inline">\(= \int^1_{-1} e^{tx}\frac{1}{2} dx\)</span></p>
+<p><span class="math inline">\(= \frac{1}{2} [\frac{1}{t} e^{tx}]^1_{-1}\)</span></p>
+<p><span class="math inline">\(= \frac{1}{2} (\frac{1}{t} e^t - \frac{1}{t} e^{-t})\)</span></p>
 <p><span class="math inline">\(\star M_X^{'} (t) = \frac{-(e^t - e^{-t})}{2t^2} + \frac{e^t + e^{-t}}{2t}\)</span></p>
 </section>
 <section id="section-8" class="level1">
@@ -605,9 +603,9 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(M_X^{'} (t) = e^tp \to M_X^{'}(0) = p\)</span></p>
 <p><span class="math inline">\(M_X^{''} (t) = e^tp \to M_X^{''}(0) = p\)</span></p>
 <p><span class="math inline">\(var(X_i) = E(X^2) - (E(X))^2\)</span></p>
-<p>$ = M_X^{’’}(0) - { M_X<sup>{’}(0)}</sup>2$</p>
-<p>$ = p - p^2$</p>
-<p>$ = p(1-p)$</p>
+<p><span class="math inline">\(= M_X^{''}(0) - \{ M_X^{'}(0)\}^2\)</span></p>
+<p><span class="math inline">\(= p - p^2\)</span></p>
+<p><span class="math inline">\(= p(1-p)\)</span></p>
 </section>
 <section id="section-11" class="level2">
 <h2 class="anchored" data-anchor-id="section-11">(3)</h2>
