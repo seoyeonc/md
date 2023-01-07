@@ -465,7 +465,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>수업 과제 3.</h1>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(E(Y|X=x) = \int^{\infty}_{-\infty} y f_{Y|X}(y|x) dy = \int^{\infty}_{-\infty} y\frac{f(X,Y)}{f_X(X)} dy\)</span></p>
-<p>$ = ^{}<em>{-} y dy = ^{}</em>{-} y f(Y) dy = E(Y)$</p>
+<p><span class="math inline">\(= \int^{\infty}_{-\infty} y \frac{f(X)f(Y)}{f_X(X)} dy = \int^{\infty}_{-\infty} y f(Y) dy = E(Y)\)</span></p>
 </section>
 <section id="section" class="level1">
 <h1>2.28.</h1>
@@ -612,11 +612,11 @@ ul.task-list li input[type="checkbox"] {
 <p>(1)의 결과를 이용하여 확률변수 <span class="math inline">\(\sum^n_{i=1} X_i\)</span>의 적률생성함수를 구하라.</p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(M_{\sum^n_{i=1} X_i}(t) = E(e^{t\sum^n_{i=1} X_i})\)</span></p>
-<p>$ = E(e^{tX_1 + tX_2 + + tX_n})$</p>
-<p>$ = E(e^{tX_1} e^{tX_2} e^{tX_n})$</p>
-<p>$ = E(e<sup>{tx})E(e</sup>{tX_2})E(e^{tX_n}) $</p>
-<p>$ = M_{X_1}(t) M_{X_2}(t) M_{X_n}(t)$</p>
-<p>$ = (1-p+pe<sup>t)</sup>n $ 이항분포의 적률생성함수</p>
+<p><span class="math inline">\(= E(e^{tX_1 + tX_2 + \dots + tX_n})\)</span></p>
+<p><span class="math inline">\(= E(e^{tX_1} e^{tX_2} \dots e^{tX_n})\)</span></p>
+<p>$= E(e<sup>{tx})E(e</sup>{tX_2})E(e^{tX_n}) $</p>
+<p><span class="math inline">\(= M_{X_1}(t) M_{X_2}(t) \dots M_{X_n}(t)\)</span></p>
+<p><span class="math inline">\(= (1-p+pe^t)^n \to\)</span> 이항분포의 적률생성함수</p>
 </section>
 </section>
 <section id="section-12" class="level1">

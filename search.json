@@ -1572,7 +1572,7 @@
     "href": "posts/ts/2023-01-05-ts_HW2.html#section-11",
     "title": "Theoritical Statistics HW2",
     "section": "(3)",
-    "text": "(3)\n(1)의 결과를 이용하여 확률변수 \\(\\sum^n_{i=1} X_i\\)의 적률생성함수를 구하라.\nAnswer\n\\(M_{\\sum^n_{i=1} X_i}(t) = E(e^{t\\sum^n_{i=1} X_i})\\)\n$ = E(e^{tX_1 + tX_2 + + tX_n})$\n$ = E(e^{tX_1} e^{tX_2} e^{tX_n})$\n$ = E(e{tx})E(e{tX_2})E(e^{tX_n}) $\n$ = M_{X_1}(t) M_{X_2}(t) M_{X_n}(t)$\n$ = (1-p+pet)n $ 이항분포의 적률생성함수"
+    "text": "(3)\n(1)의 결과를 이용하여 확률변수 \\(\\sum^n_{i=1} X_i\\)의 적률생성함수를 구하라.\nAnswer\n\\(M_{\\sum^n_{i=1} X_i}(t) = E(e^{t\\sum^n_{i=1} X_i})\\)\n\\(= E(e^{tX_1 + tX_2 + \\dots + tX_n})\\)\n\\(= E(e^{tX_1} e^{tX_2} \\dots e^{tX_n})\\)\n$= E(e{tx})E(e{tX_2})E(e^{tX_n}) $\n\\(= M_{X_1}(t) M_{X_2}(t) \\dots M_{X_n}(t)\\)\n\\(= (1-p+pe^t)^n \\to\\) 이항분포의 적률생성함수"
   },
   {
     "objectID": "posts/ts/2023-01-05-ts_HW2.html#section-13",
