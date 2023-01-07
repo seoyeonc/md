@@ -22,69 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -481,6 +418,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">(3)</a></li>
   </ul></li>
   <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">2.41</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">2.60</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">2.64</a>
+  <ul class="collapse">
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">(1)</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">(2)</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">(3)</a></li>
+  </ul></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">2.66</a>
+  <ul class="collapse">
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">(1)</a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">(2)</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -500,23 +449,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(E(\frac{X-\mu_X}{\sigma_X}) = E(\frac{X}{\sigma_X}) - E(\frac{\mu_X}{\sigma_X}) = \frac{\mu_X}{\sigma_X} - \frac{\mu_X}{\sigma_X} = 0\)</span></p>
 <p><span class="math inline">\(var(\frac{X-\mu_X}{\sigma_X}) = E((\frac{X-\mu_X}{\sigma_X})^2) - (E(\frac{X-\mu_X}{\sigma_X}))^2\)</span></p>
-<p>$ = E()= $</p>
-<p>$ = = = 1$</p>
+<p><span class="math inline">\(= E(\frac{X^2 + \mu X^2 - 2\mu_X X}{\sigma^2_X})= \frac{E(X^2) + \mu^2_X - 2\mu^2_X}{\sigma^2_X}\)</span></p>
+<p><span class="math inline">\(= \frac{E(X^2) - \mu_X^2}{\sigma_X^2} = \frac{\sigma_X^2}{\sigma^2_X} = 1\)</span></p>
 </section>
 <section id="수업-과제-2." class="level1">
 <h1>수업 과제 2.</h1>
 <p><span class="math inline">\(Cov(X,Y) = E((X-\mu_X)(Y - \mu_Y)) = E(XY) - E(X)E(Y)\)</span> 를 증명하라.</p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(E(XY - X\mu_Y - Y\mu_X + \mu_X\mu_Y)\)</span></p>
-<p>$ = E(XY) - _YE(X) - _XE(Y) + _x _Y$</p>
-<p>$ = E(XY) - E(X)E(Y) - E(X)E(Y) + E(X)E(Y)$</p>
-<p>$ = E(XY) - E(X)E(Y)$</p>
+<p><span class="math inline">\(= E(XY) - \mu_YE(X) - \mu_XE(Y) + \mu_x \mu_Y\)</span></p>
+<p><span class="math inline">\(= E(XY) - E(X)E(Y) - E(X)E(Y) + E(X)E(Y)\)</span></p>
+<p><span class="math inline">\(= E(XY) - E(X)E(Y)\)</span></p>
 </section>
 <section id="수업-과제-3." class="level1">
 <h1>수업 과제 3.</h1>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(E(Y|X=x) = \int^{\infty}_{-\infty} y f_{Y|X}(y|x) dy = \int^{\infty}_{-\infty} y\frac{f(X,Y)}{f_X(X)} dy\)</span></p>
-<p>$ = ^{}<em>{-} y dy = ^{}</em>{-} y f(Y) dy = E(Y)$</p>
+<p><span class="math inline">\(= \int^{\infty}_{-\infty} y \frac{f(X)f(Y)}{f_X(X)} dy = \int^{\infty}_{-\infty} y f(Y) dy = E(Y)\)</span></p>
 </section>
 <section id="section" class="level1">
 <h1>2.28.</h1>
@@ -524,8 +473,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(E(X_i) = \lambda(i=a,\dots,n)\)</span></p>
 <p><span class="math inline">\(E(\sum^n_{i=1} a_i X_i) = E(a_1 X_1 + a_2 X_2 + \dots + a_n X_n)\)</span></p>
-<p><span class="math inline">\(a_1 E(X_1) + a_2E(X_2) + \dots + a_n E(X_n)\)</span></p>
-<p>$ = (a_1 + + a_n)$</p>
+<p><span class="math inline">\(a_1 E(X_1) + a_2E(X_2) + \dots + a_n E(X_n) = \lambda(a_1 + \dots + a_n)\)</span></p>
 <p><span class="math inline">\(\lambda = \lambda(a_1 + \dots + a_n)\)</span></p>
 <p><span class="math inline">\(\therefore \sum^n_{i=1} a_i = 1\)</span></p>
 </section>
@@ -538,10 +486,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(Cov(X+Y,X-Y) = E((X+Y)(X-Y)) - E(X+Y)E(X-Y)\)</span></p>
 <p><span class="math inline">\(\star Var(X) = E(X^2) - E(X)^2\)</span></p>
 <p><span class="math inline">\(\star Var(Y) = E(Y^2) - E(Y)^2\)</span></p>
-<p>$ = E(X^2 - Y^2) - (E(X) + E(Y))(E(X)-E(Y))$</p>
-<p>$ = E(X^2) - E(Y^2) - E(X)^2 + E(Y)^2$</p>
-<p>$ = { E(X^2) - E(X)^2 } - { E(Y^2) - E(Y)^2 }$</p>
-<p>$ = Var(X) - Var(Y)$</p>
+<p><span class="math inline">\(= E(X^2 - Y^2) - (E(X) + E(Y))(E(X)-E(Y))\)</span></p>
+<p><span class="math inline">\(= E(X^2) - E(Y^2) - E(X)^2 + E(Y)^2\)</span></p>
+<p><span class="math inline">\(= \{ E(X^2) - E(X)^2 \} - \{ E(Y^2) - E(Y)^2 \}\)</span></p>
+<p><span class="math inline">\(= Var(X) - Var(Y)\)</span></p>
 </section>
 <section id="section-2" class="level1">
 <h1>2.40</h1>
@@ -555,16 +503,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(E(Y|x) = \int^\infty_{-\infty} y f_{Y|X} (y) dy = \int^\infty_{-\infty} y \frac{f(X,y)}{f_X(X)}dy\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
 <p><span class="math inline">\(f_X(X) = \int f(x,y) dy = \int^\infty_{-\infty} 4I(0&lt;x&lt;1,1&lt;y&lt;2x)dy\)</span></p>
-<p>$ = 4I(0&lt;x&lt;1)_{-&lt; y &lt; , 1&lt;y&lt;2x} I(1&lt;y&lt;2x)dy$</p>
-<p>$ = 4I(0&lt;x&lt;1)^{2x}_1 a dy = 4I(0&lt;x&lt;1)[y]^{2x}_1$</p>
-<p>$ = 4(2x-1)I(0&lt;x&lt;1)$</p>
+<p><span class="math inline">\(= 4I(0&lt;x&lt;1)\int_{-\infty &lt; y &lt; \infty , 1&lt;y&lt;2x} I(1&lt;y&lt;2x)dy\)</span></p>
+<p><span class="math inline">\(= 4I(0&lt;x&lt;1)\int^{2x}_1 a dy = 4I(0&lt;x&lt;1)[y]^{2x}_1\)</span></p>
+<p><span class="math inline">\(= 4(2x-1)I(0&lt;x&lt;1)\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
-<p>$ = ^_{-} y dy$</p>
-<p>$ = _{-&lt; y&lt; , 1&lt;y&lt;2x} y dy = ^{2x}_1 y dy$</p>
-<p>$ = [ y^2]^{2x}_1$</p>
-<p>$ = ((4x^2-1))$</p>
+<p><span class="math inline">\(= \int^\infty_{-\infty} y \frac{4I(0&lt;x&lt;1,1&lt;y&lt;2x)}{4(2x-1)I(0&lt;x&lt;1)} dy\)</span></p>
+<p><span class="math inline">\(= \int_{-\infty &lt; y&lt; \infty, 1&lt;y&lt;2x} y \frac{I(0&lt;x&lt;1)}{2x-1} dy = \frac{I(0&lt;x&lt;1)}{2x-1} \int^{2x}_1 y dy\)</span></p>
+<p><span class="math inline">\(= \frac{I(0,x&lt;1)}{2x-1} [\frac{1}{2} y^2]^{2x}_1\)</span></p>
+<p><span class="math inline">\(= \frac{I(0&lt;x&lt;1)}{2x-1}(\frac{1}{2}(4x^2-1))\)</span></p>
 <p><span class="math inline">\(\star 4x^2 - 1 = (2x+1)(2x-1)\)</span></p>
-<p>$ = I(0&lt;x&lt;1)$</p>
+<p><span class="math inline">\(= \frac{2x+1}{2}I(0&lt;x&lt;1)\)</span></p>
 </section>
 <section id="section-4" class="level2">
 <h2 class="anchored" data-anchor-id="section-4">(2)</h2>
@@ -573,32 +521,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(E(X|Y=y) = \int^\infty_{-\infty} x f_{X|Y}(x|y) dx = \int^\infty_{-\infty} x\frac{f(x,y}{f(y)} dx\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
 <p><span class="math inline">\(f_Y(Y) = \int^\infty_{-\infty} f(x,y) dy = \int^\infty_{-\infty} 4I(0&lt;x&lt;1,1&lt;y&lt;2x) dx\)</span></p>
-<p>$ = 4<em>{-&lt;x&lt;, 0&lt;x&lt;1, 1&lt;y&lt;2x} 1 dx = ^1</em>{} 4I(1&lt;y&lt;2) dx [4x]^1_{}$</p>
-<p>$ = (4-2y)I(1&lt;y&lt;2$</p>
+<p><span class="math inline">\(= 4\int_{-\infty &lt;x&lt;\infty, 0&lt;x&lt;1, 1&lt;y&lt;2x} 1 dx = \int^1_{\frac{y}{2}} 4I(1&lt;y&lt;2) dx [4x]^1_{\frac{y}{2}}\)</span></p>
+<p><span class="math inline">\(= (4-2y)I(1&lt;y&lt;2\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
-<p>$ = ^_{-} x dx$</p>
-<p>$ = <em>{-x&lt;, 0&lt;x&lt;1,1&lt;y&lt;2x,1&lt;y&lt;2} x dx = ^1</em>{} xI(1&lt;y&lt;2) dx$</p>
-<p>$ = [x^2]^1_{} = ( - )$</p>
-<p>$ = ()$</p>
+<p><span class="math inline">\(= \int^\infty_{-\infty} x \frac{4I(0&lt;x&lt;1,1&lt;y&lt;2x)}{(4-2y)I(1&lt;y&lt;2)} dx\)</span></p>
+<p><span class="math inline">\(= \frac{4}{4-2y} \int_{-\infty x&lt;\infty, 0&lt;x&lt;1,1&lt;y&lt;2x,1&lt;y&lt;2} x dx = \frac{4}{4-2y} \int^1_{\frac{y}{2}} xI(1&lt;y&lt;2) dx\)</span></p>
+<p><span class="math inline">\(= \frac{4}{4-2y}[\frac{1}{2}x^2]^1_{\frac{y}{2}} = \frac{4}{4-2y} (\frac{1}{2} - \frac{y^2}{8})\)</span></p>
+<p><span class="math inline">\(= \frac{4}{2(2-y)}(\frac{4-y^2}{8})\)</span></p>
 <p><span class="math inline">\(\star 4-y^2 = (2+y)(2-y)\)</span></p>
-<p>$ = 4(2+y)I(1&lt;y&lt;2)$</p>
+<p><span class="math inline">\(= 4(2+y)I(1&lt;y&lt;2)\)</span></p>
 </section>
 <section id="section-5" class="level2">
 <h2 class="anchored" data-anchor-id="section-5">(3)</h2>
 <p><span class="math inline">\(x\)</span>에 관한 <span class="math inline">\(Y\)</span>의 조건부 분산 <span class="math inline">\(E[Y - E(Y|x)|x]^2\)</span>을 구하라.</p>
 <p><strong>Answer</strong></p>
-<p><span class="math inline">\(E[(Y - E(Y|X=x))^2|X=x]\)</span></p>
-<p>$ = E(Y^2|X=x) - { E(Y|X=x) }^2$</p>
+<p><span class="math inline">\(E[(Y - E(Y|X=x))^2|X=x] = E(Y^2|X=x) - \{ E(Y|X=x) \}^2\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
 <p><span class="math inline">\(E(Y^2|X=x) = \int Y^2 f_{Y|X}(y) dy = \int^\infty_{-\infty} y^2 \frac{f(x,y)}{f_X(X)}dy\)</span></p>
-<p>$ = ^_{-} y^2 dy$</p>
-<p>$ = I(0&lt;x&lt;0 _{-&lt; y&lt;, 1&lt;y&lt;2x} y^2 dy$</p>
-<p>$ = I(0&lt;x&lt;1)^{2x}_1 y^2 dy$</p>
-<p>$ = I(0&lt;x&lt;1) [ y^2]^{2x}_1$</p>
-<p>$ = I (0&lt;x&lt;1)(8x^3-1)$</p>
-<p>$ = I(0&lt;x&lt;1)$</p>
+<p><span class="math inline">\(= \int^\infty_{-\infty} y^2 \frac{4I(0&lt;x&lt;1,1&lt;y&lt;2x)}{4(2x-1)I(0&lt;x&lt;1)} dy\)</span></p>
+<p><span class="math inline">\(= \frac{1}{2x-1} I(0&lt;x&lt;0 \int_{-\infty &lt; y&lt;\infty, 1&lt;y&lt;2x} y^2 dy\)</span></p>
+<p><span class="math inline">\(= \frac{1}{2x-1} I(0&lt;x&lt;1)\int^{2x}_1 y^2 dy\)</span></p>
+<p><span class="math inline">\(= \frac{1}{2x-1}I(0&lt;x&lt;1) [\frac{1}{3} y^2]^{2x}_1\)</span></p>
+<p><span class="math inline">\(= \frac{1}{2x-1} I (0&lt;x&lt;1)\frac{1}{3}(8x^3-1)\)</span></p>
+<p><span class="math inline">\(= \frac{4x^2 + 2x+1}{3} I(0&lt;x&lt;1)\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
-<p>$ = ( - ) I(0&lt;x&lt;1)$</p>
+<p><span class="math inline">\(= (\frac{4x^2 + 2x + 1}{3} - \frac{(2x+ 1)^2}{2^2}) I(0&lt;x&lt;1)\)</span></p>
 <p><span class="math inline">\(\frac{(2x-1)^2}{12}I(0&lt;x&lt;1)\)</span></p>
 </section>
 </section>
@@ -622,11 +569,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\frac{1}{\delta} = \frac{var(X)}{\delta^2}\)</span></p>
 <p><span class="math inline">\(\delta = var(X)\)</span></p>
 <p><span class="math inline">\(\therefore \delta = \frac{1}{9}\)</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
-</div>
+</section>
+<section id="section-7" class="level1">
+<h1>2.60</h1>
+<p>확률밀도함수가 <span class="math inline">\(f_X(x) = \frac{1}{2},-1&lt;x&lt;1\)</span>인 확률변수의 적률생성함수를 계산하라.</p>
+<p><strong>Answer</strong></p>
+<p><span class="math inline">\(M_X(t) = E(e^{tx})\)</span></p>
+<p><span class="math inline">\(= \int^{\infty}_{-\infty} e^{tx} f_X(x) dx\)</span></p>
+<p><span class="math inline">\(= \int^{\infty}_{-\infty} e^{tx} \frac{1}{2} I (-1&lt;x&lt;1) dx\)</span></p>
+<p><span class="math inline">\(= \int^1_{-1} e^{tx}\frac{1}{2} dx\)</span></p>
+<p><span class="math inline">\(= \frac{1}{2} [\frac{1}{t} e^{tx}]^1_{-1}\)</span></p>
+<p><span class="math inline">\(= \frac{1}{2} (\frac{1}{t} e^t - \frac{1}{t} e^{-t})\)</span></p>
+<p><span class="math inline">\(\star M_X^{'} (t) = \frac{-(e^t - e^{-t})}{2t^2} + \frac{e^t + e^{-t}}{2t}\)</span></p>
+</section>
+<section id="section-8" class="level1">
+<h1>2.64</h1>
+<p>확률변수들 <span class="math inline">\(X_i(1,2,\dots,n)\)</span>는 서로 독립이며, ’성공’일 확률이 <span class="math inline">\(p\)</span>인 베르누이 분포를 따른다고 하자.</p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(f(x) = p^x(1-p)^{1-x}, x=0,1\)</span></p>
+<p><span class="math inline">\(X = 1 \to f(0) = 1-p\)</span></p>
+<p><span class="math inline">\(X = 0 \to f(1) = p\)</span></p>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9">(1)</h2>
+<p>확률변수들 <span class="math inline">\(X_i\)</span>의 적률생성함수를 구하라.</p>
+<p><strong>Answer</strong></p>
+<p><span class="math inline">\(M_X(t) = E(e^{tx})\)</span></p>
+<p><span class="math inline">\(\sum^1_{x=0}e^{tx}f(x) = e^0 f(0) + e^tf(1) = 1-p+e^tp\)</span></p>
+</section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10">(2)</h2>
+<p>(1)의 결과를 이용하여 확률변수 <span class="math inline">\(X_i\)</span>의 분산을 구하라.</p>
+<p><strong>Answer</strong></p>
+<p><span class="math inline">\(M_X^{'} (t) = e^tp \to M_X^{'}(0) = p\)</span></p>
+<p><span class="math inline">\(M_X^{''} (t) = e^tp \to M_X^{''}(0) = p\)</span></p>
+<p><span class="math inline">\(var(X_i) = E(X^2) - (E(X))^2\)</span></p>
+<p><span class="math inline">\(= M_X^{''}(0) - \{ M_X^{'}(0)\}^2\)</span></p>
+<p><span class="math inline">\(= p - p^2\)</span></p>
+<p><span class="math inline">\(= p(1-p)\)</span></p>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11">(3)</h2>
+<p>(1)의 결과를 이용하여 확률변수 <span class="math inline">\(\sum^n_{i=1} X_i\)</span>의 적률생성함수를 구하라.</p>
+<p><strong>Answer</strong></p>
+<p><span class="math inline">\(M_{\sum^n_{i=1} X_i}(t) = E(e^{t\sum^n_{i=1} X_i})\)</span></p>
+<p><span class="math inline">\(= E(e^{tX_1 + tX_2 + \dots + tX_n})\)</span></p>
+<p><span class="math inline">\(= E(e^{tX_1} e^{tX_2} \dots e^{tX_n})\)</span></p>
+<p>$= E(e<sup>{tx})E(e</sup>{tX_2})E(e^{tX_n}) $</p>
+<p><span class="math inline">\(= M_{X_1}(t) M_{X_2}(t) \dots M_{X_n}(t)\)</span></p>
+<p><span class="math inline">\(= (1-p+pe^t)^n \to\)</span> 이항분포의 적률생성함수</p>
+</section>
+</section>
+<section id="section-12" class="level1">
+<h1>2.66</h1>
+<p>확률변수 <span class="math inline">\(X\)</span>의 적률생성함수가 <span class="math inline">\(M_X(t) = \frac{1}{9}e^t + \frac{1}{3}e^{3t} + \frac{5}{9}e^{5t}\)</span>로 주어졌을 떄,</p>
+<p><span class="math inline">\(\star\)</span></p>
+<ul>
+<li>이산형</li>
+</ul>
+<section id="section-13" class="level2">
+<h2 class="anchored" data-anchor-id="section-13">(1)</h2>
+<p><span class="math inline">\(P(X = 3)\)</span>을 계산하라.</p>
+<p><strong>Answer</strong></p>
+<p><span class="math inline">\(P(X=1) = \frac{1}{9}\)</span></p>
+<p><span class="math inline">\(P(X=3) = \frac{3}{9}\)</span></p>
+<p><span class="math inline">\(P(X=5) = \frac{5}{9}\)</span></p>
+</section>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14">(2)</h2>
+<p><span class="math inline">\(X\)</span>의 확륢밀도함수를 구하라.</p>
+<p><strong>Answer</strong></p>
+<p><span class="math inline">\(M_X(t) = E(e^{tx} = \sum^n_{i=1} e^{tx} f(x) = \frac{1}{9}e^t + \frac{3}{9} e^{3t} + \frac{5}{9} e^{5t}\)</span></p>
+<p><span class="math inline">\(\therefore f(x) = \frac{x}{9}\)</span></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
