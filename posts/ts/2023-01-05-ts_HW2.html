@@ -419,6 +419,17 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">2.41</a></li>
   <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">2.60</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">2.64</a>
+  <ul class="collapse">
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">(1)</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">(2)</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">(3)</a></li>
+  </ul></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">2.66</a>
+  <ul class="collapse">
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">(1)</a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">(2)</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -563,9 +574,77 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="section-7" class="level1">
 <h1>2.60</h1>
-<p>확률밀도함수가 <span class="math inline">\(f_X(X) = \frac{1}{2},-1&lt;x&lt;1\)</span>인 확률변슈우ㅏ 적률생성함수를 계산하라.</p>
+<p>확률밀도함수가 <span class="math inline">\(f_X(x) = \frac{1}{2},-1&lt;x&lt;1\)</span>인 확률변수의 적률생성함수를 계산하라.</p>
+<p><strong>Answer</strong></p>
+<p><span class="math inline">\(M_X(t) = E(e^{tx})\)</span></p>
+<p>$ = ^{}_{-} e^{tx} f_X(x) dx$</p>
+<p>$ = ^{}_{-} e^{tx} I (-1&lt;x&lt;1) dx$</p>
+<p>$ = ^1_{-1} e^{tx} dx$</p>
+<p>$ = [ e^{tx}]^1_{-1}$</p>
+<p>$ = ( e^t - e^{-t})$</p>
+<p><span class="math inline">\(\star M_X^{'} (t) = \frac{-(e^t - e^{-t})}{2t^2} + \frac{e^t + e^{-t}}{2t}\)</span></p>
+</section>
+<section id="section-8" class="level1">
+<h1>2.64</h1>
+<p>확률변수들 <span class="math inline">\(X_i(1,2,\dots,n)\)</span>는 서로 독립이며, ’성공’일 확률이 <span class="math inline">\(p\)</span>인 베르누이 분포를 따른다고 하자.</p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(f(x) = p^x(1-p)^{1-x}, x=0,1\)</span></p>
+<p><span class="math inline">\(X = 1 \to f(0) = 1-p\)</span></p>
+<p><span class="math inline">\(X = 0 \to f(1) = p\)</span></p>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9">(1)</h2>
+<p>확률변수들 <span class="math inline">\(X_i\)</span>의 적률생성함수를 구하라.</p>
+<p><strong>Answer</strong></p>
+<p><span class="math inline">\(M_X(t) = E(e^{tx})\)</span></p>
+<p><span class="math inline">\(\sum^1_{x=0}e^{tx}f(x) = e^0 f(0) + e^tf(1) = 1-p+e^tp\)</span></p>
+</section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10">(2)</h2>
+<p>(1)의 결과를 이용하여 확률변수 <span class="math inline">\(X_i\)</span>의 분산을 구하라.</p>
+<p><strong>Answer</strong></p>
+<p><span class="math inline">\(M_X^{'} (t) = e^tp \to M_X^{'}(0) = p\)</span></p>
+<p><span class="math inline">\(M_X^{''} (t) = e^tp \to M_X^{''}(0) = p\)</span></p>
+<p><span class="math inline">\(var(X_i) = E(X^2) - (E(X))^2\)</span></p>
+<p>$ = M_X^{’’}(0) - { M_X<sup>{’}(0)}</sup>2$</p>
+<p>$ = p - p^2$</p>
+<p>$ = p(1-p)$</p>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11">(3)</h2>
+<p>(1)의 결과를 이용하여 확률변수 <span class="math inline">\(\sum^n_{i=1} X_i\)</span>의 적률생성함수를 구하라.</p>
+<p><strong>Answer</strong></p>
+<p><span class="math inline">\(M_{\sum^n_{i=1} X_i}(t) = E(e^{t\sum^n_{i=1} X_i})\)</span></p>
+<p>$ = E(e^{tX_1 + tX_2 + + tX_n})$</p>
+<p>$ = E(e^{tX_1} e^{tX_2} e^{tX_n})$</p>
+<p>$ = E(e<sup>{tx})E(e</sup>{tX_2})E(e^{tX_n}) $</p>
+<p>$ = M_{X_1}(t) M_{X_2}(t) M_{X_n}(t)$</p>
+<p>$ = (1-p+pe<sup>t)</sup>n $ 이항분포의 적률생성함수</p>
+</section>
+</section>
+<section id="section-12" class="level1">
+<h1>2.66</h1>
+<p>확률변수 <span class="math inline">\(X\)</span>의 적률생성함수가 <span class="math inline">\(M_X(t) = \frac{1}{9}e^t + \frac{1}{3}e^{3t} + \frac{5}{9}e^{5t}\)</span>로 주어졌을 떄,</p>
+<p><span class="math inline">\(\star\)</span></p>
+<ul>
+<li>이산형</li>
+</ul>
+<section id="section-13" class="level2">
+<h2 class="anchored" data-anchor-id="section-13">(1)</h2>
+<p><span class="math inline">\(P(X = 3)\)</span>을 계산하라.</p>
+<p><strong>Answer</strong></p>
+<p><span class="math inline">\(P(X=1) = \frac{1}{9}\)</span></p>
+<p><span class="math inline">\(P(X=3) = \frac{3}{9}\)</span></p>
+<p><span class="math inline">\(P(X=5) = \frac{5}{9}\)</span></p>
+</section>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14">(2)</h2>
+<p><span class="math inline">\(X\)</span>의 확륢밀도함수를 구하라.</p>
+<p><strong>Answer</strong></p>
+<p><span class="math inline">\(M_X(t) = E(e^{tx} = \sum^n_{i=1} e^{tx} f(x) = \frac{1}{9}e^t + \frac{3}{9} e^{3t} + \frac{5}{9} e^{5t}\)</span></p>
+<p><span class="math inline">\(\therefore f(x) = \frac{x}{9}\)</span></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
