@@ -395,6 +395,11 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-09-ts_HW4.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW4</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ts/2022-12-31-ts_1.html" class="sidebar-item-text sidebar-link">확률변수와 확률분포</a>
   </div>
 </li>
@@ -411,7 +416,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#수업-과제" id="toc-수업-과제" class="nav-link active" data-scroll-target="#수업-과제">수업 과제</a></li>
+  <li><a href="#수업-과제-1." id="toc-수업-과제-1." class="nav-link active" data-scroll-target="#수업-과제-1.">수업 과제 1.</a></li>
+  <li><a href="#수업과제-2." id="toc-수업과제-2." class="nav-link" data-scroll-target="#수업과제-2.">수업과제 2.</a></li>
+  <li><a href="#수업-과제-3." id="toc-수업-과제-3." class="nav-link" data-scroll-target="#수업-과제-3.">수업 과제 3.</a></li>
+  <li><a href="#수업과제-4." id="toc-수업과제-4." class="nav-link" data-scroll-target="#수업과제-4.">수업과제 4.</a></li>
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">19.</a>
   <ul class="collapse">
   <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">(1)</a></li>
@@ -449,8 +457,8 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>자주 사용도디는 확률분포</p>
 </blockquote>
-<section id="수업-과제" class="level2">
-<h2 class="anchored" data-anchor-id="수업-과제">수업 과제</h2>
+<section id="수업-과제-1." class="level2">
+<h2 class="anchored" data-anchor-id="수업-과제-1.">수업 과제 1.</h2>
 <p>기하분포: <span class="math inline">\(X \sim Geometric(p)\)</span></p>
 <p><span class="math inline">\(X=\)</span>서로 독립인 베르누이 시행을 반복할 때 첫번째 성공이 나올 때까지 시행횟수</p>
 <p><span class="math display">\[f(x) = (1-p)^{x-1}p, x=1,2,\dots\]</span></p>
@@ -472,6 +480,58 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(= pe^t(1-e^t+pe^t)^{-3}(1+e^t-pe^t)\)</span></p>
 <p><span class="math inline">\(M^{''}_X(0) = E(X^2)=p(1-1+p)^{-3}(1+1-p)=\frac{2-p}{p^2} = \frac{1+q}{p^2}\)</span></p>
 <p><span class="math inline">\(var(X) = E(X^2) - (E(X))^2 = \frac{1+q}{p^2} - \frac{1}{p^2} = \frac{q}{p^2}\)</span></p>
+</section>
+<section id="수업과제-2." class="level2">
+<h2 class="anchored" data-anchor-id="수업과제-2.">수업과제 2.</h2>
+<p><span class="math inline">\(\Gamma(\frac{1}{2}) = \sqrt{\pi}\)</span> 증명</p>
+<p><span class="math inline">\(\Gamma(k) = \int^{\infty}_{0} t^{k-1} e^{-t} dt\)</span></p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\Gamma(\frac{1}{2}) = \int^{\infty}_{0} x^{\frac{1}{2} - 1} e^{-x} dx\)</span></p>
+<p>변수 변환 <span class="math inline">\(y = x^{\frac{1}{2}}\)</span>, <span class="math inline">\(x = y^2\)</span>, <span class="math inline">\(dx = 2y dy\)</span>, <span class="math inline">\(y&gt;0\)</span></p>
+<p><span class="math inline">\(= \int^{\infty}_0 \frac{1}{y} e^{-y^2} 2y dy = 2 \int^{\infty}_0- e^{-y^2} dy\)</span></p>
+<p>변수 변환 <span class="math inline">\(u = r\cos \theta\)</span>, <span class="math inline">\(v=r \sin \theta\)</span>, <span class="math inline">\(J = \begin{bmatrix} \cos \theta &amp; r \sin \theta \\ \sin \theta &amp; r \cos \theta \end{bmatrix} = r\)</span>,</p>
+<p><span class="math inline">\(0&lt;u&lt;\infty \to 0&lt;r&lt;\infty\)</span>,</p>
+<p><span class="math inline">\(0&lt;v&lt;\infty \to 0&lt; \theta &lt; \frac{\pi}{2}\)</span></p>
+<p><span class="math inline">\(\Gamma \{ (\frac{1}{2}) \}^2 = 4\int^{\infty}_0 e^{-u^2} du \int^{\infty}_0 e^{-v^2} dv = 4\int^{\infty}_0 \int^{\infty}_0 e^{-(u^2 + v^2)} du dv\)</span></p>
+<p><span class="math inline">\(= 4\int^{\infty}_0 \int^{\frac{\pi}{2}}_0 e^{-r^2} r d \theta dr\)</span></p>
+<p><span class="math inline">\(= 4 \frac{\pi}{2} \int^{\infty}_0 e^{-r^2} r dr = 2\pi \frac{1}{2} e^{-r^2} |^{\infty}_0 = \pi\)</span></p>
+<p><span class="math inline">\(\to \Gamma(\frac{1}{2}) = \sqrt{\pi}\)</span></p>
+</section>
+<section id="수업-과제-3." class="level2">
+<h2 class="anchored" data-anchor-id="수업-과제-3.">수업 과제 3.</h2>
+<p><span class="math inline">\(P(X \le t) = 1-P(X&gt;t) = 1-P(n\text{번쨰 사건이 발생하는 시간}&gt;t) = 1-P([0,t) \text{사이에 발생하는 사건의 수} \le n-1)\)</span></p>
+<p><strong>answer</strong></p>
+<p>cdf : <span class="math inline">\(= 1-\sum^{n-1}_{y=0} \frac{e^{-\lambda t}(\lambda t)^y} {y!}\)</span></p>
+<p><span class="math inline">\(f(x) = \frac{1}{\lambda} exp(-\frac{x}{\lambda})\)</span></p>
+<p>pdf : <span class="math inline">\(=(1-\sum^{n-1}_{y=0}\frac{e^{-\lambda t} (\lambda t)^y}{y!} )\frac{d}{dy}\)</span></p>
+<p><span class="math inline">\(= \frac{d}{dy}(1-e^{-\lambda t} -\sum^{n-1}_{y=1} \frac{e^{-\lambda t}(\lambda t)^y}{y!})\)</span></p>
+<p><span class="math inline">\(= \lambda e^{-\lambda t} - \sum^{n-1}_{y=1} \frac{1}{y!} (t(\lambda t)^{y-1} \lambda e^{-\lambda t} - \lambda (\lambda t)^y e^{-\lambda t})\)</span></p>
+<p><span class="math inline">\(= \lambda e^{-\lambda t} - \lambda e^{-\lambda t} \sum^{n-1}_{y=1} \frac{1}{y!} (y (\lambda t)^{y-1} - (\lambda t)^y)\)</span></p>
+<p><span class="math inline">\(= \lambda e^{-\lambda t} + \lambda e^{-\lambda t} \sum^{n-1}_{y=1} (\frac{(\lambda t)^{y-1}}{(y-1)!} - \frac{(\lambda t)^{y-1}}{(y-1)!})\)</span></p>
+<p><span class="math inline">\(= \lambda e^{-\lambda t} + \lambda e^{-\lambda t} (\lambda t - 1 + \frac{\lambda t^2}{2!} - \lambda t + \dots \frac{\lambda t^2}{3!} - \frac{\lambda t^2}{2!} + \dots + \frac{(\lambda t)^{y-1}}{(y-1)!} - \frac{(\lambda t)^{n-2}}{(y-2)!}\)</span></p>
+<p><span class="math inline">\(= \lambda e^{-\lambda t} - \lambda e^{-\lambda t}(\frac{(\lambda t)^{y-1}}{(y-1)!} - 1)\)</span></p>
+<p><span class="math inline">\(= \frac{\lambda}{\Gamma(y)}(\lambda t)^{y-1} e^{-\lambda t} \dots\)</span></p>
+<p><span class="math inline">\(\star \Gamma(t) = (y-1)!\)</span></p>
+<p><span class="math inline">\(= \frac{t^{y-1} e^{-\lambda t}}{\lambda^{-y} \Gamma(y)}\)</span></p>
+<p><span class="math inline">\(y\)</span>에 <span class="math inline">\(\alpha\)</span>를 놓으면</p>
+<p><span class="math inline">\(\therefore f(x) = \frac{t^{\alpha -1}e^{-\lambda t}}{\lambda^{-\alpha}\Gamma(\alpha)}\)</span></p>
+</section>
+<section id="수업과제-4." class="level2">
+<h2 class="anchored" data-anchor-id="수업과제-4.">수업과제 4.</h2>
+<p><span class="math inline">\(E(S^2) = \sigma^2\)</span> 증명</p>
+<p><strong>answer</strong></p>
+<p>표본분산 <span class="math inline">\(S^2 = \frac{1}{n-1}\sum^n_{i=1} (X_i - \bar{X})^2\)</span></p>
+<p><span class="math inline">\(E(S^2) = E(\frac{1}{n-1} \sum^n_{i=1}(X_i - \bar{X})^2))\)</span></p>
+<p><span class="math inline">\(= \frac{1}{n-1} E(\sum^n_{i=1}(X_i - \bar{X})^2)\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(\sum^n_{i=1}(X_i - \mu)^2 = \sum^n_{i=1}(X_i - \bar{X}_n + \bar{X}_n -\mu)^2\)</span></p>
+<p><span class="math inline">\(\sum^n_{i=1}[(X_i - \bar{X}_n)^2 + 2(X_i - \bar{X}_n(\bar{X}_n - \mu) + (\bar{X}_n - \mu)^2]\)</span></p>
+<p><span class="math inline">\(\sum^n_{i=1}(X_i - \bar{X}_n)^2 + n(\bar{X}_n - \mu)^2\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(= \frac{1}{n-1} E(\sum^n_{i=1}(X_i - \mu)^2 - n(\bar{X}_n - \mu)^2)\)</span></p>
+<p><span class="math inline">\(= \frac{1}{n-1}(\sum^n_{i=1} E(X_i-\mu)^2 - nE(\bar{X}_n - \mu)^2)\)</span></p>
+<p><span class="math inline">\(= \frac{1}{n-1}(n \sigma^2 - n \frac{\sigma^2}{n})\)</span></p>
+<p><span class="math inline">\(= \sigma^2\)</span></p>
 </section>
 <section id="section" class="level2">
 <h2 class="anchored" data-anchor-id="section">19.</h2>
@@ -602,12 +662,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="section-16" class="level2">
 <h2 class="anchored" data-anchor-id="section-16">68.</h2>
 <p>확률변수 <span class="math inline">\(X\)</span>가 <span class="math inline">\(GAM(k,\theta)\)</span>를 따르면 임의의 상수 <span class="math inline">\(c\)</span>에 대해 <span class="math inline">\(cX\)</span>는 <span class="math inline">\(GAM(k,c\theta)\)</span>를 따름을 보여라.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="2023-01-05-ts_HW3_files/figure-html/77a79def-b1df-4e56-9756-8a780294a44a-1-e94472f8-eb5b-499b-bf92-2571260ff436.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
-</figure>
-</div>
+<p><strong>answer</strong></p>
 
 
 </section>
