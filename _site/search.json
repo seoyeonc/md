@@ -1491,6 +1491,48 @@
     "text": "잡담4: 우린 뭘 해야 할까 (학석사 레벨에서..)\n- 능력1: 코드이해력 (= 구현능력 = 코드 베끼는 능력)\n\n이미지분석? 해봤음. 텍스트자료? 해봤음. 시계열? 해봤음. 등등등등? 다 해본적 있음. 어떤 원리인지 정확하게 몰라도 다 해본적 있고 그래서 일할 수 있음!!\n돌아가는 코드 최대한 많이 모아놓으세요. torch, fastai, pytorch lightning, tensorflow, keras 등등\n\n- 능력2: 최신트렌드를 파악할 수 있는 힘 (= 논문이해력)\n\n공부, 공부, 공부… A to Z 까지 수식 다 뜯어보고 코드 다 뜯어보면서 집요하게 공부해야함. (LSTM에서 했던것 처럼!) 물론 차근차근 알려주면 수업이 있다면 좋겠지 그런데 보통은 적당히 두리뭉실하게 설명하지 detail 하게 설명하는 수업은 잘 없음. (지루하거든요)\n수식이나 코드중 하나라도 볼 줄 모르면 능력2를 얻는것 자체가 불가능."
   },
   {
+    "objectID": "posts/ts/2023-01-14-ts_HW6.html",
+    "href": "posts/ts/2023-01-14-ts_HW6.html",
+    "title": "Theoritical Statistics HW6",
+    "section": "",
+    "text": "4장 모수의 추정"
+  },
+  {
+    "objectID": "posts/ts/2023-01-14-ts_HW6.html#section-6",
+    "href": "posts/ts/2023-01-14-ts_HW6.html#section-6",
+    "title": "Theoritical Statistics HW6",
+    "section": "(1)",
+    "text": "(1)\n\\(T_1(X)\\)와 \\(T_2(X)\\)의 비평향성을 점검하라.\nanswer\n\\(E(T_1(X)) = E(X) = P \\to T_1(X)\\) 비편향성 만족\n\\(E(T_2(X)) = E(\\frac{1}{2}) = \\frac{1}{2} \\to T_2(X)\\) 비편향성 불만족"
+  },
+  {
+    "objectID": "posts/ts/2023-01-14-ts_HW6.html#section-7",
+    "href": "posts/ts/2023-01-14-ts_HW6.html#section-7",
+    "title": "Theoritical Statistics HW6",
+    "section": "(2)",
+    "text": "(2)\n\\(T_1(X)\\)와 \\(T_2(X)\\)의 평균제곱오차를 비교하라.\nanswer\n\\(MSE(T_1(X)) = MSE(X)\\)\n\\(= E(X-P)^2 = E(X^2 - 2PX + P^2)\\)\n\\(= P(1-P) + P^2 -2P^2 + P^2 = P-P^2+P^2-2P^2+P^2 = P-P^2 = P(1-P)\\)\n\\(MSE(T_2(X)) = MSE(\\frac{1}{2} = E(\\frac{1}{2} - P)^2 = (\\frac{1}{2}-P)^2\\)\n\\(\\star\\)\n\\(P-P^2 = \\frac{1}{4}-2P+P^2\\)\n\\(2P^2 -3P+\\frac{1}{4} = 0\\)\n\\(P = \\frac{3 \\pm \\sqrt{9-1}}{4} = \\frac{3 \\pm \\sqrt{7}}{4}\\)\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "posts/ts/2023-01-14-ts_HW6.html#section-9",
+    "href": "posts/ts/2023-01-14-ts_HW6.html#section-9",
+    "title": "Theoritical Statistics HW6",
+    "section": "(1)",
+    "text": "(1)\n\\(\\hat{\\lambda}_1\\)과 \\(\\hat{\\lambda}_2\\)의 분산을 구하라.\nanswer\n\\(E(X) = \\lambda \\to\\), 비편향추정량이다.\n\\(Var(X) = \\lambda^2\\)\n\\(E(\\hat{\\lambda_2}) = E(\\bar{X}_n) = \\lambda\\), \\(var(\\bar{X}_n) = \\frac{\\lambda^2}{n}\\)\n\\(E(\\hat{\\lambda}_2)= E(\\frac{n\\bar{X}_n}{n+1}) = \\frac{n}{n+1}E(\\bar{X}_n) = \\frac{n}{n+1}\\lambda \\to\\)비편향 추정량이 아니다.\n\\(var(\\frac{n}{n+1}\\bar{X}_n) = E(\\frac{n}{n+1}\\bar{X} - \\lambda)^2\\)\n\\(= E(\\frac{n}{n+1} \\bar{X} - \\frac{n}{n+1} \\lambda + \\frac{n}{n+1}\\lambda -\\lambda)^2\\)\n\\(= E(\\frac{n}{n+1}(\\bar{X}-\\lambda) - \\frac{1}{n+1}\\lambda)^2\\)\n\\(= (\\frac{n}{n+1})^2E(\\bar{X} - \\lambda)^2 + \\frac{1}{(n+1)^2}\\lambda^2 - \\frac{2n}{(n+1)^2}\\lambda(\\bar{X} - \\lambda)\\)\n\\(= (\\frac{n}{n+1})^2 \\frac{\\lambda^2}{n} + \\frac{1}{(n+1)^2}\\lambda^2\\)\n\\(= \\frac{n}{(n+1)^2}\\lambda^2 + \\frac{1}{(n+1)^2}\\lambda^2\\)\n\\(= \\frac{1}{n+1}\\lambda^2\\)"
+  },
+  {
+    "objectID": "posts/ts/2023-01-14-ts_HW6.html#section-10",
+    "href": "posts/ts/2023-01-14-ts_HW6.html#section-10",
+    "title": "Theoritical Statistics HW6",
+    "section": "(2)",
+    "text": "(2)\n\\(\\hat{\\lambda}_1\\)과 \\(\\hat{\\lambda}_2\\)의 평균제곱오차를 구하라.\nanswer\n\\(MSE(\\hat{\\lambda}_1) = E(\\hat{\\lambda}_1 - \\lambda)^2 = var(\\hat{\\lambda}_1) = \\frac{\\lambda^2}{n}\\)\n\\(\\star\\) 비편향추정량이라 분산과 일치하는 \\(\\hat{\\lambda}_1\\)\n\\(MSE(\\hat{\\lambda}_2) = E(\\hat{\\lambda}_2 - \\lambda)^2 = var(\\hat{\\lambda}_2) + (bias(\\hat{\\lambda}_2))^2\\)\n\\(\\star\\) 비편향추정량이 아니라 bias까지 고려해줘야 하는 \\(\\hat{\\lambda}_2\\)\n\\(var(\\hat{\\lambda}_2) = \\frac{1}{n+1}\\lambda^2\\)\n\\(bias(\\hat{\\lambda}_2) = E(\\hat{\\lambda}_2) - \\lambda = \\frac[n+{n+1}\\lambda - \\lambda = -\\frac{1}{n+1}\\lambda\\)\n\\(\\star var(\\hat{\\lambda}_2) + (bias(\\hat{\\lambda}_2))^2\\)\n\\(= \\frac{1}{n+1}\\lambda^2 + \\frac{1}{(n+1)^2}\\lambda^2 = \\frac{n+2}{(n+1)^2\\lambda^2}\\)"
+  },
+  {
+    "objectID": "posts/ts/2023-01-14-ts_Mid term.html",
+    "href": "posts/ts/2023-01-14-ts_Mid term.html",
+    "title": "Theoritical Statistics Mid term",
+    "section": "",
+    "text": "확률변수의 극한"
+  },
+  {
     "objectID": "posts/ts/2023-01-12-ts_HW5.html",
     "href": "posts/ts/2023-01-12-ts_HW5.html",
     "title": "Theoritical Statistics HW5",
@@ -1502,7 +1544,7 @@
     "href": "posts/ts/2023-01-12-ts_HW5.html#section-3",
     "title": "Theoritical Statistics HW5",
     "section": "(1)",
-    "text": "(1)\n\\(\\sqrt{n}(\\bar{X}_2^2 - \\mu^2) \\xrightarrow[]{d} N(0,4 \\mu^2 \\sigma^2)\\)임을 보여라, 단 \\(\\mu \\neq 0\\)\nanswer\n델타 방법 사용\n\\(\\sqrt{n}(g(X_n) - g(\\mu) ) \\xrightarrow[]{d} N(0,\\sigma^2(g'(\\mu)^2)\\)\n\\(g(X_n) = \\bar{X}_n^2\\), \\(g'(X_n) = 2\\bar{X}_n\\)\n\\(g(\\mu) = \\mu^2\\), \\((g'(\\mu))^2 = 4\\mu^2\\)\n\\(\\sqrt{n}(\\bar{X}_n^2 - \\mu^2) \\xrightarrow[]{d} N(0,4\\mu^2 \\sigma^2)\\)"
+    "text": "(1)\n\\(\\sqrt{n}(\\bar{X}_n^2 - \\mu^2) \\xrightarrow[]{d} N(0,4 \\mu^2 \\sigma^2)\\)임을 보여라, 단 \\(\\mu \\neq 0\\)\nanswer\n델타 방법 사용\n\\(\\sqrt{n}(g(X_n) - g(\\mu) ) \\xrightarrow[]{d} N(0,\\sigma^2(g'(\\mu)^2)\\)\n\\(g(X_n) = \\bar{X}_n^2\\), \\(g'(X_n) = 2\\bar{X}_n\\)\n\\(g(\\mu) = \\mu^2\\), \\((g'(\\mu))^2 = 4\\mu^2\\)\n\\(\\sqrt{n}(\\bar{X}_n^2 - \\mu^2) \\xrightarrow[]{d} N(0,4\\mu^2 \\sigma^2)\\)"
   },
   {
     "objectID": "posts/ts/2023-01-12-ts_HW5.html#section-4",
@@ -2202,7 +2244,7 @@
     "href": "index.html",
     "title": ";)",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nJan 12, 2023\n\n\nTheoritical Statistics HW5\n\n\nSEOYEON CHOI\n\n\n\n\nJan 11, 2023\n\n\nChapter 04 구현\n\n\nSEOYEON CHOI\n\n\n\n\nJan 11, 2023\n\n\nTheoritical Statistics HW4\n\n\nSEOYEON CHOI\n\n\n\n\nJan 8, 2023\n\n\nTheoritical Statistics HW3\n\n\nSEOYEON CHOI\n\n\n\n\nJan 6, 2023\n\n\nTheoritical Statistics HW2\n\n\nSEOYEON CHOI\n\n\n\n\nJan 5, 2023\n\n\nTheoritical Statistics HW1\n\n\nSEOYEON CHOI\n\n\n\n\nJan 1, 2023\n\n\nChapter 03 Greedy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 31, 2022\n\n\n확률변수와 확률분포\n\n\nSEOYEON CHOI\n\n\n\n\nDec 28, 2022\n\n\nCoding Test\n\n\nSEOYEON CHOI\n\n\n\n\nDec 27, 2022\n\n\nTheoritical Statistics\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-1: 추천시스템\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-2: 생성모형(GAN)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-3: 딥러닝의 기초 (5)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 13, 2022\n\n\nFinalterm\n\n\nSEOYEON CHOI\n\n\n\n\nDec 11, 2022\n\n\n고급회귀분석 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nstudy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRNN (13주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRegression HW 4\n\n\nSEOYEON CHOI\n\n\n\n\nDec 7, 2022\n\n\nA1: 깊은복사와 얕은복사 (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 5, 2022\n\n\n고급회귀분석 실습 CH11\n\n\nSEOYEON CHOI\n\n\n\n\nNov 30, 2022\n\n\nRNN (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 29, 2022\n\n\nDeep Learning final example\n\n\nSEOYEON CHOI\n\n\n\n\nNov 28, 2022\n\n\n고급회귀분석 실습 CH13\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRNN (11주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRegression HW 3\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\n고급회귀분석 실습 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nNov 14, 2022\n\n\n고급회귀분석 실습 CH06, CH07\n\n\nSEOYEON CHOI\n\n\n\n\nNov 9, 2022\n\n\nRNN (10주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nMidterm\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nRNN (9주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 1\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 23, 2022\n\n\nRegression HW 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 19, 2022\n\n\nCNN (7주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 12, 2022\n\n\nDNN (6주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nHomework\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nDNN (5주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 29, 2022\n\n\nDNN (4주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nDNN (3주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\n고급회귀분석 실습 CH03, CH04\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nRegression HW 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 19, 2022\n\n\nAssignment 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 14, 2022\n\n\nDNN (2주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nIntro\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nDNN (1주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nSpecial Topics in Machine Learning\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nAdvanced Regression Analysis\n\n\nSEOYEON CHOI\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nJan 14, 2023\n\n\nTheoritical Statistics HW6\n\n\nSEOYEON CHOI\n\n\n\n\nJan 14, 2023\n\n\nTheoritical Statistics Mid term\n\n\nSEOYEON CHOI\n\n\n\n\nJan 12, 2023\n\n\nTheoritical Statistics HW5\n\n\nSEOYEON CHOI\n\n\n\n\nJan 11, 2023\n\n\nChapter 04 구현\n\n\nSEOYEON CHOI\n\n\n\n\nJan 11, 2023\n\n\nTheoritical Statistics HW4\n\n\nSEOYEON CHOI\n\n\n\n\nJan 8, 2023\n\n\nTheoritical Statistics HW3\n\n\nSEOYEON CHOI\n\n\n\n\nJan 6, 2023\n\n\nTheoritical Statistics HW2\n\n\nSEOYEON CHOI\n\n\n\n\nJan 5, 2023\n\n\nTheoritical Statistics HW1\n\n\nSEOYEON CHOI\n\n\n\n\nJan 1, 2023\n\n\nChapter 03 Greedy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 31, 2022\n\n\n확률변수와 확률분포\n\n\nSEOYEON CHOI\n\n\n\n\nDec 28, 2022\n\n\nCoding Test\n\n\nSEOYEON CHOI\n\n\n\n\nDec 27, 2022\n\n\nTheoritical Statistics\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-1: 추천시스템\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-2: 생성모형(GAN)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-3: 딥러닝의 기초 (5)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 13, 2022\n\n\nFinalterm\n\n\nSEOYEON CHOI\n\n\n\n\nDec 11, 2022\n\n\n고급회귀분석 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nstudy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRNN (13주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRegression HW 4\n\n\nSEOYEON CHOI\n\n\n\n\nDec 7, 2022\n\n\nA1: 깊은복사와 얕은복사 (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 5, 2022\n\n\n고급회귀분석 실습 CH11\n\n\nSEOYEON CHOI\n\n\n\n\nNov 30, 2022\n\n\nRNN (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 29, 2022\n\n\nDeep Learning final example\n\n\nSEOYEON CHOI\n\n\n\n\nNov 28, 2022\n\n\n고급회귀분석 실습 CH13\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRNN (11주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRegression HW 3\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\n고급회귀분석 실습 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nNov 14, 2022\n\n\n고급회귀분석 실습 CH06, CH07\n\n\nSEOYEON CHOI\n\n\n\n\nNov 9, 2022\n\n\nRNN (10주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nMidterm\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nRNN (9주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 1\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 23, 2022\n\n\nRegression HW 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 19, 2022\n\n\nCNN (7주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 12, 2022\n\n\nDNN (6주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nHomework\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nDNN (5주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 29, 2022\n\n\nDNN (4주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nDNN (3주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\n고급회귀분석 실습 CH03, CH04\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nRegression HW 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 19, 2022\n\n\nAssignment 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 14, 2022\n\n\nDNN (2주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nIntro\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nDNN (1주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nSpecial Topics in Machine Learning\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nAdvanced Regression Analysis\n\n\nSEOYEON CHOI\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
