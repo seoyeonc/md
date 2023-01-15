@@ -1572,42 +1572,42 @@
     "href": "posts/ts/2023-01-14-ts_Mid term.html#a-1",
     "title": "Theoritical Statistics Mid term",
     "section": "(a)",
-    "text": "(a)\n\\(\\sqrt{n}(\\bar{X}^2_n - \\lambda^2)\\)의 극한 분포를 구하시오.\nanswer\nDelta Method 사용\n\\(\\to N(0,4\\lambda^3)\\)"
+    "text": "(a)\n\\(\\sqrt{n}(\\bar{X}^2_n - \\lambda^2)\\)의 극한 분포를 구하시오.\nanswer\nDelta Method\n$({X}^2_n - ^2) N(0,422) $ 단, \\(\\mu \\neq 0\\)\n\\(\\mu = \\lambda\\), \\(\\sigma^2 = \\lambda\\)\n\\(\\sqrt{n}(\\bar{X}^2_n - \\lambda^2) \\xrightarrow[]{d} N(0,4\\lambda^3)\\)"
   },
   {
     "objectID": "posts/ts/2023-01-14-ts_Mid term.html#b-1",
     "href": "posts/ts/2023-01-14-ts_Mid term.html#b-1",
     "title": "Theoritical Statistics Mid term",
     "section": "(b)",
-    "text": "(b)\n\\(E(\\sum^n_{i=1}a_i X_i) = \\lambda\\)가 되기 위한 \\(a_i\\)의 조건은 무엇인가?\nanswer\n\\(E(\\sum^n_{i=1}X_i) = \\lambda\\)\n\\(\\sum^n_{i=1} a_i= 1\\)"
+    "text": "(b)\n\\(E(\\sum^n_{i=1}a_i X_i) = \\lambda\\)가 되기 위한 \\(a_i\\)의 조건은 무엇인가?\nanswer\n\\(E(\\sum^n_{i=1}a_iX_i) = \\lambda\\)\n\\(= E(a_1X_1 + a_2X_2 + \\dots a_nX_n) = a_1E(X_1) + a_2E(X_2) + \\dots + a_nE(X_n)\\)\n\\(= a_1\\lambda + a_2\\lambda + \\dots + a_n\\lambda = \\sum^n_{i=1}a_i \\lambda\\)\n\\(\\therefore \\sum^n_{i=1} a_i= 1\\)이어야 한다."
   },
   {
     "objectID": "posts/ts/2023-01-14-ts_Mid term.html#c",
     "href": "posts/ts/2023-01-14-ts_Mid term.html#c",
     "title": "Theoritical Statistics Mid term",
     "section": "(c)",
-    "text": "(c)\n\\(\\sum^n_{i=1}a_iX_i\\)의 분산을 구하시오.\nanswer\n\\(Var(\\sum^n_{i=1}a_iX_i)\\)\n\\(= a n\\lambda\\)"
+    "text": "(c)\n\\(\\sum^n_{i=1}a_iX_i\\)의 분산을 구하시오.\nanswer\n\\(Var(\\sum^n_{i=1}a_iX_i) = Var(a_1X_1 + a_2X_2 + \\dots + a_n X_n)\\)\n\\(= a_1^2\\lambda + a_2^2\\lambda + \\dots + a_n^2\\lambda = \\sum^n_{i=1} a_i \\lambda\\)"
   },
   {
     "objectID": "posts/ts/2023-01-14-ts_Mid term.html#a-2",
     "href": "posts/ts/2023-01-14-ts_Mid term.html#a-2",
     "title": "Theoritical Statistics Mid term",
     "section": "(a)",
-    "text": "(a)\n이 랜덤표본의 결합확률밀도함수를 기술하시오.\nanswer\n\\((1-p)^{4-X_1-X_2-X_3-X_4} p^{X_1+X_2+X_3+X_4}\\)"
+    "text": "(a)\n이 랜덤표본의 결합확률밀도함수를 기술하시오.\nanswer\n\\(f(X_1)f(X_2)f(X_3)f(X_4)\\)\n\\(= (1-p)^{1-X_1}p^{X_1}(1-p)^{1-X_2}p^{X_2}(1-p)^{1-X_3}p^{X_3}(1-p)^{1-X_4}p^{X_4}\\)\n\\(= (1-p)^{4-X_1-X_2-X_3-X_4} p^{X_1+X_2+X_3+X_4}\\)"
   },
   {
     "objectID": "posts/ts/2023-01-14-ts_Mid term.html#b-2",
     "href": "posts/ts/2023-01-14-ts_Mid term.html#b-2",
     "title": "Theoritical Statistics Mid term",
     "section": "(b)",
-    "text": "(b)\n\\(X_1(1-X_2)\\)의 기댓값을 구하시오.\nanswer\n\\(p(1-p)\\)"
+    "text": "(b)\n\\(X_1(1-X_2)\\)의 기댓값을 구하시오.\nanswer\n\\(E(X_1(1-X_2))\\)\n\\(= E(X_1 - X_1X_2) = E(X_1) - E(X_1)E(X_2)\\)\n\\(= p - p^2 = p(1-p)\\)"
   },
   {
     "objectID": "posts/ts/2023-01-14-ts_Mid term.html#c-1",
     "href": "posts/ts/2023-01-14-ts_Mid term.html#c-1",
     "title": "Theoritical Statistics Mid term",
     "section": "(c)",
-    "text": "(c)\n\\(E(X_1(1-X_2)|\\sum^4_{i=1}X_i = t]\\)을 구하시오.\nanswer\n\\(\\frac{1-p}{4}\\)"
+    "text": "(c)\n\\(E[X_1(1-X_2)|\\sum^4_{i=1}X_i = t]\\)을 구하시오.\nanswer\n\\(\\frac{p(1-p)}{4p} = \\frac{1-p}{4}\\)"
   },
   {
     "objectID": "posts/ts/2023-01-14-ts_Mid term.html#d",

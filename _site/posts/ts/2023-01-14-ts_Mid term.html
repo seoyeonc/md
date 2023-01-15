@@ -586,22 +586,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="a-1">(a)</h2>
 <p><span class="math inline">\(\sqrt{n}(\bar{X}^2_n - \lambda^2)\)</span>의 극한 분포를 구하시오.</p>
 <p><strong>answer</strong></p>
-<p>Delta Method 사용</p>
-<p><span class="math inline">\(\to N(0,4\lambda^3)\)</span></p>
+<p>Delta Method</p>
+<p>$({X}^2_n - ^2) N(0,4<sup>2</sup>2) $ 단, <span class="math inline">\(\mu \neq 0\)</span></p>
+<p><span class="math inline">\(\mu = \lambda\)</span>, <span class="math inline">\(\sigma^2 = \lambda\)</span></p>
+<p><span class="math inline">\(\sqrt{n}(\bar{X}^2_n - \lambda^2) \xrightarrow[]{d} N(0,4\lambda^3)\)</span></p>
 </section>
 <section id="b-1" class="level2">
 <h2 class="anchored" data-anchor-id="b-1">(b)</h2>
 <p><span class="math inline">\(E(\sum^n_{i=1}a_i X_i) = \lambda\)</span>가 되기 위한 <span class="math inline">\(a_i\)</span>의 조건은 무엇인가?</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(E(\sum^n_{i=1}X_i) = \lambda\)</span></p>
-<p><span class="math inline">\(\sum^n_{i=1} a_i= 1\)</span></p>
+<p><span class="math inline">\(E(\sum^n_{i=1}a_iX_i) = \lambda\)</span></p>
+<p><span class="math inline">\(= E(a_1X_1 + a_2X_2 + \dots a_nX_n) = a_1E(X_1) + a_2E(X_2) + \dots + a_nE(X_n)\)</span></p>
+<p><span class="math inline">\(= a_1\lambda + a_2\lambda + \dots + a_n\lambda = \sum^n_{i=1}a_i \lambda\)</span></p>
+<p><span class="math inline">\(\therefore \sum^n_{i=1} a_i= 1\)</span>이어야 한다.</p>
 </section>
 <section id="c" class="level2">
 <h2 class="anchored" data-anchor-id="c">(c)</h2>
 <p><span class="math inline">\(\sum^n_{i=1}a_iX_i\)</span>의 분산을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(Var(\sum^n_{i=1}a_iX_i)\)</span></p>
-<p><span class="math inline">\(= a n\lambda\)</span></p>
+<p><span class="math inline">\(Var(\sum^n_{i=1}a_iX_i) = Var(a_1X_1 + a_2X_2 + \dots + a_n X_n)\)</span></p>
+<p><span class="math inline">\(= a_1^2\lambda + a_2^2\lambda + \dots + a_n^2\lambda = \sum^n_{i=1} a_i \lambda\)</span></p>
 </section>
 </section>
 <section id="section-2" class="level1">
@@ -609,37 +613,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>확률변수 <span class="math inline">\(X\)</span>의 확률밀도함수가 <span class="math inline">\(f_X(x) = 3e^{-3x}I(x&gt;0)\)</span>일 떄, <span class="math inline">\(Y = \frac{1}{X}\)</span>의 확률밀도함수를 구하라.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(f_Y(y) = -\frac{3}{y^2} exp(-\frac{3}{y})I(y&gt;0)\)</span></p>
+<p><span class="math inline">\(g(X) = \frac{1}{X}\)</span>, <span class="math inline">\(g^{-1} (Y) = \frac{1}{y}\)</span></p>
+<p><span class="math inline">\(= f_Y(y) = f_X(g^{-1}(y))\frac{dg^{-1}(y)}{dg}\)</span></p>
+<p><span class="math inline">\(= f_X(\frac{1}{y})(-\frac{1}{y^2})\)</span></p>
+<p><span class="math inline">\(= 3e^{-\frac{3}{y}}(-\frac{1}{y^2})I(y&gt;0)\)</span></p>
+<p><span class="math inline">\(= -\frac{3}{y^2}e^{-\frac{3}{y}}I(y&gt;0)\)</span></p>
 </section>
 <section id="section-3" class="level1">
 <h1>4.</h1>
-<p><span class="math inline">\(X_1,\dots,X_{16}\)</span>이 <span class="math inline">\(N(5,25)\)</span>로부터의 랜덤표본 이라고 하자. 이떄 P(0&lt;{X}<em>{16} &lt;6,20&lt;S^2</em>{16}&lt;30)$을 계산하시오.(R함수 이용)</p>
+<p><span class="math inline">\(X_1,\dots,X_{16}\)</span>이 <span class="math inline">\(N(5,25)\)</span>로부터의 랜덤표본 이라고 하자. 이떄 <span class="math inline">\(P(0&lt;\bar{X}_{16} &lt;6,20&lt;S^2_{16}&lt;30)\)</span>을 계산하시오.(R함수 이용)</p>
 <p><strong>answer</strong></p>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-0.999968328758167
-</div>
-</div>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div>
+<p><span class="math inline">\(\bar{X}_{16} \sim N(5,\frac{25}{16})\)</span></p>
+<p><span class="math inline">\(\frac{\bar{X}_{16} - 5}{\sqrt{25/16}} \sim N(0,1)\)</span></p>
+<p><span class="math inline">\(\frac{15 S^2_{16}}{25} \sim \chi^2_{15}\)</span></p>
+<p><span class="math inline">\(P(0 &lt; \bar{X}_{16} &lt; 6) = P(\frac{0-5}{\sqrt{25/16}} &lt; \frac{\bar{X}_{16} - 5}{\sqrt{25/16}} &lt; \frac{6-5}{\sqrt{25/16}}) = P(-4 &lt; Z &lt; 0.8)\)</span></p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 3.16712418331199e-05
 </div>
 </div>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="dv">18</span>,<span class="dv">15</span>)</span></code></pre></div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">0.8</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+0.788144601416603
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">0.8</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+0.78811293017477
+</div>
+</div>
+<p><span class="math inline">\(P(20 &lt; S^2_{16} &lt; 30) = P(\frac{15 \times 20}{25} &lt; \frac{15 S^2_{16}}{25} &lt; \frac{15 \times 30}{25})\)</span></p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="dv">18</span>,<span class="dv">15</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 0.737334439327678
 </div>
 </div>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="dv">12</span>,<span class="dv">15</span>)</span></code></pre></div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="dv">12</span>,<span class="dv">15</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 0.320970942909585
 </div>
 </div>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">pnorm</span>(<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">1</span>)) <span class="sc">*</span> (<span class="fu">pchisq</span>(<span class="dv">18</span>,<span class="dv">15</span>) <span class="sc">-</span> <span class="fu">pchisq</span>(<span class="dv">12</span>,<span class="dv">15</span>))</span></code></pre></div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="dv">18</span>,<span class="dv">15</span>) <span class="sc">-</span> <span class="fu">pchisq</span>(<span class="dv">12</span>,<span class="dv">15</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+0.416363496418093
+</div>
+</div>
+<p><span class="math inline">\(P(0&lt;\bar{X}_{16} &lt;6,20&lt;S^2_{16}&lt;30)\)</span></p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">pnorm</span>(<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">1</span>)) <span class="sc">*</span> (<span class="fu">pchisq</span>(<span class="dv">18</span>,<span class="dv">15</span>) <span class="sc">-</span> <span class="fu">pchisq</span>(<span class="dv">12</span>,<span class="dv">15</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display">
 0.416337122920122
 </div>
@@ -649,7 +676,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>5.</h1>
 <p>확률변수 <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>의 결함확률밀도함수가 <span class="math inline">\(f(x,y) = 4I(0&lt;x&lt;1,1&lt;y&lt;2x)\)</span>일 때, 조건부 기댓값 <span class="math inline">\(E(Y|X=x)\)</span>을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\frac{2x+1}{2}I(0&lt;x&lt;1)\)</span></p>
+<p><span class="math inline">\(E(Y|X=x) = \int^{\infty}_{-\infty} y f_{Y|X=x} (y) dy = \int^{\infty}_{-\infty} y \frac{f(X,y)}{f_X(X)}dy\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(f_X(X) = \int(x,y)dy = \int^{\infty}_{-\infty} 4 I (0&lt;x&lt;1,1&lt;y&lt;2x)dy\)</span></p>
+<p><span class="math inline">\(= 4 I (0&lt;x&lt;1)\int_{-\infty&lt;y&lt;\infty,1&lt;y&lt;2x}I(1&lt;y&lt;2x)dy\)</span></p>
+<p><span class="math inline">\(= 4 I (0&lt;x&lt;1)\int^{2x}_1 dy\)</span></p>
+<p><span class="math inline">\(= 4I(0&lt;x&lt;1)[y]^{2x}_1\)</span></p>
+<p><span class="math inline">\(= 4(2x-1)I(0&lt;x&lt;1)\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(= \int^{\infty}_{-\infty} y \frac{4I(0&lt;x&lt;1,1&lt;y&lt;2x)}{4(2x-1)I(0&lt;x&lt;1)} dy\)</span></p>
+<p><span class="math inline">\(= \int_{-\infty&lt;y&lt;\infty,1&lt;y&lt;2x} y \frac{I(0&lt;x&lt;1)}{2x-1}dy\)</span></p>
+<p><span class="math inline">\(= \frac{I(0&lt;x&lt;1)}{2x-1} \int^{2x}_1 y dy\)</span></p>
+<p><span class="math inline">\(= \frac{I(0&lt;x&lt;1)}{2x-1} [\frac{1}{2}y^2]^{2x}_1\)</span></p>
+<p><span class="math inline">\(= \frac{I(0&lt;x&lt;1)}{2x-1} (\frac{1}{2}(4x^2-1))\)</span></p>
+<p><span class="math inline">\(= \frac{2x+1}{2}I(0&lt;x&lt;1)\)</span></p>
 </section>
 <section id="section-5" class="level1">
 <h1>6.</h1>
@@ -658,19 +698,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="a-2">(a)</h2>
 <p>이 랜덤표본의 결합확률밀도함수를 기술하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\((1-p)^{4-X_1-X_2-X_3-X_4} p^{X_1+X_2+X_3+X_4}\)</span></p>
+<p><span class="math inline">\(f(X_1)f(X_2)f(X_3)f(X_4)\)</span></p>
+<p><span class="math inline">\(= (1-p)^{1-X_1}p^{X_1}(1-p)^{1-X_2}p^{X_2}(1-p)^{1-X_3}p^{X_3}(1-p)^{1-X_4}p^{X_4}\)</span></p>
+<p><span class="math inline">\(= (1-p)^{4-X_1-X_2-X_3-X_4} p^{X_1+X_2+X_3+X_4}\)</span></p>
 </section>
 <section id="b-2" class="level2">
 <h2 class="anchored" data-anchor-id="b-2">(b)</h2>
 <p><span class="math inline">\(X_1(1-X_2)\)</span>의 기댓값을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(p(1-p)\)</span></p>
+<p><span class="math inline">\(E(X_1(1-X_2))\)</span></p>
+<p><span class="math inline">\(= E(X_1 - X_1X_2) = E(X_1) - E(X_1)E(X_2)\)</span></p>
+<p><span class="math inline">\(= p - p^2 = p(1-p)\)</span></p>
 </section>
 <section id="c-1" class="level2">
 <h2 class="anchored" data-anchor-id="c-1">(c)</h2>
-<p><span class="math inline">\(E(X_1(1-X_2)|\sum^4_{i=1}X_i = t]\)</span>을 구하시오.</p>
+<p><span class="math inline">\(E[X_1(1-X_2)|\sum^4_{i=1}X_i = t]\)</span>을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\frac{1-p}{4}\)</span></p>
+<p><span class="math inline">\(\frac{p(1-p)}{4p} = \frac{1-p}{4}\)</span></p>
 </section>
 <section id="d" class="level2">
 <h2 class="anchored" data-anchor-id="d">(d)</h2>
