@@ -11,7 +11,7 @@
     "href": "posts/ct/2023-01-01-Coding Test_Greedy.html#example-거스름돈",
     "title": "Chapter 03 Greedy",
     "section": "Example 거스름돈",
-    "text": "Example 거스름돈\n당신은 음식점의 계산을 도와주는 점원이다. 카운터에는 거스름돈으로 사용할 500원, 100원, 50월, 10원짜라 동전이 무한히 존재한다고 가정한다. 손님에게 거슬러 줘야 할 돈이 N원일 때 거슬러 줘야 할 동전의 최소 개수를 구하라. 단, 거슬러 줘야 할 돈 N은 항상 10의 배수이다.\n해설\n\n최소 동전 개수 \\(\\to\\) ‘가장 큰 화폐 단위부터’ 돈을 거슬러 주는 것\n\n이 예제가 그리디 알고리즘이 가능한 이유\n\n가지고 있는 동전 중에서 큰 단위가 항상 작은 단위의 배수이므로 작은 단위의 동전들을 종합해 다른 해가 나올 수 없기 때문이다.\n대부분의 그리디 알고리즘 문제에서는 이처럼 문제 풀이를 위한 최소한의 아이디어를 떠올리고 이것이 정당한지 검토할 수 있어야 답을 도출할 수 있다.\n\n\nAnswer\n\nn = 1260\ncount = 0\n\n# 큰 단위 화폐부터 차례대로 확인\ncoin_types = [500, 100, 50, 10]\n\nfor coin in coin_types:\n    count += n // coin # 해당 화폐로 거슬러 줄 수 있는 동전의 개수 세기\n    n %= coin\n    \nprint(count)\n\n6\n\n\n\n\nstep\n\ncount = 0;count\n\n0\n\n\n\nn = 1260;n\n\n1260\n\n\n\ncount = count + n//500;count\n\n2\n\n\n\nn %= 500;n\n\n260\n\n\n\ncount = count + n//100;count\n\n4\n\n\n\nn %= 100 ; n\n\n60\n\n\n\ncount = count + n//50;count\n\n5\n\n\n\nn %= 50 ; n\n\n10\n\n\n\ncount = count + n//10;count\n\n6\n\n\n\nn %= 10;n\n\n0"
+    "text": "Example 거스름돈\n당신은 음식점의 계산을 도와주는 점원이다. 카운터에는 거스름돈으로 사용할 500원, 100원, 50원, 10원짜리 동전이 무한히 존재한다고 가정한다. 손님에게 거슬러 줘야 할 돈이 N원일 때 거슬러 줘야 할 동전의 최소 개수를 구하라. 단, 거슬러 줘야 할 돈 N은 항상 10의 배수이다.\n해설\n\n최소 동전 개수 \\(\\to\\) ‘가장 큰 화폐 단위부터’ 돈을 거슬러 주는 것\n\n이 예제가 그리디 알고리즘이 가능한 이유\n\n가지고 있는 동전 중에서 큰 단위가 항상 작은 단위의 배수이므로 작은 단위의 동전들을 종합해 다른 해가 나올 수 없기 때문이다.\n대부분의 그리디 알고리즘 문제에서는 이처럼 문제 풀이를 위한 최소한의 아이디어를 떠올리고 이것이 정당한지 검토할 수 있어야 답을 도출할 수 있다.\n\n\nAnswer\n\nn = 1260\ncount = 0\n\n# 큰 단위 화폐부터 차례대로 확인\ncoin_types = [500, 100, 50, 10]\n\nfor coin in coin_types:\n    count += n // coin # 해당 화폐로 거슬러 줄 수 있는 동전의 개수 세기\n    n %= coin\n    \nprint(count)\n\n6\n\n\n\n\nstep\n\ncount = 0;count\n\n0\n\n\n\nn = 1260;n\n\n1260\n\n\n\ncount = count + n//500;count\n\n2\n\n\n\nn %= 500;n\n\n260\n\n\n\ncount = count + n//100;count\n\n4\n\n\n\nn %= 100 ; n\n\n60\n\n\n\ncount = count + n//50;count\n\n5\n\n\n\nn %= 50 ; n\n\n10\n\n\n\ncount = count + n//10;count\n\n6\n\n\n\nn %= 10;n\n\n0"
   },
   {
     "objectID": "posts/ct/2023-01-01-Coding Test_Greedy.html#큰-수의-법칙",
@@ -1782,14 +1782,14 @@
     "href": "posts/ts/2023-01-18-ts-HW8.html#section-3",
     "title": "Theoritical Statistics HW8",
     "section": "(2)",
-    "text": "(2)\nanswer"
+    "text": "(2)\n대립가설이 \\(H_1: \\mu = 103\\)인 경우 (1)에서 구한 기각영역에 대하여 제 2종오류를 범할 확률을 구하라.\nanswer\n\\(\\beta = P(\\text{Type 2 error}) = P(\\text{Not Reject }H_0 | H_0 \\text{False})\\)\n\\(= P(\\bar{X}_{16} > a | \\mu = 103)\\)\n\\(= P(\\frac{\\bar{X}_{16} - 103} {1/2} > \\frac{1-103}{1/2} | \\mu = 103)\\)\n\\(= P(Z > -7.645) = 1- \\phi (-7.645)\\)"
   },
   {
     "objectID": "posts/ts/2023-01-18-ts-HW8.html#section-4",
     "href": "posts/ts/2023-01-18-ts-HW8.html#section-4",
     "title": "Theoritical Statistics HW8",
     "section": "(3)",
-    "text": "(3)\nanswer"
+    "text": "(3)\n대립가설이 \\(H_1 : \\mu = 97(\\)일 경우 (1)에서 구한 기각 영역에 대하여 제 2종 오류를 범할 확률을 구하라.\nanswer\n\\(\\beta = P(\\text{Type 2 error}) = P(\\text{Not Reject }H_0 | H_0 \\text{False})\\)\n\\(= P(\\bar{X}_{16} > a | \\mu = 97)\\)\n\\(= P(\\frac{\\bar{X}_{16} - 97} {1/2} > \\frac{1-97}{1/2} | \\mu = 97)\\)\n\\(= P(Z > 4.355) = 1- \\phi (4.355)\\)"
   },
   {
     "objectID": "posts/ts/2023-01-05-ts_HW3.html",
