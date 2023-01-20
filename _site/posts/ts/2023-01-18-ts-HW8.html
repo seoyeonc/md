@@ -458,6 +458,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">(2)</a></li>
   <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">(3)</a></li>
   </ul></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">4.</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">6.</a></li>
   </ul>
 </nav>
     </div>
@@ -507,14 +509,54 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="section-3" class="level2">
 <h2 class="anchored" data-anchor-id="section-3">(2)</h2>
+<p>대립가설이 <span class="math inline">\(H_1: \mu = 103\)</span>인 경우 (1)에서 구한 기각영역에 대하여 제 2종오류를 범할 확률을 구하라.</p>
 <p><strong>answer</strong></p>
+<p><span class="math inline">\(\beta = P(\text{Type 2 error}) = P(\text{Not Reject }H_0 | H_0 \text{False})\)</span></p>
+<p><span class="math inline">\(= P(\bar{X}_{16} &gt; a | \mu = 103)\)</span></p>
+<p><span class="math inline">\(= P(\frac{\bar{X}_{16} - 103} {1/2} &gt; \frac{1-103}{1/2} | \mu = 103)\)</span></p>
+<p><span class="math inline">\(= P(Z &gt; -7.645) = 1- \phi (-7.645)\)</span></p>
 </section>
 <section id="section-4" class="level2">
 <h2 class="anchored" data-anchor-id="section-4">(3)</h2>
+<p>대립가설이 <span class="math inline">\(H_1 : \mu = 97(\)</span>일 경우 (1)에서 구한 기각 영역에 대하여 제 2종 오류를 범할 확률을 구하라.</p>
 <p><strong>answer</strong></p>
-
-
+<p><span class="math inline">\(\beta = P(\text{Type 2 error}) = P(\text{Not Reject }H_0 | H_0 \text{False})\)</span></p>
+<p><span class="math inline">\(= P(\bar{X}_{16} &gt; a | \mu = 97)\)</span></p>
+<p><span class="math inline">\(= P(\frac{\bar{X}_{16} - 97} {1/2} &gt; \frac{1-97}{1/2} | \mu = 97)\)</span></p>
+<p><span class="math inline">\(= P(Z &gt; 4.355) = 1- \phi (4.355)\)</span></p>
 </section>
+</section>
+<section id="section-5" class="level1">
+<h1>4.</h1>
+<p>성공 확률이 <span class="math inline">\(p\)</span>인 베르누이 시행에 대한 가설 <span class="math inline">\(H_0 : p=\frac{1}{2}\)</span> vs <span class="math inline">\(H_1 : p = \frac{3}{4}\)</span>을 고려하자.</p>
+<p>2회의 독립시행의 결과가 모두 ’성공’일 경우에만 <span class="math inline">\(H_0\)</span>을 기각하지 않는 검정의 유의수준 <span class="math inline">\(\alpha\)</span>와 검정력 <span class="math inline">\(1-\beta\)</span>를 구하라.</p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(f(c) = p^x (1-p)^{1-x}\)</span></p>
+<p><span class="math inline">\(f(x_1) = p\)</span>, <span class="math inline">\(f(x_2) = p)\)</span> <span class="math inline">\(\to \text{Not Rject }H_0\)</span></p>
+<p><span class="math inline">\(\alpha = P(\text{Reject } H_0 | H_0 \text{True})\)</span></p>
+<p><span class="math inline">\(\alpha = P((1-p)^2 | p=\frac{1}{2}) = \frac{1}{4}\)</span></p>
+<p><span class="math inline">\(\beta = P(\text{not Rejext } H_0 | H_0 \text{False})\)</span></p>
+<p><span class="math inline">\(= P(P^2 | p=\frac{3}{4}) = \frac{9}{16}\)</span></p>
+<p><span class="math inline">\(1-\beta = \frac{7}{16}\)</span></p>
+</section>
+<section id="section-6" class="level1">
+<h1>6.</h1>
+<p><span class="math inline">\(X_1\)</span>과 <span class="math inline">\(X-2\)</span>가 확률밀도함수 <span class="math inline">\(f(x;\theta) = (\frac{1}{\theta})exp(-\frac{x}{\theta}), x&gt;0\)</span>으로부터 구한 랜덤표본이라고 한다.</p>
+<p>이제 가섷 <span class="math inline">\(H_0 : \theta=2\)</span> vs <span class="math inline">\(H_1: \theta=1\)</span>을 고려할떄, <span class="math inline">\(H_0\)</span>에 대한 기각영역을 <span class="math inline">\(\frac{f(x_1:2)f(x_2:2)}{d(x_1:1)f(x_2L1)}&lt;\frac{1}{2}\)</span>을 만족하는 표본값으로 택하였다. 이와 같은 검정법에 대한 유의수준과 <span class="math inline">\(H_0\)</span>이 참이 아닐 떄의 검정력을 구하라.</p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\alpha = P(\text{Reject }H_0 | H_0 \text{True})\)</span></p>
+<p><span class="math inline">\(= P(\frac{f(x_1:2)f(x_2:2)}{f(x_1:1)f(x_2:1)}&lt;\frac{1}{2}|\theta = 2)\)</span></p>
+<p><span class="math inline">\(= P(exp(\frac{x_1}{2} + \frac{x_2}{2}) &lt; 2| \theta = 2)\)</span></p>
+<p><span class="math inline">\(\int^2_0 exp(\frac{1}{2}exp(x_1 + x_2) dx\)</span></p>
+<p><span class="math inline">\(= 2exp(\frac{1}{2}[exp(x_2 + x_2)]^2_0 = 2exp(\frac{1}{2}) (exp(4)-1) = 2(exp(\frac{9}{2}) - exp(\frac{1}{2}))\)</span></p>
+<p><span class="math inline">\(\beta = P(\text{Not Reject} H_0 | H_0 \text{False})\)</span></p>
+<p><span class="math inline">\(= P(\frac{f(x_1"2)f(x_2:2)}{f(x_1:1)f(x_2:1)}) &gt; \frac{1}{2} | \theta = 1)\)</span></p>
+<p><span class="math inline">\(= P(exp(\frac{x_1}{2} + \frac{x_2}{2}) &gt; 2 | \theta = 1)\)</span></p>
+<p><span class="math inline">\(1-\int^{\infty}_2 exp(\frac{1}{2}[2exp(x_1 + x_2 ) dx\)</span></p>
+<p><span class="math inline">\(= 1-exp(\frac{1}{2}[2exp(x_1 + x_2)]^\infty_2\)</span></p>
+<p><span class="math inline">\(= 1 + 2exp(\frac{1}{2}exp(4) = 1+2exp(\frac{9}{2})\)</span></p>
+
+
 </section>
 
 </main> <!-- /main -->
