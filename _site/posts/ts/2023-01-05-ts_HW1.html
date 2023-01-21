@@ -430,6 +430,11 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-21-ts-HW9.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW9</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ts/2023-01-14-ts_Mid term.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Mid term</a>
   </div>
 </li>
@@ -452,7 +457,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">1.</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2.</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2.</a>
+  <ul class="collapse">
+  <li><a href="#a-x의-주변분포를-구하시오." id="toc-a-x의-주변분포를-구하시오." class="nav-link" data-scroll-target="#a-x의-주변분포를-구하시오.">(a) <span class="math inline">\(X\)</span>의 주변분포를 구하시오.</a></li>
+  <li><a href="#b-y의-주변분포를-구하시오." id="toc-b-y의-주변분포를-구하시오." class="nav-link" data-scroll-target="#b-y의-주변분포를-구하시오.">(b) <span class="math inline">\(Y\)</span>의 주변분포를 구하시오.</a></li>
+  <li><a href="#c-y10-일-때-x의-조건부분포를-구하시오" id="toc-c-y10-일-때-x의-조건부분포를-구하시오" class="nav-link" data-scroll-target="#c-y10-일-때-x의-조건부분포를-구하시오">(c) <span class="math inline">\(Y=10\)</span> 일 때 <span class="math inline">\(X\)</span>의 조건부분포를 구하시오</a></li>
+  </ul></li>
   <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">3.</a></li>
   <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">4.</a></li>
   </ul>
@@ -469,7 +479,7 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <section id="section" class="level1">
 <h1>1.</h1>
-<p>세 개의 상자에는 각각 1,2,3,4가 적혀있는 네 장의 카드가 들어 있다. 각 상자에서 임의로 카드를 한 장씩 선택하여 <span class="math inline">\(X\)</span>롸 <span class="math inline">\(Y\)</span>를 다음과 같이 정의할 때, <span class="math inline">\(X\)</span>롸 <span class="math inline">\(Y\)</span>의 결합확률분포를 구하시오</p>
+<p>세 개의 상자에는 각각 1,2,3,4가 적혀있는 네 장의 카드가 들어 있다. 각 상자에서 임의로 카드를 한 장씩 선택하여 <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>를 다음과 같이 정의할 때, <span class="math inline">\(X\)</span>롸 <span class="math inline">\(Y\)</span>의 결합확률분포를 구하시오</p>
 <ul>
 <li><span class="math inline">\(X\)</span> = 세 장의 카드 중 가장 작은 값, <span class="math inline">\(Y\)</span> = 세 장의 카드 중 가장 큰 값</li>
 </ul>
@@ -569,9 +579,8 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<ol type="a">
-<li><span class="math inline">\(X\)</span>의 주변분포를 구하시오.</li>
-</ol>
+<section id="a-x의-주변분포를-구하시오." class="level2">
+<h2 class="anchored" data-anchor-id="a-x의-주변분포를-구하시오.">(a) <span class="math inline">\(X\)</span>의 주변분포를 구하시오.</h2>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(F_X(X)\)</span></p>
 <ul>
@@ -579,9 +588,9 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\(P(X=1) = \frac{1}{6} + \frac{1}{6} =\frac{2}{6} = \frac{1}{3}\)</span></li>
 <li><span class="math inline">\(P(X=2) = \frac{2}{9} + \frac{2}{9} = \frac{4}{9}\)</span></li>
 </ul>
-<ol start="2" type="a">
-<li><span class="math inline">\(Y\)</span>의 주변분포를 구하시오.</li>
-</ol>
+</section>
+<section id="b-y의-주변분포를-구하시오." class="level2">
+<h2 class="anchored" data-anchor-id="b-y의-주변분포를-구하시오.">(b) <span class="math inline">\(Y\)</span>의 주변분포를 구하시오.</h2>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(F_Y(Y)\)</span></p>
 <ul>
@@ -589,13 +598,14 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\(P(Y=20) = \frac{1}{9} + \frac{2}{9} =\frac{3}{9} = \frac{1}{3}\)</span></li>
 <li><span class="math inline">\(P(Y=30) = \frac{1}{6} + \frac{2}{9} = \frac{21}{54} = \frac{7}{18}\)</span></li>
 </ul>
-<ol start="3" type="a">
-<li><span class="math inline">\(Y=0\)</span> 일 때 <span class="math inline">\(X\)</span>의 조건부분포를 구하시오</li>
-</ol>
+</section>
+<section id="c-y10-일-때-x의-조건부분포를-구하시오" class="level2">
+<h2 class="anchored" data-anchor-id="c-y10-일-때-x의-조건부분포를-구하시오">(c) <span class="math inline">\(Y=10\)</span> 일 때 <span class="math inline">\(X\)</span>의 조건부분포를 구하시오</h2>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(F_X(Y=10|X=0) = \frac{1/9}{5/18} = \frac{2}{5}\)</span></p>
-<p><span class="math inline">\(F_X(Y=1-|X=1) = \frac{1/6}{5/18} = \frac{3}{5}\)</span></p>
+<p><span class="math inline">\(F_X(Y=10|X=1) = \frac{1/6}{5/18} = \frac{3}{5}\)</span></p>
 <p><span class="math inline">\(F_X(Y = 10|X = 2) = \frac{0}{5/18} = 0\)</span></p>
+</section>
 </section>
 <section id="section-2" class="level1">
 <h1>3.</h1>
@@ -611,7 +621,7 @@ ul.task-list li input[type="checkbox"] {
 <p>두 연속형 확률변수 <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>의 결합확률밀도함수 <span class="math inline">\(f(x,y) = 2xe^{x+2y}I(0&lt;x&lt;\inf, 0&lt; y&lt; \inf)\)</span> 일 때, <span class="math inline">\(Y\)</span>의 주변확률밀도함수를 구하고, <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>는 서로 독립인지 확인하시오.</p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(f_Y(Y) = \int^{\infty}_0 2xe^{-(x+2y)} dx\)</span></p>
-<p><span class="math inline">\(= [-2xe^{x+2y}]^{\infty}_0 - \int^{\infty}_0 -2 e^{-(x+2y)} dx\)</span></p>
+<p><span class="math inline">\(= [-2xe^{-(x+2y)}]^{\infty}_0 - \int^{\infty}_0 -2 e^{-(x+2y)} dx\)</span></p>
 <p><span class="math inline">\(= 2[-e^{-(x+2y)}]^{\infty}_0 = 2e^{-2y}\)</span></p>
 <p><span class="math inline">\(f_X(X) = \int^{\infty}_0 2xe^{-(x+2y)} dy = [-xe^{-(x+2y)}]^{\infty}_0 = xe^{-x}\)</span></p>
 <p><span class="math inline">\(f_{XY}(X,Y) = f_X(X) \times f_Y(Y)\)</span></p>
