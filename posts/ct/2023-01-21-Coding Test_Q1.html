@@ -805,55 +805,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> c[i] <span class="op">==</span> <span class="dv">3</span>:</span>
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>            a[b[i][<span class="dv">1</span>]] <span class="op">=</span> a[b[i][<span class="dv">1</span>]] <span class="op">+</span> c[i]    </span></code></pre></div>
 </div>
+<div class="cell" data-execution_count="160">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">1</span>][<span class="dv">0</span>] <span class="op">&lt;</span> b[<span class="dv">1</span>][<span class="dv">1</span>]</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="160">
+<pre><code>True</code></pre>
+</div>
+</div>
 <div class="cell" data-execution_count="157">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">3</span>][<span class="dv">0</span>] <span class="op">&lt;</span> b[<span class="dv">3</span>][<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">3</span>][<span class="dv">0</span>] <span class="op">&lt;</span> b[<span class="dv">3</span>][<span class="dv">1</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="157">
 <pre><code>True</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="158">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="158">
 <pre><code>{'R': 1, 'T': 0, 'F': 0, 'C': 1, 'M': 0, 'J': 2, 'N': 0, 'A': 4}</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="159">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>a[<span class="st">'R'</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a[<span class="st">'R'</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="159">
 <pre><code>1</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="129">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(a)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(a)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="129">
 <pre><code>dict</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="137">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> []</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> []</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="138">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a[<span class="st">'R'</span>]<span class="op">&gt;</span>a[<span class="st">'T'</span>]:</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    d <span class="op">+=</span> <span class="st">'R'</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: d <span class="op">+=</span> <span class="st">'T'</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a[<span class="st">'F'</span>]<span class="op">&gt;</span>a[<span class="st">'C'</span>]:</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    d <span class="op">+=</span> <span class="st">'F'</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: d <span class="op">+=</span> <span class="st">'C'</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a[<span class="st">'M'</span>]<span class="op">&gt;</span>a[<span class="st">'J'</span>]:</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    d <span class="op">+=</span> <span class="st">'M'</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: d <span class="op">+=</span> <span class="st">'J'</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a[<span class="st">'N'</span>]<span class="op">&gt;</span>a[<span class="st">'A'</span>]:</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    d <span class="op">+=</span> <span class="st">'N'</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: d <span class="op">+=</span> <span class="st">'A'</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a[<span class="st">'R'</span>]<span class="op">&gt;</span>a[<span class="st">'T'</span>]:</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    d <span class="op">+=</span> <span class="st">'R'</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: d <span class="op">+=</span> <span class="st">'T'</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a[<span class="st">'F'</span>]<span class="op">&gt;</span>a[<span class="st">'C'</span>]:</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    d <span class="op">+=</span> <span class="st">'F'</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: d <span class="op">+=</span> <span class="st">'C'</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a[<span class="st">'M'</span>]<span class="op">&gt;</span>a[<span class="st">'J'</span>]:</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    d <span class="op">+=</span> <span class="st">'M'</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: d <span class="op">+=</span> <span class="st">'J'</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a[<span class="st">'N'</span>]<span class="op">&gt;</span>a[<span class="st">'A'</span>]:</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    d <span class="op">+=</span> <span class="st">'N'</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: d <span class="op">+=</span> <span class="st">'A'</span></span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="139">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="139">
 <pre><code>['R', 'C', 'M', 'A']</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="119">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>solution([<span class="st">"AN"</span>, <span class="st">"CF"</span>, <span class="st">"MJ"</span>, <span class="st">"RT"</span>, <span class="st">"NA"</span>],[<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>solution([<span class="st">"AN"</span>, <span class="st">"CF"</span>, <span class="st">"MJ"</span>, <span class="st">"RT"</span>, <span class="st">"NA"</span>],[<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="119">
 <pre><code>'RCMA'</code></pre>
 </div>
