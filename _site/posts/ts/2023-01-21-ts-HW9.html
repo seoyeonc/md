@@ -309,6 +309,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../../posts/ct/2023-01-11-Coding Test_구현.html" class="sidebar-item-text sidebar-link">Chapter 04 구현</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-21-Coding Test_Q1.html" class="sidebar-item-text sidebar-link">성격 유형 검사하기</a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -544,7 +549,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">(1)</a></li>
   <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">(2)</a></li>
   </ul></li>
-  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">20.</a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">20.</a>
+  <ul class="collapse">
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">(1)</a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">(2)</a></li>
+  </ul></li>
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16">23.</a></li>
   </ul>
 </nav>
     </div>
@@ -785,6 +795,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="section-13" class="level1">
 <h1>20.</h1>
+<p>확률밀도함수가</p>
+<p><span class="math display">\[f(x;\theta) = (1+\theta) x^{\theta} I (0\le x \le 1), (\theta &gt;0)\]</span></p>
+<p>인 모집단으로부터 크기가 <span class="math inline">\(n\)</span>인 랜덤표본을 추출한다고 하자. 이 때 가설</p>
+<p><span class="math display">\[H_0:\theta = \theta_0 \text{ vs } H_1 : \theta = \theta_1 (&gt;\theta_0)\]</span></p>
+<p>의 검정에 관하여</p>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14">(1)</h2>
+<p>최강력 검정의 기각역을 구하라.</p>
+<p><strong>answer</strong></p>
+<p>Neyman-Pearson 정리 <span class="math inline">\(c = \{ (x_1,\dots , x_n) : \frac{L(\theta_0)}{L(\theta_1)} \le k\}\)</span></p>
+<p><span class="math inline">\(f(x:\theta) = (\theta + 1) x^{\theta} I (0\le x \le 1)\)</span></p>
+<p><span class="math inline">\(L(\theta) = \Pi^n_{i=1}f(x_i : \theta) = (\theta+1)^n \Pi^n_{i=1}x_i^{\theta} I(0\le x_i \le 1)\)</span></p>
+<p><span class="math inline">\(\frac{L(\theta_0)}{L(\theta_1)} = \frac{(\theta_0 + 1)^n(\Pi^n_{i=1}x_i)^{\theta_0} \Pi^n_{i=1}I(0&lt;x_i &lt;1)}{(\theta_1+1)^n(\Pi^n_{i=1}x_i)^{\theta_1}\Pi^n_{i=1}I(0&lt;x_i&lt;1)}\)</span></p>
+<p><span class="math inline">\(\star \uparrow \Pi^n_{i=1}I(0&lt;x_i&lt;1) \to \theta\)</span>랑 무관한 영역이라 무시</p>
+<p><span class="math inline">\((\Pi^n_{i=1}x_i)^{\theta_0 - \theta_1} \le k\)</span></p>
+<p><span class="math inline">\((\theta_0 - \theta_1) \sum^n_{i=1} log x_i \le k\)</span></p>
+<p><span class="math inline">\(\sum^n_{i=1} log x_i \ge k\)</span></p>
+<p><span class="math inline">\(\star \theta_1 &gt; \theta_0 \to \theta_0 - \theta_1 &lt; 0 \therefore\)</span> 부등호 방향 바뀜</p>
+<p><span class="math inline">\(c = \{ (x_1,\dots, x_n:\sum^n_{i=1}log x_i \ge k \}\)</span></p>
+</section>
+<section id="section-15" class="level2">
+<h2 class="anchored" data-anchor-id="section-15">(2)</h2>
+<p>(1)에서 구한 검정이 대립가설 <span class="math inline">\(\theta&gt;\theta_0\)</span>에 대하여 균일최강력 검정이 되는지를 밝혀라.</p>
+<p><strong>answer</strong></p>
+<p>기각역 <span class="math inline">\(\sum^n_{i=1}log x_i \ge k\)</span>는 <span class="math inline">\(\theta_1\)</span>과 무관하다.</p>
+<p><span class="math inline">\(\theta &gt; \theta_0\)</span>에 대해 <span class="math inline">\(\sum^n_{i=1}log x_i\)</span>는 최강력 기각역이다.</p>
+<p><span class="math inline">\(H_0 : \theta = \theta_0\)</span> vs <span class="math inline">\(H_1 : \theta &gt; \theta_0\)</span>의 균일 최강력 기각역이 될 수 있다.</p>
+</section>
+</section>
+<section id="section-16" class="level1">
+<h1>23.</h1>
+<p>확률밀도함수가 <span class="math inline">\(f(x;0)=\theta x^{\theta-1}I(0&lt;x&lt;1)\)</span>인 모집단으로부터 랜덤표본 <span class="math inline">\(X_1,X_2,\dots,X_n\)</span>을 추출하여 <span class="math inline">\(H_0 : \theta = \theta_0\)</span> vs <span class="math inline">\(H_1:\theta \neq \theta_0\)</span>의 가설검정을 하려고 한다. 이 때 균일 최강력 검정이 존재하지 않음을 보여라.</p>
+<p><strong>answer</strong></p>
 
 
 </section>
