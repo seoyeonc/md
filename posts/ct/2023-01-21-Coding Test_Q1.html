@@ -9,7 +9,7 @@
 <meta name="author" content="SEOYEON CHOI">
 <meta name="dcterms.date" content="2023-01-21">
 
-<title>Seoyeon’s Blog for classes - 성격 유형 검사하기</title>
+<title>Seoyeon’s Blog for classes - 성격 유형 검사하기(Done)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -160,7 +160,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">성격 유형 검사하기</h1>
+      <h1 class="quarto-secondary-nav-title">성격 유형 검사하기(Done)</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -171,7 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">성격 유형 검사하기</h1>
+      <h1 class="title d-none d-lg-block">성격 유형 검사하기(Done)</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Coding Test</div>
               </div>
@@ -302,12 +302,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-01-11-Coding Test_구현.html" class="sidebar-item-text sidebar-link">Chapter 04 구현</a>
+  <a href="../../posts/ct/2023-01-23-Coding Test_Q2.html" class="sidebar-item-text sidebar-link">두 큐 합 같게 만들기(Not Done)</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-01-21-Coding Test_Q1.html" class="sidebar-item-text sidebar-link active">성격 유형 검사하기</a>
+  <a href="../../posts/ct/2023-01-21-Coding Test_Q1.html" class="sidebar-item-text sidebar-link active">성격 유형 검사하기(Done)</a>
   </div>
 </li>
       </ul>
@@ -719,34 +719,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p><strong>answer</strong></p>
-<div class="cell" data-execution_count="144">
+<div class="cell" data-execution_count="190">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> solution(survey, choices):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    answer <span class="op">=</span> <span class="st">''</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> {<span class="st">'R'</span>:<span class="dv">0</span>,<span class="st">'T'</span>:<span class="dv">0</span>,<span class="st">'F'</span>:<span class="dv">0</span>,<span class="st">'C'</span>:<span class="dv">0</span>,<span class="st">'M'</span>:<span class="dv">0</span>,<span class="st">'J'</span>:<span class="dv">0</span>,<span class="st">'N'</span>:<span class="dv">0</span>,<span class="st">'A'</span>:<span class="dv">0</span>}</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(choices)):</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> choices[i] <span class="op">&gt;</span> <span class="dv">4</span>:</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            choices[i] <span class="op">=</span> choices[i] <span class="op">-</span> <span class="dv">4</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(survey)):</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> survey[i][<span class="dv">0</span>] <span class="op">&lt;</span> survey[i][<span class="dv">1</span>]:</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> choices[i] <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                a[survey[i][<span class="dv">0</span>]] <span class="op">=</span> a[survey[i][<span class="dv">0</span>]] <span class="op">+</span> <span class="dv">3</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> choices[i] <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                a[survey[i][<span class="dv">0</span>]] <span class="op">=</span> a[survey[i][<span class="dv">0</span>]] <span class="op">+</span> choices[i]</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> choices[i] <span class="op">==</span> <span class="dv">3</span>:</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                a[survey[i][<span class="dv">0</span>]] <span class="op">=</span> a[survey[i][<span class="dv">0</span>]] <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> survey[i][<span class="dv">0</span>] <span class="op">&gt;</span> survey[i][<span class="dv">1</span>]:</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> choices[i] <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                a[survey[i][<span class="dv">1</span>]] <span class="op">=</span> a[survey[i][<span class="dv">1</span>]] <span class="op">+</span> choices[i]</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> choices[i] <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                a[survey[i][<span class="dv">1</span>]] <span class="op">=</span> a[survey[i][<span class="dv">1</span>]] <span class="op">+</span> choices[i]</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> choices[i] <span class="op">==</span> <span class="dv">3</span>:</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                a[survey[i][<span class="dv">1</span>]] <span class="op">=</span> a[survey[i][<span class="dv">1</span>]] <span class="op">+</span> choices[i]     </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(survey)):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> choices[i] <span class="op">&lt;</span> <span class="dv">4</span>:</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> choices[i] <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                a[survey[i][<span class="dv">0</span>]] <span class="op">=</span> a[survey[i][<span class="dv">0</span>]] <span class="op">+</span> <span class="dv">3</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> choices[i] <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                a[survey[i][<span class="dv">0</span>]] <span class="op">=</span> a[survey[i][<span class="dv">0</span>]] <span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> choices[i] <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                a[survey[i][<span class="dv">0</span>]] <span class="op">=</span> a[survey[i][<span class="dv">0</span>]] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> choices[i] <span class="op">&gt;</span> <span class="dv">4</span>:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> choices[i] <span class="op">==</span> <span class="dv">5</span>:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                a[survey[i][<span class="dv">1</span>]] <span class="op">=</span> a[survey[i][<span class="dv">1</span>]] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> choices[i] <span class="op">==</span> <span class="dv">6</span>:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                a[survey[i][<span class="dv">1</span>]] <span class="op">=</span> a[survey[i][<span class="dv">1</span>]] <span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> choices[i] <span class="op">==</span> <span class="dv">7</span>:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                a[survey[i][<span class="dv">1</span>]] <span class="op">=</span> a[survey[i][<span class="dv">1</span>]] <span class="op">+</span> <span class="dv">3</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># for i in range(len(choices)):</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">#     if choices[i] &gt; 4:</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">#         choices[i] = choices[i] - 4</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> a[<span class="st">'R'</span>]<span class="op">&gt;</span>a[<span class="st">'T'</span>]:</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        answer <span class="op">+=</span> <span class="st">'R'</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>: answer <span class="op">+=</span> <span class="st">'T'</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> a[<span class="st">'T'</span>]<span class="op">&gt;</span>a[<span class="st">'R'</span>]:</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        answer <span class="op">+=</span> <span class="st">'T'</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>: answer <span class="op">+=</span> <span class="st">'R'</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> a[<span class="st">'F'</span>]<span class="op">&gt;</span>a[<span class="st">'C'</span>]:</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        answer <span class="op">+=</span> <span class="st">'F'</span></span>
@@ -762,106 +762,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> answer</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="150">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> {<span class="st">'R'</span>:<span class="dv">0</span>,<span class="st">'T'</span>:<span class="dv">0</span>,<span class="st">'F'</span>:<span class="dv">0</span>,<span class="st">'C'</span>:<span class="dv">0</span>,<span class="st">'M'</span>:<span class="dv">0</span>,<span class="st">'J'</span>:<span class="dv">0</span>,<span class="st">'N'</span>:<span class="dv">0</span>,<span class="st">'A'</span>:<span class="dv">0</span>}</span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="151">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a[<span class="st">'R'</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="151">
-<pre><code>0</code></pre>
+<div class="cell" data-execution_count="191">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>solution([<span class="st">"AN"</span>, <span class="st">"CF"</span>, <span class="st">"MJ"</span>, <span class="st">"RT"</span>, <span class="st">"NA"</span>],[<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="191">
+<pre><code>'TCMA'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="152">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">5</span>]</span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="153">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(c)):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> c[i] <span class="op">&gt;</span> <span class="dv">4</span>:</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        c[i] <span class="op">=</span> c[i] <span class="op">-</span> <span class="dv">4</span></span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="154">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>c</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="154">
-<pre><code>[1, 3, 2, 3, 1]</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="155">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> [<span class="st">"AN"</span>, <span class="st">"CF"</span>, <span class="st">"MJ"</span>, <span class="st">"RT"</span>, <span class="st">"NA"</span>]</span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="156">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(b)):</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> b[i][<span class="dv">0</span>] <span class="op">&lt;</span> b[i][<span class="dv">1</span>]:</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> c[i] <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>            a[b[i][<span class="dv">0</span>]] <span class="op">=</span> a[b[i][<span class="dv">0</span>]] <span class="op">+</span> <span class="dv">3</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> c[i] <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>            a[b[i][<span class="dv">0</span>]] <span class="op">=</span> a[b[i][<span class="dv">0</span>]] <span class="op">+</span> c[i]</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> c[i] <span class="op">==</span> <span class="dv">3</span>:</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>            a[b[i][<span class="dv">0</span>]] <span class="op">=</span> a[b[i][<span class="dv">0</span>]] <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> b[i][<span class="dv">0</span>] <span class="op">&gt;</span> b[i][<span class="dv">1</span>]:</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> c[i] <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>            a[b[i][<span class="dv">1</span>]] <span class="op">=</span> a[b[i][<span class="dv">1</span>]] <span class="op">+</span> c[i]</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> c[i] <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>            a[b[i][<span class="dv">1</span>]] <span class="op">=</span> a[b[i][<span class="dv">1</span>]] <span class="op">+</span> c[i]</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> c[i] <span class="op">==</span> <span class="dv">3</span>:</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>            a[b[i][<span class="dv">1</span>]] <span class="op">=</span> a[b[i][<span class="dv">1</span>]] <span class="op">+</span> c[i]    </span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="160">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">1</span>][<span class="dv">0</span>] <span class="op">&lt;</span> b[<span class="dv">1</span>][<span class="dv">1</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="160">
-<pre><code>True</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="157">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">3</span>][<span class="dv">0</span>] <span class="op">&lt;</span> b[<span class="dv">3</span>][<span class="dv">1</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="157">
-<pre><code>True</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="158">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="158">
-<pre><code>{'R': 1, 'T': 0, 'F': 0, 'C': 1, 'M': 0, 'J': 2, 'N': 0, 'A': 4}</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="159">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a[<span class="st">'R'</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="159">
-<pre><code>1</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="129">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(a)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="129">
-<pre><code>dict</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="137">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> []</span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="138">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a[<span class="st">'R'</span>]<span class="op">&gt;</span>a[<span class="st">'T'</span>]:</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    d <span class="op">+=</span> <span class="st">'R'</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: d <span class="op">+=</span> <span class="st">'T'</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a[<span class="st">'F'</span>]<span class="op">&gt;</span>a[<span class="st">'C'</span>]:</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    d <span class="op">+=</span> <span class="st">'F'</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: d <span class="op">+=</span> <span class="st">'C'</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a[<span class="st">'M'</span>]<span class="op">&gt;</span>a[<span class="st">'J'</span>]:</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    d <span class="op">+=</span> <span class="st">'M'</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: d <span class="op">+=</span> <span class="st">'J'</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a[<span class="st">'N'</span>]<span class="op">&gt;</span>a[<span class="st">'A'</span>]:</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    d <span class="op">+=</span> <span class="st">'N'</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: d <span class="op">+=</span> <span class="st">'A'</span></span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="139">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="139">
-<pre><code>['R', 'C', 'M', 'A']</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="119">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>solution([<span class="st">"AN"</span>, <span class="st">"CF"</span>, <span class="st">"MJ"</span>, <span class="st">"RT"</span>, <span class="st">"NA"</span>],[<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="119">
-<pre><code>'RCMA'</code></pre>
+<div class="cell" data-execution_count="192">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>solution([<span class="st">"TR"</span>, <span class="st">"RT"</span>, <span class="st">"TR"</span>],[<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">3</span>])</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="192">
+<pre><code>'RCJA'</code></pre>
 </div>
 </div>
 

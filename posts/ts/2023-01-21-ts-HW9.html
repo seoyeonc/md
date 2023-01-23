@@ -306,12 +306,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-01-11-Coding Test_구현.html" class="sidebar-item-text sidebar-link">Chapter 04 구현</a>
+  <a href="../../posts/ct/2023-01-23-Coding Test_Q2.html" class="sidebar-item-text sidebar-link">두 큐 합 같게 만들기(Not Done)</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-01-21-Coding Test_Q1.html" class="sidebar-item-text sidebar-link">성격 유형 검사하기</a>
+  <a href="../../posts/ct/2023-01-21-Coding Test_Q1.html" class="sidebar-item-text sidebar-link">성격 유형 검사하기(Done)</a>
   </div>
 </li>
       </ul>
@@ -555,7 +555,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">(2)</a></li>
   </ul></li>
   <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16">23.</a></li>
-  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17">24.</a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17">24.</a>
+  <ul class="collapse">
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18">(1)</a></li>
+  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19">(2)</a></li>
+  </ul></li>
+  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20">25.</a>
+  <ul class="collapse">
+  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21">(1)</a></li>
+  <li><a href="#section-22" id="toc-section-22" class="nav-link" data-scroll-target="#section-22">(2)</a></li>
+  </ul></li>
+  <li><a href="#section-23" id="toc-section-23" class="nav-link" data-scroll-target="#section-23">28.</a></li>
   </ul>
 </nav>
     </div>
@@ -583,9 +593,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(LR = \frac{L(4)}{L(9)} = \frac{(\frac{1}{2\pi 4})^{\frac{n}{2}} e^{-\frac{\sum^n_{i=1} x_i^2}{2 \times 4}}}{(\frac{1}{2\pi 9})^{\frac{n}{2}} e^{-\frac{\sum^n_{i=1} x_i^2}{2 \times 9}}}\)</span></p>
 <p><span class="math inline">\(= (\frac{9}{4})^{\frac{n}{2}}e^{-\sum^n_{i=1}x^2_i(\frac{1}{8}-\frac{1}{18})}\)</span></p>
 <p><span class="math inline">\(= (\frac{9}{4})^{\frac{n}{2}}e^{-\frac{5}{72}\sum^n_{i=1}x^2_i} \le k\)</span></p>
-<p><span class="math inline">\(e^{-\frac{5}{72}\sum^n_{i=1}x^2_i} \le k\)</span></p>
-<p><span class="math inline">\(-\frac{5}{72}\sum^n_{i=1}x^2_i \le k\)</span></p>
-<p><span class="math inline">\(\sum^n_{i=1}x^2_i \ge k\)</span></p>
+<p><span class="math inline">\(\to e^{-\frac{5}{72}\sum^n_{i=1}x^2_i} \le k\)</span></p>
+<p><span class="math inline">\(\to -\frac{5}{72}\sum^n_{i=1}x^2_i \le k\)</span></p>
+<p><span class="math inline">\(\to \sum^n_{i=1}x^2_i \ge k\)</span></p>
 <p>기각역: <span class="math inline">\(\therefore c = \{ (x_1, \dots ,x_n) : \sum^n_{i=1} x^2_i \ge c)\)</span></p>
 </section>
 <section id="section-2" class="level2">
@@ -858,6 +868,189 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="section-17" class="level1">
 <h1>24.</h1>
+<p><span class="math inline">\(X_1, X-2,\dots,X_n\)</span>이 확률밀도함수가 <span class="math inline">\(f(x)\)</span>인 어떤 모집단에서 얻어진 랜덤표본이다. <span class="math inline">\(f_0(x) = I(0&lt;x&lt;1)\)</span>와 <span class="math inline">\(f_1(x) = e^{-x}I(x&gt;0)\)</span>인 <span class="math inline">\(f_0,f_1\)</span>에 대해</p>
+<p><span class="math display">\[H_0: f(x) = f_0(x) \text{ vs } H_1 : f(x) = f_1(x)\]</span></p>
+<p>을 검정하려고 한다.</p>
+<section id="section-18" class="level2">
+<h2 class="anchored" data-anchor-id="section-18">(1)</h2>
+<p>최강력 검정의 기각역이 <span class="math inline">\(\{(x_1,\dots,x_n:x_{(n)}&gt;1,\)</span> 또는 <span class="math inline">\(\sum^n_{i=1} x_i \le c\}\)</span>임을 보여라.</p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\star\)</span> 모집단을 한가지로 정의 가능해서 단순가설 <span class="math inline">\(\to\)</span> 네이만 피어슨 정리 사용 가능</p>
+<p><span class="math inline">\(LR = \frac{L_0}{L_1} = \frac{\Pi^n_{i=1}f_0(x_i)}{\Pi^n_{i=1}f_1(x_i)} = \frac{\Pi^n_{i=1}I(0&lt;x_i&lt;1)}{\Pi^n_{i=1}e^{-x_i}I(x_i&gt;0)}\le k\)</span></p>
+<p><span class="math inline">\(= \frac{I(0&lt;x_{(1)}&lt;x_{(n)}&lt;1)}{e^{-\sum^n_{i=1}x_i}I(x_{(1)}&gt;0)}\)</span></p>
+<p><span class="math inline">\(= \frac{I(0&lt;x_{(1)} &lt;1)I(0&lt;x_{(n)}&lt;1)}{e^{-\sum^n_{i=1}x_i}I(x_{(1)}&gt;0)}\)</span></p>
+<p>귀무가설을 기각할 기각역 <span class="math inline">\(\to e^{\sum^n_{i=1}x_i}I(0&lt;x_{(n)}&lt;1)\le k\)</span></p>
+<p><span class="math inline">\(\star x_{(n)}&gt;1\)</span>이면 <span class="math inline">\(I(0&lt;x_{(n)}&lt;1) \to 0\)</span></p>
+<p><span class="math inline">\(\star x_{(n)}&lt;1\)</span>이면 <span class="math inline">\(I(0&lt;x_{(n)}&lt;1) \to 1\)</span></p>
+<p><span class="math inline">\(\star \sum^n_{i=1}x_i \le k\)</span></p>
+<p><span class="math inline">\(\therefore \{ x_{(n)}&gt;1 \text{ or } \sum^n_{i=1}x_i \le k \}\)</span>이 기각역</p>
+</section>
+<section id="section-19" class="level2">
+<h2 class="anchored" data-anchor-id="section-19">(2)</h2>
+<p>유의수준이 <span class="math inline">\(\alpha = 0.05\)</span>이고 <span class="math inline">\(n=50\)</span>일 때 중심극한정리를 이용하여 <span class="math inline">\(c\)</span>의 값을 구하라.</p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(P(x_{(n)}&gt;1 \text{ or } \sum^n_{i=1}x_i \le c | H_0 ) = 0.05\)</span></p>
+<p><span class="math inline">\(H_0\)</span>는 <span class="math inline">\(f(x) = I(0&lt;x&lt;1)\)</span>이었다. 즉, <span class="math inline">\(x\)</span>는 <span class="math inline">\(1\)</span>보다 클 수 없고, 따라서 <span class="math inline">\(x_{(n)}\)</span>도 <span class="math inline">\(1\)</span>보다 클 수 없다.</p>
+<p><span class="math inline">\(P(x_{(n)} &gt;1 | H_0) = 0\)</span></p>
+<p><span class="math inline">\(P(\sum^n_{i=1}x_i \le c|H_0)\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(n=50\)</span>, <span class="math inline">\(x\)</span>가 균등분포</p>
+<p>균등분포 평균, 분산 이용한 중심극한정리 <span class="math inline">\(\to \frac{\bar{x} - \frac{1}{2}}{\sqrt{1/12}/\sqrt{50}} \sim N(0,1)\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(P(\frac{\sum^n_{i=1}x_i}{50} = \bar{x} \le \frac{c}{50}|H_0)\)</span></p>
+<p>$-z_{0.05} = </p>
+<p><span class="math inline">\(-z_{0.05} = -1.645\)</span>, <span class="math inline">\(c=21.6422\)</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-21-ts-HW9_files/figure-html/81165ff0-d081-47dc-99dc-0990a72c0d84-1-01d07994-867d-4b65-a957-e7b6880a67e6.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+1.64485362695147
+</div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>((<span class="sc">-</span><span class="fu">qnorm</span>(<span class="fl">0.95</span>)) <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">600</span>) <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> ) <span class="sc">*</span> <span class="dv">50</span></span></code></pre></div>
+<div class="cell-output cell-output-display">
+21.6424565936689
+</div>
+</div>
+<p><span class="math inline">\(c = \{ \sum^50_{i=1}x_i \le 21.6422 \}\)</span></p>
+</section>
+</section>
+<section id="section-20" class="level1">
+<h1>25.</h1>
+<p><span class="math inline">\(X_1,X_2,\dots, X_n\)</span>이 <span class="math inline">\(N(\mu,\sigma^2)\)</span>로부터 얻은 랜덤표본이라고 하자.</p>
+<section id="section-21" class="level2">
+<h2 class="anchored" data-anchor-id="section-21">(1)</h2>
+<p>모분산 <span class="math inline">\(\sigma^2\)</span>가 알려져 있지 않은 경우 <span class="math inline">\(H_0:\mu \le \mu_0 \text{ vs } H_1 : \mu &gt; \mu_0\)</span>에 대한 유의수준 <span class="math inline">\(\alpha\)</span>인 일반화 가능도비 검정법을 구하라.</p>
+<p><strong>answer</strong></p>
+<p>모평균 가설을 검정할때 <span class="math inline">\(\sigma^2\)</span>이 알려져 있다면, 균일 최강력 검정이 존재한다. 하지만 알려져 있지 않다. <span class="math inline">\(\to\)</span> 장애요소</p>
+<p><span class="math inline">\(\Lambda(x_1,\dots,x_n) = \frac{L(\hat{\mu}_0,\hat{\sigma}_0^2)}{L(\hat{\mu},\hat{\sigma}^2)}\)</span> 귀무가설 하 모수가능도 최대치</p>
+<p><span class="math inline">\(L(\mu, \hat{\sigma}^2) = (\frac{1}{2\pi \sigma^2})^{\frac{n}{2}}e^{-\frac{\sum^n_{i=1}(x_i - \mu)^2}{2\sigma^2}}\)</span></p>
+<p><span class="math inline">\({max}_{\Omega_0} L(\mu,\sigma^2)\)</span> 최대는 <span class="math inline">\(\bar{x}\)</span>이긴 하지만, 귀무가설 하 <span class="math inline">\(\mu \le \mu_0\)</span>이라는 제약이 있어서 이 조건이 필요하다.</p>
+<p>최대가능도 추정량</p>
+<ul>
+<li><span class="math inline">\(\Omega_0 = \{ (\mu,\sigma^2):\mu \le \mu_0, \sigma^2&gt;0\}\)</span>
+<ul>
+<li><span class="math inline">\(\hat{\mu}_0 = {min}(\bar{x},\mu_0)\)</span></li>
+<li><span class="math inline">\(\hat{\sigma}^2_0 = \frac{1}{n}\sum^n_{i=1}{x_i}(x_i - \hat{\mu}_0)^2\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\Omega = \{(\mu,\sigma^2) : -\infty \le \mu \le \infty, \sigma^2 &gt; 0\}\)</span>
+<ul>
+<li><span class="math inline">\(\hat{\mu} = \bar{x}\)</span></li>
+<li><span class="math inline">\(\hat{\sigma}^2 = \frac{1}{n} \sum^n_{i=1}(x_i- \bar{x})^2\)</span></li>
+</ul></li>
+</ul>
+<p><span class="math inline">\(\Lambda = \frac{(\frac{1}{2\pi\hat{\sigma}^2_0})^{\frac{n}{2}}e^{-\frac{\sum^n_{i=1}(x_i - \hat{\mu}_0)^2}{2\hat{\sigma}^2_0}}}{(\frac{1}{2\pi\hat{\sigma}^2})^{\frac{n}{2}}e^{-\frac{\sum^n_{i=1}(x_i - \hat{\mu})^2}{2\hat{\sigma}^2}}} \le k\)</span></p>
+<p><span class="math inline">\(\uparrow\)</span> 각 분자, 분모의 <span class="math inline">\(exp\)</span>에 있는 <span class="math inline">\(\hat{\sigma}\)</span>들에 각 값을 대입하면</p>
+<ul>
+<li><p><span class="math inline">\(\hat{\sigma}_0\)</span>대입하면 <span class="math inline">\(\to -\frac{\sum^n_{i=1}(x_i - \hat{\mu}_0)^2}{2\frac{1}{n}\sum^n_{i=1}(x_i - \hat{\mu}_0)^2} = \frac{n}{2}\)</span></p></li>
+<li><p><span class="math inline">\(\hat{\sigma}\)</span> 대입하면 <span class="math inline">\(\to -\frac{\sum^n_{i=1}(x_i - \hat{\mu})^2}{2\frac{1}{n}\sum^n_{i=1}(x_i - \bar{x})}^2 = -\frac{n}{2}\)</span></p></li>
+</ul>
+<p><span class="math inline">\(\to (\frac{\hat{\sigma}^2}{\hat{\sigma}^2_0})^{\frac{n}{2}} \le k\)</span></p>
+<p>$ k $</p>
+<p>대입하면 <span class="math inline">\(\frac{\sum^n_{i=1}(x_i - \bar{X})^2}{\sum^n_{i=1}(x_i - \hat{\mu}_0)^2} \le k\)</span></p>
+<p><span class="math inline">\(\hat{\mu}_o = {min}(\bar{X}, \mu_0)\)</span></p>
+<ol type="1">
+<li><span class="math inline">\(\bar{x} &lt; \mu_0 \to \hat{\mu}_0 = \bar{x} \to 1 \le k\)</span></li>
+</ol>
+<ul>
+<li><span class="math inline">\(k\)</span>는 1보다 작아야 한다.(일반화 가능도비 기본 성질)</li>
+<li><span class="math inline">\(\therefore\)</span> 성립하지 않는다.</li>
+</ul>
+<ol start="2" type="1">
+<li><span class="math inline">\(\bar{x} &gt; \mu_0 \to \frac{\sum(x_i - \bar{x})^2}{\sum(x_i - \mu_0)^2} \le k\)</span></li>
+</ol>
+<p><span class="math inline">\(c = \{ (x_1,\dots,x_n)|\bar{x} &gt; \mu_0, \frac{\sum^n_{i=1}(x_i - \bar{x})^2}{\sum^n_{i=1}(x_i - \mu_0)^2} \le k\)</span></p>
+<p><span class="math inline">\(\sum^n_{i=1}(x_i - \mu_0)^2 = \sum^n_{i=1}(x_i - \bar{x} + \bar{x} - \mu_0)^2\)</span></p>
+<p><span class="math inline">\(= \sum^n_{i=1}(x_i - \bar{x})^2 + 2(\bar{x}-\mu_0)\sum(x_i - \bar{x}) + n(\bar{x} -\mu_0)^2\)</span></p>
+<p><span class="math inline">\(\star \sum(x_i - \bar{x}) = 0\)</span></p>
+<p><span class="math inline">\(= \sum^n_{i=1}(x_i - \bar{x})^2 + n(\bar{x} - \mu_0)^2\)</span></p>
+<p><span class="math inline">\(c = \{ (x_1,\dots,x_n)|\bar{x} &gt; \mu_0, \frac{\sum^n_{i=1}(x_i - \bar{x})^2}{\sum^n_{i=1}(x_i - \bar{x})^2 + n(\bar{x} - \mu_0)^2} \le k\)</span></p>
+<p><span class="math inline">\(\to \frac{\sum^n_{i=1}(x_i - \bar{x})^2}{\sum^n_{i=1}(x_i - \bar{x})^2 + n(\bar{x} - \mu_0)^2} \le k\)</span></p>
+<p><span class="math inline">\(\to \frac{1}{1+\frac{n(\bar{x} - \mu_0)^2}{\sum^n_{i=1}(x_i - \bar{x})^2}} \le k\)</span></p>
+<p><span class="math inline">\(\to \frac{n(\bar{x} - \mu_0)^2}{\sum^n_{i=1}(x_i - \bar{x})^2} \ge k\)</span></p>
+<p><span class="math inline">\(c = \{ (x_1,\dots,x_n)|\bar{x} &gt; \mu_0, \frac{n(\bar{x} - \mu_0)^2}{\sum^n_{i=1}(x_i - \bar{x})^2} \ge k\)</span></p>
+<p><span class="math inline">\(\to \sum^n_{i=1}(x_i - \bar{x})^2 = (n-1)S^2\)</span></p>
+<p><span class="math inline">\(\to \frac{n(\bar{x} - \mu_0)^2}{(n-1)S^2} = \frac{n(\bar{x} - \mu_0)^2}{S^2} \ge k\)</span></p>
+<p><span class="math inline">\(\star N(\mu, \sigma^2) \to \frac{\bar{x} -\mu}{\sigma/\sqrt{n}} \to \frac{\bar{x}-\mu}{s/\sqrt{n}} \sim t_{(n-1)}\)</span></p>
+<p><span class="math inline">\(c = \{ (x_1,\dots, x_n) | \bar{x} &gt; \mu_0, |\frac{\sqrt{n}(\bar{x}-\mu_0)}{S}| \ge k \}\)</span></p>
+<p><span class="math inline">\(= \{ (x_1,\dots, x_n) | \bar{x} &gt; \mu_0, \text{ and } (\bar{x} &gt; \mu_0 + \frac{S}{\sqrt{n}}k \text{ or } \bar{x} \le \mu_0 - \frac{X}{\sqrt{n}k})\}\)</span></p>
+<p><span class="math inline">\(= \{ (x_1,\dots, x_n) | \bar{x} &gt; \mu_0 + \frac{S}{\sqrt{n}}k\}\)</span></p>
+<p><span class="math inline">\(\alpha = {max}_{\Omega_0} \Pi(\mu)\)</span></p>
+<p><span class="math inline">\(\Pi(\mu) = P((x_1,\dots,x_n) \in c | \mu)\)</span></p>
+<p><span class="math inline">\(= P(\bar{x} \ge \mu_0 + \frac{S}{\sqrt{n}}k | \mu)\)</span></p>
+<p><span class="math inline">\(= P(\frac{\bar{x}-\mu}{S/\sqrt{n}} \ge \frac{\mu_0 - \mu}{S/\sqrt{n}} + k | \mu)\)</span></p>
+<p><span class="math inline">\(= P(t \ge \frac{\mu_0 - \mu}{S/\sqrt{n}}+k) \to \mu\)</span>가 커질수록 작아진다 <span class="math inline">\(\to \mu\)</span>에 대해 증가 함수.</p>
+<p><span class="math inline">\(\therefore \alpha = {max}_{\mu \le \mu_0} \Pi(\mu) = \Pi(\mu_0) = P(t \ge 0 + k) = t_{\alpha(n-1)}\)</span></p>
+<p><span class="math inline">\(\therefore c = \{ (x_1,\dots,x_n) | \bar{x} \ge \mu_0 + \frac{S}{\sqrt{n}} t_{\alpha(n-1)}\}\)</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-21-ts-HW9_files/figure-html/618e5b84-8139-4156-8e43-28a335d6b4ca-1-214a2278-bb91-41d8-b826-bf58ab08c99c.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="section-22" class="level2">
+<h2 class="anchored" data-anchor-id="section-22">(2)</h2>
+<p>모평균 <span class="math inline">\(\mu\)</span>가 알려져 있지 않은 경우 <span class="math inline">\(H_0:\sigma^2 = \sigma^2_0 \text{ vs }H_1 : \sigma^2 &gt; \sigma^2_0\)</span>에 대한 유의수준 <span class="math inline">\(\alpha\)</span>인 일반화 가능도비 검정법을 구하라.</p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\mu\)</span>가 장애요소</p>
+<p><span class="math inline">\(L(\mu, \sigma^2( = (\frac{1}{2\pi \sigma^2})^{\frac{n}{2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\)</span></p>
+<p><span class="math inline">\(\Lambda = \frac{L(\hat{\mu}_0,\hat{\sigma}^2_0)}{L(\hat{\mu},\hat{\sigma}^2)}\)</span></p>
+<ul>
+<li><span class="math inline">\(\Omega_0 = \{ (\mu,\sigma^2) : -\infty &lt; \mu &lt; \infty , \sigma^2 = \sigma^2_0\}\)</span>
+<ul>
+<li><span class="math inline">\(\hat{\mu}_0 = {argmax}_{(\mu,\sigma^2)\in\Omega_0} L(\mu,\sigma^2) = \bar{x}\)</span></li>
+<li>^2_0 = ^2_0$</li>
+</ul></li>
+<li><span class="math inline">\(\Omega = \{ (\mu, \sigma^2) : -\infty &lt; \mu &lt; \infty , \sigma^2 \ge \sigma^2_0, \sigma^2 &gt; 0 \}\)</span>
+<ul>
+<li><span class="math inline">\(\hat{\mu} = \bar{x}\)</span></li>
+<li><span class="math inline">\(\hat{\sigma}^2 = {max}(\frac{1}{n}\sum^n_{i=1}(x_i - \bar{x})^2, \sigma^2_0)\)</span>
+<ul>
+<li>왼쪽은 <span class="math inline">\(\sigma^2\)</span>보다 클때, 오른쪽은 <span class="math inline">\(\sigma^2\)</span>보다 작을때</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><span class="math inline">\(\Lambda = \frac{L(\hat{\mu}_0, \hat{\sigma}^2_0)}{L(\hat{\mu},\hat{\sigma}^2)}= \frac{(\frac{1}{2\pi\hat{\sigma}^2_0})^{\frac{n}{2}} e^{-\frac{\sum(x_i - \bar{x})^2}{2\hat{\sigma}^2_0}}}{(\frac{1}{2\pi\hat{\sigma}^2})^{\frac{n}{2}} e^{-\frac{\sum(x_i - \bar{x})^2}{2\hat{\sigma}^2}}}\)</span></p>
+<p><span class="math inline">\(\to (\frac{1}{2\pi\hat{\sigma}^2_0}) = \frac{1}{2\pi \sigma^2}\)</span></p>
+<p><span class="math inline">\(\to -\frac{\sum(x_i - \bar{x})^2}{2\hat{\sigma}^2_0} = -\frac{\sum(x_i - \bar{x})^2}{2\sigma^2_0}\)</span></p>
+<p><span class="math inline">\(= (\frac{\hat{\sigma}^2}{\hat{\sigma}^2_0})^{\frac{n}{2}} e^{-\frac{1}{2}\sum^n_{i=1}(x_i - \bar{x})^2 (\frac{\hat{\sigma}^2 - \sigma^2_0}{\sigma^2_0\hat{\sigma}^2})} \le k\)</span></p>
+<ol type="1">
+<li><span class="math inline">\(\frac{1}{n} \sum^n_{i=1}(x_i - \bar{x})^2 &lt; \sigma^2_0 \to \sigma^2_0 \to \Lambda = 1\)</span></li>
+</ol>
+<ul>
+<li><span class="math inline">\(k=1\)</span>이 되어 의미가 없어짐</li>
+</ul>
+<ol start="2" type="1">
+<li><span class="math inline">\(\frac{1}{n}\sum^n_{i=1}(x_i-\bar{x})^2 &gt; \sigma^2_0 \to \hat{\sigma}^2 = \frac{1}{n}\sum^n_{i=1}(x_i - \bar{x})^2\)</span></li>
+</ol>
+<ul>
+<li>예 5.24에서 다룬 식, <span class="math inline">\(\Lambda\)</span>는 $의 감소함수이다.</li>
+</ul>
+<p>기각역 : <span class="math inline">\(\frac{1}{n}\sum(x_i - \bar{x})^2 \ge k\)</span></p>
+<p><span class="math inline">\(\alpha = P(\sum^n_{i=1}(x_i - \bar{x})^2 \ge k | \sigma^2 = \sigma^2_0)\)</span></p>
+<p><span class="math inline">\(\star \frac{\sum^n_{i=1}(x_i - \bar{x})^2}{\sigma^2} \sim \chi^2_{(n-1)}\)</span></p>
+<p><span class="math inline">\(= P(\frac{\sum^n_{i=1}(x_i 0 \bar{x})^2}{\sigma^2_0} \ge \frac{k}{\sigma^2_0} | \sigma^2 = \sigma^2_0)\)</span></p>
+<p><span class="math inline">\(\frac{k}{\sigma^2_0} = \chi^2_{0.05(n-1)}\)</span></p>
+<p><span class="math inline">\(k = \sigma^2_0 \chi^2_{0.05(n-1)}\)</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-21-ts-HW9_files/figure-html/564c03fa-c56d-436b-ac6f-ca7e238f9244-1-188ba1cd-2e88-4d34-b130-5049376b65fd.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p><span class="math inline">\(c = \{ (x_1,\dots,x_n):\sum^n_{i=1}(x_i - \bar{x})^2 \ge \sigma^2_0 \chi^2_{0.05(n-1)}\)</span></p>
+<p>유의수준 <span class="math inline">\(\alpha\)</span> 일반화 가능도비 검정법의 기각역이다.</p>
+</section>
+</section>
+<section id="section-23" class="level1">
+<h1>28.</h1>
 
 
 </section>
