@@ -566,6 +566,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#section-22" id="toc-section-22" class="nav-link" data-scroll-target="#section-22">(2)</a></li>
   </ul></li>
   <li><a href="#section-23" id="toc-section-23" class="nav-link" data-scroll-target="#section-23">28.</a></li>
+  <li><a href="#section-24" id="toc-section-24" class="nav-link" data-scroll-target="#section-24">29.</a></li>
   </ul>
 </nav>
     </div>
@@ -1051,6 +1052,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="section-23" class="level1">
 <h1>28.</h1>
+<p>독립 이표본 <span class="math inline">\(X_1, X_2, \dots, X_n\)</span>과 <span class="math inline">\(Y_1,Y_2,\dots,Y_n\)</span>이 각각 정규분포 <span class="math inline">\(N(\mu_x,4)\)</span>와 <span class="math inline">\(N(\mu_y,4)\)</span>로부터 구한 랜덤표본이라 하자. 이제 <span class="math inline">\(H_0:\mu_x = \mu_y\)</span> vs <span class="math inline">\(H_1 : \mu_x \neq \mu_y\)</span>에 대한 유의수준 <span class="math inline">\(\alpha=0.05\)</span>인 일반화 가능도비 검정법을 제시하라.</p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\Omega_0 = \{ (\mu_x, \mu_y): -\infty (\mu_x=\mu_y &lt; \infty\} \sim \{ (\mu, \mu): -\infty (\mu&lt; \infty\}\)</span></p>
+<p><span class="math inline">\(\Omega = \{ (\mu_x,\mu_y) : -\infty &lt; \mu_x &lt; \infty , -\infty &lt; \mu)y &lt; \infty\}\)</span></p>
+<p><span class="math inline">\(\Lambda = \frac{L(\hat{\mu}_0)}{L(\hat{\mu}_x,\hat{\mu}_y)} \le k\)</span> 인 표본공간 = 기각역의 모양</p>
+<p><span class="math inline">\(L(\mu_x, \mu_y) = f(x_1,\dots,x_n, y_1,\dots,y_n | \mu_x,\mu_y)\)</span>, <span class="math inline">\(X,Y\)</span>모두 독립!</p>
+<p><span class="math inline">\(= f_x(x_1|\mu_x)f(x_2|\mu_x)\dots f_x(x_n|\mu_x)f_y(y_1|\mu_y)f_y(y_2|\mu_y)\dots f_y(y_n|\mu_y)\)</span></p>
+<p><span class="math inline">\(= (\frac{1}{2\pi4})^{\frac{n}{2}} e^{-\frac{\sum^n_{i=1}(x_i - \mu_x)^2}{2\times4}} (\frac{1}{2\pi4})^{\frac{n}{2}} e^{\frac{\sum^n_{j=1}(y_j - \mu_y)^2}{2\times4}}\)</span></p>
+<p><span class="math inline">\(= (\frac{1}{8\pi})^n e^{-\frac{1}{8}\sum^n_{i=1}(x_i - \mu_x)^2 + \sum^n_{j=1}(y_j - \mu_y)^2}\)</span></p>
+<p><span class="math inline">\(logL(\mu_x,\mu_y) = nlog8\pi - \frac{1}{8}(\sum^n_{i=1}x_i - \mu_x)^2 + \sum^n_{j=1}(y_j - \mu_y)^2)\)</span></p>
+<p><span class="math inline">\(\frac{\partial log L(\mu_x,\mu_y)}{\partial \mu_x} = 0 \to \hat{\mu}_x = \bar{x}\)</span></p>
+<p><span class="math inline">\(\frac{\partial log L(\mu_x,\mu_y)}{\partial \mu_y} = 0 \to \hat{\mu}_y = \bar{y}\)</span></p>
+<p><span class="math inline">\(L(\mu,\mu) = (\frac{1}{8\pi})^n e^{-\frac{1}{8}(\sum^n_{i=1}(x_i - \mu)^2 + \sum^n_{j=1}(y_j - \mu)^2)})\)</span></p>
+<p><span class="math inline">\(\frac{\partial log L(\mu_x,\mu_y)}{\partial \mu} = \frac{1}{8} \times 2[\sum^n_{i=1}(x_i - \mu) + \sum^n_{j=1}(y_j - \mu)] = 0\)</span></p>
+<p><span class="math inline">\(= \sum x_i + \sum y_j - n\mu -n\mu = 0\)</span></p>
+<p><span class="math inline">\(\to \hat{\mu}_0 = \sum{\sum x_i + \sum y_j}{2n} = \frac{1}{2}(\frac{\sum x_i}{n} + \frac{\sum y_j}{n}) = \frac{\bar{x} + \bar{y}}{2}\)</span></p>
+<p><span class="math inline">\(\Lambda = \frac{L(\hat{\mu}_0)}{L(\hat{\mu}_x,\hat{\mu}_y)} = \frac{L(\hat{\mu}_0)}{L(\bar{x},\bar{y})} = \frac{(\frac{1}{8\pi})^n e^{-\frac{1}{8}(\sum x_i - \hat{\mu}_0) + \sum ( y_j - \hat{\mu}_0)^2)}}{(\frac{1}{8\pi})^n e^{-\frac{1}{8}(\sum x_i - \bar{x}_0)^2 + \sum ( y_j - \bar{y})^2)}}\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(\sum(x_i - \hat{\mu}_0)^2 = \sum(x_i - \bar{x} + \bar{x} - \hat{\mu}_0)^2 = \sum(x_i - \bar{x})^2 + \sum(\bar{x} + \hat{\mu}_0)^2 + 2\sum(x_i - \bar{x})(\bar{x} - \hat{\mu}_0)\)</span></p>
+<p><span class="math inline">\(\star \star \sum(x_i - \bar{x}) = 0\)</span></p>
+<p><span class="math inline">\(= \sum(x_i - \bar{x})^2 + n(\bar{x} - \hat{\mu}_0)^2\)</span></p>
+<p><span class="math inline">\(\sum(y_j - \hat{\mu}_0)^2 = \sum(y_i - \bar{y})^2 + n(\bar{y} - \hat{\mu_0})^2\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(= exp\{-\frac{1}{8}[n(\bar{x} - \hat{\mu}_0)^2 + n(\bar{y} - \hat{\mu}_0)^2] \}\)</span></p>
+<p><span class="math inline">\(= exp\{ -\frac{n}{8} [(\bar{x} - \hat{\mu}_0)^2 + (\bar{y} - \hat{\mu}_0)^2] \}\)</span></p>
+<p><span class="math inline">\(\star \hat{\mu}_0 = \frac{\bar{x} + \bar{y}}{2}\)</span></p>
+<p><span class="math inline">\(\bar{x} - \hat{\mu}_0 = \bar{x} - \frac{\bar{x} + \bar{y}}{2} = \frac{\bar{x} - \bar{y}}{2}\)</span></p>
+<p><span class="math inline">\(\bar{y} - \hat{\mu}_0 = \bar{y} - \frac{\bar{x} - \bar{y}}{2} = \frac{\bar{y} - \bar{x}}{2}\)</span></p>
+<p><span class="math inline">\(= exp\{-\frac{n}{8}[(\frac{\bar{x} - \bar{y}}{2})^2 + (\frac{\bar{y}-\bar{x}}{2})^2]\}\)</span></p>
+<p>$= exp{-} = exp{-} k $</p>
+<p><span class="math inline">\(\to (\bar{x} - \bar{y})^2 \ge k\)</span></p>
+<p><span class="math inline">\(\to (\bar{x} - \bar{y}) \ge k\)</span></p>
+<p><span class="math inline">\(\alpha = P(|\bar{x} - \bar{y}| \ge k | \mu_x = \mu_y)\)</span>, <span class="math inline">\(\bar{x} - \bar{y}\)</span>분포를 알아야 확률을 구하지!</p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(\bar{x} \sim N(\mu_x , \frac{4}{n})\)</span>, <span class="math inline">\(\bar{y} \sim N(\mu_y, \frac{4}{n})\)</span> 독립표본임</p>
+<p><span class="math inline">\(\bar{x} - \bar{y} \sim N(\mu_x - \mu_y, \frac{8}{n})\)</span></p>
+<p><span class="math inline">\(E(\bar{x} - \bar{y}) = E(\bar{x}) - E(\bar{y}) = \mu_x - \mu_y\)</span></p>
+<p><span class="math inline">\(Var(\bar{x} - \bar{y}) = Var(\bar{x}) + Var(\bar{y}) = \frac{4}{n} + \frac{4}{n} = \frac{8}{n}\)</span> 독립이니까 이렇게 표현 가능하지</p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(= P(|\frac{\bar{x} - \bar{y}}{\sqrt{8/n}}| \ge \frac{k}{\sqrt{8/n}}|\mu_x = \mu_y)\)</span></p>
+<p><span class="math inline">\(= P(|Z| \ge \frac{k}{\sqrt{8/n}})\)</span></p>
+<p><span class="math inline">\(\frac{k}{\sqrt{8/n}} = Z_{\frac{\alpha}{2}} \to k = Z_{\frac{\alpha}{2}}\sqrt{\frac{8}{n}}\)</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-21-ts-HW9_files/figure-html/75615dc9-0a84-4612-828f-c982dc253991-1-8b700cd9-bc03-48df-9416-06acb093a150.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>유의수준 <span class="math inline">\(\alpha\)</span>인 일반화 가능도비 검정법의 기각력</p>
+<p><span class="math inline">\(|\bar{x} - \bar{y}| \ge Z_{\frac{\alpha}{2}}\sqrt{\frac{8}{n}}\)</span></p>
+<p>여기서 만약 <span class="math inline">\(\bar{x},\bar{y}\)</span> 랜덤평균 표본이 주어지면, 유의확률을 구할 수 있다.</p>
+<p><span class="math inline">\(P(|\bar{x} - \bar{y}| \ge \text{ 실제 관측된 값 }(\bar{x} - \bar{y}) &lt; \alpha \to \text{Reject } H_0\)</span></p>
+</section>
+<section id="section-24" class="level1">
+<h1>29.</h1>
 
 
 </section>
