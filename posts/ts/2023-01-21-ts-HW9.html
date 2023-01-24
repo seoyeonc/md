@@ -461,6 +461,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-25-ts-final term.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Final term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ts/2023-01-05-ts_HW1.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW1</a>
   </div>
 </li>
@@ -567,6 +572,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#section-23" id="toc-section-23" class="nav-link" data-scroll-target="#section-23">28.</a></li>
   <li><a href="#section-24" id="toc-section-24" class="nav-link" data-scroll-target="#section-24">29.</a></li>
+  <li><a href="#section-25" id="toc-section-25" class="nav-link" data-scroll-target="#section-25">32.</a></li>
   </ul>
 </nav>
     </div>
@@ -735,7 +741,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="section-7" class="level1">
 <h1>12.</h1>
-<p>이항분포 <span class="math inline">\(B(10,p)\)</span>에서 하나의 관찰값 <span class="math inline">\(X\)</span>을 얻을 때, 가설 <span class="math inline">\(H_0 : p \le \frac{1}{2}\)</span> vs $ H_1 : p &gt; $의 기각역으로 <span class="math inline">\(C = \{ x : x \ge 7 \}\)</span>을 택한 검정의</p>
+<p>이항분포 <span class="math inline">\(B(10,p)\)</span>에서 하나의 관찰값 <span class="math inline">\(X\)</span>을 얻을 때, 가설 <span class="math inline">\(H_0 : p \le \frac{1}{2}\)</span> vs <span class="math inline">\(H_1 : p &gt; \frac{1}{2}\)</span>의 기각역으로 <span class="math inline">\(C = \{ x : x \ge 7 \}\)</span>을 택한 검정의</p>
 <p><span class="math inline">\(\star\)</span> tip? hint?</p>
 <p><span class="math inline">\(f(x:p) = \begin{pmatrix} 10 \\ x \end{pmatrix} p^x (1-p)^{10-x}\)</span></p>
 <p>귀무가설이 복합가설이다.</p>
@@ -760,8 +766,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>?아직 못 품..</h1>
 <p>검정력함수를 구하라.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\beta = P(\text{Not Reject } H_0 | H_1 \text{True})\)</span></p>
-<p>= 대립가설 하 p값의 범위 중 기각하지 않을 확률의 최솟값</p>
+<p>검정력 <span class="math inline">\(= P(\text{Reject } H_0 | H_1 \text{ True})\)</span></p>
+<p>= 대립가설 하에서 <span class="math inline">\(p\)</span>값의 범위 중 기각할 확률의 최댓값</p>
+<p>= <span class="math inline">\({max}_{p&gt;\frac{1}{2}} P(\text{Reject } H_0 | p) \to \Pi(p)\)</span></p>
+<p><span class="math inline">\(= \Pi(p) = P(\text{Reject } H_0 | p)\)</span></p>
+<p><span class="math inline">\(= P(X \ge 7|p)\)</span></p>
+<p><span class="math inline">\(= \sum_{x \ge7} f(x:p) = \sum_{x \ge 7} \begin{pmatrix} 10 \\ x \end{pmatrix}p^x (1-p)^{10-x}\)</span></p>
+<p><span class="math inline">\(\star \frac{1}{2}&lt;p &lt;1\)</span> 구간에서 증가함수다.</p>
+<p><span class="math inline">\(\Pi(\frac{1}{2}) = \sum_{x\ge7} \begin{pmatrix} 10 \\ x \end{pmatrix} (\frac{1}{2})^2 = \{ \begin{pmatrix} 10 \\ 7 \end{pmatrix} + \begin{pmatrix} 10 \\ 8 \end{pmatrix} + \begin{pmatrix} 10 \\ 9 \end{pmatrix} + \begin{pmatrix} 10 \\ 10 \end{pmatrix} \} \{ (\frac{1}{2})^{10}\}\)</span></p>
 </section>
 <section id="section-10" class="level1">
 <h1>19.</h1>
@@ -1107,6 +1119,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="section-24" class="level1">
 <h1>29.</h1>
+<p><span class="math inline">\(X_1,X_2,X_3\)</span>가 독립적으로 각각 <span class="math inline">\(POI(\lambda), POI(2\lambda),POI(3\lambda)\)</span>를 따른다고 하자. 이 때 가설 <span class="math inline">\(H_0:\lambda = \lambda_0\)</span> vs <span class="math inline">\(H_1:\lambda&gt;\lambda_0\)</span>의 검정문제에 대하여 가능도비에 근거한 검정법을 제시하라.</p>
+<p><strong>answer</strong></p>
+<p>랜덤표본이 아니라 서로 다른 분포애서 나왔다. 분포는 다르지만 독립이다.</p>
+<p><span class="math inline">\(L(\lambda) = f(X_1,X_2,X_3:\lambda)\)</span> 결합확률밀도함수는 독립이니까 주변확률함수의 곱으로 표현</p>
+<p><span class="math inline">\(= f_1(x_1:\lambda)f_2(\lambda_2:\lambda)f_3(x_3:\lambda)\)</span></p>
+<p><span class="math inline">\(= \frac{e^{-\lambda}\lambda^{x_1}}{x!} \times \frac{e^{-\lambda}\lambda^{x_2}}{x!} \times \frac{e^{-\lambda}\lambda^{x_3}}{x!}\)</span></p>
+<p><span class="math inline">\(= \frac{e^{-6\lambda}\lambda^{x_1+x_2+x_3}2^{x_2}3^{x_3}}{x_1!x_2!x_3!}\)</span></p>
+<p>귀무가설 하 <span class="math inline">\(\lambda\)</span>의 최대가능도추정량</p>
+<ul>
+<li><span class="math inline">\(\Omega_0 = \{\lambda_0\} \to \hat{\lambda}_0 = \lambda_0\)</span> 한 점이기 때문에</li>
+<li><span class="math inline">\(\Omega = \{ \lambda | \lambda \ge \lambda_0 \} \to \hat{\lambda}_0 = \lambda_0\)</span></li>
+</ul>
+<p><span class="math inline">\(logL(\lambda) = -6 \lambda + (x_1 + x_2 + x_3 ) log\lambda + c \lambda\)</span> 포함 안 해서 상수로 표현한 것. 나중에 없어짐.</p>
+<p><span class="math inline">\(\frac{\partial log L(\lambda)}{\partial \lambda} = -6 + \frac{x_1 + x_2 + x_3}{\lambda} = 0\)</span>, <span class="math inline">\(\hat{\lambda} = \frac{x_1 + x_2 + x_3}{6}\)</span></p>
+<p><span class="math inline">\(\lambda = {max}(\frac{x_1+ x_2+x_3}{6},\lambda_0)\)</span> 전체의 <span class="math inline">\(\lambda\)</span> 최대가능도 추정량</p>
+<p><span class="math inline">\(\Lambda = \frac{L(\hat{\lambda}_0)}{L(\lambda)} = \frac{e^{-6\lambda_0}(\lambda_0)^{x_1 + x_2+ x_3} c}{e^{-6\hat{\lambda}_0}(\hat{\lambda}_0)^{x_1 + x_2+ x_3} c} \le k\)</span></p>
+<ol type="1">
+<li><p><span class="math inline">\(\frac{x_1+x_2+x_3}{6} \le \lambda_0 \to \Lambda = 1 \to k=1\)</span>에서는 성립하지 않는다.</p></li>
+<li><p><span class="math inline">\(\frac{x_1+x_2+x_3}{6} &gt; \lambda_0 \to \Lambda = e^{6(\hat{\lambda}-\lambda_0)}(\frac{\lambda_0}{\hat{\lambda}})^{6\hat{\lambda}} \le k\)</span></p></li>
+</ol>
+<ul>
+<li><span class="math inline">\(6(\hat{\lambda} - \lambda_0) + 6\hat{\lambda}(log \lambda_0 - log\hat{\lambda}) \le k\)</span></li>
+</ul>
+<p><span class="math inline">\(\to \hat{\lambda} + \hat{\lambda} log \lambda_0 - \hat{\lambda} log \hat{\lambda} \le k\)</span></p>
+<p><span class="math inline">\(u = \frac{x_1 + x_2+ x_3}{6}\)</span></p>
+<p><span class="math inline">\(g(u) = u + ulog\lambda_0 - ulogu\)</span></p>
+<p><span class="math inline">\(g'(u) = 1 + log \lambda_0 - log u - 1= log \lambda_0 - log u &lt; 0 \therefore\)</span> 감소함수</p>
+<p><span class="math inline">\(\hat{\lambda}\)</span>에 대해 감소함수이다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-21-ts-HW9_files/figure-html/f345138c-1b5a-47ee-b4f7-467bc2605db2-1-87a66e56-f237-4f9a-bce4-e1dec0b42b97.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p><span class="math inline">\(\hat{\lambda} \ge\)</span> 어떤 값 <span class="math inline">\(c\)</span></p>
+<p><span class="math inline">\(c = \{(x_1,x_2,x_3):\frac{x_1+x_2+x_3}{6} \ge k \}\)</span></p>
+<p>여기서 유의수준 <span class="math inline">\(\alpha\)</span>를 만족하는 <span class="math inline">\(k\)</span>를 찾으면 된다.</p>
+</section>
+<section id="section-25" class="level1">
+<h1>32.</h1>
+<p><span class="math inline">\(X \sim B(100,p_x),Y \sim B(106,p_y)\)</span>일 때 가설 <span class="math inline">\(H_0 : p_x = p_y\)</span> vs <span class="math inline">\(H_1 : p_x \neq p_y\)</span> 를 고려해보자. 실험을 통하여 <span class="math inline">\(X=40, Y=68\)</span>을 얻었다고 할 때 정규근사를 활용하여 유의수준 <span class="math inline">\(\alpha = 0.05\)</span>인 일반화 가능도비 검정법으로 검정하시오.</p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(L(p_x,p_y) = f(x,y:p_x,p_y)\)</span> 서로 독립이다.문제에 언급은 없다.</p>
+<p><span class="math inline">\(= f_x(x:p_x)f_y(y:p_y)= \begin{pmatrix} 100 \\ x\end{pmatrix} p_x^x(1-p_x)^{100-x} \begin{pmatrix} 106 \\ y\end{pmatrix} p_y^y(1-p_y)^{106-x}\)</span></p>
+<ul>
+<li>_0 = {(p_x,p_y): 0&lt;p_x=p_y&lt;1}$</li>
+<li>= {(p_x,p_y): 0&lt;p_x&lt;1,0&lt;p_y&lt;1}$</li>
+</ul>
+<p><span class="math inline">\(\frac{\partial log L(p_x,p_y)}{\partial p_x} = 0 = \partial x log p_x + (100-x) log (1-p_x) + c \to \hat{p_x} = \frac{x}{100}\)</span></p>
+<p><span class="math inline">\(\frac{\partial log L (p_x, p_y)}{\partial p_y} = 0 \to \hat{p}_y = \frac{y}{106}\)</span></p>
+<p><span class="math inline">\(p_x = p_y = p\)</span>, <span class="math inline">\(L(p) = \begin{pmatrix} 100 \\ x\end{pmatrix} p_x^x(1-p_x)^{100-x} \begin{pmatrix} 106 \\ y\end{pmatrix} p_y^y(1-p_y)^{106-x} = \begin{pmatrix} 100 \\ x\end{pmatrix} p^{x+y}(1-p)^{206-x-y} \begin{pmatrix} 106 \\ y\end{pmatrix}\)</span></p>
+<p><span class="math inline">\(\frac{\partial log L(p)}{\partial p} = 0 = \frac{\partial(x+y) log p + (106 -x-y)log(1-p) + c}{\partial p} \to \hat{p}_0 = \frac{x+y}{206}\)</span></p>
+<p><span class="math inline">\(\Lambda = \frac{L(\hat{p}_0)}{L(\hat{p}_x,\hat{p}_y)} = \frac{\begin{pmatrix} 100 \\ x\end{pmatrix}\begin{pmatrix} 106 \\ y\end{pmatrix}(\frac{x+y}{206})^{x+y}(1-\frac{x+y}{206})^{206-x-y}}{\begin{pmatrix} 100 \\ x\end{pmatrix} (\frac{x}{100})^x (1-\frac{x}{100})^x)^{100-x}\begin{pmatrix} 106 \\ y\end{pmatrix}(\frac{y}{106})^y(1-\frac{y}{106})^{106-y}} \le k\)</span></p>
+<p><span class="math inline">\(\to |\frac{\frac{x}{100} - \frac{y}{106}}{\sqrt{206 - \hat{p}_0(1-\hat{p}_0)/10600}}| \ge Z_{0.025}\)</span></p>
+<p><span class="math inline">\(\hat{p}_0 = \frac{x+y}{206}\)</span>, 문제에서 제시된 값 대입 <span class="math inline">\(X=40,Y=68\)</span></p>
+<p><span class="math inline">\(\to \frac{\frac{40}{100} - \frac{68}{106}}{\sqrt{206 - \frac{108}{206}(1- \frac{108}{206})/10600}} = 3.47\)</span></p>
+<p><span class="math inline">\(|3.47| &gt; 1.96 (Z_{0.025}) \therefore\)</span> 귀무가설을 기각할 수 있다.</p>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">40</span><span class="sc">/</span><span class="dv">100</span> <span class="sc">-</span> <span class="dv">68</span><span class="sc">/</span><span class="dv">106</span>)<span class="sc">/</span><span class="fu">sqrt</span>((<span class="dv">206</span> <span class="sc">*</span> (<span class="dv">108</span><span class="sc">/</span><span class="dv">206</span>) <span class="sc">*</span> (<span class="dv">1-108</span><span class="sc">/</span><span class="dv">206</span>))<span class="sc">/</span><span class="dv">10600</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+-3.46893152585346
+</div>
+</div>
 
 
 </section>
