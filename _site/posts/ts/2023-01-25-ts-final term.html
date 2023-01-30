@@ -22,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -60,6 +123,9 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -240,12 +306,17 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-01-23-Coding Test_Q2.html" class="sidebar-item-text sidebar-link">두 큐 합 같게 만들기(Not Done)</a>
+  <a href="../../posts/ct/2023-01-23-Coding Test_Q2.html" class="sidebar-item-text sidebar-link">두 큐 합 같게 만들기(Done)</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/ct/2023-01-21-Coding Test_Q1.html" class="sidebar-item-text sidebar-link">성격 유형 검사하기(Done)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-30-Coding Test_Q3.html" class="sidebar-item-text sidebar-link">코딩 테스트 공부(Not Done)</a>
   </div>
 </li>
       </ul>
@@ -591,6 +662,11 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="e">(e)</h2>
 <p><span class="math inline">\(p(1-p)\)</span>에 대한 최대가능도추정량을 구하시오.</p>
 <p><strong>answer</strong></p>
+<p><span class="math inline">\(f(x) = p^x(1-p)^{1-x}, x=0,1, 0&lt;p&lt;1\)</span></p>
+<p><span class="math inline">\(L(p) = f(x_1|p)\dots f(x_n|p) = p^{x_1}(1-p)^{1-x_1}\dots p^{x_n}(1-p)^{1-x_n} = p^{\sum x_i}(1-p)^{n-\sum x_i}\)</span></p>
+<p><span class="math inline">\(l(p) = \sum x_i log p + (n-\sum x_i) log (1-p)\)</span></p>
+<p><span class="math inline">\(l'(p) = \frac{\sum x_i}{p} - \frac{n-\sum x_i}{1-p} = 0\)</span></p>
+<p><span class="math inline">\(\hat{p} = \frac{\sum x_i}{n} = \bar{X}\)</span>, <span class="math inline">\(\hat{p}(1-\hat{p}) = \bar{X}(1-\bar{X})\)</span></p>
 </section>
 </section>
 <section id="section-2" class="level1">
@@ -604,16 +680,33 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="a-2">(a)</h2>
 <p><span class="math inline">\(\theta\)</span>에 대한 적절한 추축변량을 구하고, 해당 추축변량의 분포를 명시하시오.</p>
 <p><strong>answer</strong></p>
+<p><span class="math inline">\(f(x|\theta) = \theta exp(-\theta x)I(x&gt;0) \sim Gamma(1,\frac{1}{\theta})\)</span></p>
+<p><span class="math inline">\(L(\theta) = \Pi^n_{i=1} f(x_i | \theta) = \Pi^n_{i=1} \theta exp(-\theta x) I(x_i&gt;0)\)</span></p>
+<p><span class="math inline">\(= \theta^n exp(-\sum x_i \theta) I(x_i&gt;0)\)</span></p>
+<p><span class="math inline">\(logL(\theta) = nlog(\frac{1}{\theta}) -\sum x_i \theta\)</span></p>
+<p><span class="math inline">\(\frac{\partial log L(\theta)}{\partial \theta} = n\theta -\sum x_i\)</span></p>
+<p><span class="math inline">\(\to \hat{\theta} = \frac{\sum x_i}{n}\)</span></p>
+<p><span class="math inline">\(\sqrt{n}( \frac{\sum x_i}{n} - \theta) \to (d) N(0,\frac{1}{I(\theta)})\)</span></p>
+<p><span class="math inline">\(logf(x|\theta) = n log(\frac{1}{\theta}) - x \theta\)</span></p>
+<p><span class="math inline">\(\frac{\partial logf(x|\theta)}{\partial \theta} = n \theta + x\)</span></p>
+<p><span class="math inline">\(\frac{\partial^2 logf(x|\theta)}{\partial^2 \theta} = 1\)</span></p>
+<p><span class="math inline">\(-E(1) = n \to I(\theta)\)</span></p>
+<p><span class="math inline">\(\therefore \sqrt{n} ( \frac{\sum x_i}{n} - \theta) \to(d) N(0,n)\)</span></p>
 </section>
 <section id="b-2" class="level2">
 <h2 class="anchored" data-anchor-id="b-2">(b)</h2>
 <p><span class="math inline">\(\theta\)</span>에 대한 95%신뢰구간을 구하시오.</p>
 <p><strong>answer</strong></p>
+<p><span class="math inline">\(\theta\)</span>의 <span class="math inline">\(100(1-0.05)\)</span>% 신뢰구간</p>
+<p><span class="math inline">\((\theta \pm \frac{\sum x_i}{n})\)</span></p>
 </section>
 <section id="c-1" class="level2">
 <h2 class="anchored" data-anchor-id="c-1">(c)</h2>
 <p><span class="math inline">\(P(X&gt;1)\)</span>에 대한 95% 신뢰구간을 구하시오.</p>
 <p><strong>answer</strong></p>
+<p><span class="math inline">\(P(X&gt;1)\)</span>의 <span class="math inline">\(100(1-0.05)\)</span>% 신뢰구간</p>
+<p><span class="math inline">\(f(x;\theta) = \theta exp (-\theta x) I (x&gt;0)\)</span></p>
+<p><span class="math inline">\(\int^{\infty}_{1}f(x:\theta)\)</span></p>
 </section>
 <section id="d-1" class="level2">
 <h2 class="anchored" data-anchor-id="d-1">(d)</h2>
@@ -649,6 +742,12 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math display">\[H_0 : \theta = 1 \text{ vs } H_1 : \theta = 2\]</span></p>
 <p>에 대한 기각역역을 <span class="math inline">\(C = \{x:x&gt;0.8\}\)</span>로 했을 때 제1종오류를 범할 확률과 검정력을 계산하시오.</p>
 <p><strong>answer</strong></p>
+<p><span class="math inline">\(\alpha = P(\text{Reject } H_0 | H_0 \text{True})\)</span></p>
+<p><span class="math inline">\(\alpha = P(x&gt;0.8 | \theta = 1)\)</span></p>
+<p><span class="math inline">\(= \int^1_{0.8} 1 dx = [ x ]^1_{0.8} = 1-0.8 = 0.2\)</span></p>
+<p><span class="math inline">\(\beta = P(\text{type 2 Error}) = P(\text{Not Reject } H_0 | H_0 \text{ False})\)</span></p>
+<p><span class="math inline">\(P(x&lt;0.8 | \theta = 2)\)</span></p>
+<p><span class="math inline">\(= \int^{0.8}_0 \frac{1}{2} dx = [\frac{1}{2} x]^{0.8}_0 = \frac{0.8}{2} - \frac{0}{2} = \frac{0.8}{2} = 0.4\)</span></p>
 </section>
 <section id="section-4" class="level1">
 <h1>5.</h1>
@@ -659,16 +758,88 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math display">\[C = \{ (x_1,\dots,x_n):\sum^n_{i=1}x_i^2 \ge c\}\]</span></p>
 <p>의 꼴로 주어짐을 보이시오.</p>
 <p><strong>answer</strong></p>
+<p><span class="math inline">\(L(\sigma^2) = \Pi^n_{i=1} f(x_2 : \sigma^2) = \Pi^n_{i=1} \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{x_i^2}{2\sigma^2}} * \mu=0\)</span></p>
+<p><span class="math inline">\(= (\frac{1}{2\pi\sigma^2})^{\frac{n}{2}} e^{-\frac{\sum^n_{i=1}x_i^2}{2\sigma^2}}\)</span></p>
+<p>네이만 피어슨 정의에 의하면, <span class="math inline">\(LR = \frac{L(H_0)}{L(H_1)} = \frac{L(4)}{L(9)} \le k\)</span></p>
+<p><span class="math inline">\(LR = \frac{L(4)}{L(9)} = \frac{(\frac{1}{2\pi 4})^{\frac{n}{2}} e^{-\frac{\sum^n_{i=1} x_i^2}{2 \times 4}}}{(\frac{1}{2\pi 9})^{\frac{n}{2}} e^{-\frac{\sum^n_{i=1} x_i^2}{2 \times 9}}}\)</span></p>
+<p><span class="math inline">\(= (\frac{9}{4})^{\frac{n}{2}}e^{-\sum^n_{i=1}x^2_i(\frac{1}{8}-\frac{1}{18})}\)</span></p>
+<p><span class="math inline">\(= (\frac{9}{4})^{\frac{n}{2}}e^{-\frac{5}{72}\sum^n_{i=1}x^2_i} \le k\)</span></p>
+<p><span class="math inline">\(\to e^{-\frac{5}{72}\sum^n_{i=1}x^2_i} \le k\)</span></p>
+<p><span class="math inline">\(\to -\frac{5}{72}\sum^n_{i=1}x^2_i \le k\)</span></p>
+<p><span class="math inline">\(\to \sum^n_{i=1}x^2_i \ge k\)</span></p>
+<p>기각역: <span class="math inline">\(\therefore c = \{ (x_1, \dots ,x_n) : \sum^n_{i=1} x^2_i \ge c)\)</span></p>
 </section>
 <section id="b-3" class="level2">
 <h2 class="anchored" data-anchor-id="b-3">(b)</h2>
-<p>표본의 크기가 <span class="math inline">\(n=20\)</span>일 떄 유의수준이 <span class="math inline">\(\alpha-0.05\)</span>이기 위한 상수 <span class="math inline">\(c\)</span>의 값을 <span class="math inline">\(\chi^2\)</span>분포의 분위수를 사용하여 표현하시오.</p>
+<p>표본의 크기가 <span class="math inline">\(n=20\)</span>일 떄 유의수준이 <span class="math inline">\(\alpha=0.05\)</span>이기 위한 상수 <span class="math inline">\(c\)</span>의 값을 <span class="math inline">\(\chi^2\)</span>분포의 분위수를 사용하여 표현하시오.</p>
 <p><strong>answer</strong></p>
+<p><span class="math inline">\(\alpha = P(\text{Reject } H_0 | H_0 \text{True})\)</span></p>
+<p><span class="math inline">\(= P(\sum^n_{i=1}x^2_i \ge k | \sigma^2 = 4)\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p>모집단 분포 <span class="math inline">\(X_i \sim N(0,\sigma^2)\)</span></p>
+<p>표준화 <span class="math inline">\(\frac{X_i}{\sigma} \sim N(0,1)\)</span></p>
+<p>표분화 제곱 분포는 카이제곱 <span class="math inline">\((\frac{X_i^2}{\sigma})^2 \sim \chi^2_1, i=1,2,\dots, n\)</span></p>
+<p>카이제곱의 합의 자유도 합 <span class="math inline">\(\sum^n_{i=1}(\frac{X_i}{\sigma})^2 \sim \chi^2_{(n)}\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(= P(\sum^n_{i=1}\frac{\chi^2_i}{\sigma^2} \ge \frac{k}{\sigma^2}|\sigma^2 = 4)\)</span></p>
+<p><span class="math inline">\(= P(\sum^{20}_{i=1} \frac{\chi^2_i}{4} \ge \frac{k}{4} | \sigma^2 = 4)\)</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-ts-final term_files/figure-html/be573012-f4f1-469a-a6f2-9c343bfcb5fa-1-923a4786-c041-427b-9ae8-701b7bed1fd4.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p><span class="math inline">\(\frac{k}{4} = \chi^2_{0.05(20)}\)</span></p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>qchisq(<span class="fl">0.95</span>,<span class="dv">20</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+31.4104328442309
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="op">*</span>qchisq(<span class="fl">0.95</span>,<span class="dv">20</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+125.641731376924
+</div>
+</div>
+<p><span class="math inline">\(k = 4\chi^2_{0.05(20)} = 125.64\)</span></p>
+<p><span class="math inline">\(c = \{(x_1,\dots,x_n) : \sum^n_{i=1}\ge 125.64\}\)</span></p>
 </section>
 <section id="c-2" class="level2">
 <h2 class="anchored" data-anchor-id="c-2">(c)</h2>
 <p>표본의 크기가 <span class="math inline">\(n=20\)</span>일 때 (b)에서 찾은 기각역에 대한 제2종오류를 범할 확률을 구하시오.</p>
 <p><strong>answer</strong></p>
+<p><span class="math inline">\(\alpha = P(\text{Reject } H_0 | H_0 \text{True})\)</span></p>
+<p><span class="math inline">\(= P(\sum^n_{i=1}x^2_i \ge k | \sigma^2 = 4)\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p>모집단 분포 <span class="math inline">\(X_i \sim N(0,\sigma^2)\)</span></p>
+<p>표준화 <span class="math inline">\(\frac{X_i}{\sigma} \sim N(0,1)\)</span></p>
+<p>표분화 제곱 분포는 카이제곱 <span class="math inline">\((\frac{X_i^2}{\sigma})^2 \sim \chi^2_1, i=1,2,\dots, n\)</span></p>
+<p>카이제곱의 합의 자유도 합 <span class="math inline">\(\sum^n_{i=1}(\frac{X_i}{\sigma})^2 \sim \chi^2_{(n)}\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(= P(\sum^n_{i=1}\frac{\chi^2_i}{\sigma^2} \ge \frac{k}{\sigma^2}|\sigma^2 = 4)\)</span></p>
+<p><span class="math inline">\(= P(\sum^{20}_{i=1} \frac{\chi^2_i}{4} \ge \frac{k}{4} | \sigma^2 = 4)\)</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-ts-final term_files/figure-html/223387ab-3847-4d77-88ca-71d58cc1085f-1-923a4786-c041-427b-9ae8-701b7bed1fd4.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p><span class="math inline">\(\frac{k}{4} = \chi^2_{0.05(20)}\)</span></p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>qchisq(<span class="fl">0.95</span>,<span class="dv">20</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+31.4104328442309
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="op">*</span>qchisq(<span class="fl">0.95</span>,<span class="dv">20</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+125.641731376924
+</div>
+</div>
+<p><span class="math inline">\(k = 4\chi^2_{0.05(20)} = 125.64\)</span></p>
+<p><span class="math inline">\(c = \{(x_1,\dots,x_n) : \sum^n_{i=1}\ge 125.64\}\)</span></p>
 </section>
 </section>
 <section id="section-5" class="level1">
