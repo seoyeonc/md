@@ -545,15 +545,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">8.</a>
   <ul class="collapse">
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">1.</a></li>
-  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">2.</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">(1)</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">(2)</a></li>
   </ul></li>
   <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">12.</a>
   <ul class="collapse">
   <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">(1)</a></li>
   <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">(2)</a></li>
   </ul></li>
-  <li><a href="#아직-못-품.." id="toc-아직-못-품.." class="nav-link" data-scroll-target="#아직-못-품..">?아직 못 품..</a></li>
   <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">19.</a>
   <ul class="collapse">
   <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">(1)</a></li>
@@ -681,7 +680,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>8.</h1>
 <p><span class="math inline">\(X \sim B(2,p)\)</span>에 대하여 가설 <span class="math inline">\(H_0 : p = \frac{1}{2}\)</span> vs <span class="math inline">\(H_1 : p = \frac{2}{3}\)</span>을 고려하자.</p>
 <section id="section-5" class="level2">
-<h2 class="anchored" data-anchor-id="section-5">1.</h2>
+<h2 class="anchored" data-anchor-id="section-5">(1)</h2>
 <p>유의수준 <span class="math inline">\(\alpha \le \frac{1}{2}\)</span>인 검정법의 기각역을 모두 제시하라.</p>
 <p><strong>answer</strong></p>
 <p>모집단 <span class="math inline">\(B(2,p)\)</span></p>
@@ -707,7 +706,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </section>
 <section id="section-6" class="level2">
-<h2 class="anchored" data-anchor-id="section-6">2.</h2>
+<h2 class="anchored" data-anchor-id="section-6">(2)</h2>
 <p>(1)의 기각역들 중 <span class="math inline">\(\alpha + \beta\)</span>를 최소화하는 기각역을 구하라.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(\beta = P(\text{Not Reject } H_0 | H_1 \text{True})\)</span></p>
@@ -765,10 +764,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="section-9" class="level2">
 <h2 class="anchored" data-anchor-id="section-9">(2)</h2>
-</section>
-</section>
-<section id="아직-못-품.." class="level1">
-<h1>?아직 못 품..</h1>
 <p>검정력함수를 구하라.</p>
 <p><strong>answer</strong></p>
 <p>검정력 <span class="math inline">\(= P(\text{Reject } H_0 | H_1 \text{ True})\)</span></p>
@@ -779,6 +774,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(= \sum_{x \ge7} f(x:p) = \sum_{x \ge 7} \begin{pmatrix} 10 \\ x \end{pmatrix}p^x (1-p)^{10-x}\)</span></p>
 <p><span class="math inline">\(\star \frac{1}{2}&lt;p &lt;1\)</span> 구간에서 증가함수다.</p>
 <p><span class="math inline">\(\Pi(\frac{1}{2}) = \sum_{x\ge7} \begin{pmatrix} 10 \\ x \end{pmatrix} (\frac{1}{2})^2 = \{ \begin{pmatrix} 10 \\ 7 \end{pmatrix} + \begin{pmatrix} 10 \\ 8 \end{pmatrix} + \begin{pmatrix} 10 \\ 9 \end{pmatrix} + \begin{pmatrix} 10 \\ 10 \end{pmatrix} \} \{ (\frac{1}{2})^{10}\}\)</span></p>
+</section>
 </section>
 <section id="section-10" class="level1">
 <h1>19.</h1>
@@ -1018,13 +1014,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>모평균 <span class="math inline">\(\mu\)</span>가 알려져 있지 않은 경우 <span class="math inline">\(H_0:\sigma^2 = \sigma^2_0 \text{ vs }H_1 : \sigma^2 &gt; \sigma^2_0\)</span>에 대한 유의수준 <span class="math inline">\(\alpha\)</span>인 일반화 가능도비 검정법을 구하라.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(\mu\)</span>가 장애요소</p>
-<p><span class="math inline">\(L(\mu, \sigma^2( = (\frac{1}{2\pi \sigma^2})^{\frac{n}{2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\)</span></p>
+<p><span class="math inline">\(L(\mu, \sigma^2( = (\frac{1}{2\pi \sigma^2})^{\frac{n}{2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}})\)</span></p>
 <p><span class="math inline">\(\Lambda = \frac{L(\hat{\mu}_0,\hat{\sigma}^2_0)}{L(\hat{\mu},\hat{\sigma}^2)}\)</span></p>
 <ul>
 <li><span class="math inline">\(\Omega_0 = \{ (\mu,\sigma^2) : -\infty &lt; \mu &lt; \infty , \sigma^2 = \sigma^2_0\}\)</span>
 <ul>
 <li><span class="math inline">\(\hat{\mu}_0 = {argmax}_{(\mu,\sigma^2)\in\Omega_0} L(\mu,\sigma^2) = \bar{x}\)</span></li>
-<li>^2_0 = ^2_0$</li>
+<li><span class="math inline">\(\hat{\sigma}^2_0 = \sigma^2_0\)</span></li>
 </ul></li>
 <li><span class="math inline">\(\Omega = \{ (\mu, \sigma^2) : -\infty &lt; \mu &lt; \infty , \sigma^2 \ge \sigma^2_0, \sigma^2 &gt; 0 \}\)</span>
 <ul>
@@ -1049,12 +1045,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(\frac{1}{n}\sum^n_{i=1}(x_i-\bar{x})^2 &gt; \sigma^2_0 \to \hat{\sigma}^2 = \frac{1}{n}\sum^n_{i=1}(x_i - \bar{x})^2\)</span></li>
 </ol>
 <ul>
-<li>예 5.24에서 다룬 식, <span class="math inline">\(\Lambda\)</span>는 $의 감소함수이다.</li>
+<li>예 5.24에서 다룬 식, <span class="math inline">\(\Lambda\)</span>는 <span class="math inline">\(\frac{\hat{\sigma}}{\sigma^2_0}\)</span>의 감소함수이다.</li>
 </ul>
 <p>기각역 : <span class="math inline">\(\frac{1}{n}\sum(x_i - \bar{x})^2 \ge k\)</span></p>
 <p><span class="math inline">\(\alpha = P(\sum^n_{i=1}(x_i - \bar{x})^2 \ge k | \sigma^2 = \sigma^2_0)\)</span></p>
 <p><span class="math inline">\(\star \frac{\sum^n_{i=1}(x_i - \bar{x})^2}{\sigma^2} \sim \chi^2_{(n-1)}\)</span></p>
-<p><span class="math inline">\(= P(\frac{\sum^n_{i=1}(x_i 0 \bar{x})^2}{\sigma^2_0} \ge \frac{k}{\sigma^2_0} | \sigma^2 = \sigma^2_0)\)</span></p>
+<p><span class="math inline">\(= P(\frac{\sum^n_{i=1}(x_i - \bar{x})^2}{\sigma^2_0} \ge \frac{k}{\sigma^2_0} | \sigma^2 = \sigma^2_0)\)</span></p>
 <p><span class="math inline">\(\frac{k}{\sigma^2_0} = \chi^2_{0.05(n-1)}\)</span></p>
 <p><span class="math inline">\(k = \sigma^2_0 \chi^2_{0.05(n-1)}\)</span></p>
 <div class="quarto-figure quarto-figure-center">
