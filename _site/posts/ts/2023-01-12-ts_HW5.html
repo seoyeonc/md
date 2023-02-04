@@ -510,12 +510,12 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(\sqrt{n}(\sqrt{\bar{X}_n} - 1)\)</span>의 극한 분포를 구하라.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(E(X_i) = 1\)</span>, <span class="math inline">\(Var(X) = 1\)</span></p>
-<p><span class="math inline">\(\sum^n_{i=1} X_i \sim N(n,n)\)</span></p>
-<p><span class="math inline">\(\frac{\sum^n_{i=1}X_i - n}{\sqrt{n}} \sim Z(0,1)\)</span></p>
+<p><span class="math inline">\(\frac{\sum^n_{i=1} X_i}{n} \sim N(1,\frac{1}{n})\)</span></p>
+<p><span class="math inline">\(\frac{\bar{X} - 1}{1/\sqrt{n}} \sim Z(0,1)\)</span></p>
 <p><span class="math inline">\(\sqrt{n}(\bar{X}_n - 1) \xrightarrow[]{d} Z(0,1)\)</span></p>
-<p><span class="math inline">\(g(x) = \sqrt(x)\)</span>, <span class="math inline">\(g'(x) = \frac{1}{2\sqrt{x}}\)</span></p>
+<p><span class="math inline">\(g(x) = \sqrt{x}\)</span>, <span class="math inline">\(g'(x) = \frac{1}{2\sqrt{x}}\)</span></p>
 <p><span class="math inline">\(\sqrt{n} (g(\bar{X}_n) - g(1)) \xrightarrow[]{d} N(0,(g'(1))^2)\)</span></p>
-<p><span class="math inline">\(\sqrt{n}(\bar{X}_n - 1) \xrightarrow[]{d} N(0,\frac{1}{4})\)</span></p>
+<p><span class="math inline">\(\sqrt{n}(\sqrt{\bar{X}}_n - 1) \xrightarrow[]{d} N(0,\frac{1}{4})\)</span></p>
 </section>
 <section id="section-2" class="level1">
 <h1>34.</h1>
@@ -524,8 +524,8 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="section-3">(1)</h2>
 <p><span class="math inline">\(\sqrt{n}(\bar{X}_n^2 - \mu^2) \xrightarrow[]{d} N(0,4 \mu^2 \sigma^2)\)</span>임을 보여라, 단 <span class="math inline">\(\mu \neq 0\)</span></p>
 <p><strong>answer</strong></p>
-<p>델타 방법 사용</p>
-<p><span class="math inline">\(\sqrt{n}(g(X_n) - g(\mu) ) \xrightarrow[]{d} N(0,\sigma^2(g'(\mu)^2)\)</span></p>
+<p>Delta Method</p>
+<p><span class="math inline">\(\sqrt{n}(g(X_n) - g(\mu) ) \xrightarrow[]{d} N(0,\sigma^2 g'(\mu)^2)\)</span></p>
 <p><span class="math inline">\(g(X_n) = \bar{X}_n^2\)</span>, <span class="math inline">\(g'(X_n) = 2\bar{X}_n\)</span></p>
 <p><span class="math inline">\(g(\mu) = \mu^2\)</span>, <span class="math inline">\((g'(\mu))^2 = 4\mu^2\)</span></p>
 <p><span class="math inline">\(\sqrt{n}(\bar{X}_n^2 - \mu^2) \xrightarrow[]{d} N(0,4\mu^2 \sigma^2)\)</span></p>

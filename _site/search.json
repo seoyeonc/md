@@ -1537,35 +1537,35 @@
     "href": "posts/ts/2023-01-14-ts_HW6.html#section-6",
     "title": "Theoritical Statistics HW6",
     "section": "(1)",
-    "text": "(1)\n\\(T_1(X)\\)와 \\(T_2(X)\\)의 비평향성을 점검하라.\nanswer\n\\(E(T_1(X)) = E(X) = P \\to T_1(X)\\) 비편향성 만족\n\\(E(T_2(X)) = E(\\frac{1}{2}) = \\frac{1}{2} \\to T_2(X)\\) 비편향성 불만족"
+    "text": "(1)\n\\(T_1(X)\\)와 \\(T_2(X)\\)의 비평향성을 점검하라.\nanswer\n\\(E(T_1(X)) = E(X) = p \\to T_1(X)\\) 비편향성 만족\n\\(E(T_2(X)) = E(\\frac{1}{2}) = \\frac{1}{2} \\to T_2(X)\\) 비편향성 불만족"
   },
   {
     "objectID": "posts/ts/2023-01-14-ts_HW6.html#section-7",
     "href": "posts/ts/2023-01-14-ts_HW6.html#section-7",
     "title": "Theoritical Statistics HW6",
     "section": "(2)",
-    "text": "(2)\n\\(T_1(X)\\)와 \\(T_2(X)\\)의 평균제곱오차를 비교하라.\nanswer\n\\(MSE(T_1(X)) = MSE(X)\\)\n\\(= E(X-P)^2 = E(X^2 - 2PX + P^2)\\)\n\\(= P(1-P) + P^2 -2P^2 + P^2 = P-P^2+P^2-2P^2+P^2 = P-P^2 = P(1-P)\\)\n\\(MSE(T_2(X)) = MSE(\\frac{1}{2} = E(\\frac{1}{2} - P)^2 = (\\frac{1}{2}-P)^2\\)\n\\(\\star\\)\n\\(P-P^2 = \\frac{1}{4}-2P+P^2\\)\n\\(2P^2 -3P+\\frac{1}{4} = 0\\)\n\\(P = \\frac{3 \\pm \\sqrt{9-1}}{4} = \\frac{3 \\pm \\sqrt{7}}{4}\\)\n\n\n\nimage.png"
+    "text": "(2)\n\\(T_1(X)\\)와 \\(T_2(X)\\)의 평균제곱오차를 비교하라.\nanswer\n\\(MSE(T_1(X)) = MSE(X)\\)\n\\(= E(X-P)^2 = E(X^2 - 2PX + P^2)\\)\n\\(= P(1-P) + P^2 -2P^2 + P^2 = P-P^2+P^2-2P^2+P^2 = P-P^2 = P(1-P)\\)\n\\(MSE(T_2(X)) = MSE(\\frac{1}{2} - E(\\frac{1}{2} - P)^2) = (\\frac{1}{2}-P)^2\\)\n\\(\\star\\)\n\\(P-P^2 = \\frac{1}{4}-2P+P^2\\)\n\\(2P^2 -3P+\\frac{1}{4} = 0\\)\n\\(P = \\frac{3 \\pm \\sqrt{9-1}}{4} = \\frac{3 \\pm \\sqrt{7}}{4}\\)\n\n\n\nimage.png"
   },
   {
     "objectID": "posts/ts/2023-01-14-ts_HW6.html#section-9",
     "href": "posts/ts/2023-01-14-ts_HW6.html#section-9",
     "title": "Theoritical Statistics HW6",
     "section": "(1)",
-    "text": "(1)\n\\(\\hat{\\lambda}_1\\)과 \\(\\hat{\\lambda}_2\\)의 분산을 구하라.\nanswer\n\\(E(X) = \\lambda \\to\\), 비편향추정량이다.\n\\(Var(X) = \\lambda^2\\)\n\\(E(\\hat{\\lambda_2}) = E(\\bar{X}_n) = \\lambda\\), \\(var(\\bar{X}_n) = \\frac{\\lambda^2}{n}\\)\n\\(E(\\hat{\\lambda}_2)= E(\\frac{n\\bar{X}_n}{n+1}) = \\frac{n}{n+1}E(\\bar{X}_n) = \\frac{n}{n+1}\\lambda \\to\\)비편향 추정량이 아니다.\n\\(var(\\frac{n}{n+1}\\bar{X}_n) = E(\\frac{n}{n+1}\\bar{X} - \\lambda)^2\\)\n\\(= E(\\frac{n}{n+1} \\bar{X} - \\frac{n}{n+1} \\lambda + \\frac{n}{n+1}\\lambda -\\lambda)^2\\)\n\\(= E(\\frac{n}{n+1}(\\bar{X}-\\lambda) - \\frac{1}{n+1}\\lambda)^2\\)\n\\(= (\\frac{n}{n+1})^2E(\\bar{X} - \\lambda)^2 + \\frac{1}{(n+1)^2}\\lambda^2 - \\frac{2n}{(n+1)^2}\\lambda(\\bar{X} - \\lambda)\\)\n\\(= (\\frac{n}{n+1})^2 \\frac{\\lambda^2}{n} + \\frac{1}{(n+1)^2}\\lambda^2\\)\n\\(= \\frac{n}{(n+1)^2}\\lambda^2 + \\frac{1}{(n+1)^2}\\lambda^2\\)\n\\(= \\frac{1}{n+1}\\lambda^2\\)"
+    "text": "(1)\n\\(\\hat{\\lambda}_1\\)과 \\(\\hat{\\lambda}_2\\)의 분산을 구하라.\nanswer\n\\(E(X_i) = \\lambda, Var(X_i) = \\lambda^2\\)\n\\(E(\\hat{\\lambda}_1) = E(\\bar{X}) = \\lambda \\to\\), 비편향추정량이다.\n\\(Var(\\hat{\\lambda}_1) = E(\\bar{X}) = \\frac{\\lambda^2}{n}\\)\n\\(E(\\hat{\\lambda_2}) = E(\\frac{n\\bar{X}_n}{n+1}) = \\frac{n}{n+1}E(\\bar{X}_n) = \\frac{n}{n+1}\\lambda \\to\\)비편향 추정량이 아니다., 즉, 분산에 bias존재\n\\(Var((\\hat{\\lambda_2}) = Var(\\frac{n}{n+1}\\bar{X}_n) = E(\\frac{n}{n+1}\\bar{X} - \\lambda)^2\\)\n\\(= E(\\frac{n}{n+1} \\bar{X} - \\frac{n}{n+1} \\lambda + \\frac{n}{n+1}\\lambda -\\lambda)^2\\)\n\\(= E(\\frac{n}{n+1}(\\bar{X}-\\lambda) - \\frac{1}{n+1}\\lambda)^2\\)\n\\(= (\\frac{n}{n+1})^2E(\\bar{X} - \\lambda)^2 + \\frac{1}{(n+1)^2}\\lambda^2 - \\frac{2n}{(n+1)^2}\\lambda(\\bar{X} - \\lambda)\\)\n\\(= (\\frac{n}{n+1})^2 \\lambda^2 + \\frac{1}{(n+1)^2}\\lambda^2\\)\n\\(= \\frac{n^2+1}{(n+1)^2}\\lambda^2\\)"
   },
   {
     "objectID": "posts/ts/2023-01-14-ts_HW6.html#section-10",
     "href": "posts/ts/2023-01-14-ts_HW6.html#section-10",
     "title": "Theoritical Statistics HW6",
     "section": "(2)",
-    "text": "(2)\n\\(\\hat{\\lambda}_1\\)과 \\(\\hat{\\lambda}_2\\)의 평균제곱오차를 구하라.\nanswer\n\\(MSE(\\hat{\\lambda}_1) = E(\\hat{\\lambda}_1 - \\lambda)^2 = var(\\hat{\\lambda}_1) = \\frac{\\lambda^2}{n}\\)\n\\(\\star\\) 비편향추정량이라 분산과 일치하는 \\(\\hat{\\lambda}_1\\)\n\\(MSE(\\hat{\\lambda}_2) = E(\\hat{\\lambda}_2 - \\lambda)^2 = var(\\hat{\\lambda}_2) + (bias(\\hat{\\lambda}_2))^2\\)\n\\(\\star\\) 비편향추정량이 아니라 bias까지 고려해줘야 하는 \\(\\hat{\\lambda}_2\\)\n\\(var(\\hat{\\lambda}_2) = \\frac{1}{n+1}\\lambda^2\\)\n\\(bias(\\hat{\\lambda}_2) = E(\\hat{\\lambda}_2) - \\lambda = \\frac[n+{n+1}\\lambda - \\lambda = -\\frac{1}{n+1}\\lambda\\)\n\\(\\star var(\\hat{\\lambda}_2) + (bias(\\hat{\\lambda}_2))^2\\)\n\\(= \\frac{1}{n+1}\\lambda^2 + \\frac{1}{(n+1)^2}\\lambda^2 = \\frac{n+2}{(n+1)^2\\lambda^2}\\)"
+    "text": "(2)\n\\(\\hat{\\lambda}_1\\)과 \\(\\hat{\\lambda}_2\\)의 평균제곱오차를 구하라.\nanswer\n\\(MSE(\\hat{\\lambda}_1) = E(\\hat{\\lambda}_1 - \\lambda)^2 = var(\\hat{\\lambda}_1) = \\frac{\\lambda^2}{n}\\)\n\\(\\star\\) 비편향추정량이라 분산과 일치하는 \\(\\hat{\\lambda}_1\\)\n\\(MSE(\\hat{\\lambda}_2) = E(\\hat{\\lambda}_2 - \\lambda)^2 = var(\\hat{\\lambda}_2) + (bias(\\hat{\\lambda}_2))^2\\)\n\\(\\star\\) 비편향추정량이 아니라 bias까지 고려해줘야 하는 \\(\\hat{\\lambda}_2\\)\n\\(var(\\hat{\\lambda}_2) = \\frac{n^2+1}{(n+1)^2}\\lambda^2\\)\n\\(bias(\\hat{\\lambda}_2) = E(\\hat{\\lambda}_2) - \\lambda = \\frac{n}{n+1}\\lambda - \\lambda = -\\frac{1}{n+1}\\lambda\\)\n\\(\\star var(\\hat{\\lambda}_2) + (bias(\\hat{\\lambda}_2))^2\\)\n\\(= \\frac{n^2+1}{(n+1)^2}\\lambda^2 + \\frac{1}{(n+1)^2}\\lambda^2 = \\frac{n^2+2}{(n+1)^2}\\lambda^2\\)"
   },
   {
     "objectID": "posts/ts/2023-01-18-ts_HW7.html",
     "href": "posts/ts/2023-01-18-ts_HW7.html",
     "title": "Theoritical Statistics HW7",
     "section": "",
-    "text": "8장 검정의 기본요소\n\n\n수업시간 과제\n\\(X_1, X_2, \\dots X_n\\) 이 다음 분포로부터의 랜덤샘플일 때 \\(\\theta\\)의 추정량 \\(\\hat{\\theta}=\\bar{X}\\)이 비편향추정량 중에서 분산이 가장 작은 추정량임을 보여라.\n\n\\(Poisson(\\theta)\\)\n\nanswer\n\\(X \\sim Poisson(\\lambda) \\to f(x| \\lambda) = \\frac{\\lambda^x e^{-\\lambda}}{\\lambda!}\\)\n\\(Var(\\bar{X}) = \\frac{1}{nI(\\theta)}\\)일까?\n\\(I(\\theta) = E(\\frac{\\partial}{\\partial \\lambda} log f(x|\\lambda)^2)\\)\n\\(= E(-1 + \\frac{X}{\\lambda})^2 = E(\\frac{X-\\lambda}{\\lambda})^2 = \\frac{1}{\\lambda}\\)\n\\(\\frac{1}{nI(\\theta)} = \\frac{\\lambda}{n}\\)\n\\(Var(\\bar{X}) = \\frac{\\lambda}{n}\\)\n\\(\\therefore \\bar{X}\\)는 MVUE다.\n\n\n수업시간 과제\n\\(X_1,X_2, \\dots, X_n\\)가 \\(Bernoulli(p)\\)로부터의 랜덤샘플이라고 할 때, \\(Bernoulli(p)\\)의 분산의 최대가능도추정량의 점근분포를 구하시오.\nanswer\n델타 방법 이용\n\\(\\sqrt{n}(g(\\hat{\\theta})-g(\\theta_0) \\xrightarrow[]{d} N(0,\\frac{(g'(\\theta_0)^2}{I(\\theta_0)})\\)\n\\(g(\\theta_0) = p(1-p)\\)\n\\(g'(\\theta_0) = 1-2p\\)\n\\(I(p) = \\frac{1}{p(1-p)}\\)\n\\(\\therefore \\frac{(1-2p)^2}{I(p)} = p(1-p)(1-2p)^2\\)\n\\(\\sqrt{n}(\\frac{p(1-p)}{n} - p(1-p) \\xrightarrow[]{d} N(0,p(1-p)(1-2p)^2\\)\n\n\n4장 23.\n\\(X_1,X_2,X_3\\)이 \\(f_X(x:\\theta)=\\frac{1}{\\theta}exp(-\\frac{x}{\\theta}),x>0\\)으로부터 얻은 랜덤표본이라고 하자. 모수 \\(\\theta\\)를 추정함에 있어 \\((X_1 + 2X_2 + X_3/4\\)의 \\(\\bar{X}_3\\)에 대한 효율을 구하라.\nanswer\n\\(\\sim \\frac{(X_1 + 2X_2 + X_3)/4}{\\bar{X}_3}\\)\n\\(eff((X_1 + 2X_2 + X_3)/4,\\bar{X}_3) = \\frac{1/Var((X_1+2X_2+X_3)/4)}{1/Var(\\bar{X}_3)}\\)\n\\(E(\\frac{X_1 + 2X_2 + X_3}{4}) = \\frac{\\theta + 2\\theta + \\theta}{4} = \\theta \\to\\)비편향추정량\n\\(E(\\bar{X}_3) = \\theta \\to\\) 비편향추정량\n\\(Var(\\frac{X_1 + 2X_2 + X_3}{4}) = \\frac{\\theta^2 + 4\\theta^2 + \\theta^2}{16} = \\frac{6\\theta^2}{16} = \\frac{3\\theta^2}{8}\\)\n\\(Var(\\bar{X}_3) = \\frac{\\theta^2}{3}\\)\n\\(\\therefore \\frac{8}{3\\theta^2} \\times \\frac{\\theta^2}{3} = \\frac{8}{9}\\)\n\\((X_1 + 2X_2 + X_3)/4\\) 가 \\(\\bar{X}_3\\)에 비해 \\(\\frac{8}{9}\\)만큼 효율을 가진다.\n\n\n4장 25.\n\\(X_1,X_2,\\dots,X_n\\)을 베르누이 \\((p)\\)로부터 얻은 랜덤 표본이라고 하자.\n분산 \\(p(1-p)\\)에 대한 비편향추정량의 크래머-라오 하한값을 구하라.\nanswer\n\\(f_X(x|p) = p^x(1-p)^{1-x}\\)\n\\(I(p) = E(\\frac{\\partial}{\\partial p} log f_X(x|p))^2\\)\n\\(= E(\\frac{\\partial}{\\partial p} X log p + (1-x) log(1-p))^2\\)\n\\(= E(\\frac{x}{p} - \\frac{1-x}{1-p})^2\\)\n\\(\\frac{E((x-p)^2}{o(1-p)^2}\\)\n\\(\\star E((x-p)^2 = Var \\sim p(1-p)\\)\n\\(= \\frac{E(x-p)^2}{p^2(1-p)^2} = \\frac{1}{p(1-p)}\\)\nCRLB: \\(\\frac{(g'(p))^2}{nI(p)} = \\frac{p(1-p)(1-2p)^2}{n}\\)"
+    "text": "8장 검정의 기본요소\n\n\n수업시간 과제\n\\(X_1, X_2, \\dots X_n\\) 이 다음 분포로부터의 랜덤샘플일 때 \\(\\theta\\)의 추정량 \\(\\hat{\\theta}=\\bar{X}\\)이 비편향추정량 중에서 분산이 가장 작은 추정량임을 보여라.\n\n\\(Poisson(\\theta)\\)\n\nanswer\n\\(X \\sim Poisson(\\lambda) \\to f(x| \\lambda) = \\frac{\\lambda^x e^{-\\lambda}}{\\lambda!}\\)\n\\(E(X) = \\lambda\\), \\(Var(X) = \\lambda\\)\n\\(Var(\\bar{X}) = \\frac{1}{nI(\\theta)}\\)일까?\n\\(I(\\theta) = E(\\frac{\\partial}{\\partial \\lambda} log f(x|\\lambda)^2)\\)\n\\(= E(-1 + \\frac{X}{\\lambda})^2 = E(\\frac{X-\\lambda}{\\lambda})^2 = \\frac{E(X^2) - 2\\lambda E(X) + \\lambda^2}{\\lambda^2} = \\frac{\\lambda + \\lambda^2-2\\lambda^2 + \\lambda^2}{\\lambda^2} = \\frac{1}{\\lambda}\\)\n\\(\\frac{1}{nI(\\theta)} = \\frac{\\lambda}{n}\\)\n\\(Var(\\bar{X}) = \\frac{\\lambda}{n}\\)\n\\(\\therefore \\bar{X}\\)는 MVUE다.\n\n\n수업시간 과제\n\\(X_1,X_2, \\dots, X_n\\)가 \\(Bernoulli(p)\\)로부터의 랜덤샘플이라고 할 때, \\(Bernoulli(p)\\)의 분산의 최대가능도추정량의 점근분포를 구하시오.\nanswer\n델타 방법 이용\n\\(\\sqrt{n}(g(\\hat{\\theta})-g(\\theta_0) \\xrightarrow[]{d} N(0,\\frac{g'(\\theta_0)^2}{I(\\theta_0)})\\)\n\\(g(\\theta_0) = p(1-p)\\)\n\\(g'(\\theta_0) = 1-2p\\)\n\\(I(p) = \\frac{1}{p(1-p)}\\)\n\\(\\therefore \\frac{(1-2p)^2}{I(p)} = p(1-p)(1-2p)^2\\)\n\\(\\sqrt{n}(\\frac{p(1-p)}{n} - p(1-p) \\xrightarrow[]{d} N(0,p(1-p)(1-2p)^2)\\)\n\n\n4장 23.\n\\(X_1,X_2,X_3\\)이 \\(f_X(x:\\theta)=\\frac{1}{\\theta}exp(-\\frac{x}{\\theta}),x>0\\)으로부터 얻은 랜덤표본이라고 하자. 모수 \\(\\theta\\)를 추정함에 있어 \\(\\frac{X_1 + 2X_2 + X_3}{4}\\)의 \\(\\bar{X}_3\\)에 대한 효율을 구하라.\nanswer\n\\(\\sim \\frac{(X_1 + 2X_2 + X_3)/4}{\\bar{X}_3}\\)\n\\(\\text{eff}((X_1 + 2X_2 + X_3)/4,\\bar{X}_3) = \\frac{1/Var((X_1+2X_2+X_3)/4)}{1/Var(\\bar{X}_3)}\\)\n\\(E(\\frac{X_1 + 2X_2 + X_3}{4}) = \\frac{\\theta + 2\\theta + \\theta}{4} = \\theta \\to\\)비편향추정량\n\\(E(\\bar{X}_3) = \\theta \\to\\) 비편향추정량\n\\(Var(\\frac{X_1 + 2X_2 + X_3}{4}) = \\frac{\\theta^2 + 4\\theta^2 + \\theta^2}{16} = \\frac{6\\theta^2}{16} = \\frac{3\\theta^2}{8}\\)\n\\(Var(\\bar{X}_3) = \\frac{\\theta^2}{3}\\)\n\\(\\therefore \\frac{8}{3\\theta^2} \\times \\frac{\\theta^2}{3} = \\frac{8}{9}\\)\n\\((X_1 + 2X_2 + X_3)/4\\) 가 \\(\\bar{X}_3\\)에 비해 \\(\\frac{8}{9}\\)만큼 효율을 가진다.\n\n\n4장 25.\n\\(X_1,X_2,\\dots,X_n\\)을 베르누이 \\((p)\\)로부터 얻은 랜덤 표본이라고 하자.\n분산 \\(p(1-p)\\)에 대한 비편향추정량의 크래머-라오 하한값을 구하라.\nanswer\n\\(f_X(x|p) = p^x(1-p)^{1-x}\\)\n\\(I(p) = E(\\frac{\\partial}{\\partial p} log f_X(x|p))^2\\)\n\\(= E(\\frac{\\partial}{\\partial p} X log p + (1-x) log(1-p))^2\\)\n\\(= E(\\frac{x}{p} - \\frac{1-x}{1-p})^2\\)\n\\(\\frac{E((x-p)^2}{o(1-p)^2}\\)\n\\(\\star E((x-p)^2 = Var \\sim p(1-p)\\)\n\\(= \\frac{E(x-p)^2}{p^2(1-p)^2} = \\frac{1}{p(1-p)}\\)\nCRLB: \\(\\frac{(g'(p))^2}{nI(p)} = \\frac{p(1-p)(1-2p)^2}{n}\\)"
   },
   {
     "objectID": "posts/ts/2023-01-14-ts_Mid term.html",
@@ -1579,21 +1579,21 @@
     "href": "posts/ts/2023-01-14-ts_Mid term.html#a",
     "title": "Theoritical Statistics Mid term",
     "section": "(a)",
-    "text": "(a)\n\\(T_1(X)\\)과 \\(T_2(X)\\)의 기댓값을 각각 구하시오.\nanswer\n- \\(E(T_1(X))\\)\n\\(= E(\\frac{1}{n}\\sum^n_{i=1}(X_i - \\mu)^2) = \\frac{E((X-\\mu)^2)}{n} = \\frac{\\sigma^2}{n}\\)\n- \\(E(T_2(X))\\)\n\\(= E(\\frac{1}{n-1}\\sum^n_{i=1}(X_i - \\bar{X})^2)\\)\n\\(\\star\\)\n\\(\\sum(X-\\mu)^2 = \\sum(X - \\bar{X} + \\bar{X} - \\mu)^2\\)\n\\(= \\sum((X-\\bar{X})^2 + (\\bar{X} - \\mu)^2 + 2(X-\\bar{X}(\\bar{X}-\\mu))\\)\n\\(= \\sum(X - \\bar{X})^2.+ n(\\bar{X} - \\mu)\\)\n\\(\\star\\)\n\\(= E(\\frac{\\sum(X-\\mu)^2 - n(\\bar{X}-\\mu)}{n-1}) = \\frac{1}{n-1}[n\\sigma^2 - n\\frac{\\sigma^2}{n}] = \\sigma^2\\)"
+    "text": "(a)\n\\(T_1(X)\\)과 \\(T_2(X)\\)의 기댓값을 각각 구하시오.\nanswer\n- \\(E(T_1(X))\\)\n\\(= E(\\frac{1}{n}\\sum^n_{i=1}(X_i - \\mu)^2) = \\frac{E((X-\\mu)^2)}{n} = \\frac{n\\sigma^2}{n} = \\sigma^2\\)\n- \\(E(T_2(X))\\)\n\\(= E(\\frac{1}{n-1}\\sum^n_{i=1}(X_i - \\bar{X})^2)\\)\n\\(\\star\\)\n\\(\\sum(X-\\mu)^2 = \\sum(X - \\bar{X} + \\bar{X} - \\mu)^2\\)\n\\(= \\sum((X-\\bar{X})^2 + (\\bar{X} - \\mu)^2 + 2(X-\\bar{X})(\\bar{X}-\\mu))\\)\n\\(= \\sum(X - \\bar{X})^2.+ n(\\bar{X} - \\mu)^2\\)\n\\(\\star\\)\n\\(= E(\\frac{\\sum(X-\\mu)^2 - n(\\bar{X}-\\mu)}{n-1}^2) = \\frac{1}{n-1}[n\\sigma^2 - n\\frac{\\sigma^2}{n}] = \\frac{(n-1)\\sigma^2}{n-1} = \\sigma^2\\)"
   },
   {
     "objectID": "posts/ts/2023-01-14-ts_Mid term.html#b",
     "href": "posts/ts/2023-01-14-ts_Mid term.html#b",
     "title": "Theoritical Statistics Mid term",
     "section": "(b)",
-    "text": "(b)\n\\(T_1(X)\\)과 \\(T_2(X)\\)의 분산을 각각 구하시오.\nanswer\n- \\(Var(T_1(X))\\)\n\\(= Var(\\frac{1}{n}\\sum^n_{i=1}(X_i - \\mu)^2)\\)\n\\(\\star\\)\n\\(S_n^2 = \\sum^n_{i=1}\\frac{(X_i - \\bar{X}_n)^2}{n-1}\\)\n\\(\\frac{(n-1)S_n^2}{\\sigma^2} = \\frac{\\sum^n_{i=1}(X_i - \\bar{X})^2}{\\sigma^2} \\sim \\chi^2_{n-1}\\)\n\\(\\star\\)\n\\(= Var(\\frac{\\sum^n_{i=1}(X_i - \\bar{X})^2}{\\sigma^2} \\times\\frac{\\sigma^2}{n})\\)\n\\(= \\frac{\\sigma^4}{n^2}Var(\\frac{\\sum^n_{i=1}(X_i - \\bar{X})^2}{\\sigma^2})\\)\n\\(= \\frac{\\sigma^4}{n^2} \\times w(n-1)\\)\n- \\(Var(T_2(X))\\)\n\\(= Var(\\frac{1}{n-1}\\sum^n_{i=1}(X_i - \\bar{X})^2)\\)\n\\(= Var(\\frac{\\sigma^2}{n-1} \\times \\frac{(n-1)S^2}{\\sigma^2})\\)\n\\(\\frac{\\sigma^4}{(n-1)^2} \\times 2(n-1)\\)\n\\(= \\frac{2\\sigma^4}{n-1}\\)"
+    "text": "(b)\n\\(T_1(X)\\)과 \\(T_2(X)\\)의 분산을 각각 구하시오.\nanswer\n- \\(Var(T_1(X))\\)\n\\(= Var(\\frac{1}{n}\\sum^n_{i=1}(X_i - \\mu)^2)\\)\n\\(= Var(\\frac{n\\sigma^2}{n})\\)\n\\(= \\sigma^4\\)\n- \\(Var(T_2(X))\\)\n\\(= Var(\\frac{1}{n-1}\\sum^n_{i=1}(X_i - \\bar{X})^2)\\)\n\\(\\star\\)\n\\(S_n^2 = \\sum^n_{i=1}\\frac{(X_i - \\bar{X}_n)^2}{n-1}\\)\n\\(\\frac{(n-1)S_n^2}{\\sigma^2} = \\frac{\\sum^n_{i=1}(X_i - \\bar{X})^2}{\\sigma^2} \\sim \\chi^2_{n-1}\\)\n\\(\\star\\)\n\\(= Var(\\frac{\\sigma^2}{n-1} \\times \\frac{(n-1)S^2}{\\sigma^2})\\)\n\\(\\frac{\\sigma^4}{(n-1)^2} \\times 2(n-1)\\)\n\\(= \\frac{2\\sigma^4}{n-1}\\)"
   },
   {
     "objectID": "posts/ts/2023-01-14-ts_Mid term.html#a-1",
     "href": "posts/ts/2023-01-14-ts_Mid term.html#a-1",
     "title": "Theoritical Statistics Mid term",
     "section": "(a)",
-    "text": "(a)\n\\(\\sqrt{n}(\\bar{X}^2_n - \\lambda^2)\\)의 극한 분포를 구하시오.\nanswer\nDelta Method\n$({X}^2_n - ^2) N(0,422) $ 단, \\(\\mu \\neq 0\\)\n\\(\\mu = \\lambda\\), \\(\\sigma^2 = \\lambda\\)\n\\(\\sqrt{n}(\\bar{X}^2_n - \\lambda^2) \\xrightarrow[]{d} N(0,4\\lambda^3)\\)"
+    "text": "(a)\n\\(\\sqrt{n}(\\bar{X}^2_n - \\lambda^2)\\)의 극한 분포를 구하시오.\nanswer\nDelta Method\n$({X}^2_n - ^2) N(0,422) $ 단, \\(\\mu \\neq 0\\)\n\\(\\mu = \\lambda\\), \\(\\sigma^2 = \\lambda\\)\n\\(\\sqrt{n}(\\bar{X}^2_n - \\lambda^2) \\xrightarrow[]{d} N(0,4\\lambda^4)\\)"
   },
   {
     "objectID": "posts/ts/2023-01-14-ts_Mid term.html#b-1",
@@ -1607,7 +1607,7 @@
     "href": "posts/ts/2023-01-14-ts_Mid term.html#c",
     "title": "Theoritical Statistics Mid term",
     "section": "(c)",
-    "text": "(c)\n\\(\\sum^n_{i=1}a_iX_i\\)의 분산을 구하시오.\nanswer\n\\(Var(\\sum^n_{i=1}a_iX_i) = Var(a_1X_1 + a_2X_2 + \\dots + a_n X_n)\\)\n\\(= a_1^2\\lambda + a_2^2\\lambda + \\dots + a_n^2\\lambda = \\sum^n_{i=1} a_i \\lambda\\)"
+    "text": "(c)\n\\(\\sum^n_{i=1}a_iX_i\\)의 분산을 구하시오.\nanswer\n\\(Var(\\sum^n_{i=1}a_iX_i) = Var(a_1X_1 + a_2X_2 + \\dots + a_n X_n)\\)\n\\(= a_1^2\\lambda + a_2^2\\lambda + \\dots + a_n^2\\lambda = \\sum^n_{i=1} a_i^2 \\lambda\\)"
   },
   {
     "objectID": "posts/ts/2023-01-14-ts_Mid term.html#a-2",
@@ -1635,7 +1635,7 @@
     "href": "posts/ts/2023-01-14-ts_Mid term.html#d",
     "title": "Theoritical Statistics Mid term",
     "section": "(d)",
-    "text": "(d)\n\\(E[(\\frac{d}{dp}log p^X (1-p)^{1-p})^2]\\)을 구하시오.\nanswer\n\\(E[(\\frac{d}{dp} log p^x (1-p)^{1-X})^2]\\)\n\\(= E((\\frac{d}{dp}(X log p - (1-X) log(1-p)))^2)\\)\n\\(= E((\\frac{X}{p} - {1-X}{1-p})^2)\\)\n\\(= E((\\frac{X-Xp - p + pX}{p(1-p)})^2)\\)\n\\(= E((\\frac{X-p}{p(1-p)})^2)\\)\n\\(= \\frac{1}{p^2(1-p)^2}(E(X^2)-p^2)\\)\n\\(= \\frac{p-p^2}{p^2(1-p)^2} = \\frac{p(1-p)}{p^2(1-p)^2} = \\frac{1}{p(1-p)}\\)"
+    "text": "(d)\n\\(E[(\\frac{d}{dp}log p^X (1-p)^{1-p})^2]\\)을 구하시오.\nanswer\n\\(E[(\\frac{d}{dp} log p^x (1-p)^{1-X})^2]\\)\n\\(= E((\\frac{d}{dp}(X log p - (1-X) log(1-p)))^2)\\)\n\\(= E((\\frac{X}{p} - \\frac{1-X}{1-p})^2)\\)\n\\(= E((\\frac{X-Xp - p + pX}{p(1-p)})^2)\\)\n\\(= E((\\frac{X-p}{p(1-p)})^2)\\)\n\\(= \\frac{1}{p^2(1-p)^2}(E(X^2)-p^2)\\)\n\\(= \\frac{p-p^2+p^2+p^2}{p^2(1-p)^2} = \\frac{p(1-p)}{p^2(1-p)^2} = \\frac{1}{p(1-p)}\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html",
@@ -1677,7 +1677,7 @@
     "href": "posts/ts/2023-01-25-ts-final term.html#c",
     "title": "Theoritical Statistics Final term",
     "section": "(c)",
-    "text": "(c)\n\\(p(1-p)\\)에 대한 최소분산 비편향 추정량을 구하시오.\nanswer\n\\(E(\\bar{X}_n - \\bar{X}^2_n) = \\frac{(n-1)p(1-p)}{n}\\), \\(\\frac{En(\\bar{X}_n - \\bar{X}^2_n)}{(n-1)} = p(1-p)\\)이므로, \\(\\frac{n\\bar{X}_n(1-\\bar{X}_n)}{(n-1)}\\)"
+    "text": "(c)\n\\(p(1-p)\\)에 대한 최소분산 비편향 추정량을 구하시오.\nanswer\n\\(E(\\bar{X}_n - \\bar{X}^2_n) = \\frac{(n-1)p(1-p)}{n}\\), \\(\\frac{nE(\\bar{X}_n - \\bar{X}^2_n)}{(n-1)} = p(1-p)\\)이므로, \\(\\frac{n\\bar{X}_n(1-\\bar{X}_n)}{(n-1)}\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#d",
@@ -1698,7 +1698,7 @@
     "href": "posts/ts/2023-01-25-ts-final term.html#a-2",
     "title": "Theoritical Statistics Final term",
     "section": "(a)",
-    "text": "(a)\n\\(\\theta\\)에 대한 적절한 추축변량을 구하고, 해당 추축변량의 분포를 명시하시오.\nanswer\n\\(f(x|\\theta) = \\theta exp(-\\theta x)I(x>0) \\sim Gamma(1,\\frac{1}{\\theta})\\)\n\\(L(\\theta) = \\Pi^n_{i=1} f(x_i | \\theta) = \\Pi^n_{i=1} \\theta exp(-\\theta x) I(x_i>0)\\)\n\\(= \\theta^n exp(-\\sum x_i \\theta) I(x_i>0)\\)\n\\(logL(\\theta) = nlog(\\frac{1}{\\theta}) -\\sum x_i \\theta\\)\n\\(\\frac{\\partial log L(\\theta)}{\\partial \\theta} = n\\theta -\\sum x_i\\)\n\\(\\to \\hat{\\theta} = \\frac{\\sum x_i}{n}\\)\n\\(\\sqrt{n}( \\frac{\\sum x_i}{n} - \\theta) \\to (d) N(0,\\frac{1}{I(\\theta)})\\)\n\\(logf(x|\\theta) = n log(\\frac{1}{\\theta}) - x \\theta\\)\n\\(\\frac{\\partial logf(x|\\theta)}{\\partial \\theta} = n \\theta + x\\)\n\\(\\frac{\\partial^2 logf(x|\\theta)}{\\partial^2 \\theta} = 1\\)\n\\(-E(1) = n \\to I(\\theta)\\)\n\\(\\therefore \\sqrt{n} ( \\frac{\\sum x_i}{n} - \\theta) \\to(d) N(0,n)\\)"
+    "text": "(a)\n\\(\\theta\\)에 대한 적절한 추축변량을 구하고, 해당 추축변량의 분포를 명시하시오.\nanswer\n\\(f(x|\\theta) = \\theta exp(-\\theta x)I(x>0) \\sim Gamma(1,\\frac{1}{\\theta})\\)\n\\(L(\\theta) = \\Pi^n_{i=1} f(x_i | \\theta) = \\Pi^n_{i=1} \\theta exp(-\\theta x) I(x_i>0)\\)\n\\(= \\theta^n exp(-\\sum x_i \\theta) I(x_i>0)\\)\n\\(logL(\\theta) = nlog(\\frac{1}{\\theta}) -\\sum x_i \\theta\\)\n\\(\\frac{\\partial log L(\\theta)}{\\partial \\theta} = n\\theta -\\sum x_i\\)\n\\(\\to \\hat{\\theta} = \\frac{\\sum x_i}{n}\\)\n\\(\\sqrt{n}( \\frac{\\sum x_i}{n} - \\theta) \\to (d) N(0,\\frac{1}{I(\\theta)})\\)\n\\(logf(x|\\theta) = n log(\\frac{1}{\\theta}) - x \\theta\\)\n\\(\\frac{\\partial logf(x|\\theta)}{\\partial \\theta} = n \\theta + x\\)\n\\(\\frac{\\partial^2 logf(x|\\theta)}{\\partial^2 \\theta} = 1\\)\n\\(-E(1) = n \\to I(\\theta)\\)\n\\(\\therefore \\sqrt{n} ( \\frac{\\sum x_i}{n} - \\theta) \\xrightarrow[]{d} N(0,n)\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#b-2",
@@ -1915,7 +1915,7 @@
     "href": "posts/ts/2023-01-12-ts_HW5.html#section-3",
     "title": "Theoritical Statistics HW5",
     "section": "(1)",
-    "text": "(1)\n\\(\\sqrt{n}(\\bar{X}_n^2 - \\mu^2) \\xrightarrow[]{d} N(0,4 \\mu^2 \\sigma^2)\\)임을 보여라, 단 \\(\\mu \\neq 0\\)\nanswer\n델타 방법 사용\n\\(\\sqrt{n}(g(X_n) - g(\\mu) ) \\xrightarrow[]{d} N(0,\\sigma^2(g'(\\mu)^2)\\)\n\\(g(X_n) = \\bar{X}_n^2\\), \\(g'(X_n) = 2\\bar{X}_n\\)\n\\(g(\\mu) = \\mu^2\\), \\((g'(\\mu))^2 = 4\\mu^2\\)\n\\(\\sqrt{n}(\\bar{X}_n^2 - \\mu^2) \\xrightarrow[]{d} N(0,4\\mu^2 \\sigma^2)\\)"
+    "text": "(1)\n\\(\\sqrt{n}(\\bar{X}_n^2 - \\mu^2) \\xrightarrow[]{d} N(0,4 \\mu^2 \\sigma^2)\\)임을 보여라, 단 \\(\\mu \\neq 0\\)\nanswer\nDelta Method\n\\(\\sqrt{n}(g(X_n) - g(\\mu) ) \\xrightarrow[]{d} N(0,\\sigma^2 g'(\\mu)^2)\\)\n\\(g(X_n) = \\bar{X}_n^2\\), \\(g'(X_n) = 2\\bar{X}_n\\)\n\\(g(\\mu) = \\mu^2\\), \\((g'(\\mu))^2 = 4\\mu^2\\)\n\\(\\sqrt{n}(\\bar{X}_n^2 - \\mu^2) \\xrightarrow[]{d} N(0,4\\mu^2 \\sigma^2)\\)"
   },
   {
     "objectID": "posts/ts/2023-01-12-ts_HW5.html#section-4",
@@ -1999,21 +1999,21 @@
     "href": "posts/ts/2023-01-09-ts_HW4.html#section-9",
     "title": "Theoritical Statistics HW4",
     "section": "(1)",
-    "text": "(1)\n\\(\\bar{X}_{16} - \\bar{Y}_{25}\\)의 분포를 구하라.\nanswer\n\\(M_{\\bar{X}_{16}} - \\bar{Y}_{25}(t) = exp(t(0-2) + \\frac{t^2}{2}(\\frac{9}{16} + \\frac{16}{25}))\\)\n\\(\\bar{X}_{16} - \\bar{Y}_{25} \\sim N(-2,\\frac{481}{400})\\)"
+    "text": "(1)\n\\(\\bar{X}_{16} - \\bar{Y}_{25}\\)의 분포를 구하라.\nanswer\n\\(E(\\bar{X}_{16} - \\bar{Y}_{25}) = E(0-2) = -2\\)\n\\(Var(\\bar{X}_{16} - \\bar{Y}_{25}) = \\frac{9}{16} + \\frac{26}{25} = \\frac{481}{400}\\)\n\\(M_{\\bar{X}_{16} - \\bar{Y}_{25}}(t) = exp(t(0-2) + \\frac{t^2}{2}(\\frac{9}{16} + \\frac{16}{25}))\\)\n\\(\\bar{X}_{16} - \\bar{Y}_{25} \\sim N(-2,\\frac{481}{400})\\)"
   },
   {
     "objectID": "posts/ts/2023-01-09-ts_HW4.html#section-10",
     "href": "posts/ts/2023-01-09-ts_HW4.html#section-10",
     "title": "Theoritical Statistics HW4",
     "section": "(2)",
-    "text": "(2)\n\\(P(\\bar{X}_{16} - \\bar{Y}_{25} >0)\\)를 계산하라.\nanswer\n\\(P(\\bar{X}_{16} - \\bar{Y}_{25} > 0) = 10P(\\bar{X}_{16} - \\bar{Y}_{25} <0) = 0.0341\\)\n\n1-pnorm(0,-2,sqrt(481/400))\n\n0.0340879047226217"
+    "text": "(2)\n\\(P(\\bar{X}_{16} - \\bar{Y}_{25} >0)\\)를 계산하라.\nanswer\n\\(P(\\bar{X}_{16} - \\bar{Y}_{25} > 0) = 1-P(\\bar{X}_{16} - \\bar{Y}_{25} <0) = 0.0341\\)\n\n1-pnorm(0,-2,sqrt(481/400))\n\n0.0340879047226217"
   },
   {
     "objectID": "posts/ts/2023-01-09-ts_HW4.html#section-12",
     "href": "posts/ts/2023-01-09-ts_HW4.html#section-12",
     "title": "Theoritical Statistics HW4",
     "section": "(1)",
-    "text": "(1)\n\\(P(X_1 - X_2 <2)\\)을 계산하라.\nanswer\n\\(P(X_1 - X_2 < 2)\\), \\(X_1 - X_2 \\sim N(0,2)\\)\n\\(= P(\\frac{(X_1 - X_2) - 0}{\\sqrt{2}} <\\sqrt{2}) = P(z<\\sqrt{2}) = 0.9214\\)"
+    "text": "(1)\n\\(P(X_1 - X_2 <2)\\)을 계산하라.\nanswer\n\\(P(X_1 - X_2 < 2)\\), \\(X_1 - X_2 \\sim N(0,2)\\)\n\\(= P(\\frac{(X_1 - X_2) - 0}{\\sqrt{2}} <\\sqrt{2}) = P(z<\\sqrt{2}) = 0.9214\\)\n\npnorm(sqrt(2),0,1)\n\n0.921350396474857"
   },
   {
     "objectID": "posts/ts/2023-01-09-ts_HW4.html#section-13",
@@ -2041,7 +2041,7 @@
     "href": "posts/ts/2023-01-09-ts_HW4.html#section-16",
     "title": "Theoritical Statistics HW4",
     "section": "(5)",
-    "text": "(5)\n\\(X^2_1 + \\dots + X^2_{50} + c) = 0.9\\) 를 만족하는 상수 \\(c\\)를 구하라.\nanswer\n\\(P(X^2_1 + X^2_{50} < 50+ c) = 0.9\\), \\(50+c = 63.1671\\), \\(c=13.1671\\)\n\nqchisq(0.9,df=50)\n\n63.1671210057263"
+    "text": "(5)\n\\(P(X^2_1 + \\dots + X^2_{50} + c) = 0.9\\) 를 만족하는 상수 \\(c\\)를 구하라.\nanswer\n\\(P(X^2_1 + \\dots + X^2_{50} < 50+ c) = 0.9\\), \\(50+c = 63.1671\\), \\(c=13.1671\\)\n\nqchisq(0.9,df=50)\n\n63.1671210057263"
   },
   {
     "objectID": "posts/ts/2023-01-18-ts-HW8.html",

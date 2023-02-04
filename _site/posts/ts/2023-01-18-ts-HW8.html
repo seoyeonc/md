@@ -497,7 +497,7 @@ ul.task-list li input[type="checkbox"] {
 <p>확률밀도함수가 <span class="math inline">\(f(x;\theta) = \frac{1}{\theta}(0\le x \le \theta)\)</span>인 분포로부터 하나의 관찰값 <span class="math inline">\(X\)</span>를 얻었다고 하자.</p>
 <p>이때 가설 <span class="math inline">\(H_0 : \theta = 1\)</span> vs <span class="math inline">\(H_1 : \theta=2\)</span>에 대한 기각영역을 <span class="math inline">\(C = \{ x: x&gt;0.7\}\)</span>로 했을때, 제 1종오류를 범할 확률 <span class="math inline">\(\alpha\)</span>와 제 2종오류를 범할 확률 <span class="math inline">\(\beta\)</span>를 계산하라.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\alpha = P(\text{Reject } H_0 | H_0 \text{True})\)</span></p>
+<p><span class="math inline">\(\alpha = P(\text{Reject } H_0 | H_0 \text{ True})\)</span></p>
 <p><span class="math inline">\(\alpha = P(x&gt;0.7 | \theta = 1)\)</span></p>
 <p><span class="math inline">\(= \int^1_{0.7} 1 dx = [ x ]^1_{0.7} = 1-0.7 = 0.3\)</span></p>
 <p><span class="math inline">\(\beta = P(\text{type 2 Error}) = P(\text{Not Reject } H_0 | H_0 \text{ False})\)</span></p>
@@ -552,22 +552,22 @@ ul.task-list li input[type="checkbox"] {
 <p>2회의 독립시행의 결과가 모두 ’성공’일 경우에만 <span class="math inline">\(H_0\)</span>을 기각하지 않는 검정의 유의수준 <span class="math inline">\(\alpha\)</span>와 검정력 <span class="math inline">\(1-\beta\)</span>를 구하라.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(f(c) = p^x (1-p)^{1-x}\)</span></p>
-<p><span class="math inline">\(f(x_1) = p\)</span>, <span class="math inline">\(f(x_2) = p)\)</span> <span class="math inline">\(\to \text{Not Rject }H_0\)</span></p>
+<p><span class="math inline">\(f(x_1) = p\)</span>, <span class="math inline">\(f(x_2) = p\)</span> <span class="math inline">\(\to \text{Not Rject }H_0\)</span></p>
 <p><span class="math inline">\(\alpha = P(\text{Reject } H_0 | H_0 \text{True})\)</span></p>
 <p><span class="math inline">\(\alpha = P((1-p)^2 | p=\frac{1}{2}) = \frac{1}{4}\)</span></p>
-<p><span class="math inline">\(\beta = P(\text{not Rejext } H_0 | H_0 \text{False})\)</span></p>
-<p><span class="math inline">\(= P(P^2 | p=\frac{3}{4}) = \frac{9}{16}\)</span></p>
+<p><span class="math inline">\(\beta = P(\text{not Rejext } H_0 | H_0 \text{ False})\)</span></p>
+<p><span class="math inline">\(= P(p^2 | p=\frac{3}{4}) = \frac{9}{16}\)</span></p>
 <p><span class="math inline">\(1-\beta = \frac{7}{16}\)</span></p>
 </section>
 <section id="section-6" class="level1">
 <h1>6.</h1>
 <p><span class="math inline">\(X_1\)</span>과 <span class="math inline">\(X-2\)</span>가 확률밀도함수 <span class="math inline">\(f(x;\theta) = (\frac{1}{\theta})exp(-\frac{x}{\theta}), x&gt;0\)</span>으로부터 구한 랜덤표본이라고 한다.</p>
-<p>이제 가섷 <span class="math inline">\(H_0 : \theta=2\)</span> vs <span class="math inline">\(H_1: \theta=1\)</span>을 고려할떄, <span class="math inline">\(H_0\)</span>에 대한 기각영역을 <span class="math inline">\(\frac{f(x_1:2)f(x_2:2)}{d(x_1:1)f(x_2L1)}&lt;\frac{1}{2}\)</span>을 만족하는 표본값으로 택하였다. 이와 같은 검정법에 대한 유의수준과 <span class="math inline">\(H_0\)</span>이 참이 아닐 떄의 검정력을 구하라.</p>
+<p>이제 가섷 <span class="math inline">\(H_0 : \theta=2\)</span> vs <span class="math inline">\(H_1: \theta=1\)</span>을 고려할떄, <span class="math inline">\(H_0\)</span>에 대한 기각영역을 <span class="math inline">\(\frac{f(x_1:2)f(x_2:2)}{f(x_1:1)f(x_2:1)}&lt;\frac{1}{2}\)</span>을 만족하는 표본값으로 택하였다. 이와 같은 검정법에 대한 유의수준과 <span class="math inline">\(H_0\)</span>이 참이 아닐 떄의 검정력을 구하라.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\alpha = P(\text{Reject }H_0 | H_0 \text{True})\)</span></p>
+<p><span class="math inline">\(\alpha = P(\text{Reject }H_0 | H_0 \text{ True})\)</span></p>
 <p><span class="math inline">\(= P(\frac{f(x_1:2)f(x_2:2)}{f(x_1:1)f(x_2:1)}&lt;\frac{1}{2}|\theta = 2)\)</span></p>
 <p><span class="math inline">\(= P(exp(\frac{x_1}{2} + \frac{x_2}{2}) &lt; 2| \theta = 2)\)</span></p>
-<p><span class="math inline">\(\int^2_0 exp(\frac{1}{2}exp(x_1 + x_2) dx\)</span></p>
+<p><span class="math inline">\(= \int^2_0 exp(\frac{1}{2}exp(x_1 + x_2) dx\)</span></p>
 <p><span class="math inline">\(= 2exp(\frac{1}{2}[exp(x_2 + x_2)]^2_0 = 2exp(\frac{1}{2}) (exp(4)-1) = 2(exp(\frac{9}{2}) - exp(\frac{1}{2}))\)</span></p>
 <p><span class="math inline">\(\beta = P(\text{Not Reject} H_0 | H_0 \text{False})\)</span></p>
 <p><span class="math inline">\(= P(\frac{f(x_1"2)f(x_2:2)}{f(x_1:1)f(x_2:1)}) &gt; \frac{1}{2} | \theta = 1)\)</span></p>

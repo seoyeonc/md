@@ -579,15 +579,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(T_1(X)\)</span>과 <span class="math inline">\(T_2(X)\)</span>의 기댓값을 각각 구하시오.</p>
 <p><strong>answer</strong></p>
 <p><code>-</code> <span class="math inline">\(E(T_1(X))\)</span></p>
-<p><span class="math inline">\(= E(\frac{1}{n}\sum^n_{i=1}(X_i - \mu)^2) = \frac{E((X-\mu)^2)}{n} = \frac{\sigma^2}{n}\)</span></p>
+<p><span class="math inline">\(= E(\frac{1}{n}\sum^n_{i=1}(X_i - \mu)^2) = \frac{E((X-\mu)^2)}{n} = \frac{n\sigma^2}{n} = \sigma^2\)</span></p>
 <p><code>-</code> <span class="math inline">\(E(T_2(X))\)</span></p>
 <p><span class="math inline">\(= E(\frac{1}{n-1}\sum^n_{i=1}(X_i - \bar{X})^2)\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
 <p><span class="math inline">\(\sum(X-\mu)^2 = \sum(X - \bar{X} + \bar{X} - \mu)^2\)</span></p>
-<p><span class="math inline">\(= \sum((X-\bar{X})^2 + (\bar{X} - \mu)^2 + 2(X-\bar{X}(\bar{X}-\mu))\)</span></p>
-<p><span class="math inline">\(= \sum(X - \bar{X})^2.+ n(\bar{X} - \mu)\)</span></p>
+<p><span class="math inline">\(= \sum((X-\bar{X})^2 + (\bar{X} - \mu)^2 + 2(X-\bar{X})(\bar{X}-\mu))\)</span></p>
+<p><span class="math inline">\(= \sum(X - \bar{X})^2.+ n(\bar{X} - \mu)^2\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
-<p><span class="math inline">\(= E(\frac{\sum(X-\mu)^2 - n(\bar{X}-\mu)}{n-1}) = \frac{1}{n-1}[n\sigma^2 - n\frac{\sigma^2}{n}] = \sigma^2\)</span></p>
+<p><span class="math inline">\(= E(\frac{\sum(X-\mu)^2 - n(\bar{X}-\mu)}{n-1}^2) = \frac{1}{n-1}[n\sigma^2 - n\frac{\sigma^2}{n}] = \frac{(n-1)\sigma^2}{n-1} = \sigma^2\)</span></p>
 </section>
 <section id="b" class="level2">
 <h2 class="anchored" data-anchor-id="b">(b)</h2>
@@ -595,15 +595,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>answer</strong></p>
 <p><code>-</code> <span class="math inline">\(Var(T_1(X))\)</span></p>
 <p><span class="math inline">\(= Var(\frac{1}{n}\sum^n_{i=1}(X_i - \mu)^2)\)</span></p>
+<p><span class="math inline">\(= Var(\frac{n\sigma^2}{n})\)</span></p>
+<p><span class="math inline">\(= \sigma^4\)</span></p>
+<p><code>-</code> <span class="math inline">\(Var(T_2(X))\)</span></p>
+<p><span class="math inline">\(= Var(\frac{1}{n-1}\sum^n_{i=1}(X_i - \bar{X})^2)\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
 <p><span class="math inline">\(S_n^2 = \sum^n_{i=1}\frac{(X_i - \bar{X}_n)^2}{n-1}\)</span></p>
 <p><span class="math inline">\(\frac{(n-1)S_n^2}{\sigma^2} = \frac{\sum^n_{i=1}(X_i - \bar{X})^2}{\sigma^2} \sim \chi^2_{n-1}\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
-<p><span class="math inline">\(= Var(\frac{\sum^n_{i=1}(X_i - \bar{X})^2}{\sigma^2} \times\frac{\sigma^2}{n})\)</span></p>
-<p><span class="math inline">\(= \frac{\sigma^4}{n^2}Var(\frac{\sum^n_{i=1}(X_i - \bar{X})^2}{\sigma^2})\)</span></p>
-<p><span class="math inline">\(= \frac{\sigma^4}{n^2} \times w(n-1)\)</span></p>
-<p><code>-</code> <span class="math inline">\(Var(T_2(X))\)</span></p>
-<p><span class="math inline">\(= Var(\frac{1}{n-1}\sum^n_{i=1}(X_i - \bar{X})^2)\)</span></p>
 <p><span class="math inline">\(= Var(\frac{\sigma^2}{n-1} \times \frac{(n-1)S^2}{\sigma^2})\)</span></p>
 <p><span class="math inline">\(\frac{\sigma^4}{(n-1)^2} \times 2(n-1)\)</span></p>
 <p><span class="math inline">\(= \frac{2\sigma^4}{n-1}\)</span></p>
@@ -619,7 +618,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Delta Method</p>
 <p>$({X}^2_n - ^2) N(0,4<sup>2</sup>2) $ 단, <span class="math inline">\(\mu \neq 0\)</span></p>
 <p><span class="math inline">\(\mu = \lambda\)</span>, <span class="math inline">\(\sigma^2 = \lambda\)</span></p>
-<p><span class="math inline">\(\sqrt{n}(\bar{X}^2_n - \lambda^2) \xrightarrow[]{d} N(0,4\lambda^3)\)</span></p>
+<p><span class="math inline">\(\sqrt{n}(\bar{X}^2_n - \lambda^2) \xrightarrow[]{d} N(0,4\lambda^4)\)</span></p>
 </section>
 <section id="b-1" class="level2">
 <h2 class="anchored" data-anchor-id="b-1">(b)</h2>
@@ -635,7 +634,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\sum^n_{i=1}a_iX_i\)</span>의 분산을 구하시오.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(Var(\sum^n_{i=1}a_iX_i) = Var(a_1X_1 + a_2X_2 + \dots + a_n X_n)\)</span></p>
-<p><span class="math inline">\(= a_1^2\lambda + a_2^2\lambda + \dots + a_n^2\lambda = \sum^n_{i=1} a_i \lambda\)</span></p>
+<p><span class="math inline">\(= a_1^2\lambda + a_2^2\lambda + \dots + a_n^2\lambda = \sum^n_{i=1} a_i^2 \lambda\)</span></p>
 </section>
 </section>
 <section id="section-2" class="level1">
@@ -651,7 +650,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="section-3" class="level1">
 <h1>4.</h1>
-<p><span class="math inline">\(X_1,\dots,X_{16}\)</span>이 <span class="math inline">\(N(5,25)\)</span>로부터의 랜덤표본 이라고 하자. 이떄 <span class="math inline">\(P(0&lt;\bar{X}_{16} &lt;6,20&lt;S^2_{16}&lt;30)\)</span>을 계산하시오.(R함수 이용)</p>
+<p><span class="math inline">\(X_1,\dots,X_{16}\)</span>이 <span class="math inline">\(N(5,25)\)</span>로부터의 랜덤표본 이라고 하자. 이때 <span class="math inline">\(P(0&lt;\bar{X}_{16} &lt;6,20&lt;S^2_{16}&lt;30)\)</span>을 계산하시오.(R함수 이용)</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(\bar{X}_{16} \sim N(5,\frac{25}{16})\)</span></p>
 <p><span class="math inline">\(\frac{\bar{X}_{16} - 5}{\sqrt{25/16}} \sim N(0,1)\)</span></p>
@@ -752,11 +751,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(E[(\frac{d}{dp} log p^x (1-p)^{1-X})^2]\)</span></p>
 <p><span class="math inline">\(= E((\frac{d}{dp}(X log p - (1-X) log(1-p)))^2)\)</span></p>
-<p><span class="math inline">\(= E((\frac{X}{p} - {1-X}{1-p})^2)\)</span></p>
+<p><span class="math inline">\(= E((\frac{X}{p} - \frac{1-X}{1-p})^2)\)</span></p>
 <p><span class="math inline">\(= E((\frac{X-Xp - p + pX}{p(1-p)})^2)\)</span></p>
 <p><span class="math inline">\(= E((\frac{X-p}{p(1-p)})^2)\)</span></p>
 <p><span class="math inline">\(= \frac{1}{p^2(1-p)^2}(E(X^2)-p^2)\)</span></p>
-<p><span class="math inline">\(= \frac{p-p^2}{p^2(1-p)^2} = \frac{p(1-p)}{p^2(1-p)^2} = \frac{1}{p(1-p)}\)</span></p>
+<p><span class="math inline">\(= \frac{p-p^2+p^2+p^2}{p^2(1-p)^2} = \frac{p(1-p)}{p^2(1-p)^2} = \frac{1}{p(1-p)}\)</span></p>
 
 
 </section>
