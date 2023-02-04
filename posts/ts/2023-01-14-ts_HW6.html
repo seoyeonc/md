@@ -500,20 +500,17 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <section id="section" class="level1">
 <h1>2.</h1>
-<p><span class="math inline">\(X_1, \dots, X_n\)</span>이 확률밀도함수 <span class="math inline">\(f_X(x:\theta) = (\theta + 1) x^{\theta},0&lt;x&lt;1\)</span>로부터의 랜덤표본이라고 할 떄, 적률을 이용한 <span class="math inline">\(\theta\)</span>의 추정량이 <span class="math inline">\((2\bar{X}_n-1)/(1-\bar{X}_n)\)</span> 이 됨을 보여라.</p>
+<p><span class="math inline">\(X_1, \dots, X_n\)</span>이 확률밀도함수 <span class="math inline">\(f_X(x:\theta) = (\theta + 1) x^{\theta},0&lt;x&lt;1\)</span>로부터의 랜덤표본이라고 할 때, 적률을 이용한 <span class="math inline">\(\theta\)</span>의 추정량이 <span class="math inline">\(\frac{2\bar{X}_n-1}{1-\bar{X}_n}\)</span> 이 됨을 보여라.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\mu = E(X) = \int^{\infty}_{-\infty}xf(x:\theta) dx - \int^{1}_0 (\theta + 1) x^{\theta +1} dx = [x^{\theta}]^1_0 = 1\)</span></p>
-<p><span class="math inline">\(\mu_1 = 1 \sim \bar{X} = 1\)</span></p>
-<p><span class="math inline">\(\mu_2 = E(X^2) = \int^{\infty}_{-\infty} x^2 f(x: \theta) dx = \int^1_0 (\theta + 1) x^{\theta +2} dx = \frac{\theta +1 }{\theta + 2 } [x^{\theta +1} ]^1_0 = \frac{\theta + 1}{\theta + 2}\)</span></p>
-<p><span class="math inline">\(\bar{X}^2 = \frac{\hat{\theta} + 1} {\hat{\theta}+2}\)</span></p>
-<p><span class="math inline">\(\bar{X}^2 \theta + 2 \bar{X}^2 = \theta +1\)</span></p>
-<p><span class="math inline">\(\hat{\theta}(1-\bar{X}^2) = 2\bar{X}^2 - 1\)</span></p>
-<p><span class="math inline">\(\hat{\theta} = \frac{2 \bar{X}^2 - 1} {1-\bar{X}^2} = \frac{2\bar{X} - 1}{1-\bar{X}}\)</span></p>
-<p><span class="math inline">\(\star \bar{X} = 1\)</span>, <span class="math inline">\(\bar{X}^2 = 1\)</span>, <span class="math inline">\(\bar{X} = \bar{X}^2 = \dots\)</span></p>
+<p><span class="math inline">\(\mu = E(X) = \int^{\infty}_{-\infty}xf(x:\theta) dx = \int^{1}_0 (\theta + 1) x^{\theta +1 } dx = (\theta+1)[\frac{x^{\theta+2}}{\theta+2}]^1_0 = \frac{\theta + 1}{\theta + 2}\)</span></p>
+<p><span class="math inline">\(\mu_1 = \frac{\theta + 1}{\theta + 2} \sim \bar{X} = \frac{\theta + 1}{\theta + 2}\)</span></p>
+<p><span class="math inline">\(\bar{X} \theta + 2 \bar{X} = \theta +1\)</span></p>
+<p><span class="math inline">\(\hat{\theta}(1-\bar{X}) = 2\bar{X} - 1\)</span></p>
+<p><span class="math inline">\(\hat{\theta} = \frac{2\bar{X} - 1}{1-\bar{X}}\)</span></p>
 </section>
 <section id="section-1" class="level1">
 <h1>4.</h1>
-<p><span class="math inline">\(X_1, \dots X_n\)</span>이 <span class="math inline">\(U(0,\theta)\)</span>로부터의 랜덤표본이라고 할 떄, 적률을 이용한 <span class="math inline">\(\theta\)</span>의 추정량을 구하고, 최대가능도 추정량과 비교하라.</p>
+<p><span class="math inline">\(X_1, \dots X_n\)</span>이 <span class="math inline">\(U(0,\theta)\)</span>로부터의 랜덤표본이라고 할 때, 적률을 이용한 <span class="math inline">\(\theta\)</span>의 추정량을 구하고, 최대가능도 추정량과 비교하라.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(\mu_1 = E(X) = \frac{a+b}{2} = \frac{\theta}{2}\)</span></p>
 <p><span class="math inline">\(\hat{\theta}^{MME} = 2\mu_1 = 2\bar{X}\)</span></p>
@@ -543,14 +540,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>14.</h1>
 <p><span class="math inline">\(X_1,\dots,X_n\)</span> 이 평균이 <span class="math inline">\(\mu\)</span>이고, 분산이 <span class="math inline">\(\sigma^2\)</span>인 분포로부터 얻은 랜덤표본이라고 할 때 모평균 <span class="math inline">\(\mu\)</span>가 알려져 있다면, <span class="math inline">\(\frac{1}{n}\sum(X_i - \mu)^2\)</span>이 <span class="math inline">\(\sigma^2\)</span>의 비편향 추정량임을 보여라.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(E(\frac{1}{n}\sum(X-i - \mu)^2) = E(\frac{1}{n}\sum(X_i + \bar{X} - \bar{X} - \mu))^2\)</span></p>
-<p><span class="math inline">\(= E(\frac{1}{n}\sum((X_i - \bar{X}) + (\bar{X} - \mu))^2\)</span></p>
-<p><span class="math inline">\(= E(\frac{1}{n} \sum ((X_i - \bar{X})2 + (\bar{X}-\mu)^2 + 2(X_i - \bar{X}_(\bar{X}-\mu))\)</span></p>
-<p><span class="math inline">\(\star 2(X_i - \bar{X}_(\bar{X}-\mu)) \to 0\)</span></p>
-<p><span class="math inline">\(= \frac{1}{n} E(\sum(X_i - \bar{X})^2) + \frac{1}{n} E(\sum(\bar{X} - \mu))^2\)</span></p>
-<p><span class="math inline">\(= \frac{1}{n} E(\sum(X_i - \bar{X})^2) + (\bar{X} - \mu)^2\)</span></p>
-<p><span class="math inline">\(\star (\bar{X} - \mu)^2 \to 0\)</span></p>
-<p><span class="math inline">\(= \sigma^2\)</span></p>
+<p><span class="math inline">\(E(\frac{1}{n}\sum(X_i - \mu)^2) = \frac{n\sigma^2}{n} = \sigma^2\)</span></p>
 </section>
 <section id="section-4" class="level1">
 <h1>15.</h1>
@@ -567,7 +557,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="section-6">(1)</h2>
 <p><span class="math inline">\(T_1(X)\)</span>와 <span class="math inline">\(T_2(X)\)</span>의 비평향성을 점검하라.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(E(T_1(X)) = E(X) = P \to T_1(X)\)</span> 비편향성 만족</p>
+<p><span class="math inline">\(E(T_1(X)) = E(X) = p \to T_1(X)\)</span> 비편향성 만족</p>
 <p><span class="math inline">\(E(T_2(X)) = E(\frac{1}{2}) = \frac{1}{2} \to T_2(X)\)</span> 비편향성 불만족</p>
 </section>
 <section id="section-7" class="level2">
@@ -577,7 +567,7 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(MSE(T_1(X)) = MSE(X)\)</span></p>
 <p><span class="math inline">\(= E(X-P)^2 = E(X^2 - 2PX + P^2)\)</span></p>
 <p><span class="math inline">\(= P(1-P) + P^2 -2P^2 + P^2 = P-P^2+P^2-2P^2+P^2 = P-P^2 = P(1-P)\)</span></p>
-<p><span class="math inline">\(MSE(T_2(X)) = MSE(\frac{1}{2} = E(\frac{1}{2} - P)^2 = (\frac{1}{2}-P)^2\)</span></p>
+<p><span class="math inline">\(MSE(T_2(X)) = MSE(\frac{1}{2} - E(\frac{1}{2} - P)^2) = (\frac{1}{2}-P)^2\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
 <p><span class="math inline">\(P-P^2 = \frac{1}{4}-2P+P^2\)</span></p>
 <p><span class="math inline">\(2P^2 -3P+\frac{1}{4} = 0\)</span></p>
@@ -597,17 +587,16 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="section-9">(1)</h2>
 <p><span class="math inline">\(\hat{\lambda}_1\)</span>과 <span class="math inline">\(\hat{\lambda}_2\)</span>의 분산을 구하라.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(E(X) = \lambda \to\)</span>, 비편향추정량이다.</p>
-<p><span class="math inline">\(Var(X) = \lambda^2\)</span></p>
-<p><span class="math inline">\(E(\hat{\lambda_2}) = E(\bar{X}_n) = \lambda\)</span>, <span class="math inline">\(var(\bar{X}_n) = \frac{\lambda^2}{n}\)</span></p>
-<p><span class="math inline">\(E(\hat{\lambda}_2)= E(\frac{n\bar{X}_n}{n+1}) = \frac{n}{n+1}E(\bar{X}_n) = \frac{n}{n+1}\lambda \to\)</span>비편향 추정량이 아니다.</p>
-<p><span class="math inline">\(var(\frac{n}{n+1}\bar{X}_n) = E(\frac{n}{n+1}\bar{X} - \lambda)^2\)</span></p>
+<p><span class="math inline">\(E(X_i) = \lambda, Var(X_i) = \lambda^2\)</span></p>
+<p><span class="math inline">\(E(\hat{\lambda}_1) = E(\bar{X}) = \lambda \to\)</span>, 비편향추정량이다.</p>
+<p><span class="math inline">\(Var(\hat{\lambda}_1) = E(\bar{X}) = \frac{\lambda^2}{n}\)</span></p>
+<p><span class="math inline">\(E(\hat{\lambda_2}) = E(\frac{n\bar{X}_n}{n+1}) = \frac{n}{n+1}E(\bar{X}_n) = \frac{n}{n+1}\lambda \to\)</span>비편향 추정량이 아니다., 즉, 분산에 bias존재</p>
+<p><span class="math inline">\(Var((\hat{\lambda_2}) = Var(\frac{n}{n+1}\bar{X}_n) = E(\frac{n}{n+1}\bar{X} - \lambda)^2\)</span></p>
 <p><span class="math inline">\(= E(\frac{n}{n+1} \bar{X} - \frac{n}{n+1} \lambda + \frac{n}{n+1}\lambda -\lambda)^2\)</span></p>
 <p><span class="math inline">\(= E(\frac{n}{n+1}(\bar{X}-\lambda) - \frac{1}{n+1}\lambda)^2\)</span></p>
 <p><span class="math inline">\(= (\frac{n}{n+1})^2E(\bar{X} - \lambda)^2 + \frac{1}{(n+1)^2}\lambda^2 - \frac{2n}{(n+1)^2}\lambda(\bar{X} - \lambda)\)</span></p>
-<p><span class="math inline">\(= (\frac{n}{n+1})^2 \frac{\lambda^2}{n} + \frac{1}{(n+1)^2}\lambda^2\)</span></p>
-<p><span class="math inline">\(= \frac{n}{(n+1)^2}\lambda^2 + \frac{1}{(n+1)^2}\lambda^2\)</span></p>
-<p><span class="math inline">\(= \frac{1}{n+1}\lambda^2\)</span></p>
+<p><span class="math inline">\(= (\frac{n}{n+1})^2 \lambda^2 + \frac{1}{(n+1)^2}\lambda^2\)</span></p>
+<p><span class="math inline">\(= \frac{n^2+1}{(n+1)^2}\lambda^2\)</span></p>
 </section>
 <section id="section-10" class="level2">
 <h2 class="anchored" data-anchor-id="section-10">(2)</h2>
@@ -617,10 +606,10 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(\star\)</span> 비편향추정량이라 분산과 일치하는 <span class="math inline">\(\hat{\lambda}_1\)</span></p>
 <p><span class="math inline">\(MSE(\hat{\lambda}_2) = E(\hat{\lambda}_2 - \lambda)^2 = var(\hat{\lambda}_2) + (bias(\hat{\lambda}_2))^2\)</span></p>
 <p><span class="math inline">\(\star\)</span> 비편향추정량이 아니라 bias까지 고려해줘야 하는 <span class="math inline">\(\hat{\lambda}_2\)</span></p>
-<p><span class="math inline">\(var(\hat{\lambda}_2) = \frac{1}{n+1}\lambda^2\)</span></p>
-<p><span class="math inline">\(bias(\hat{\lambda}_2) = E(\hat{\lambda}_2) - \lambda = \frac[n+{n+1}\lambda - \lambda = -\frac{1}{n+1}\lambda\)</span></p>
+<p><span class="math inline">\(var(\hat{\lambda}_2) = \frac{n^2+1}{(n+1)^2}\lambda^2\)</span></p>
+<p><span class="math inline">\(bias(\hat{\lambda}_2) = E(\hat{\lambda}_2) - \lambda = \frac{n}{n+1}\lambda - \lambda = -\frac{1}{n+1}\lambda\)</span></p>
 <p><span class="math inline">\(\star var(\hat{\lambda}_2) + (bias(\hat{\lambda}_2))^2\)</span></p>
-<p><span class="math inline">\(= \frac{1}{n+1}\lambda^2 + \frac{1}{(n+1)^2}\lambda^2 = \frac{n+2}{(n+1)^2\lambda^2}\)</span></p>
+<p><span class="math inline">\(= \frac{n^2+1}{(n+1)^2}\lambda^2 + \frac{1}{(n+1)^2}\lambda^2 = \frac{n^2+2}{(n+1)^2}\lambda^2\)</span></p>
 
 
 </section>

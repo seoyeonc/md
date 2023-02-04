@@ -638,7 +638,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(X_1,X-2,\dots,X_n\)</span> 이 <span class="math inline">\(N(\mu,\sigma^2)\)</span>로부터 구한 랜덤표본이라고 하자.</p>
 <p>이때 <span class="math inline">\(\frac{\sum^n_{i=1}(X_i - \bar{X}_n)^2}{n}\)</span>의 분산을 구하라.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(S_n^2 = \sum^n_{i=1}\frac{(X_i - \bar{X}_n)^2}{(n-1)}\)</span></p>
+<p><span class="math inline">\(S_n^2 = \frac{\sum^n_{i=1} (X_i - \bar{X}_n)^2}{(n-1)}\)</span></p>
 <p><span class="math inline">\(\frac{(n-1)S_n^2}{\sigma^2} = \frac{\sum^n_{i=1}(X_i - \bar{X})^2}{\sigma^2} \sim \chi^2_{n-1}\)</span></p>
 <p><span class="math inline">\(var(\frac{\sum^n_{i=1}(X_i - \bar{X})^2}{n}) = var(\frac{\sum^n_{i=1}(X_i - \bar{X})^2}{\sigma^2} \times \frac{\sigma^2}{n}) = \frac{\sigma^4}{n^2} var(\frac{\sum^n_{i=1}(X_i - \bar{X})^2}{\sigma^2}) = \frac{\sigma^4}{n^2} \times 2(n-1)\)</span></p>
 </section>
@@ -700,14 +700,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="section-9">(1)</h2>
 <p><span class="math inline">\(\bar{X}_{16} - \bar{Y}_{25}\)</span>의 분포를 구하라.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(M_{\bar{X}_{16}} - \bar{Y}_{25}(t) = exp(t(0-2) + \frac{t^2}{2}(\frac{9}{16} + \frac{16}{25}))\)</span></p>
+<p><span class="math inline">\(E(\bar{X}_{16} - \bar{Y}_{25}) = E(0-2) = -2\)</span></p>
+<p><span class="math inline">\(Var(\bar{X}_{16} - \bar{Y}_{25}) = \frac{9}{16} + \frac{26}{25} = \frac{481}{400}\)</span></p>
+<p><span class="math inline">\(M_{\bar{X}_{16} - \bar{Y}_{25}}(t) = exp(t(0-2) + \frac{t^2}{2}(\frac{9}{16} + \frac{16}{25}))\)</span></p>
 <p><span class="math inline">\(\bar{X}_{16} - \bar{Y}_{25} \sim N(-2,\frac{481}{400})\)</span></p>
 </section>
 <section id="section-10" class="level2">
 <h2 class="anchored" data-anchor-id="section-10">(2)</h2>
 <p><span class="math inline">\(P(\bar{X}_{16} - \bar{Y}_{25} &gt;0)\)</span>를 계산하라.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(P(\bar{X}_{16} - \bar{Y}_{25} &gt; 0) = 10P(\bar{X}_{16} - \bar{Y}_{25} &lt;0) = 0.0341\)</span></p>
+<p><span class="math inline">\(P(\bar{X}_{16} - \bar{Y}_{25} &gt; 0) = 1-P(\bar{X}_{16} - \bar{Y}_{25} &lt;0) = 0.0341\)</span></p>
 <div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">0</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="fu">sqrt</span>(<span class="dv">481</span><span class="sc">/</span><span class="dv">400</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display">
@@ -725,6 +727,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(P(X_1 - X_2 &lt; 2)\)</span>, <span class="math inline">\(X_1 - X_2 \sim N(0,2)\)</span></p>
 <p><span class="math inline">\(= P(\frac{(X_1 - X_2) - 0}{\sqrt{2}} &lt;\sqrt{2}) = P(z&lt;\sqrt{2}) = 0.9214\)</span></p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fu">sqrt</span>(<span class="dv">2</span>),<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+0.921350396474857
+</div>
+</div>
 </section>
 <section id="section-13" class="level2">
 <h2 class="anchored" data-anchor-id="section-13">(2)</h2>
@@ -733,7 +741,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(P(X_1 + X_2 &lt; 2)\)</span>, <span class="math inline">\(X_1 + X_2 \sim N(0,2)\)</span></p>
 <p><span class="math inline">\(= P(\frac{(X_1 + X_2) - 0}{\sqrt{2}} &lt;\sqrt{2}) = P(z&lt;\sqrt{2}) = 0.9214\)</span></p>
 <div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fu">sqrt</span>(<span class="dv">2</span>),<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fu">sqrt</span>(<span class="dv">2</span>),<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 0.921350396474857
 </div>
@@ -746,7 +754,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(P(X^2_1 + \dots + X^2_{50}&lt;60 ) = 0.8428\)</span></p>
 <p><span class="math inline">\(\star X^2_1 + \dots X^2_{50} \sim \chi^2_{50}\)</span></p>
 <div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="dv">60</span>,<span class="at">df=</span><span class="dv">50</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="dv">60</span>,<span class="at">df=</span><span class="dv">50</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 0.842757972761609
 </div>
@@ -758,7 +766,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(P(40&lt;X^2_1 + X^2_{50} &lt;60) = P(X^2_1 + \dots + X^2_{50}&lt;60) - P(X^2_1 + \dots X^2_{50} &lt;40) = 0.6860\)</span></p>
 <div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="dv">60</span>,<span class="at">df=</span><span class="dv">50</span>) <span class="sc">-</span> <span class="fu">pchisq</span>(<span class="dv">40</span>,<span class="at">df=</span><span class="dv">50</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="dv">60</span>,<span class="at">df=</span><span class="dv">50</span>) <span class="sc">-</span> <span class="fu">pchisq</span>(<span class="dv">40</span>,<span class="at">df=</span><span class="dv">50</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 0.685985350935371
 </div>
@@ -766,11 +774,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="section-16" class="level2">
 <h2 class="anchored" data-anchor-id="section-16">(5)</h2>
-<p><span class="math inline">\(X^2_1 + \dots + X^2_{50} + c) = 0.9\)</span> 를 만족하는 상수 <span class="math inline">\(c\)</span>를 구하라.</p>
+<p><span class="math inline">\(P(X^2_1 + \dots + X^2_{50} + c) = 0.9\)</span> 를 만족하는 상수 <span class="math inline">\(c\)</span>를 구하라.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(P(X^2_1 + X^2_{50} &lt; 50+ c) = 0.9\)</span>, <span class="math inline">\(50+c = 63.1671\)</span>, <span class="math inline">\(c=13.1671\)</span></p>
+<p><span class="math inline">\(P(X^2_1 + \dots + X^2_{50} &lt; 50+ c) = 0.9\)</span>, <span class="math inline">\(50+c = 63.1671\)</span>, <span class="math inline">\(c=13.1671\)</span></p>
 <div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qchisq</span>(<span class="fl">0.9</span>,<span class="at">df=</span><span class="dv">50</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qchisq</span>(<span class="fl">0.9</span>,<span class="at">df=</span><span class="dv">50</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 63.1671210057263
 </div>

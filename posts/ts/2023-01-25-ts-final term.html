@@ -634,7 +634,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="c">(c)</h2>
 <p><span class="math inline">\(p(1-p)\)</span>에 대한 최소분산 비편향 추정량을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(E(\bar{X}_n - \bar{X}^2_n) = \frac{(n-1)p(1-p)}{n}\)</span>, <span class="math inline">\(\frac{En(\bar{X}_n - \bar{X}^2_n)}{(n-1)} = p(1-p)\)</span>이므로, <span class="math inline">\(\frac{n\bar{X}_n(1-\bar{X}_n)}{(n-1)}\)</span></p>
+<p><span class="math inline">\(E(\bar{X}_n - \bar{X}^2_n) = \frac{(n-1)p(1-p)}{n}\)</span>, <span class="math inline">\(\frac{nE(\bar{X}_n - \bar{X}^2_n)}{(n-1)} = p(1-p)\)</span>이므로, <span class="math inline">\(\frac{n\bar{X}_n(1-\bar{X}_n)}{(n-1)}\)</span></p>
 </section>
 <section id="d" class="level2">
 <h2 class="anchored" data-anchor-id="d">(d)</h2>
@@ -675,7 +675,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\frac{\partial logf(x|\theta)}{\partial \theta} = n \theta + x\)</span></p>
 <p><span class="math inline">\(\frac{\partial^2 logf(x|\theta)}{\partial^2 \theta} = 1\)</span></p>
 <p><span class="math inline">\(-E(1) = n \to I(\theta)\)</span></p>
-<p><span class="math inline">\(\therefore \sqrt{n} ( \frac{\sum x_i}{n} - \theta) \to(d) N(0,n)\)</span></p>
+<p><span class="math inline">\(\therefore \sqrt{n} ( \frac{\sum x_i}{n} - \theta) \xrightarrow[]{d} N(0,n)\)</span></p>
 </section>
 <section id="b-2" class="level2">
 <h2 class="anchored" data-anchor-id="b-2">(b)</h2>
