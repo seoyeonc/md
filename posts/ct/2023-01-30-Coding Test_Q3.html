@@ -530,7 +530,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#동적-계획법dynamic-programming" id="toc-동적-계획법dynamic-programming" class="nav-link active" data-scroll-target="#동적-계획법dynamic-programming">동적 계획법(Dynamic Programming)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -541,7 +547,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote class="blockquote">
 <p>2022:KAKAO TECH INTERNSHIP</p>
 </blockquote>
-<p>https://velog.io/<span class="citation" data-cites="jinyeong-afk/Python-2022-KAKAO-TECH-INTERNSHIP">@jinyeong-afk/Python-2022-KAKAO-TECH-INTERNSHIP</span>-%EC%BD%94%EB%94%A9-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B3%B5%EB%B6%80-DPDynamic-Programming-%EB%8F%99%EC%A0%81-%EA%B3%84%ED%9A%8D%EB%B2%95</p>
 <p>문제 설명 [본 문제는 정확성과 효율성 테스트 각각 점수가 있는 문제입니다.]</p>
 <p>당신은 코딩 테스트를 준비하기 위해 공부하려고 합니다. 코딩 테스트 문제를 풀기 위해서는 알고리즘에 대한 지식과 코드를 구현하는 능력이 필요합니다.</p>
 <p>알고리즘에 대한 지식은 알고력, 코드를 구현하는 능력은 코딩력이라고 표현합니다. 알고력과 코딩력은 0 이상의 정수로 표현됩니다.</p>
@@ -616,43 +621,122 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>제한시간 안내</p>
 <p>정확성 테스트 : 10초</p>
 <p>효율성 테스트 : 언어별로 작성된 정답 코드의 실행 시간의 적정 배수</p>
+<section id="동적-계획법dynamic-programming" class="level1">
+<h1>동적 계획법(Dynamic Programming)</h1>
+<p>이미 계산을 했지만, 그 출력 결과를 바탕으로 다시 계산이 됨.(ex. 피보나치 수열)</p>
+<ul>
+<li>top-down</li>
+<li>down-top</li>
+</ul>
+<p>두 가지 방식이 존재한다.</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> solution(alp, cop, problems):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    answer <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    alp</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    cop</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    alp_req, cop_req, alp_wd, cop_wd, cost <span class="op">=</span> problems</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    max_alp <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    max_cop <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> alp_req, cop_req, alp_rwd, cop_rwd, cost <span class="kw">in</span> problems:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        max_alp <span class="op">=</span> <span class="bu">max</span>(max_alp,alp_req)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        max_cop <span class="op">=</span> <span class="bu">max</span>(max_cop,cop_req)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> answer</span></code></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    dp <span class="op">=</span> [[<span class="bu">float</span>(<span class="st">'inf'</span>)] <span class="op">*</span> (max_alp <span class="op">+</span> <span class="dv">1</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(max_cop <span class="op">+</span><span class="dv">1</span>)]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    alp <span class="op">=</span> <span class="bu">min</span>(alp,max_alp)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    cop <span class="op">=</span> <span class="bu">min</span>(cop,max_cop)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># alp_req, cop_req, alp_wd, cop_wd, cost = problems</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> answer</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>problems <span class="op">=</span> [[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">4</span>,<span class="dv">11</span>,<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">2</span>],[<span class="dv">10</span>,<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">2</span>]]</span></code></pre></div>
+<div class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>alp <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>cop <span class="op">=</span> <span class="dv">0</span></span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(problems)):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="bu">max</span>(problems[i][<span class="dv">0</span>],<span class="dv">0</span>)</span></code></pre></div>
+<div class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>problems <span class="op">=</span> [[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">4</span>,<span class="dv">11</span>,<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">2</span>],[<span class="dv">10</span>,<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">2</span>]]</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(problems)):</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> <span class="bu">max</span>(problems[i][<span class="dv">1</span>],<span class="dv">0</span>)</span></code></pre></div>
+<div class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>max_alp <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>max_cop <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> alp_req, cop_req, alp_rwd, cop_rwd, cost <span class="kw">in</span> problems:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    max_alp <span class="op">=</span> <span class="bu">max</span>(max_alp,alp_req)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    max_cop <span class="op">=</span> <span class="bu">max</span>(max_cop,cop_req)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">&lt;</span>b</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>False</code></pre>
+<div class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>max_alp,max_req</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="70">
+<pre><code>(10, 11)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">&gt;</span>b</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>True</code></pre>
+<div class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dp <span class="op">=</span> [[<span class="bu">float</span>(<span class="st">'inf'</span>)] <span class="op">*</span> (max_alp <span class="op">+</span> <span class="dv">1</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(max_cop <span class="op">+</span><span class="dv">1</span>)]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dp</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="71">
+<pre><code>[[inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf]]</code></pre>
 </div>
+</div>
+<div class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>alp <span class="op">=</span> <span class="bu">min</span>(alp,max_alp)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cop <span class="op">=</span> <span class="bu">min</span>(cop,max_cop)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>alp,cop</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="72">
+<pre><code>(0, 0)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dp[alp][cop] <span class="op">=</span> <span class="dv">0</span></span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="74">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dp <span class="co"># 알고력 i 와 코딩력 j를 이용해 문제 푸는데 걸리는 시간</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="74">
+<pre><code>[[0, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],
+ [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf]]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">range</span>(alp, max_alp<span class="op">+</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="75">
+<pre><code>range(0, 11)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">range</span>(cop,max_cop <span class="op">+</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="76">
+<pre><code>range(0, 12)</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(alp, max_alp<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(cop,max_cop <span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">&lt;</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        dp[i<span class="op">-</span><span class="dv">1</span>][j]</span></code></pre></div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
