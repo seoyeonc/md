@@ -624,11 +624,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>pf. <span class="math inline">\(\bf{x}^\top \bf{y} = \begin{bmatrix} x_1 &amp; \dots x_n \end{bmatrix} \begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix} = x_1 y_1 + x_2 y_2 + \dots + x_n y_n\)</span></p>
 <p><span class="math inline">\(\frac{\partial}{\partial x} = \begin{bmatrix} \frac{\partial}{\partial x_1} \\ \vdots \\ \frac{\partial}{\partial x_n} \end{bmatrix}\)</span> 이므로</p>
 <p><span class="math inline">\(\big( \frac{\partial}{\partial x} \big) x^\top y = \begin{bmatrix} \frac{\partial}{\partial x_1} \\ \vdots \\ \frac{\partial}{\partial x_n} \end{bmatrix} (x_1 y_1 + x_2 y_2 + \dots + x_n y_n)\)</span></p>
-$ =
-<span class="math display">\[\begin{bmatrix} \frac{\partial}{\partial x_1}(x_1y_1 + \dots + x_n y_n) \\ \vdots \\ \frac{\partial}{\partial x_n}(x_1y_1 + \dots + x_n y_n) \end{bmatrix}\]</span>
-=
-<span class="math display">\[\begin{bmatrix} \frac{\partial}{\partial x_1} x_1 y_1 + \frac{\partial}{\partial x_1}x_2 y_2 + \dots + \frac{\partial}{\partial x_1}x_n y_n \\ \vdots \\ \frac{\partial}{\partial x_n} x_1 y_1 + \frac{\partial}{\partial x_n}x_2 y_2 + \dots + \frac{\partial}{\partial x_n}x_n y_n  \end{bmatrix}\]</span>
-<p>$</p>
+<p><span class="math inline">\(= \begin{bmatrix} \frac{\partial}{\partial x_1}(x_1y_1 + \dots + x_n y_n) \\ \vdots \\ \frac{\partial}{\partial x_n}(x_1y_1 + \dots + x_n y_n) \end{bmatrix} = \begin{bmatrix} \frac{\partial}{\partial x_1} x_1 y_1 + \frac{\partial}{\partial x_1}x_2 y_2 + \dots + \frac{\partial}{\partial x_1}x_n y_n \\ \vdots \\ \frac{\partial}{\partial x_n} x_1 y_1 + \frac{\partial}{\partial x_n}x_2 y_2 + \dots + \frac{\partial}{\partial x_n}x_n y_n \end{bmatrix}\)</span></p>
 <p><span class="math inline">\(= \begin{bmatrix} y_1 + 0 + \dots + 0 \\ \vdots \\ 0+0+ \dots + y_n \end{bmatrix} = \begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix} = \bf{y}\)</span></p>
 <p><code>2</code> <span class="math inline">\(\frac{\partial}{\partial x}(\bf{x}^\top \bf{y}) = \bf{y}\)</span> 임을 보이는 다른 풀이</p>
 <p>pf. <span class="math inline">\(\frac{\partial}{\partial x} \big(\bf{x}^\top \bf{y} \big) = \big( \frac{\partial}{\partial x} x^\top \big) y = \bf{I} \bf{y} = \bf{y}\)</span></p>
