@@ -2187,7 +2187,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>위에 나온 W가 어떻게 계산되나</li>
 </ul>
 <p>weight_ih_l[k] – the learnable input-hidden weights of the <span class="math inline">\(\text{k}^{th}\)</span> layer <span class="math inline">\((W_ii|W_if|W_ig|W_io)\)</span>, of shape (4<em>hidden_size, input_size) for <span class="math inline">\(k = 0\)</span>. Otherwise, the shape is (4</em>hidden_size, num_directions * hidden_size). If proj_size &gt; 0 was specified, the shape will be (4<em>hidden_size, num_directions </em> proj_size) for <span class="math inline">\(k &gt; 0\)</span></p>
-<p>weight_hh_l[k] – the learnable hidden-hidden weights of the ^{th}$layer <span class="math inline">\((W_hi|W_hf|W_hg|W_ho)\)</span>, of shape (4<em>hidden_size, hidden_size). If proj_size &gt; 0 was specified, the shape will be (4</em>hidden_size, proj_size).</p>
+<p>weight_hh_l[k] – the learnable hidden-hidden weights of the <span class="math inline">\(\text{k}^{th}\)</span>layer <span class="math inline">\((W_hi|W_hf|W_hg|W_ho)\)</span>, of shape (4<em>hidden_size, hidden_size). If proj_size &gt; 0 was specified, the shape will be (4</em>hidden_size, proj_size).</p>
 <p><code>-</code> 직접계산</p>
 <ul>
 <li><span class="math inline">\(o_t\)</span> = output_gate</li>
@@ -2206,7 +2206,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
        grad_fn=&lt;AddBackward0&gt;)</code></pre>
 </div>
 </div>
-<p>$ $각 두 개씩</p>
+<p><span class="math inline">\(\circ \text{ , } \square \text{, } \star \text{, } \triangleleft\)</span>각 두 개씩</p>
 <div class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb196"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb196-1"><a href="#cb196-1" aria-hidden="true" tabindex="-1"></a>input_gate <span class="op">=</span> sig(_ifgo[:,<span class="dv">0</span>:<span class="dv">2</span>])</span>
 <span id="cb196-2"><a href="#cb196-2" aria-hidden="true" tabindex="-1"></a>forget_gate <span class="op">=</span> sig(_ifgo[:,<span class="dv">2</span>:<span class="dv">4</span>])</span>

@@ -2086,12 +2086,12 @@ tensor([-0.0629], requires_grad=True)</code></pre>
 <h3 class="anchored" data-anchor-id="model">model</h3>
 <p><code>-</code> <span class="math inline">\(x\)</span>가 커질수록 <span class="math inline">\(y=1\)</span>이 잘나오는 모형은 아래와 같이 설계할 수 있음 &lt;— 외우세요!!!</p>
 <ul>
-<li><p>$y_i Ber(_i),$ where <span class="math inline">\(\pi_i = \frac{\exp(w_0+w_1x_i)}{1+\exp(w_0+w_1x_i)}\)</span></p></li>
+<li><p><span class="math inline">\(y_i \sim Ber(\pi_i),\quad\)</span> where <span class="math inline">\(\pi_i = \frac{\exp(w_0+w_1x_i)}{1+\exp(w_0+w_1x_i)}\)</span></p></li>
 <li><p><span class="math inline">\(\hat{y}_i= \hat{pi}_\frac{\exp(\hat{w}_0+\hat{w}_1x_i)}{1+\exp(\hat{w}_0+\hat{w}_1x_i)}=\frac{1}{1+\exp(-\hat{w}_0-\hat{w}_1x_i)}\)</span></p></li>
 <li><p><span class="math inline">\(loss= - \sum_{i=1}^{n} \big(y_i\log(\hat{y}_i)+(1-y_i)\log(1-\hat{y}_i)\big)\)</span> &lt;— 외우세요!!</p></li>
 </ul>
 <p><span class="math inline">\(y_i=1\)</span> <span class="math inline">\(\hat{y_i} = 1\)</span>loss가 0 근처 <span class="math inline">\(\hat{y_i} = 0\)</span> loss가- 무한대</p>
-<p><span class="math inline">\(y_i = 0\)</span> $ = 0 $loss가 0근처 <span class="math inline">\(\hat{y_i} = 1\)</span> loss가 1</p>
+<p><span class="math inline">\(y_i = 0\)</span> <span class="math inline">\(\hat{y_i} = 0\)</span>loss가 0근처 <span class="math inline">\(\hat{y_i} = 1\)</span> loss가 1</p>
 </section>
 <section id="toy-example" class="level3">
 <h3 class="anchored" data-anchor-id="toy-example">toy example</h3>
