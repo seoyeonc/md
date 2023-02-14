@@ -311,7 +311,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-01-15-Coding_Test_내장함수.html" class="sidebar-item-text sidebar-link">내장함수</a>
+  <a href="../../posts/ct/2023-01-15-Coding_Test_interfunction.html" class="sidebar-item-text sidebar-link">내장함수</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -326,7 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-01-30-Coding_Test_Q3.html" class="sidebar-item-text sidebar-link">코딩 테스트 공부(Not Done)</a>
+  <a href="../../posts/ct/2023-01-30-Coding_Test_Q3.html" class="sidebar-item-text sidebar-link">코딩 테스트 공부(Done)</a>
   </div>
 </li>
       </ul>
@@ -674,61 +674,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="a-2">(a)</h2>
 <p><span class="math inline">\(\theta\)</span>에 대한 적절한 추축변량을 구하고, 해당 추축변량의 분포를 명시하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(f(x|\theta) = \theta exp(-\theta x)I(x&gt;0) \sim Gamma(1,\frac{1}{\theta})\)</span></p>
-<p><span class="math inline">\(L(\theta) = \Pi^n_{i=1} f(x_i | \theta) = \Pi^n_{i=1} \theta exp(-\theta x) I(x_i&gt;0)\)</span></p>
-<p><span class="math inline">\(= \theta^n exp(-\sum x_i \theta) I(x_i&gt;0)\)</span></p>
-<p><span class="math inline">\(logL(\theta) = nlog(\frac{1}{\theta}) -\sum x_i \theta\)</span></p>
-<p><span class="math inline">\(\frac{\partial log L(\theta)}{\partial \theta} = n\theta -\sum x_i\)</span></p>
-<p><span class="math inline">\(\to \hat{\theta} = \frac{\sum x_i}{n}\)</span></p>
-<p><span class="math inline">\(\sqrt{n}( \frac{\sum x_i}{n} - \theta) \to (d) N(0,\frac{1}{I(\theta)})\)</span></p>
-<p><span class="math inline">\(logf(x|\theta) = n log(\frac{1}{\theta}) - x \theta\)</span></p>
-<p><span class="math inline">\(\frac{\partial logf(x|\theta)}{\partial \theta} = n \theta + x\)</span></p>
-<p><span class="math inline">\(\frac{\partial^2 logf(x|\theta)}{\partial^2 \theta} = 1\)</span></p>
-<p><span class="math inline">\(-E(1) = n \to I(\theta)\)</span></p>
-<p><span class="math inline">\(\therefore \sqrt{n} ( \frac{\sum x_i}{n} - \theta) \xrightarrow[]{d} N(0,n)\)</span></p>
+<p><span class="math inline">\(X_i \sim exp(\frac{1}{\theta})\)</span></p>
+<p><span class="math inline">\(2X_i \theta \sim exp(2)\)</span></p>
+<p><span class="math inline">\(2n\bar{X}\theta \sim \chi^2 (2n)\)</span></p>
 </section>
 <section id="b-2" class="level2">
 <h2 class="anchored" data-anchor-id="b-2">(b)</h2>
 <p><span class="math inline">\(\theta\)</span>에 대한 95%신뢰구간을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\theta\)</span>의 <span class="math inline">\(100(1-0.05)\)</span>% 신뢰구간</p>
-<p><span class="math inline">\((\theta \pm 1.96 \times \sqrt{\frac{\sum x_i}{n}/n})\)</span></p>
+<p><span class="math inline">\((\chi^2_{0.025} (2n) \le 2n \bar{X} \theta \le chi^2_{0.975} (2n) = 0.95\)</span></p>
+<p><span class="math inline">\(\theta_{0.95} \to (\frac{\chi^2_{o/025}(2n)}{2n\bar{X}} , \frac{\chi^2_{0.975}(2n)}{2n\bar{X}})\)</span></p>
 </section>
 <section id="c-1" class="level2">
 <h2 class="anchored" data-anchor-id="c-1">(c)</h2>
 <p><span class="math inline">\(P(X&gt;1)\)</span>에 대한 95% 신뢰구간을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(P(X&gt;1)\)</span>의 <span class="math inline">\(100(1-0.05)\)</span>% 신뢰구간</p>
-<p><span class="math inline">\(f(x;\theta) = \theta exp (-\theta x) I (x&gt;0)\)</span></p>
-<p><span class="math inline">\(\int^{\infty}_{1}f(x:\theta)\)</span></p>
+<p><span class="math inline">\(P(X&gt;1) = \int^{\infty}_1 \theta e^{-x\theta} dx = [ e^{x\theta}]^{\infty}_1 = e^{-\infty}\)</span></p>
 </section>
 <section id="d-1" class="level2">
 <h2 class="anchored" data-anchor-id="d-1">(d)</h2>
 <p>가설에서 고려하고 있는 <span class="math inline">\(\theta\)</span>의 전체 모수공간 <span class="math inline">\(\Omega\)</span>와 귀무가설 하에서의 모수공간 <span class="math inline">\(\Omega_0\)</span>을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\Omega_0 = \{ \theta: \theta = 2\}, \Omega_1 = \{ \theta : \theta \ne 2 \}\)</span></p>
+<p><span class="math inline">\(\Omega = \{ \theta : \theta &gt; 0 \}\)</span></p>
+<p><span class="math inline">\(\Omega_0 = \{ \theta: \theta = 2\}\)</span></p>
 </section>
 <section id="e-1" class="level2">
 <h2 class="anchored" data-anchor-id="e-1">(e)</h2>
 <p><span class="math inline">\(\theta\)</span>의 가능도 함수를 기술하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(L(\theta) = \Pi^n_{i=1} \theta exp (-\theta x_i) I (x&gt;0) = \theta^n exp (-\theta \sum x_i) I (x&gt;0)\)</span></p>
-<p><span class="math inline">\(ln L(\theta) = n ln \theta - \theta \sum x_i\)</span></p>
-<p><span class="math inline">\(\frac{\partial ln L (\theta)}{\partial \theta} = \frac{n}{\theta} - \sum x_i = 0\)</span></p>
-<p><span class="math inline">\(\therefore \theta = \frac{1}{\bar{X}}\)</span></p>
+<p><span class="math inline">\(L(\theta) = \theta^n e^{\theta n \bar{X}}\)</span></p>
 </section>
 <section id="f" class="level2">
 <h2 class="anchored" data-anchor-id="f">(f)</h2>
 <p><span class="math inline">\(\theta\)</span>의 <span class="math inline">\(\Omega\)</span>에서의 최대가능도 추정량과 <span class="math inline">\(\Omega_0\)</span>에서의 최대가능도 추정량을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(f(x|\hat{\theta}_0) = {max}_{\theta \in \Omega_0} f(x| \theta)\)</span></p>
-<p><span class="math inline">\(f(x| \hat{\theta}_1) = {max}_{\theta \in \Omega_1} f(x|\theta)\)</span></p>
+<p><span class="math inline">\(\hat{\theta}^{\Omega} = \frac{1}{\bar{X}}\)</span></p>
+<p><span class="math inline">\(\hat{\theta}^{\Omega_0} = \theta_0\)</span></p>
 </section>
 <section id="g" class="level2">
 <h2 class="anchored" data-anchor-id="g">(g)</h2>
 <p>일반화 가능도 비 <span class="math inline">\(\Lambda\)</span>을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\frac{f(x|\hat{\theta}_0)}{f(x|\hat{\theta}_1)} = \frac{\theta_0^n exp (-\bar{x}_0 \sum x_i)}{\theta^n exp (-\bar{x}\sum x_i)} = \frac{4^n}{\bar{x}^n} exp((\bar{x}-4) \sum x_i)\)</span></p>
+<p><span class="math inline">\(\bar{X}\theta_0\)</span></p>
 </section>
 <section id="h" class="level2">
 <h2 class="anchored" data-anchor-id="h">(h)</h2>
@@ -865,7 +852,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>유의수준 <span class="math inline">\(\alpha\)</span>인 일반화 가능도비 검정 기각역을 구하시오.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(\mu\)</span>가 장애요소</p>
-<p><span class="math inline">\(L(\mu, \sigma^2( = (\frac{1}{2\pi \sigma^2})^{\frac{n}{2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}})\)</span></p>
+<p><span class="math inline">\(L(\mu, \sigma^2) = (\frac{1}{2\pi \sigma^2})^{\frac{n}{2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\)</span></p>
 <p><span class="math inline">\(\Lambda = \frac{L(\hat{\mu}_0,\hat{\sigma}^2_0)}{L(\hat{\mu},\hat{\sigma}^2)}\)</span></p>
 <ul>
 <li><span class="math inline">\(\Omega_0 = \{ (\mu,\sigma^2) : -\infty &lt; \mu &lt; \infty , \sigma^2 = 4 \}\)</span>

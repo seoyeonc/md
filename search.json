@@ -79,86 +79,9 @@
   {
     "objectID": "posts/ct/2023-01-30-Coding_Test_Q3.html",
     "href": "posts/ct/2023-01-30-Coding_Test_Q3.html",
-    "title": "코딩 테스트 공부(Not Done)",
+    "title": "코딩 테스트 공부(Done)",
     "section": "",
     "text": "2022:KAKAO TECH INTERNSHIP\n\n문제 설명 [본 문제는 정확성과 효율성 테스트 각각 점수가 있는 문제입니다.]\n당신은 코딩 테스트를 준비하기 위해 공부하려고 합니다. 코딩 테스트 문제를 풀기 위해서는 알고리즘에 대한 지식과 코드를 구현하는 능력이 필요합니다.\n알고리즘에 대한 지식은 알고력, 코드를 구현하는 능력은 코딩력이라고 표현합니다. 알고력과 코딩력은 0 이상의 정수로 표현됩니다.\n문제를 풀기 위해서는 문제가 요구하는 일정 이상의 알고력과 코딩력이 필요합니다.\n예를 들어, 당신의 현재 알고력이 15, 코딩력이 10이라고 가정해보겠습니다.\nA라는 문제가 알고력 10, 코딩력 10을 요구한다면 A 문제를 풀 수 있습니다.\nB라는 문제가 알고력 10, 코딩력 20을 요구한다면 코딩력이 부족하기 때문에 B 문제를 풀 수 없습니다.\n풀 수 없는 문제를 해결하기 위해서는 알고력과 코딩력을 높여야 합니다. 알고력과 코딩력을 높이기 위한 다음과 같은 방법들이 있습니다.\n알고력을 높이기 위해 알고리즘 공부를 합니다. 알고력 1을 높이기 위해서 1의 시간이 필요합니다.\n코딩력을 높이기 위해 코딩 공부를 합니다. 코딩력 1을 높이기 위해서 1의 시간이 필요합니다.\n현재 풀 수 있는 문제 중 하나를 풀어 알고력과 코딩력을 높입니다. 각 문제마다 문제를 풀면 올라가는 알고력과 코딩력이 정해져 있습니다.\n문제를 하나 푸는 데는 문제가 요구하는 시간이 필요하며 같은 문제를 여러 번 푸는 것이 가능합니다.\n당신은 주어진 모든 문제들을 풀 수 있는 알고력과 코딩력을 얻는 최단시간을 구하려 합니다.\n초기의 알고력과 코딩력을 담은 정수 alp와 cop, 문제의 정보를 담은 2차원 정수 배열 problems가 매개변수로 주어졌을 때, 모든 문제들을 풀 수 있는 알고력과 코딩력을 얻는 최단시간을 return 하도록 solution 함수를 작성해주세요.\n모든 문제들을 1번 이상씩 풀 필요는 없습니다. 입출력 예 설명을 참고해주세요.\n제한사항\n초기의 알고력을 나타내는 alp와 초기의 코딩력을 나타내는 cop가 입력으로 주어집니다.\n\\(0 ≤ alp,cop ≤ 150\\), \\(1 ≤ problems의 길이 ≤ 100\\)\nproblems의 원소는 [alp_req, cop_req, alp_rwd, cop_rwd, cost]의 형태로 이루어져 있습니다.\nalp_req는 문제를 푸는데 필요한 알고력입니다.\n\\(0 ≤ alp_req ≤ 150\\)\ncop_req는 문제를 푸는데 필요한 코딩력입니다.\n\\(0 ≤ cop_req ≤ 150\\)\nalp_rwd는 문제를 풀었을 때 증가하는 알고력입니다.\n\\(0 ≤ alp_rwd ≤ 30\\)\ncop_rwd는 문제를 풀었을 때 증가하는 코딩력입니다.\n\\(0 ≤ cop_rwd ≤ 30\\)\ncost는 문제를 푸는데 드는 시간입니다.\n\\(1 ≤ cost ≤ 100\\)\n정확성 테스트 케이스 제한사항\n\\(0 ≤ alp,cop ≤ 20\\)\n\\(1 ≤ problems의 길이 ≤ 6\\)\n\\(0 ≤ alp_req,cop_req ≤ 20\\)\n\\(0 ≤ alp_rwd,cop_rwd ≤ 5\\)\n\\(1 ≤ cost ≤ 10\\)\n효율성 테스트 케이스 제한사항\n주어진 조건 외 추가 제한사항 없습니다.\n입출력 예\n\n\n\nalp\ncop\nproblems\nresult\n\n\n\n\n10\n10\n[[10,15,2,1,2],[20,20,3,3,4]]\n15\n\n\n0\n0\n[[0,0,2,1,2],[4,5,3,1,2],[4,11,4,0,2],[10,4,0,4,2]]\n13\n\n\n\n입출력 예 설명\n입출력 예 #1\n코딩력 5를 늘립니다. 알고력 10, 코딩력 15가 되며 시간이 5만큼 소요됩니다.\n1번 문제를 5번 풉니다. 알고력 20, 코딩력 20이 되며 시간이 10만큼 소요됩니다. 15의 시간을 소요하여 모든 문제를 풀 수 있는 알고력과 코딩력을 가질 수 있습니다.\n입출력 예 #2\n1번 문제를 2번 풉니다. 알고력 4, 코딩력 2가 되며 시간이 4만큼 소요됩니다.\n코딩력 3을 늘립니다. 알고력 4, 코딩력 5가 되며 시간이 3만큼 소요됩니다.\n2번 문제를 2번 풉니다. 알고력 10, 코딩력 7이 되며 시간이 4만큼 소요됩니다.\n4번 문제를 1번 풉니다. 알고력 10, 코딩력 11이 되며 시간이 2만큼 소요됩니다. 13의 시간을 소요하여 모든 문제를 풀 수 있는 알고력과 코딩력을 가질 수 있습니다.\n제한시간 안내\n정확성 테스트 : 10초\n효율성 테스트 : 언어별로 작성된 정답 코드의 실행 시간의 적정 배수\n\n동적 계획법(Dynamic Programming)\n이미 계산을 했지만, 그 출력 결과를 바탕으로 다시 계산이 됨.(ex. 피보나치 수열)\n\ntop-down\ndown-top\n\n두 가지 방식이 존재한다.\n\ndef solution(alp, cop, problems):\n    max_alp = 0\n    max_cop = 0\n    for alp_req, cop_req, alp_rwd, cop_rwd, cost in problems:\n        max_alp = max(max_alp,alp_req)\n        max_cop = max(max_cop,cop_req)\n    \n    dp = [[float('inf')] * (max_cop + 1) for _ in range(max_alp +1)]\n    \n    alp = min(alp,max_alp)\n    cop = min(cop,max_cop)\n    \n    dp[alp][cop] = 0\n    \n    for i in range(alp, max_alp + 1):\n        for j in range(cop,max_cop +1):\n            if i < max_alp:\n                dp[i+1][j] = min(dp[i+1][j],dp[i][j]+1)\n            if j < max_cop:\n                dp[i][j+1] = min(dp[i][j+1],dp[i][j]+1)\n            for alp_req, cop_req, alp_rwd, cop_rwd, cost in problems:\n                if i >= alp_req and j >= cop_req:\n                    alp_n = min(i + alp_rwd, max_alp)\n                    cop_n = min(j + cop_rwd, max_cop)\n                    dp[alp_n][cop_n] = min(dp[alp_n][cop_n],dp[i][j] + cost)\n                    \n    return dp[max_alp][max_cop]\n\n\nmax_alp = 0\nmax_cop = 0\n\n\nproblems = [[0,0,2,1,2],[4,5,3,1,2],[4,11,4,0,2],[10,4,0,4,2]]\n\n\nalp = 0\ncop = 0\n\n\nfor alp_req, cop_req, alp_rwd, cop_rwd, cost in problems:\n    max_alp = max(max_alp,alp_req)\n    max_cop = max(max_cop,cop_req)\n\n\nmax_alp,max_cop\n\n(10, 11)\n\n\n\ndp = [[float('inf')] * (max_cop + 1) for _ in range(max_alp +1)]\ndp\n\n[[inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf]]\n\n\n\nalp = min(alp,max_alp)\ncop = min(cop,max_cop)\n\n\nalp,cop\n\n(0, 0)\n\n\n\ndp[alp][cop] = 0\n\n\ndp\n\n[[0, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf],\n [inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf]]\n\n\n\nfor i in range(alp, max_alp + 1):\n    for j in range(cop,max_cop +1):\n        if i < max_alp:\n            dp[i+1][j] = min(dp[i+1][j],dp[i][j]+1)\n        if j < max_cop:\n            dp[i][j+1] = min(dp[i][j+1],dp[i][j]+1)\n        for alp_req, cop_req, alp_rwd, cop_rwd, cost in problems:\n            if i >= alp_req and j >= cop_req:\n                alp_n = min(i + alp_rwd, max_alp)\n                cop_n = min(j + cop_rwd, max_cop)\n                dp[alp_n][cop_n] = min(dp[alp_n][cop_n],dp[i][j] + cost)\nreturn dp[max_alp][max_cop]"
-  },
-  {
-    "objectID": "posts/ct/2023-01-15-Coding_Test_내장함수.html",
-    "href": "posts/ct/2023-01-15-Coding_Test_내장함수.html",
-    "title": "내장함수",
-    "section": "",
-    "text": "주요 라이브러리 문법"
-  },
-  {
-    "objectID": "posts/ct/2023-01-15-Coding_Test_내장함수.html#sum",
-    "href": "posts/ct/2023-01-15-Coding_Test_내장함수.html#sum",
-    "title": "내장함수",
-    "section": "sum",
-    "text": "sum\n\nsum([1,2])\n\n3"
-  },
-  {
-    "objectID": "posts/ct/2023-01-15-Coding_Test_내장함수.html#min",
-    "href": "posts/ct/2023-01-15-Coding_Test_내장함수.html#min",
-    "title": "내장함수",
-    "section": "min",
-    "text": "min\n\nmin([14,5,6,0,3])\n\n0"
-  },
-  {
-    "objectID": "posts/ct/2023-01-15-Coding_Test_내장함수.html#max",
-    "href": "posts/ct/2023-01-15-Coding_Test_내장함수.html#max",
-    "title": "내장함수",
-    "section": "max",
-    "text": "max\n\nmax(1,3,6,3,33)\n\n33"
-  },
-  {
-    "objectID": "posts/ct/2023-01-15-Coding_Test_내장함수.html#eval",
-    "href": "posts/ct/2023-01-15-Coding_Test_내장함수.html#eval",
-    "title": "내장함수",
-    "section": "eval",
-    "text": "eval\n수학 수식이 문자열 형식으로 들어오면 해당 수식을 계산한 결과를 반환\n\neval(\"3+4\")\n\n7\n\n\n\neval(\"3*4\")\n\n12"
-  },
-  {
-    "objectID": "posts/ct/2023-01-15-Coding_Test_내장함수.html#sorted",
-    "href": "posts/ct/2023-01-15-Coding_Test_내장함수.html#sorted",
-    "title": "내장함수",
-    "section": "sorted",
-    "text": "sorted\n\nsorted([1,2,3,2,3])\n\n[1, 2, 2, 3, 3]\n\n\n\nsorted([1,2,3,2,3],reverse=True)\n\n[3, 3, 2, 2, 1]\n\n\n\\(\\star\\) List 형식이어야 함\n\nsorted(1,2,3,2,3)\n\nTypeError: sorted expected 1 argument, got 5\n\n\ngroup 가능\n\nsorted([('a',3),('b',4)],reverse=True)\n\n[('b', 4), ('a', 3)]\n\n\n사실 list 는 iterable 객체라 기본으로 sort()함수 가지고 있음\n\na = [4,1,3,4]\na.sort()\nprint(a)\n\n[1, 3, 4, 4]"
-  },
-  {
-    "objectID": "posts/ct/2023-01-15-Coding_Test_내장함수.html#itertools",
-    "href": "posts/ct/2023-01-15-Coding_Test_내장함수.html#itertools",
-    "title": "내장함수",
-    "section": "itertools",
-    "text": "itertools\n\npermutations 순열(중복 허용하지 않음)\n\nfrom itertools import permutations\n\ndata = [1,3,5]\n\nresult = list(permutations(data,3))\n\nprint(result)\n\n[(1, 3, 5), (1, 5, 3), (3, 1, 5), (3, 5, 1), (5, 1, 3), (5, 3, 1)]\n\n\n\n\ncombinations 조합(중복 허용하지 않음)\n\nfrom itertools import combinations\n\ndata = ['a','r','t','e']\nresult = list(combinations(data,2))\n\nprint(result)\n\n[('a', 'r'), ('a', 't'), ('a', 'e'), ('r', 't'), ('r', 'e'), ('t', 'e')]\n\n\n\n\nproduct 순열(중복 허용)\n\nfrom itertools import product\n\ndata = [1,3,5]\n\nresult = list(product(data,repeat=3))\n\nprint(result)\n\n[(1, 1, 1), (1, 1, 3), (1, 1, 5), (1, 3, 1), (1, 3, 3), (1, 3, 5), (1, 5, 1), (1, 5, 3), (1, 5, 5), (3, 1, 1), (3, 1, 3), (3, 1, 5), (3, 3, 1), (3, 3, 3), (3, 3, 5), (3, 5, 1), (3, 5, 3), (3, 5, 5), (5, 1, 1), (5, 1, 3), (5, 1, 5), (5, 3, 1), (5, 3, 3), (5, 3, 5), (5, 5, 1), (5, 5, 3), (5, 5, 5)]\n\n\n\n\ncombinations_with_replacement(중복 허용)\n\nfrom itertools import combinations_with_replacement\n\ndata = ['a','r','t','e']\nresult = list(combinations_with_replacement(data,2))\n\nprint(result)\n\n[('a', 'a'), ('a', 'r'), ('a', 't'), ('a', 'e'), ('r', 'r'), ('r', 't'), ('r', 'e'), ('t', 't'), ('t', 'e'), ('e', 'e')]"
-  },
-  {
-    "objectID": "posts/ct/2023-01-15-Coding_Test_내장함수.html#heapq",
-    "href": "posts/ct/2023-01-15-Coding_Test_내장함수.html#heapq",
-    "title": "내장함수",
-    "section": "heapq",
-    "text": "heapq\n다익스트라 최단 경로 알고리즘을 포함해 다양한 알고리즘에서 우선순위 큐 기능을 구현하고자 할 때 사용\n\nimport heapq\n\ndef heapsort(iterable):\n    h = []\n    result = []\n    for value in iterable:\n        heapq.heappush(h,value)\n    for _ in range(len(h)):\n        result.append(heapq.heappop(h))\n    return result\n    \nresult = heapsort([1,4,5,6,2,2,77,3,25])\nprint(result)\n\n[1, 2, 2, 3, 4, 5, 6, 25, 77]\n\n\n\na = []\nheapq.heappush(a,5)\n\n\na\n\n[5]\n\n\n\nheapq.heappush(a,3)\na\n\n[3, 5]\n\n\n\nheapq.heappush(a,2)\na\n\n[2, 5, 3]\n\n\n\nheapq.heappop(a)\n\n2\n\n\n\nmax heap\n\nimport heapq\n\ndef heapsort(iterable):\n    h = []\n    result = []\n    for value in iterable:\n        heapq.heappush(h,-value)\n    for _ in range(len(h)):\n        result.append(-heapq.heappop(h))\n    return result\n    \nresult = heapsort([1,4,5,6,2,2,77,3,25])\nprint(result)\n\n[77, 25, 6, 5, 4, 3, 2, 2, 1]\n\n\n\na = []\nheapq.heappush(a,-5)\n\n\na\n\n[-5]\n\n\n\nheapq.heappush(a,-3)\na\n\n[-5, -3]\n\n\n\nheapq.heappush(a,-2)\na\n\n[-5, -3, -2]\n\n\n\n-heapq.heappop(a)\n\n5"
-  },
-  {
-    "objectID": "posts/ct/2023-01-15-Coding_Test_내장함수.html#bisect",
-    "href": "posts/ct/2023-01-15-Coding_Test_내장함수.html#bisect",
-    "title": "내장함수",
-    "section": "bisect",
-    "text": "bisect\n이진 탐색 구현\n\n정렬된 상태여야 함\n\n\nbisect_left(a,x)\n정렬된 순서를 유지하면서 리스트 a에 데이터 x를 삽입할 가장 왼쪽 인덱스를 찾는 메서드\n\n\nbisect_right(a,x)\n정렬된 순서를 유지하면서 리스트 a에 데이터 x를 삽입할 가장 오른쪽 인덱스를 찾는 메서드\n\nfrom bisect import bisect_left, bisect_right\n\na = [1,2,5,6,33,3]\nx = 3\nb = sorted(a)\nprint(b)\nprint(bisect_left(b,x))\nprint(bisect_right(b,x))\n\n[1, 2, 3, 5, 6, 33]\n2\n3\n\n\n\nfrom bisect import bisect_left, bisect_right\n\ndef count_by_range(a,left_value,right_value):\n    right_index = bisect_right(a,right_value)\n    left_index = bisect_left(a,left_value)\n    return right_index - left_index\n\na = [1,4,5,7,5,3,6,7,9,99,2,22]\nb = sorted(a)\n\nprint(count_by_range(b,5,5))\n\nprint(count_by_range(b,-1,3))\n\n2\n3"
-  },
-  {
-    "objectID": "posts/ct/2023-01-15-Coding_Test_내장함수.html#collections",
-    "href": "posts/ct/2023-01-15-Coding_Test_내장함수.html#collections",
-    "title": "내장함수",
-    "section": "collections",
-    "text": "collections\n\ndeque\n\nfrom collections import deque\n\ndata = deque([2,5,4,6,3])\ndata.appendleft(3)\ndata.append(1)\n\nprint(data)\n\nprint(list(data))\n\ndeque([3, 2, 5, 4, 6, 3, 1])\n[3, 2, 5, 4, 6, 3, 1]\n\n\n\ndata.pop()\n\n1\n\n\n\ndata\n\ndeque([3, 2, 5, 4, 6, 3])\n\n\n\ndata.popleft()\n\n3\n\n\n\ndata\n\ndeque([2, 5, 4, 6, 3])\n\n\n\n\nCounter\n등장 횟수 세는 기능\n\nfrom collections import Counter\n\ncounter = Counter(['d','d','d','a','e','q','d'])\n\nprint(counter['d'])\nprint(counter['a'])\nprint(dict(counter),\"\\n사전자료형으로 반환\")\n\n4\n1\n{'d': 4, 'a': 1, 'e': 1, 'q': 1} \n사전자료형으로 반환\n\n\n\ncounter\n\nCounter({'d': 4, 'a': 1, 'e': 1, 'q': 1})"
-  },
-  {
-    "objectID": "posts/ct/2023-01-15-Coding_Test_내장함수.html#math",
-    "href": "posts/ct/2023-01-15-Coding_Test_내장함수.html#math",
-    "title": "내장함수",
-    "section": "math",
-    "text": "math\n\nimport math\nprint(math.factorial(4))\n\n24\n\n\n\n4*3*2*1\n\n24\n\n\n\nimport math\nprint(math.sqrt(25))\n\n5.0\n\n\n최대 공약수\n\nimport math\nprint(math.gcd(30,25))\n\n5\n\n\n\nimport math\nprint(math.pi)\nprint(math.e)\n\n3.141592653589793\n2.718281828459045"
   },
   {
     "objectID": "posts/ct/2023-01-21-Coding_Test_Q1.html",
@@ -187,6 +110,83 @@
     "title": "Algorithm",
     "section": "조합",
     "text": "조합\n\nimport itertools\n\ndata = [2,4,5,2]\n\nfor x in itertools.combinations(data,2):\n    print(list(x),end = '')\n\n[2, 4][2, 5][2, 2][4, 5][4, 2][5, 2]"
+  },
+  {
+    "objectID": "posts/ct/2023-01-15-Coding_Test_interfunction.html",
+    "href": "posts/ct/2023-01-15-Coding_Test_interfunction.html",
+    "title": "내장함수",
+    "section": "",
+    "text": "주요 라이브러리 문법"
+  },
+  {
+    "objectID": "posts/ct/2023-01-15-Coding_Test_interfunction.html#sum",
+    "href": "posts/ct/2023-01-15-Coding_Test_interfunction.html#sum",
+    "title": "내장함수",
+    "section": "sum",
+    "text": "sum\n\nsum([1,2])\n\n3"
+  },
+  {
+    "objectID": "posts/ct/2023-01-15-Coding_Test_interfunction.html#min",
+    "href": "posts/ct/2023-01-15-Coding_Test_interfunction.html#min",
+    "title": "내장함수",
+    "section": "min",
+    "text": "min\n\nmin([14,5,6,0,3])\n\n0"
+  },
+  {
+    "objectID": "posts/ct/2023-01-15-Coding_Test_interfunction.html#max",
+    "href": "posts/ct/2023-01-15-Coding_Test_interfunction.html#max",
+    "title": "내장함수",
+    "section": "max",
+    "text": "max\n\nmax(1,3,6,3,33)\n\n33"
+  },
+  {
+    "objectID": "posts/ct/2023-01-15-Coding_Test_interfunction.html#eval",
+    "href": "posts/ct/2023-01-15-Coding_Test_interfunction.html#eval",
+    "title": "내장함수",
+    "section": "eval",
+    "text": "eval\n수학 수식이 문자열 형식으로 들어오면 해당 수식을 계산한 결과를 반환\n\neval(\"3+4\")\n\n7\n\n\n\neval(\"3*4\")\n\n12"
+  },
+  {
+    "objectID": "posts/ct/2023-01-15-Coding_Test_interfunction.html#sorted",
+    "href": "posts/ct/2023-01-15-Coding_Test_interfunction.html#sorted",
+    "title": "내장함수",
+    "section": "sorted",
+    "text": "sorted\n\nsorted([1,2,3,2,3])\n\n[1, 2, 2, 3, 3]\n\n\n\nsorted([1,2,3,2,3],reverse=True)\n\n[3, 3, 2, 2, 1]\n\n\n\\(\\star\\) List 형식이어야 함\n\nsorted(1,2,3,2,3)\n\nTypeError: sorted expected 1 argument, got 5\n\n\ngroup 가능\n\nsorted([('a',3),('b',4)],reverse=True)\n\n[('b', 4), ('a', 3)]\n\n\n사실 list 는 iterable 객체라 기본으로 sort()함수 가지고 있음\n\na = [4,1,3,4]\na.sort()\nprint(a)\n\n[1, 3, 4, 4]"
+  },
+  {
+    "objectID": "posts/ct/2023-01-15-Coding_Test_interfunction.html#itertools",
+    "href": "posts/ct/2023-01-15-Coding_Test_interfunction.html#itertools",
+    "title": "내장함수",
+    "section": "itertools",
+    "text": "itertools\n\npermutations 순열(중복 허용하지 않음)\n\nfrom itertools import permutations\n\ndata = [1,3,5]\n\nresult = list(permutations(data,3))\n\nprint(result)\n\n[(1, 3, 5), (1, 5, 3), (3, 1, 5), (3, 5, 1), (5, 1, 3), (5, 3, 1)]\n\n\n\n\ncombinations 조합(중복 허용하지 않음)\n\nfrom itertools import combinations\n\ndata = ['a','r','t','e']\nresult = list(combinations(data,2))\n\nprint(result)\n\n[('a', 'r'), ('a', 't'), ('a', 'e'), ('r', 't'), ('r', 'e'), ('t', 'e')]\n\n\n\n\nproduct 순열(중복 허용)\n\nfrom itertools import product\n\ndata = [1,3,5]\n\nresult = list(product(data,repeat=3))\n\nprint(result)\n\n[(1, 1, 1), (1, 1, 3), (1, 1, 5), (1, 3, 1), (1, 3, 3), (1, 3, 5), (1, 5, 1), (1, 5, 3), (1, 5, 5), (3, 1, 1), (3, 1, 3), (3, 1, 5), (3, 3, 1), (3, 3, 3), (3, 3, 5), (3, 5, 1), (3, 5, 3), (3, 5, 5), (5, 1, 1), (5, 1, 3), (5, 1, 5), (5, 3, 1), (5, 3, 3), (5, 3, 5), (5, 5, 1), (5, 5, 3), (5, 5, 5)]\n\n\n\n\ncombinations_with_replacement(중복 허용)\n\nfrom itertools import combinations_with_replacement\n\ndata = ['a','r','t','e']\nresult = list(combinations_with_replacement(data,2))\n\nprint(result)\n\n[('a', 'a'), ('a', 'r'), ('a', 't'), ('a', 'e'), ('r', 'r'), ('r', 't'), ('r', 'e'), ('t', 't'), ('t', 'e'), ('e', 'e')]"
+  },
+  {
+    "objectID": "posts/ct/2023-01-15-Coding_Test_interfunction.html#heapq",
+    "href": "posts/ct/2023-01-15-Coding_Test_interfunction.html#heapq",
+    "title": "내장함수",
+    "section": "heapq",
+    "text": "heapq\n다익스트라 최단 경로 알고리즘을 포함해 다양한 알고리즘에서 우선순위 큐 기능을 구현하고자 할 때 사용\n\nimport heapq\n\ndef heapsort(iterable):\n    h = []\n    result = []\n    for value in iterable:\n        heapq.heappush(h,value)\n    for _ in range(len(h)):\n        result.append(heapq.heappop(h))\n    return result\n    \nresult = heapsort([1,4,5,6,2,2,77,3,25])\nprint(result)\n\n[1, 2, 2, 3, 4, 5, 6, 25, 77]\n\n\n\na = []\nheapq.heappush(a,5)\n\n\na\n\n[5]\n\n\n\nheapq.heappush(a,3)\na\n\n[3, 5]\n\n\n\nheapq.heappush(a,2)\na\n\n[2, 5, 3]\n\n\n\nheapq.heappop(a)\n\n2\n\n\n\nmax heap\n\nimport heapq\n\ndef heapsort(iterable):\n    h = []\n    result = []\n    for value in iterable:\n        heapq.heappush(h,-value)\n    for _ in range(len(h)):\n        result.append(-heapq.heappop(h))\n    return result\n    \nresult = heapsort([1,4,5,6,2,2,77,3,25])\nprint(result)\n\n[77, 25, 6, 5, 4, 3, 2, 2, 1]\n\n\n\na = []\nheapq.heappush(a,-5)\n\n\na\n\n[-5]\n\n\n\nheapq.heappush(a,-3)\na\n\n[-5, -3]\n\n\n\nheapq.heappush(a,-2)\na\n\n[-5, -3, -2]\n\n\n\n-heapq.heappop(a)\n\n5"
+  },
+  {
+    "objectID": "posts/ct/2023-01-15-Coding_Test_interfunction.html#bisect",
+    "href": "posts/ct/2023-01-15-Coding_Test_interfunction.html#bisect",
+    "title": "내장함수",
+    "section": "bisect",
+    "text": "bisect\n이진 탐색 구현\n\n정렬된 상태여야 함\n\n\nbisect_left(a,x)\n정렬된 순서를 유지하면서 리스트 a에 데이터 x를 삽입할 가장 왼쪽 인덱스를 찾는 메서드\n\n\nbisect_right(a,x)\n정렬된 순서를 유지하면서 리스트 a에 데이터 x를 삽입할 가장 오른쪽 인덱스를 찾는 메서드\n\nfrom bisect import bisect_left, bisect_right\n\na = [1,2,5,6,33,3]\nx = 3\nb = sorted(a)\nprint(b)\nprint(bisect_left(b,x))\nprint(bisect_right(b,x))\n\n[1, 2, 3, 5, 6, 33]\n2\n3\n\n\n\nfrom bisect import bisect_left, bisect_right\n\ndef count_by_range(a,left_value,right_value):\n    right_index = bisect_right(a,right_value)\n    left_index = bisect_left(a,left_value)\n    return right_index - left_index\n\na = [1,4,5,7,5,3,6,7,9,99,2,22]\nb = sorted(a)\n\nprint(count_by_range(b,5,5))\n\nprint(count_by_range(b,-1,3))\n\n2\n3"
+  },
+  {
+    "objectID": "posts/ct/2023-01-15-Coding_Test_interfunction.html#collections",
+    "href": "posts/ct/2023-01-15-Coding_Test_interfunction.html#collections",
+    "title": "내장함수",
+    "section": "collections",
+    "text": "collections\n\ndeque\n\nfrom collections import deque\n\ndata = deque([2,5,4,6,3])\ndata.appendleft(3)\ndata.append(1)\n\nprint(data)\n\nprint(list(data))\n\ndeque([3, 2, 5, 4, 6, 3, 1])\n[3, 2, 5, 4, 6, 3, 1]\n\n\n\ndata.pop()\n\n1\n\n\n\ndata\n\ndeque([3, 2, 5, 4, 6, 3])\n\n\n\ndata.popleft()\n\n3\n\n\n\ndata\n\ndeque([2, 5, 4, 6, 3])\n\n\n\n\nCounter\n등장 횟수 세는 기능\n\nfrom collections import Counter\n\ncounter = Counter(['d','d','d','a','e','q','d'])\n\nprint(counter['d'])\nprint(counter['a'])\nprint(dict(counter),\"\\n사전자료형으로 반환\")\n\n4\n1\n{'d': 4, 'a': 1, 'e': 1, 'q': 1} \n사전자료형으로 반환\n\n\n\ncounter\n\nCounter({'d': 4, 'a': 1, 'e': 1, 'q': 1})"
+  },
+  {
+    "objectID": "posts/ct/2023-01-15-Coding_Test_interfunction.html#math",
+    "href": "posts/ct/2023-01-15-Coding_Test_interfunction.html#math",
+    "title": "내장함수",
+    "section": "math",
+    "text": "math\n\nimport math\nprint(math.factorial(4))\n\n24\n\n\n\n4*3*2*1\n\n24\n\n\n\nimport math\nprint(math.sqrt(25))\n\n5.0\n\n\n최대 공약수\n\nimport math\nprint(math.gcd(30,25))\n\n5\n\n\n\nimport math\nprint(math.pi)\nprint(math.e)\n\n3.141592653589793\n2.718281828459045"
   },
   {
     "objectID": "posts/ml/2022-09-29-ml_4w.html",
@@ -1803,49 +1803,49 @@
     "href": "posts/ts/2023-01-25-ts-final term.html#a-2",
     "title": "Theoritical Statistics Final term",
     "section": "(a)",
-    "text": "(a)\n\\(\\theta\\)에 대한 적절한 추축변량을 구하고, 해당 추축변량의 분포를 명시하시오.\nanswer\n\\(f(x|\\theta) = \\theta exp(-\\theta x)I(x>0) \\sim Gamma(1,\\frac{1}{\\theta})\\)\n\\(L(\\theta) = \\Pi^n_{i=1} f(x_i | \\theta) = \\Pi^n_{i=1} \\theta exp(-\\theta x) I(x_i>0)\\)\n\\(= \\theta^n exp(-\\sum x_i \\theta) I(x_i>0)\\)\n\\(logL(\\theta) = nlog(\\frac{1}{\\theta}) -\\sum x_i \\theta\\)\n\\(\\frac{\\partial log L(\\theta)}{\\partial \\theta} = n\\theta -\\sum x_i\\)\n\\(\\to \\hat{\\theta} = \\frac{\\sum x_i}{n}\\)\n\\(\\sqrt{n}( \\frac{\\sum x_i}{n} - \\theta) \\to (d) N(0,\\frac{1}{I(\\theta)})\\)\n\\(logf(x|\\theta) = n log(\\frac{1}{\\theta}) - x \\theta\\)\n\\(\\frac{\\partial logf(x|\\theta)}{\\partial \\theta} = n \\theta + x\\)\n\\(\\frac{\\partial^2 logf(x|\\theta)}{\\partial^2 \\theta} = 1\\)\n\\(-E(1) = n \\to I(\\theta)\\)\n\\(\\therefore \\sqrt{n} ( \\frac{\\sum x_i}{n} - \\theta) \\xrightarrow[]{d} N(0,n)\\)"
+    "text": "(a)\n\\(\\theta\\)에 대한 적절한 추축변량을 구하고, 해당 추축변량의 분포를 명시하시오.\nanswer\n\\(X_i \\sim exp(\\frac{1}{\\theta})\\)\n\\(2X_i \\theta \\sim exp(2)\\)\n\\(2n\\bar{X}\\theta \\sim \\chi^2 (2n)\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#b-2",
     "href": "posts/ts/2023-01-25-ts-final term.html#b-2",
     "title": "Theoritical Statistics Final term",
     "section": "(b)",
-    "text": "(b)\n\\(\\theta\\)에 대한 95%신뢰구간을 구하시오.\nanswer\n\\(\\theta\\)의 \\(100(1-0.05)\\)% 신뢰구간\n\\((\\theta \\pm 1.96 \\times \\sqrt{\\frac{\\sum x_i}{n}/n})\\)"
+    "text": "(b)\n\\(\\theta\\)에 대한 95%신뢰구간을 구하시오.\nanswer\n\\((\\chi^2_{0.025} (2n) \\le 2n \\bar{X} \\theta \\le chi^2_{0.975} (2n) = 0.95\\)\n\\(\\theta_{0.95} \\to (\\frac{\\chi^2_{o/025}(2n)}{2n\\bar{X}} , \\frac{\\chi^2_{0.975}(2n)}{2n\\bar{X}})\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#c-1",
     "href": "posts/ts/2023-01-25-ts-final term.html#c-1",
     "title": "Theoritical Statistics Final term",
     "section": "(c)",
-    "text": "(c)\n\\(P(X>1)\\)에 대한 95% 신뢰구간을 구하시오.\nanswer\n\\(P(X>1)\\)의 \\(100(1-0.05)\\)% 신뢰구간\n\\(f(x;\\theta) = \\theta exp (-\\theta x) I (x>0)\\)\n\\(\\int^{\\infty}_{1}f(x:\\theta)\\)"
+    "text": "(c)\n\\(P(X>1)\\)에 대한 95% 신뢰구간을 구하시오.\nanswer\n\\(P(X>1) = \\int^{\\infty}_1 \\theta e^{-x\\theta} dx = [ e^{x\\theta}]^{\\infty}_1 = e^{-\\infty}\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#d-1",
     "href": "posts/ts/2023-01-25-ts-final term.html#d-1",
     "title": "Theoritical Statistics Final term",
     "section": "(d)",
-    "text": "(d)\n가설에서 고려하고 있는 \\(\\theta\\)의 전체 모수공간 \\(\\Omega\\)와 귀무가설 하에서의 모수공간 \\(\\Omega_0\\)을 구하시오.\nanswer\n\\(\\Omega_0 = \\{ \\theta: \\theta = 2\\}, \\Omega_1 = \\{ \\theta : \\theta \\ne 2 \\}\\)"
+    "text": "(d)\n가설에서 고려하고 있는 \\(\\theta\\)의 전체 모수공간 \\(\\Omega\\)와 귀무가설 하에서의 모수공간 \\(\\Omega_0\\)을 구하시오.\nanswer\n\\(\\Omega = \\{ \\theta : \\theta > 0 \\}\\)\n\\(\\Omega_0 = \\{ \\theta: \\theta = 2\\}\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#e-1",
     "href": "posts/ts/2023-01-25-ts-final term.html#e-1",
     "title": "Theoritical Statistics Final term",
     "section": "(e)",
-    "text": "(e)\n\\(\\theta\\)의 가능도 함수를 기술하시오.\nanswer\n\\(L(\\theta) = \\Pi^n_{i=1} \\theta exp (-\\theta x_i) I (x>0) = \\theta^n exp (-\\theta \\sum x_i) I (x>0)\\)\n\\(ln L(\\theta) = n ln \\theta - \\theta \\sum x_i\\)\n\\(\\frac{\\partial ln L (\\theta)}{\\partial \\theta} = \\frac{n}{\\theta} - \\sum x_i = 0\\)\n\\(\\therefore \\theta = \\frac{1}{\\bar{X}}\\)"
+    "text": "(e)\n\\(\\theta\\)의 가능도 함수를 기술하시오.\nanswer\n\\(L(\\theta) = \\theta^n e^{\\theta n \\bar{X}}\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#f",
     "href": "posts/ts/2023-01-25-ts-final term.html#f",
     "title": "Theoritical Statistics Final term",
     "section": "(f)",
-    "text": "(f)\n\\(\\theta\\)의 \\(\\Omega\\)에서의 최대가능도 추정량과 \\(\\Omega_0\\)에서의 최대가능도 추정량을 구하시오.\nanswer\n\\(f(x|\\hat{\\theta}_0) = {max}_{\\theta \\in \\Omega_0} f(x| \\theta)\\)\n\\(f(x| \\hat{\\theta}_1) = {max}_{\\theta \\in \\Omega_1} f(x|\\theta)\\)"
+    "text": "(f)\n\\(\\theta\\)의 \\(\\Omega\\)에서의 최대가능도 추정량과 \\(\\Omega_0\\)에서의 최대가능도 추정량을 구하시오.\nanswer\n\\(\\hat{\\theta}^{\\Omega} = \\frac{1}{\\bar{X}}\\)\n\\(\\hat{\\theta}^{\\Omega_0} = \\theta_0\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#g",
     "href": "posts/ts/2023-01-25-ts-final term.html#g",
     "title": "Theoritical Statistics Final term",
     "section": "(g)",
-    "text": "(g)\n일반화 가능도 비 \\(\\Lambda\\)을 구하시오.\nanswer\n\\(\\frac{f(x|\\hat{\\theta}_0)}{f(x|\\hat{\\theta}_1)} = \\frac{\\theta_0^n exp (-\\bar{x}_0 \\sum x_i)}{\\theta^n exp (-\\bar{x}\\sum x_i)} = \\frac{4^n}{\\bar{x}^n} exp((\\bar{x}-4) \\sum x_i)\\)"
+    "text": "(g)\n일반화 가능도 비 \\(\\Lambda\\)을 구하시오.\nanswer\n\\(\\bar{X}\\theta_0\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#h",
@@ -1887,7 +1887,7 @@
     "href": "posts/ts/2023-01-25-ts-final term.html#b-4",
     "title": "Theoritical Statistics Final term",
     "section": "(b)",
-    "text": "(b)\n유의수준 \\(\\alpha\\)인 일반화 가능도비 검정 기각역을 구하시오.\nanswer\n\\(\\mu\\)가 장애요소\n\\(L(\\mu, \\sigma^2( = (\\frac{1}{2\\pi \\sigma^2})^{\\frac{n}{2}}e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}})\\)\n\\(\\Lambda = \\frac{L(\\hat{\\mu}_0,\\hat{\\sigma}^2_0)}{L(\\hat{\\mu},\\hat{\\sigma}^2)}\\)\n\n\\(\\Omega_0 = \\{ (\\mu,\\sigma^2) : -\\infty < \\mu < \\infty , \\sigma^2 = 4 \\}\\)\n\n\\(\\hat{\\mu}_0 = {argmax}_{(\\mu,\\sigma^2)\\in\\Omega_0} L(\\mu,\\sigma^2) = \\bar{x}\\)\n\\(\\hat{\\sigma}^2_0 = 4\\)\n\n\\(\\Omega = \\{ (\\mu, \\sigma^2) : -\\infty < \\mu < \\infty , \\sigma^2 \\ne 4, \\sigma^2 > 0 \\}\\)\n\n\\(\\hat{\\mu} = \\bar{x}\\)\n\\(\\hat{\\sigma}^2 = {max}(\\frac{1}{n}\\sum^n_{i=1}(x_i - \\bar{x})^2, 4)\\)\n\n왼쪽은 \\(4\\)보다 클때, 오른쪽은 \\(4\\)보다 작을때\n\n\n\n\\(\\Lambda = \\frac{L(\\hat{\\mu}_0, \\hat{\\sigma}^2_0)}{L(\\hat{\\mu},\\hat{\\sigma}^2)}= \\frac{(\\frac{1}{2\\pi\\hat{\\sigma}^2_0})^{\\frac{n}{2}} e^{-\\frac{\\sum(x_i - \\bar{x})^2}{2\\hat{\\sigma}^2_0}}}{(\\frac{1}{2\\pi\\hat{\\sigma}^2})^{\\frac{n}{2}} e^{-\\frac{\\sum(x_i - \\bar{x})^2}{2\\hat{\\sigma}^2}}}\\)\n\\(\\to (\\frac{1}{2\\pi\\hat{\\sigma}^2_0}) = \\frac{1}{2\\pi \\sigma^2}\\)\n\\(\\to -\\frac{\\sum(x_i - \\bar{x})^2}{2\\hat{\\sigma}^2_0} = -\\frac{\\sum(x_i - \\bar{x})^2}{2\\sigma^2_0}\\)\n\\(= (\\frac{\\hat{\\sigma}^2}{4})^{\\frac{n}{2}} e^{-\\frac{1}{2}\\sum^n_{i=1}(x_i - \\bar{x})^2 (\\frac{\\hat{\\sigma}^2 - 4}{4\\hat{\\sigma}^2})} \\le k\\)\n\n\\(\\frac{1}{n} \\sum^n_{i=1}(x_i - \\bar{x})^2 < 4 \\to 4 \\to \\Lambda = 1\\)\n\n\n\\(k=1\\)이 되어 의미가 없어짐\n\n\n\\(\\frac{1}{n}\\sum^n_{i=1}(x_i-\\bar{x})^2 > 4 \\to \\hat{\\sigma}^2 = \\frac{1}{n}\\sum^n_{i=1}(x_i - \\bar{x})^2\\)\n\n\n예 5.24에서 다룬 식, \\(\\Lambda\\)는 \\(\\frac{\\hat{\\sigma}}{4}\\)의 감소함수이다.\n\n기각역 : \\(\\frac{1}{n}\\sum(x_i - \\bar{x})^2 \\ge k\\)\n\\(\\alpha = P(\\sum^n_{i=1}(x_i - \\bar{x})^2 \\ge k | \\sigma^2 = 4)\\)\n\\(\\star \\frac{\\sum^n_{i=1}(x_i - \\bar{x})^2}{\\sigma^2} \\sim \\chi^2_{(n-1)}\\)\n\\(= P(\\frac{\\sum^n_{i=1}(x_i - \\bar{x})^2}{4} \\ge \\frac{k}{4} | \\sigma^2 = 4)\\)\n\\(\\frac{k}{4} = \\chi^2_{0.05(n-1)}\\)\n\\(k = 4 \\chi^2_{0.05(n-1)}\\)\n\n\n\nimage.png\n\n\n\\(c = \\{ (x_1,\\dots,x_n):\\sum^n_{i=1}(x_i - \\bar{x})^2 \\ge 4 \\chi^2_{0.05(n-1)}\\)\n유의수준 \\(\\alpha\\) 일반화 가능도비 검정법의 기각역이다."
+    "text": "(b)\n유의수준 \\(\\alpha\\)인 일반화 가능도비 검정 기각역을 구하시오.\nanswer\n\\(\\mu\\)가 장애요소\n\\(L(\\mu, \\sigma^2) = (\\frac{1}{2\\pi \\sigma^2})^{\\frac{n}{2}}e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}\\)\n\\(\\Lambda = \\frac{L(\\hat{\\mu}_0,\\hat{\\sigma}^2_0)}{L(\\hat{\\mu},\\hat{\\sigma}^2)}\\)\n\n\\(\\Omega_0 = \\{ (\\mu,\\sigma^2) : -\\infty < \\mu < \\infty , \\sigma^2 = 4 \\}\\)\n\n\\(\\hat{\\mu}_0 = {argmax}_{(\\mu,\\sigma^2)\\in\\Omega_0} L(\\mu,\\sigma^2) = \\bar{x}\\)\n\\(\\hat{\\sigma}^2_0 = 4\\)\n\n\\(\\Omega = \\{ (\\mu, \\sigma^2) : -\\infty < \\mu < \\infty , \\sigma^2 \\ne 4, \\sigma^2 > 0 \\}\\)\n\n\\(\\hat{\\mu} = \\bar{x}\\)\n\\(\\hat{\\sigma}^2 = {max}(\\frac{1}{n}\\sum^n_{i=1}(x_i - \\bar{x})^2, 4)\\)\n\n왼쪽은 \\(4\\)보다 클때, 오른쪽은 \\(4\\)보다 작을때\n\n\n\n\\(\\Lambda = \\frac{L(\\hat{\\mu}_0, \\hat{\\sigma}^2_0)}{L(\\hat{\\mu},\\hat{\\sigma}^2)}= \\frac{(\\frac{1}{2\\pi\\hat{\\sigma}^2_0})^{\\frac{n}{2}} e^{-\\frac{\\sum(x_i - \\bar{x})^2}{2\\hat{\\sigma}^2_0}}}{(\\frac{1}{2\\pi\\hat{\\sigma}^2})^{\\frac{n}{2}} e^{-\\frac{\\sum(x_i - \\bar{x})^2}{2\\hat{\\sigma}^2}}}\\)\n\\(\\to (\\frac{1}{2\\pi\\hat{\\sigma}^2_0}) = \\frac{1}{2\\pi \\sigma^2}\\)\n\\(\\to -\\frac{\\sum(x_i - \\bar{x})^2}{2\\hat{\\sigma}^2_0} = -\\frac{\\sum(x_i - \\bar{x})^2}{2\\sigma^2_0}\\)\n\\(= (\\frac{\\hat{\\sigma}^2}{4})^{\\frac{n}{2}} e^{-\\frac{1}{2}\\sum^n_{i=1}(x_i - \\bar{x})^2 (\\frac{\\hat{\\sigma}^2 - 4}{4\\hat{\\sigma}^2})} \\le k\\)\n\n\\(\\frac{1}{n} \\sum^n_{i=1}(x_i - \\bar{x})^2 < 4 \\to 4 \\to \\Lambda = 1\\)\n\n\n\\(k=1\\)이 되어 의미가 없어짐\n\n\n\\(\\frac{1}{n}\\sum^n_{i=1}(x_i-\\bar{x})^2 > 4 \\to \\hat{\\sigma}^2 = \\frac{1}{n}\\sum^n_{i=1}(x_i - \\bar{x})^2\\)\n\n\n예 5.24에서 다룬 식, \\(\\Lambda\\)는 \\(\\frac{\\hat{\\sigma}}{4}\\)의 감소함수이다.\n\n기각역 : \\(\\frac{1}{n}\\sum(x_i - \\bar{x})^2 \\ge k\\)\n\\(\\alpha = P(\\sum^n_{i=1}(x_i - \\bar{x})^2 \\ge k | \\sigma^2 = 4)\\)\n\\(\\star \\frac{\\sum^n_{i=1}(x_i - \\bar{x})^2}{\\sigma^2} \\sim \\chi^2_{(n-1)}\\)\n\\(= P(\\frac{\\sum^n_{i=1}(x_i - \\bar{x})^2}{4} \\ge \\frac{k}{4} | \\sigma^2 = 4)\\)\n\\(\\frac{k}{4} = \\chi^2_{0.05(n-1)}\\)\n\\(k = 4 \\chi^2_{0.05(n-1)}\\)\n\n\n\nimage.png\n\n\n\\(c = \\{ (x_1,\\dots,x_n):\\sum^n_{i=1}(x_i - \\bar{x})^2 \\ge 4 \\chi^2_{0.05(n-1)}\\)\n유의수준 \\(\\alpha\\) 일반화 가능도비 검정법의 기각역이다."
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#c-3",
@@ -2769,7 +2769,7 @@
     "href": "index.html",
     "title": ";)",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 12, 2023\n\n\nArrayList & LinkedList\n\n\nSEOYEON CHOI\n\n\n\n\nJan 30, 2023\n\n\n코딩 테스트 공부(Not Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 26, 2023\n\n\nTheoritical Statistics Final term\n\n\nSEOYEON CHOI\n\n\n\n\nJan 23, 2023\n\n\n두 큐 합 같게 만들기(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 21, 2023\n\n\n성격 유형 검사하기(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 20, 2023\n\n\nTheoritical Statistics HW9\n\n\nSEOYEON CHOI\n\n\n\n\nJan 18, 2023\n\n\nTheoritical Statistics HW7\n\n\nSEOYEON CHOI\n\n\n\n\nJan 18, 2023\n\n\nTheoritical Statistics HW8\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\n내장함수\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\nAlgorithm\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\nTheoritical Statistics Mid term\n\n\nSEOYEON CHOI\n\n\n\n\nJan 14, 2023\n\n\nTheoritical Statistics HW6\n\n\nSEOYEON CHOI\n\n\n\n\nJan 12, 2023\n\n\nTheoritical Statistics HW5\n\n\nSEOYEON CHOI\n\n\n\n\nJan 11, 2023\n\n\nTheoritical Statistics HW4\n\n\nSEOYEON CHOI\n\n\n\n\nJan 8, 2023\n\n\nTheoritical Statistics HW3\n\n\nSEOYEON CHOI\n\n\n\n\nJan 6, 2023\n\n\nTheoritical Statistics HW2\n\n\nSEOYEON CHOI\n\n\n\n\nJan 5, 2023\n\n\nTheoritical Statistics HW1\n\n\nSEOYEON CHOI\n\n\n\n\nJan 1, 2023\n\n\nChapter 03 Greedy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 31, 2022\n\n\n확률변수와 확률분포\n\n\nSEOYEON CHOI\n\n\n\n\nDec 28, 2022\n\n\nCoding Test\n\n\nSEOYEON CHOI\n\n\n\n\nDec 27, 2022\n\n\nTheoritical Statistics\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-1: 추천시스템\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-2: 생성모형(GAN)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-3: 딥러닝의 기초 (5)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 13, 2022\n\n\nFinalterm\n\n\nSEOYEON CHOI\n\n\n\n\nDec 11, 2022\n\n\n고급회귀분석 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nstudy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRNN (13주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRegression HW 4\n\n\nSEOYEON CHOI\n\n\n\n\nDec 7, 2022\n\n\nA1: 깊은복사와 얕은복사 (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 5, 2022\n\n\n고급회귀분석 실습 CH11\n\n\nSEOYEON CHOI\n\n\n\n\nNov 30, 2022\n\n\nRNN (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 29, 2022\n\n\nDeep Learning final example\n\n\nSEOYEON CHOI\n\n\n\n\nNov 28, 2022\n\n\n고급회귀분석 실습 CH13\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRNN (11주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRegression HW 3\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\n고급회귀분석 실습 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nNov 14, 2022\n\n\n고급회귀분석 실습 CH06, CH07\n\n\nSEOYEON CHOI\n\n\n\n\nNov 9, 2022\n\n\nRNN (10주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nMidterm\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nRNN (9주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 1\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 23, 2022\n\n\nRegression HW 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 19, 2022\n\n\nCNN (7주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 12, 2022\n\n\nDNN (6주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nHomework\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nDNN (5주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 29, 2022\n\n\nDNN (4주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nDNN (3주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\n고급회귀분석 실습 CH03, CH04\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nRegression HW 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 19, 2022\n\n\nAssignment 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 14, 2022\n\n\nDNN (2주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nIntro\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nDNN (1주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nSpecial Topics in Machine Learning\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nAdvanced Regression Analysis\n\n\nSEOYEON CHOI\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 12, 2023\n\n\nArrayList & LinkedList\n\n\nSEOYEON CHOI\n\n\n\n\nJan 30, 2023\n\n\n코딩 테스트 공부(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 26, 2023\n\n\nTheoritical Statistics Final term\n\n\nSEOYEON CHOI\n\n\n\n\nJan 23, 2023\n\n\n두 큐 합 같게 만들기(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 21, 2023\n\n\n성격 유형 검사하기(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 20, 2023\n\n\nTheoritical Statistics HW9\n\n\nSEOYEON CHOI\n\n\n\n\nJan 18, 2023\n\n\nTheoritical Statistics HW7\n\n\nSEOYEON CHOI\n\n\n\n\nJan 18, 2023\n\n\nTheoritical Statistics HW8\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\nAlgorithm\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\n내장함수\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\nTheoritical Statistics Mid term\n\n\nSEOYEON CHOI\n\n\n\n\nJan 14, 2023\n\n\nTheoritical Statistics HW6\n\n\nSEOYEON CHOI\n\n\n\n\nJan 12, 2023\n\n\nTheoritical Statistics HW5\n\n\nSEOYEON CHOI\n\n\n\n\nJan 11, 2023\n\n\nTheoritical Statistics HW4\n\n\nSEOYEON CHOI\n\n\n\n\nJan 8, 2023\n\n\nTheoritical Statistics HW3\n\n\nSEOYEON CHOI\n\n\n\n\nJan 6, 2023\n\n\nTheoritical Statistics HW2\n\n\nSEOYEON CHOI\n\n\n\n\nJan 5, 2023\n\n\nTheoritical Statistics HW1\n\n\nSEOYEON CHOI\n\n\n\n\nJan 1, 2023\n\n\nChapter 03 Greedy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 31, 2022\n\n\n확률변수와 확률분포\n\n\nSEOYEON CHOI\n\n\n\n\nDec 28, 2022\n\n\nCoding Test\n\n\nSEOYEON CHOI\n\n\n\n\nDec 27, 2022\n\n\nTheoritical Statistics\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-1: 추천시스템\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-2: 생성모형(GAN)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-3: 딥러닝의 기초 (5)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 13, 2022\n\n\nFinalterm\n\n\nSEOYEON CHOI\n\n\n\n\nDec 11, 2022\n\n\n고급회귀분석 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nstudy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRNN (13주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRegression HW 4\n\n\nSEOYEON CHOI\n\n\n\n\nDec 7, 2022\n\n\nA1: 깊은복사와 얕은복사 (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 5, 2022\n\n\n고급회귀분석 실습 CH11\n\n\nSEOYEON CHOI\n\n\n\n\nNov 30, 2022\n\n\nRNN (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 29, 2022\n\n\nDeep Learning final example\n\n\nSEOYEON CHOI\n\n\n\n\nNov 28, 2022\n\n\n고급회귀분석 실습 CH13\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRNN (11주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRegression HW 3\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\n고급회귀분석 실습 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nNov 14, 2022\n\n\n고급회귀분석 실습 CH06, CH07\n\n\nSEOYEON CHOI\n\n\n\n\nNov 9, 2022\n\n\nRNN (10주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nMidterm\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nRNN (9주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 1\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 23, 2022\n\n\nRegression HW 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 19, 2022\n\n\nCNN (7주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 12, 2022\n\n\nDNN (6주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nHomework\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nDNN (5주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 29, 2022\n\n\nDNN (4주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nDNN (3주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\n고급회귀분석 실습 CH03, CH04\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nRegression HW 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 19, 2022\n\n\nAssignment 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 14, 2022\n\n\nDNN (2주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nIntro\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nDNN (1주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nSpecial Topics in Machine Learning\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nAdvanced Regression Analysis\n\n\nSEOYEON CHOI\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
