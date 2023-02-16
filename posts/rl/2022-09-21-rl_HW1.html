@@ -625,7 +625,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol type="1">
 <li>이 데이터의 산점도를 그리시오.</li>
 </ol>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="83">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fl">0.9</span>,<span class="fl">1.3</span>,<span class="fl">2.1</span>,<span class="fl">2.5</span>,<span class="fl">2.4</span>,<span class="fl">1.7</span>,<span class="fl">0.7</span>,<span class="fl">1.2</span>,<span class="fl">1.6</span>),</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> <span class="fu">c</span>(<span class="fl">2.0</span>,<span class="fl">2.6</span>,<span class="fl">4.3</span>,<span class="fl">5.8</span>,<span class="fl">5.1</span>,<span class="fl">3.2</span>,<span class="fl">1.8</span>,<span class="fl">2.3</span>,<span class="fl">3.0</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dt</span></code></pre></div>
@@ -652,7 +652,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p><strong>Answer</strong></p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="84">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y<span class="sc">~</span>x, </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> dt,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"무게"</span>,</span>
@@ -673,7 +673,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>최소제곱법의 의한 회귀직선을 적합시키시오.</li>
 </ol>
 <p><strong>Answer</strong></p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="85">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dt1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dt),</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> dt<span class="sc">$</span>x,</span>
@@ -684,7 +684,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><span class="math inline">\(S_{xx}, S_{yy},S_{xy}\)</span>를 구해주기 위해 <span class="math inline">\(x_i - \bar{x}, y_i - \bar{y}\)</span>를 구했다.</li>
 </ul>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="86">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dt1<span class="sc">$</span>x_barx2 <span class="ot">&lt;-</span> dt1<span class="sc">$</span>x_barx<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dt1<span class="sc">$</span>y_bary2 <span class="ot">&lt;-</span> dt1<span class="sc">$</span>y_bary<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>dt1<span class="sc">$</span>xy <span class="ot">&lt;-</span>dt1<span class="sc">$</span>x_barx <span class="sc">*</span> dt1<span class="sc">$</span>y_bary</span></code></pre></div>
@@ -692,7 +692,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><span class="math inline">\(S_{xx}, S_{yy},S_{xy}\)</span>를 구해주었다.</li>
 </ul>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="87">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dt1</span></code></pre></div>
 <div class="cell-output cell-output-display">
 
@@ -719,7 +719,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>반올림 해주었다.</li>
 </ul>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="88">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">colSums</span>(dt1),<span class="dv">3</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -732,11 +732,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p><span class="math inline">\(\hat{\beta_1} = \frac{S_{xy}}{S_{xx}}\)</span></p>
 <p><span class="math inline">\(\hat{\beta_0} = \bar{y} - \hat{\beta_1}\bar{x}\)</span></p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="89">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>beta1 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">colSums</span>(dt1)[<span class="dv">8</span>]<span class="sc">/</span><span class="fu">colSums</span>(dt1)[<span class="dv">6</span>])</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>beta0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>y) <span class="sc">-</span> beta1 <span class="sc">*</span>  <span class="fu">mean</span>(dt<span class="sc">$</span>x)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="90">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"hat beta0 = "</span>, beta0)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"hat beta1 = "</span>, beta1)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -746,28 +746,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><span class="math inline">\(\hat{y} = -0.1156783 + 2.162577x\)</span>의 모형으로 적합되었다.</li>
 </ul>
+<div class="cell" data-execution_count="108">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y<span class="sc">~</span>x,dt)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Call:
+lm(formula = y ~ x, data = dt)
+
+Coefficients:
+(Intercept)            x  
+    -0.1157       2.1626  </code></pre>
+</div>
+</div>
 <ol start="3" type="1">
 <li>데이터의 산점도를 그리고 추정한 회귀직선을 (1)에서 그린 산점도 위에 그리시오.</li>
 </ol>
 <p><strong>Answer</strong></p>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y<span class="sc">~</span>x, </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> dt,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"무게"</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"에너지소모량"</span>,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch  =</span> <span class="dv">16</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex  =</span> <span class="dv">1</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">col  =</span> <span class="st">"darkorange"</span>)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">new=</span><span class="cn">TRUE</span>)</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="sc">-</span><span class="fl">0.1156783</span> <span class="sc">+</span>  <span class="fl">2.162577</span><span class="sc">*</span>x<span class="sc">~</span>x,</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> dt,</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">""</span>,</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>,</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch  =</span> <span class="dv">16</span>,</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex  =</span> <span class="dv">1</span>,<span class="at">type=</span><span class="st">'l'</span>,</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">col  =</span> <span class="st">"blue"</span>)</span></code></pre></div>
+<div class="cell" data-execution_count="92">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y<span class="sc">~</span>x, </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> dt,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"무게"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"에너지소모량"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch  =</span> <span class="dv">16</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex  =</span> <span class="dv">1</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">col  =</span> <span class="st">"darkorange"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">new=</span><span class="cn">TRUE</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="sc">-</span><span class="fl">0.1156783</span> <span class="sc">+</span>  <span class="fl">2.162577</span><span class="sc">*</span>x<span class="sc">~</span>x,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> dt,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">""</span>,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>,</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch  =</span> <span class="dv">16</span>,</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex  =</span> <span class="dv">1</span>,<span class="at">type=</span><span class="st">'l'</span>,</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">col  =</span> <span class="st">"blue"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-09-21-rl_HW1_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+<p><img src="2022-09-21-rl_HW1_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <ul>
@@ -777,9 +789,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>결정계수와 상관계수를 구하시오.</li>
 </ol>
 <p><span class="math inline">\(r_{xy} = \frac{S_{xy}}{\sqrt{S_{xx}S_{yy}}}\)</span></p>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>rxy <span class="ot">=</span> <span class="fu">colSums</span>(dt1)[<span class="dv">8</span>]<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">colSums</span>(dt1)[<span class="dv">6</span>]<span class="sc">*</span><span class="fu">colSums</span>(dt1)[<span class="dv">7</span>])</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>rxy</span></code></pre></div>
+<div class="cell" data-execution_count="93">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>rxy <span class="ot">=</span> <span class="fu">colSums</span>(dt1)[<span class="dv">8</span>]<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">colSums</span>(dt1)[<span class="dv">6</span>]<span class="sc">*</span><span class="fu">colSums</span>(dt1)[<span class="dv">7</span>])</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>rxy</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <strong>xy:</strong> 0.976090685311348
 </div>
@@ -788,33 +800,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>상관계수는 약 98% 로, <span class="math inline">\(x,y\)</span>간 높은 양의 상관관계가 있었다.</li>
 </ul>
 <p><span class="math inline">\(R^2 = \frac{SSR}{SST} = r^2\)</span></p>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>SST <span class="ot">=</span> <span class="fu">sum</span>((dt<span class="sc">$</span>y <span class="sc">-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>y))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="cell" data-execution_count="94">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>SST <span class="ot">=</span> <span class="fu">sum</span>((dt<span class="sc">$</span>y <span class="sc">-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>y))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>SSR <span class="ot">=</span> <span class="fu">sum</span>( ( (<span class="sc">-</span><span class="fl">0.1156783</span> <span class="sc">+</span>  <span class="fl">2.162577</span><span class="sc">*</span>dt<span class="sc">$</span>x)<span class="sc">-</span><span class="fu">mean</span>(dt<span class="sc">$</span>y) )<span class="sc">^</span><span class="dv">2</span> )</span></code></pre></div>
+<div class="cell" data-execution_count="95">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>SSR <span class="ot">=</span> <span class="fu">sum</span>( ( (<span class="sc">-</span><span class="fl">0.1156783</span> <span class="sc">+</span>  <span class="fl">2.162577</span><span class="sc">*</span>dt<span class="sc">$</span>x)<span class="sc">-</span><span class="fu">mean</span>(dt<span class="sc">$</span>y) )<span class="sc">^</span><span class="dv">2</span> )</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>SSE <span class="ot">=</span> <span class="fu">sum</span>( ( dt<span class="sc">$</span>y<span class="sc">-</span>(<span class="sc">-</span><span class="fl">0.1156783</span> <span class="sc">+</span>  <span class="fl">2.162577</span><span class="sc">*</span>dt<span class="sc">$</span>x))<span class="sc">^</span><span class="dv">2</span> )</span></code></pre></div>
+<div class="cell" data-execution_count="96">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>SSE <span class="ot">=</span> <span class="fu">sum</span>( ( dt<span class="sc">$</span>y<span class="sc">-</span>(<span class="sc">-</span><span class="fl">0.1156783</span> <span class="sc">+</span>  <span class="fl">2.162577</span><span class="sc">*</span>dt<span class="sc">$</span>x))<span class="sc">^</span><span class="dv">2</span> )</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"SST = "</span>, SST)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">SSR = "</span>, SSR)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">SSE = "</span>, SSE)</span></code></pre></div>
+<div class="cell" data-execution_count="97">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"SST = "</span>, SST)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">SSR = "</span>, SSR)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">SSE = "</span>, SSE)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>SST =  16.00222
 SSR =  15.24617
 SSE =  0.7560566</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>SSR<span class="sc">/</span>SST</span></code></pre></div>
+<div class="cell" data-execution_count="98">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>SSR<span class="sc">/</span>SST</span></code></pre></div>
 <div class="cell-output cell-output-display">
 0.95275330164195
 </div>
 </div>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>rxy<span class="sc">**</span><span class="dv">2</span></span></code></pre></div>
+<div class="cell" data-execution_count="99">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>rxy<span class="sc">**</span><span class="dv">2</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 <strong>xy:</strong> 0.952753025951577
 </div>
@@ -825,29 +837,29 @@ SSE =  0.7560566</code></pre>
 <ol start="5" type="1">
 <li>분산분석표를 작성하고 회귀직선의 유의 여부를 검정하시오 (유의수준 <span class="math inline">\(α = 0.05\)</span> 사용).</li>
 </ol>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>MSR <span class="ot">=</span> SSR<span class="sc">/</span><span class="dv">1</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>MSE <span class="ot">=</span> SSE<span class="sc">/</span><span class="dv">7</span></span></code></pre></div>
+<div class="cell" data-execution_count="100">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>MSR <span class="ot">=</span> SSR<span class="sc">/</span><span class="dv">1</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>MSE <span class="ot">=</span> SSE<span class="sc">/</span><span class="dv">7</span></span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"MSR = "</span>, MSR)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">MSE = "</span>, MSE)</span></code></pre></div>
+<div class="cell" data-execution_count="101">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"MSR = "</span>, MSR)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">MSE = "</span>, MSE)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>MSR =  15.24617
 MSE =  0.1080081</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Fvalue <span class="ot">=</span> MSR<span class="sc">/</span>MSE</span></code></pre></div>
+<div class="cell" data-execution_count="102">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Fvalue <span class="ot">=</span> MSR<span class="sc">/</span>MSE</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"F value = "</span>,Fvalue)</span></code></pre></div>
+<div class="cell" data-execution_count="103">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"F value = "</span>,Fvalue)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>F value =  141.1577</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"p value = "</span>,<span class="fu">df</span>(Fvalue,<span class="dv">1</span>,<span class="dv">7</span>))</span></code></pre></div>
+<div class="cell" data-execution_count="104">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"p value = "</span>,<span class="fu">df</span>(Fvalue,<span class="dv">1</span>,<span class="dv">7</span>))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>p value =  1.614709e-07</code></pre>
 </div>
@@ -886,20 +898,37 @@ MSE =  0.1080081</code></pre>
 <li>F값은 141.1584, p value는 1.614672e-07가 나왔다.</li>
 <li>유의수준 5%에서 모형이 유의하다는 것을 알 수 있었다.</li>
 </ul>
+<div class="cell" data-execution_count="109">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x,dt))</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+<caption>A anova: 2 × 5</caption>
+<thead>
+    <tr><th></th><th scope="col">Df</th><th scope="col">Sum Sq</th><th scope="col">Mean Sq</th><th scope="col">F value</th><th scope="col">Pr(&gt;F)</th></tr>
+    <tr><th></th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">x</th><td>1</td><td>15.2461656</td><td>15.2461656</td><td>141.1576</td><td>6.798033e-06</td></tr>
+    <tr><th scope="row">Residuals</th><td>7</td><td> 0.7560566</td><td> 0.1080081</td><td>      NA</td><td>          NA</td></tr>
+</tbody>
+</table>
+</div>
+</div>
 <ol start="6" type="1">
 <li><span class="math inline">\(β_0,β_1\)</span> 에 대한 90% 신뢰구간을 구하시오.</li>
 </ol>
 <p><strong>Answer</strong></p>
 <p><span class="math display">\[\hat{\beta_0} \pm t_{(\alpha/2,n-2)}\hat{\sigma} \sqrt{\frac{1}{n} + \frac{\bar{x}^2}{S_{xx}}}\]</span></p>
 <div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Beta0 confidence level"</span>,beta0 <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">7</span>) <span class="sc">*</span> <span class="fu">sqrt</span>((MSE)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fu">sum</span>((dt<span class="sc">$</span>x <span class="sc">-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x))<span class="sc">^</span><span class="dv">2</span>))),<span class="st">"~"</span>,beta0 <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">7</span>) <span class="sc">*</span> <span class="fu">sqrt</span>((MSE)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fu">sum</span>((dt<span class="sc">$</span>x <span class="sc">-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x))<span class="sc">^</span><span class="dv">2</span>))))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Beta0 confidence level"</span>,beta0 <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">7</span>) <span class="sc">*</span> <span class="fu">sqrt</span>((MSE)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fu">sum</span>((dt<span class="sc">$</span>x <span class="sc">-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x))<span class="sc">^</span><span class="dv">2</span>))),<span class="st">"~"</span>,beta0 <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">7</span>) <span class="sc">*</span> <span class="fu">sqrt</span>((MSE)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fu">sum</span>((dt<span class="sc">$</span>x <span class="sc">-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x))<span class="sc">^</span><span class="dv">2</span>))))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Beta0 confidence level -0.8514415 ~ 0.620085</code></pre>
 </div>
 </div>
 <p><span class="math display">\[\hat{\beta_1} \pm t_{(\alpha/2,n-2)} \sqrt{\frac{MSE}{S_{xx}}}\]</span></p>
 <div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Beta1 confidence level"</span>,beta1 <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">7</span>) <span class="sc">*</span> <span class="fu">sqrt</span>((MSE)<span class="sc">/</span><span class="fu">sum</span>((dt<span class="sc">$</span>x <span class="sc">-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x))<span class="sc">^</span><span class="dv">2</span>)),<span class="st">'~'</span>,beta1 <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">7</span>) <span class="sc">*</span> <span class="fu">sqrt</span>((MSE)<span class="sc">/</span><span class="fu">sum</span>((dt<span class="sc">$</span>x <span class="sc">-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x))<span class="sc">^</span><span class="dv">2</span>)))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Beta1 confidence level"</span>,beta1 <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">7</span>) <span class="sc">*</span> <span class="fu">sqrt</span>((MSE)<span class="sc">/</span><span class="fu">sum</span>((dt<span class="sc">$</span>x <span class="sc">-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x))<span class="sc">^</span><span class="dv">2</span>)),<span class="st">'~'</span>,beta1 <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">7</span>) <span class="sc">*</span> <span class="fu">sqrt</span>((MSE)<span class="sc">/</span><span class="fu">sum</span>((dt<span class="sc">$</span>x <span class="sc">-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x))<span class="sc">^</span><span class="dv">2</span>)))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Beta1 confidence level 1.732168 ~ 2.592986</code></pre>
 </div>
@@ -914,28 +943,28 @@ MSE =  0.1080081</code></pre>
 </ol>
 <p><span class="math display">\[\text{t value} = \frac{\hat{\beta_1} - 1}{s.e(\hat{\beta_1})}\]</span></p>
 <div class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Tvalue <span class="ot">=</span> (beta1 <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>(<span class="fu">sqrt</span>((MSE<span class="sc">/</span><span class="fu">sum</span>((dt<span class="sc">$</span>x <span class="sc">-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x))<span class="sc">^</span><span class="dv">2</span>))))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>Tvalue <span class="ot">=</span> (beta1 <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>(<span class="fu">sqrt</span>((MSE<span class="sc">/</span><span class="fu">sum</span>((dt<span class="sc">$</span>x <span class="sc">-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x))<span class="sc">^</span><span class="dv">2</span>))))</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>Tvalue</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>Tvalue</span></code></pre></div>
 <div class="cell-output cell-output-display">
 6.3870789106442
 </div>
 </div>
 <div class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span>Tvalue</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span>Tvalue</span></code></pre></div>
 <div class="cell-output cell-output-display">
 -6.3870789106442
 </div>
 </div>
 <div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">7</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">7</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 1.89457860509001
 </div>
 </div>
 <div class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.05</span>,<span class="dv">7</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.05</span>,<span class="dv">7</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 -1.89457860509001
 </div>
@@ -946,17 +975,17 @@ MSE =  0.1080081</code></pre>
 </ul>
 <p>figure로 표현</p>
 <div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>basic <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>,<span class="at">by=</span><span class="fl">0.01</span>)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(basic,<span class="fu">dt</span>(basic,<span class="at">df=</span><span class="dv">7</span>),<span class="at">type=</span><span class="st">"l"</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">8</span>,<span class="dv">8</span>))</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span>Tvalue,<span class="at">col=</span><span class="st">"red"</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">7</span>),<span class="at">col=</span><span class="st">"blue"</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x=</span>Tvalue, <span class="at">y=</span><span class="fu">c</span>(<span class="fl">0.2</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"tvalue</span><span class="sc">\n</span><span class="st">6.39"</span>), <span class="at">pos=</span><span class="dv">4</span>, <span class="at">col=</span><span class="st">"black"</span>)</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x=</span><span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">7</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="fl">0.2</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"t(0.05,7)</span><span class="sc">\n</span><span class="st">1.89"</span>), <span class="at">pos=</span><span class="dv">4</span>, <span class="at">col=</span><span class="st">"black"</span>)</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="sc">-</span>Tvalue,<span class="at">col=</span><span class="st">"red"</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">qt</span>(<span class="fl">0.05</span>,<span class="dv">7</span>),<span class="at">col=</span><span class="st">"blue"</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>basic <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>,<span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(basic,<span class="fu">dt</span>(basic,<span class="at">df=</span><span class="dv">7</span>),<span class="at">type=</span><span class="st">"l"</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">8</span>,<span class="dv">8</span>))</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span>Tvalue,<span class="at">col=</span><span class="st">"red"</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">7</span>),<span class="at">col=</span><span class="st">"blue"</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x=</span>Tvalue, <span class="at">y=</span><span class="fu">c</span>(<span class="fl">0.2</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"tvalue</span><span class="sc">\n</span><span class="st">6.39"</span>), <span class="at">pos=</span><span class="dv">4</span>, <span class="at">col=</span><span class="st">"black"</span>)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x=</span><span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">7</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="fl">0.2</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"t(0.05,7)</span><span class="sc">\n</span><span class="st">1.89"</span>), <span class="at">pos=</span><span class="dv">4</span>, <span class="at">col=</span><span class="st">"black"</span>)</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="sc">-</span>Tvalue,<span class="at">col=</span><span class="st">"red"</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">qt</span>(<span class="fl">0.05</span>,<span class="dv">7</span>),<span class="at">col=</span><span class="st">"blue"</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-09-21-rl_HW1_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
+<p><img src="2022-09-21-rl_HW1_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <ol start="8" type="1">
@@ -964,13 +993,13 @@ MSE =  0.1080081</code></pre>
 </ol>
 <p><span class="math display">\[\hat{\mu}_0 = \hat{\beta_0} + \hat{\beta_1} x_0\]</span></p>
 <div class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"평균 에너지 소모량 = "</span>,beta0 <span class="sc">+</span> beta1 <span class="sc">*</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"평균 에너지 소모량 = "</span>,beta0 <span class="sc">+</span> beta1 <span class="sc">*</span> <span class="dv">3</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>평균 에너지 소모량 =  6.372052</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"무게가 3,000kg 이 되는 차량의 평균 에너지 소모량을 예측해보니 무게가 1,000kg이 되는 차량의 에너지 소모량의"</span>,(beta0 <span class="sc">+</span> beta1 <span class="sc">*</span> <span class="dv">3</span>)<span class="sc">/</span>(beta0 <span class="sc">+</span> beta1 <span class="sc">*</span> <span class="dv">1</span>),<span class="st">"배 였다."</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"무게가 3,000kg 이 되는 차량의 평균 에너지 소모량을 예측해보니 무게가 1,000kg이 되는 차량의 에너지 소모량의"</span>,(beta0 <span class="sc">+</span> beta1 <span class="sc">*</span> <span class="dv">3</span>)<span class="sc">/</span>(beta0 <span class="sc">+</span> beta1 <span class="sc">*</span> <span class="dv">1</span>),<span class="st">"배 였다."</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>무게가 3,000kg 이 되는 차량의 평균 에너지 소모량을 예측해보니 무게가 1,000kg이 되는 차량의 에너지 소모량의 3.113028 배 였다.</code></pre>
 </div>
@@ -980,75 +1009,75 @@ MSE =  0.1080081</code></pre>
 </ol>
 <p><strong>Answer</strong></p>
 <div class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"무게가 3,000kg 이 되는 차량의 평균 에너지 소모량은"</span>,beta0 <span class="sc">+</span> beta1 <span class="sc">*</span> <span class="dv">3</span>,<span class="st">"이다."</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"무게가 3,000kg 이 되는 차량의 평균 에너지 소모량은"</span>,beta0 <span class="sc">+</span> beta1 <span class="sc">*</span> <span class="dv">3</span>,<span class="st">"이다."</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>무게가 3,000kg 이 되는 차량의 평균 에너지 소모량은 6.372052 이다.</code></pre>
 </div>
 </div>
 <p><span class="math display">\[\hat{Var(\hat{\mu}_0}) = \sigma (\frac{1}{n} + \frac{(x_0 - \bar{x})^2}{S_{xx}})\]</span></p>
 <div class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> MSE</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> MSE</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dt<span class="sc">$</span>x)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dt<span class="sc">$</span>x)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 1.6
 </div>
 </div>
 <p><span class="math inline">\(S_{xx}\)</span></p>
 <div class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((dt<span class="sc">$</span>x <span class="sc">-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((dt<span class="sc">$</span>x <span class="sc">-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 3.26
 </div>
 </div>
 <div class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(dt1)[<span class="dv">6</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(dt1)[<span class="dv">6</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <strong>x_barx2:</strong> 3.26
 </div>
 </div>
 <p><span class="math inline">\(\hat{Var(\hat{\mu_0})}\)</span></p>
 <div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(sigma)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> (<span class="dv">3</span><span class="fl">-1.6</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">3.26</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(sigma)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> (<span class="dv">3</span><span class="fl">-1.6</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">3.26</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 0.234106948837031
 </div>
 </div>
 <div class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"hat var(hat mu zero) = "</span>,<span class="fu">sqrt</span>(sigma)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> (<span class="dv">3</span><span class="fl">-1.6</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">3.26</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"hat var(hat mu zero) = "</span>,<span class="fu">sqrt</span>(sigma)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> (<span class="dv">3</span><span class="fl">-1.6</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">3.26</span>))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>hat var(hat mu zero) =  0.2341069</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\hat{\sigma}_{\hat{\mu_0}}\)</span></p>
 <div class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sqrt</span>(sigma)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> (<span class="dv">3</span><span class="fl">-1.6</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">3.26</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sqrt</span>(sigma)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> (<span class="dv">3</span><span class="fl">-1.6</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">3.26</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display">
 0.483845997024912
 </div>
 </div>
 <div class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"hat sigma(hat mu zero) = "</span>, <span class="fu">sqrt</span>(<span class="fu">sqrt</span>(sigma)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> (<span class="dv">3</span><span class="fl">-1.6</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">3.26</span>)))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"hat sigma(hat mu zero) = "</span>, <span class="fu">sqrt</span>(<span class="fu">sqrt</span>(sigma)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> (<span class="dv">3</span><span class="fl">-1.6</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">3.26</span>)))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>hat sigma(hat mu zero) =  0.483846</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\hat{\mu_0} \pm t_{(\alpha/2,(n-2))}\hat{\sigma_{\hat{\mu_0}}}\)</span></p>
 <div class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fl">6.372052</span> <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">7</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="fu">sqrt</span>(sigma)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> (<span class="dv">3</span><span class="fl">-1.6</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">3.26</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fl">6.372052</span> <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">7</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="fu">sqrt</span>(sigma)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> (<span class="dv">3</span><span class="fl">-1.6</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">3.26</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display">
 7.28873627412184
 </div>
 </div>
 <div class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fl">6.372052</span> <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">7</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="fu">sqrt</span>(sigma)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> (<span class="dv">3</span><span class="fl">-1.6</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">3.26</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fl">6.372052</span> <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">7</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="fu">sqrt</span>(sigma)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">9</span> <span class="sc">+</span> (<span class="dv">3</span><span class="fl">-1.6</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">3.26</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display">
 5.45536772587816
 </div>
 </div>
 <div class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"개별 y값의 90% 신뢰구간은 ("</span>,<span class="fl">5.4553690631157</span>,<span class="st">"~"</span>,<span class="fl">7.2887349368843</span>,<span class="st">") 이다."</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"개별 y값의 90% 신뢰구간은 ("</span>,<span class="fl">5.4553690631157</span>,<span class="st">"~"</span>,<span class="fl">7.2887349368843</span>,<span class="st">") 이다."</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>개별 y값의 90% 신뢰구간은 ( 5.455369 ~ 7.288735 ) 이다.</code></pre>
 </div>
@@ -1058,10 +1087,10 @@ MSE =  0.1080081</code></pre>
 </ol>
 <p><strong>Answer</strong></p>
 <div class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>epsilon <span class="ot">=</span> dt<span class="sc">$</span>y <span class="sc">-</span> (beta0 <span class="sc">+</span> beta1<span class="sc">*</span>dt<span class="sc">$</span>x)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>epsilon <span class="ot">=</span> dt<span class="sc">$</span>y <span class="sc">-</span> (beta0 <span class="sc">+</span> beta1<span class="sc">*</span>dt<span class="sc">$</span>x)</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>epsilon</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>epsilon</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -1072,7 +1101,7 @@ MSE =  0.1080081</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"잔차의 합 = "</span>,<span class="fu">sum</span>(epsilon))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"잔차의 합 = "</span>,<span class="fu">sum</span>(epsilon))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>잔차의 합 =  8.881784e-16</code></pre>
 </div>
@@ -1082,7 +1111,7 @@ MSE =  0.1080081</code></pre>
 <li>잔차들의 <span class="math inline">\(x_i\)</span> 에 대한 가중합, <span class="math inline">\(\sum x_ie_i\)</span> 를 구하시오.</li>
 </ol>
 <div class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dt<span class="sc">$</span>x <span class="sc">*</span> epsilon)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dt<span class="sc">$</span>x <span class="sc">*</span> epsilon)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 9.99200722162641e-16
 </div>
@@ -1092,7 +1121,7 @@ MSE =  0.1080081</code></pre>
 <li>잔차들의 <span class="math inline">\(\hat{y}\)</span>에 대한 가중합 <span class="math inline">\(\sum \hat{y}_ie_i\)</span>, 를 구하시오.</li>
 </ol>
 <div class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((beta0 <span class="sc">+</span> beta1<span class="sc">*</span>dt<span class="sc">$</span>x)<span class="sc">*</span>epsilon)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((beta0 <span class="sc">+</span> beta1<span class="sc">*</span>dt<span class="sc">$</span>x)<span class="sc">*</span>epsilon)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 1.74860126378462e-15
 </div>
@@ -1104,16 +1133,16 @@ MSE =  0.1080081</code></pre>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(\hat{\beta_1} = \frac{\sum(x_iy_i)}{\sum(x_i^2)}\)</span></p>
 <div class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dt<span class="sc">$</span>x <span class="sc">*</span> dt<span class="sc">$</span>y)<span class="sc">/</span><span class="fu">sum</span>((dt<span class="sc">$</span>x<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dt<span class="sc">$</span>x <span class="sc">*</span> dt<span class="sc">$</span>y)<span class="sc">/</span><span class="fu">sum</span>((dt<span class="sc">$</span>x<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display">
 2.09923954372624
 </div>
 </div>
 <div class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>beta1_0 <span class="ot">&lt;-</span> <span class="fu">sum</span>(dt<span class="sc">$</span>x <span class="sc">*</span> dt<span class="sc">$</span>y)<span class="sc">/</span><span class="fu">sum</span>((dt<span class="sc">$</span>x<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>beta1_0 <span class="ot">&lt;-</span> <span class="fu">sum</span>(dt<span class="sc">$</span>x <span class="sc">*</span> dt<span class="sc">$</span>y)<span class="sc">/</span><span class="fu">sum</span>((dt<span class="sc">$</span>x<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"hat beta1_0 = "</span>, beta1_0)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"hat beta1_0 = "</span>, beta1_0)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>hat beta1_0 =  2.09924</code></pre>
 </div>
@@ -1127,43 +1156,43 @@ MSE =  0.1080081</code></pre>
 <p><strong>Answer</strong></p>
 <p><span class="math display">\[\hat{\beta_1} \pm t_{(\alpha/2,n-1)}\frac{\hat{\sigma}}{\sqrt{S_{xx}}}\]</span></p>
 <div class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(dt1)[<span class="dv">6</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(dt1)[<span class="dv">6</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <strong>x_barx2:</strong> 3.26
 </div>
 </div>
 <div class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>SSR_0 <span class="ot">=</span> <span class="fu">sum</span>( ( (<span class="fl">2.09924</span><span class="sc">*</span>dt<span class="sc">$</span>x) )<span class="sc">^</span><span class="dv">2</span> )</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>SSR_0 <span class="ot">=</span> <span class="fu">sum</span>( ( (<span class="fl">2.09924</span><span class="sc">*</span>dt<span class="sc">$</span>x) )<span class="sc">^</span><span class="dv">2</span> )</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>SSE_0 <span class="ot">=</span> <span class="fu">sum</span>((dt<span class="sc">$</span>y <span class="sc">-</span> <span class="fl">2.09924</span><span class="sc">*</span>dt<span class="sc">$</span>x)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>SSE_0 <span class="ot">=</span> <span class="fu">sum</span>((dt<span class="sc">$</span>y <span class="sc">-</span> <span class="fl">2.09924</span><span class="sc">*</span>dt<span class="sc">$</span>x)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>SST_0 <span class="ot">=</span> <span class="fu">sum</span>(dt<span class="sc">$</span>y<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>SST_0 <span class="ot">=</span> <span class="fu">sum</span>(dt<span class="sc">$</span>y<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>MSE_0 <span class="ot">=</span> SSE_0<span class="sc">/</span><span class="dv">8</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>MSE_0 <span class="ot">=</span> SSE_0<span class="sc">/</span><span class="dv">8</span></span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>MSR_0 <span class="ot">=</span> SSR_0<span class="sc">/</span><span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>MSR_0 <span class="ot">=</span> SSR_0<span class="sc">/</span><span class="dv">1</span></span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>sigma_0 <span class="ot">=</span> <span class="fu">sqrt</span>(MSE_0)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>sigma_0 <span class="ot">=</span> <span class="fu">sqrt</span>(MSE_0)</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>beta1_0 <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">8</span>) <span class="sc">*</span> sigma_0<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fl">3.26</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>beta1_0 <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">8</span>) <span class="sc">*</span> sigma_0<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fl">3.26</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 2.41896448320474
 </div>
 </div>
 <div class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>beta1_0 <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">8</span>) <span class="sc">*</span> sigma_0<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fl">3.26</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>beta1_0 <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">8</span>) <span class="sc">*</span> sigma_0<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fl">3.26</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 1.77951460424773
 </div>
 </div>
 <div class="cell" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"원점을 지나는 회귀직선에서 회귀계수(기울기)의 90% 신뢰구간은 ("</span>,beta1_0 <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">8</span>) <span class="sc">*</span> sigma_0<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fl">3.26</span>),<span class="st">"~"</span>,beta1_0 <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">8</span>) <span class="sc">*</span> sigma_0<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fl">3.26</span>),<span class="st">")이다."</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"원점을 지나는 회귀직선에서 회귀계수(기울기)의 90% 신뢰구간은 ("</span>,beta1_0 <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">8</span>) <span class="sc">*</span> sigma_0<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fl">3.26</span>),<span class="st">"~"</span>,beta1_0 <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">8</span>) <span class="sc">*</span> sigma_0<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fl">3.26</span>),<span class="st">")이다."</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>원점을 지나는 회귀직선에서 회귀계수(기울기)의 90% 신뢰구간은 ( 1.779515 ~ 2.418964 )이다.</code></pre>
 </div>
@@ -1178,13 +1207,13 @@ MSE =  0.1080081</code></pre>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(R^2 = \frac{SSR}{SST} = r^2\)</span></p>
 <div class="cell" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>SSR_0<span class="sc">/</span>SST_0</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>SSR_0<span class="sc">/</span>SST_0</span></code></pre></div>
 <div class="cell-output cell-output-display">
 0.993392179573841
 </div>
 </div>
 <div class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"원점을 지나는 회귀직선의 결정계수는 "</span>, SSR_0<span class="sc">/</span>SST_0,<span class="st">"로 약"</span>,<span class="fu">round</span>(SSR_0<span class="sc">/</span>SST_0,<span class="dv">2</span>),<span class="st">"% 였다."</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"원점을 지나는 회귀직선의 결정계수는 "</span>, SSR_0<span class="sc">/</span>SST_0,<span class="st">"로 약"</span>,<span class="fu">round</span>(SSR_0<span class="sc">/</span>SST_0,<span class="dv">2</span>),<span class="st">"% 였다."</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>원점을 지나는 회귀직선의 결정계수는  0.9933922 로 약 0.99 % 였다.</code></pre>
 </div>
@@ -1194,77 +1223,50 @@ MSE =  0.1080081</code></pre>
 </ol>
 <p><strong>Answer</strong></p>
 <div class="cell" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"원점을 포함하지 않는 회귀직선의 결정계수는 "</span>,SSR<span class="sc">/</span>SST,<span class="st">"로, 원점을 포함하는 회귀직선의 결정계수인 "</span>,SSR_0<span class="sc">/</span>SST_0,<span class="st">"보다 작다."</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"원점을 포함하지 않는 회귀직선의 결정계수는 "</span>,SSR<span class="sc">/</span>SST,<span class="st">"로, 원점을 포함하는 회귀직선의 결정계수인 "</span>,SSR_0<span class="sc">/</span>SST_0,<span class="st">"보다 작다."</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>원점을 포함하지 않는 회귀직선의 결정계수는  0.9527533 로, 원점을 포함하는 회귀직선의 결정계수인  0.9933922 보다 작다.</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"원점을 포함하지 않는 회귀직선의 평균재곱오차는 "</span>,MSE,<span class="st">"이며, 원점을 포함하는 회귀직선의 평균제곱오차는 "</span>,MSE_0,<span class="st">"이다. 원점을 포함하는 모형의 오차가 조금 더 작았다."</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"원점을 포함하지 않는 회귀직선의 평균재곱오차는 "</span>,MSE,<span class="st">"이며, 원점을 포함하는 회귀직선의 평균제곱오차는 "</span>,MSE_0,<span class="st">"이다. 원점을 포함하는 모형의 오차가 조금 더 작았다."</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>원점을 포함하지 않는 회귀직선의 평균재곱오차는  0.1080081 이며, 원점을 포함하는 회귀직선의 평균제곱오차는  0.0963731 이다. 원점을 포함하는 모형의 오차가 조금 더 작았다.</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>Fvalue <span class="ot">=</span> MSR<span class="sc">/</span>MSE</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>Fvalue <span class="ot">=</span> MSR<span class="sc">/</span>MSE</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>Fvalue_0 <span class="ot">=</span> MSR_0 <span class="sc">/</span> MSE_0</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>Fvalue_0 <span class="ot">=</span> MSR_0 <span class="sc">/</span> MSE_0</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"원점을 포함하지 않는 회귀직선의 F 값은 "</span>,Fvalue,<span class="st">"로, 원점을 포함하는 회귀직선의 F 값인 "</span>,Fvalue_0,<span class="st">"보다 작다. 따라서 원점을 포함한 모델이 회귀모형애 의해 설명되는 부분이 더 크며, 오차항에 기인된 부분이 더 작다."</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"원점을 포함하지 않는 회귀직선의 F 값은 "</span>,Fvalue,<span class="st">"로, 원점을 포함하는 회귀직선의 F 값인 "</span>,Fvalue_0,<span class="st">"보다 작다. 따라서 원점을 포함한 모델이 회귀모형애 의해 설명되는 부분이 더 크며, 오차항에 기인된 부분이 더 작다."</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>원점을 포함하지 않는 회귀직선의 F 값은  141.1577 로, 원점을 포함하는 회귀직선의 F 값인  1202.608 보다 작다. 따라서 원점을 포함한 모델이 회귀모형애 의해 설명되는 부분이 더 크며, 오차항에 기인된 부분이 더 작다.</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"원점을 포함하지 않는 회귀직선의 p value 는 "</span>,<span class="fu">df</span>(Fvalue,<span class="dv">1</span>,<span class="dv">7</span>),<span class="st">"로, 원점을 포함하는 회귀직선의 p value인"</span>,<span class="fu">df</span>(Fvalue_0,<span class="dv">1</span>,<span class="dv">8</span>),<span class="st">"과 같이 p value이 충분히 작아 두 모형이 모두 유의함을 알 수 있었다."</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"원점을 포함하지 않는 회귀직선의 p value 는 "</span>,<span class="fu">df</span>(Fvalue,<span class="dv">1</span>,<span class="dv">7</span>),<span class="st">"로, 원점을 포함하는 회귀직선의 p value인"</span>,<span class="fu">df</span>(Fvalue_0,<span class="dv">1</span>,<span class="dv">8</span>),<span class="st">"과 같이 p value이 충분히 작아 두 모형이 모두 유의함을 알 수 있었다."</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>원점을 포함하지 않는 회귀직선의 p value 는  1.614709e-07 로, 원점을 포함하는 회귀직선의 p value인 1.728622e-12 과 같이 p value이 충분히 작아 두 모형이 모두 유의함을 알 수 있었다.</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(beta0 <span class="sc">+</span> beta1<span class="sc">*</span>x<span class="sc">~</span>x,</span>
-<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> dt,</span>
-<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"원점을 지나지 않는 모형"</span>,</span>
-<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>,</span>
-<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch  =</span> <span class="dv">16</span>,</span>
-<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex  =</span> <span class="dv">1</span>,<span class="at">type=</span><span class="st">'l'</span>,</span>
-<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">col  =</span> <span class="st">"blue"</span>)</span>
-<span id="cb91-8"><a href="#cb91-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(beta1_0<span class="sc">*</span>x<span class="sc">~</span>x,</span>
-<span id="cb91-9"><a href="#cb91-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> dt,</span>
-<span id="cb91-10"><a href="#cb91-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"원점을 지나는 모형"</span>,</span>
-<span id="cb91-11"><a href="#cb91-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>,</span>
-<span id="cb91-12"><a href="#cb91-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch  =</span> <span class="dv">16</span>,</span>
-<span id="cb91-13"><a href="#cb91-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex  =</span> <span class="dv">1</span>,<span class="at">type=</span><span class="st">'l'</span>,</span>
-<span id="cb91-14"><a href="#cb91-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">col  =</span> <span class="st">"red"</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="2022-09-21-rl_HW1_files/figure-html/cell-71-output-1.png" class="img-fluid"></p>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="2022-09-21-rl_HW1_files/figure-html/cell-71-output-2.png" class="img-fluid"></p>
-</div>
-</div>
-<ul>
-<li>선형성 만족</li>
-</ul>
-<div class="cell" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>epsilon <span class="ot">=</span> dt<span class="sc">$</span>y <span class="sc">-</span> beta0 <span class="sc">+</span> beta1<span class="sc">*</span>dt<span class="sc">$</span>x</span>
-<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>epsilon_0 <span class="ot">=</span> dt<span class="sc">$</span>y <span class="sc">-</span> beta1_0<span class="sc">*</span>dt<span class="sc">$</span>x</span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(epsilon,</span>
-<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"원점을 지나지 않는 모형"</span>,</span>
-<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>,</span>
-<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch  =</span> <span class="dv">16</span>,</span>
-<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex  =</span> <span class="dv">1</span>,</span>
-<span id="cb93-6"><a href="#cb93-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col  =</span> <span class="st">"blue"</span>)</span>
-<span id="cb93-7"><a href="#cb93-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(epsilon_0,</span>
-<span id="cb93-8"><a href="#cb93-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"원점을 지나는 모형"</span>,</span>
-<span id="cb93-9"><a href="#cb93-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>,</span>
-<span id="cb93-10"><a href="#cb93-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch  =</span> <span class="dv">16</span>,</span>
-<span id="cb93-11"><a href="#cb93-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex  =</span> <span class="dv">1</span>,</span>
-<span id="cb93-12"><a href="#cb93-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">col  =</span> <span class="st">"red"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(beta0 <span class="sc">+</span> beta1<span class="sc">*</span>x<span class="sc">~</span>x,</span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> dt,</span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"원점을 지나지 않는 모형"</span>,</span>
+<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>,</span>
+<span id="cb94-5"><a href="#cb94-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch  =</span> <span class="dv">16</span>,</span>
+<span id="cb94-6"><a href="#cb94-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex  =</span> <span class="dv">1</span>,<span class="at">type=</span><span class="st">'l'</span>,</span>
+<span id="cb94-7"><a href="#cb94-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">col  =</span> <span class="st">"blue"</span>)</span>
+<span id="cb94-8"><a href="#cb94-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(beta1_0<span class="sc">*</span>x<span class="sc">~</span>x,</span>
+<span id="cb94-9"><a href="#cb94-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> dt,</span>
+<span id="cb94-10"><a href="#cb94-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"원점을 지나는 모형"</span>,</span>
+<span id="cb94-11"><a href="#cb94-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>,</span>
+<span id="cb94-12"><a href="#cb94-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch  =</span> <span class="dv">16</span>,</span>
+<span id="cb94-13"><a href="#cb94-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex  =</span> <span class="dv">1</span>,<span class="at">type=</span><span class="st">'l'</span>,</span>
+<span id="cb94-14"><a href="#cb94-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">col  =</span> <span class="st">"red"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2022-09-21-rl_HW1_files/figure-html/cell-73-output-1.png" class="img-fluid"></p>
 </div>
@@ -1273,11 +1275,38 @@ MSE =  0.1080081</code></pre>
 </div>
 </div>
 <ul>
+<li>선형성 만족</li>
+</ul>
+<div class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>epsilon <span class="ot">=</span> dt<span class="sc">$</span>y <span class="sc">-</span> beta0 <span class="sc">+</span> beta1<span class="sc">*</span>dt<span class="sc">$</span>x</span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>epsilon_0 <span class="ot">=</span> dt<span class="sc">$</span>y <span class="sc">-</span> beta1_0<span class="sc">*</span>dt<span class="sc">$</span>x</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(epsilon,</span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"원점을 지나지 않는 모형"</span>,</span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>,</span>
+<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch  =</span> <span class="dv">16</span>,</span>
+<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex  =</span> <span class="dv">1</span>,</span>
+<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col  =</span> <span class="st">"blue"</span>)</span>
+<span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(epsilon_0,</span>
+<span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"원점을 지나는 모형"</span>,</span>
+<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>,</span>
+<span id="cb96-10"><a href="#cb96-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch  =</span> <span class="dv">16</span>,</span>
+<span id="cb96-11"><a href="#cb96-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex  =</span> <span class="dv">1</span>,</span>
+<span id="cb96-12"><a href="#cb96-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">col  =</span> <span class="st">"red"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2022-09-21-rl_HW1_files/figure-html/cell-75-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="2022-09-21-rl_HW1_files/figure-html/cell-75-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
 <li>원점을 지나지 않는 모형이 한쪽 부호에 머무는 경향이 있어보인다.(독립성을 만족하지 않을 수 있다.)</li>
 <li>원점을 지나는 모형은 그러한 경향이 없고, 등분산성을 만족하는 것처럼 보인다.</li>
 </ul>
 <div class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(beta0 <span class="sc">+</span> beta1<span class="sc">*</span>dt<span class="sc">$</span>x)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(beta0 <span class="sc">+</span> beta1<span class="sc">*</span>dt<span class="sc">$</span>x)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
     Shapiro-Wilk normality test
@@ -1287,7 +1316,7 @@ W = 0.95279, p-value = 0.7207</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(beta1_0<span class="sc">*</span>dt<span class="sc">$</span>x)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(beta1_0<span class="sc">*</span>dt<span class="sc">$</span>x)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
     Shapiro-Wilk normality test
@@ -1363,13 +1392,13 @@ W = 0.95279, p-value = 0.7207</code></pre>
 <ol start="3" type="1">
 <li>(강의노트 CH04, p9) 다음이 성립함을 증명하시오.</li>
 </ol>
-<p><span class="math display">\[\hat{beta}_0 ~ N\big( \beta_0 , \sigma^2\big( \frac{1}{n} + \frac{\bar{x}^2}{S_{(xx)}} \big) \big)\]</span></p>
+<p><span class="math display">\[\hat{\beta}_0 \sim N\big( \beta_0 , \sigma^2\big( \frac{1}{n} + \frac{\bar{x}^2}{S_{(xx)}} \big) \big)\]</span></p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(\hat{\beta_0}\)</span></p>
 <p><span class="math inline">\(= \bar{y} - \hat{\beta_1} \bar{x} = \bar{y} - \frac{S_{xy}}{S_{xx}}\bar{x}\)</span></p>
 <p><span class="math inline">\(= \bar{y} - \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{S_{xx}}\bar{x}\)</span></p>
 <p><span class="math inline">\(= \bar{y} - \sum\frac{(x_i-\bar{x})y_i\bar{x}-(x_i - \bar{x})\bar{y}\bar{x}}{S_{xx}}\)</span></p>
-<p><span class="math inline">\(= \bar{y} - \sum\frac{(x_i - \bar{x})}{S_{xx}}y_i\bar{x} - \frac{\bar{x}\bar{y}}{S_{xx}}\sum(s_i - \bar{x})\)</span></p>
+<p><span class="math inline">\(= \bar{y} - \sum\frac{(x_i - \bar{x})}{S_{xx}}y_i\bar{x} - \frac{\bar{x}\bar{y}}{S_{xx}}\sum(x_i - \bar{x})\)</span></p>
 <p><span class="math inline">\(= \bar{y} - \sum\frac{(s_i - \bar{x})}{S_{xx}}y_i\bar{x}\)</span></p>
 <p><span class="math inline">\(\approx \bar{y} - \sum a_iy_i\bar{x}\)</span></p>
 <p><span class="math inline">\(E(\hat{\beta_0})\)</span></p>
@@ -1378,14 +1407,14 @@ W = 0.95279, p-value = 0.7207</code></pre>
 <p><span class="math inline">\(=\bar{y} - (\beta_0\bar{x}\sum a_i + \beta_1 \bar{x} \sum a_i x_i)\)</span></p>
 <p><span class="math inline">\(=\bar{y} - \beta_1\bar{x} = \beta_0\)</span></p>
 <p><span class="math inline">\(\star \sum a_i = \sum\frac{x_i - \bar{x}}{S_{xx}} = \frac{1}{S_{xx}}\sum(x_i-\bar{x} )= 0\)</span></p>
-<p><span class="math inline">\(\star \sum a_i x_i = \sum\frac{(x_i - \bar{x})x_i}{S_{xx}}= \frac{1}{S_{xx}} \sum(x_i - \bar{x}(x_i - \bar{x} + \bar{x} = \frac{1}{S_{xx}} \sum(x_i - \bar{x})^2 = 1\)</span></p>
+<p><span class="math inline">\(\star \sum a_i x_i = \sum\frac{(x_i - \bar{x})x_i}{S_{xx}}= \frac{1}{S_{xx}} \sum(x_i - \bar{x})(x_i - \bar{x} + \bar{x}) = \frac{1}{S_{xx}} \sum(x_i - \bar{x})^2 + \frac{\bar{x}}{S_{xx}} \sum(x_i - \bar{x}) = \frac{1}{S_{xx}} \sum(x_i - \bar{x})^2 = 1\)</span></p>
 <p><span class="math inline">\(Var(\hat{\beta_0})\)</span></p>
 <p><span class="math inline">\(=Var(\bar{y} - \bar{x}\sum a_i x_i)\)</span></p>
-<p><span class="math inline">\(=var(\frac{y_i}{n} - \bar{x}\sum a_i y_i)\)</span></p>
+<p><span class="math inline">\(=Var(\frac{y_i}{n} - \bar{x}\sum a_i y_i)\)</span></p>
 <p><span class="math inline">\(=\frac{\sigma^2}{n} - \bar{x}^2\sigma^2\sum a_i^2\)</span></p>
-<p>$ = - $</p>
+<p><span class="math inline">\(= \frac{\sigma^2}{n} - \frac{\bar{x}^2\sigma^2}{S_{xx}}\)</span></p>
 <p><span class="math inline">\(= \sigma^2(\frac{1}{n} - \frac{\bar{x}^2}{S_{xx}})\)</span></p>
-<p><span class="math inline">\(\star \sum a_i^2 = \sum\frac{(x_i - \bar{x})^2}{S_{xx}} = \frac{1}{S_{xx}^2}\sum(x_i - \bar{x})^2 = \frac{1}{S_{xx}}\)</span></p>
+<p><span class="math inline">\(\star \sum a_i^2 = \sum\frac{(x_i - \bar{x})^2}{S_{xx}^2} = \frac{1}{S_{xx}^2}\sum(x_i - \bar{x})^2 = \frac{1}{S_{xx}}\)</span></p>
 
 
 
