@@ -576,9 +576,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>. 단순회귀에서 회귀제곱합, <span class="math display">\[SSE = \sum^{n}_{i=1} (y_i - \hat{y}_i)^2\]</span> 을 이차형식 <span class="math inline">\(y^\top B y\)</span> 로 표현하시오. 이 이차형식의 분포를 구하고, 또한 기대치를 ⟨정리 5.1⟩에 의하여 구하시오</li>
 </ol>
 <p><strong>Answer</strong></p>
-<p>$^{n}_{i=1} (y_i - _i)^2 $</p>
-<p>$= ^{n}_{i=1} (y_i - _i)^(y_i - _i) $</p>
-<p>$= (</p>
+<p><span class="math inline">\(\sum^{n}_{i=1} (y_i - \hat{y}_i)^2\)</span></p>
+<p><span class="math inline">\(= \sum^{n}_{i=1} (y_i - \hat{y}_i)^\top(y_i - \hat{y}_i)\)</span></p>
+<p><span class="math inline">\(= (\bf{y} - \hat{\bf{y}})^\top(\bf{y} - \hat{\bf{y}})\)</span></p>
+<p><span class="math inline">\(= (\bf{y} - \bf{X}b)^\top(\bf{y} - \bf{X}b)\)</span></p>
+<p><span class="math inline">\(= \bf{y}^\top\bf{y} - \bf{y}^\top X\bf{b} - \bf{b}^\top\bf{X}^\top\bf{y} + \bf{b}^\top\bf{X}^\top\bf{X}\bf{b}\)</span></p>
+<p><span class="math inline">\(= \bf{y}^\top\bf{y} - 2\bf{y}^\top\bf{X}\bf{b} + \bf{b}^\top\bf{X}^\top\bf{X}\bf{b}\)</span></p>
+<p><span class="math inline">\(= \bf{y}^\top\bf{y} - \bf{y}^\top\bf{X}(\bf{X}^\top\bf{X})^{-1}\bf{X}^\top\bf{y}\)</span></p>
+<p><span class="math inline">\(= \bf{y}^\top(\bf{I_n} - \bf{X}(\bf{X}^\top\bf{X})^{-1}\bf{X}^\top)\bf{y}\)</span></p>
+<p><span class="math inline">\(\frac{\sum^{n}_{i=1} (y_i - \hat{y}_i)^2}{\sigma^2} = \bf{y}^\top \bf{B} \bf{y}\)</span></p>
+<p>&lt;정리5.3&gt;</p>
+<p>만약 <span class="math inline">\(y \sim N(\mu,V)\)</span>이면,</p>
+<p><span class="math display">\[y^\top A y \sim \chi^2 (r(A),\frac{1}{2}\mu^\top A \mu ) \to \text{AV : independent matrix}\]</span></p>
+<p><span class="math inline">\(\frac{SSE}{\sigma^2} = \bf{y}^\top\frac{1}{\sigma^2}(\bf{I_n} - \bf{X}(\bf{X}^\top\bf{X})^{-1}\bf{X}^\top)\bf{y}\)</span></p>
+<p><span class="math inline">\(\frac{SSE}{\sigma^2} \sim \chi^2 (r(A),\frac{1}{2}\mu^\top A \mu )\)</span></p>
+<p><span class="math inline">\(\star y_i \sim N(\beta_0 + \beta_1 x_i, \sigma^2)\)</span></p>
+<p><span class="math inline">\(\star \bf{y}^\top \sim N(\mu, I\sigma^2)\)</span></p>
+<p><span class="math inline">\(\bf{B} = \bf{I_n} - \bf{X}(\bf{X}^\top\bf{X})^{-1}\bf{X}^\top\)</span></p>
+<p><span class="math inline">\(\bf{B}\bf{B} = (\bf{I_n} - \bf{X}(\bf{X}^\top\bf{X})^{-1}\bf{X}^\top)(\bf{I_n} - \bf{X}(\bf{X}^\top\bf{X})^{-1}\bf{X}^\top)\)</span></p>
+<p>$ = </p>
 <ul>
 <li><span class="math inline">\(S_{xx}, S_{yy},S_{xy}\)</span>를 구해주었다.</li>
 </ul>
