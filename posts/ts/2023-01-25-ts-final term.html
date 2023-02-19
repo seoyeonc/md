@@ -682,7 +682,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(logL(\theta) = n log(\theta) - \theta \sum x_i\)</span></p>
 <p><span class="math inline">\(\frac{\partial^2L(\theta)}{\partial \theta} = \frac{n}{\theta} - \sum x_i = 0\)</span></p>
 <p><span class="math inline">\(\hat{\theta}^{MLE} = \bar{X}\)</span></p>
-<p>델타 정리 이용 <span class="math inline">\(\sqrt{n} (\bar{X} - \theta) \xrightarrow[]{d} N(0,\frac{1}{I(\theta)})\)</span></p>
+<p>정리 4.13(?) 이용 <span class="math inline">\(\sqrt{n} (\bar{X} - \theta) \xrightarrow[]{d} N(0,\frac{1}{I(\theta)})\)</span></p>
+<p><span class="math inline">\(\star\)</span> 여기서 <span class="math inline">\(\bar{X}\)</span>는 꼭 최대가능도 추정량이어야 함!</p>
 <p><span class="math inline">\(I(\theta) = -E(\frac{\partial^2 logf(x;\theta)}{\partial \theta} log f(x|\theta)) = -E(\frac{\partial^2 logf(x;\theta)}{\partial \theta} log (\theta e^{-\theta x})) = -E(\frac{\partial^2 logf(x;\theta)}{\partial \theta} (log\theta - \theta x)) = -E(\frac{\partial logf(x;\theta)}{\partial \theta} ( \frac{1}{\theta} - x)) = -E(-\frac{1}{\theta^2}) = \frac{1}{\theta^2}\)</span></p>
 <p><span class="math inline">\(\therefore \sqrt{n} (\bar{X} - \theta) \xrightarrow[]{d} N(0,\theta^2)\)</span></p>
 <p><strong>단, MVUE</strong></p>
