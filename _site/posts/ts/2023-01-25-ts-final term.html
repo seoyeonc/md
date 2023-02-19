@@ -677,19 +677,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(X_i \sim exp(\frac{1}{\theta})\)</span></p>
 <p><span class="math inline">\(2X_i \theta \sim exp(2)\)</span></p>
 <p><span class="math inline">\(2n\bar{X}\theta \sim \chi^2 (2n)\)</span></p>
+<p><strong>sy</strong></p>
+<p><span class="math inline">\(L(\theta) = \theta^n e^{-\theta\sum x_i}\)</span></p>
+<p><span class="math inline">\(logL(\theta) = n log(\theta) - \theta \sum x_i\)</span></p>
+<p><span class="math inline">\(\frac{\partial^2L(\theta)}{\partial \theta} = \frac{n}{\theta} - \sum x_i = 0\)</span></p>
+<p><span class="math inline">\(\hat{\theta}^{MLE} = \bar{X}\)</span></p>
+<p>정리 4.13(?) 이용 <span class="math inline">\(\sqrt{n} (\bar{X} - \theta) \xrightarrow[]{d} N(0,\frac{1}{I(\theta)})\)</span></p>
+<p><span class="math inline">\(\star\)</span> 여기서 <span class="math inline">\(\bar{X}\)</span>는 꼭 최대가능도 추정량이어야 함!</p>
+<p><span class="math inline">\(I(\theta) = -E(\frac{\partial^2 logf(x;\theta)}{\partial \theta} log f(x|\theta)) = -E(\frac{\partial^2 logf(x;\theta)}{\partial \theta} log (\theta e^{-\theta x})) = -E(\frac{\partial^2 logf(x;\theta)}{\partial \theta} (log\theta - \theta x)) = -E(\frac{\partial logf(x;\theta)}{\partial \theta} ( \frac{1}{\theta} - x)) = -E(-\frac{1}{\theta^2}) = \frac{1}{\theta^2}\)</span></p>
+<p><span class="math inline">\(\therefore \sqrt{n} (\bar{X} - \theta) \xrightarrow[]{d} N(0,\theta^2)\)</span></p>
+<p><strong>단, MVUE</strong></p>
+<p><span class="math inline">\(T(x_1,x_2,\dots,x_n) \to \theta\)</span>, <span class="math inline">\(E(T) = \theta\)</span> 비편향 추정량이라면, <span class="math inline">\(Var(T) \ge \frac{1^2}{nI(\theta)}, g(\theta) = \theta, g'(\theta) = 1\)</span></p>
+<p><span class="math inline">\(Var(\bar{X}) = \frac{1}{nI(\theta)}\)</span>일까?</p>
+<p><span class="math inline">\(\frac{1}{nI(\theta)} = \frac{\theta^2}{n}, Var(\bar{X}) = \frac{\theta^2}{n}, \therefore \bar{X}\)</span>는 최소분산비편향추정량이다.</p>
 </section>
 <section id="b-2" class="level2">
 <h2 class="anchored" data-anchor-id="b-2">(b)</h2>
 <p><span class="math inline">\(\theta\)</span>에 대한 95%신뢰구간을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\((\chi^2_{0.025} (2n) \le 2n \bar{X} \theta \le chi^2_{0.975} (2n) = 0.95\)</span></p>
+<p><span class="math inline">\((\chi^2_{0.025} (2n) \le 2n \bar{X} \theta \le \chi^2_{0.975} (2n)) = 0.95\)</span></p>
 <p><span class="math inline">\(\theta_{0.95} \to (\frac{\chi^2_{o/025}(2n)}{2n\bar{X}} , \frac{\chi^2_{0.975}(2n)}{2n\bar{X}})\)</span></p>
+<p><strong>sy</strong></p>
+<p><span class="math inline">\((Z_{1-\alpha/2} \le \frac{\sqrt{n} (\bar{X} - \theta)}{\sqrt{\theta^2}} \le Z_{\alpha/2})\)</span></p>
+<p><span class="math inline">\((\frac{Z_{0.025} \theta}{\sqrt{n}} - \bar{X} \le \theta \le \frac{Z_{0/975} \theta}{\sqrt{n}} + \bar{X})\)</span></p>
 </section>
 <section id="c-1" class="level2">
 <h2 class="anchored" data-anchor-id="c-1">(c)</h2>
 <p><span class="math inline">\(P(X&gt;1)\)</span>에 대한 95% 신뢰구간을 구하시오.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(P(X&gt;1) = \int^{\infty}_1 \theta e^{-x\theta} dx = [ e^{x\theta}]^{\infty}_1 = e^{-\infty}\)</span></p>
+<p><strong>sy</strong></p>
+<p><span class="math inline">\(P(X&gt;1) = 1-P(X&lt;1) = 1-\int^{1}_0 \theta e^{x\theta} dx = 1 + [e^{x\theta}]^1_0 = \frac{1}{e^{\theta}}\)</span></p>
 </section>
 <section id="d-1" class="level2">
 <h2 class="anchored" data-anchor-id="d-1">(d)</h2>
@@ -709,20 +727,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\theta\)</span>의 <span class="math inline">\(\Omega\)</span>에서의 최대가능도 추정량과 <span class="math inline">\(\Omega_0\)</span>에서의 최대가능도 추정량을 구하시오.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(\hat{\theta}^{\Omega} = \frac{1}{\bar{X}}\)</span></p>
-<p><span class="math inline">\(\hat{\theta}^{\Omega_0} = \theta_0\)</span></p>
+<p><span class="math inline">\(\hat{\theta}^{\Omega_0} = 2\)</span></p>
 </section>
 <section id="g" class="level2">
 <h2 class="anchored" data-anchor-id="g">(g)</h2>
 <p>일반화 가능도 비 <span class="math inline">\(\Lambda\)</span>을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\bar{X}\theta_0\)</span></p>
+<p><span class="math inline">\(\frac{L(\hat{\theta}^{\Omega_0})}{L(\hat{\theta}^{\Omega})} = \frac{\hat{\theta}^{n,\Omega_0} e^{\hat{\theta} n \bar{X}}}{\hat{\theta}^{n,\Omega} e^{\hat{\theta} n \bar{X}}} = \frac{2 \bar{X} e^{2n \bar{X}}}{e^{n}}\)</span></p>
 </section>
 <section id="h" class="level2">
 <h2 class="anchored" data-anchor-id="h">(h)</h2>
 <p>유의수준 <span class="math inline">\(\alpha\)</span>인 가능도비 검정법의 기각역을 <span class="math inline">\(\chi^2\)</span>분포의 분위수를 사용하여 표현하시오.</p>
+<p><span class="math inline">\(\star\)</span> 참고</p>
+<p>가능도비 검정; 적절한 조건 하에서 <span class="math inline">\(-2 log \Lambda(X_1, \dots, X_n)\)</span>는 귀무가설이 참일 때 점근적으로 카이제곱분포를 따른다.</p>
+<p><span class="math display">\[-2 log \Lambda(X_1, \dots, X_n) \sim \chi^2(d)\]</span></p>
+<p>단, <span class="math inline">\(d\)</span>는 모수공간 <span class="math inline">\(\Omega\)</span>의 차원과 모수공간 <span class="math inline">\(\Omega_0\)</span>의 차원의 차이</p>
+<p>가능도비 검정의 유의수준 <span class="math inline">\(\alpha\)</span> 점근적인 기각역</p>
+<p><span class="math display">\[\{ (x_1, \dots , x_n) : -2 log \Lambda(X_1, \dots, X_n) \ge \chi^2_\alpha(d) \}\]</span></p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(-2log\frac{4^n}{\theta^n} exp((\theta-4) \sum x_i) &gt;\chi^2_{\alpha, df}\)</span></p>
-<p><span class="math inline">\(exp((\theta-4) \sum x_i) &lt; \chi^2_{\alpha, df}\)</span></p>
+<p><span class="math inline">\(-2log \frac{2 \bar{X} e^{2n \bar{X}}}{e^{n}} &gt;\chi^2_{\alpha, df}\)</span></p>
+<p><span class="math inline">\(\frac{2 \bar{X} e^{2n \bar{X}}}{e^{n}} &lt; \chi^2_{\alpha, df}\)</span></p>
 </section>
 </section>
 <section id="section-3" class="level1">
