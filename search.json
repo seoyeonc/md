@@ -1803,21 +1803,21 @@
     "href": "posts/ts/2023-01-25-ts-final term.html#a-2",
     "title": "Theoritical Statistics Final term",
     "section": "(a)",
-    "text": "(a)\n\\(\\theta\\)에 대한 적절한 추축변량을 구하고, 해당 추축변량의 분포를 명시하시오.\nanswer\n\\(X_i \\sim exp(\\frac{1}{\\theta})\\)\n\\(2X_i \\theta \\sim exp(2)\\)\n\\(2n\\bar{X}\\theta \\sim \\chi^2 (2n)\\)\nsy\n\\(L(\\theta) = \\theta^n e^{-\\theta\\sum x_i}\\)\n\\(logL(\\theta) = n log(\\theta) - \\theta \\sum x_i\\)\n\\(\\frac{\\partial^2L(\\theta)}{\\partial \\theta} = \\frac{n}{\\theta} - \\sum x_i = 0\\)\n\\(\\hat{\\theta}^{MLE} = \\bar{X}\\)\n정리 4.13(?) 이용 \\(\\sqrt{n} (\\bar{X} - \\theta) \\xrightarrow[]{d} N(0,\\frac{1}{I(\\theta)})\\)\n\\(\\star\\) 여기서 \\(\\bar{X}\\)는 꼭 최대가능도 추정량이어야 함!\n\\(I(\\theta) = -E(\\frac{\\partial^2 logf(x;\\theta)}{\\partial \\theta} log f(x|\\theta)) = -E(\\frac{\\partial^2 logf(x;\\theta)}{\\partial \\theta} log (\\theta e^{-\\theta x})) = -E(\\frac{\\partial^2 logf(x;\\theta)}{\\partial \\theta} (log\\theta - \\theta x)) = -E(\\frac{\\partial logf(x;\\theta)}{\\partial \\theta} ( \\frac{1}{\\theta} - x)) = -E(-\\frac{1}{\\theta^2}) = \\frac{1}{\\theta^2}\\)\n\\(\\therefore \\sqrt{n} (\\bar{X} - \\theta) \\xrightarrow[]{d} N(0,\\theta^2)\\)\n단, MVUE\n\\(T(x_1,x_2,\\dots,x_n) \\to \\theta\\), \\(E(T) = \\theta\\) 비편향 추정량이라면, \\(Var(T) \\ge \\frac{1^2}{nI(\\theta)}, g(\\theta) = \\theta, g'(\\theta) = 1\\)\n\\(Var(\\bar{X}) = \\frac{1}{nI(\\theta)}\\)일까?\n\\(\\frac{1}{nI(\\theta)} = \\frac{\\theta^2}{n}, Var(\\bar{X}) = \\frac{\\theta^2}{n}, \\therefore \\bar{X}\\)는 최소분산비편향추정량이다."
+    "text": "(a)\n\\(\\theta\\)에 대한 적절한 추축변량을 구하고, 해당 추축변량의 분포를 명시하시오.\nanswer\n\\(X_i \\sim exp(\\frac{1}{\\theta})\\)\n\\(2X_i \\theta \\sim exp(2)\\)\n\\(2n\\bar{X}\\theta \\sim \\chi^2 (2n)\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#b-2",
     "href": "posts/ts/2023-01-25-ts-final term.html#b-2",
     "title": "Theoritical Statistics Final term",
     "section": "(b)",
-    "text": "(b)\n\\(\\theta\\)에 대한 95%신뢰구간을 구하시오.\nanswer\n\\((\\chi^2_{0.025} (2n) \\le 2n \\bar{X} \\theta \\le \\chi^2_{0.975} (2n)) = 0.95\\)\n\\(\\theta_{0.95} \\to (\\frac{\\chi^2_{o/025}(2n)}{2n\\bar{X}} , \\frac{\\chi^2_{0.975}(2n)}{2n\\bar{X}})\\)\nsy\n\\((Z_{1-\\alpha/2} \\le \\frac{\\sqrt{n} (\\bar{X} - \\theta)}{\\sqrt{\\theta^2}} \\le Z_{\\alpha/2})\\)\n\\((\\frac{Z_{0.025} \\theta}{\\sqrt{n}} - \\bar{X} \\le \\theta \\le \\frac{Z_{0/975} \\theta}{\\sqrt{n}} + \\bar{X})\\)"
+    "text": "(b)\n\\(\\theta\\)에 대한 95%신뢰구간을 구하시오.\nanswer\n\\((\\chi^2_{0.025} (2n) \\le 2n \\bar{X} \\theta \\le \\chi^2_{0.975} (2n)) = 0.95\\)\n\\(\\theta_{0.95} \\to (\\frac{\\chi^2_{o/025}(2n)}{2n\\bar{X}} , \\frac{\\chi^2_{0.975}(2n)}{2n\\bar{X}})\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#c-1",
     "href": "posts/ts/2023-01-25-ts-final term.html#c-1",
     "title": "Theoritical Statistics Final term",
     "section": "(c)",
-    "text": "(c)\n\\(P(X>1)\\)에 대한 95% 신뢰구간을 구하시오.\nanswer\n\\(P(X>1) = \\int^{\\infty}_1 \\theta e^{-x\\theta} dx = [ e^{x\\theta}]^{\\infty}_1 = e^{-\\infty}\\)\nsy\n\\(P(X>1) = 1-P(X<1) = 1-\\int^{1}_0 \\theta e^{x\\theta} dx = 1 + [e^{x\\theta}]^1_0 = \\frac{1}{e^{\\theta}}\\)"
+    "text": "(c)\n\\(P(X>1)\\)에 대한 95% 신뢰구간을 구하시오.\nanswer\n\\(P(X>1) = \\int^{\\infty}_1 \\theta e^{-x\\theta} dx = [ e^{x\\theta}]^{\\infty}_1 = e^{-\\infty}\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#d-1",
