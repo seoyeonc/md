@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="SEOYEON CHOI">
-<meta name="dcterms.date" content="2023-01-06">
+<meta name="dcterms.date" content="2023-02-22">
 
-<title>Seoyeon’s Blog for classes - Theoritical Statistics HW2</title>
+<title>Seoyeon’s Blog for classes - Regression Mid Term</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -98,7 +98,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Theoritical Statistics HW2</h1>
+      <h1 class="quarto-secondary-nav-title">Regression Mid Term</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -109,9 +109,9 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">Theoritical Statistics HW2</h1>
+      <h1 class="title d-none d-lg-block">Regression Mid Term</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Theoritical Statistics</div>
+                <div class="quarto-category">Advanced Regression Analysis</div>
               </div>
                   </div>
   </div>
@@ -129,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 6, 2023</p>
+        <p class="date">February 22, 2023</p>
       </div>
     </div>
     
@@ -163,11 +163,11 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../posts/rl/index.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">Regression HW 1</a>
@@ -190,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">Regression Mid Term</a>
+  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link active">Regression Mid Term</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -408,11 +408,11 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../posts/ts/index.html" class="sidebar-item-text sidebar-link">Theoritical Statistics</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/ts/2023-01-25-ts-final term.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Final term</a>
@@ -425,7 +425,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-01-05-ts_HW2.html" class="sidebar-item-text sidebar-link active">Theoritical Statistics HW2</a>
+  <a href="../../posts/ts/2023-01-05-ts_HW2.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW2</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -486,29 +486,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#수업-과제-1." id="toc-수업-과제-1." class="nav-link active" data-scroll-target="#수업-과제-1.">수업 과제 1.</a></li>
-  <li><a href="#수업-과제-2." id="toc-수업-과제-2." class="nav-link" data-scroll-target="#수업-과제-2.">수업 과제 2.</a></li>
-  <li><a href="#수업-과제-3." id="toc-수업-과제-3." class="nav-link" data-scroll-target="#수업-과제-3.">수업 과제 3.</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2.28.</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2.38</a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">2.40</a>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">1.</a>
   <ul class="collapse">
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">(1)</a></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">(2)</a></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">(3)</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">(1)</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">(2)</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">(3)</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">(4)</a></li>
   </ul></li>
-  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">2.41</a></li>
-  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">2.60</a></li>
-  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">2.64</a>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">2.</a>
   <ul class="collapse">
-  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">(1)</a></li>
-  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">(2)</a></li>
-  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">(3)</a></li>
-  </ul></li>
-  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">2.66</a>
-  <ul class="collapse">
-  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">(1)</a></li>
-  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">(2)</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">(1)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -520,206 +507,48 @@ ul.task-list li input[type="checkbox"] {
 
 
 <blockquote class="blockquote">
-<p>기댓값</p>
+<p>중간고사</p>
 </blockquote>
-<section id="수업-과제-1." class="level1">
-<h1>수업 과제 1.</h1>
-<p>평균이 0이고, 표준편차가 1인 변수로 변환</p>
-<p><span class="math display">\[Z = \frac{X-\mu_X}{\sigma_X}\]</span></p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(E(\frac{X-\mu_X}{\sigma_X}) = E(\frac{X}{\sigma_X}) - E(\frac{\mu_X}{\sigma_X}) = \frac{\mu_X}{\sigma_X} - \frac{\mu_X}{\sigma_X} = 0\)</span></p>
-<p><span class="math inline">\(Var(\frac{X-\mu_X}{\sigma_X}) = E((\frac{X-\mu_X}{\sigma_X})^2) - (E(\frac{X-\mu_X}{\sigma_X}))^2\)</span></p>
-<p><span class="math inline">\(= E(\frac{X^2 + \mu X^2 - 2\mu_X X}{\sigma^2_X})= \frac{E(X^2) + \mu^2_X - 2\mu^2_X}{\sigma^2_X}\)</span></p>
-<p><span class="math inline">\(= \frac{E(X^2) - \mu_X^2}{\sigma_X^2} = \frac{\sigma_X^2}{\sigma^2_X} = 1\)</span></p>
-</section>
-<section id="수업-과제-2." class="level1">
-<h1>수업 과제 2.</h1>
-<p><span class="math inline">\(Cov(X,Y) = E((X-\mu_X)(Y - \mu_Y)) = E(XY) - E(X)E(Y)\)</span> 를 증명하라.</p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(E(XY - X\mu_Y - Y\mu_X + \mu_X\mu_Y)\)</span></p>
-<p><span class="math inline">\(= E(XY) - \mu_YE(X) - \mu_XE(Y) + \mu_x \mu_Y\)</span></p>
-<p><span class="math inline">\(= E(XY) - E(X)E(Y) - E(X)E(Y) + E(X)E(Y)\)</span></p>
-<p><span class="math inline">\(= E(XY) - E(X)E(Y)\)</span></p>
-</section>
-<section id="수업-과제-3." class="level1">
-<h1>수업 과제 3.</h1>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(E(Y|X=x) = \int^{\infty}_{-\infty} y f_{Y|X}(y|x) dy = \int^{\infty}_{-\infty} y\frac{f(X,Y)}{f_X(X)} dy\)</span></p>
-<p><span class="math inline">\(= \int^{\infty}_{-\infty} y \frac{f(X)f(Y)}{f_X(X)} dy = \int^{\infty}_{-\infty} y f(Y) dy = E(Y)\)</span></p>
-</section>
 <section id="section" class="level1">
-<h1>2.28.</h1>
-<p>확률변수 <span class="math inline">\(X_i\)</span> 의 기댓값이 <span class="math inline">\(\lambda\)</span>라고 할 때(<span class="math inline">\(i = 1, \dots , n),E(\sum^n_{i=1} a_i X_i) = \lambda\)</span>가 되기 위한 <span class="math inline">\(a_i\)</span>의 조건은 무엇인가?</p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(E(X_i) = \lambda(i=a,\dots,n)\)</span></p>
-<p><span class="math inline">\(E(\sum^n_{i=1} a_i X_i) = E(a_1 X_1 + a_2 X_2 + \dots + a_n X_n)\)</span></p>
-<p><span class="math inline">\(a_1 E(X_1) + a_2E(X_2) + \dots + a_n E(X_n) = \lambda(a_1 + \dots + a_n)\)</span></p>
-<p><span class="math inline">\(\lambda = \lambda(a_1 + \dots + a_n)\)</span></p>
-<p><span class="math inline">\(\therefore \sum^n_{i=1} a_i = 1\)</span></p>
+<h1>1.</h1>
+<p>원점을 지나는 회귀모형은 다음과 같이 정의할 수 있다.</p>
+<p><span class="math display">\[y_i = \beta x_i + \epsilon_i, \epsilon_i \sim_{i.i.d.} n(0,\sigma^2), i=1,\dots, n\]</span></p>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">(1)</h2>
+<p><span class="math inline">\(\beta\)</span>에 대한 최소제곱추정량(LSE) <span class="math inline">\(\hat{\beta}\)</span>을 구하시오</p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\hat{\beta} = argmin_{\beta \in R} S = \sum^n_{i=1} (y_i - \beta x_i)^2 \to \frac{\partial S}{\partial \beta}|_{\beta = \hat{\beta}} = 0\)</span></p>
+<p><span class="math inline">\(\frac{\partial S}{\partial \beta} = \sum^n_{i=1} (-2x_i)(y_i - \beta x_i) \to \sum^n_{i=1} x_i(y_i - \hat{\beta}x_i) = 0 \to \hat{\beta} = \frac{\sum^n_{i=1} x_iy_i}{\sum^n_{i=1} x^2_i}\)</span></p>
 </section>
-<section id="section-1" class="level1">
-<h1>2.38</h1>
-<p>임의의 독립인 확률변수 <span class="math inline">\(X, Y\)</span>에 대하여</p>
-<p><span class="math display">\[Cov(X+Y,X-Y) = Var(X) - Var(Y)\]</span></p>
-<p>가 성립됨을 보여라.</p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(Cov(X+Y,X-Y) = E((X+Y)(X-Y)) - E(X+Y)E(X-Y)\)</span></p>
-<p><span class="math inline">\(\star Var(X) = E(X^2) - E(X)^2\)</span></p>
-<p><span class="math inline">\(\star Var(Y) = E(Y^2) - E(Y)^2\)</span></p>
-<p><span class="math inline">\(= E(X^2 - Y^2) - (E(X) + E(Y))(E(X)-E(Y))\)</span></p>
-<p><span class="math inline">\(= E(X^2) - E(Y^2) - E(X)^2 + E(Y)^2\)</span></p>
-<p><span class="math inline">\(= \{ E(X^2) - E(X)^2 \} - \{ E(Y^2) - E(Y)^2 \}\)</span></p>
-<p><span class="math inline">\(= Var(X) - Var(Y)\)</span></p>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">(2)</h2>
+<p><span class="math inline">\(E(\hat{\beta})\)</span>을 구하시오</p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\hat{\beta} = \frac{\sum^n_{i=1} x_i y_i}{\sum^n_{i=1} x^2_i} = \sum^n_{i=1} \frac{x_i}{\sum^n_{j=1} s^2_j} y_i\)</span></p>
+<p><span class="math inline">\(\to E(\hat{\beta}.= \sum^n_{i=1} \frac{x_i}{\sum^n_{i=1} s^2_j} E(y_i) = \sum^n_{i=1}\frac{x_i}{\sum^n_{j=1} s^2_{j=1} s^2_j} \beta x_i = \beta\frac{\sum^n_{i=1} x^2_{i=1} x^2_i}{\sum^n_{i=1} s^2_i} = \beta\)</span></p>
 </section>
-<section id="section-2" class="level1">
-<h1>2.40</h1>
-<p>확률변수 <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>의 결합확률밀도함수가</p>
-<p><span class="math display">\[f(x,y) = \begin{cases} 4I &amp; 0&lt;x&lt;1,1&lt;y&lt;2x \text{인 경우} \\ 0 &amp; \text{그 외의 경우} \end{cases}\]</span></p>
-<p>라고 하자. 이때</p>
 <section id="section-3" class="level2">
-<h2 class="anchored" data-anchor-id="section-3">(1)</h2>
-<p><span class="math inline">\(x\)</span>에 대한 <span class="math inline">\(Y\)</span>의 조건부 기댓값 <span class="math inline">\(E(Y|x)\)</span>를 구하라.</p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(E(Y|x) = \int^\infty_{-\infty} y f_{Y|X} (y) dy = \int^\infty_{-\infty} y \frac{f(X,y)}{f_X(X)}dy\)</span></p>
-<p><span class="math inline">\(\star\)</span></p>
-<p><span class="math inline">\(f_X(X) = \int f(x,y) dy = \int^\infty_{-\infty} 4I(0&lt;x&lt;1,1&lt;y&lt;2x)dy\)</span></p>
-<p><span class="math inline">\(= 4I(0&lt;x&lt;1)\int_{-\infty &lt; y &lt; \infty , 1&lt;y&lt;2x} I(1&lt;y&lt;2x)dy\)</span></p>
-<p><span class="math inline">\(= 4I(0&lt;x&lt;1)\int^{2x}_1 a dy = 4I(0&lt;x&lt;1)[y]^{2x}_1\)</span></p>
-<p><span class="math inline">\(= 4(2x-1)I(0&lt;x&lt;1)\)</span></p>
-<p><span class="math inline">\(\star\)</span></p>
-<p><span class="math inline">\(= \int^\infty_{-\infty} y \frac{4I(0&lt;x&lt;1,1&lt;y&lt;2x)}{4(2x-1)I(0&lt;x&lt;1)} dy\)</span></p>
-<p><span class="math inline">\(= \int_{-\infty &lt; y&lt; \infty, 1&lt;y&lt;2x} y \frac{I(0&lt;x&lt;1)}{2x-1} dy = \frac{I(0&lt;x&lt;1)}{2x-1} \int^{2x}_1 y dy\)</span></p>
-<p><span class="math inline">\(= \frac{I(0,x&lt;1)}{2x-1} [\frac{1}{2} y^2]^{2x}_1\)</span></p>
-<p><span class="math inline">\(= \frac{I(0&lt;x&lt;1)}{2x-1}(\frac{1}{2}(4x^2-1))\)</span></p>
-<p><span class="math inline">\(\star 4x^2 - 1 = (2x+1)(2x-1)\)</span></p>
-<p><span class="math inline">\(= \frac{2x+1}{2}I(0&lt;x&lt;1)\)</span></p>
+<h2 class="anchored" data-anchor-id="section-3">(3)</h2>
+<p><span class="math inline">\(Var(\hat{\beta})\)</span>을 구하시오</p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(Var(\hat{\beta}) = \sum^n_{i=1} \frac{x^2_i}{(\sum^n_{j=1} s^2_j)^2} Var(y_i) = \sum^n_{i=1} \frac{x^2_i}{\sum^n_{j=1} x^2_j)^2} \sigma^2 = \sigma^2 \frac{\sum^n_{i=1} s^2_i}{(\sum^n_{i=1} s^2_i)^2} = \frac{\sigma^2}{\sum^n_{i=1} s^2_i}\)</span></p>
 </section>
 <section id="section-4" class="level2">
-<h2 class="anchored" data-anchor-id="section-4">(2)</h2>
-<p><span class="math inline">\(y\)</span>에 대한 <span class="math inline">\(X\)</span>의 조건부 기댓값 <span class="math inline">\(E(X|y)\)</span>를 구하라.</p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(E(X|Y=y) = \int^\infty_{-\infty} x f_{X|Y}(x|y) dx = \int^\infty_{-\infty} x\frac{f(x,y}{f(y)} dx\)</span></p>
-<p><span class="math inline">\(\star\)</span></p>
-<p><span class="math inline">\(f_Y(Y) = \int^\infty_{-\infty} f(x,y) dy = \int^\infty_{-\infty} 4I(0&lt;x&lt;1,1&lt;y&lt;2x) dx\)</span></p>
-<p><span class="math inline">\(= 4\int_{-\infty &lt;x&lt;\infty, 0&lt;x&lt;1, 1&lt;y&lt;2x} 1 dx = \int^1_{\frac{y}{2}} 4I(1&lt;y&lt;2) dx [4x]^1_{\frac{y}{2}}\)</span></p>
-<p><span class="math inline">\(= (4-2y)I(1&lt;y&lt;2)\)</span></p>
-<p><span class="math inline">\(\star\)</span></p>
-<p><span class="math inline">\(= \int^\infty_{-\infty} x \frac{4I(0&lt;x&lt;1,1&lt;y&lt;2x)}{(4-2y)I(1&lt;y&lt;2)} dx\)</span></p>
-<p><span class="math inline">\(= \frac{4}{4-2y} \int_{-\infty x&lt;\infty, 0&lt;x&lt;1,1&lt;y&lt;2x,1&lt;y&lt;2} x dx = \frac{4}{4-2y} \int^1_{\frac{y}{2}} xI(1&lt;y&lt;2) dx\)</span></p>
-<p><span class="math inline">\(= \frac{4}{4-2y}[\frac{1}{2}x^2]^1_{\frac{y}{2}} = \frac{4}{4-2y} (\frac{1}{2} - \frac{y^2}{8})\)</span></p>
-<p><span class="math inline">\(= \frac{4}{2(2-y)}(\frac{4-y^2}{8})\)</span></p>
-<p><span class="math inline">\(\star 4-y^2 = (2+y)(2-y)\)</span></p>
-<p><span class="math inline">\(= 4(2+y)I(1&lt;y&lt;2)\)</span></p>
-</section>
-<section id="section-5" class="level2">
-<h2 class="anchored" data-anchor-id="section-5">(3)</h2>
-<p><span class="math inline">\(x\)</span>에 관한 <span class="math inline">\(Y\)</span>의 조건부 분산 <span class="math inline">\(E[Y - E(Y|x)|x]^2\)</span>을 구하라.</p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(E[(Y - E(Y|X=x))^2|X=x] = E(Y^2|X=x) - \{ E(Y|X=x) \}^2\)</span></p>
-<p><span class="math inline">\(\star\)</span></p>
-<p><span class="math inline">\(E(Y^2|X=x) = \int Y^2 f_{Y|X}(y) dy = \int^\infty_{-\infty} y^2 \frac{f(x,y)}{f_X(X)}dy\)</span></p>
-<p><span class="math inline">\(= \int^\infty_{-\infty} y^2 \frac{4I(0&lt;x&lt;1,1&lt;y&lt;2x)}{4(2x-1)I(0&lt;x&lt;1)} dy\)</span></p>
-<p><span class="math inline">\(= \frac{1}{2x-1} I(0&lt;x&lt;0 \int_{-\infty &lt; y&lt;\infty, 1&lt;y&lt;2x} y^2 dy\)</span></p>
-<p><span class="math inline">\(= \frac{1}{2x-1} I(0&lt;x&lt;1)\int^{2x}_1 y^2 dy\)</span></p>
-<p><span class="math inline">\(= \frac{1}{2x-1}I(0&lt;x&lt;1) [\frac{1}{3} y^2]^{2x}_1\)</span></p>
-<p><span class="math inline">\(= \frac{1}{2x-1} I (0&lt;x&lt;1)\frac{1}{3}(8x^3-1)\)</span></p>
-<p><span class="math inline">\(= \frac{4x^2 + 2x+1}{3} I(0&lt;x&lt;1)\)</span></p>
-<p><span class="math inline">\(\star\)</span></p>
-<p><span class="math inline">\(= (\frac{4x^2 + 2x + 1}{3} - \frac{(2x+ 1)^2}{2^2}) I(0&lt;x&lt;1)\)</span></p>
-<p><span class="math inline">\(\frac{(2x-1)^2}{12}I(0&lt;x&lt;1)\)</span></p>
+<h2 class="anchored" data-anchor-id="section-4">(4)</h2>
+<p><span class="math inline">\(\hat{\beta}\)</span>의 표준오차를 구하시오.</p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(s.e.(\hat{\beta}) = \sqrt{Var(\hat{\beta})} = \frac{\sigma}{\sqrt{\sum^n_{i=1}s^2_i}}\)</span></p>
 </section>
 </section>
-<section id="section-6" class="level1">
-<h1>2.41</h1>
-<p>확률변수 <span class="math inline">\(X\)</span>의 확률밀도함수가</p>
-<p><span class="math display">\[f(x) = \begin{cases} \frac{1}{18} , &amp; x=1,3\text{인 경우} \\ \frac{16}{18}, &amp; x=2\text{인 경우} \end{cases}\]</span></p>
-<p>로 주어졌을때, <span class="math inline">\(P(|X-E(X)|\ge \delta ) = Var(X)\delta^2\)</span>을 만족하는 <span class="math inline">\(\delta\)</span>를 찾아라.</p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(P(X-E(X)|\ge \delta) \le \frac{var(X)}{\delta^2}\)</span></p>
-<p><span class="math inline">\(E(X) = 1 \times \frac{1}{18} + 2 \times \frac{16}{18} + 3 \times \frac{1}{18} = \frac{36}{18} = 2\)</span></p>
-<p><span class="math inline">\(var(X) = E(X-E(X)^2) = (1-2)^2\times \frac{1}{18} + (2-2)^2 \times \frac{16}{18} + (3-2)^2 \times \frac{1}{18} = \frac{1}{9}\)</span></p>
-<p><span class="math inline">\(P(|X-2| \ge \delta) = \frac{1}{9 \delta}\)</span></p>
-<p><span class="math inline">\(\star\)</span></p>
-<p><span class="math inline">\(x - 2 \ge \delta\)</span></p>
-<p><span class="math inline">\(x-2 \le -\delta\)</span></p>
-<p><span class="math inline">\(\delta = 1\)</span></p>
-<p><span class="math inline">\(\star\)</span></p>
-<p><span class="math inline">\(P(X \ge 3) + P(X \le 1) = \frac{1}{9}\)</span></p>
-<p>마코프 확률부등식에 따라</p>
-<p><span class="math inline">\(\frac{1}{\delta} = \frac{var(X)}{\delta^2}\)</span></p>
-<p><span class="math inline">\(\delta = var(X)\)</span></p>
-<p><span class="math inline">\(\therefore \delta = \frac{1}{9}\)</span></p>
-</section>
-<section id="section-7" class="level1">
-<h1>2.60</h1>
-<p>확률밀도함수가 <span class="math inline">\(f_X(x) = \frac{1}{2},-1&lt;x&lt;1\)</span>인 확률변수의 적률생성함수를 계산하라.</p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(M_X(t) = E(e^{tx})\)</span></p>
-<p><span class="math inline">\(= \int^{\infty}_{-\infty} e^{tx} f_X(x) dx\)</span></p>
-<p><span class="math inline">\(= \int^{\infty}_{-\infty} e^{tx} \frac{1}{2} I (-1&lt;x&lt;1) dx\)</span></p>
-<p><span class="math inline">\(= \int^1_{-1} e^{tx}\frac{1}{2} dx\)</span></p>
-<p><span class="math inline">\(= \frac{1}{2} [\frac{1}{t} e^{tx}]^1_{-1}\)</span></p>
-<p><span class="math inline">\(= \frac{1}{2} (\frac{1}{t} e^t - \frac{1}{t} e^{-t})\)</span></p>
-<p><span class="math inline">\(\star M_X^{'} (t) = \frac{-(e^t - e^{-t})}{2t^2} + \frac{e^t + e^{-t}}{2t}\)</span></p>
-</section>
-<section id="section-8" class="level1">
-<h1>2.64</h1>
-<p>확률변수들 <span class="math inline">\(X_i(1,2,\dots,n)\)</span>는 서로 독립이며, ’성공’일 확률이 <span class="math inline">\(p\)</span>인 베르누이 분포를 따른다고 하자.</p>
-<p><span class="math inline">\(\star\)</span></p>
-<p><span class="math inline">\(f(x) = p^x(1-p)^{1-x}, x=0,1\)</span></p>
-<p><span class="math inline">\(X = 1 \to f(0) = 1-p\)</span></p>
-<p><span class="math inline">\(X = 0 \to f(1) = p\)</span></p>
-<section id="section-9" class="level2">
-<h2 class="anchored" data-anchor-id="section-9">(1)</h2>
-<p>확률변수들 <span class="math inline">\(X_i\)</span>의 적률생성함수를 구하라.</p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(M_X(t) = E(e^{tx})\)</span></p>
-<p><span class="math inline">\(\sum^1_{x=0}e^{tx}f(x) = e^0 f(0) + e^tf(1) = 1-p+e^tp\)</span></p>
-</section>
-<section id="section-10" class="level2">
-<h2 class="anchored" data-anchor-id="section-10">(2)</h2>
-<p>(1)의 결과를 이용하여 확률변수 <span class="math inline">\(X_i\)</span>의 분산을 구하라.</p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(M_X^{'} (t) = e^tp \to M_X^{'}(0) = p\)</span></p>
-<p><span class="math inline">\(M_X^{''} (t) = e^tp \to M_X^{''}(0) = p\)</span></p>
-<p><span class="math inline">\(var(X_i) = E(X^2) - (E(X))^2\)</span></p>
-<p><span class="math inline">\(= M_X^{''}(0) - \{ M_X^{'}(0)\}^2\)</span></p>
-<p><span class="math inline">\(= p - p^2\)</span></p>
-<p><span class="math inline">\(= p(1-p)\)</span></p>
-</section>
-<section id="section-11" class="level2">
-<h2 class="anchored" data-anchor-id="section-11">(3)</h2>
-<p>(1)의 결과를 이용하여 확률변수 <span class="math inline">\(\sum^n_{i=1} X_i\)</span>의 적률생성함수를 구하라.</p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(M_{\sum^n_{i=1} X_i}(t) = E(e^{t\sum^n_{i=1} X_i})\)</span></p>
-<p><span class="math inline">\(= E(e^{tX_1 + tX_2 + \dots + tX_n})\)</span></p>
-<p><span class="math inline">\(= E(e^{tX_1} e^{tX_2} \dots e^{tX_n})\)</span></p>
-<p><span class="math inline">\(= E(e^{tx})E(e^{tX_2})\dots E(e^{tX_n})\)</span></p>
-<p><span class="math inline">\(= M_{X_1}(t) M_{X_2}(t) \dots M_{X_n}(t)\)</span></p>
-<p><span class="math inline">\(= (1-p+pe^t)^n \to\)</span> 이항분포의 적률생성함수</p>
-</section>
-</section>
-<section id="section-12" class="level1">
-<h1>2.66</h1>
-<p>확률변수 <span class="math inline">\(X\)</span>의 적률생성함수가 <span class="math inline">\(M_X(t) = \frac{1}{9}e^t + \frac{1}{3}e^{3t} + \frac{5}{9}e^{5t}\)</span>로 주어졌을 떄,</p>
-<p><span class="math inline">\(\star\)</span></p>
-<ul>
-<li>이산형</li>
-</ul>
-<section id="section-13" class="level2">
-<h2 class="anchored" data-anchor-id="section-13">(1)</h2>
-<p><span class="math inline">\(P(X = 3)\)</span>을 계산하라.</p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(P(X=1) = \frac{1}{9}\)</span></p>
-<p><span class="math inline">\(P(X=3) = \frac{3}{9}\)</span></p>
-<p><span class="math inline">\(P(X=5) = \frac{5}{9}\)</span></p>
-</section>
-<section id="section-14" class="level2">
-<h2 class="anchored" data-anchor-id="section-14">(2)</h2>
-<p><span class="math inline">\(X\)</span>의 확륢밀도함수를 구하라.</p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(M_X(t) = E(e^{tx}) = \sum^n_{i=1} e^{tx} f(x) = \frac{1}{9}e^t + \frac{3}{9} e^{3t} + \frac{5}{9} e^{5t}\)</span></p>
-<p><span class="math inline">\(\therefore f(x) = \frac{x}{9}\)</span></p>
+<section id="section-5" class="level1">
+<h1>2.</h1>
+<p>어느 보험회사에서 사내평가점수(<span class="math inline">\(x\)</span>)가 영업실적(<span class="math inline">\(y\)</span>)에 어떠한 영향을 미치는지 알아보기 위하여 <span class="math inline">\(11\)</span>명의 직원을 대상으로 평가점수(<span class="math inline">\(x_i\)</span>, 단위 : 점)와 영업실적(<span class="math inline">\(y_i\)</span>, 단위 : 백만원)을 조사하였다. 이 검사에 대한 관측값을 <span class="math inline">\((x_i,y_i), i = 1,2,...,12\)</span> 이라고 하자. 1번에서 구한 원점을 지나는 회귀 모형을 이용하여 두 변수 사이의 관계를 확인하고자 한다. 아래의 정보를 이용하여 다음 물음에 답하시오.</p>
+<p><span class="math display">\[\sum^n_{i=1} x_i = 297, \sum^n_{i=1} y_i = 583, \sum^n_{i=1} x^2_i = 9103, \sum^n_{i=1} y^2_i = 36961, \sum^n_{i=1} x_i y_i = 18207\]</span></p>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">(1)</h2>
+<p>최소제곱법에 의한 회귀직선을 적합시키고, 결과를 해석하시오.</p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\hat{\beta} = \frac{\sum^n_{i=1} x_i y_i}{\sum^n_{i=1} x^2_i} = \frac{18207}{9103} = 2\)</span></p>
 
 
 </section>

@@ -256,6 +256,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">Regression Mid Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/rl/2022-12-11-rl-Ch10.html" class="sidebar-item-text sidebar-link">고급회귀분석 CH10</a>
   </div>
 </li>
@@ -670,6 +675,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>모집단으로부터의 랜덤표본 <span class="math inline">\(X_1,\dots,X_n\)</span>을 이용하여 <span class="math inline">\(\theta\)</span>에 대한 신뢰구간을 구하고, 다음 가설</p>
 <p><span class="math display">\[H_0 : \theta = 2 \text{ vs } H_1 : \theta \neq 2\]</span></p>
 <p>을 검정하고자 한다. 다음에 답하시오.</p>
+<p><a href="https://miruetoto.github.io/yechan3/posts/1_Essays/2023-02-14-LRTtest_in_Exp.html">교수님 review</a></p>
 <section id="a-2" class="level2">
 <h2 class="anchored" data-anchor-id="a-2">(a)</h2>
 <p><span class="math inline">\(\theta\)</span>에 대한 적절한 추축변량을 구하고, 해당 추축변량의 분포를 명시하시오.</p>
@@ -729,6 +735,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(-2log \frac{2 \bar{X} e^{2n \bar{X}}}{e^{n}} &gt;\chi^2_{\alpha, df}\)</span></p>
 <p><span class="math inline">\(\frac{2 \bar{X} e^{2n \bar{X}}}{e^{n}} &lt; \chi^2_{\alpha, df}\)</span></p>
+<p><strong>7장 예제 7.2.3. 참고</strong></p>
+<p><span class="math inline">\(2(l(\hat{\theta}^{\Omega}) - l(\hat{\theta}^{\Omega_0})) = 2n(\bar{x}\theta_0 - 1 -log(\bar{X}\theta_0))\)</span></p>
+<p>최대가능도비 검정의 기각역 형태 <span class="math inline">\(2n(\bar{x}\theta_0 - 1 -log(\bar{X}\theta_0))\ge c\)</span></p>
+<p>기각역</p>
+<p><span class="math inline">\(\begin{cases} \bar{x}\theta_0 \le c_1 \text{ 또는 } \bar{x}\theta_0\ge c_2 \\ c_1 log c_1 = c_2 - log c_2\end{cases}\)</span></p>
 </section>
 </section>
 <section id="section-3" class="level1">
