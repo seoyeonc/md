@@ -538,38 +538,75 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <section id="section" class="level1">
 <h1>1.</h1>
-<p>중회귀모형 <span class="math inline">\(y = X\beta + \epsilon, \epsilon \sim N(0_n, I\sigma^2)\)</span>에서 <span class="math inline">\(X\)</span>가 <span class="math inline">\(n \times (p+1)\)</span> 행렬이고, rank가 <span class="math inline">\(p+1\)</span> 이라면 적합된 모현 <span class="math inline">\(\hat{y} = X \hat{\beta}\)</span>에 대하여 다음을 증명하여라. 단, <span class="math inline">\(\mathbf{e} = \mathbf{y} - \mathbf{\hat{y}}\)</span></p>
+<p>중회귀모형 <span class="math inline">\(y = X\beta + \epsilon, \epsilon \sim N(0_n, I\sigma^2)\)</span>에서 <span class="math inline">\(X\)</span>가 <span class="math inline">\(n \times (p+1)\)</span> 행렬이고, rank가 <span class="math inline">\(p+1\)</span> 이라면 적합된 모형 <span class="math inline">\(\hat{y} = X \hat{\beta}\)</span>에 대하여 다음을 증명하여라. 단, <span class="math inline">\(\mathbf{e} = \mathbf{y} - \mathbf{\hat{y}}\)</span></p>
 <section id="section-1" class="level2">
 <h2 class="anchored" data-anchor-id="section-1">(1)</h2>
 <p><span class="math inline">\(\sum^n_{j=1} Var(\hat{y}_j) = (p+1) \sigma^2\)</span></p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\hat{\bf{y}}= X\hat{\beta} = X(X^\top X)^{-1} X^\top y = Hy\)</span></p>
+<p><span class="math inline">\(Var(X\hat{\beta}) = XVar(\hat{\beta})X^\top\)</span></p>
+<p><span class="math inline">\(Var(\hat{\beta}) = Var((X^\top X)^{-1} X^\top y) = (X^\top X)^{-1} X^\top Var(y)X(X^\top X)^{-1} = (X^\top X)^{-1} X^\top X(X^\top X)^{-1} \sigma^2 = (X^\top X )^{-1} \sigma^2\)</span></p>
+<p><span class="math inline">\(Var(\hat{y}) = Var(X\hat{\beta}) = X(X^\top X)^{-1} X^\top \sigma^2\)</span></p>
+<p><span class="math inline">\(\to Var(\hat{y}) = HVar(y) H^\top = HH\sigma^2 = H\sigma^2\)</span></p>
+<p><span class="math inline">\(\star H^\top = H, H^2 = H, Var(y) = I_n \sigma^2\)</span></p>
+<p>$^{n}_{j=1} Var(<em>j) = tr(Var()) = tr(H^2) = ^2 tr(H) = tr((X<sup>X)</sup>{-1} X<sup>X)</sup>2 = tr(I</em>{p+1})^2 = (p+1)^2 $</p>
+<p><span class="math inline">\(\star tr(X (X^\top X)^{-1} X^\top)\)</span></p>
 </section>
 <section id="section-2" class="level2">
 <h2 class="anchored" data-anchor-id="section-2">(2)</h2>
 <p><span class="math inline">\(Cov(\mathbf{e,y}) = \sigma^2[I_n - X(X^\top X)^{-1} X^\top]\)</span></p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\bf{e} = y - \hat{y} = y - Hy = (I-H)y\)</span></p>
+<p><span class="math inline">\(Cov(\bf{e},y) = Cov((I-H)y,y) = (I-H)Var(y) = (I-H) \sigma^2\)</span></p>
+<p><span class="math inline">\(\star Cov(Ax,y) = A Cov(X,Y)\)</span></p>
+<p><span class="math inline">\(\star Var(y) = \sigma^2\)</span></p>
 </section>
 <section id="section-3" class="level2">
 <h2 class="anchored" data-anchor-id="section-3">(3)</h2>
 <p><span class="math inline">\(Cov(\mathbf{e,\hat{y}}) = O_n\)</span></p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(Cov(e(I - H)\bf{y},Hy) = (I-H) Cov(y,y)H^\top = (I-H)H\sigma^2 = \mathbb{O}_n \sigma^2\)</span></p>
+<p><span class="math inline">\(\star Cov(Ax,By) = ACov(X,Y)B^\top\)</span></p>
+<p><span class="math inline">\(\star H^\top= H\)</span></p>
+<p><span class="math inline">\(\star H^2 = H\)</span></p>
 </section>
 <section id="section-4" class="level2">
 <h2 class="anchored" data-anchor-id="section-4">(4)</h2>
 <p><span class="math inline">\(Cov(\mathbf{e,\hat{\beta}}) = O_{n \times (p+1)}\)</span></p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(Cov((I-H)\bf{y},(X^\top X)^{-1} y) = (I-H) Cov(y,y) X (X^\top X)^{-1} = (I - X(X^\top X)^{-1} X^\top ) X (X^\top X)^{-1} \sigma^2 = \{ X(X^\top X)^{-1} - X(X^\top X)^{-1} \} \sigma^2 = \mathbb{O}_{n \times ([+1)}\)</span></p>
 </section>
 <section id="section-5" class="level2">
 <h2 class="anchored" data-anchor-id="section-5">(5)</h2>
 <p><span class="math inline">\(Cov(\mathbf{\epsilon, \hat{\beta}}) = \sigma^2 X(X^\top X)^{-1}\)</span></p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\bf{\hat{\beta}} = (X^\top X)^{-1} X^\top y = (X^\top X)^{-1} X^\top (X\beta + \epsilon) = \beta + (X^\top X)^{-1} X^\top \epsilon\)</span></p>
+<p><span class="math inline">\(Cov(\bf{\epsilon} , \beta + (X^\top X)^{-1} X^\top \epsilon ) = Cov(\epsilon, \beta) + Cov(\epsilon, \epsilon)X(X^\top X)^{-1} = \sigma^2 X(X^\top X)^{-1}\)</span></p>
+<p><span class="math inline">\(\star Cov(\epsilon, \beta) = 0\)</span></p>
+<p><span class="math inline">\(\star Cov(\epsilon, \epsilon) = I_n \sigma^2\)</span></p>
 </section>
 <section id="section-6" class="level2">
 <h2 class="anchored" data-anchor-id="section-6">(6)</h2>
-<p><span class="math inline">\(\mathbf{e^\top, y} = SSE\)</span></p>
+<p><span class="math inline">\(\mathbf{e^\top y} = SSE\)</span></p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\sum^{n}_{j=1} e_j y_j = \bf{e^\top y} = \{ (I - H)y\}^\top y = y^\top (I-H)y\)</span></p>
+<p><span class="math inline">\(\star \bf{e}^\top (e_1, \dots , e_n) = (y-\hat{y})^\top\)</span></p>
+<p><span class="math inline">\(\star \bf{y}^\top = (y_1 , \dots , y_n)\)</span></p>
+<p><span class="math inline">\(SSE = \sum^n_{j=1} (y_i - \hat{y}_j)^2 = (\bf{y} - \hat{y} ) ^\top ( y - \hat{y} ) = e^\top e = \{ (I - H)y \}^\top \{ (I - H)y \} = y^\top (I - H) (I-H)y = y^\top (I - H)y\)</span></p>
+<p><span class="math inline">\(\star I - H_H+H^2 = I-H, H^2 = H\)</span></p>
+<p><span class="math inline">\(\therefore \sum^{n}_{j=1} e_j y_j = SSE\)</span></p>
 </section>
 <section id="section-7" class="level2">
 <h2 class="anchored" data-anchor-id="section-7">(7)</h2>
 <p><span class="math inline">\(\mathbf{e^\top \hat{y}}=0\)</span></p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\sum^{n}_{j=1} \bf{e_j \hat{y}_j} = e^\top \hat{y} = y^\top (I-H) Hy = y^\top_{1\times n} \mathbb{O}_{n\times n} y_{n \times 1} = 0\)</span></p>
+<p><span class="math inline">\(\star H - H^2 = H - H = \mathbb{O}_{n \times n}\)</span></p>
 </section>
 <section id="section-8" class="level2">
 <h2 class="anchored" data-anchor-id="section-8">(8)</h2>
 <p><span class="math inline">\(E(\frac{SSE}{n-p-1}) = \sigma^2\)</span></p>
+<p><strong>answer</strong></p>
 </section>
 </section>
 <section id="section-9" class="level1">
@@ -611,6 +648,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="section-10" class="level2">
 <h2 class="anchored" data-anchor-id="section-10">(1)</h2>
 <p>행렬을 이용하여 중회귀모형을 정의하여라(<span class="math inline">\(X,\mathbf{y,\beta,\epsilon}\)</span>을 정확하게 표현)</p>
+<p><strong>answer</strong></p>
 <p><span class="math inline">\(\mathbf{y = X\beta + \epsilon, \epsilon} \sim N(X\mathbf{\beta}, I_n\sigma^2)\)</span></p>
 <p><span class="math inline">\(\mathbf{y} = \begin{pmatrix} 1 \\5\\0\\4\\4\\-1 \end{pmatrix}, X = \begin{pmatrix} 1&amp;1&amp;1\\1&amp;2&amp;1\\1&amp;1&amp;2\\1&amp;3&amp;1\\1&amp;3&amp;2\\1&amp;3&amp;3 \end{pmatrix}, \mathbf{\beta} = \begin{pmatrix} \beta_1 \\ \beta_1 \\ \beta_2\end{pmatrix}, \mathbf{\epsilon} = \begin{pmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \\ \epsilon_5 \\ \epsilon_6\end{pmatrix}\)</span></p>
 <ul>
@@ -621,11 +659,13 @@ ul.task-list li input[type="checkbox"] {
 <section id="section-11" class="level2">
 <h2 class="anchored" data-anchor-id="section-11">(2)</h2>
 <p><span class="math inline">\(\beta_0, \beta_1, \beta_2\)</span>를 추정하시오.</p>
+<p><strong>answer</strong></p>
 <p><span class="math inline">\(\mathbf{\hat{\beta}} = (X^\top X)^{-1} X^\top \mathbf{y} = \begin{pmatrix} 3.16 \\ 1.46 \\ -2.46 \end{pmatrix}\)</span></p>
 </section>
 <section id="section-12" class="level2">
 <h2 class="anchored" data-anchor-id="section-12">(3)</h2>
 <p>분산분석표를 작성하고, 유의수준 <span class="math inline">\(\alpha=0.1\)</span>에서 회귀직선에 대한 유의성 검정을 수행하시오.</p>
+<p><strong>answer</strong></p>
 <table class="table">
 <colgroup>
 <col style="width: 20%">
@@ -676,16 +716,19 @@ ul.task-list li input[type="checkbox"] {
 <section id="section-13" class="level2">
 <h2 class="anchored" data-anchor-id="section-13">(4)</h2>
 <p>결정계수(<span class="math inline">\(R^2\)</span>)와 수정된 결정계수(<span class="math inline">\(R^2_{sdj}\)</span>) 구하시오.</p>
+<p><strong>answer</strong></p>
 <p><span class="math inline">\(R^2 = \frac{SSR}{SST} = 0.7484, R^2_{adj} = 1-\frac{SSE/(n-p-1)}{SST/(n-1)} = 0.5807\)</span></p>
 </section>
 <section id="section-14" class="level2">
 <h2 class="anchored" data-anchor-id="section-14">(5)</h2>
 <p>오차항의 분산 <span class="math inline">\(\sigma^2\)</span>에 대한 추정치를 구하시오.</p>
+<p><strong>answer</strong></p>
 <p><span class="math inline">\(\hat{\sigma}^2 = MSE = \frac{SSE}{n-p-1} = 2.5855\)</span></p>
 </section>
 <section id="section-15" class="level2">
 <h2 class="anchored" data-anchor-id="section-15">(6)</h2>
 <p><span class="math inline">\(\hat{\beta}_2\)</span>의 의미를 설명하고, 가설 <span class="math inline">\(H_0: \beta_2 = 0, H_1 : \beta_2 &lt;0\)</span>을 <span class="math inline">\(\alpha = 0.05\)</span>로 검정하시오.</p>
+<p><strong>answer</strong></p>
 <p><span class="math inline">\(X_1\)</span>이 일정할 떄, <span class="math inline">\(X_2\)</span>가 1단위 증가하면 <span class="math inline">\(y\)</span>는 <span class="math inline">\(\hat{\beta})_2\)</span>만큼 증가한다.</p>
 <p>가설검정</p>
 <p><span class="math inline">\(Var(\hat{\beta}_2) = (X^\top X)^{-1}_(3,3) \sigma^2 = 0.34 \sigma^2\)</span></p>
@@ -697,6 +740,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="section-16" class="level2">
 <h2 class="anchored" data-anchor-id="section-16">(7)</h2>
 <p><span class="math inline">\(\beta_1\)</span>의 <span class="math inline">\(90\)</span>% 신뢰구간을 구하시오.</p>
+<p><strong>answer</strong></p>
 <p><span class="math inline">\(Var(\hat{\beta}_1) = (X^\top X)^{-1}_(2,2) \sigma^2 = 0.23 \sigma^2\)</span></p>
 <p><span class="math inline">\(\hat{s.e.}(\hat{\beta}_1) = \sqrt{0.23 \times 2.5855} = 0.7711\)</span></p>
 <p><span class="math inline">\(t_{0.5}(3) = 2.35\)</span></p>
@@ -705,6 +749,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="section-17" class="level2">
 <h2 class="anchored" data-anchor-id="section-17">(8)</h2>
 <p><span class="math inline">\(x_1 = x_2 = 2\)</span>에서 <span class="math inline">\(E(y)\)</span>의 <span class="math inline">\(95\)</span>% 신뢰구간을 구하시오.</p>
+<p><strong>answer</strong></p>
 <p><span class="math inline">\(x_0 = \begin{pmatrix} 1 \\ 2\\2\end{pmatrix}\)</span></p>
 <p><span class="math inline">\(\hat{\mu}_0 = s^\top_0 \mathbf{\hat{\beta}} = \begin{pmatrix} 1 &amp;2&amp;2\end{pmatrix}\begin{pmatrix}3.16\\1.46\\-2.46\end{pmatrix} = 1.16\)</span></p>
 <p><span class="math inline">\(Var(\hat{\mu}_0) = x_0^\top(X^\top X)^{-1} x_0 \sigma^2 = 0.24 \sigma^2\)</span></p>
@@ -777,18 +822,21 @@ ul.task-list li input[type="checkbox"] {
 <section id="section-19" class="level2">
 <h2 class="anchored" data-anchor-id="section-19">(1)</h2>
 <p>혈압을 예측하기 위하여 교호작용을 포함하는 중회귀모형을 정의하시오.(성별의 경우 남자=1)</p>
+<p><strong>answer</strong></p>
 <p><span class="math inline">\(y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \beta_3x_{i1}x_{i2} + \epsilon_i, \epsilon_i, i=1,\dots,10, \epsilon_i \sim_{i.i.d.}N(0,\sigma^2)\)</span></p>
 <p><span class="math inline">\(x_1\)</span> : 체중, <span class="math inline">\(y\)</span>: 혈압. <span class="math inline">\(x_2\)</span>: 성별, <span class="math inline">\(x_2 = \begin{cases}1 &amp; \text{남자}\\0 &amp; \text{여자}\end{cases}\)</span></p>
 </section>
 <section id="section-20" class="level2">
 <h2 class="anchored" data-anchor-id="section-20">(2)</h2>
 <p>위의 모형을 행렬 형태로 표현하시오.(<span class="math inline">\(X,\mathbf{y,\beta,\epsilon}\)</span>을 정확하게 표현)</p>
+<p><strong>answer</strong></p>
 <p><span class="math inline">\(\mathbf{y} = X\mathbf{\beta + \epsilon}, \mathbf{\epsilon} \sim N(0,I_n\sigma^2)\)</span></p>
 <p><span class="math inline">\(\mathbf{y} = \begin{pmatrix}120\\130\\130\\155\\149\\150\\160\\125\\135\\140\end{pmatrix}, X = \begin{pmatrix}70\\60\\88\\101\\80\\98\\90\\77\\65\\70 \end{pmatrix}, \mathbf{\beta} = \begin{pmatrix}\beta_0\\ \beta_1 \\ \beta_2 \end{pmatrix}, \mathbf{\epsilon} = \begin{pmatrix}\epsilon_1 \\ \epsilon_2\\ \epsilon_3\\ \epsilon_4\\ \epsilon_5\\ \epsilon_6\\ \epsilon_7\\ \epsilon_8\\ \epsilon_9\\ \epsilon_{10} \end{pmatrix}\)</span></p>
 </section>
 <section id="section-21" class="level2">
 <h2 class="anchored" data-anchor-id="section-21">(3)</h2>
 <p>위 모형의 적합 결과가 다음과 같다고 하자. 빈 칸을 채워 넣으시오. 마지막 칸에는 개별회귀계수에 대한 유의성검정을 위한 가설과, 검정결과(기각, 기각못함)를 적으시오.(풀이 있어야 함) 그리고 분산분석표를 이용하여 회귀모형의 유의성 검정읗 하시오.(유의수준 <span class="math inline">\(\alpha = 0.05\)</span>)</p>
+<p><strong>answer</strong></p>
 <p><span class="math display">\[\text{추정}\]</span></p>
 <table class="table">
 <colgroup>
@@ -889,24 +937,29 @@ ul.task-list li input[type="checkbox"] {
 <section id="section-22" class="level2">
 <h2 class="anchored" data-anchor-id="section-22">(4)</h2>
 <p>(3)의 결과를 보고, 결정계수(<span class="math inline">\(R^2\)</span>) 와 수정된 결정계수(<span class="math inline">\(R^2_{sdj}\)</span>) 구하시오.</p>
+<p><strong>answer</strong></p>
 <p><span class="math inline">\(R^2 = \frac{SSR}{SST} = 0.9551, R^2_{adj} = 1-\frac{SSE/(n-p-1)}{SST/(n-1)} = 0.9326\)</span></p>
 </section>
 <section id="section-23" class="level2">
 <h2 class="anchored" data-anchor-id="section-23">(5)</h2>
 <p>(3)번의 결과를 보고 모형 적합 결과를 설명하여라.(각 회귀계수의 의미와 유의성 검정 결과)</p>
+<p><strong>answer</strong></p>
 <p><span class="math inline">\(E(y|\text{남성}) = \beta_0 + \beta_1 x_1+\beta_2+\beta_3x_1 = (\beta_0+\beta_2) + (\beta_1 + \beta_3)x_1\)</span></p>
 <p><span class="math inline">\(E(y|\text{여성}) = \beta_0 + \beta_1x_1\)</span></p>
 <p><span class="math inline">\(\hat{\beta}_2\)</span>: 유의하지 않음: 남성과 여성의 절편 차이 없음</p>
 <p><span class="math inline">\(\hat{\beta}_3\)</span>: 유의하지 않음: 남성과 여성의 기울기 차이 없음</p>
+<p><strong>answer</strong></p>
 </section>
 <section id="section-24" class="level2">
 <h2 class="anchored" data-anchor-id="section-24">(6)</h2>
 <p>이번에는 교호작용을 제외한 모형을 적합해 보았다. 모형을 정의하여라.</p>
+<p><strong>answer</strong></p>
 <p><span class="math inline">\(y_i = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + \epsilon_i , i=1,\dots, 10, \epsilon_i \sim N(0,\sigma^2)\)</span></p>
 </section>
 <section id="section-25" class="level2">
 <h2 class="anchored" data-anchor-id="section-25">(7)</h2>
 <p>(7)번의 결과가 다음과 같을 때, 빈 칸을 채우고 적합 결과에 대해 설명하여라. (3)번 참고.</p>
+<p><strong>answer</strong></p>
 <table class="table">
 <colgroup>
 <col style="width: 20%">
@@ -1134,6 +1187,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+<p><strong>answer</strong></p>
 <ol type="1">
 <li>leverage point</li>
 </ol>

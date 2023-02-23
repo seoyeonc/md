@@ -2879,11 +2879,11 @@ F-statistic: 23.05 on 3 and 6 DF,  p-value: 0.001079</code></pre>
 <section id="section-29" class="level1">
 <h1>4.</h1>
 <p>중회귀모형, <span class="math inline">\(y = X\beta + \epsilon, \epsilon \sim N(0_n, I\sigma^2)\)</span>에서 <span class="math inline">\(X\)</span> 가 <span class="math inline">\(n \times (p + 1)\)</span>행렬이고 rank가 <span class="math inline">\(p + 1\)</span>이라면 적합된 모형 <span class="math inline">\(\hat{y} = X\hat{\beta}\)</span>에 대하여 <span class="math display">\[\sum^{n}_{j=1} Var(\hat{y}_j ) = (p + 1)\sigma^2\]</span> 이 됨을 증명하여라.</p>
-<p><span class="math inline">\(\hat{\bf{y}} X\hat{\beta} = X(X^\top X)^{-1} X^\top y = Hy\)</span></p>
+<p><span class="math inline">\(\hat{\bf{y}}= X\hat{\beta} = X(X^\top X)^{-1} X^\top y = Hy\)</span></p>
 <p><span class="math inline">\(Var(X\hat{\beta}) = XVar(\hat{\beta})X^\top\)</span></p>
 <p><span class="math inline">\(Var(\hat{\beta}) = Var((X^\top X)^{-1} X^\top y) = (X^\top X)^{-1} X^\top Var(y)X(X^\top X)^{-1} = (X^\top X)^{-1} X^\top X(X^\top X)^{-1} \sigma^2 = (X^\top X )^{-1} \sigma^2\)</span></p>
 <p><span class="math inline">\(Var(\hat{y}) = Var(X\hat{\beta}) = X(X^\top X)^{-1} X^\top \sigma^2\)</span></p>
-<p><span class="math inline">\(\to Var(\hat{y}) = H(Var(y) H^\top = HH\sigma^2 = H\sigma^2\)</span></p>
+<p><span class="math inline">\(\to Var(\hat{y}) = HVar(y) H^\top = HH\sigma^2 = H\sigma^2\)</span></p>
 <p><span class="math inline">\(\star H^\top = H, H^2 = H, Var(y) = I_n \sigma^2\)</span></p>
 <p>$^{n}_{j=1} Var(<em>j) = tr(Var()) = tr(H^2) = ^2 tr(H) = tr((X<sup>X)</sup>{-1} X<sup>X)</sup>2 = tr(I</em>{p+1})^2 = (p+1)^2 $</p>
 <p><span class="math inline">\(\star tr(X (X^\top X)^{-1} X^\top)\)</span></p>
@@ -2915,16 +2915,16 @@ F-statistic: 23.05 on 3 and 6 DF,  p-value: 0.001079</code></pre>
 <section id="section-34" class="level2">
 <h2 class="anchored" data-anchor-id="section-34">(4)</h2>
 <p><span class="math inline">\(Cov(\epsilon, \hat{\beta}) = \sigma^2 X(X^\top X)^{-1}\)</span></p>
-<p><span class="math inline">\(\bf{\hat{\beta}} = (X^\top X)^{-1} X^\top y = (X^\top X)^{-1} X^\top (X\beta + \epsilon) = \beta + (X^\top X)^{-1} \epsilon\)</span></p>
+<p><span class="math inline">\(\bf{\hat{\beta}} = (X^\top X)^{-1} X^\top y = (X^\top X)^{-1} X^\top (X\beta + \epsilon) = \beta + (X^\top X)^{-1} X^\top \epsilon\)</span></p>
 <p><span class="math inline">\(Cov(\bf{\epsilon} , \beta + (X^\top X)^{-1} X^\top \epsilon ) = Cov(\epsilon, \beta) + Cov(\epsilon, \epsilon)X(X^\top X)^{-1} = \sigma^2 X(X^\top X)^{-1}\)</span></p>
-<p><span class="math inline">\(\star Cov(\epsilon, \beta)\)</span></p>
+<p><span class="math inline">\(\star Cov(\epsilon, \beta) = 0\)</span></p>
 <p><span class="math inline">\(\star Cov(\epsilon, \epsilon) = I_n \sigma^2\)</span></p>
 </section>
 <section id="section-35" class="level2">
 <h2 class="anchored" data-anchor-id="section-35">(5)</h2>
 <p><span class="math inline">\(\sum^{n}_{j=1} e_j y_j = SSE\)</span></p>
 <p><span class="math inline">\(\sum^{n}_{j=1} e_j y_j = \bf{e^\top y} = \{ (I - H)y\}^\top y = y^\top (I-H)y\)</span></p>
-<p><span class="math inline">\(\star \bf{e}^\top (e_1, \dots , e_n) = (y-\hat{y})^\top)\)</span></p>
+<p><span class="math inline">\(\star \bf{e}^\top (e_1, \dots , e_n) = (y-\hat{y})^\top\)</span></p>
 <p><span class="math inline">\(\star \bf{y}^\top = (y_1 , \dots , y_n)\)</span></p>
 <p><span class="math inline">\(SSE = \sum^n_{j=1} (y_i - \hat{y}_j)^2 = (\bf{y} - \hat{y} ) ^\top ( y - \hat{y} ) = e^\top e = \{ (I - H)y \}^\top \{ (I - H)y \} = y^\top (I - H) (I-H)y = y^\top (I - H)y\)</span></p>
 <p><span class="math inline">\(\star I - H_H+H^2 = I-H, H^2 = H\)</span></p>
