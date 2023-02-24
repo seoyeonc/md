@@ -22,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -60,6 +123,9 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -555,19 +621,19 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(E(\hat{\beta})\)</span>을 구하시오</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(\hat{\beta} = \frac{\sum^n_{i=1} x_i y_i}{\sum^n_{i=1} x^2_i} = \sum^n_{i=1} \frac{x_i}{\sum^n_{j=1} s^2_j} y_i\)</span></p>
-<p><span class="math inline">\(\to E(\hat{\beta}.= \sum^n_{i=1} \frac{x_i}{\sum^n_{i=1} s^2_j} E(y_i) = \sum^n_{i=1}\frac{x_i}{\sum^n_{j=1} s^2_{j=1} s^2_j} \beta x_i = \beta\frac{\sum^n_{i=1} x^2_{i=1} x^2_i}{\sum^n_{i=1} s^2_i} = \beta\)</span></p>
+<p><span class="math inline">\(\to E(\hat{\beta})= \sum^n_{i=1} \frac{x_i}{\sum^n_{i=1} x^2_j} E(y_i) = \sum^n_{i=1}\frac{x_i}{\sum^n_{j=1} x^2_j} \beta x_i = \beta\frac{\sum^n_{i=1} x^2_{i=1} x^2_i}{\sum^n_{i=1} x^2_i} = \beta\)</span></p>
 </section>
 <section id="section-3" class="level2">
 <h2 class="anchored" data-anchor-id="section-3">(3)</h2>
 <p><span class="math inline">\(Var(\hat{\beta})\)</span>을 구하시오</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(Var(\hat{\beta}) = \sum^n_{i=1} \frac{x^2_i}{(\sum^n_{j=1} s^2_j)^2} Var(y_i) = \sum^n_{i=1} \frac{x^2_i}{\sum^n_{j=1} x^2_j)^2} \sigma^2 = \sigma^2 \frac{\sum^n_{i=1} s^2_i}{(\sum^n_{i=1} s^2_i)^2} = \frac{\sigma^2}{\sum^n_{i=1} s^2_i}\)</span></p>
+<p><span class="math inline">\(Var(\hat{\beta}) = \sum^n_{i=1} \frac{x^2_i}{(\sum^n_{j=1} x^2_j)^2} Var(y_i) = \sum^n_{i=1} \frac{x^2_i}{(\sum^n_{j=1} x^2_j)^2} \sigma^2 = \sigma^2 \frac{\sum^n_{i=1} x^2_i}{(\sum^n_{i=1} x^2_i)^2} = \frac{\sigma^2}{\sum^n_{i=1} x^2_i}\)</span></p>
 </section>
 <section id="section-4" class="level2">
 <h2 class="anchored" data-anchor-id="section-4">(4)</h2>
 <p><span class="math inline">\(\hat{\beta}\)</span>의 표준오차를 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(s.e.(\hat{\beta}) = \sqrt{Var(\hat{\beta})} = \frac{\sigma}{\sqrt{\sum^n_{i=1}s^2_i}}\)</span></p>
+<p><span class="math inline">\(s.e.(\hat{\beta}) = \sqrt{Var(\hat{\beta})} = \frac{\sigma}{\sqrt{\sum^n_{i=1}x^2_i}}\)</span></p>
 </section>
 </section>
 <section id="section-5" class="level1">
@@ -579,13 +645,15 @@ ul.task-list li input[type="checkbox"] {
 <p>최소제곱법에 의한 회귀직선을 적합시키고, 결과를 해석하시오.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(\hat{\beta} = \frac{\sum^n_{i=1} x_i y_i}{\sum^n_{i=1} x^2_i} = \frac{18207}{9103} = 2\)</span></p>
+<p><span class="math inline">\(y = 2x\)</span></p>
+<p>사내평가점수가 1점 올라갈 때마다 영업실적이 2백만원 증가한다.</p>
 </section>
 <section id="section-7" class="level2">
 <h2 class="anchored" data-anchor-id="section-7">(2)</h2>
 <p>분산분석표를 작성하고, 유의수준 <span class="math inline">\(\alpha=0.05\)</span>하에서, 회귀직선에 대한 유의성 검정을 수행하시오.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(SST = \sum^n_{i=1} y^2_i = 36961\)</span></p>
-<p><span class="math inline">\(SSR = \sum^n_{i=1} \hat{y}^2_i = \frac{(\sum^n_{i=1} s_i y_i)^2}{\sum^n_{i=1} x^2_{i}} = \frac{18207}{9103} = 36416\)</span></p>
+<p><span class="math inline">\(SSR = \sum^n_{i=1} \hat{y}^2_i = (\beta x)^2= \frac{(\sum^n_{i=1} x_i y_i)^2}{\sum^n_{i=1} x^2_{i}} = \frac{(18207)^2}{9103} = 36416\)</span></p>
 <p>분산분석표</p>
 <table class="table">
 <thead>
@@ -594,7 +662,7 @@ ul.task-list li input[type="checkbox"] {
 <th style="text-align: right;">제곱합(SS)</th>
 <th style="text-align: right;">자유도(df)</th>
 <th style="text-align: right;">평균제곱(MS)</th>
-<th style="text-align: center;">F_0</th>
+<th style="text-align: center;"><span class="math inline">\(F_0\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -622,8 +690,14 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p><code>-</code> 가설 : <span class="math inline">\(H_0 : \beta = 0 \text{ vs. } H_1 : \beta = 0\)</span></p>
-<p><code>-</code> 기각역 : <span class="math inline">\(F_0 &gt; F_{\alpha}(1,10) = 4.96\)</span></p>
+<p><code>-</code> 기각역 : <span class="math inline">\(F_0 &gt; F_{0.01}(1,10) = 4.96\)</span></p>
 <p><code>-</code> 결론: <span class="math inline">\(F_0\)</span> 값이 기각역에 속하므로 귀무가설을 기각할 수 있다. 즉 유의수준 <span class="math inline">\(5\)</span>%에서 회귀직선이 유의하다고 할 수 있다.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qf</span>(<span class="fl">0.95</span>,<span class="dv">1</span>,<span class="dv">10</span>),<span class="dv">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+4.96
+</div>
+</div>
 </section>
 <section id="section-8" class="level2">
 <h2 class="anchored" data-anchor-id="section-8">(3)</h2>
@@ -635,8 +709,14 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="section-9">(4)</h2>
 <p><span class="math inline">\(\beta\)</span>에 대한 <span class="math inline">\(95\)</span>% 신뢰구간을 구하여라</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\hat{s.e.}(\hat{\beta}) = \sqrt{\frac{MSE}{\sum^n_{i=1} s^2_i}} = \sqrt{\frac{54.5}{9103}} = 0.077\)</span></p>
+<p><span class="math inline">\(\hat{s.e.}(\hat{\beta}) = \sqrt{\frac{MSE}{\sum^n_{i=1} x^2_i}} = \sqrt{\frac{54.5}{9103}} = 0.077\)</span></p>
 <p><span class="math inline">\(95\)</span>% 신뢰구간: <span class="math inline">\(\hat{\beta} \pm t_{0.05/2}(10) \times \hat{s.e.}(\hat{\beta}) = 2 \pm 2.23 \times 0.077 = (1.818, 2.172)\)</span></p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="dv">10</span>),<span class="dv">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+2.23
+</div>
+</div>
 </section>
 </section>
 <section id="section-10" class="level1">
@@ -700,7 +780,7 @@ ul.task-list li input[type="checkbox"] {
 <p>투입된 비료의 양과 감자의 수확량에 대한 회귀선을 구하시오</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(S_{(xx)} = \sum^n_{i=1} x^2_i - n(\bar{x})^2 = 110 - 10 \times 3^2 = 20\)</span></p>
-<p><span class="math inline">\(S_{(yy)} = \sum^n_{i=1} y^2_i - n(\bar{y})^2 = 9714-10 \times 29^2 = 302\)</span></p>
+<p><span class="math inline">\(S_{(yy)} = \sum^n_{i=1} y^2_i - n(\bar{y})^2 = 8712-10 \times 29^2 = 302\)</span></p>
 <p><span class="math inline">\(S_{(xy)} = \sum^n_{i=1} x_i y_i - n(\bar{x})(\bar{y}) = 940-10 \times 3 \times 29 = 70\)</span></p>
 <p><span class="math inline">\(\to \hat{\beta_1} = \frac{S_{(xy)}}{S_{(xy)}} = \frac{70}{20} = 3.5, \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x} = 29-3.5 \times 3 = 18.5\)</span></p>
 </section>
@@ -747,6 +827,12 @@ ul.task-list li input[type="checkbox"] {
 <p><code>-</code> 가설 : <span class="math inline">\(H_0 : \beta_1 = 0 \text{ vs. } H_1 : \beta_1 = 0\)</span></p>
 <p><code>-</code> 기각역 : <span class="math inline">\(F_0 &gt; F_{\alpha}(1,8) = 5.32\)</span></p>
 <p><code>-</code> 결론: <span class="math inline">\(F_0\)</span>값이 기각역에 속하므로 귀무가설을 기각할 수 있다. 즉 유의수준 <span class="math inline">\(5\)</span>%에서 회귀직선이 유의하다고 할 수 있다.</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qf</span>(<span class="fl">0.95</span>,<span class="dv">1</span>,<span class="dv">8</span>),<span class="dv">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+5.32
+</div>
+</div>
 </section>
 <section id="section-14" class="level2">
 <h2 class="anchored" data-anchor-id="section-14">(4)</h2>
@@ -770,25 +856,37 @@ ul.task-list li input[type="checkbox"] {
 <section id="section-17" class="level2">
 <h2 class="anchored" data-anchor-id="section-17">(7)</h2>
 <p>다음의 가설검정을 유의수준 <span class="math inline">\(\alpha = 0.05\)</span>에서 수행하시오.</p>
-<p><span class="math display">\[H_0 = \beta_1 = 2 \text{ vs. } H_1 : \beta_1 &gt;2\]</span></p>
+<p><span class="math display">\[H_0 : \beta_1 = 2 \text{ vs. } H_1 : \beta_1 &gt;2\]</span></p>
 <p><strong>answer</strong></p>
 <p><code>-</code> 검정통계량 : <span class="math inline">\(T = \frac{\hat{\beta}_1 - \beta^0_1}{\hat{s.e.} (\hat{\beta}_1)} = \frac{\hat{\beta}_1 - 2}{\hat{s.e.}(\hat{\beta}_1)} \sim_{H_0} t(8)\)</span></p>
 <p><code>-</code> <span class="math inline">\(\hat{s.e.}(\hat{\beta}_1) = \sqrt{\frac{MSE}{S_{(xx)}}} = \sqrt{\frac{7.125}{20}} = 0.597\)</span></p>
 <p><code>-</code> 검정통계량 관측값: <span class="math inline">\(t_0 = \frac{3.5-2}{0.597} = 2.513\)</span></p>
 <p><code>-</code> 기각역 : <span class="math inline">\(t_0 &gt; t_{0.05}(8) = 1.86\)</span></p>
 <p><code>-</code> 결론 : <span class="math inline">\(t_0\)</span>값이 기각역에 속하므로 귀무가설을 기각할 수 있다. 즉 유의수준 <span class="math inline">\(5\)</span>%에서 <span class="math inline">\(\beta_1\)</span>이 <span class="math inline">\(2\)</span>보다 크다고 할 수 있다.</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">8</span>),<span class="dv">2</span>) <span class="co"># 단측검정</span></span></code></pre></div>
+<div class="cell-output cell-output-display">
+1.86
+</div>
+</div>
 </section>
 <section id="section-18" class="level2">
 <h2 class="anchored" data-anchor-id="section-18">(8)</h2>
 <p><span class="math inline">\(3.5\)</span>kg의 비료를 사용했을 때 평균 감자 수확량과 하나의 개별 <span class="math inline">\(y\)</span>값의 <span class="math inline">\(90\)</span>% 신뢰구간을 각각 구하시오</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(-\hat{\mu}_0 = \hat{y}_0 = 18.5 + 3.5 x = 18.5 + 3.5 \times 3.5 = 37.5(kg)\)</span></p>
+<p><code>-</code> <span class="math inline">\(\hat{\mu}_0 = \hat{y}_0 = 18.5 + 3.5 x = 18.5 + 3.5 \times 3.5 = 30.75(kg)\)</span></p>
 <p><code>-</code> <span class="math inline">\(\hat{s.e.}(E(\hat{y|x = 3.5})) = \sqrt{(\frac{1}{n} + \frac{(x_0 - \bar{x})^2}{S_{(xx)}})\hat{\sigma}^2} = \sqrt{(\frac{1}{10} + \frac{(3.5-3)^2}{20}) \times 7.125} = 0.895\)</span></p>
-<p><code>-</code> <span class="math inline">\(\hat{s.e.}(\hat{y}_0) = \sqrt{(1 + \frac{1}{n} + \frac{(x_0 - \bar{x})^2}{S_{(xx)}})\hat{\sigma^2}^2} = \sqrt{(1 + \frac{1}{10} + \frac{(3.5-3)^2}{20}) \times 7.125} = 2.815\)</span></p>
+<p><code>-</code> <span class="math inline">\(\hat{s.e.}(\hat{y}_0) = \sqrt{(1 + \frac{1}{n} + \frac{(x_0 - \bar{x})^2}{S_{(xx)}})\hat{\sigma^2}} = \sqrt{(1 + \frac{1}{10} + \frac{(3.5-3)^2}{20}) \times 7.125} = 2.815\)</span></p>
 <p><code>-</code> 평균감자수확량의 <span class="math inline">\(90\)</span>% 신뢰구간</p>
 <p><span class="math display">\[\hat{\mu}_0 \pm t_{0.1/2}(8)\hat{s.e.}(E(\hat{y|x = 3.5})) = 30.75 \pm 1.86 \times 0.895 = (29.085, 32.415)\]</span></p>
 <p><code>-</code> 개별 감자수확량의 <span class="math inline">\(90\)</span>% 신뢰구간</p>
 <p><span class="math display">\[\hat{\mu}_0 \pm t_{0.1/2})(8) \hat{s.e.}(\hat{y}_0) = 30.75 \pm 1.86 \times 2.815 = (25.514, 35.986)\]</span></p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qt</span>(<span class="fl">0.95</span>,<span class="dv">8</span>),<span class="dv">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+1.86
+</div>
+</div>
 </section>
 </section>
 <section id="section-19" class="level1">
@@ -804,18 +902,29 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="section-21">(2)</h2>
 <p>가설검정을 위한 검정통계량은 무엇인가? 귀무가설이 사실이라고 가정할 때 검정통계량의 분포는 무엇인가?(증명 필요없음)</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(F = \frac{SSLF/(k-2)}{SSPE/(n-k)} \sim_{H_0}, F(k-2,n-l)\)</span></p>
-<p><code>-</code> <span class="math inline">\(SSPE = \sum^k_{i=1} \sum^{n_i}_{j=1} (y_{ij} - \bar{y}_{i} )^2, SSLF = \sum^k_{i=12}n_i (\hat{y_i} - \bar{y}_i)^2 = SSE - SSPE, \bar{y}_i = \sum^{n_i}_{j=1} y_{ij}/n_i\)</span></p>
+<p><span class="math inline">\(F = \frac{SSLF/(k-2)}{SSPE/(n-k)} \sim_{H_0}, F(k-2,n-k)\)</span></p>
+<p><code>-</code> <span class="math inline">\(SSPE = \sum^k_{i=1} \sum^{n_i}_{j=1} (y_{ij} - \bar{y}_{i} )^2\)</span></p>
+<p><code>-</code> <span class="math inline">\(SSLF = \sum^k_{i=1}n_i (\hat{y_i} - \bar{y}_i)^2 = SSE - SSPE\)</span></p>
+<p><code>-</code> <span class="math inline">\(\bar{y}_i = \sum^{n_i}_{j=1} y_{ij}/n_i\)</span></p>
 </section>
 <section id="section-22" class="level2">
 <h2 class="anchored" data-anchor-id="section-22">(3)</h2>
 <p>(1)에 대한 가설 검정을 수행하시오</p>
 <p><strong>answer</strong></p>
 <p><code>-</code> <span class="math inline">\(SSPE = (1.5^2 + \dots + (-1)^2) = 15\)</span></p>
-<p><code>-</code> <span class="math inline">\(SSLF = SSE - SSPE = 54-15=42\)</span></p>
+<p><code>-</code> <span class="math inline">\(SSLF = SSE - SSPE = 57-15=42\)</span></p>
 <p><code>-</code> 검정통계량의 관측값 : <span class="math inline">\(F_0 = \frac{42/3}{15/5} = \frac{14}{3} = 4.67\)</span></p>
-<p><code>-</code> 기각역 : <span class="math inline">\(F_0 &gt; F_{0/05}(3,5) = 5.41\)</span></p>
+<ul>
+<li>$ k-2 = 5-2 = 3, n-k = 10-5 = 5$</li>
+</ul>
+<p><code>-</code> 기각역 : <span class="math inline">\(F_0 &gt; F_{0.05}(3,5) = 5.41\)</span></p>
 <p><code>-</code> 결론: 검정통계량의 관측값이 기각역에 속하지 않기 떄문에 귀무가설을 기각할 수 없다. 즉, 유의수준 <span class="math inline">\(5\)</span>%에서 회귀모형은 적절하지 않다고 할 수 있다.</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qf</span>(<span class="fl">0.95</span>,<span class="dv">3</span>,<span class="dv">5</span>),<span class="dv">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+5.41
+</div>
+</div>
 </section>
 </section>
 <section id="section-23" class="level1">
@@ -838,7 +947,7 @@ ul.task-list li input[type="checkbox"] {
 <p>가중최소제곱추정량(WLSE) : <span class="math inline">\((\hat{\beta}_0,\hat{\beta}_1) = argmin_{\beta_0,\beta_1 \in R} \sum^n_{i=1}w_i \{ y_i - (\beta_0 + \beta_1 x_i)\}^2\)</span></p>
 <p><span class="math inline">\(\hat{\beta}_1 = \frac{\sum w_i (x_i - \bar{x}_w)(y_i - \bar{y}_w)}{\sum w_i(x_i - \bar{x}_w)^2}\)</span></p>
 <p><span class="math inline">\(\hat{\beta}_0 = \bar{y}_w - \hat{\beta_1} \bar{x}_w\)</span></p>
-<p>단, <span class="math inline">\(\bar{x}_2 = \frac{\sum w_i x_i}{\sum w_i}, \bar{y}_w = \frac{\sum w_i y_i}{\sum w_i}\)</span></p>
+<p>단, <span class="math inline">\(\bar{x}_w = \frac{\sum w_i x_i}{\sum w_i}, \bar{y}_w = \frac{\sum w_i y_i}{\sum w_i}\)</span></p>
 
 
 </section>

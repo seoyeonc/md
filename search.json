@@ -2454,14 +2454,14 @@
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-8",
     "title": "Regression Final Term",
     "section": "(8)",
-    "text": "(8)\n\\(E(\\frac{SSE}{n-p-1}) = \\sigma^2\\)\nanswer\n정리 5.1\n\\(y \\sim N(\\mu,V)\\) 이면\n\\(E(y^\\top A y) = tr(AV) + \\mu^\\top A \\mu, cov(y,y^\\top A y) = 2VA\\mu\\)\n\\(\\frac{SSE}{\\sigma^2} = y^\\top \\frac{1}{\\sigma^2}(I-H)y\\)\n\\(B = \\frac{1}{\\sigma^2}(I-H)\\)\n\\(y \\sim N(\\beta_0 + \\beta_1 X, I \\sigma^2)\\)\n\\(BV = \\frac{1}{\\sigma^2}(I-H)I\\sigma^2 = B, BV=B\\)\n\\(B, BV\\)는 멱등행렬\n\\(tr(BV) = tr(B) = tr((I-H) = tr(I) - tr(B) = n-p-1\\)\n\\(\\mu^\\top B \\mu = \\frac{1}{\\sigma^2}\\begin{pmatrix}\\beta_0 & \\beta_1\\end{pmatrix} \\begin{pmatrix}1^\\top \\\\ X^\\top \\end{pmatrix}(I-H)\\begin{pmatrix} 1 & X \\end{pmatrix} \\begin{pmatrix} \\beta_0 \\\\ \\beta_1 \\end{pmatrix}\\)\n\\(= \\frac{1}{\\sigma^2}\\begin{pmatrix} \\beta_0 & \\beta_1 \\end{pmatrix} \\begin{pmatrix}1^\\top I - 1^\\top H \\\\ X^\\top I - X^\\top H \\end{pmatrix} \\begin{pmatrix} 1 & X \\end{pmatrix} \\begin{pmatrix} \\beta_0 \\\\ \\beta_1 \\end{pmatrix}\\)\n\\(= \\frac{1}{\\sigma^2}\\begin{pmatrix}\\beta_0 & \\beta_1\\end{pmatrix}\\begin{pmatrix} 1^\\top I - 1^\\top H & 1^\\top I X - 1^\\top H X \\\\ X^\\top I - X^\\top H & X^\\top I X - X^\\top H X \\end{pmatrix} \\begin{pmatrix} \\beta_0 \\\\ \\beta_1 \\end{pmatrix}\\)\n\n\\(1^\\top I - 1^\\top H = n-n = 0\\)\n\\(1^\\top I X - 1^\\top H X = 1^\\top(I - H)X = 1^\\top(I - X(X^\\top X)^{-1}X^\\top)X = 1^\\top(X-X) = 0\\)\n\\(X^\\top I - X^\\top H = X^\\top(I - H) = X^\\top(I - X(X^\\top X)^{-1}X^\\top = X^\\top - X^\\top = 0\\)\n\\(X^\\top I X - X^\\top H X = X^\\top(I - H)X = X^\\top(I - X(X^\\top X)^{-1} X^\\top)X = 0\\)\n\n\\(\\therefore \\mu^\\top B \\mu = 0\\)\n\\(E(\\frac{SSE}{\\sigma^2}) = n-p-1\\)\n\\(E(SSE) = (n-p-1)\\sigma^2\\)"
+    "text": "(8)\n\\(E(\\frac{SSE}{n-p-1}) = \\sigma^2\\)\nanswer\n정리 5.1\n\\(y \\sim N(\\mu,V)\\) 이면\n\\(E(y^\\top A y) = tr(AV) + \\mu^\\top A \\mu, cov(y,y^\\top A y) = 2VA\\mu\\)\n\\(\\frac{SSE}{\\sigma^2} = y^\\top \\frac{1}{\\sigma^2}(I-H)y\\)\n\\(B = \\frac{1}{\\sigma^2}(I-H)\\)\n\\(y \\sim N(\\beta_0 + \\beta_1 X, I \\sigma^2)\\)\n\\(BV = \\frac{1}{\\sigma^2}(I-H)I\\sigma^2 = B, BV=B\\)\n\\(B, BV\\)는 멱등행렬\n\\(tr(BV) = tr(B) = tr((I-H) = tr(I) - tr(B) = n-p-1\\)\n\\(\\mu^\\top B \\mu = \\frac{1}{\\sigma^2}\\begin{pmatrix}\\beta_0 & \\beta_1\\end{pmatrix} \\begin{pmatrix}1^\\top \\\\ X^\\top \\end{pmatrix}(I-H)\\begin{pmatrix} 1 & X \\end{pmatrix} \\begin{pmatrix} \\beta_0 \\\\ \\beta_1 \\end{pmatrix}\\)\n\\(= \\frac{1}{\\sigma^2}\\begin{pmatrix} \\beta_0 & \\beta_1 \\end{pmatrix} \\begin{pmatrix}1^\\top I - 1^\\top H \\\\ X^\\top I - X^\\top H \\end{pmatrix} \\begin{pmatrix} 1 & X \\end{pmatrix} \\begin{pmatrix} \\beta_0 \\\\ \\beta_1 \\end{pmatrix}\\)\n\\(= \\frac{1}{\\sigma^2}\\begin{pmatrix}\\beta_0 & \\beta_1\\end{pmatrix}\\begin{pmatrix} 1^\\top I - 1^\\top H & 1^\\top I X - 1^\\top H X \\\\ X^\\top I - X^\\top H & X^\\top I X - X^\\top H X \\end{pmatrix} \\begin{pmatrix} \\beta_0 \\\\ \\beta_1 \\end{pmatrix}\\)\n\n\\(1^\\top I - 1^\\top H = n-n = 0\\)\n\\(1^\\top I X - 1^\\top H X = 1^\\top(I - H)X = 1^\\top(I - X(X^\\top X)^{-1}X^\\top)X = 1^\\top(X-X) = 0\\)\n\\(X^\\top I - X^\\top H = X^\\top(I - H) = X^\\top(I - X(X^\\top X)^{-1}X^\\top = X^\\top - X^\\top = 0\\)\n\\(X^\\top I X - X^\\top H X = X^\\top(I - H)X = X^\\top(I - X(X^\\top X)^{-1} X^\\top)X = 0\\)\n\n\\(\\therefore \\mu^\\top B \\mu = 0\\)\n\\(E(\\frac{SSE}{\\sigma^2}) = n-p-1\\)\n\\(E(SSE) = (n-p-1)\\sigma^2\\)\n\\(\\therefore E(\\frac{SSE}{(n-p-1)}) = \\sigma^2\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-10",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-10",
     "title": "Regression Final Term",
     "section": "(1)",
-    "text": "(1)\n행렬을 이용하여 중회귀모형을 정의하여라(\\(X,\\mathbf{y,\\beta,\\epsilon}\\)을 정확하게 표현)\nanswer\n\\(\\mathbf{y = X\\beta + \\epsilon, \\epsilon} \\sim N(X\\mathbf{\\beta}, I_n\\sigma^2)\\)\n\\(\\mathbf{y} = \\begin{pmatrix} 1 \\\\5\\\\0\\\\4\\\\4\\\\-1 \\end{pmatrix}, X = \\begin{pmatrix} 1&1&1\\\\1&2&1\\\\1&1&2\\\\1&3&1\\\\1&3&2\\\\1&3&3 \\end{pmatrix}, \\mathbf{\\beta} = \\begin{pmatrix} \\beta_1 \\\\ \\beta_1 \\\\ \\beta_2\\end{pmatrix}, \\mathbf{\\epsilon} = \\begin{pmatrix} \\epsilon_1 \\\\ \\epsilon_2 \\\\ \\epsilon_3 \\\\ \\epsilon_4 \\\\ \\epsilon_5 \\\\ \\epsilon_6\\end{pmatrix}\\)\n\n위에서 구한 \\(X,\\mathbf{y}\\)에 대하여 아래의 결과를 얻었을 때, 다음 물음에 답하여라.\n\n\\[(X^\\top X)^{-1} = \\begin{pmatrix} 1.52 & -0.35 & -0.36 \\\\ -0.35 & 0.23 & -0.09 \\\\ -0.36 & -0.09 & 0.34 \\end{pmatrix}, X^\\top \\mathbf{y} = \\begin{pmatrix} 13 \\\\ 32 \\\\ 15 \\end{pmatrix}, \\mathbf{y^\\top y} = 59\\]"
+    "text": "(1)\n행렬을 이용하여 중회귀모형을 정의하여라(\\(X,\\mathbf{y,\\beta,\\epsilon}\\)을 정확하게 표현)\nanswer\n\\(\\mathbf{y = X\\beta + \\epsilon, \\epsilon} \\sim N(X\\mathbf{\\beta}, I_n\\sigma^2)\\)\n\\(\\mathbf{y} = \\begin{pmatrix} 1 \\\\5\\\\0\\\\4\\\\4\\\\-1 \\end{pmatrix}, X = \\begin{pmatrix} 1&1&1\\\\1&2&1\\\\1&1&2\\\\1&3&1\\\\1&3&2\\\\1&3&3 \\end{pmatrix}, \\mathbf{\\beta} = \\begin{pmatrix} \\beta_0 \\\\ \\beta_1 \\\\ \\beta_2\\end{pmatrix}, \\mathbf{\\epsilon} = \\begin{pmatrix} \\epsilon_1 \\\\ \\epsilon_2 \\\\ \\epsilon_3 \\\\ \\epsilon_4 \\\\ \\epsilon_5 \\\\ \\epsilon_6\\end{pmatrix}\\)\n\n위에서 구한 \\(X,\\mathbf{y}\\)에 대하여 아래의 결과를 얻었을 때, 다음 물음에 답하여라.\n\n\\[(X^\\top X)^{-1} = \\begin{pmatrix} 1.52 & -0.35 & -0.36 \\\\ -0.35 & 0.23 & -0.09 \\\\ -0.36 & -0.09 & 0.34 \\end{pmatrix}, X^\\top \\mathbf{y} = \\begin{pmatrix} 13 \\\\ 32 \\\\ 15 \\end{pmatrix}, \\mathbf{y^\\top y} = 59\\]"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-11",
@@ -2496,21 +2496,21 @@
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-15",
     "title": "Regression Final Term",
     "section": "(6)",
-    "text": "(6)\n\\(\\hat{\\beta}_2\\)의 의미를 설명하고, 가설 \\(H_0: \\beta_2 = 0, H_1 : \\beta_2 <0\\)을 \\(\\alpha = 0.05\\)로 검정하시오.\nanswer\n\\(X_1\\)이 일정할 떄, \\(X_2\\)가 1단위 증가하면 \\(y\\)는 \\(\\hat{\\beta})_2\\)만큼 증가한다.\n가설검정\n- \\(Var(\\hat{\\beta}_2) = (X^\\top X)^{-1}_(3,3) \\sigma^2 = 0.34 \\sigma^2\\)\n- \\(\\hat{s.e.}(\\hat{\\beta}_2) = \\sqrt{0.34 \\times MSE } = \\sqrt{0.34 \\times 2.5855} = 0.9376\\)\n- \\(t_0 = \\frac{-2.46}{0.9376} = -2.62372\\)\n- 기각역: \\(t_0 < -t_{0.05}(3) = -2.35\\)\n- 결론: \\(H_0\\)기각 가능, 즉 0보다 작다고 할 수 있다."
+    "text": "(6)\n\\(\\hat{\\beta}_2\\)의 의미를 설명하고, 가설 \\(H_0: \\beta_2 = 0, H_1 : \\beta_2 <0\\)을 \\(\\alpha = 0.05\\)로 검정하시오.\nanswer\n\\(X_1\\)이 일정할 떄, \\(X_2\\)가 1단위 증가하면 \\(y\\)는 \\(\\hat{\\beta}_2\\)만큼 증가한다.\n가설검정\n- \\(Var(\\hat{\\beta}_2) = (X^\\top X)^{-1}_{(3,3)} \\sigma^2 = 0.34 \\sigma^2\\)\n- \\(\\hat{s.e.}(\\hat{\\beta}_2) = \\sqrt{0.34 \\times MSE } = \\sqrt{0.34 \\times 2.5855} = 0.9376\\)\n- \\(t_0 = \\frac{-2.46}{0.9376} = -2.62372\\)\n- 기각역: \\(t_0 < -t_{0.05}(3) = -2.35\\)\n- 결론: \\(H_0\\)기각 가능, 즉 0보다 작다고 할 수 있다.\n\nround(qt(0.05,3),2)\n\n-2.35"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-16",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-16",
     "title": "Regression Final Term",
     "section": "(7)",
-    "text": "(7)\n\\(\\beta_1\\)의 \\(90\\)% 신뢰구간을 구하시오.\nanswer\n\\(Var(\\hat{\\beta}_1) = (X^\\top X)^{-1}_(2,2) \\sigma^2 = 0.23 \\sigma^2\\)\n\\(\\hat{s.e.}(\\hat{\\beta}_1) = \\sqrt{0.23 \\times 2.5855} = 0.7711\\)\n\\(t_{0.5}(3) = 2.35\\)\n\\(\\hat{\\beta}_1 \\pm t_{0.5}(3)\\hat{s.e.}(\\hat{\\beta}_1) = (-0.3521,3.2721)\\)"
+    "text": "(7)\n\\(\\beta_1\\)의 \\(90\\)% 신뢰구간을 구하시오.\nanswer\n\\(Var(\\hat{\\beta}_1) = (X^\\top X)^{-1}_{(2,2)} \\sigma^2 = 0.23 \\sigma^2\\)\n\\(\\hat{s.e.}(\\hat{\\beta}_1) = \\sqrt{0.23 \\times 2.5855} = 0.7711\\)\n\\(t_{0.5}(3) = 2.35\\)\n\\(\\hat{\\beta}_1 \\pm t_{0.05}(3)\\hat{s.e.}(\\hat{\\beta}_1) = (-0.3521,3.2721)\\)\n\nround(qt(0.95,3),2)\n\n2.35"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-17",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-17",
     "title": "Regression Final Term",
     "section": "(8)",
-    "text": "(8)\n\\(x_1 = x_2 = 2\\)에서 \\(E(y)\\)의 \\(95\\)% 신뢰구간을 구하시오.\nanswer\n\\(x_0 = \\begin{pmatrix} 1 \\\\ 2\\\\2\\end{pmatrix}\\)\n\\(\\hat{\\mu}_0 = s^\\top_0 \\mathbf{\\hat{\\beta}} = \\begin{pmatrix} 1 &2&2\\end{pmatrix}\\begin{pmatrix}3.16\\\\1.46\\\\-2.46\\end{pmatrix} = 1.16\\)\n\\(Var(\\hat{\\mu}_0) = x_0^\\top(X^\\top X)^{-1} x_0 \\sigma^2 = 0.24 \\sigma^2\\)\n\\(\\star x_0^\\top(X^\\top X)^{-1} x_0 = \\begin{pmatrix}1&2&2\\end{pmatrix}\\begin{pmatrix}1.52&-0.35&-0.36\\\\-0.35&0.23&-0.09\\\\-0.36&-0.09&0.34\\end{pmatrix} \\begin{pmatrix}1\\\\2\\\\2 \\end{pmatrix} = 0.24\\)\n\\(\\hat{s.e.}(\\hat{\\mu}_0) = \\sqrt{0.24 \\times 2.5855} = 0.7877\\)\n\\(t_{0.025}(3) = \\hat{s.e.}(\\hat{\\mu}_0) = (-1.3449,3.6649)\\)"
+    "text": "(8)\n\\(x_1 = x_2 = 2\\)에서 \\(E(y)\\)의 \\(95\\)% 신뢰구간을 구하시오.\nanswer\n\\(x_0 = \\begin{pmatrix} 1 \\\\ 2\\\\2\\end{pmatrix}\\)\n\\(\\hat{\\mu}_0 = x^\\top_0 \\mathbf{\\hat{\\beta}} = \\begin{pmatrix} 1 &2&2\\end{pmatrix}\\begin{pmatrix}3.16\\\\1.46\\\\-2.46\\end{pmatrix} = 1.16\\)\n\\(Var(\\hat{\\mu}_0) = x_0^\\top(X^\\top X)^{-1} x_0 \\sigma^2 = 0.24 \\sigma^2\\)\n\\(\\star x_0^\\top(X^\\top X)^{-1} x_0 = \\begin{pmatrix}1&2&2\\end{pmatrix}\\begin{pmatrix}1.52&-0.35&-0.36\\\\-0.35&0.23&-0.09\\\\-0.36&-0.09&0.34\\end{pmatrix} \\begin{pmatrix}1\\\\2\\\\2 \\end{pmatrix} = 0.24\\)\n\\(\\hat{s.e.}(\\hat{\\mu}_0) = \\sqrt{0.24 \\times 2.5855} = 0.7877\\)\n\\(1.16 \\pm t_{0.025}(3) \\hat{s.e.}(\\hat{\\mu}_0) = (-1.3449,3.6649)\\)\n\nround(qt(0.975,3),2)\n\n3.18"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-19",
@@ -2916,35 +2916,35 @@
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-2",
     "title": "Regression Mid Term",
     "section": "(2)",
-    "text": "(2)\n\\(E(\\hat{\\beta})\\)을 구하시오\nanswer\n\\(\\hat{\\beta} = \\frac{\\sum^n_{i=1} x_i y_i}{\\sum^n_{i=1} x^2_i} = \\sum^n_{i=1} \\frac{x_i}{\\sum^n_{j=1} s^2_j} y_i\\)\n\\(\\to E(\\hat{\\beta}.= \\sum^n_{i=1} \\frac{x_i}{\\sum^n_{i=1} s^2_j} E(y_i) = \\sum^n_{i=1}\\frac{x_i}{\\sum^n_{j=1} s^2_{j=1} s^2_j} \\beta x_i = \\beta\\frac{\\sum^n_{i=1} x^2_{i=1} x^2_i}{\\sum^n_{i=1} s^2_i} = \\beta\\)"
+    "text": "(2)\n\\(E(\\hat{\\beta})\\)을 구하시오\nanswer\n\\(\\hat{\\beta} = \\frac{\\sum^n_{i=1} x_i y_i}{\\sum^n_{i=1} x^2_i} = \\sum^n_{i=1} \\frac{x_i}{\\sum^n_{j=1} s^2_j} y_i\\)\n\\(\\to E(\\hat{\\beta})= \\sum^n_{i=1} \\frac{x_i}{\\sum^n_{i=1} x^2_j} E(y_i) = \\sum^n_{i=1}\\frac{x_i}{\\sum^n_{j=1} x^2_j} \\beta x_i = \\beta\\frac{\\sum^n_{i=1} x^2_{i=1} x^2_i}{\\sum^n_{i=1} x^2_i} = \\beta\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-3",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-3",
     "title": "Regression Mid Term",
     "section": "(3)",
-    "text": "(3)\n\\(Var(\\hat{\\beta})\\)을 구하시오\nanswer\n\\(Var(\\hat{\\beta}) = \\sum^n_{i=1} \\frac{x^2_i}{(\\sum^n_{j=1} s^2_j)^2} Var(y_i) = \\sum^n_{i=1} \\frac{x^2_i}{\\sum^n_{j=1} x^2_j)^2} \\sigma^2 = \\sigma^2 \\frac{\\sum^n_{i=1} s^2_i}{(\\sum^n_{i=1} s^2_i)^2} = \\frac{\\sigma^2}{\\sum^n_{i=1} s^2_i}\\)"
+    "text": "(3)\n\\(Var(\\hat{\\beta})\\)을 구하시오\nanswer\n\\(Var(\\hat{\\beta}) = \\sum^n_{i=1} \\frac{x^2_i}{(\\sum^n_{j=1} x^2_j)^2} Var(y_i) = \\sum^n_{i=1} \\frac{x^2_i}{(\\sum^n_{j=1} x^2_j)^2} \\sigma^2 = \\sigma^2 \\frac{\\sum^n_{i=1} x^2_i}{(\\sum^n_{i=1} x^2_i)^2} = \\frac{\\sigma^2}{\\sum^n_{i=1} x^2_i}\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-4",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-4",
     "title": "Regression Mid Term",
     "section": "(4)",
-    "text": "(4)\n\\(\\hat{\\beta}\\)의 표준오차를 구하시오.\nanswer\n\\(s.e.(\\hat{\\beta}) = \\sqrt{Var(\\hat{\\beta})} = \\frac{\\sigma}{\\sqrt{\\sum^n_{i=1}s^2_i}}\\)"
+    "text": "(4)\n\\(\\hat{\\beta}\\)의 표준오차를 구하시오.\nanswer\n\\(s.e.(\\hat{\\beta}) = \\sqrt{Var(\\hat{\\beta})} = \\frac{\\sigma}{\\sqrt{\\sum^n_{i=1}x^2_i}}\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-6",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-6",
     "title": "Regression Mid Term",
     "section": "(1)",
-    "text": "(1)\n최소제곱법에 의한 회귀직선을 적합시키고, 결과를 해석하시오.\nanswer\n\\(\\hat{\\beta} = \\frac{\\sum^n_{i=1} x_i y_i}{\\sum^n_{i=1} x^2_i} = \\frac{18207}{9103} = 2\\)"
+    "text": "(1)\n최소제곱법에 의한 회귀직선을 적합시키고, 결과를 해석하시오.\nanswer\n\\(\\hat{\\beta} = \\frac{\\sum^n_{i=1} x_i y_i}{\\sum^n_{i=1} x^2_i} = \\frac{18207}{9103} = 2\\)\n\\(y = 2x\\)\n사내평가점수가 1점 올라갈 때마다 영업실적이 2백만원 증가한다."
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-7",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-7",
     "title": "Regression Mid Term",
     "section": "(2)",
-    "text": "(2)\n분산분석표를 작성하고, 유의수준 \\(\\alpha=0.05\\)하에서, 회귀직선에 대한 유의성 검정을 수행하시오.\nanswer\n\\(SST = \\sum^n_{i=1} y^2_i = 36961\\)\n\\(SSR = \\sum^n_{i=1} \\hat{y}^2_i = \\frac{(\\sum^n_{i=1} s_i y_i)^2}{\\sum^n_{i=1} x^2_{i}} = \\frac{18207}{9103} = 36416\\)\n분산분석표\n\n\n\n요인\n제곱합(SS)\n자유도(df)\n평균제곱(MS)\nF_0\n\n\n\n\n회귀\n36416\n1\n36416\n669.01\n\n\n잔차\n545\n10\n54.5\n\n\n\n계\n36961\n11\n\n\n\n\n\n- 가설 : \\(H_0 : \\beta = 0 \\text{ vs. } H_1 : \\beta = 0\\)\n- 기각역 : \\(F_0 > F_{\\alpha}(1,10) = 4.96\\)\n- 결론: \\(F_0\\) 값이 기각역에 속하므로 귀무가설을 기각할 수 있다. 즉 유의수준 \\(5\\)%에서 회귀직선이 유의하다고 할 수 있다."
+    "text": "(2)\n분산분석표를 작성하고, 유의수준 \\(\\alpha=0.05\\)하에서, 회귀직선에 대한 유의성 검정을 수행하시오.\nanswer\n\\(SST = \\sum^n_{i=1} y^2_i = 36961\\)\n\\(SSR = \\sum^n_{i=1} \\hat{y}^2_i = (\\beta x)^2= \\frac{(\\sum^n_{i=1} x_i y_i)^2}{\\sum^n_{i=1} x^2_{i}} = \\frac{(18207)^2}{9103} = 36416\\)\n분산분석표\n\n\n\n요인\n제곱합(SS)\n자유도(df)\n평균제곱(MS)\n\\(F_0\\)\n\n\n\n\n회귀\n36416\n1\n36416\n669.01\n\n\n잔차\n545\n10\n54.5\n\n\n\n계\n36961\n11\n\n\n\n\n\n- 가설 : \\(H_0 : \\beta = 0 \\text{ vs. } H_1 : \\beta = 0\\)\n- 기각역 : \\(F_0 > F_{0.01}(1,10) = 4.96\\)\n- 결론: \\(F_0\\) 값이 기각역에 속하므로 귀무가설을 기각할 수 있다. 즉 유의수준 \\(5\\)%에서 회귀직선이 유의하다고 할 수 있다.\n\nround(qf(0.95,1,10),2)\n\n4.96"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-8",
@@ -2958,7 +2958,7 @@
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-9",
     "title": "Regression Mid Term",
     "section": "(4)",
-    "text": "(4)\n\\(\\beta\\)에 대한 \\(95\\)% 신뢰구간을 구하여라\nanswer\n\\(\\hat{s.e.}(\\hat{\\beta}) = \\sqrt{\\frac{MSE}{\\sum^n_{i=1} s^2_i}} = \\sqrt{\\frac{54.5}{9103}} = 0.077\\)\n\\(95\\)% 신뢰구간: \\(\\hat{\\beta} \\pm t_{0.05/2}(10) \\times \\hat{s.e.}(\\hat{\\beta}) = 2 \\pm 2.23 \\times 0.077 = (1.818, 2.172)\\)"
+    "text": "(4)\n\\(\\beta\\)에 대한 \\(95\\)% 신뢰구간을 구하여라\nanswer\n\\(\\hat{s.e.}(\\hat{\\beta}) = \\sqrt{\\frac{MSE}{\\sum^n_{i=1} x^2_i}} = \\sqrt{\\frac{54.5}{9103}} = 0.077\\)\n\\(95\\)% 신뢰구간: \\(\\hat{\\beta} \\pm t_{0.05/2}(10) \\times \\hat{s.e.}(\\hat{\\beta}) = 2 \\pm 2.23 \\times 0.077 = (1.818, 2.172)\\)\n\nround(qt(0.975,10),2)\n\n2.23"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-11",
@@ -2972,14 +2972,14 @@
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-12",
     "title": "Regression Mid Term",
     "section": "(2)",
-    "text": "(2)\n투입된 비료의 양과 감자의 수확량에 대한 회귀선을 구하시오\nanswer\n\\(S_{(xx)} = \\sum^n_{i=1} x^2_i - n(\\bar{x})^2 = 110 - 10 \\times 3^2 = 20\\)\n\\(S_{(yy)} = \\sum^n_{i=1} y^2_i - n(\\bar{y})^2 = 9714-10 \\times 29^2 = 302\\)\n\\(S_{(xy)} = \\sum^n_{i=1} x_i y_i - n(\\bar{x})(\\bar{y}) = 940-10 \\times 3 \\times 29 = 70\\)\n\\(\\to \\hat{\\beta_1} = \\frac{S_{(xy)}}{S_{(xy)}} = \\frac{70}{20} = 3.5, \\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1 \\bar{x} = 29-3.5 \\times 3 = 18.5\\)"
+    "text": "(2)\n투입된 비료의 양과 감자의 수확량에 대한 회귀선을 구하시오\nanswer\n\\(S_{(xx)} = \\sum^n_{i=1} x^2_i - n(\\bar{x})^2 = 110 - 10 \\times 3^2 = 20\\)\n\\(S_{(yy)} = \\sum^n_{i=1} y^2_i - n(\\bar{y})^2 = 8712-10 \\times 29^2 = 302\\)\n\\(S_{(xy)} = \\sum^n_{i=1} x_i y_i - n(\\bar{x})(\\bar{y}) = 940-10 \\times 3 \\times 29 = 70\\)\n\\(\\to \\hat{\\beta_1} = \\frac{S_{(xy)}}{S_{(xy)}} = \\frac{70}{20} = 3.5, \\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1 \\bar{x} = 29-3.5 \\times 3 = 18.5\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-13",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-13",
     "title": "Regression Mid Term",
     "section": "(3)",
-    "text": "(3)\n분산분석표를 작성하고, 유의수준 α = 0.05에서, 회귀직선에 대한 유의성 검정을 수행하시오.\nanswer\n\\(SSR = \\frac{S^2_{(xy)}}{S_{(xx)}} = \\frac{70^2}{20} = 245\\)\n\\(SSE = SST - SSR = 302 - 245 = 57\\)\n\n\n\n요인\n제곱합(SS).\n자유도(df)\n평균제곱(MS)\n\\(F_0\\)\n\n\n\n\n회귀\n245\n1\n245\n34.39\n\n\n잔차\n57\n8\n7.125\n\n\n\n계\n302\n\n\n\n\n\n\n- 가설 : \\(H_0 : \\beta_1 = 0 \\text{ vs. } H_1 : \\beta_1 = 0\\)\n- 기각역 : \\(F_0 > F_{\\alpha}(1,8) = 5.32\\)\n- 결론: \\(F_0\\)값이 기각역에 속하므로 귀무가설을 기각할 수 있다. 즉 유의수준 \\(5\\)%에서 회귀직선이 유의하다고 할 수 있다."
+    "text": "(3)\n분산분석표를 작성하고, 유의수준 α = 0.05에서, 회귀직선에 대한 유의성 검정을 수행하시오.\nanswer\n\\(SSR = \\frac{S^2_{(xy)}}{S_{(xx)}} = \\frac{70^2}{20} = 245\\)\n\\(SSE = SST - SSR = 302 - 245 = 57\\)\n\n\n\n요인\n제곱합(SS).\n자유도(df)\n평균제곱(MS)\n\\(F_0\\)\n\n\n\n\n회귀\n245\n1\n245\n34.39\n\n\n잔차\n57\n8\n7.125\n\n\n\n계\n302\n\n\n\n\n\n\n- 가설 : \\(H_0 : \\beta_1 = 0 \\text{ vs. } H_1 : \\beta_1 = 0\\)\n- 기각역 : \\(F_0 > F_{\\alpha}(1,8) = 5.32\\)\n- 결론: \\(F_0\\)값이 기각역에 속하므로 귀무가설을 기각할 수 있다. 즉 유의수준 \\(5\\)%에서 회귀직선이 유의하다고 할 수 있다.\n\nround(qf(0.95,1,8),2)\n\n5.32"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-14",
@@ -3007,14 +3007,14 @@
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-17",
     "title": "Regression Mid Term",
     "section": "(7)",
-    "text": "(7)\n다음의 가설검정을 유의수준 \\(\\alpha = 0.05\\)에서 수행하시오.\n\\[H_0 = \\beta_1 = 2 \\text{ vs. } H_1 : \\beta_1 >2\\]\nanswer\n- 검정통계량 : \\(T = \\frac{\\hat{\\beta}_1 - \\beta^0_1}{\\hat{s.e.} (\\hat{\\beta}_1)} = \\frac{\\hat{\\beta}_1 - 2}{\\hat{s.e.}(\\hat{\\beta}_1)} \\sim_{H_0} t(8)\\)\n- \\(\\hat{s.e.}(\\hat{\\beta}_1) = \\sqrt{\\frac{MSE}{S_{(xx)}}} = \\sqrt{\\frac{7.125}{20}} = 0.597\\)\n- 검정통계량 관측값: \\(t_0 = \\frac{3.5-2}{0.597} = 2.513\\)\n- 기각역 : \\(t_0 > t_{0.05}(8) = 1.86\\)\n- 결론 : \\(t_0\\)값이 기각역에 속하므로 귀무가설을 기각할 수 있다. 즉 유의수준 \\(5\\)%에서 \\(\\beta_1\\)이 \\(2\\)보다 크다고 할 수 있다."
+    "text": "(7)\n다음의 가설검정을 유의수준 \\(\\alpha = 0.05\\)에서 수행하시오.\n\\[H_0 : \\beta_1 = 2 \\text{ vs. } H_1 : \\beta_1 >2\\]\nanswer\n- 검정통계량 : \\(T = \\frac{\\hat{\\beta}_1 - \\beta^0_1}{\\hat{s.e.} (\\hat{\\beta}_1)} = \\frac{\\hat{\\beta}_1 - 2}{\\hat{s.e.}(\\hat{\\beta}_1)} \\sim_{H_0} t(8)\\)\n- \\(\\hat{s.e.}(\\hat{\\beta}_1) = \\sqrt{\\frac{MSE}{S_{(xx)}}} = \\sqrt{\\frac{7.125}{20}} = 0.597\\)\n- 검정통계량 관측값: \\(t_0 = \\frac{3.5-2}{0.597} = 2.513\\)\n- 기각역 : \\(t_0 > t_{0.05}(8) = 1.86\\)\n- 결론 : \\(t_0\\)값이 기각역에 속하므로 귀무가설을 기각할 수 있다. 즉 유의수준 \\(5\\)%에서 \\(\\beta_1\\)이 \\(2\\)보다 크다고 할 수 있다.\n\nround(qt(0.95,8),2) # 단측검정\n\n1.86"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-18",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-18",
     "title": "Regression Mid Term",
     "section": "(8)",
-    "text": "(8)\n\\(3.5\\)kg의 비료를 사용했을 때 평균 감자 수확량과 하나의 개별 \\(y\\)값의 \\(90\\)% 신뢰구간을 각각 구하시오\nanswer\n\\(-\\hat{\\mu}_0 = \\hat{y}_0 = 18.5 + 3.5 x = 18.5 + 3.5 \\times 3.5 = 37.5(kg)\\)\n- \\(\\hat{s.e.}(E(\\hat{y|x = 3.5})) = \\sqrt{(\\frac{1}{n} + \\frac{(x_0 - \\bar{x})^2}{S_{(xx)}})\\hat{\\sigma}^2} = \\sqrt{(\\frac{1}{10} + \\frac{(3.5-3)^2}{20}) \\times 7.125} = 0.895\\)\n- \\(\\hat{s.e.}(\\hat{y}_0) = \\sqrt{(1 + \\frac{1}{n} + \\frac{(x_0 - \\bar{x})^2}{S_{(xx)}})\\hat{\\sigma^2}^2} = \\sqrt{(1 + \\frac{1}{10} + \\frac{(3.5-3)^2}{20}) \\times 7.125} = 2.815\\)\n- 평균감자수확량의 \\(90\\)% 신뢰구간\n\\[\\hat{\\mu}_0 \\pm t_{0.1/2}(8)\\hat{s.e.}(E(\\hat{y|x = 3.5})) = 30.75 \\pm 1.86 \\times 0.895 = (29.085, 32.415)\\]\n- 개별 감자수확량의 \\(90\\)% 신뢰구간\n\\[\\hat{\\mu}_0 \\pm t_{0.1/2})(8) \\hat{s.e.}(\\hat{y}_0) = 30.75 \\pm 1.86 \\times 2.815 = (25.514, 35.986)\\]"
+    "text": "(8)\n\\(3.5\\)kg의 비료를 사용했을 때 평균 감자 수확량과 하나의 개별 \\(y\\)값의 \\(90\\)% 신뢰구간을 각각 구하시오\nanswer\n- \\(\\hat{\\mu}_0 = \\hat{y}_0 = 18.5 + 3.5 x = 18.5 + 3.5 \\times 3.5 = 30.75(kg)\\)\n- \\(\\hat{s.e.}(E(\\hat{y|x = 3.5})) = \\sqrt{(\\frac{1}{n} + \\frac{(x_0 - \\bar{x})^2}{S_{(xx)}})\\hat{\\sigma}^2} = \\sqrt{(\\frac{1}{10} + \\frac{(3.5-3)^2}{20}) \\times 7.125} = 0.895\\)\n- \\(\\hat{s.e.}(\\hat{y}_0) = \\sqrt{(1 + \\frac{1}{n} + \\frac{(x_0 - \\bar{x})^2}{S_{(xx)}})\\hat{\\sigma^2}} = \\sqrt{(1 + \\frac{1}{10} + \\frac{(3.5-3)^2}{20}) \\times 7.125} = 2.815\\)\n- 평균감자수확량의 \\(90\\)% 신뢰구간\n\\[\\hat{\\mu}_0 \\pm t_{0.1/2}(8)\\hat{s.e.}(E(\\hat{y|x = 3.5})) = 30.75 \\pm 1.86 \\times 0.895 = (29.085, 32.415)\\]\n- 개별 감자수확량의 \\(90\\)% 신뢰구간\n\\[\\hat{\\mu}_0 \\pm t_{0.1/2})(8) \\hat{s.e.}(\\hat{y}_0) = 30.75 \\pm 1.86 \\times 2.815 = (25.514, 35.986)\\]\n\nround(qt(0.95,8),2)\n\n1.86"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-20",
@@ -3028,14 +3028,14 @@
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-21",
     "title": "Regression Mid Term",
     "section": "(2)",
-    "text": "(2)\n가설검정을 위한 검정통계량은 무엇인가? 귀무가설이 사실이라고 가정할 때 검정통계량의 분포는 무엇인가?(증명 필요없음)\nanswer\n\\(F = \\frac{SSLF/(k-2)}{SSPE/(n-k)} \\sim_{H_0}, F(k-2,n-l)\\)\n- \\(SSPE = \\sum^k_{i=1} \\sum^{n_i}_{j=1} (y_{ij} - \\bar{y}_{i} )^2, SSLF = \\sum^k_{i=12}n_i (\\hat{y_i} - \\bar{y}_i)^2 = SSE - SSPE, \\bar{y}_i = \\sum^{n_i}_{j=1} y_{ij}/n_i\\)"
+    "text": "(2)\n가설검정을 위한 검정통계량은 무엇인가? 귀무가설이 사실이라고 가정할 때 검정통계량의 분포는 무엇인가?(증명 필요없음)\nanswer\n\\(F = \\frac{SSLF/(k-2)}{SSPE/(n-k)} \\sim_{H_0}, F(k-2,n-k)\\)\n- \\(SSPE = \\sum^k_{i=1} \\sum^{n_i}_{j=1} (y_{ij} - \\bar{y}_{i} )^2\\)\n- \\(SSLF = \\sum^k_{i=1}n_i (\\hat{y_i} - \\bar{y}_i)^2 = SSE - SSPE\\)\n- \\(\\bar{y}_i = \\sum^{n_i}_{j=1} y_{ij}/n_i\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-22",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-22",
     "title": "Regression Mid Term",
     "section": "(3)",
-    "text": "(3)\n(1)에 대한 가설 검정을 수행하시오\nanswer\n- \\(SSPE = (1.5^2 + \\dots + (-1)^2) = 15\\)\n- \\(SSLF = SSE - SSPE = 54-15=42\\)\n- 검정통계량의 관측값 : \\(F_0 = \\frac{42/3}{15/5} = \\frac{14}{3} = 4.67\\)\n- 기각역 : \\(F_0 > F_{0/05}(3,5) = 5.41\\)\n- 결론: 검정통계량의 관측값이 기각역에 속하지 않기 떄문에 귀무가설을 기각할 수 없다. 즉, 유의수준 \\(5\\)%에서 회귀모형은 적절하지 않다고 할 수 있다."
+    "text": "(3)\n(1)에 대한 가설 검정을 수행하시오\nanswer\n- \\(SSPE = (1.5^2 + \\dots + (-1)^2) = 15\\)\n- \\(SSLF = SSE - SSPE = 57-15=42\\)\n- 검정통계량의 관측값 : \\(F_0 = \\frac{42/3}{15/5} = \\frac{14}{3} = 4.67\\)\n\n$ k-2 = 5-2 = 3, n-k = 10-5 = 5$\n\n- 기각역 : \\(F_0 > F_{0.05}(3,5) = 5.41\\)\n- 결론: 검정통계량의 관측값이 기각역에 속하지 않기 떄문에 귀무가설을 기각할 수 없다. 즉, 유의수준 \\(5\\)%에서 회귀모형은 적절하지 않다고 할 수 있다.\n\nround(qf(0.95,3,5),2)\n\n5.41"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-24",
@@ -3049,7 +3049,7 @@
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-25",
     "title": "Regression Mid Term",
     "section": "(2)",
-    "text": "(2)\n가중오차제곱합을 가장 작게 하는 WLSE를 구하여라.\nanswer\n가중최소제곱추정량(WLSE) : \\((\\hat{\\beta}_0,\\hat{\\beta}_1) = argmin_{\\beta_0,\\beta_1 \\in R} \\sum^n_{i=1}w_i \\{ y_i - (\\beta_0 + \\beta_1 x_i)\\}^2\\)\n\\(\\hat{\\beta}_1 = \\frac{\\sum w_i (x_i - \\bar{x}_w)(y_i - \\bar{y}_w)}{\\sum w_i(x_i - \\bar{x}_w)^2}\\)\n\\(\\hat{\\beta}_0 = \\bar{y}_w - \\hat{\\beta_1} \\bar{x}_w\\)\n단, \\(\\bar{x}_2 = \\frac{\\sum w_i x_i}{\\sum w_i}, \\bar{y}_w = \\frac{\\sum w_i y_i}{\\sum w_i}\\)"
+    "text": "(2)\n가중오차제곱합을 가장 작게 하는 WLSE를 구하여라.\nanswer\n가중최소제곱추정량(WLSE) : \\((\\hat{\\beta}_0,\\hat{\\beta}_1) = argmin_{\\beta_0,\\beta_1 \\in R} \\sum^n_{i=1}w_i \\{ y_i - (\\beta_0 + \\beta_1 x_i)\\}^2\\)\n\\(\\hat{\\beta}_1 = \\frac{\\sum w_i (x_i - \\bar{x}_w)(y_i - \\bar{y}_w)}{\\sum w_i(x_i - \\bar{x}_w)^2}\\)\n\\(\\hat{\\beta}_0 = \\bar{y}_w - \\hat{\\beta_1} \\bar{x}_w\\)\n단, \\(\\bar{x}_w = \\frac{\\sum w_i x_i}{\\sum w_i}, \\bar{y}_w = \\frac{\\sum w_i y_i}{\\sum w_i}\\)"
   },
   {
     "objectID": "posts/rl/2022-12-05-rl-CH11.html",
