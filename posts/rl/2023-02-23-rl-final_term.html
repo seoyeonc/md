@@ -607,6 +607,27 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="section-8">(8)</h2>
 <p><span class="math inline">\(E(\frac{SSE}{n-p-1}) = \sigma^2\)</span></p>
 <p><strong>answer</strong></p>
+<p>정리 5.1</p>
+<p><span class="math inline">\(y \sim N(\mu,V)\)</span> 이면</p>
+<p><span class="math inline">\(E(y^\top A y) = tr(AV) + \mu^\top A \mu, cov(y,y^\top A y) = 2VA\mu\)</span></p>
+<p><span class="math inline">\(\frac{SSE}{\sigma^2} = y^\top \frac{1}{\sigma^2}(I-H)y\)</span></p>
+<p><span class="math inline">\(B = \frac{1}{\sigma^2}(I-H)\)</span></p>
+<p><span class="math inline">\(y \sim N(\beta_0 + \beta_1 X, I \sigma^2)\)</span></p>
+<p><span class="math inline">\(BV = \frac{1}{\sigma^2}(I-H)I\sigma^2 = B, BV=B\)</span></p>
+<p><span class="math inline">\(B, BV\)</span>는 멱등행렬</p>
+<p><span class="math inline">\(tr(BV) = tr(B) = tr((I-H) = tr(I) - tr(B) = n-p-1\)</span></p>
+<p><span class="math inline">\(\mu^\top B \mu = \frac{1}{\sigma^2}\begin{pmatrix}\beta_0 &amp; \beta_1\end{pmatrix} \begin{pmatrix}1^\top \\ X^\top \end{pmatrix}(I-H)\begin{pmatrix} 1 &amp; X \end{pmatrix} \begin{pmatrix} \beta_0 \\ \beta_1 \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(= \frac{1}{\sigma^2}\begin{pmatrix} \beta_0 &amp; \beta_1 \end{pmatrix} \begin{pmatrix}1^\top I - 1^\top H \\ X^\top I - X^\top H \end{pmatrix} \begin{pmatrix} 1 &amp; X \end{pmatrix} \begin{pmatrix} \beta_0 \\ \beta_1 \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(= \frac{1}{\sigma^2}\begin{pmatrix}\beta_0 &amp; \beta_1\end{pmatrix}\begin{pmatrix} 1^\top I - 1^\top H &amp; 1^\top I X - 1^\top H X \\ X^\top I - X^\top H &amp; X^\top I X - X^\top H X \end{pmatrix} \begin{pmatrix} \beta_0 \\ \beta_1 \end{pmatrix}\)</span></p>
+<ul>
+<li><span class="math inline">\(1^\top I - 1^\top H = n-n = 0\)</span></li>
+<li><span class="math inline">\(1^\top I X - 1^\top H X = 1^\top(I - H)X = 1^\top(I - X(X^\top X)^{-1}X^\top)X = 1^\top(X-X) = 0\)</span></li>
+<li><span class="math inline">\(X^\top I - X^\top H = X^\top(I - H) = X^\top(I - X(X^\top X)^{-1}X^\top = X^\top - X^\top = 0\)</span></li>
+<li><span class="math inline">\(X^\top I X - X^\top H X = X^\top(I - H)X = X^\top(I - X(X^\top X)^{-1} X^\top)X = 0\)</span></li>
+</ul>
+<p><span class="math inline">\(\therefore \mu^\top B \mu = 0\)</span></p>
+<p><span class="math inline">\(E(\frac{SSE}{\sigma^2}) = n-p-1\)</span></p>
+<p><span class="math inline">\(E(SSE) = (n-p-1)\sigma^2\)</span></p>
 </section>
 </section>
 <section id="section-9" class="level1">
@@ -709,9 +730,9 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p><span class="math inline">\(SST = \mathbf{y^\top y} - \frac{1}{n}(\sum y_i)^2 = 59 - 28.1667 = 30.8333\)</span></p>
 <p><span class="math inline">\(SSR = SST - SSE\)</span></p>
-<p><span class="math inline">\(H_0: \beta_1 = \beta_2 = 0 \text{ vs. } H_1 : \text{ not } H_0\)</span></p>
-<p>기각역: <span class="math inline">\(F_0 \ge F_{0.1}(2,3) = 5.46\)</span></p>
-<p>결론: 기각역에 속하지 않으므로 <span class="math inline">\(H_0\)</span> 기각 못함. 즉, 회귀모형은 유의수준 0.1에서 유의하지 않다.</p>
+<p><code>-</code> <span class="math inline">\(H_0: \beta_1 = \beta_2 = 0 \text{ vs. } H_1 : \text{ not } H_0\)</span></p>
+<p><code>-</code> 기각역: <span class="math inline">\(F_0 \ge F_{0.1}(2,3) = 5.46\)</span></p>
+<p><code>-</code> 결론: 기각역에 속하지 않으므로 <span class="math inline">\(H_0\)</span> 기각 못함. 즉, 회귀모형은 유의수준 0.1에서 유의하지 않다.</p>
 </section>
 <section id="section-13" class="level2">
 <h2 class="anchored" data-anchor-id="section-13">(4)</h2>
@@ -731,11 +752,11 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(X_1\)</span>이 일정할 떄, <span class="math inline">\(X_2\)</span>가 1단위 증가하면 <span class="math inline">\(y\)</span>는 <span class="math inline">\(\hat{\beta})_2\)</span>만큼 증가한다.</p>
 <p>가설검정</p>
-<p><span class="math inline">\(Var(\hat{\beta}_2) = (X^\top X)^{-1}_(3,3) \sigma^2 = 0.34 \sigma^2\)</span></p>
-<p><span class="math inline">\(\hat{s.e.}(\hat{\beta}_2) = \sqrt{0.34 \times MSE } = \sqrt{0.34 \times 2.5855} = 0.9376\)</span></p>
-<p><span class="math inline">\(t_0 = \frac{-2.46}{0.9376} = -2.62372\)</span></p>
-<p>기각역: <span class="math inline">\(t_0 &lt; -t_{0.05}(3) = -2.35\)</span></p>
-<p>결론: <span class="math inline">\(H_0\)</span>기각 가능, 즉 0보다 작다고 할 수 있다.</p>
+<p><code>-</code> <span class="math inline">\(Var(\hat{\beta}_2) = (X^\top X)^{-1}_(3,3) \sigma^2 = 0.34 \sigma^2\)</span></p>
+<p><code>-</code> <span class="math inline">\(\hat{s.e.}(\hat{\beta}_2) = \sqrt{0.34 \times MSE } = \sqrt{0.34 \times 2.5855} = 0.9376\)</span></p>
+<p><code>-</code> <span class="math inline">\(t_0 = \frac{-2.46}{0.9376} = -2.62372\)</span></p>
+<p><code>-</code> 기각역: <span class="math inline">\(t_0 &lt; -t_{0.05}(3) = -2.35\)</span></p>
+<p><code>-</code> 결론: <span class="math inline">\(H_0\)</span>기각 가능, 즉 0보다 작다고 할 수 있다.</p>
 </section>
 <section id="section-16" class="level2">
 <h2 class="anchored" data-anchor-id="section-16">(7)</h2>

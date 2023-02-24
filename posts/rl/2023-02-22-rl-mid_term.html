@@ -545,7 +545,7 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math display">\[y_i = \beta x_i + \epsilon_i, \epsilon_i \sim_{i.i.d.} n(0,\sigma^2), i=1,\dots, n\]</span></p>
 <section id="section-1" class="level2">
 <h2 class="anchored" data-anchor-id="section-1">(1)</h2>
-<p><span class="math inline">\(\beta\)</span>에 대한 최소제곱추정량(LSE) <span class="math inline">\(\hat{\beta}\)</span>을 구하시오</p>
+<p><span class="math inline">\(\beta\)</span>에 대한 최소제곱추정량(<span class="math inline">\(LSE\)</span>) <span class="math inline">\(\hat{\beta}\)</span>을 구하시오</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(\hat{\beta} = argmin_{\beta \in R} S = \sum^n_{i=1} (y_i - \beta x_i)^2 \to \frac{\partial S}{\partial \beta}|_{\beta = \hat{\beta}} = 0\)</span></p>
 <p><span class="math inline">\(\frac{\partial S}{\partial \beta} = \sum^n_{i=1} (-2x_i)(y_i - \beta x_i) \to \sum^n_{i=1} x_i(y_i - \hat{\beta}x_i) = 0 \to \hat{\beta} = \frac{\sum^n_{i=1} x_iy_i}{\sum^n_{i=1} x^2_i}\)</span></p>
@@ -828,11 +828,17 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="section-24">(1)</h2>
 <p>가중회귀최소추정량(<span class="math inline">\(WLSE\)</span>)을 구하기 위한 가중오차제곱합(<span class="math inline">\(Q\)</span>)를 정의하여라.</p>
 <p><strong>answer</strong></p>
+<p><span class="math inline">\(Q = \sum^n_{i=1} w_i \{ y_i - (\beta_0 + \beta_1 x_i) \}^2\)</span></p>
+<p>Quadratic Form</p>
 </section>
 <section id="section-25" class="level2">
 <h2 class="anchored" data-anchor-id="section-25">(2)</h2>
 <p>가중오차제곱합을 가장 작게 하는 WLSE를 구하여라.</p>
 <p><strong>answer</strong></p>
+<p>가중최소제곱추정량(WLSE) : <span class="math inline">\((\hat{\beta}_0,\hat{\beta}_1) = argmin_{\beta_0,\beta_1 \in R} \sum^n_{i=1}w_i \{ y_i - (\beta_0 + \beta_1 x_i)\}^2\)</span></p>
+<p><span class="math inline">\(\hat{\beta}_1 = \frac{\sum w_i (x_i - \bar{x}_w)(y_i - \bar{y}_w)}{\sum w_i(x_i - \bar{x}_w)^2}\)</span></p>
+<p><span class="math inline">\(\hat{\beta}_0 = \bar{y}_w - \hat{\beta_1} \bar{x}_w\)</span></p>
+<p>단, <span class="math inline">\(\bar{x}_2 = \frac{\sum w_i x_i}{\sum w_i}, \bar{y}_w = \frac{\sum w_i y_i}{\sum w_i}\)</span></p>
 
 
 </section>

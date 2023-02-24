@@ -2454,7 +2454,7 @@
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-8",
     "title": "Regression Final Term",
     "section": "(8)",
-    "text": "(8)\n\\(E(\\frac{SSE}{n-p-1}) = \\sigma^2\\)\nanswer"
+    "text": "(8)\n\\(E(\\frac{SSE}{n-p-1}) = \\sigma^2\\)\nanswer\n정리 5.1\n\\(y \\sim N(\\mu,V)\\) 이면\n\\(E(y^\\top A y) = tr(AV) + \\mu^\\top A \\mu, cov(y,y^\\top A y) = 2VA\\mu\\)\n\\(\\frac{SSE}{\\sigma^2} = y^\\top \\frac{1}{\\sigma^2}(I-H)y\\)\n\\(B = \\frac{1}{\\sigma^2}(I-H)\\)\n\\(y \\sim N(\\beta_0 + \\beta_1 X, I \\sigma^2)\\)\n\\(BV = \\frac{1}{\\sigma^2}(I-H)I\\sigma^2 = B, BV=B\\)\n\\(B, BV\\)는 멱등행렬\n\\(tr(BV) = tr(B) = tr((I-H) = tr(I) - tr(B) = n-p-1\\)\n\\(\\mu^\\top B \\mu = \\frac{1}{\\sigma^2}\\begin{pmatrix}\\beta_0 & \\beta_1\\end{pmatrix} \\begin{pmatrix}1^\\top \\\\ X^\\top \\end{pmatrix}(I-H)\\begin{pmatrix} 1 & X \\end{pmatrix} \\begin{pmatrix} \\beta_0 \\\\ \\beta_1 \\end{pmatrix}\\)\n\\(= \\frac{1}{\\sigma^2}\\begin{pmatrix} \\beta_0 & \\beta_1 \\end{pmatrix} \\begin{pmatrix}1^\\top I - 1^\\top H \\\\ X^\\top I - X^\\top H \\end{pmatrix} \\begin{pmatrix} 1 & X \\end{pmatrix} \\begin{pmatrix} \\beta_0 \\\\ \\beta_1 \\end{pmatrix}\\)\n\\(= \\frac{1}{\\sigma^2}\\begin{pmatrix}\\beta_0 & \\beta_1\\end{pmatrix}\\begin{pmatrix} 1^\\top I - 1^\\top H & 1^\\top I X - 1^\\top H X \\\\ X^\\top I - X^\\top H & X^\\top I X - X^\\top H X \\end{pmatrix} \\begin{pmatrix} \\beta_0 \\\\ \\beta_1 \\end{pmatrix}\\)\n\n\\(1^\\top I - 1^\\top H = n-n = 0\\)\n\\(1^\\top I X - 1^\\top H X = 1^\\top(I - H)X = 1^\\top(I - X(X^\\top X)^{-1}X^\\top)X = 1^\\top(X-X) = 0\\)\n\\(X^\\top I - X^\\top H = X^\\top(I - H) = X^\\top(I - X(X^\\top X)^{-1}X^\\top = X^\\top - X^\\top = 0\\)\n\\(X^\\top I X - X^\\top H X = X^\\top(I - H)X = X^\\top(I - X(X^\\top X)^{-1} X^\\top)X = 0\\)\n\n\\(\\therefore \\mu^\\top B \\mu = 0\\)\n\\(E(\\frac{SSE}{\\sigma^2}) = n-p-1\\)\n\\(E(SSE) = (n-p-1)\\sigma^2\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-10",
@@ -2475,7 +2475,7 @@
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-12",
     "title": "Regression Final Term",
     "section": "(3)",
-    "text": "(3)\n분산분석표를 작성하고, 유의수준 \\(\\alpha=0.1\\)에서 회귀직선에 대한 유의성 검정을 수행하시오.\nanswer\n\n\n\n\n\n\n\n\n\n\n요인\n제곱합(SS)\n자유도(df)\n평균제곱(MS)\n\\(F_0\\)\n\n\n\n\n회귀\n23.0769\n2\n11.5385\n4.4628\n\n\n잔차\n7.7564\n3\n2.5855\n\n\n\n계\n30.8333\n5\n\n\n\n\n\n\\(SST = \\mathbf{y^\\top y} - \\frac{1}{n}(\\sum y_i)^2 = 59 - 28.1667 = 30.8333\\)\n\\(SSR = SST - SSE\\)\n\\(H_0: \\beta_1 = \\beta_2 = 0 \\text{ vs. } H_1 : \\text{ not } H_0\\)\n기각역: \\(F_0 \\ge F_{0.1}(2,3) = 5.46\\)\n결론: 기각역에 속하지 않으므로 \\(H_0\\) 기각 못함. 즉, 회귀모형은 유의수준 0.1에서 유의하지 않다."
+    "text": "(3)\n분산분석표를 작성하고, 유의수준 \\(\\alpha=0.1\\)에서 회귀직선에 대한 유의성 검정을 수행하시오.\nanswer\n\n\n\n\n\n\n\n\n\n\n요인\n제곱합(SS)\n자유도(df)\n평균제곱(MS)\n\\(F_0\\)\n\n\n\n\n회귀\n23.0769\n2\n11.5385\n4.4628\n\n\n잔차\n7.7564\n3\n2.5855\n\n\n\n계\n30.8333\n5\n\n\n\n\n\n\\(SST = \\mathbf{y^\\top y} - \\frac{1}{n}(\\sum y_i)^2 = 59 - 28.1667 = 30.8333\\)\n\\(SSR = SST - SSE\\)\n- \\(H_0: \\beta_1 = \\beta_2 = 0 \\text{ vs. } H_1 : \\text{ not } H_0\\)\n- 기각역: \\(F_0 \\ge F_{0.1}(2,3) = 5.46\\)\n- 결론: 기각역에 속하지 않으므로 \\(H_0\\) 기각 못함. 즉, 회귀모형은 유의수준 0.1에서 유의하지 않다."
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-13",
@@ -2496,7 +2496,7 @@
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-15",
     "title": "Regression Final Term",
     "section": "(6)",
-    "text": "(6)\n\\(\\hat{\\beta}_2\\)의 의미를 설명하고, 가설 \\(H_0: \\beta_2 = 0, H_1 : \\beta_2 <0\\)을 \\(\\alpha = 0.05\\)로 검정하시오.\nanswer\n\\(X_1\\)이 일정할 떄, \\(X_2\\)가 1단위 증가하면 \\(y\\)는 \\(\\hat{\\beta})_2\\)만큼 증가한다.\n가설검정\n\\(Var(\\hat{\\beta}_2) = (X^\\top X)^{-1}_(3,3) \\sigma^2 = 0.34 \\sigma^2\\)\n\\(\\hat{s.e.}(\\hat{\\beta}_2) = \\sqrt{0.34 \\times MSE } = \\sqrt{0.34 \\times 2.5855} = 0.9376\\)\n\\(t_0 = \\frac{-2.46}{0.9376} = -2.62372\\)\n기각역: \\(t_0 < -t_{0.05}(3) = -2.35\\)\n결론: \\(H_0\\)기각 가능, 즉 0보다 작다고 할 수 있다."
+    "text": "(6)\n\\(\\hat{\\beta}_2\\)의 의미를 설명하고, 가설 \\(H_0: \\beta_2 = 0, H_1 : \\beta_2 <0\\)을 \\(\\alpha = 0.05\\)로 검정하시오.\nanswer\n\\(X_1\\)이 일정할 떄, \\(X_2\\)가 1단위 증가하면 \\(y\\)는 \\(\\hat{\\beta})_2\\)만큼 증가한다.\n가설검정\n- \\(Var(\\hat{\\beta}_2) = (X^\\top X)^{-1}_(3,3) \\sigma^2 = 0.34 \\sigma^2\\)\n- \\(\\hat{s.e.}(\\hat{\\beta}_2) = \\sqrt{0.34 \\times MSE } = \\sqrt{0.34 \\times 2.5855} = 0.9376\\)\n- \\(t_0 = \\frac{-2.46}{0.9376} = -2.62372\\)\n- 기각역: \\(t_0 < -t_{0.05}(3) = -2.35\\)\n- 결론: \\(H_0\\)기각 가능, 즉 0보다 작다고 할 수 있다."
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-16",
@@ -2909,7 +2909,7 @@
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-1",
     "title": "Regression Mid Term",
     "section": "(1)",
-    "text": "(1)\n\\(\\beta\\)에 대한 최소제곱추정량(LSE) \\(\\hat{\\beta}\\)을 구하시오\nanswer\n\\(\\hat{\\beta} = argmin_{\\beta \\in R} S = \\sum^n_{i=1} (y_i - \\beta x_i)^2 \\to \\frac{\\partial S}{\\partial \\beta}|_{\\beta = \\hat{\\beta}} = 0\\)\n\\(\\frac{\\partial S}{\\partial \\beta} = \\sum^n_{i=1} (-2x_i)(y_i - \\beta x_i) \\to \\sum^n_{i=1} x_i(y_i - \\hat{\\beta}x_i) = 0 \\to \\hat{\\beta} = \\frac{\\sum^n_{i=1} x_iy_i}{\\sum^n_{i=1} x^2_i}\\)"
+    "text": "(1)\n\\(\\beta\\)에 대한 최소제곱추정량(\\(LSE\\)) \\(\\hat{\\beta}\\)을 구하시오\nanswer\n\\(\\hat{\\beta} = argmin_{\\beta \\in R} S = \\sum^n_{i=1} (y_i - \\beta x_i)^2 \\to \\frac{\\partial S}{\\partial \\beta}|_{\\beta = \\hat{\\beta}} = 0\\)\n\\(\\frac{\\partial S}{\\partial \\beta} = \\sum^n_{i=1} (-2x_i)(y_i - \\beta x_i) \\to \\sum^n_{i=1} x_i(y_i - \\hat{\\beta}x_i) = 0 \\to \\hat{\\beta} = \\frac{\\sum^n_{i=1} x_iy_i}{\\sum^n_{i=1} x^2_i}\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-2",
@@ -3042,14 +3042,14 @@
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-24",
     "title": "Regression Mid Term",
     "section": "(1)",
-    "text": "(1)\n가중회귀최소추정량(\\(WLSE\\))을 구하기 위한 가중오차제곱합(\\(Q\\))를 정의하여라.\nanswer"
+    "text": "(1)\n가중회귀최소추정량(\\(WLSE\\))을 구하기 위한 가중오차제곱합(\\(Q\\))를 정의하여라.\nanswer\n\\(Q = \\sum^n_{i=1} w_i \\{ y_i - (\\beta_0 + \\beta_1 x_i) \\}^2\\)\nQuadratic Form"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-25",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-25",
     "title": "Regression Mid Term",
     "section": "(2)",
-    "text": "(2)\n가중오차제곱합을 가장 작게 하는 WLSE를 구하여라.\nanswer"
+    "text": "(2)\n가중오차제곱합을 가장 작게 하는 WLSE를 구하여라.\nanswer\n가중최소제곱추정량(WLSE) : \\((\\hat{\\beta}_0,\\hat{\\beta}_1) = argmin_{\\beta_0,\\beta_1 \\in R} \\sum^n_{i=1}w_i \\{ y_i - (\\beta_0 + \\beta_1 x_i)\\}^2\\)\n\\(\\hat{\\beta}_1 = \\frac{\\sum w_i (x_i - \\bar{x}_w)(y_i - \\bar{y}_w)}{\\sum w_i(x_i - \\bar{x}_w)^2}\\)\n\\(\\hat{\\beta}_0 = \\bar{y}_w - \\hat{\\beta_1} \\bar{x}_w\\)\n단, \\(\\bar{x}_2 = \\frac{\\sum w_i x_i}{\\sum w_i}, \\bar{y}_w = \\frac{\\sum w_i y_i}{\\sum w_i}\\)"
   },
   {
     "objectID": "posts/rl/2022-12-05-rl-CH11.html",
