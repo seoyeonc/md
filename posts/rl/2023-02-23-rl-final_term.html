@@ -930,18 +930,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>혈압을 예측하기 위하여 교호작용을 포함하는 중회귀모형을 정의하시오.(성별의 경우 남자=1)</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \beta_3x_{i1}x_{i2} + \epsilon_i, \epsilon_i, i=1,\dots,10, \epsilon_i \sim_{i.i.d.}N(0,\sigma^2)\)</span></p>
-<p><span class="math inline">\(x_1\)</span> : 체중, <span class="math inline">\(y\)</span>: 혈압. <span class="math inline">\(x_2\)</span>: 성별, <span class="math inline">\(x_2 = \begin{cases}1 &amp; \text{남자}\\0 &amp; \text{여자}\end{cases}\)</span></p>
+<p><span class="math inline">\(x_1\)</span> : 체중, <span class="math inline">\(y\)</span>: 혈압</p>
+<p><span class="math inline">\(x_2\)</span>: 성별, <span class="math inline">\(x_2 = \begin{cases}1 &amp; \text{남자}\\0 &amp; \text{여자}\end{cases}\)</span></p>
 </section>
 <section id="section-20" class="level2">
 <h2 class="anchored" data-anchor-id="section-20">(2)</h2>
 <p>위의 모형을 행렬 형태로 표현하시오.(<span class="math inline">\(X,\mathbf{y,\beta,\epsilon}\)</span>을 정확하게 표현)</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(\mathbf{y} = X\mathbf{\beta + \epsilon}, \mathbf{\epsilon} \sim N(0,I_n\sigma^2)\)</span></p>
-<p><span class="math inline">\(\mathbf{y} = \begin{pmatrix}120\\130\\130\\155\\149\\150\\160\\125\\135\\140\end{pmatrix}, X = \begin{pmatrix}70\\60\\88\\101\\80\\98\\90\\77\\65\\70 \end{pmatrix}, \mathbf{\beta} = \begin{pmatrix}\beta_0\\ \beta_1 \\ \beta_2 \end{pmatrix}, \mathbf{\epsilon} = \begin{pmatrix}\epsilon_1 \\ \epsilon_2\\ \epsilon_3\\ \epsilon_4\\ \epsilon_5\\ \epsilon_6\\ \epsilon_7\\ \epsilon_8\\ \epsilon_9\\ \epsilon_{10} \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(\mathbf{y} = \begin{pmatrix}120\\130\\130\\155\\149\\150\\160\\125\\135\\140\end{pmatrix}, X = \begin{pmatrix}1&amp; 70&amp;1&amp;70\\1&amp;60&amp;0&amp;0\\1&amp;88&amp;1&amp;88\\1&amp;101&amp;0&amp;0\\1&amp;80&amp;0&amp;0\\1&amp;98&amp;1&amp;98\\1&amp;90&amp;0&amp;0\\1&amp;77&amp;1&amp;77\\1&amp;65&amp;0&amp;0\\1&amp;70&amp;0&amp;0 \end{pmatrix}, \mathbf{\beta} = \begin{pmatrix}\beta_0\\ \beta_1 \\ \beta_2 \end{pmatrix}, \mathbf{\epsilon} = \begin{pmatrix}\epsilon_1 \\ \epsilon_2\\ \epsilon_3\\ \epsilon_4\\ \epsilon_5\\ \epsilon_6\\ \epsilon_7\\ \epsilon_8\\ \epsilon_9\\ \epsilon_{10} \end{pmatrix}\)</span></p>
 </section>
 <section id="section-21" class="level2">
 <h2 class="anchored" data-anchor-id="section-21">(3)</h2>
-<p>위 모형의 적합 결과가 다음과 같다고 하자. 빈 칸을 채워 넣으시오. 마지막 칸에는 개별회귀계수에 대한 유의성검정을 위한 가설과, 검정결과(기각, 기각못함)를 적으시오.(풀이 있어야 함) 그리고 분산분석표를 이용하여 회귀모형의 유의성 검정읗 하시오.(유의수준 <span class="math inline">\(\alpha = 0.05\)</span>)</p>
+<p>위 모형의 적합 결과가 다음과 같다고 하자. 빈 칸을 채워 넣으시오. 마지막 칸에는 개별회귀계수에 대한 유의성검정을 위한 가설과, 검정결과(기각, 기각못함)를 적으시오.(풀이 있어야 함) 그리고 분산분석표를 이용하여 회귀모형의 유의성 검정을 하시오.(유의수준 <span class="math inline">\(\alpha = 0.05\)</span>)</p>
 <p><strong>answer</strong></p>
 <p><span class="math display">\[\text{추정}\]</span></p>
 <table class="table">
@@ -994,6 +995,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p><span class="math inline">\(t_0 = \frac{\hat{\beta}_i}{\hat{s.e.}(\hat{\beta}_i)}\)</span>, 기각역 <span class="math inline">\(|t_0| &gt; t_{\alpha/2}(n-p-1) = t_{0.025}(6) = 2.45\)</span></p>
 <p><span class="math inline">\(H_0: \beta_i = 0, H_1: \beta_i \neq 0\)</span></p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="dv">6</span>),<span class="dv">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+2.45
+</div>
+</div>
 <p><span class="math display">\[\text{분산분석표}\]</span></p>
 <table class="table">
 <colgroup>
@@ -1039,12 +1046,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(H_0 : \beta_1 = \beta_2 = \beta_3 = 0 \text{ vs. } H_1 \text{ not } H_0\)</span></p>
 <p><span class="math inline">\(F_0 &gt; F_{\alpha}(p,n-p-1) = F_{0.05}(3,6) = 4.76\)</span></p>
 <p>이므로 <span class="math inline">\(H_0\)</span>기각 가능, 즉 유의수준 0.05에서 회귀직선 유의</p>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">120</span>,<span class="dv">130</span>,<span class="dv">130</span>,<span class="dv">155</span>,<span class="dv">149</span>,<span class="dv">150</span>,<span class="dv">160</span>,<span class="dv">125</span>,<span class="dv">135</span>,<span class="dv">140</span>) <span class="co"># 혈압</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">60</span>,<span class="dv">88</span>,<span class="dv">101</span>,<span class="dv">80</span>,<span class="dv">98</span>,<span class="dv">90</span>,<span class="dv">77</span>,<span class="dv">65</span>,<span class="dv">70</span>) <span class="co"># 체중</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>) <span class="co"># 성별, 남, 여, 남, 여, 여, 남, 여, 남, 여, 여</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(y,x1,x2)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x1<span class="sc">+</span>x2<span class="sc">+</span>x1<span class="sc">*</span>x2,df))</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+<caption>A anova: 4 × 5</caption>
+<thead>
+    <tr><th></th><th scope="col">Df</th><th scope="col">Sum Sq</th><th scope="col">Mean Sq</th><th scope="col">F value</th><th scope="col">Pr(&gt;F)</th></tr>
+    <tr><th></th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">x1</th><td>1</td><td>729.96957</td><td>729.96957</td><td>29.126527</td><td>0.001668766</td></tr>
+    <tr><th scope="row">x2</th><td>1</td><td>739.42724</td><td>739.42724</td><td>29.503898</td><td>0.001614837</td></tr>
+    <tr><th scope="row">x1:x2</th><td>1</td><td> 32.63107</td><td> 32.63107</td><td> 1.302013</td><td>0.297333468</td></tr>
+    <tr><th scope="row">Residuals</th><td>6</td><td>150.37211</td><td> 25.06202</td><td>       NA</td><td>         NA</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qf</span>(<span class="fl">0.95</span>,<span class="dv">3</span>,<span class="dv">6</span>),<span class="dv">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+4.76
+</div>
+</div>
 </section>
 <section id="section-22" class="level2">
 <h2 class="anchored" data-anchor-id="section-22">(4)</h2>
 <p>(3)의 결과를 보고, 결정계수(<span class="math inline">\(R^2\)</span>) 와 수정된 결정계수(<span class="math inline">\(R^2_{sdj}\)</span>) 구하시오.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(R^2 = \frac{SSR}{SST} = 0.9551, R^2_{adj} = 1-\frac{SSE/(n-p-1)}{SST/(n-1)} = 0.9326\)</span></p>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">1578.14</span><span class="sc">/</span><span class="fl">1652.4</span>,<span class="dv">4</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+0.9551
+</div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">1</span><span class="sc">-</span>(<span class="fl">74.26</span><span class="sc">/</span><span class="dv">6</span>)<span class="sc">/</span>(<span class="fl">1652.4</span><span class="sc">/</span><span class="dv">9</span>),<span class="dv">4</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+0.9326
+</div>
+</div>
 </section>
 <section id="section-23" class="level2">
 <h2 class="anchored" data-anchor-id="section-23">(5)</h2>
@@ -1111,7 +1159,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>기각역: <span class="math inline">\(|t_0| &gt; t_{\alpha/2}(n-p-1) = t_{0.025}(7) = 2.36\)</span></p>
 <p><span class="math inline">\(E(y|\text{남성}) = \beta_0 + \beta_1 x_1 + \beta_2 = \beta_0 + \beta_2 + \beta_1 x_1\)</span></p>
 <p><span class="math inline">\(E(y|\text{여성}) = \beta_0 + \beta_1x_1\)</span></p>
-<p><span class="math inline">\(H_0:\beta_2\neq-\)</span>을 기각할 수 있으므로, 성별에 따른 평균 혈압이 다르다고 할 수 있다.</p>
+<p><span class="math inline">\(H_0:\beta_2\neq 0\)</span>을 기각할 수 있으므로, 성별에 따른 평균 혈압이 다르다고 할 수 있다.</p>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="dv">7</span>),<span class="dv">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+2.36
+</div>
+</div>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">120</span>,<span class="dv">130</span>,<span class="dv">130</span>,<span class="dv">155</span>,<span class="dv">149</span>,<span class="dv">150</span>,<span class="dv">160</span>,<span class="dv">125</span>,<span class="dv">135</span>,<span class="dv">140</span>) <span class="co"># 혈압</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">60</span>,<span class="dv">88</span>,<span class="dv">101</span>,<span class="dv">80</span>,<span class="dv">98</span>,<span class="dv">90</span>,<span class="dv">77</span>,<span class="dv">65</span>,<span class="dv">70</span>) <span class="co"># 체중</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>) <span class="co"># 성별, 남, 여, 남, 여, 여, 남, 여, 남, 여, 여</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(y,x1,x2)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x1<span class="sc">+</span>x2,df))</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+<caption>A anova: 3 × 5</caption>
+<thead>
+    <tr><th></th><th scope="col">Df</th><th scope="col">Sum Sq</th><th scope="col">Mean Sq</th><th scope="col">F value</th><th scope="col">Pr(&gt;F)</th></tr>
+    <tr><th></th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">x1</th><td>1</td><td>729.9696</td><td>729.96957</td><td>27.92185</td><td>0.001142928</td></tr>
+    <tr><th scope="row">x2</th><td>1</td><td>739.4272</td><td>739.42724</td><td>28.28361</td><td>0.001101377</td></tr>
+    <tr><th scope="row">Residuals</th><td>7</td><td>183.0032</td><td> 26.14331</td><td>      NA</td><td>         NA</td></tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 </section>
 <section id="section-26" class="level1">
@@ -1303,7 +1379,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="2" type="1">
 <li>이상치</li>
 </ol>
-<p><span class="math inline">\(|r^*_i| \ge t_{\alpha}(n-p-1) = t_{0.05}(15-3-2) = 2.23\)</span> 2번 관측값</p>
+<p><span class="math inline">\(|r^*_i| \ge t_{\alpha/2}(n-p-1) = t_{0.05/2}(15-3-2) = 2.23\)</span> 2번 관측값</p>
+<div class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="dv">10</span>),<span class="dv">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+2.23
+</div>
+</div>
 <ol start="3" type="1">
 <li>영향점</li>
 </ol>
