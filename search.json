@@ -2396,168 +2396,168 @@
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html",
     "href": "posts/rl/2023-02-23-rl-final_term.html",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "",
     "text": "기말고사"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-1",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-1",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(1)",
     "text": "(1)\n\\(\\sum^n_{j=1} Var(\\hat{y}_j) = (p+1) \\sigma^2\\)\nanswer\n\\(\\hat{\\bf{y}}= X\\hat{\\beta} = X(X^\\top X)^{-1} X^\\top y = Hy\\)\n\\(Var(X\\hat{\\beta}) = XVar(\\hat{\\beta})X^\\top\\)\n\\(Var(\\hat{\\beta}) = Var((X^\\top X)^{-1} X^\\top y) = (X^\\top X)^{-1} X^\\top Var(y)X(X^\\top X)^{-1} = (X^\\top X)^{-1} X^\\top X(X^\\top X)^{-1} \\sigma^2 = (X^\\top X )^{-1} \\sigma^2\\)\n\\(Var(\\hat{y}) = Var(X\\hat{\\beta}) = X(X^\\top X)^{-1} X^\\top \\sigma^2\\)\n\\(\\to Var(\\hat{y}) = HVar(y) H^\\top = HH\\sigma^2 = H\\sigma^2\\)\n\\(\\star H^\\top = H, H^2 = H, Var(y) = I_n \\sigma^2\\)\n$^{n}_{j=1} Var(j) = tr(Var()) = tr(H^2) = ^2 tr(H) = tr((XX){-1} XX)2 = tr(I{p+1})^2 = (p+1)^2 $\n\\(\\star tr(X (X^\\top X)^{-1} X^\\top)\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-2",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-2",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(2)",
     "text": "(2)\n\\(Cov(\\mathbf{e,y}) = \\sigma^2[I_n - X(X^\\top X)^{-1} X^\\top]\\)\nanswer\n\\(\\bf{e} = y - \\hat{y} = y - Hy = (I-H)y\\)\n\\(Cov(\\bf{e},y) = Cov((I-H)y,y) = (I-H)Var(y) = (I-H) \\sigma^2\\)\n\\(\\star Cov(Ax,y) = A Cov(X,Y)\\)\n\\(\\star Var(y) = \\sigma^2\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-3",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-3",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(3)",
     "text": "(3)\n\\(Cov(\\mathbf{e,\\hat{y}}) = O_n\\)\nanswer\n\\(Cov(e(I - H)\\bf{y},Hy) = (I-H) Cov(y,y)H^\\top = (I-H)H\\sigma^2 = \\mathbb{O}_n \\sigma^2\\)\n\\(\\star Cov(Ax,By) = ACov(X,Y)B^\\top\\)\n\\(\\star H^\\top= H\\)\n\\(\\star H^2 = H\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-4",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-4",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(4)",
     "text": "(4)\n\\(Cov(\\mathbf{e,\\hat{\\beta}}) = O_{n \\times (p+1)}\\)\nanswer\n\\(Cov((I-H)\\bf{y},(X^\\top X)^{-1} y) = (I-H) Cov(y,y) X (X^\\top X)^{-1} = (I - X(X^\\top X)^{-1} X^\\top ) X (X^\\top X)^{-1} \\sigma^2 = \\{ X(X^\\top X)^{-1} - X(X^\\top X)^{-1} \\} \\sigma^2 = \\mathbb{O}_{n \\times ([+1)}\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-5",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-5",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(5)",
     "text": "(5)\n\\(Cov(\\mathbf{\\epsilon, \\hat{\\beta}}) = \\sigma^2 X(X^\\top X)^{-1}\\)\nanswer\n\\(\\bf{\\hat{\\beta}} = (X^\\top X)^{-1} X^\\top y = (X^\\top X)^{-1} X^\\top (X\\beta + \\epsilon) = \\beta + (X^\\top X)^{-1} X^\\top \\epsilon\\)\n\\(Cov(\\bf{\\epsilon} , \\beta + (X^\\top X)^{-1} X^\\top \\epsilon ) = Cov(\\epsilon, \\beta) + Cov(\\epsilon, \\epsilon)X(X^\\top X)^{-1} = \\sigma^2 X(X^\\top X)^{-1}\\)\n\\(\\star Cov(\\epsilon, \\beta) = 0\\)\n\\(\\star Cov(\\epsilon, \\epsilon) = I_n \\sigma^2\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-6",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-6",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(6)",
     "text": "(6)\n\\(\\mathbf{e^\\top y} = SSE\\)\nanswer\n\\(\\sum^{n}_{j=1} e_j y_j = \\bf{e^\\top y} = \\{ (I - H)y\\}^\\top y = y^\\top (I-H)y\\)\n\\(\\star \\bf{e}^\\top (e_1, \\dots , e_n) = (y-\\hat{y})^\\top\\)\n\\(\\star \\bf{y}^\\top = (y_1 , \\dots , y_n)\\)\n\\(SSE = \\sum^n_{j=1} (y_i - \\hat{y}_j)^2 = (\\bf{y} - \\hat{y} ) ^\\top ( y - \\hat{y} ) = e^\\top e = \\{ (I - H)y \\}^\\top \\{ (I - H)y \\} = y^\\top (I - H) (I-H)y = y^\\top (I - H)y\\)\n\\(\\star I - H_H+H^2 = I-H, H^2 = H\\)\n\\(\\therefore \\sum^{n}_{j=1} e_j y_j = SSE\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-7",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-7",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(7)",
     "text": "(7)\n\\(\\mathbf{e^\\top \\hat{y}}=0\\)\nanswer\n\\(\\sum^{n}_{j=1} \\bf{e_j \\hat{y}_j} = e^\\top \\hat{y} = y^\\top (I-H) Hy = y^\\top_{1\\times n} \\mathbb{O}_{n\\times n} y_{n \\times 1} = 0\\)\n\\(\\star H - H^2 = H - H = \\mathbb{O}_{n \\times n}\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-8",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-8",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(8)",
     "text": "(8)\n\\(E(\\frac{SSE}{n-p-1}) = \\sigma^2\\)\nanswer\n정리 5.1\n\\(y \\sim N(\\mu,V)\\) 이면\n\\(E(y^\\top A y) = tr(AV) + \\mu^\\top A \\mu, cov(y,y^\\top A y) = 2VA\\mu\\)\n\\(\\frac{SSE}{\\sigma^2} = y^\\top \\frac{1}{\\sigma^2}(I-H)y\\)\n\\(B = \\frac{1}{\\sigma^2}(I-H)\\)\n\\(y \\sim N(\\beta_0 + \\beta_1 X, I \\sigma^2)\\)\n\\(BV = \\frac{1}{\\sigma^2}(I-H)I\\sigma^2 = B, BV=B\\)\n\\(B, BV\\)는 멱등행렬\n\\(tr(BV) = tr(B) = tr((I-H) = tr(I) - tr(B) = n-p-1\\)\n\\(\\mu^\\top B \\mu = \\frac{1}{\\sigma^2}\\begin{pmatrix}\\beta_0 & \\beta_1\\end{pmatrix} \\begin{pmatrix}1^\\top \\\\ X^\\top \\end{pmatrix}(I-H)\\begin{pmatrix} 1 & X \\end{pmatrix} \\begin{pmatrix} \\beta_0 \\\\ \\beta_1 \\end{pmatrix}\\)\n\\(= \\frac{1}{\\sigma^2}\\begin{pmatrix} \\beta_0 & \\beta_1 \\end{pmatrix} \\begin{pmatrix}1^\\top I - 1^\\top H \\\\ X^\\top I - X^\\top H \\end{pmatrix} \\begin{pmatrix} 1 & X \\end{pmatrix} \\begin{pmatrix} \\beta_0 \\\\ \\beta_1 \\end{pmatrix}\\)\n\\(= \\frac{1}{\\sigma^2}\\begin{pmatrix}\\beta_0 & \\beta_1\\end{pmatrix}\\begin{pmatrix} 1^\\top I - 1^\\top H & 1^\\top I X - 1^\\top H X \\\\ X^\\top I - X^\\top H & X^\\top I X - X^\\top H X \\end{pmatrix} \\begin{pmatrix} \\beta_0 \\\\ \\beta_1 \\end{pmatrix}\\)\n\n\\(1^\\top I - 1^\\top H = n-n = 0\\)\n\\(1^\\top I X - 1^\\top H X = 1^\\top(I - H)X = 1^\\top(I - X(X^\\top X)^{-1}X^\\top)X = 1^\\top(X-X) = 0\\)\n\\(X^\\top I - X^\\top H = X^\\top(I - H) = X^\\top(I - X(X^\\top X)^{-1}X^\\top = X^\\top - X^\\top = 0\\)\n\\(X^\\top I X - X^\\top H X = X^\\top(I - H)X = X^\\top(I - X(X^\\top X)^{-1} X^\\top)X = 0\\)\n\n\\(\\therefore \\mu^\\top B \\mu = 0\\)\n\\(E(\\frac{SSE}{\\sigma^2}) = n-p-1\\)\n\\(E(SSE) = (n-p-1)\\sigma^2\\)\n\\(\\therefore E(\\frac{SSE}{(n-p-1)}) = \\sigma^2\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-10",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-10",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(1)",
     "text": "(1)\n행렬을 이용하여 중회귀모형을 정의하여라(\\(X,\\mathbf{y,\\beta,\\epsilon}\\)을 정확하게 표현)\nanswer\n\\(\\mathbf{y = X\\beta + \\epsilon, \\epsilon} \\sim N(X\\mathbf{\\beta}, I_n\\sigma^2)\\)\n\\(\\mathbf{y} = \\begin{pmatrix} 1 \\\\5\\\\0\\\\4\\\\4\\\\-1 \\end{pmatrix}, X = \\begin{pmatrix} 1&1&1\\\\1&2&1\\\\1&1&2\\\\1&3&1\\\\1&3&2\\\\1&3&3 \\end{pmatrix}, \\mathbf{\\beta} = \\begin{pmatrix} \\beta_0 \\\\ \\beta_1 \\\\ \\beta_2\\end{pmatrix}, \\mathbf{\\epsilon} = \\begin{pmatrix} \\epsilon_1 \\\\ \\epsilon_2 \\\\ \\epsilon_3 \\\\ \\epsilon_4 \\\\ \\epsilon_5 \\\\ \\epsilon_6\\end{pmatrix}\\)\n\n위에서 구한 \\(X,\\mathbf{y}\\)에 대하여 아래의 결과를 얻었을 때, 다음 물음에 답하여라.\n\n\\[(X^\\top X)^{-1} = \\begin{pmatrix} 1.52 & -0.35 & -0.36 \\\\ -0.35 & 0.23 & -0.09 \\\\ -0.36 & -0.09 & 0.34 \\end{pmatrix}, X^\\top \\mathbf{y} = \\begin{pmatrix} 13 \\\\ 32 \\\\ 15 \\end{pmatrix}, \\mathbf{y^\\top y} = 59\\]"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-11",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-11",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(2)",
     "text": "(2)\n\\(\\beta_0, \\beta_1, \\beta_2\\)를 추정하시오.\nanswer\n\\(\\mathbf{\\hat{\\beta}} = (X^\\top X)^{-1} X^\\top \\mathbf{y} = \\begin{pmatrix} 3.16 \\\\ 1.46 \\\\ -2.46 \\end{pmatrix}\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-12",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-12",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(3)",
     "text": "(3)\n분산분석표를 작성하고, 유의수준 \\(\\alpha=0.1\\)에서 회귀직선에 대한 유의성 검정을 수행하시오.\nanswer\n\n\n\n\n\n\n\n\n\n\n요인\n제곱합(SS)\n자유도(df)\n평균제곱(MS)\n\\(F_0\\)\n\n\n\n\n회귀\n23.0769\n2\n11.5385\n4.4628\n\n\n잔차\n7.7564\n3\n2.5855\n\n\n\n계\n30.8333\n5\n\n\n\n\n\n\\(SST = \\mathbf{y^\\top y} - \\frac{1}{n}(\\sum y_i)^2 = 59 - 28.1667 = 30.8333\\)\n\\(SSR = SST - SSE\\)\n- \\(H_0: \\beta_1 = \\beta_2 = 0 \\text{ vs. } H_1 : \\text{ not } H_0\\)\n- 기각역: \\(F_0 \\ge F_{0.1}(2,3) = 5.46\\)\n- 결론: 기각역에 속하지 않으므로 \\(H_0\\) 기각 못함. 즉, 회귀모형은 유의수준 0.1에서 유의하지 않다."
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-13",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-13",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(4)",
     "text": "(4)\n결정계수(\\(R^2\\))와 수정된 결정계수(\\(R^2_{sdj}\\)) 구하시오.\nanswer\n\\(R^2 = \\frac{SSR}{SST} = 0.7484, R^2_{adj} = 1-\\frac{SSE/(n-p-1)}{SST/(n-1)} = 0.5807\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-14",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-14",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(5)",
     "text": "(5)\n오차항의 분산 \\(\\sigma^2\\)에 대한 추정치를 구하시오.\nanswer\n\\(\\hat{\\sigma}^2 = MSE = \\frac{SSE}{n-p-1} = 2.5855\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-15",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-15",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(6)",
     "text": "(6)\n\\(\\hat{\\beta}_2\\)의 의미를 설명하고, 가설 \\(H_0: \\beta_2 = 0, H_1 : \\beta_2 <0\\)을 \\(\\alpha = 0.05\\)로 검정하시오.\nanswer\n\\(X_1\\)이 일정할 떄, \\(X_2\\)가 1단위 증가하면 \\(y\\)는 \\(\\hat{\\beta}_2\\)만큼 증가한다.\n가설검정\n- \\(Var(\\hat{\\beta}_2) = (X^\\top X)^{-1}_{(3,3)} \\sigma^2 = 0.34 \\sigma^2\\)\n- \\(\\hat{s.e.}(\\hat{\\beta}_2) = \\sqrt{0.34 \\times MSE } = \\sqrt{0.34 \\times 2.5855} = 0.9376\\)\n- \\(t_0 = \\frac{-2.46}{0.9376} = -2.62372\\)\n- 기각역: \\(t_0 < -t_{0.05}(3) = -2.35\\)\n- 결론: \\(H_0\\)기각 가능, 즉 0보다 작다고 할 수 있다.\n\nround(qt(0.05,3),2)\n\n-2.35"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-16",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-16",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(7)",
     "text": "(7)\n\\(\\beta_1\\)의 \\(90\\)% 신뢰구간을 구하시오.\nanswer\n\\(Var(\\hat{\\beta}_1) = (X^\\top X)^{-1}_{(2,2)} \\sigma^2 = 0.23 \\sigma^2\\)\n\\(\\hat{s.e.}(\\hat{\\beta}_1) = \\sqrt{0.23 \\times 2.5855} = 0.7711\\)\n\\(t_{0.5}(3) = 2.35\\)\n\\(\\hat{\\beta}_1 \\pm t_{0.05}(3)\\hat{s.e.}(\\hat{\\beta}_1) = (-0.3521,3.2721)\\)\n\nround(qt(0.95,3),2)\n\n2.35"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-17",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-17",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(8)",
     "text": "(8)\n\\(x_1 = x_2 = 2\\)에서 \\(E(y)\\)의 \\(95\\)% 신뢰구간을 구하시오.\nanswer\n\\(x_0 = \\begin{pmatrix} 1 \\\\ 2\\\\2\\end{pmatrix}\\)\n\\(\\hat{\\mu}_0 = x^\\top_0 \\mathbf{\\hat{\\beta}} = \\begin{pmatrix} 1 &2&2\\end{pmatrix}\\begin{pmatrix}3.16\\\\1.46\\\\-2.46\\end{pmatrix} = 1.16\\)\n\\(Var(\\hat{\\mu}_0) = x_0^\\top(X^\\top X)^{-1} x_0 \\sigma^2 = 0.24 \\sigma^2\\)\n\\(\\star x_0^\\top(X^\\top X)^{-1} x_0 = \\begin{pmatrix}1&2&2\\end{pmatrix}\\begin{pmatrix}1.52&-0.35&-0.36\\\\-0.35&0.23&-0.09\\\\-0.36&-0.09&0.34\\end{pmatrix} \\begin{pmatrix}1\\\\2\\\\2 \\end{pmatrix} = 0.24\\)\n\\(\\hat{s.e.}(\\hat{\\mu}_0) = \\sqrt{0.24 \\times 2.5855} = 0.7877\\)\n\\(1.16 \\pm t_{0.025}(3) \\hat{s.e.}(\\hat{\\mu}_0) = (-1.3449,3.6649)\\)\n\nround(qt(0.975,3),2)\n\n3.18"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-19",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-19",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(1)",
     "text": "(1)\n혈압을 예측하기 위하여 교호작용을 포함하는 중회귀모형을 정의하시오.(성별의 경우 남자=1)\nanswer\n\\(y_i = \\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\beta_3x_{i1}x_{i2} + \\epsilon_i, \\epsilon_i, i=1,\\dots,10, \\epsilon_i \\sim_{i.i.d.}N(0,\\sigma^2)\\)\n\\(x_1\\) : 체중, \\(y\\): 혈압\n\\(x_2\\): 성별, \\(x_2 = \\begin{cases}1 & \\text{남자}\\\\0 & \\text{여자}\\end{cases}\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-20",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-20",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(2)",
     "text": "(2)\n위의 모형을 행렬 형태로 표현하시오.(\\(X,\\mathbf{y,\\beta,\\epsilon}\\)을 정확하게 표현)\nanswer\n\\(\\mathbf{y} = X\\mathbf{\\beta + \\epsilon}, \\mathbf{\\epsilon} \\sim N(0,I_n\\sigma^2)\\)\n\\(\\mathbf{y} = \\begin{pmatrix}120\\\\130\\\\130\\\\155\\\\149\\\\150\\\\160\\\\125\\\\135\\\\140\\end{pmatrix}, X = \\begin{pmatrix}1& 70&1&70\\\\1&60&0&0\\\\1&88&1&88\\\\1&101&0&0\\\\1&80&0&0\\\\1&98&1&98\\\\1&90&0&0\\\\1&77&1&77\\\\1&65&0&0\\\\1&70&0&0 \\end{pmatrix}, \\mathbf{\\beta} = \\begin{pmatrix}\\beta_0\\\\ \\beta_1 \\\\ \\beta_2 \\end{pmatrix}, \\mathbf{\\epsilon} = \\begin{pmatrix}\\epsilon_1 \\\\ \\epsilon_2\\\\ \\epsilon_3\\\\ \\epsilon_4\\\\ \\epsilon_5\\\\ \\epsilon_6\\\\ \\epsilon_7\\\\ \\epsilon_8\\\\ \\epsilon_9\\\\ \\epsilon_{10} \\end{pmatrix}\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-21",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-21",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(3)",
-    "text": "(3)\n위 모형의 적합 결과가 다음과 같다고 하자. 빈 칸을 채워 넣으시오. 마지막 칸에는 개별회귀계수에 대한 유의성검정을 위한 가설과, 검정결과(기각, 기각못함)를 적으시오.(풀이 있어야 함) 그리고 분산분석표를 이용하여 회귀모형의 유의성 검정을 하시오.(유의수준 \\(\\alpha = 0.05\\))\nanswer\n\\[\\text{추정}\\]\n\n\n\n\n\n\n\n\n\n\n\nEstimate\nStd.Error\nt value\n검정결과\n\n\n\n\n절편\\(\\beta_0\\)\n\\(\\hat{\\beta}_0\\)=70.681\n10.779\n6.557\n기각\n\n\n체중\\(\\beta_1\\)\n\\(\\hat{\\beta}_1\\)=0.988\n0.1461\n6.763\n기각\n\n\n성별\\(\\beta_2\\)\n\\(\\hat{\\beta}_2\\)=32.435\n15.830\n-2.049\n기각못함\n\n\n교호작용\\(\\beta_3\\)\n\\(\\hat{\\beta}_3\\)=0.138\n0.197\n0.702\n기각못함\n\n\n\n\\(t_0 = \\frac{\\hat{\\beta}_i}{\\hat{s.e.}(\\hat{\\beta}_i)}\\), 기각역 \\(|t_0| > t_{\\alpha/2}(n-p-1) = t_{0.025}(6) = 2.45\\)\n\\(H_0: \\beta_i = 0, H_1: \\beta_i \\neq 0\\)\n\nround(qt(0.975,6),2)\n\n2.45\n\n\n\\[\\text{분산분석표}\\]\n\n\n\n\n\n\n\n\n\n\n요인\n제곱합(SS)\n자유도(df)\n평균제곱(MS)\n\\(F_0\\)\n\n\n\n\n회귀\n1578.14\n3\n526.0467\n42.5031\n\n\n잔차\n74.26\n6\n12.3767\n\n\n\n계\n1652.4\n9\n\n\n\n\n\n\\(H_0 : \\beta_1 = \\beta_2 = \\beta_3 = 0 \\text{ vs. } H_1 \\text{ not } H_0\\)\n\\(F_0 > F_{\\alpha}(p,n-p-1) = F_{0.05}(3,6) = 4.76\\)\n이므로 \\(H_0\\)기각 가능, 즉 유의수준 0.05에서 회귀직선 유의\n\ny <- c(120,130,130,155,149,150,160,125,135,140) # 혈압\nx1 <- c(70,60,88,101,80,98,90,77,65,70) # 체중\nx2 <- c(1,0,1,0,0,1,0,1,0,0) # 성별, 남, 여, 남, 여, 여, 남, 여, 남, 여, 여\ndf <- data.frame(y,x1,x2)\nanova(lm(y~x1+x2+x1*x2,df))\n\n\n\nA anova: 4 × 5\n\n    DfSum SqMean SqF valuePr(>F)\n    <int><dbl><dbl><dbl><dbl>\n\n\n    x11729.96957729.9695729.1265270.001668766\n    x21739.42724739.4272429.5038980.001614837\n    x1:x21 32.63107 32.63107 1.3020130.297333468\n    Residuals6150.37211 25.06202       NA         NA\n\n\n\n\n\nround(qf(0.95,3,6),2)\n\n4.76"
+    "text": "(3)\n위 모형의 적합 결과가 다음과 같다고 하자. 빈 칸을 채워 넣으시오. 마지막 칸에는 개별회귀계수에 대한 유의성검정을 위한 가설과, 검정결과(기각, 기각못함)를 적으시오.(풀이 있어야 함) 그리고 분산분석표를 이용하여 회귀모형의 유의성 검정을 하시오.(유의수준 \\(\\alpha = 0.05\\))\nanswer\n\\[\\text{추정}\\]\n\n\n\n\n\n\n\n\n\n\n\nEstimate\nStd.Error\nt value\n검정결과\n\n\n\n\n절편\\(\\beta_0\\)\n\\(\\hat{\\beta}_0\\)=70.681\n10.779\n6.557\n기각\n\n\n체중\\(\\beta_1\\)\n\\(\\hat{\\beta}_1\\)=0.988\n0.1461\n6.763\n기각\n\n\n성별\\(\\beta_2\\)\n\\(\\hat{\\beta}_2\\)=32.435\n15.830\n-2.049\n기각못함\n\n\n교호작용\\(\\beta_3\\)\n\\(\\hat{\\beta}_3\\)=0.138\n0.197\n0.702\n기각못함\n\n\n\n\\(t_0 = \\frac{\\hat{\\beta}_i}{\\hat{s.e.}(\\hat{\\beta}_i)}\\), 기각역 \\(|t_0| > t_{\\alpha/2}(n-p-1) = t_{0.025}(6) = 2.45\\)\n\\(H_0: \\beta_i = 0, H_1: \\beta_i \\neq 0\\)\n\nround(qt(0.975,6),2)\n\n2.45\n\n\n\\[\\text{분산분석표}\\]\n\n\n\n\n\n\n\n\n\n\n요인\n제곱합(SS)\n자유도(df)\n평균제곱(MS)\n\\(F_0\\)\n\n\n\n\n회귀\n1578.14\n3\n526.0467\n42.5031\n\n\n잔차\n74.26\n6\n12.3767\n\n\n\n계\n1652.4\n9\n\n\n\n\n\n\\(H_0 : \\beta_1 = \\beta_2 = \\beta_3 = 0 \\text{ vs. } H_1 \\text{ not } H_0\\)\n\\(F_0 > F_{\\alpha}(p,n-p-1) = F_{0.05}(3,6) = 4.76\\)\n이므로 \\(H_0\\)기각 가능, 즉 유의수준 0.05에서 회귀직선 유의\n\ny <- c(120,130,130,155,149,150,160,125,135,140) # 혈압\nx1 <- c(70,60,88,101,80,98,90,77,65,70) # 체중\nx2 <- c(1,0,1,0,0,1,0,1,0,0) # 성별, 남, 여, 남, 여, 여, 남, 여, 남, 여, 여\ndf <- data.frame(y,x1,x2)\nanova(lm(y~x1+x2+x1*x2,df))\n\n\n\nA anova: 4 × 5\n\n    DfSum SqMean SqF valuePr(>F)\n    <int><dbl><dbl><dbl><dbl>\n\n\n    x11729.96957729.9695729.1265270.001668766\n    x21739.42724739.4272429.5038980.001614837\n    x1:x21 32.63107 32.63107 1.3020130.297333468\n    Residuals6150.37211 25.06202       NA         NA\n\n\n\n\n\nround(qf(0.95,3,6),2)\n\n4.76\n\n\n\n직접해보기\n\nX <- matrix(c(rep(1,10),x1,x2,x1*x2),nrow=10,ncol=4)\nX\n\n\n\nA matrix: 10 × 4 of type dbl\n\n    1 70170\n    1 600 0\n    1 88188\n    11010 0\n    1 800 0\n    1 98198\n    1 900 0\n    1 77177\n    1 650 0\n    1 700 0\n\n\n\n\n\nbeta <- solve((t(X) %*% X))%*%t(X)%*%y\nbeta\n\n\n\nA matrix: 4 × 1 of type dbl\n\n     90.8235135\n      0.6954054\n    -43.5557840\n      0.3133906"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-22",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-22",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(4)",
     "text": "(4)\n(3)의 결과를 보고, 결정계수(\\(R^2\\)) 와 수정된 결정계수(\\(R^2_{sdj}\\)) 구하시오.\nanswer\n\\(R^2 = \\frac{SSR}{SST} = 0.9551, R^2_{adj} = 1-\\frac{SSE/(n-p-1)}{SST/(n-1)} = 0.9326\\)\n\nround(1578.14/1652.4,4)\n\n0.9551\n\n\n\nround(1-(74.26/6)/(1652.4/9),4)\n\n0.9326"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-23",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-23",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(5)",
     "text": "(5)\n(3)번의 결과를 보고 모형 적합 결과를 설명하여라.(각 회귀계수의 의미와 유의성 검정 결과)\nanswer\n\\(E(y|\\text{남성}) = \\beta_0 + \\beta_1 x_1+\\beta_2+\\beta_3x_1 = (\\beta_0+\\beta_2) + (\\beta_1 + \\beta_3)x_1\\)\n\\(E(y|\\text{여성}) = \\beta_0 + \\beta_1x_1\\)\n\\(\\hat{\\beta}_2\\): 유의하지 않음: 남성과 여성의 절편 차이 없음\n\\(\\hat{\\beta}_3\\): 유의하지 않음: 남성과 여성의 기울기 차이 없음\nanswer"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-24",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-24",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(6)",
     "text": "(6)\n이번에는 교호작용을 제외한 모형을 적합해 보았다. 모형을 정의하여라.\nanswer\n\\(y_i = \\beta_0 + \\beta_1 x_{1i} + \\beta_2 x_{2i} + \\epsilon_i , i=1,\\dots, 10, \\epsilon_i \\sim N(0,\\sigma^2)\\)"
   },
   {
     "objectID": "posts/rl/2023-02-23-rl-final_term.html#section-25",
     "href": "posts/rl/2023-02-23-rl-final_term.html#section-25",
-    "title": "Regression Final Term",
+    "title": "Advanced Regression Analysis Final Term",
     "section": "(7)",
     "text": "(7)\n(7)번의 결과가 다음과 같을 때, 빈 칸을 채우고 적합 결과에 대해 설명하여라. (3)번 참고.\nanswer\n\n\n\n\n\n\n\n\n\n\n\nEstimate\nStd.Error\nt value\n검정결과\n\n\n\n\n절편\n65.137\n7.059\n9.227\n기각\n\n\n체중\n1.064\n0.094\n11.264\n기각\n\n\n성별\n-21.482\n2.508\n-8.565\n기각\n\n\n\n\\(H_0: \\beta_i = 0 \\text{ vs. } H_1 : \\beta_i \\neq 0, i=1,2,3\\)\n기각역: \\(|t_0| > t_{\\alpha/2}(n-p-1) = t_{0.025}(7) = 2.36\\)\n\\(E(y|\\text{남성}) = \\beta_0 + \\beta_1 x_1 + \\beta_2 = \\beta_0 + \\beta_2 + \\beta_1 x_1\\)\n\\(E(y|\\text{여성}) = \\beta_0 + \\beta_1x_1\\)\n\\(H_0:\\beta_2\\neq 0\\)을 기각할 수 있으므로, 성별에 따른 평균 혈압이 다르다고 할 수 있다.\n\nround(qt(0.975,7),2)\n\n2.36\n\n\n\ny <- c(120,130,130,155,149,150,160,125,135,140) # 혈압\nx1 <- c(70,60,88,101,80,98,90,77,65,70) # 체중\nx2 <- c(1,0,1,0,0,1,0,1,0,0) # 성별, 남, 여, 남, 여, 여, 남, 여, 남, 여, 여\ndf <- data.frame(y,x1,x2)\nanova(lm(y~x1+x2,df))\n\n\n\nA anova: 3 × 5\n\n    DfSum SqMean SqF valuePr(>F)\n    <int><dbl><dbl><dbl><dbl>\n\n\n    x11729.9696729.9695727.921850.001142928\n    x21739.4272739.4272428.283610.001101377\n    Residuals7183.0032 26.14331      NA         NA"
   },
@@ -2900,154 +2900,154 @@
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html",
     "href": "posts/rl/2023-02-22-rl-mid_term.html",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "",
     "text": "중간고사"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-1",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-1",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(1)",
     "text": "(1)\n\\(\\beta\\)에 대한 최소제곱추정량(\\(LSE\\)) \\(\\hat{\\beta}\\)을 구하시오\nanswer\n\\(\\hat{\\beta} = argmin_{\\beta \\in R} S = \\sum^n_{i=1} (y_i - \\beta x_i)^2 \\to \\frac{\\partial S}{\\partial \\beta}|_{\\beta = \\hat{\\beta}} = 0\\)\n\\(\\frac{\\partial S}{\\partial \\beta} = \\sum^n_{i=1} (-2x_i)(y_i - \\beta x_i) \\to \\sum^n_{i=1} x_i(y_i - \\hat{\\beta}x_i) = 0 \\to \\hat{\\beta} = \\frac{\\sum^n_{i=1} x_iy_i}{\\sum^n_{i=1} x^2_i}\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-2",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-2",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(2)",
     "text": "(2)\n\\(E(\\hat{\\beta})\\)을 구하시오\nanswer\n\\(\\hat{\\beta} = \\frac{\\sum^n_{i=1} x_i y_i}{\\sum^n_{i=1} x^2_i} = \\sum^n_{i=1} \\frac{x_i}{\\sum^n_{j=1} s^2_j} y_i\\)\n\\(\\to E(\\hat{\\beta})= \\sum^n_{i=1} \\frac{x_i}{\\sum^n_{i=1} x^2_j} E(y_i) = \\sum^n_{i=1}\\frac{x_i}{\\sum^n_{j=1} x^2_j} \\beta x_i = \\beta\\frac{\\sum^n_{i=1} x^2_{i=1} x^2_i}{\\sum^n_{i=1} x^2_i} = \\beta\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-3",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-3",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(3)",
     "text": "(3)\n\\(Var(\\hat{\\beta})\\)을 구하시오\nanswer\n\\(Var(\\hat{\\beta}) = \\sum^n_{i=1} \\frac{x^2_i}{(\\sum^n_{j=1} x^2_j)^2} Var(y_i) = \\sum^n_{i=1} \\frac{x^2_i}{(\\sum^n_{j=1} x^2_j)^2} \\sigma^2 = \\sigma^2 \\frac{\\sum^n_{i=1} x^2_i}{(\\sum^n_{i=1} x^2_i)^2} = \\frac{\\sigma^2}{\\sum^n_{i=1} x^2_i}\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-4",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-4",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(4)",
     "text": "(4)\n\\(\\hat{\\beta}\\)의 표준오차를 구하시오.\nanswer\n\\(s.e.(\\hat{\\beta}) = \\sqrt{Var(\\hat{\\beta})} = \\frac{\\sigma}{\\sqrt{\\sum^n_{i=1}x^2_i}}\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-6",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-6",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(1)",
     "text": "(1)\n최소제곱법에 의한 회귀직선을 적합시키고, 결과를 해석하시오.\nanswer\n\\(\\hat{\\beta} = \\frac{\\sum^n_{i=1} x_i y_i}{\\sum^n_{i=1} x^2_i} = \\frac{18207}{9103} = 2\\)\n\\(y = 2x\\)\n사내평가점수가 1점 올라갈 때마다 영업실적이 2백만원 증가한다."
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-7",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-7",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(2)",
     "text": "(2)\n분산분석표를 작성하고, 유의수준 \\(\\alpha=0.05\\)하에서, 회귀직선에 대한 유의성 검정을 수행하시오.\nanswer\n\\(SST = \\sum^n_{i=1} y^2_i = 36961\\)\n\\(SSR = \\sum^n_{i=1} \\hat{y}^2_i = (\\beta x)^2= \\frac{(\\sum^n_{i=1} x_i y_i)^2}{\\sum^n_{i=1} x^2_{i}} = \\frac{(18207)^2}{9103} = 36416\\)\n분산분석표\n\n\n\n요인\n제곱합(SS)\n자유도(df)\n평균제곱(MS)\n\\(F_0\\)\n\n\n\n\n회귀\n36416\n1\n36416\n669.01\n\n\n잔차\n545\n10\n54.5\n\n\n\n계\n36961\n11\n\n\n\n\n\n- 가설 : \\(H_0 : \\beta = 0 \\text{ vs. } H_1 : \\beta = 0\\)\n- 기각역 : \\(F_0 > F_{0.01}(1,10) = 4.96\\)\n- 결론: \\(F_0\\) 값이 기각역에 속하므로 귀무가설을 기각할 수 있다. 즉 유의수준 \\(5\\)%에서 회귀직선이 유의하다고 할 수 있다.\n\nround(qf(0.95,1,10),2)\n\n4.96"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-8",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-8",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(3)",
     "text": "(3)\n결정계수를 구하시오\nanswer\n\\(R^2 = \\frac{SSR}{SST} = \\frac{36416}{36961} = 0.9865\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-9",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-9",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(4)",
     "text": "(4)\n\\(\\beta\\)에 대한 \\(95\\)% 신뢰구간을 구하여라\nanswer\n\\(\\hat{s.e.}(\\hat{\\beta}) = \\sqrt{\\frac{MSE}{\\sum^n_{i=1} x^2_i}} = \\sqrt{\\frac{54.5}{9103}} = 0.077\\)\n\\(95\\)% 신뢰구간: \\(\\hat{\\beta} \\pm t_{0.05/2}(10) \\times \\hat{s.e.}(\\hat{\\beta}) = 2 \\pm 2.23 \\times 0.077 = (1.818, 2.172)\\)\n\nround(qt(0.975,10),2)\n\n2.23"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-11",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-11",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(1)",
     "text": "(1)\n단순선형 회귀모형을 쓰고, 오차항에 대한 가정을 적으시오\nanswer\n\\(y_i = \\beta_0 + \\beta_1 x_i + \\epsilon_i, \\epsilon_i \\sim_{i.i.d.} N(0, \\sigma^2) , i=1,2,\\dots, 10\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-12",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-12",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(2)",
     "text": "(2)\n투입된 비료의 양과 감자의 수확량에 대한 회귀선을 구하시오\nanswer\n\\(S_{(xx)} = \\sum^n_{i=1} x^2_i - n(\\bar{x})^2 = 110 - 10 \\times 3^2 = 20\\)\n\\(S_{(yy)} = \\sum^n_{i=1} y^2_i - n(\\bar{y})^2 = 8712-10 \\times 29^2 = 302\\)\n\\(S_{(xy)} = \\sum^n_{i=1} x_i y_i - n(\\bar{x})(\\bar{y}) = 940-10 \\times 3 \\times 29 = 70\\)\n\\(\\to \\hat{\\beta_1} = \\frac{S_{(xy)}}{S_{(xy)}} = \\frac{70}{20} = 3.5, \\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1 \\bar{x} = 29-3.5 \\times 3 = 18.5\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-13",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-13",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(3)",
     "text": "(3)\n분산분석표를 작성하고, 유의수준 α = 0.05에서, 회귀직선에 대한 유의성 검정을 수행하시오.\nanswer\n\\(SSR = \\frac{S^2_{(xy)}}{S_{(xx)}} = \\frac{70^2}{20} = 245\\)\n\\(SSE = SST - SSR = 302 - 245 = 57\\)\n\n\n\n요인\n제곱합(SS).\n자유도(df)\n평균제곱(MS)\n\\(F_0\\)\n\n\n\n\n회귀\n245\n1\n245\n34.39\n\n\n잔차\n57\n8\n7.125\n\n\n\n계\n302\n\n\n\n\n\n\n- 가설 : \\(H_0 : \\beta_1 = 0 \\text{ vs. } H_1 : \\beta_1 = 0\\)\n- 기각역 : \\(F_0 > F_{\\alpha}(1,8) = 5.32\\)\n- 결론: \\(F_0\\)값이 기각역에 속하므로 귀무가설을 기각할 수 있다. 즉 유의수준 \\(5\\)%에서 회귀직선이 유의하다고 할 수 있다.\n\nround(qf(0.95,1,8),2)\n\n5.32"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-14",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-14",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(4)",
     "text": "(4)\n오차항의 분산 \\(\\sigma^2\\)에 대한 추정치를 구하여라\nanswer\n\\(\\hat{\\sigma}^2 = MSE = 7.125\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-15",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-15",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(5)",
     "text": "(5)\n표본상관계수를 구하시오.\nanswer\n\\(r = \\frac{S_{(xy)}}{\\sqrt{S_{(xx)}S_{(yy)}}} = \\frac{70}{\\sqrt{20 \\times 302}} = 0.90\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-16",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-16",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(6)",
     "text": "(6)\n결정계수를 구하고, 결정계수의 의미를 설명하시오\nanswer\n\\(R^2 = \\frac{SSR}{SST} = \\frac{245}{302} = 0.81\\)\n회귀모형이 반응변수의 총변동의 \\(81\\)%를 설명하고 있다."
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-17",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-17",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(7)",
     "text": "(7)\n다음의 가설검정을 유의수준 \\(\\alpha = 0.05\\)에서 수행하시오.\n\\[H_0 : \\beta_1 = 2 \\text{ vs. } H_1 : \\beta_1 >2\\]\nanswer\n- 검정통계량 : \\(T = \\frac{\\hat{\\beta}_1 - \\beta^0_1}{\\hat{s.e.} (\\hat{\\beta}_1)} = \\frac{\\hat{\\beta}_1 - 2}{\\hat{s.e.}(\\hat{\\beta}_1)} \\sim_{H_0} t(8)\\)\n- \\(\\hat{s.e.}(\\hat{\\beta}_1) = \\sqrt{\\frac{MSE}{S_{(xx)}}} = \\sqrt{\\frac{7.125}{20}} = 0.597\\)\n- 검정통계량 관측값: \\(t_0 = \\frac{3.5-2}{0.597} = 2.513\\)\n- 기각역 : \\(t_0 > t_{0.05}(8) = 1.86\\)\n- 결론 : \\(t_0\\)값이 기각역에 속하므로 귀무가설을 기각할 수 있다. 즉 유의수준 \\(5\\)%에서 \\(\\beta_1\\)이 \\(2\\)보다 크다고 할 수 있다.\n\nround(qt(0.95,8),2) # 단측검정\n\n1.86"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-18",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-18",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(8)",
     "text": "(8)\n\\(3.5\\)kg의 비료를 사용했을 때 평균 감자 수확량과 하나의 개별 \\(y\\)값의 \\(90\\)% 신뢰구간을 각각 구하시오\nanswer\n- \\(\\hat{\\mu}_0 = \\hat{y}_0 = 18.5 + 3.5 x = 18.5 + 3.5 \\times 3.5 = 30.75(kg)\\)\n- \\(\\hat{s.e.}(E(\\hat{y|x = 3.5})) = \\sqrt{(\\frac{1}{n} + \\frac{(x_0 - \\bar{x})^2}{S_{(xx)}})\\hat{\\sigma}^2} = \\sqrt{(\\frac{1}{10} + \\frac{(3.5-3)^2}{20}) \\times 7.125} = 0.895\\)\n- \\(\\hat{s.e.}(\\hat{y}_0) = \\sqrt{(1 + \\frac{1}{n} + \\frac{(x_0 - \\bar{x})^2}{S_{(xx)}})\\hat{\\sigma^2}} = \\sqrt{(1 + \\frac{1}{10} + \\frac{(3.5-3)^2}{20}) \\times 7.125} = 2.815\\)\n- 평균감자수확량의 \\(90\\)% 신뢰구간\n\\[\\hat{\\mu}_0 \\pm t_{0.1/2}(8)\\hat{s.e.}(E(\\hat{y|x = 3.5})) = 30.75 \\pm 1.86 \\times 0.895 = (29.085, 32.415)\\]\n- 개별 감자수확량의 \\(90\\)% 신뢰구간\n\\[\\hat{\\mu}_0 \\pm t_{0.1/2})(8) \\hat{s.e.}(\\hat{y}_0) = 30.75 \\pm 1.86 \\times 2.815 = (25.514, 35.986)\\]\n\nround(qt(0.95,8),2)\n\n1.86"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-20",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-20",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(1)",
     "text": "(1)\n적합결여검정을 수행하기 위한 가설을 적으시오.\nanswer\n\\(H_0 : E(y|x) = \\beta_0 + \\beta_1 x \\text{ vs. } H_1 : E(y|x) \\neq \\beta_0 + \\beta_1 x\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-21",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-21",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(2)",
     "text": "(2)\n가설검정을 위한 검정통계량은 무엇인가? 귀무가설이 사실이라고 가정할 때 검정통계량의 분포는 무엇인가?(증명 필요없음)\nanswer\n\\(F = \\frac{SSLF/(k-2)}{SSPE/(n-k)} \\sim_{H_0}, F(k-2,n-k)\\)\n- \\(SSPE = \\sum^k_{i=1} \\sum^{n_i}_{j=1} (y_{ij} - \\bar{y}_{i} )^2\\)\n- \\(SSLF = \\sum^k_{i=1}n_i (\\hat{y_i} - \\bar{y}_i)^2 = SSE - SSPE\\)\n- \\(\\bar{y}_i = \\sum^{n_i}_{j=1} y_{ij}/n_i\\)"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-22",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-22",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(3)",
     "text": "(3)\n(1)에 대한 가설 검정을 수행하시오\nanswer\n- \\(SSPE = (1.5^2 + \\dots + (-1)^2) = 15\\)\n- \\(SSLF = SSE - SSPE = 57-15=42\\)\n- 검정통계량의 관측값 : \\(F_0 = \\frac{42/3}{15/5} = \\frac{14}{3} = 4.67\\)\n\n$ k-2 = 5-2 = 3, n-k = 10-5 = 5$\n\n- 기각역 : \\(F_0 > F_{0.05}(3,5) = 5.41\\)\n- 결론: 검정통계량의 관측값이 기각역에 속하지 않기 떄문에 귀무가설을 기각할 수 없다. 즉, 유의수준 \\(5\\)%에서 회귀모형은 적절하지 않다고 할 수 있다.\n\nround(qf(0.95,3,5),2)\n\n5.41"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-24",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-24",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(1)",
     "text": "(1)\n가중회귀최소추정량(\\(WLSE\\))을 구하기 위한 가중오차제곱합(\\(Q\\))를 정의하여라.\nanswer\n\\(Q = \\sum^n_{i=1} w_i \\{ y_i - (\\beta_0 + \\beta_1 x_i) \\}^2\\)\nQuadratic Form"
   },
   {
     "objectID": "posts/rl/2023-02-22-rl-mid_term.html#section-25",
     "href": "posts/rl/2023-02-22-rl-mid_term.html#section-25",
-    "title": "Regression Mid Term",
+    "title": "Advanced Regression Analysis Mid Term",
     "section": "(2)",
     "text": "(2)\n가중오차제곱합을 가장 작게 하는 WLSE를 구하여라.\nanswer\n가중최소제곱추정량(WLSE) : \\((\\hat{\\beta}_0,\\hat{\\beta}_1) = argmin_{\\beta_0,\\beta_1 \\in R} \\sum^n_{i=1}w_i \\{ y_i - (\\beta_0 + \\beta_1 x_i)\\}^2\\)\n\\(\\hat{\\beta}_1 = \\frac{\\sum w_i (x_i - \\bar{x}_w)(y_i - \\bar{y}_w)}{\\sum w_i(x_i - \\bar{x}_w)^2}\\)\n\\(\\hat{\\beta}_0 = \\bar{y}_w - \\hat{\\beta_1} \\bar{x}_w\\)\n단, \\(\\bar{x}_w = \\frac{\\sum w_i x_i}{\\sum w_i}, \\bar{y}_w = \\frac{\\sum w_i y_i}{\\sum w_i}\\)"
   },
@@ -3091,7 +3091,7 @@
     "href": "index.html",
     "title": ";)",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 23, 2023\n\n\nRegression Final Term\n\n\nSEOYEON CHOI\n\n\n\n\nFeb 22, 2023\n\n\nRegression Mid Term\n\n\nSEOYEON CHOI\n\n\n\n\nFeb 12, 2023\n\n\nArrayList & LinkedList\n\n\nSEOYEON CHOI\n\n\n\n\nJan 30, 2023\n\n\n코딩 테스트 공부(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 26, 2023\n\n\nTheoritical Statistics Final term\n\n\nSEOYEON CHOI\n\n\n\n\nJan 23, 2023\n\n\n두 큐 합 같게 만들기(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 21, 2023\n\n\n성격 유형 검사하기(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 20, 2023\n\n\nTheoritical Statistics HW9\n\n\nSEOYEON CHOI\n\n\n\n\nJan 18, 2023\n\n\nTheoritical Statistics HW7\n\n\nSEOYEON CHOI\n\n\n\n\nJan 18, 2023\n\n\nTheoritical Statistics HW8\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\nAlgorithm\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\n내장함수\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\nTheoritical Statistics Mid term\n\n\nSEOYEON CHOI\n\n\n\n\nJan 14, 2023\n\n\nTheoritical Statistics HW6\n\n\nSEOYEON CHOI\n\n\n\n\nJan 12, 2023\n\n\nTheoritical Statistics HW5\n\n\nSEOYEON CHOI\n\n\n\n\nJan 11, 2023\n\n\nTheoritical Statistics HW4\n\n\nSEOYEON CHOI\n\n\n\n\nJan 8, 2023\n\n\nTheoritical Statistics HW3\n\n\nSEOYEON CHOI\n\n\n\n\nJan 6, 2023\n\n\nTheoritical Statistics HW2\n\n\nSEOYEON CHOI\n\n\n\n\nJan 5, 2023\n\n\nTheoritical Statistics HW1\n\n\nSEOYEON CHOI\n\n\n\n\nJan 1, 2023\n\n\nChapter 03 Greedy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 31, 2022\n\n\n확률변수와 확률분포\n\n\nSEOYEON CHOI\n\n\n\n\nDec 28, 2022\n\n\nCoding Test\n\n\nSEOYEON CHOI\n\n\n\n\nDec 27, 2022\n\n\nTheoritical Statistics\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-1: 추천시스템\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-2: 생성모형(GAN)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-3: 딥러닝의 기초 (5)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 13, 2022\n\n\nFinalterm\n\n\nSEOYEON CHOI\n\n\n\n\nDec 11, 2022\n\n\n고급회귀분석 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nstudy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRNN (13주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRegression HW 4\n\n\nSEOYEON CHOI\n\n\n\n\nDec 7, 2022\n\n\nA1: 깊은복사와 얕은복사 (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 5, 2022\n\n\n고급회귀분석 실습 CH11\n\n\nSEOYEON CHOI\n\n\n\n\nNov 30, 2022\n\n\nRNN (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 29, 2022\n\n\nDeep Learning final example\n\n\nSEOYEON CHOI\n\n\n\n\nNov 28, 2022\n\n\n고급회귀분석 실습 CH13\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRNN (11주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRegression HW 3\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\n고급회귀분석 실습 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nNov 14, 2022\n\n\n고급회귀분석 실습 CH06, CH07\n\n\nSEOYEON CHOI\n\n\n\n\nNov 9, 2022\n\n\nRNN (10주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nMidterm\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nRNN (9주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 1\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 23, 2022\n\n\nRegression HW 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 19, 2022\n\n\nCNN (7주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 12, 2022\n\n\nDNN (6주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nHomework\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nDNN (5주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 29, 2022\n\n\nDNN (4주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nDNN (3주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\n고급회귀분석 실습 CH03, CH04\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nRegression HW 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 19, 2022\n\n\nAssignment 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 14, 2022\n\n\nDNN (2주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nIntro\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nDNN (1주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nSpecial Topics in Machine Learning\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nAdvanced Regression Analysis\n\n\nSEOYEON CHOI\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 23, 2023\n\n\nAdvanced Regression Analysis Final Term\n\n\nSEOYEON CHOI\n\n\n\n\nFeb 22, 2023\n\n\nAdvanced Regression Analysis Mid Term\n\n\nSEOYEON CHOI\n\n\n\n\nFeb 12, 2023\n\n\nArrayList & LinkedList\n\n\nSEOYEON CHOI\n\n\n\n\nJan 30, 2023\n\n\n코딩 테스트 공부(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 26, 2023\n\n\nTheoritical Statistics Final term\n\n\nSEOYEON CHOI\n\n\n\n\nJan 23, 2023\n\n\n두 큐 합 같게 만들기(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 21, 2023\n\n\n성격 유형 검사하기(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 20, 2023\n\n\nTheoritical Statistics HW9\n\n\nSEOYEON CHOI\n\n\n\n\nJan 18, 2023\n\n\nTheoritical Statistics HW7\n\n\nSEOYEON CHOI\n\n\n\n\nJan 18, 2023\n\n\nTheoritical Statistics HW8\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\nAlgorithm\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\n내장함수\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\nTheoritical Statistics Mid term\n\n\nSEOYEON CHOI\n\n\n\n\nJan 14, 2023\n\n\nTheoritical Statistics HW6\n\n\nSEOYEON CHOI\n\n\n\n\nJan 12, 2023\n\n\nTheoritical Statistics HW5\n\n\nSEOYEON CHOI\n\n\n\n\nJan 11, 2023\n\n\nTheoritical Statistics HW4\n\n\nSEOYEON CHOI\n\n\n\n\nJan 8, 2023\n\n\nTheoritical Statistics HW3\n\n\nSEOYEON CHOI\n\n\n\n\nJan 6, 2023\n\n\nTheoritical Statistics HW2\n\n\nSEOYEON CHOI\n\n\n\n\nJan 5, 2023\n\n\nTheoritical Statistics HW1\n\n\nSEOYEON CHOI\n\n\n\n\nJan 1, 2023\n\n\nChapter 03 Greedy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 31, 2022\n\n\n확률변수와 확률분포\n\n\nSEOYEON CHOI\n\n\n\n\nDec 28, 2022\n\n\nCoding Test\n\n\nSEOYEON CHOI\n\n\n\n\nDec 27, 2022\n\n\nTheoritical Statistics\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-1: 추천시스템\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-2: 생성모형(GAN)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-3: 딥러닝의 기초 (5)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 13, 2022\n\n\nFinalterm\n\n\nSEOYEON CHOI\n\n\n\n\nDec 11, 2022\n\n\n고급회귀분석 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nstudy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRNN (13주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRegression HW 4\n\n\nSEOYEON CHOI\n\n\n\n\nDec 7, 2022\n\n\nA1: 깊은복사와 얕은복사 (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 5, 2022\n\n\n고급회귀분석 실습 CH11\n\n\nSEOYEON CHOI\n\n\n\n\nNov 30, 2022\n\n\nRNN (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 29, 2022\n\n\nDeep Learning final example\n\n\nSEOYEON CHOI\n\n\n\n\nNov 28, 2022\n\n\n고급회귀분석 실습 CH13\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRNN (11주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRegression HW 3\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\n고급회귀분석 실습 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nNov 14, 2022\n\n\n고급회귀분석 실습 CH06, CH07\n\n\nSEOYEON CHOI\n\n\n\n\nNov 9, 2022\n\n\nRNN (10주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nMidterm\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nRNN (9주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 1\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 23, 2022\n\n\nRegression HW 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 19, 2022\n\n\nCNN (7주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 12, 2022\n\n\nDNN (6주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nHomework\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nDNN (5주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 29, 2022\n\n\nDNN (4주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nDNN (3주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\n고급회귀분석 실습 CH03, CH04\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nRegression HW 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 19, 2022\n\n\nAssignment 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 14, 2022\n\n\nDNN (2주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nIntro\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nDNN (1주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nSpecial Topics in Machine Learning\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nAdvanced Regression Analysis\n\n\nSEOYEON CHOI\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
