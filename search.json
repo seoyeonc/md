@@ -1761,7 +1761,7 @@
     "href": "posts/ts/2023-01-25-ts-final term.html#b",
     "title": "Theoritical Statistics Final term",
     "section": "(b)",
-    "text": "(b)\n비편향추정량인 \\(\\hat{\\theta}_{a_1,a_2}\\) 중에서 가장 작은 분산을 가지는 추정량을 구하시오.\nanswer\n\\(Var(\\hat{\\theta}_1) = \\sigma^2_1\\), \\(Var(\\hat{\\theta}_2) = \\sigma^2_2\\)\n\\(Var(\\hat{\\theta}_{a_1,a_2}) = Var(a_1\\hat{\\theta}_1 + a_2\\hat{\\theta}_2) = a_1^2 Var(\\hat{\\theta}_1) + a_2^2 Var(\\hat{\\theta}_2) = a_1^2 \\sigma^2_1 + a_2^2 \\sigma^2_2\\)"
+    "text": "(b)\n비편향추정량인 \\(\\hat{\\theta}_{a_1,a_2}\\) 중에서 가장 작은 분산을 가지는 추정량을 구하시오.\nanswer\n\\(Var(\\hat{\\theta}_1) = \\sigma^2_1\\), \\(Var(\\hat{\\theta}_2) = \\sigma^2_2\\)\n\\(Var(\\hat{\\theta}_{a_1,a_2}) = Var(a_1\\hat{\\theta}_1 + a_2\\hat{\\theta}_2) = a_1^2 Var(\\hat{\\theta}_1) + a_2^2 Var(\\hat{\\theta}_2) = a_1^2 \\sigma^2_1 + a_2^2 \\sigma^2_2\\)\n\\(a_1^2 \\sigma^2_1 + a_2^2 \\sigma^2_2\\)이 \\(Var(\\bar{\\theta}) = \\sigma^2\\)일 때 가장 작은 분산을 가진다."
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#a-1",
