@@ -1789,7 +1789,7 @@
     "href": "posts/ts/2023-01-25-ts-final term.html#d",
     "title": "Theoritical Statistics Final term",
     "section": "(d)",
-    "text": "(d)\n\\(p(1-p)\\)에 대한 적률추정량을 구하시오.\nanswer\n\\(M'_t = \\frac{\\bar{X}}{n}(1-\\frac{\\bar{X}}{n}) = \\mu_1(p(1-p)) = p(1-p)\\)"
+    "text": "(d)\n\\(p(1-p)\\)에 대한 적률추정량을 구하시오.\nanswer\n\\(M'_t = n\\bar{X}(1-n\\bar{X})\\)\n\\(\\therefore \\mu_1(p(1-p)) = p(1-p)\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#e",
