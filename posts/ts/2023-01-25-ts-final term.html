@@ -696,13 +696,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\theta\)</span>에 대한 95%신뢰구간을 구하시오.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\((\chi^2_{0.025} (2n) \le 2n \bar{X} \theta \le \chi^2_{0.975} (2n)) = 0.95\)</span></p>
-<p><span class="math inline">\(\theta_{0.95} \to (\frac{\chi^2_{o/025}(2n)}{2n\bar{X}} , \frac{\chi^2_{0.975}(2n)}{2n\bar{X}})\)</span></p>
+<p><span class="math inline">\(\theta_{0.95} \to (\frac{\chi^2_{0.025}(2n)}{2n\bar{X}} , \frac{\chi^2_{0.975}(2n)}{2n\bar{X}})\)</span></p>
 </section>
 <section id="c-1" class="level2">
 <h2 class="anchored" data-anchor-id="c-1">(c)</h2>
 <p><span class="math inline">\(P(X&gt;1)\)</span>에 대한 95% 신뢰구간을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(P(X&gt;1) = \int^{\infty}_1 \theta e^{-x\theta} dx = [ e^{x\theta}]^{\infty}_1 = e^{-\infty}\)</span></p>
+<p><span class="math inline">\(P(X&gt;1) = \int^{\infty}_1 \theta e^{-x\theta} dx = [ e^{x\theta}]^{\infty}_1 = e^{-\theta}\)</span></p>
+<p><span class="math inline">\(P(X&gt;1)\)</span> <span class="math inline">\(95\)</span>% CI : <span class="math inline">\((exp(\frac{\chi^2_{0.9755}(2n)}{2n\bar{X}} , exp(\frac{\chi^2_{0.025}(2n)}{2n\bar{X}}))\)</span></p>
 </section>
 <section id="d-1" class="level2">
 <h2 class="anchored" data-anchor-id="d-1">(d)</h2>
@@ -715,7 +716,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="e-1">(e)</h2>
 <p><span class="math inline">\(\theta\)</span>의 가능도 함수를 기술하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(L(\theta) = \theta^n e^{\theta n \bar{X}}\)</span></p>
+<p><span class="math inline">\(L(\theta) = \theta^n e^{-\theta n \bar{X}}\)</span></p>
 </section>
 <section id="f" class="level2">
 <h2 class="anchored" data-anchor-id="f">(f)</h2>
@@ -728,7 +729,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="g">(g)</h2>
 <p>일반화 가능도 비 <span class="math inline">\(\Lambda\)</span>을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\frac{L(\hat{\theta}^{\Omega_0})}{L(\hat{\theta}^{\Omega})} = \frac{\hat{\theta}^{n,\Omega_0} e^{\hat{\theta} n \bar{X}}}{\hat{\theta}^{n,\Omega} e^{\hat{\theta} n \bar{X}}} = \frac{2 \bar{X} e^{2n \bar{X}}}{e^{n}}\)</span></p>
+<p><span class="math inline">\(\frac{L(\hat{\theta}^{\Omega_0})}{L(\hat{\theta}^{\Omega})} = \frac{\hat{\theta}^{n,\Omega_0} e^{-\hat{\theta} n \bar{X}}}{\hat{\theta}^{n,\Omega} e^{-\hat{\theta} n \bar{X}}} = \frac{2 \bar{X} e^{2n \bar{X}}}{e^{n}}\)</span></p>
 </section>
 <section id="h" class="level2">
 <h2 class="anchored" data-anchor-id="h">(h)</h2>
