@@ -1845,14 +1845,14 @@
     "href": "posts/ts/2023-01-25-ts-final term.html#g",
     "title": "Theoritical Statistics Final term",
     "section": "(g)",
-    "text": "(g)\n일반화 가능도 비 \\(\\Lambda\\)을 구하시오.\nanswer\n\\(\\frac{L(\\hat{\\theta}^{\\Omega_0})}{L(\\hat{\\theta}^{\\Omega})} = \\frac{\\hat{\\theta}^{n,\\Omega_0} e^{-\\hat{\\theta} n \\bar{X}}}{\\hat{\\theta}^{n,\\Omega} e^{-\\hat{\\theta} n \\bar{X}}} = \\frac{2 \\bar{X} e^{2n \\bar{X}}}{e^{n}}\\)"
+    "text": "(g)\n일반화 가능도 비 \\(\\Lambda\\)을 구하시오.\nanswer\n\\(\\frac{L(\\hat{\\theta}^{\\Omega_0})}{L(\\hat{\\theta}^{\\Omega})} = \\frac{\\hat{\\theta}^{n,\\Omega_0} e^{-\\hat{\\theta} n \\bar{X}}}{\\hat{\\theta}^{n,\\Omega} e^{-\\hat{\\theta} n \\bar{X}}} = (\\frac{2}{n})^2 e^{n\\bar{x}(\\theta-2)}\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#h",
     "href": "posts/ts/2023-01-25-ts-final term.html#h",
     "title": "Theoritical Statistics Final term",
     "section": "(h)",
-    "text": "(h)\n유의수준 \\(\\alpha\\)인 가능도비 검정법의 기각역을 \\(\\chi^2\\)분포의 분위수를 사용하여 표현하시오.\n\\(\\star\\) 참고\n가능도비 검정; 적절한 조건 하에서 \\(-2 log \\Lambda(X_1, \\dots, X_n)\\)는 귀무가설이 참일 때 점근적으로 카이제곱분포를 따른다.\n\\[-2 log \\Lambda(X_1, \\dots, X_n) \\sim \\chi^2(d)\\]\n단, \\(d\\)는 모수공간 \\(\\Omega\\)의 차원과 모수공간 \\(\\Omega_0\\)의 차원의 차이\n가능도비 검정의 유의수준 \\(\\alpha\\) 점근적인 기각역\n\\[\\{ (x_1, \\dots , x_n) : -2 log \\Lambda(X_1, \\dots, X_n) \\ge \\chi^2_\\alpha(d) \\}\\]\nanswer\n\\(-2log \\frac{2 \\bar{X} e^{2n \\bar{X}}}{e^{n}} >\\chi^2_{\\alpha, df}\\)\n\\(\\frac{2 \\bar{X} e^{2n \\bar{X}}}{e^{n}} < \\chi^2_{\\alpha, df}\\)\n7장 예제 7.2.3. 참고\n\\(2(l(\\hat{\\theta}^{\\Omega}) - l(\\hat{\\theta}^{\\Omega_0})) = 2n(\\bar{x}\\theta_0 - 1 -log(\\bar{X}\\theta_0))\\)\n최대가능도비 검정의 기각역 형태 \\(2n(\\bar{x}\\theta_0 - 1 -log(\\bar{X}\\theta_0))\\ge c\\)\n기각역\n\\(\\begin{cases} \\bar{x}\\theta_0 \\le c_1 \\text{ 또는 } \\bar{x}\\theta_0\\ge c_2 \\\\ c_1 log c_1 = c_2 - log c_2\\end{cases}\\)"
+    "text": "(h)\n유의수준 \\(\\alpha\\)인 가능도비 검정법의 기각역을 \\(\\chi^2\\)분포의 분위수를 사용하여 표현하시오.\nanswer\n7장 예제 7.2.3. 참고\n\\(2(l(\\hat{\\theta}^{\\Omega}) - l(\\hat{\\theta}^{\\Omega_0})) = 2n(\\bar{x}\\theta_0 - 1 -log(\\bar{X}\\theta_0))\\)\n최대가능도비 검정의 기각역 형태 \\(2n(\\bar{x}\\theta_0 - 1 -log(\\bar{X}\\theta_0))\\ge c\\)\n기각역\n\\(\\begin{cases} \\bar{x}\\theta_0 \\le c_1 \\text{ 또는 } \\bar{x}\\theta_0\\ge c_2 \\\\ c_1 log c_1 = c_2 - log c_2\\end{cases}\\)"
   },
   {
     "objectID": "posts/ts/2023-01-25-ts-final term.html#a-3",
