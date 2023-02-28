@@ -622,8 +622,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>비편향추정량인 <span class="math inline">\(\hat{\theta}_{a_1,a_2}\)</span> 중에서 가장 작은 분산을 가지는 추정량을 구하시오.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(Var(\hat{\theta}_1) = \sigma^2_1\)</span>, <span class="math inline">\(Var(\hat{\theta}_2) = \sigma^2_2\)</span></p>
-<p><span class="math inline">\(Var(\hat{\theta}_{a_1,a_2}) = Var(a_1\hat{\theta}_1 + a_2\hat{\theta}_2) = a_1^2 Var(\hat{\theta}_1) + a_2^2 Var(\hat{\theta}_2) = a_1^2 \sigma^2_1 + a_2^2 \sigma^2_2\)</span></p>
-<p><span class="math inline">\(a_1^2 \sigma^2_1 + a_2^2 \sigma^2_2\)</span>이 <span class="math inline">\(Var(\bar{\theta}) = \sigma^2\)</span>일 때 가장 작은 분산을 가진다.</p>
+<p><span class="math inline">\(Var(\hat{\theta}_{a_1,a_2}) = Var((a_1 + a_2)\bar{\theta}) = (a_1 + a_2)^2 Var(\hat{\theta})\)</span></p>
+<p><span class="math inline">\((a_1 + a_2)^2\)</span>이 최소이면서 <span class="math inline">\(a_1 + a_2=1\)</span>일 때, 즉 <span class="math inline">\(a_1 = 0.5, a_2 = 0.5\)</span>일 때 가장 작은 분산을 가진다.</p>
 </section>
 </section>
 <section id="section-1" class="level1">
@@ -655,14 +655,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="c">(c)</h2>
 <p><span class="math inline">\(p(1-p)\)</span>에 대한 최소분산 비편향 추정량을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(E(\bar{X}_n - \bar{X}^2_n) = \frac{(n-1)p(1-p)}{n}\)</span>, <span class="math inline">\(\frac{nE(\bar{X}_n - \bar{X}^2_n)}{(n-1)} = p(1-p)\)</span>이므로, <span class="math inline">\(\frac{n\bar{X}_n(1-\bar{X}_n)}{(n-1)}\)</span></p>
+<p><span class="math inline">\(E(\bar{X}_n(1 - \bar{X}_n)) = \frac{(n-1)p(1-p)}{n} \sim \bar{X}_n(1-\bar{X}_n)\)</span></p>
 </section>
 <section id="d" class="level2">
 <h2 class="anchored" data-anchor-id="d">(d)</h2>
 <p><span class="math inline">\(p(1-p)\)</span>에 대한 적률추정량을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(M'_t = n\bar{X}(1-n\bar{X})\)</span></p>
-<p><span class="math inline">\(\therefore \mu_1(p(1-p)) = p(1-p)\)</span></p>
+<p><span class="math inline">\(M'_t = E(\bar{X}_n(1-\bar{X}_n)) = p(1-p) \sim \frac{1}{n} \sum_{i=1}^n X_i^2 - (\bar{X})^2\)</span></p>
 </section>
 <section id="e" class="level2">
 <h2 class="anchored" data-anchor-id="e">(e)</h2>
@@ -781,7 +780,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="b-3" class="level2">
 <h2 class="anchored" data-anchor-id="b-3">(b)</h2>
-<p>표본의 크기가 <span class="math inline">\(n=20\)</span>일 떄 유의수준이 <span class="math inline">\(\alpha=0.05\)</span>이기 위한 상수 <span class="math inline">\(c\)</span>의 값을 <span class="math inline">\(\chi^2\)</span>분포의 분위수를 사용하여 표현하시오.</p>
+<p>표본의 크기가 <span class="math inline">\(n=20\)</span>일 때 유의수준이 <span class="math inline">\(\alpha=0.05\)</span>이기 위한 상수 <span class="math inline">\(c\)</span>의 값을 <span class="math inline">\(\chi^2\)</span>분포의 분위수를 사용하여 표현하시오.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(\alpha = P(\text{Reject } H_0 | H_0 \text{True})\)</span></p>
 <p><span class="math inline">\(= P(\sum^n_{i=1}x^2_i \ge k | \sigma^2 = 4)\)</span></p>
@@ -906,6 +905,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p><span class="math inline">\(c = \{ (x_1,\dots,x_n):\sum^n_{i=1}(x_i - \bar{x})^2 \ge 4 \chi^2_{0.05(n-1)} \}\)</span></p>
 <p>유의수준 <span class="math inline">\(\alpha\)</span> 일반화 가능도비 검정법의 기각역이다.</p>
+<p><strong>수정..</strong></p>
+<p>3-{h} 방식으로..</p>
 </section>
 <section id="c-3" class="level2">
 <h2 class="anchored" data-anchor-id="c-3">(c)</h2>
@@ -924,6 +925,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>유의확률 :  0.002</code></pre>
 </div>
 </div>
+<p><strong>수정..</strong></p>
 
 
 </section>

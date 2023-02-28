@@ -636,7 +636,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\sqrt{n}(\bar{X}^2_n - \lambda^2)\)</span>의 극한 분포를 구하시오.</p>
 <p><strong>answer</strong></p>
 <p>Delta Method</p>
-<p>$({X}^2_n - ^2) N(0,4<sup>2</sup>2) $ 단, <span class="math inline">\(\mu \neq 0\)</span></p>
+<p><span class="math inline">\(\sqrt{n}(\bar{X}^2_n - \mu^2) \xrightarrow[]{d} N(0,4\mu^2\sigma^2)\)</span> 단, <span class="math inline">\(\mu \neq 0\)</span></p>
 <p><span class="math inline">\(\mu = \lambda\)</span>, <span class="math inline">\(\sigma^2 = \lambda\)</span></p>
 <p><span class="math inline">\(\sqrt{n}(\bar{X}^2_n - \lambda^2) \xrightarrow[]{d} N(0,4\lambda^4)\)</span></p>
 </section>
@@ -663,10 +663,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(f_Y(y) = -\frac{3}{y^2} exp(-\frac{3}{y})I(y&gt;0)\)</span></p>
 <p><span class="math inline">\(g(X) = \frac{1}{X}\)</span>, <span class="math inline">\(g^{-1} (Y) = \frac{1}{y}\)</span></p>
-<p><span class="math inline">\(= f_Y(y) = f_X(g^{-1}(y))\frac{dg^{-1}(y)}{dg}\)</span></p>
-<p><span class="math inline">\(= f_X(\frac{1}{y})(-\frac{1}{y^2})\)</span></p>
-<p><span class="math inline">\(= 3e^{-\frac{3}{y}}(-\frac{1}{y^2})I(y&gt;0)\)</span></p>
-<p><span class="math inline">\(= -\frac{3}{y^2}e^{-\frac{3}{y}}I(y&gt;0)\)</span></p>
+<p><span class="math inline">\(= f_Y(y) = f_X(g^{-1}(y))|\frac{dg^{-1}(y)}{dg}|\)</span></p>
+<p><span class="math inline">\(= f_X(\frac{1}{y})(\frac{1}{y^2})\)</span></p>
+<p><span class="math inline">\(= 3e^{-\frac{3}{y}}(\frac{1}{y^2})I(y&gt;0)\)</span></p>
+<p><span class="math inline">\(= \frac{3}{y^2}e^{-\frac{3}{y}}I(y&gt;0)\)</span></p>
 </section>
 <section id="section-3" class="level1">
 <h1>4.</h1>
