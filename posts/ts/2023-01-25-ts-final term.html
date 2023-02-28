@@ -857,75 +857,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="b-4">(b)</h2>
 <p>유의수준 <span class="math inline">\(\alpha\)</span>인 일반화 가능도비 검정 기각역을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\mu\)</span>가 장애요소</p>
-<p><span class="math inline">\(L(\mu, \sigma^2) = (\frac{1}{2\pi \sigma^2})^{\frac{n}{2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\)</span></p>
-<p><span class="math inline">\(\Lambda = \frac{L(\hat{\mu}_0,\hat{\sigma}^2_0)}{L(\hat{\mu}_1,\hat{\sigma}^2)}\)</span></p>
-<ul>
-<li><span class="math inline">\(\Omega_0 = \{ (\mu,\sigma^2) : -\infty &lt; \mu &lt; \infty , \sigma^2 = 4 \}\)</span>
-<ul>
-<li><span class="math inline">\(\hat{\mu}_0 = {argmax}_{(\mu,\sigma^2)\in\Omega_0} L(\mu,\sigma^2) = \bar{x}\)</span></li>
-<li><span class="math inline">\(\hat{\sigma}^2_0 = 4\)</span></li>
-</ul></li>
-<li><span class="math inline">\(\Omega_1 = \{ (\mu, \sigma^2) : -\infty &lt; \mu &lt; \infty , \sigma^2 \ne 4, \sigma^2 &gt; 0 \}\)</span>
-<ul>
-<li><span class="math inline">\(\hat{\mu}_1 = \bar{x}\)</span></li>
-<li><span class="math inline">\(\hat{\sigma}_1^2 = {max}(\frac{1}{n}\sum^n_{i=1}(x_i - \bar{x})^2, 4)\)</span>
-<ul>
-<li>왼쪽은 <span class="math inline">\(4\)</span>보다 클때, 오른쪽은 <span class="math inline">\(4\)</span>보다 작을때</li>
-</ul></li>
-</ul></li>
-</ul>
-<p><span class="math inline">\(\Lambda = \frac{L(\hat{\mu}_0, \hat{\sigma}^2_0)}{L(\hat{\mu}_1,\hat{\sigma}^2_1)}= \frac{(\frac{1}{2\pi\hat{\sigma}^2_0})^{\frac{n}{2}} e^{-\frac{\sum(x_i - \bar{x})^2}{2\hat{\sigma}^2_0}}}{(\frac{1}{2\pi\hat{\sigma}^2_1})^{\frac{n}{2}} e^{-\frac{\sum(x_i - \bar{x})^2}{2\hat{\sigma}^2}}}\)</span></p>
-<p><span class="math inline">\(\to (\frac{1}{2\pi\hat{\sigma}^2_0}) = \frac{1}{2\pi \sigma^2_1}\)</span></p>
-<p><span class="math inline">\(\to -\frac{\sum(x_i - \bar{x})^2}{2\hat{\sigma}^2_0} = -\frac{\sum(x_i - \bar{x})^2}{2\sigma^2}\)</span></p>
-<p><span class="math inline">\(= (\frac{\hat{\sigma}^2}{4})^{\frac{n}{2}} e^{-\frac{1}{2}\sum^n_{i=1}(x_i - \bar{x})^2 (\frac{\hat{\sigma}^2 - 4}{4\hat{\sigma}^2})} \le k\)</span></p>
-<ol type="1">
-<li><span class="math inline">\(\frac{1}{n} \sum^n_{i=1}(x_i - \bar{x})^2 &lt; 4 \to 4 \to \Lambda = 1\)</span></li>
-</ol>
-<ul>
-<li><span class="math inline">\(k=1\)</span>이 되어 의미가 없어짐</li>
-</ul>
-<ol start="2" type="1">
-<li><span class="math inline">\(\frac{1}{n}\sum^n_{i=1}(x_i-\bar{x})^2 &gt; 4 \to \hat{\sigma}^2 = \frac{1}{n}\sum^n_{i=1}(x_i - \bar{x})^2\)</span></li>
-</ol>
-<ul>
-<li>예 5.24에서 다룬 식, <span class="math inline">\(\Lambda\)</span>는 <span class="math inline">\(\frac{\hat{\sigma}}{4}\)</span>의 감소함수이다.</li>
-</ul>
-<p>기각역 : <span class="math inline">\(\frac{1}{n}\sum(x_i - \bar{x})^2 \ge k\)</span></p>
-<p><span class="math inline">\(\alpha = P(\sum^n_{i=1}(x_i - \bar{x})^2 \ge k | \sigma^2 = 4)\)</span></p>
-<p><span class="math inline">\(\star \frac{\sum^n_{i=1}(x_i - \bar{x})^2}{\sigma^2} \sim \chi^2_{(n-1)}\)</span></p>
-<p><span class="math inline">\(= P(\frac{\sum^n_{i=1}(x_i - \bar{x})^2}{4} \ge \frac{k}{4} | \sigma^2 = 4)\)</span></p>
-<p><span class="math inline">\(\frac{k}{4} = \chi^2_{0.05(n-1)}\)</span></p>
-<p><span class="math inline">\(k = 4 \chi^2_{0.05(n-1)}\)</span></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="2023-01-25-ts-final term_files/figure-html/6d3a72a6-cc21-4887-852d-077f48bb699e-1-188ba1cd-2e88-4d34-b130-5049376b65fd.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
-</figure>
-</div>
-<p><span class="math inline">\(c = \{ (x_1,\dots,x_n):\sum^n_{i=1}(x_i - \bar{x})^2 \ge 4 \chi^2_{0.05(n-1)} \}\)</span></p>
-<p>유의수준 <span class="math inline">\(\alpha\)</span> 일반화 가능도비 검정법의 기각역이다.</p>
-<p><strong>수정..</strong></p>
-<p>3-{h} 방식으로..</p>
+<p>모평균 <span class="math inline">\(\mu\)</span>의 최대가능도 추정량은 가설에 관계없이 언제나 <span class="math inline">\(\bar{X}\)</span></p>
+<p>모분산 <span class="math inline">\(\sigma^2\)</span>의 최대가능도 추정량은 귀무가설 하에서는 <span class="math inline">\(4\)</span>이며, 전체 모수공간<span class="math inline">\(\Omega\)</span>내에서는 <span class="math inline">\(\hat{\sigma}^2 = \frac{\sum^n_{i=1}(X - \bar{X})^2}{n}\)</span></p>
+<p>일반화 가능도비 <span class="math inline">\(\Lambda(X_1,X_2,\dots,X_n) = (\frac{\sum^n_{i=1} (X_i - \bar{X}_n)^2}{4n})^{n/2} \times exp[-\frac{1}{2} \{ \frac{\sum^n_{i=1}\{(X_i - \bar{X}_i)}{4} \}^2 + \frac{n}{2}]\)</span></p>
+<p><span class="math inline">\(= (\frac{\hat{\sigma}^2}{4})^{n/2} exp\{ -(\frac{n}{2})(\frac{\hat{\sigma^2}}{4}) + \frac{n}{2} \}\)</span></p>
+<p><span class="math inline">\(\Lambda = \frac{\hat{\sigma}^2}{4}^{n/2} exp(-\frac{n}{2}\frac{\hat{\sigma}^2}{4} + \frac{n}{2})\)</span></p>
+<p><span class="math inline">\(\frac{\hat{\sigma}^2}{4} exp(-\frac{\hat{\sigma}^2}{4}) \le (\lambda^*)^{2/n} exp(-1) = c^*\)</span></p>
+<p><span class="math inline">\(\frac{\hat{\sigma}^2}{4}&lt;1\)</span>일 떄는 단조증가, <span class="math inline">\(\frac{\hat{\sigma}^2}{4}&gt;1\)</span>일 때는 단조감소</p>
+<p>기각영역 ; <span class="math inline">\(C = \{ (x_1,x_2,\dots,x_n):(\frac{\hat{\sigma}^2}{4} \le a\)</span> 또는 <span class="math inline">\(\frac{\hat{\sigma}^2}{4} \ge b \}\)</span></p>
+<p><span class="math inline">\(n\frac{\hat{\sigma}^2}{4} = \frac{\sum^n_{i=1}(X_i - \bar{X}_n)^2}{4} \sim \chi^2(n-1)\)</span></p>
+<p><span class="math inline">\(P[\frac{\sum^n_{i=1}(X_i - \bar{X}_n)^2}{4} \le \chi^2_{1-\alpha/2}(n-1)|H_0]\)</span></p>
+<p><span class="math inline">\(= P[\frac{\sum^n_{i=1}(X_i - \bar{X}_n)^2}{4} \ge \chi^2_{\alpha/2}(n-1)|H_0]\)</span></p>
+<p><span class="math inline">\(= \frac{\alpha}{2}\)</span></p>
+<p>그러므로 카이제곱분포의 양쪽꼬리에서 <span class="math inline">\(\alpha/2\)</span>씩 고려한 일반화 가능도비 검정법의 근사꼴로서 기각영역은</p>
+<p><span class="math inline">\(\frac{\sum^n_{i=1}(X_i - \bar{X}_n)^2}{4} \le \chi^2_{1-\alpha/2}(n-1)\)</span></p>
+<p>또는 <span class="math inline">\(\frac{\sum^n_{i=1}(X_i - \bar{X}_n)^2}{4} \ge \chi^2_{\alpha/2}(n-1)\)</span></p>
 </section>
 <section id="c-3" class="level2">
 <h2 class="anchored" data-anchor-id="c-3">(c)</h2>
 <p><span class="math inline">\(n=10\)</span>이고 표본분산 <span class="math inline">\(S^2\)</span>의 관측값은 <span class="math inline">\(6\)</span>이라고 한다. (b)의 일반화 가능도비 검정법으로 유의확률 (<span class="math inline">\(p-value\)</span>)을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\sum^n_{i=1}(x_i - \bar{x})^2 = (n-1)S^2\)</span></p>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">*</span><span class="fu">pchisq</span>(<span class="fl">0.975</span>,<span class="dv">9</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 0.00202805106479448
 </div>
 </div>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"유의확률 : "</span> ,<span class="fu">round</span>(<span class="dv">4</span><span class="sc">*</span><span class="fu">pchisq</span>(<span class="fl">0.975</span>,<span class="dv">9</span>),<span class="dv">4</span>))</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>유의확률 :  0.002</code></pre>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">*</span><span class="fu">pchisq</span>(<span class="fl">0.025</span>,<span class="dv">9</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+2.06470216075651e-10
 </div>
 </div>
-<p><strong>수정..</strong></p>
 
 
 </section>
