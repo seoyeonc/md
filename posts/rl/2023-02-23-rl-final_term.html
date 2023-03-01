@@ -604,7 +604,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <section id="section" class="level1">
 <h1>1.</h1>
-<p>중회귀모형 <span class="math inline">\(y = X\beta + \epsilon, \epsilon \sim N(0_n, I\sigma^2)\)</span>에서 <span class="math inline">\(X\)</span>가 <span class="math inline">\(n \times (p+1)\)</span> 행렬이고, rank가 <span class="math inline">\(p+1\)</span> 이라면 적합된 모형 <span class="math inline">\(\hat{y} = X \hat{\beta}\)</span>에 대하여 다음을 증명하여라. 단, <span class="math inline">\(\mathbf{e} = \mathbf{y} - \mathbf{\hat{y}}\)</span></p>
+<p>중회귀모형 <span class="math inline">\(y = X\beta + \epsilon, \epsilon \sim N(0_n, I\sigma^2)\)</span>에서 <span class="math inline">\(X\)</span>가 <span class="math inline">\(n \times (p+1)\)</span> 행렬이고, <span class="math inline">\(rank\)</span>가 <span class="math inline">\(p+1\)</span> 이라면 적합된 모형 <span class="math inline">\(\hat{y} = X \hat{\beta}\)</span>에 대하여 다음을 증명하여라. 단, <span class="math inline">\(\mathbf{e} = \mathbf{y} - \mathbf{\hat{y}}\)</span></p>
 <section id="section-1" class="level2">
 <h2 class="anchored" data-anchor-id="section-1">(1)</h2>
 <p><span class="math inline">\(\sum^n_{j=1} Var(\hat{y}_j) = (p+1) \sigma^2\)</span></p>
@@ -678,19 +678,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(E(y^\top A y) = tr(AV) + \mu^\top A \mu, cov(y,y^\top A y) = 2VA\mu\)</span></p>
 <p><span class="math inline">\(\frac{SSE}{\sigma^2} = y^\top \frac{1}{\sigma^2}(I-H)y\)</span></p>
 <p><span class="math inline">\(B = \frac{1}{\sigma^2}(I-H)\)</span></p>
-<p><span class="math inline">\(y \sim N(\beta_0 + \beta_1 X, I \sigma^2)\)</span></p>
+<p><span class="math inline">\(y \sim N(X\beta, I \sigma^2)\)</span></p>
 <p><span class="math inline">\(BV = \frac{1}{\sigma^2}(I-H)I\sigma^2 = B, BV=B\)</span></p>
 <p><span class="math inline">\(B, BV\)</span>는 멱등행렬</p>
-<p><span class="math inline">\(tr(BV) = tr(B) = tr((I-H) = tr(I) - tr(B) = n-p-1\)</span></p>
-<p><span class="math inline">\(\mu^\top B \mu = \frac{1}{\sigma^2}\begin{pmatrix}\beta_0 &amp; \beta_1\end{pmatrix} \begin{pmatrix}1^\top \\ X^\top \end{pmatrix}(I-H)\begin{pmatrix} 1 &amp; X \end{pmatrix} \begin{pmatrix} \beta_0 \\ \beta_1 \end{pmatrix}\)</span></p>
-<p><span class="math inline">\(= \frac{1}{\sigma^2}\begin{pmatrix} \beta_0 &amp; \beta_1 \end{pmatrix} \begin{pmatrix}1^\top I - 1^\top H \\ X^\top I - X^\top H \end{pmatrix} \begin{pmatrix} 1 &amp; X \end{pmatrix} \begin{pmatrix} \beta_0 \\ \beta_1 \end{pmatrix}\)</span></p>
-<p><span class="math inline">\(= \frac{1}{\sigma^2}\begin{pmatrix}\beta_0 &amp; \beta_1\end{pmatrix}\begin{pmatrix} 1^\top I - 1^\top H &amp; 1^\top I X - 1^\top H X \\ X^\top I - X^\top H &amp; X^\top I X - X^\top H X \end{pmatrix} \begin{pmatrix} \beta_0 \\ \beta_1 \end{pmatrix}\)</span></p>
-<ul>
-<li><span class="math inline">\(1^\top I - 1^\top H = n-n = 0\)</span></li>
-<li><span class="math inline">\(1^\top I X - 1^\top H X = 1^\top(I - H)X = 1^\top(I - X(X^\top X)^{-1}X^\top)X = 1^\top(X-X) = 0\)</span></li>
-<li><span class="math inline">\(X^\top I - X^\top H = X^\top(I - H) = X^\top(I - X(X^\top X)^{-1}X^\top = X^\top - X^\top = 0\)</span></li>
-<li><span class="math inline">\(X^\top I X - X^\top H X = X^\top(I - H)X = X^\top(I - X(X^\top X)^{-1} X^\top)X = 0\)</span></li>
-</ul>
+<p><span class="math inline">\(tr(BV) = tr(B) = tr(I-H) = tr(I) - tr(H) = n-p-1\)</span></p>
+<p><span class="math inline">\(\star\)</span> <span class="math inline">\(X\)</span>가 <span class="math inline">\(n \times (p+1)\)</span> 행렬이고, <span class="math inline">\(rank\)</span>가 <span class="math inline">\(p+1\)</span>, <span class="math inline">\(\therefore tr(H) = p+1\)</span></p>
+<p><span class="math inline">\(\mu = X B\)</span></p>
+<p><span class="math inline">\(B = \frac{1}{\sigma^2}(I-H)\)</span></p>
+<p><span class="math inline">\(B\mu = \frac{1}{\sigma^2}(I-H) X \beta = \frac{1}{\sigma^2}(X B - HXB) = 0\)</span></p>
+<p><span class="math inline">\(\star HX = X\)</span></p>
 <p><span class="math inline">\(\therefore \mu^\top B \mu = 0\)</span></p>
 <p><span class="math inline">\(E(\frac{SSE}{\sigma^2}) = n-p-1\)</span></p>
 <p><span class="math inline">\(E(SSE) = (n-p-1)\sigma^2\)</span></p>
