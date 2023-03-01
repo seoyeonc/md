@@ -881,16 +881,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="c-3">(c)</h2>
 <p><span class="math inline">\(n=10\)</span>이고 표본분산 <span class="math inline">\(S^2\)</span>의 관측값은 <span class="math inline">\(6\)</span>이라고 한다. (b)의 일반화 가능도비 검정법으로 유의확률 (<span class="math inline">\(p-value\)</span>)을 구하시오.</p>
 <p><strong>answer</strong></p>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">*</span><span class="fu">pchisq</span>(<span class="fl">0.975</span>,<span class="dv">9</span>)</span></code></pre></div>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(<span class="dv">6</span><span class="sc">/</span><span class="dv">4</span><span class="sc">*</span><span class="dv">9</span>,<span class="dv">9</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-0.00202805106479448
-</div>
-</div>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">*</span><span class="fu">pchisq</span>(<span class="fl">0.025</span>,<span class="dv">9</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-2.06470216075651e-10
+0.14125582649328
 </div>
 </div>
 

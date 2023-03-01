@@ -1894,7 +1894,7 @@
     "href": "posts/ts/2023-01-25-ts-final term.html#c-3",
     "title": "Theoritical Statistics Final term",
     "section": "(c)",
-    "text": "(c)\n\\(n=10\\)이고 표본분산 \\(S^2\\)의 관측값은 \\(6\\)이라고 한다. (b)의 일반화 가능도비 검정법으로 유의확률 (\\(p-value\\))을 구하시오.\nanswer\n\n4*pchisq(0.975,9)\n\n0.00202805106479448\n\n\n\n4*pchisq(0.025,9)\n\n2.06470216075651e-10"
+    "text": "(c)\n\\(n=10\\)이고 표본분산 \\(S^2\\)의 관측값은 \\(6\\)이라고 한다. (b)의 일반화 가능도비 검정법으로 유의확률 (\\(p-value\\))을 구하시오.\nanswer\n\n1-pchisq(6/4*9,9)\n\n0.14125582649328"
   },
   {
     "objectID": "posts/ts/2023-01-21-ts-HW9.html",
