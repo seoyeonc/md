@@ -655,13 +655,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="c">(c)</h2>
 <p><span class="math inline">\(p(1-p)\)</span>에 대한 최소분산 비편향 추정량을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(E(\bar{X}_n(1 - \bar{X}_n)) = \frac{(n-1)p(1-p)}{n} \sim \bar{X}_n(1-\bar{X}_n)\)</span></p>
+<p><span class="math inline">\(E(\bar{X}_n(1 - \bar{X}_n)) = \frac{(n-1)p(1-p)}{n}\)</span></p>
+<p><span class="math inline">\(p(1-p) = \frac{n\bar{X}_n(1-\bar{X}_n)}{n-1}\)</span></p>
 </section>
 <section id="d" class="level2">
 <h2 class="anchored" data-anchor-id="d">(d)</h2>
 <p><span class="math inline">\(p(1-p)\)</span>에 대한 적률추정량을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(M'_t = E(\bar{X}_n(1-\bar{X}_n)) = p(1-p) \sim \frac{1}{n} \sum_{i=1}^n X_i^2 - (\bar{X})^2\)</span></p>
+<p><span class="math inline">\(M_1 = E(\bar{X}) = p\)</span></p>
+<p><span class="math inline">\(M_2 = Var(\bar{X}) + E(\bar{X})^2 = p(1-p) + p^2 = p\)</span></p>
+<p><span class="math inline">\(p(1-p)\)</span>의 적률추정량 <span class="math inline">\((p(1-p))^{MME} = M_2 - M^2_1 = p - p^2 = p(1-p)\)</span></p>
 </section>
 <section id="e" class="level2">
 <h2 class="anchored" data-anchor-id="e">(e)</h2>
@@ -671,7 +674,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(L(p) = f(x_1|p)\dots f(x_n|p) = p^{x_1}(1-p)^{1-x_1}\dots p^{x_n}(1-p)^{1-x_n} = p^{\sum x_i}(1-p)^{n-\sum x_i}\)</span></p>
 <p><span class="math inline">\(l(p) = \sum x_i log p + (n-\sum x_i) log (1-p)\)</span></p>
 <p><span class="math inline">\(l'(p) = \frac{\sum x_i}{p} - \frac{n-\sum x_i}{1-p} = 0\)</span></p>
-<p><span class="math inline">\(\hat{p} = \frac{\sum x_i}{n} = \bar{X}\)</span>, <span class="math inline">\(\hat{p}(1-\hat{p}) = \bar{X}(1-\bar{X})\)</span></p>
+<p><span class="math inline">\(\hat{p} = \frac{\sum x_i}{n} = \bar{X}\)</span></p>
+<p><span class="math inline">\((\hat{p}(1-\hat{p}))^{MLE} = \bar{X}(1-\bar{X})\)</span></p>
 </section>
 </section>
 <section id="section-2" class="level1">
