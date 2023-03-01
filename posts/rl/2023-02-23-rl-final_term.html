@@ -1046,92 +1046,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(H_0 : \beta_1 = \beta_2 = \beta_3 = 0 \text{ vs. } H_1 \text{ not } H_0\)</span></p>
 <p><span class="math inline">\(F_0 &gt; F_{\alpha}(p,n-p-1) = F_{0.05}(3,6) = 4.76\)</span></p>
 <p>이므로 <span class="math inline">\(H_0\)</span>기각 가능, 즉 유의수준 0.05에서 회귀직선 유의</p>
-<div class="cell" data-execution_count="119">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>y <span class="sc">-</span> (<span class="fl">70.681</span> <span class="sc">+</span> <span class="fl">0.988</span> <span class="sc">*</span> x1 <span class="sc">-</span> <span class="fl">32.435</span> <span class="sc">*</span> x2 <span class="sc">+</span> <span class="fl">0.138</span><span class="sc">*</span>x1<span class="sc">*</span>x2)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>2.934</li><li>0.0389999999999873</li><li>-7.334</li><li>-15.469</li><li>-0.721000000000004</li><li>1.40600000000001</li><li>0.399000000000001</li><li>0.0519999999999925</li><li>0.0989999999999895</li><li>0.158999999999992</li></ol>
-</div>
-</div>
-<div class="cell" data-execution_count="120">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">120</span>,<span class="dv">130</span>,<span class="dv">130</span>,<span class="dv">155</span>,<span class="dv">149</span>,<span class="dv">150</span>,<span class="dv">160</span>,<span class="dv">125</span>,<span class="dv">135</span>,<span class="dv">140</span>) <span class="co"># 혈압</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">60</span>,<span class="dv">88</span>,<span class="dv">101</span>,<span class="dv">80</span>,<span class="dv">98</span>,<span class="dv">90</span>,<span class="dv">77</span>,<span class="dv">65</span>,<span class="dv">70</span>) <span class="co"># 체중</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>) <span class="co"># 성별, 남, 여, 남, 여, 여, 남, 여, 남, 여, 여</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(y,x1,x2)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x1<span class="sc">+</span>x2<span class="sc">+</span>x1<span class="sc">*</span>x2,df))</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>
-Call:
-lm(formula = y ~ x1 + x2 + x1 * x2, data = df)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--6.0595 -2.1671  0.2765  2.4372  6.5900 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  90.8235    11.2585   8.067 0.000194 ***
-x1            0.6954     0.1426   4.878 0.002771 ** 
-x2          -43.5558    22.6930  -1.919 0.103360    
-x1:x2         0.3134     0.2746   1.141 0.297333    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 5.006 on 6 degrees of freedom
-Multiple R-squared:  0.909, Adjusted R-squared:  0.8635 
-F-statistic: 19.98 on 3 and 6 DF,  p-value: 0.001591</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qf</span>(<span class="fl">0.95</span>,<span class="dv">3</span>,<span class="dv">6</span>),<span class="dv">2</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-4.76
-</div>
-</div>
-<hr>
-<p>직접해보기</p>
-<div class="cell" data-execution_count="101">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>),x1,x2,x1<span class="sc">*</span>x2),<span class="at">nrow=</span><span class="dv">10</span>,<span class="at">ncol=</span><span class="dv">4</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>X</span></code></pre></div>
-<div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-<caption>A matrix: 10 × 4 of type dbl</caption>
-<tbody>
-    <tr><td>1</td><td> 70</td><td>1</td><td>70</td></tr>
-    <tr><td>1</td><td> 60</td><td>0</td><td> 0</td></tr>
-    <tr><td>1</td><td> 88</td><td>1</td><td>88</td></tr>
-    <tr><td>1</td><td>101</td><td>0</td><td> 0</td></tr>
-    <tr><td>1</td><td> 80</td><td>0</td><td> 0</td></tr>
-    <tr><td>1</td><td> 98</td><td>1</td><td>98</td></tr>
-    <tr><td>1</td><td> 90</td><td>0</td><td> 0</td></tr>
-    <tr><td>1</td><td> 77</td><td>1</td><td>77</td></tr>
-    <tr><td>1</td><td> 65</td><td>0</td><td> 0</td></tr>
-    <tr><td>1</td><td> 70</td><td>0</td><td> 0</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="cell" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">solve</span>((<span class="fu">t</span>(X) <span class="sc">%*%</span> X))<span class="sc">%*%</span><span class="fu">t</span>(X)<span class="sc">%*%</span>y</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>beta</span></code></pre></div>
-<div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-<caption>A matrix: 4 × 1 of type dbl</caption>
-<tbody>
-    <tr><td> 90.8235135</td></tr>
-    <tr><td>  0.6954054</td></tr>
-    <tr><td>-43.5557840</td></tr>
-    <tr><td>  0.3133906</td></tr>
-</tbody>
-</table>
-</div>
-</div>
 </section>
 <section id="section-22" class="level2">
 <h2 class="anchored" data-anchor-id="section-22">(4)</h2>
@@ -1139,13 +1053,13 @@ F-statistic: 19.98 on 3 and 6 DF,  p-value: 0.001591</code></pre>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(R^2 = \frac{SSR}{SST} = 0.9551, R^2_{adj} = 1-\frac{SSE/(n-p-1)}{SST/(n-1)} = 0.9326\)</span></p>
 <div class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">1578.14</span><span class="sc">/</span><span class="fl">1652.4</span>,<span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">1578.14</span><span class="sc">/</span><span class="fl">1652.4</span>,<span class="dv">4</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 0.9551
 </div>
 </div>
 <div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">1</span><span class="sc">-</span>(<span class="fl">74.26</span><span class="sc">/</span><span class="dv">6</span>)<span class="sc">/</span>(<span class="fl">1652.4</span><span class="sc">/</span><span class="dv">9</span>),<span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">1</span><span class="sc">-</span>(<span class="fl">74.26</span><span class="sc">/</span><span class="dv">6</span>)<span class="sc">/</span>(<span class="fl">1652.4</span><span class="sc">/</span><span class="dv">9</span>),<span class="dv">4</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 0.9326
 </div>
@@ -1218,17 +1132,17 @@ F-statistic: 19.98 on 3 and 6 DF,  p-value: 0.001591</code></pre>
 <p><span class="math inline">\(E(y|\text{여성}) = \beta_0 + \beta_1x_1\)</span></p>
 <p><span class="math inline">\(H_0:\beta_2\neq 0\)</span>을 기각할 수 있으므로, 성별에 따른 평균 혈압이 다르다고 할 수 있다.</p>
 <div class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="dv">7</span>),<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="dv">7</span>),<span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 2.36
 </div>
 </div>
 <div class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">120</span>,<span class="dv">130</span>,<span class="dv">130</span>,<span class="dv">155</span>,<span class="dv">149</span>,<span class="dv">150</span>,<span class="dv">160</span>,<span class="dv">125</span>,<span class="dv">135</span>,<span class="dv">140</span>) <span class="co"># 혈압</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">60</span>,<span class="dv">88</span>,<span class="dv">101</span>,<span class="dv">80</span>,<span class="dv">98</span>,<span class="dv">90</span>,<span class="dv">77</span>,<span class="dv">65</span>,<span class="dv">70</span>) <span class="co"># 체중</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>) <span class="co"># 성별, 남, 여, 남, 여, 여, 남, 여, 남, 여, 여</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(y,x1,x2)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x1<span class="sc">+</span>x2,df))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">120</span>,<span class="dv">130</span>,<span class="dv">130</span>,<span class="dv">155</span>,<span class="dv">149</span>,<span class="dv">150</span>,<span class="dv">160</span>,<span class="dv">125</span>,<span class="dv">135</span>,<span class="dv">140</span>) <span class="co"># 혈압</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">60</span>,<span class="dv">88</span>,<span class="dv">101</span>,<span class="dv">80</span>,<span class="dv">98</span>,<span class="dv">90</span>,<span class="dv">77</span>,<span class="dv">65</span>,<span class="dv">70</span>) <span class="co"># 체중</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>) <span class="co"># 성별, 남, 여, 남, 여, 여, 남, 여, 남, 여, 여</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(y,x1,x2)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x1<span class="sc">+</span>x2,df))</span></code></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -1438,7 +1352,7 @@ F-statistic: 19.98 on 3 and 6 DF,  p-value: 0.001591</code></pre>
 </ol>
 <p><span class="math inline">\(|r^*_i| \ge t_{\alpha/2}(n-p-1) = t_{0.05/2}(15-3-2) = 2.23\)</span> 2번 관측값</p>
 <div class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="dv">10</span>),<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="dv">10</span>),<span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 2.23
 </div>
