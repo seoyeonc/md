@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="SEOYEON CHOI">
-<meta name="dcterms.date" content="2022-09-01">
+<meta name="dcterms.date" content="2023-03-03">
 
-<title>Seoyeon’s Blog for classes - Special Topics in Machine Learning</title>
+<title>Seoyeon’s Blog for classes - Advanced Regression Analysis Graduation Test</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,6 +61,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -97,7 +98,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Special Topics in Machine Learning</h1>
+      <h1 class="quarto-secondary-nav-title">Advanced Regression Analysis Graduation Test</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -108,9 +109,9 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">Special Topics in Machine Learning</h1>
+      <h1 class="title d-none d-lg-block">Advanced Regression Analysis Graduation Test</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Special Topics in Machine Learning</div>
+                <div class="quarto-category">Advanced Regression Analysis</div>
               </div>
                   </div>
   </div>
@@ -128,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 1, 2022</p>
+        <p class="date">March 3, 2023</p>
       </div>
     </div>
     
@@ -162,11 +163,11 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../posts/rl/index.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/rl/2023-02-23-rl-final_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Final Term</a>
@@ -174,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Graduation Test</a>
+  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link active">Advanced Regression Analysis Graduation Test</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -281,12 +282,12 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../posts/ml/index.html" class="sidebar-item-text sidebar-link active">Special Topics in Machine Learning</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a href="../../posts/ml/index.html" class="sidebar-item-text sidebar-link">Special Topics in Machine Learning</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/ml/2022-12-07-13wk.html" class="sidebar-item-text sidebar-link">A1: 깊은복사와 얕은복사 (12주차)</a>
@@ -496,7 +497,34 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">1.</a>
+  <ul class="collapse">
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">(1)</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">(2)</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">(3)</a></li>
+  </ul></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">2.</a>
+  <ul class="collapse">
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">(1)</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">(2)</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">(3)</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">(4)</a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">(5)</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">(6)</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">(7)</a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">(8)</a></li>
+  </ul></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">3.</a>
+  <ul class="collapse">
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">(1)</a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">(2)</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -504,9 +532,138 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Those are posts of Special Topics in Machine Learning.</p>
+<blockquote class="blockquote">
+<p>Graduation Test</p>
+</blockquote>
+<section id="section" class="level1">
+<h1>1.</h1>
+<p>원점을 지나는 회귀모형은 다음과 같이 정의할 수 있다.</p>
+<p><span class="math display">\[y_i = \beta x_i + \epsilon_i, \epsilon_i \sim_{i.i.d.} n(0,\sigma^2), i=1,\dots, n\]</span></p>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">(1)</h2>
+<p><span class="math inline">\(\beta\)</span>에 대한 최소제곱추정량(<span class="math inline">\(LSE\)</span>) <span class="math inline">\(\hat{\beta}\)</span>을 구하시오</p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\hat{\beta} = argmin_{\beta \in R} S = \sum^n_{i=1} (y_i - \beta x_i)^2 \to \frac{\partial S}{\partial \beta}|_{\beta = \hat{\beta}} = 0\)</span></p>
+<p><span class="math inline">\(\frac{\partial S}{\partial \beta} = \sum^n_{i=1} (-2x_i)(y_i - \beta x_i) \to \sum^n_{i=1} x_i(y_i - \hat{\beta}x_i) = 0 \to \hat{\beta} = \frac{\sum^n_{i=1} x_iy_i}{\sum^n_{i=1} x^2_i}\)</span></p>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">(2)</h2>
+<p><span class="math inline">\(E(\hat{\beta})\)</span>을 구하시오</p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\hat{\beta} = \frac{\sum^n_{i=1} x_i y_i}{\sum^n_{i=1} x^2_i} = \sum^n_{i=1} \frac{x_i}{\sum^n_{j=1} s^2_j} y_i\)</span></p>
+<p><span class="math inline">\(\to E(\hat{\beta})= \sum^n_{i=1} \frac{x_i}{\sum^n_{i=1} x^2_j} E(y_i) = \sum^n_{i=1}\frac{x_i}{\sum^n_{j=1} x^2_j} \beta x_i = \beta\frac{\sum^n_{i=1} x^2_{i=1} x^2_i}{\sum^n_{i=1} x^2_i} = \beta\)</span></p>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">(3)</h2>
+<p><span class="math inline">\(Var(\hat{\beta})\)</span>을 구하시오</p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(Var(\hat{\beta}) = \sum^n_{i=1} \frac{x^2_i}{(\sum^n_{j=1} x^2_j)^2} Var(y_i) = \sum^n_{i=1} \frac{x^2_i}{(\sum^n_{j=1} x^2_j)^2} \sigma^2 = \sigma^2 \frac{\sum^n_{i=1} x^2_i}{(\sum^n_{i=1} x^2_i)^2} = \frac{\sigma^2}{\sum^n_{i=1} x^2_i}\)</span></p>
+</section>
+</section>
+<section id="section-4" class="level1">
+<h1>2.</h1>
+<p>중회귀모형 <span class="math inline">\(y = X\beta + \epsilon, \epsilon \sim N(0_n, I\sigma^2)\)</span>에서 <span class="math inline">\(X\)</span>가 <span class="math inline">\(n \times (p+1)\)</span> 행렬이고, <span class="math inline">\(rank\)</span>가 <span class="math inline">\(p+1\)</span> 이라면 적합된 모형 <span class="math inline">\(\hat{y} = X \hat{\beta}\)</span>에 대하여 다음을 증명하여라. 단, <span class="math inline">\(\mathbf{e} = \mathbf{y} - \mathbf{\hat{y}}\)</span></p>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">(1)</h2>
+<p><span class="math inline">\(\sum^n_{j=1} Var(\hat{y}_j) = (p+1) \sigma^2\)</span></p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\hat{\bf{y}}= X\hat{\beta} = X(X^\top X)^{-1} X^\top y = Hy\)</span></p>
+<p><span class="math inline">\(Var(X\hat{\beta}) = XVar(\hat{\beta})X^\top\)</span></p>
+<p><span class="math inline">\(Var(\hat{\beta}) = Var((X^\top X)^{-1} X^\top y) = (X^\top X)^{-1} X^\top Var(y)X(X^\top X)^{-1} = (X^\top X)^{-1} X^\top X(X^\top X)^{-1} \sigma^2 = (X^\top X )^{-1} \sigma^2\)</span></p>
+<p><span class="math inline">\(Var(\hat{y}) = Var(X\hat{\beta}) = X(X^\top X)^{-1} X^\top \sigma^2\)</span></p>
+<p><span class="math inline">\(\to Var(\hat{y}) = HVar(y) H^\top = HH\sigma^2 = H\sigma^2\)</span></p>
+<p><span class="math inline">\(\star H^\top = H, H^2 = H, Var(y) = I_n \sigma^2\)</span></p>
+<p><span class="math inline">\(\sum^{n}_{j=1} Var(\hat{y}_j) = tr(Var(\hat{y})) = tr(H\sigma^2) = \sigma^2 tr(H) = tr((X^\top X)^{-1} X^\top X)\sigma^2 = tr(I_{p+1})\sigma^2 = (p+1)\sigma^2\)</span></p>
+<p><span class="math inline">\(\star tr(X (X^\top X)^{-1} X^\top)\)</span></p>
+</section>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">(2)</h2>
+<p><span class="math inline">\(Cov(\mathbf{e,y}) = \sigma^2[I_n - X(X^\top X)^{-1} X^\top]\)</span></p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\bf{e} = y - \hat{y} = y - Hy = (I-H)y\)</span></p>
+<p><span class="math inline">\(Cov(\bf{e},y) = Cov((I-H)y,y) = (I-H)Var(y) = (I-H) \sigma^2\)</span></p>
+<p><span class="math inline">\(\star Cov(Ax,y) = A Cov(X,Y)\)</span></p>
+<p><span class="math inline">\(\star Var(y) = \sigma^2\)</span></p>
+</section>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7">(3)</h2>
+<p><span class="math inline">\(Cov(\mathbf{e,\hat{y}}) = O_n\)</span></p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(Cov(e(I - H)\bf{y},Hy) = (I-H) Cov(y,y)H^\top = (I-H)H\sigma^2 = \mathbb{O}_n \sigma^2\)</span></p>
+<p><span class="math inline">\(\star Cov(Ax,By) = ACov(X,Y)B^\top\)</span></p>
+<p><span class="math inline">\(\star H^\top= H\)</span></p>
+<p><span class="math inline">\(\star H^2 = H\)</span></p>
+</section>
+<section id="section-8" class="level2">
+<h2 class="anchored" data-anchor-id="section-8">(4)</h2>
+<p><span class="math inline">\(Cov(\mathbf{e,\hat{\beta}}) = O_{n \times (p+1)}\)</span></p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(Cov((I-H)\bf{y},(X^\top X)^{-1} y) = (I-H) Cov(y,y) X (X^\top X)^{-1} = (I - X(X^\top X)^{-1} X^\top ) X (X^\top X)^{-1} \sigma^2 = \{ X(X^\top X)^{-1} - X(X^\top X)^{-1} \} \sigma^2 = \mathbb{O}_{n \times ([+1)}\)</span></p>
+</section>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9">(5)</h2>
+<p><span class="math inline">\(Cov(\mathbf{\epsilon, \hat{\beta}}) = \sigma^2 X(X^\top X)^{-1}\)</span></p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\bf{\hat{\beta}} = (X^\top X)^{-1} X^\top y = (X^\top X)^{-1} X^\top (X\beta + \epsilon) = \beta + (X^\top X)^{-1} X^\top \epsilon\)</span></p>
+<p><span class="math inline">\(Cov(\bf{\epsilon} , \beta + (X^\top X)^{-1} X^\top \epsilon ) = Cov(\epsilon, \beta) + Cov(\epsilon, \epsilon)X(X^\top X)^{-1} = \sigma^2 X(X^\top X)^{-1}\)</span></p>
+<p><span class="math inline">\(\star Cov(\epsilon, \beta) = 0\)</span></p>
+<p><span class="math inline">\(\star Cov(\epsilon, \epsilon) = I_n \sigma^2\)</span></p>
+</section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10">(6)</h2>
+<p><span class="math inline">\(\mathbf{e^\top y} = SSE\)</span></p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\sum^{n}_{j=1} e_j y_j = \bf{e^\top y} = \{ (I - H)y\}^\top y = y^\top (I-H)y\)</span></p>
+<p><span class="math inline">\(\star \bf{e}^\top (e_1, \dots , e_n) = (y-\hat{y})^\top\)</span></p>
+<p><span class="math inline">\(\star \bf{y}^\top = (y_1 , \dots , y_n)\)</span></p>
+<p><span class="math inline">\(SSE = \sum^n_{j=1} (y_i - \hat{y}_j)^2 = (\bf{y} - \hat{y} ) ^\top ( y - \hat{y} ) = e^\top e = \{ (I - H)y \}^\top \{ (I - H)y \} = y^\top (I - H) (I-H)y = y^\top (I - H)y\)</span></p>
+<p><span class="math inline">\(\star I - H_H+H^2 = I-H, H^2 = H\)</span></p>
+<p><span class="math inline">\(\therefore \sum^{n}_{j=1} e_j y_j = SSE\)</span></p>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11">(7)</h2>
+<p><span class="math inline">\(\mathbf{e^\top \hat{y}}=0\)</span></p>
+<p><strong>answer</strong></p>
+<p><span class="math inline">\(\sum^{n}_{j=1} \bf{e_j \hat{y}_j} = e^\top \hat{y} = y^\top (I-H) Hy = y^\top_{1\times n} \mathbb{O}_{n\times n} y_{n \times 1} = 0\)</span></p>
+<p><span class="math inline">\(\star H - H^2 = H - H = \mathbb{O}_{n \times n}\)</span></p>
+</section>
+<section id="section-12" class="level2">
+<h2 class="anchored" data-anchor-id="section-12">(8)</h2>
+<p><span class="math inline">\(E(\frac{SSE}{n-p-1}) = \sigma^2\)</span></p>
+<p><strong>answer</strong></p>
+<p>정리 5.1</p>
+<p><span class="math inline">\(y \sim N(\mu,V)\)</span> 이면</p>
+<p><span class="math inline">\(E(y^\top A y) = tr(AV) + \mu^\top A \mu, cov(y,y^\top A y) = 2VA\mu\)</span></p>
+<p><span class="math inline">\(\frac{SSE}{\sigma^2} = y^\top \frac{1}{\sigma^2}(I-H)y\)</span></p>
+<p><span class="math inline">\(B = \frac{1}{\sigma^2}(I-H)\)</span></p>
+<p><span class="math inline">\(y \sim N(X\beta, I \sigma^2)\)</span></p>
+<p><span class="math inline">\(BV = \frac{1}{\sigma^2}(I-H)I\sigma^2 = B, BV=B\)</span></p>
+<p><span class="math inline">\(B, BV\)</span>는 멱등행렬</p>
+<p><span class="math inline">\(tr(BV) = tr(B) = tr(I-H) = tr(I) - tr(H) = n-p-1\)</span></p>
+<p><span class="math inline">\(\star\)</span> <span class="math inline">\(X\)</span>가 <span class="math inline">\(n \times (p+1)\)</span> 행렬이고, <span class="math inline">\(rank\)</span>가 <span class="math inline">\(p+1\)</span>, <span class="math inline">\(\therefore tr(H) = p+1\)</span></p>
+<p><span class="math inline">\(\mu = X B\)</span></p>
+<p><span class="math inline">\(B = \frac{1}{\sigma^2}(I-H)\)</span></p>
+<p><span class="math inline">\(B\mu = \frac{1}{\sigma^2}(I-H) X \beta = \frac{1}{\sigma^2}(X B - HXB) = 0\)</span></p>
+<p><span class="math inline">\(\star HX = X\)</span></p>
+<p><span class="math inline">\(\therefore \mu^\top B \mu = 0\)</span></p>
+<p><span class="math inline">\(E(\frac{SSE}{\sigma^2}) = n-p-1\)</span></p>
+<p><span class="math inline">\(E(SSE) = (n-p-1)\sigma^2\)</span></p>
+<p><span class="math inline">\(\therefore E(\frac{SSE}{(n-p-1)}) = \sigma^2\)</span></p>
+</section>
+</section>
+<section id="section-13" class="level1">
+<h1>3.</h1>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14">(1)</h2>
+<p>적합결여검정을 위한 가설을 제시하라.</p>
+</section>
+<section id="section-15" class="level2">
+<h2 class="anchored" data-anchor-id="section-15">(2)</h2>
+<p>적합결여검정 수행을 위한 과정과 결과 추론을 구체적으로 제시하라(계산 X)</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -241,6 +241,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Graduation Test</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Mid Term</a>
   </div>
 </li>
@@ -491,6 +496,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-graduation_test.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Graduation Test</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ts/2023-01-05-ts_HW1.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW1</a>
   </div>
 </li>
@@ -553,7 +563,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">1.</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2.</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">3.</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">4.</a>
+  <ul class="collapse">
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">(1)</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">(2)</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">(3)</a></li>
+  </ul></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">6.</a>
+  <ul class="collapse">
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">(1)</a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">(2)</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">(3)</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">(4)</a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">(5)</a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">(6)</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -582,9 +615,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>예) R에서 lm으로 beta의 추정량을 구하면 안 됨. 수업 시간에 배운 식으로 풀이를 적어야 함.</p>
 <p>************ R을 이용해서 푸는 문제는, R 코드도 같이 업로드.</p>
 <hr>
-<ol type="1">
-<li>. 단순회귀에서 회귀제곱합, <span class="math display">\[SSE = \sum^{n}_{i=1} (y_i - \hat{y}_i)^2\]</span> 을 이차형식 <span class="math inline">\(y^\top B y\)</span> 로 표현하시오. 이 이차형식의 분포를 구하고, 또한 기대치를 ⟨정리 5.1⟩에 의하여 구하시오</li>
-</ol>
+<section id="section" class="level1">
+<h1>1.</h1>
+<p>단순회귀에서 회귀제곱합, <span class="math display">\[SSE = \sum^{n}_{i=1} (y_i - \hat{y}_i)^2\]</span> 을 이차형식 <span class="math inline">\(y^\top B y\)</span> 로 표현하시오. 이 이차형식의 분포를 구하고, 또한 기대치를 ⟨정리 5.1⟩에 의하여 구하시오</p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(\sum^{n}_{i=1} (y_i - \hat{y}_i)^2\)</span></p>
 <p><span class="math inline">\(= \sum^{n}_{i=1} (y_i - \hat{y}_i)^\top(y_i - \hat{y}_i)\)</span></p>
@@ -617,9 +650,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(E(SSE) = tr(BV) + \mu^\top B \mu = tr(\bf{X}(\bf{X}^\top\bf{X})^{-1}\bf{X}^\top V) + \mu^\top \bf{X}(\bf{X}^\top\bf{X})^{-1}\bf{X}^\top \mu = (n-(p+1))\sigma^2 + 0 = (n - (p+1))\sigma^2\)</span></p>
 <p><span class="math inline">\(Cov(y,y^\top B y) = 2VB\mu = 2 \sigma^2 (I-\bf{X}(\bf{X}^\top\bf{X})^{-1}\bf{X}^\top)\mu = 2 \sigma^2 (I-\bf{X}(\bf{X}^\top\bf{X})^{-1}\bf{X}^\top)\bf{X}\beta = 0\)</span></p>
 <hr>
-<ol start="2" type="1">
-<li>만약 <span class="math display">\[y_1 = \beta_0 + \epsilon_1\]</span> <span class="math display">\[y_2 = 2\beta_0 - \beta_1 + \epsilon_2\]</span> <span class="math display">\[y_3 = \beta_0 + 2\beta_1 + \epsilon_3\]</span> 이고, <span class="math inline">\(E(\epsilon_i) = 0, i = 1, 2, 3\)</span>이라면 <span class="math inline">\(\beta_0\)</span> 와 <span class="math inline">\(\beta_1\)</span> 의 최소제곱추정값은 무엇인가? <span class="math inline">\(y_i, i = 1, 2, 3\)</span>의 함수로써 나타내어라. 그리고 이 경우의 잔차제곱합(residual sum of squares)을 구하시오.</li>
-</ol>
+</section>
+<section id="section-1" class="level1">
+<h1>2.</h1>
+<p>만약 <span class="math display">\[y_1 = \beta_0 + \epsilon_1\]</span> <span class="math display">\[y_2 = 2\beta_0 - \beta_1 + \epsilon_2\]</span> <span class="math display">\[y_3 = \beta_0 + 2\beta_1 + \epsilon_3\]</span> 이고, <span class="math inline">\(E(\epsilon_i) = 0, i = 1, 2, 3\)</span>이라면 <span class="math inline">\(\beta_0\)</span> 와 <span class="math inline">\(\beta_1\)</span> 의 최소제곱추정값은 무엇인가? <span class="math inline">\(y_i, i = 1, 2, 3\)</span>의 함수로써 나타내어라. 그리고 이 경우의 잔차제곱합(residual sum of squares)을 구하시오.</p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(\epsilon_1 = y_1 + \beta_0, \epsilon_2 = y_2 - 2\beta_0 + \beta_1, \epsilon_3 = y_3 - \beta_0 - 2\beta_1\)</span></p>
 <p><span class="math inline">\(S = (y_1 - \hat{\beta}_0)^2 + (y_2 - 2\hat{\beta}_0 + \hat{\beta}_1)^2 + (y_3 - \hat{\beta}_0 - 2\hat{\beta}_1)^2\)</span></p>
@@ -639,9 +673,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(= \frac{13}{18} y_1^2 -\frac{14}{45}y_2^2 -\frac{70}{90}y3^2 -\frac{10}{9}y_1y_2 -\frac{5}{9} y_1y_3 - \frac{32}{45}y_2y_3\)</span></p>
 <p><span class="math inline">\(= \frac{1}{90}(65y_1^2 -28 y_2^2 - 70y_3^2 -100y_1y_2 -50y_1y_3 - 64y_2y_3)\)</span></p>
 <hr>
-<ol start="3" type="1">
-<li>단순회귀모형 <span class="math display">\[y_i = \beta_0 + \beta_1 x_i + \epsilon_i, \epsilon_i ~ N(0, \sigma^2), i = 1, 2, \dots , n\]</span> 에서 각각의 <span class="math inline">\(x_i\)</span> 가 <span class="math inline">\(cx_i (c \neq 0)\)</span>로 대체된다고 가정하자. <span class="math inline">\(\hat{\beta}_0, \hat{\beta}_1, s^{2}_{y·x}, R^2\)</span> 과 <span class="math inline">\(H_0 : \beta_1 = 0\)</span>에 대한 <span class="math inline">\(t\)</span>−검정 결과는 어떤 영향을 받는가?</li>
-</ol>
+</section>
+<section id="section-2" class="level1">
+<h1>3.</h1>
+<p>단순회귀모형 <span class="math display">\[y_i = \beta_0 + \beta_1 x_i + \epsilon_i, \epsilon_i ~ N(0, \sigma^2), i = 1, 2, \dots , n\]</span> 에서 각각의 <span class="math inline">\(x_i\)</span> 가 <span class="math inline">\(cx_i (c \neq 0)\)</span>로 대체된다고 가정하자. <span class="math inline">\(\hat{\beta}_0, \hat{\beta}_1, s^{2}_{y·x}, R^2\)</span> 과 <span class="math inline">\(H_0 : \beta_1 = 0\)</span>에 대한 <span class="math inline">\(t\)</span>−검정 결과는 어떤 영향을 받는가?</p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(S = \sum^n_{i=1}\epsilon^2_i = \sum^n_{i=1} \{ y_i - (\beta_0 + \beta_1 c x_i)\}^2\)</span></p>
 <p><span class="math inline">\(\frac{\partial S}{\partial \beta_1} = -2\sum^n_{i=1} c x_i (y_i - \hat{\beta}_0 - \hat{\beta}_1 c x_i) = \sum^n_{i=1} c x_i (y_i - \hat{y}) = \sum^n_{i=1} c x_i e_i = 0\)</span></p>
@@ -665,9 +700,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>검정통계량 <span class="math inline">\(F = \frac{MSR}{MSE} = \frac{SSR/1}{SSE/(n-2)} \sim_{H_0} F(1,n-2)\)</span></p>
 <p>검정통계량 계산에도 영향을 주지 않았기 때문에 <span class="math inline">\(\text{t test}\)</span> 결과는 <span class="math inline">\(x_i\)</span>에 <span class="math inline">\(c\)</span>배를 한 후에도 같은 결과가 나온다.</p>
 <hr>
-<ol start="4" type="1">
-<li>생선을 잡아서 얼음창고에 일주일 동안 보관한 후에 생선의 신선도가 어느 정도 변하는가를 실험하였다. 신선도를 <span class="math inline">\(y\)</span>로 놓고 10점 만점으로 하여 0점이 신선도가 전혀 없는 것이고 10점이 가장 좋은 경우이다. 설명변수 <span class="math inline">\(x\)</span>는 생선을 잡은 지 <span class="math inline">\(x\)</span>시간이 경과한 후에 얼음창고에 넣는 것을 가리킨다. 실험으로 10개의 데이터를 얻었다.</li>
-</ol>
+</section>
+<section id="section-3" class="level1">
+<h1>4.</h1>
+<p>생선을 잡아서 얼음창고에 일주일 동안 보관한 후에 생선의 신선도가 어느 정도 변하는가를 실험하였다. 신선도를 <span class="math inline">\(y\)</span>로 놓고 10점 만점으로 하여 0점이 신선도가 전혀 없는 것이고 10점이 가장 좋은 경우이다. 설명변수 <span class="math inline">\(x\)</span>는 생선을 잡은 지 <span class="math inline">\(x\)</span>시간이 경과한 후에 얼음창고에 넣는 것을 가리킨다. 실험으로 10개의 데이터를 얻었다.</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -700,9 +736,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<ol type="1">
-<li>선형회귀모형 (<span class="math inline">\(y = \beta_0 + \beta_1 x + \epsilon\)</span>)이 타당한가를 유의수준 <span class="math inline">\(\alpha = 0.05\)</span>를 사용하여 적합결여검정을 행하라.</li>
-</ol>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">(1)</h2>
+<p>선형회귀모형 (<span class="math inline">\(y = \beta_0 + \beta_1 x + \epsilon\)</span>)이 타당한가를 유의수준 <span class="math inline">\(\alpha = 0.05\)</span>를 사용하여 적합결여검정을 행하라.</p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(H_0 : E(Y|X = x) = \beta_0 + \beta_1 x\)</span></p>
 <p><span class="math inline">\(H_1 : E(Y|X=x) \neq \beta_0 + \beta_1 x\)</span></p>
@@ -903,9 +939,10 @@ SSE =  0.1165 , df = 8</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(H_0 : E(Y|X = x) = \beta_0 + \beta_1 x\)</span> 기각못함</p>
-<ol start="2" type="1">
-<li>선형회귀모형이 타당한 경우, 신선도의 점수가 시간당 얼마만큼이나 떨어지는가를 95% 신뢰계수를 가지고 구간추정하라(즉, <span class="math inline">\(\beta_1\)</span>의 구간추정).</li>
-</ol>
+</section>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">(2)</h2>
+<p>선형회귀모형이 타당한 경우, 신선도의 점수가 시간당 얼마만큼이나 떨어지는가를 95% 신뢰계수를 가지고 구간추정하라(즉, <span class="math inline">\(\beta_1\)</span>의 구간추정).</p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(\hat{\beta}_1\)</span>의 <span class="math inline">\(100(1-\alpha)\)</span>%의 신뢰구간</p>
 <p><span class="math inline">\(\hat{\beta}_1 \pm t_{\alpha/2}(n-2)\frac{\sqrt{MSE}}{\sqrt{S_{xx}}}\)</span></p>
@@ -1416,9 +1453,10 @@ yB SSE =  8.507143 , df = 5</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(H_0 : \beta_{01} = \beta_{02} \text{ and } \beta_{11} = \beta_{12}\)</span> 기각</p>
-<ol start="3" type="1">
-<li>관심의 대상이 <span class="math inline">\(x\)</span>가 증가함에 따라 <span class="math inline">\(y\)</span> 가 얼마나 증가하는가에 있다. 두 회사의 타이어에 대하여 각각 회귀모형을 적합했을 때, 기울기가 같은지 유의수준 5%로 검정하시오.</li>
-</ol>
+</section>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">(3)</h2>
+<p>관심의 대상이 <span class="math inline">\(x\)</span>가 증가함에 따라 <span class="math inline">\(y\)</span> 가 얼마나 증가하는가에 있다. 두 회사의 타이어에 대하여 각각 회귀모형을 적합했을 때, 기울기가 같은지 유의수준 5%로 검정하시오.</p>
 <p><strong>Answer</strong></p>
 <p>기울기 비교에 대한 가설</p>
 <p><span class="math inline">\(H_0 : \beta_{11} = \beta_{12} \text{ vs. } H_1 : \beta_{11} \neq \beta_{12}\)</span></p>
@@ -1491,9 +1529,11 @@ yB SSE =  8.507143 , df = 5</code></pre>
 </div>
 <p><span class="math inline">\(H_0 : \beta_{11} = \beta_{12}\)</span> 기각</p>
 <hr>
-<ol start="6" type="1">
-<li><strong>R 실습</strong>. 아마존 강 수위 문제 아마존 강 유역은 지구상의 가장 큰 열대림 지역이지만 대부분의 다른 자연자원과 마찬가지로 개발의 손길이 미치면서 열대림이 급속히 파괴됐다. 1970년대 이후 아마존 상류지역에 도로가 건설되면서 인구가 빠르게 증가되었고 대규모의 삼림파괴가 이뤄졌다. 강수량과 유수량이 모두 영향을 받을 수 있기 때문에 이것은 결국 아마존 강 전체에 영향을 미치는 심각한 기후학적 및 수문학적 변화를 가져왔다. 다음의 표는 페루 이키토스(Iquitos)에서 1962년부터 1978년까지 기록한 아마존 강 최고수위 (High)와, 최저수위 (Low)를 기록한 것이다(단위: 미터).1962년부터 1969년까지의 데이터는 개발 이전에 수집된 데이터이고, 1970년부터 1978년까지의 데이터는 개발이후에 관측된 데이터를 나타낸다. 이 데이터는 아마존 상류지역의 삼림파괴가 아마존 유역의 강 수위에 변화를 일으켰는지 분석하고자 한다. 우리의 관심은 시간에 따른 아마존 강 수위 변화여부이다. 예를 들어, 우리가 다음을 적합한다면</li>
-</ol>
+</section>
+</section>
+<section id="section-7" class="level1">
+<h1>6.</h1>
+<p><strong>R 실습</strong>. 아마존 강 수위 문제 아마존 강 유역은 지구상의 가장 큰 열대림 지역이지만 대부분의 다른 자연자원과 마찬가지로 개발의 손길이 미치면서 열대림이 급속히 파괴됐다. 1970년대 이후 아마존 상류지역에 도로가 건설되면서 인구가 빠르게 증가되었고 대규모의 삼림파괴가 이뤄졌다. 강수량과 유수량이 모두 영향을 받을 수 있기 때문에 이것은 결국 아마존 강 전체에 영향을 미치는 심각한 기후학적 및 수문학적 변화를 가져왔다. 다음의 표는 페루 이키토스(Iquitos)에서 1962년부터 1978년까지 기록한 아마존 강 최고수위 (High)와, 최저수위 (Low)를 기록한 것이다(단위: 미터).1962년부터 1969년까지의 데이터는 개발 이전에 수집된 데이터이고, 1970년부터 1978년까지의 데이터는 개발이후에 관측된 데이터를 나타낸다. 이 데이터는 아마존 상류지역의 삼림파괴가 아마존 유역의 강 수위에 변화를 일으켰는지 분석하고자 한다. 우리의 관심은 시간에 따른 아마존 강 수위 변화여부이다. 예를 들어, 우리가 다음을 적합한다면</p>
 <p><span class="math display">\[\text{High} = \beta_0 + \beta_1 \times \text{Year} + \epsilon\]</span></p>
 <ol type="a">
 <li><p><span class="math inline">\(\beta_1 = 0\)</span>은 시간에 따른 아마존 강의 최고수위에 아무런 (선형)변화가 없다는 것을 의미하고,</p></li>
@@ -1597,9 +1637,9 @@ yB SSE =  8.507143 , df = 5</code></pre>
 </tr>
 </tbody>
 </table>
-<ol type="1">
-<li>High와 Year, Low와 Year, 그리고 High와 Low에 대해 산점도를 그리시오.</li>
-</ol>
+<section id="section-8" class="level2">
+<h2 class="anchored" data-anchor-id="section-8">(1)</h2>
+<p>High와 Year, Low와 Year, 그리고 High와 Low에 대해 산점도를 그리시오.</p>
 <p><strong>Answer</strong></p>
 <div class="cell" data-execution_count="86">
 <div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>df_6 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Year =</span> <span class="fu">c</span>(<span class="dv">1962</span>,<span class="dv">1963</span>,<span class="dv">1964</span>,<span class="dv">1965</span>,<span class="dv">1966</span>,<span class="dv">1967</span>,<span class="dv">1968</span>,<span class="dv">1969</span>,<span class="dv">1970</span>,<span class="dv">1971</span>,<span class="dv">1972</span>,<span class="dv">1973</span>,<span class="dv">1974</span>,<span class="dv">1975</span>,<span class="dv">1976</span>,<span class="dv">1977</span>,<span class="dv">1978</span>),</span>
@@ -1669,9 +1709,10 @@ yB SSE =  8.507143 , df = 5</code></pre>
 </div>
 </div>
 <p>관련이 있는지 모르겠다.</p>
-<ol start="2" type="1">
-<li>Year에 대한 High, Year에 대한 Low, 그리고 Low에 대한 High의 회귀모형을 구하시오. 3개 회귀모형의 결과를 요약하고, 각 모형별로 회귀계수의 의미를 설명하시오.</li>
-</ol>
+</section>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9">(2)</h2>
+<p>Year에 대한 High, Year에 대한 Low, 그리고 Low에 대한 High의 회귀모형을 구하시오. 3개 회귀모형의 결과를 요약하고, 각 모형별로 회귀계수의 의미를 설명하시오.</p>
 <p><strong>Answer</strong></p>
 <p><strong>Year에 대한 High의 회귀모형</strong></p>
 <div class="cell" data-execution_count="90">
@@ -1981,18 +2022,20 @@ F-statistic: 0.004695 on 1 and 15 DF,  p-value: 0.9463</code></pre>
 <p><span class="math inline">\(\text{Low} = 35.106961 -0.007892\text{Year}\)</span> 모형의 의미 - <span class="math inline">\(\beta_0 = 35.106961\)</span>: 해당 모형에서 시간에 영향을 받지 않았을때의 아마존 강의 최저 수위가 35.106961m이다. - <span class="math inline">\(\beta_1 = -0.007892\)</span>: 아마존 강의 최저수위가 0.007892m만큼 감소한 것을 의미하는데, 이것은 해마다 아마존 강의 흐르는 물이 감소하는 것을 의미하지만, 0에 가까운 값으로서 영향이 미세해 보인다.</p>
 <p><span class="math inline">\(\text{High} = -330.21235 + 0.18088\text{Year}\)</span> 모형의 의미 - <span class="math inline">\(\beta_0 = -330.21235\)</span>: 해당 모형에서 시간에 영향을 받지 않았을때의 아마존 강의 최고 수위가 -330.21235m이다. - <span class="math inline">\(\beta_1 = 0.18088\)</span>: 아마존 강의 최고수위가 0.18088m만큼 증가된 것을 의미하는데, 이것은 해마다 아마존 강의 흐르는 물이 0.18088m 늘어난 것을 나타낼 수 있다. 이 모형에서도 영향이 크게 끼치지 않는 것 같다.</p>
 <p><span class="math inline">\(\text{High} = 26.40088 -0.01406\text{Low}\)</span> 모형의 의미 - <span class="math inline">\(\beta_0 = -26.40088\)</span>: 해당 모형에서 최저수위의 영향을 받지 않았을 때의 아마존 강의 최고수위가 026.40088m 라는 것을 의미한다. - <span class="math inline">\(\beta_1 = -0.014061\)</span>: 아마존 강의 최고수위가 최저수위가 1m 증가함에 따라 -0.0014061m 만큼 감소함을 의미한다. 아마존 강의 최저수위는 최고수위에 미치는 영향이 미미해 보인다.</p>
-<ol start="3" type="1">
-<li>이 자료를 근거로 우리는 삼림파괴가 아마존 강 수위의 변화를 일으킨다고 할 수 있는가?</li>
-</ol>
+</section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10">(3)</h2>
+<p>이 자료를 근거로 우리는 삼림파괴가 아마존 강 수위의 변화를 일으킨다고 할 수 있는가?</p>
 <p><strong>Answer</strong></p>
 <ul>
 <li>1970년대 이후 삼림파괴가 이루어졌다. 구간을 나누어 보지 않는 이상 삼림파괴가 아마존 강 수위의 변화를 일으켰다는 판단은 섣불러 보인다.</li>
 <li>모형만 봐도 시간과 아마존 강의 최고수위 및 최저수위의 영향과 아마존 강의 최저수위 및 최고수위 간의 영향이 거의 없어보인다. 모두 1도 넘지 않았기도 하다.</li>
 <li>따라서 삼림파괴가 아마존 강 수위의 변화를 일으켰다고 2번의 근거로는 할 수 없다.</li>
 </ul>
-<ol start="4" type="1">
-<li>아마존강의 최저수위와 최고수위와의 산점도를 1960년대, 1970년대 자료별로 다르게 그리고, 각각의 회귀선을 적합하시오.</li>
-</ol>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11">(4)</h2>
+<p>아마존강의 최저수위와 최고수위와의 산점도를 1960년대, 1970년대 자료별로 다르게 그리고, 각각의 회귀선을 적합하시오.</p>
 <p><strong>Answer</strong></p>
 <p>1960년대 아마존강의 최저수위와 최고수위와의 산점도</p>
 <div class="cell" data-execution_count="114">
@@ -2285,9 +2328,10 @@ F-statistic: 0.02455 on 1 and 7 DF,  p-value: 0.8799</code></pre>
 </table>
 </div>
 </div>
-<ol start="5" type="1">
-<li>아마존강의 최저수위와 최고수위와의 관계가 1960년대와 1970년대에 따라 차이가 있는가? 두 회귀모형의 동일성 여부를 유의수준 <span class="math inline">\(\alpha = 0.01\)</span>에서 검정하시오.</li>
-</ol>
+</section>
+<section id="section-12" class="level2">
+<h2 class="anchored" data-anchor-id="section-12">(5)</h2>
+<p>아마존강의 최저수위와 최고수위와의 관계가 1960년대와 1970년대에 따라 차이가 있는가? 두 회귀모형의 동일성 여부를 유의수준 <span class="math inline">\(\alpha = 0.01\)</span>에서 검정하시오.</p>
 <p><strong>Answer</strong></p>
 <p>가설</p>
 <p><span class="math inline">\(H_0 : \beta_{01} = \beta_{02} \text{ and } \beta_{11} = \beta_{12}\)</span></p>
@@ -2397,9 +2441,10 @@ SSE =  22.94423 , df = 15</code></pre>
 혹은 beta1이 다르거나 혹은 beta0,beta1 모두가 다르다.</code></pre>
 </div>
 </div>
-<ol start="6" type="1">
-<li>(4)에서 구한 두 회귀모형의 기울기가 같은지 유의수준 <span class="math inline">\(\alpha = 0.01\)</span>에서 검정하시오.</li>
-</ol>
+</section>
+<section id="section-13" class="level2">
+<h2 class="anchored" data-anchor-id="section-13">(6)</h2>
+<p>(4)에서 구한 두 회귀모형의 기울기가 같은지 유의수준 <span class="math inline">\(\alpha = 0.01\)</span>에서 검정하시오.</p>
 <p><strong>Answer</strong></p>
 <p>기울기 비교에 대한 가설</p>
 <p><span class="math inline">\(H_0 : \beta_{11} = \beta_{12} \text{ vs. } H_1 : \beta_{11} \neq \beta_{12}\)</span></p>
@@ -2476,6 +2521,8 @@ SSE =  22.94423 , df = 15</code></pre>
 <p><span class="math inline">\(H_0 : \beta_{11} = \beta_{12}\)</span> 채택</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
