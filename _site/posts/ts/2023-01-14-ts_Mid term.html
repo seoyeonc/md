@@ -236,6 +236,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-23-rl-final_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Final Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis GT</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Mid Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">Regression HW 1</a>
   </div>
 </li>
@@ -481,6 +496,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-graduation_test.html" class="sidebar-item-text sidebar-link">Theoritical Statistics GT</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ts/2023-01-05-ts_HW1.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW1</a>
   </div>
 </li>
@@ -584,6 +604,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>1.</h1>
 <p><span class="math inline">\(X_1, \dots , X_n\)</span>이 <span class="math inline">\(N(\mu, \sigma^2)\)</span>( 단, <span class="math inline">\(\mu\)</span>는 그 값이 알려져 있음)로부터의 랜덤표본이다.</p>
 <p><span class="math inline">\(\sigma^2\)</span>의 추정량으로 <span class="math inline">\(T_1(X) = \frac{1}{n}\sum^n_{i=1}(X_i - \mu)^2\)</span>과 <span class="math inline">\(T_2(X) = \frac{1}{n-1}\sum^n_{i=1}(X_i - \bar{X})^2\)</span>을 고려하고 있다. 다음에 답하시오.</p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(\frac{n T_1(X)}{\sigma^2} \sim \chi^2 (n)\)</span>, <span class="math inline">\(\frac{(n-1) T_2(X))}{\sigma^2} \sim \chi^2 (n-1)\)</span></p>
+<p><span class="math inline">\(E(\frac{n T_1(X)}{\sigma^2}) = n\)</span></p>
+<p><span class="math inline">\(\therefore E(T_1(X)) = \sigma^2\)</span></p>
+<p><span class="math inline">\(E(\frac{(n-1) T_2(X)}{\sigma^2}) = n-1\)</span></p>
+<p><span class="math inline">\(\therefore E(T_2(X)) = \sigma^2\)</span></p>
+<p><span class="math inline">\(V(\frac{n T_1(X)}{\sigma^2}) = \frac{n^2}{\sigma^4}V(T_1(X)) = 2n\)</span></p>
+<p><span class="math inline">\(\therefore V(T_1(X)) = \frac{2\sigma^4}{n}\)</span></p>
+<p><span class="math inline">\(V(\frac{(n-1) T_2(X)}{\sigma^2}) = \frac{(n-1)^2}{\sigma^4}V(T_2(X)) = 2(n-1)\)</span></p>
+<p><span class="math inline">\(\therefore V(T_2(X))= \frac{2\sigma^4}{n-1}\)</span></p>
 <section id="a" class="level2">
 <h2 class="anchored" data-anchor-id="a">(a)</h2>
 <p><span class="math inline">\(T_1(X)\)</span>과 <span class="math inline">\(T_2(X)\)</span>의 기댓값을 각각 구하시오.</p>
@@ -604,9 +634,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(T_1(X)\)</span>과 <span class="math inline">\(T_2(X)\)</span>의 분산을 각각 구하시오.</p>
 <p><strong>answer</strong></p>
 <p><code>-</code> <span class="math inline">\(Var(T_1(X))\)</span></p>
-<p><span class="math inline">\(= Var(\frac{1}{n}\sum^n_{i=1}(X_i - \mu)^2)\)</span></p>
-<p><span class="math inline">\(= Var(\frac{n\sigma^2}{n})\)</span></p>
-<p><span class="math inline">\(= \sigma^4\)</span></p>
+<p><span class="math inline">\(= Var(\frac{\sigma^2}{n} \frac{1}{\sigma^2}\sum^n_{i=1}(X_i - \mu)^2)\)</span></p>
+<p><span class="math inline">\(= \frac{\sigma^4}{n^2}2n\)</span></p>
+<p><span class="math inline">\(= (\frac{2\sigma^4}{n})\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
+<p><span class="math inline">\(V = \sum(\frac{X_i - \mu}{\sigma})^2 \sim chi^2(n)\)</span></p>
+<p><span class="math inline">\(\star\)</span></p>
 <p><code>-</code> <span class="math inline">\(Var(T_2(X))\)</span></p>
 <p><span class="math inline">\(= Var(\frac{1}{n-1}\sum^n_{i=1}(X_i - \bar{X})^2)\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
@@ -626,7 +659,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\sqrt{n}(\bar{X}^2_n - \lambda^2)\)</span>의 극한 분포를 구하시오.</p>
 <p><strong>answer</strong></p>
 <p>Delta Method</p>
-<p>$({X}^2_n - ^2) N(0,4<sup>2</sup>2) $ 단, <span class="math inline">\(\mu \neq 0\)</span></p>
+<p><span class="math inline">\(\sqrt{n}(\bar{X}^2_n - \mu^2) \xrightarrow[]{d} N(0,4\mu^2\sigma^2)\)</span> 단, <span class="math inline">\(\mu \neq 0\)</span></p>
 <p><span class="math inline">\(\mu = \lambda\)</span>, <span class="math inline">\(\sigma^2 = \lambda\)</span></p>
 <p><span class="math inline">\(\sqrt{n}(\bar{X}^2_n - \lambda^2) \xrightarrow[]{d} N(0,4\lambda^4)\)</span></p>
 </section>
@@ -653,10 +686,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(f_Y(y) = -\frac{3}{y^2} exp(-\frac{3}{y})I(y&gt;0)\)</span></p>
 <p><span class="math inline">\(g(X) = \frac{1}{X}\)</span>, <span class="math inline">\(g^{-1} (Y) = \frac{1}{y}\)</span></p>
-<p><span class="math inline">\(= f_Y(y) = f_X(g^{-1}(y))\frac{dg^{-1}(y)}{dg}\)</span></p>
-<p><span class="math inline">\(= f_X(\frac{1}{y})(-\frac{1}{y^2})\)</span></p>
-<p><span class="math inline">\(= 3e^{-\frac{3}{y}}(-\frac{1}{y^2})I(y&gt;0)\)</span></p>
-<p><span class="math inline">\(= -\frac{3}{y^2}e^{-\frac{3}{y}}I(y&gt;0)\)</span></p>
+<p><span class="math inline">\(= f_Y(y) = f_X(g^{-1}(y))|\frac{dg^{-1}(y)}{dg}|\)</span></p>
+<p><span class="math inline">\(= f_X(\frac{1}{y})(\frac{1}{y^2})\)</span></p>
+<p><span class="math inline">\(= 3e^{-\frac{3}{y}}(\frac{1}{y^2})I(y&gt;0)\)</span></p>
+<p><span class="math inline">\(= \frac{3}{y^2}e^{-\frac{3}{y}}I(y&gt;0)\)</span></p>
 </section>
 <section id="section-3" class="level1">
 <h1>4.</h1>

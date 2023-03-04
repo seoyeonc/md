@@ -2,6 +2,10 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/ts/2023-03-03-graduation_test.html",
+      "/posts/rl/2023-03-02-graduation_test.html",
+      "/posts/rl/2023-02-23-rl-final_term.html",
+      "/posts/rl/2023-02-22-rl-mid_term.html",
       "/posts/ct/2023-02-12-Coding_Test.html",
       "/posts/ct/2023-01-30-Coding_Test_Q3.html",
       "/posts/ts/2023-01-25-ts-final term.html",

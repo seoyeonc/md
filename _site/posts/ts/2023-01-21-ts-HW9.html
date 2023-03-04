@@ -236,6 +236,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-23-rl-final_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Final Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis GT</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Mid Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">Regression HW 1</a>
   </div>
 </li>
@@ -477,6 +492,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/ts/2023-01-25-ts-final term.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Final term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-graduation_test.html" class="sidebar-item-text sidebar-link">Theoritical Statistics GT</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -764,7 +784,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(= P(X \ge 7|p)\)</span></p>
 <p><span class="math inline">\(= \sum_{x \ge7} f(x:p) = \sum_{x \ge 7} \begin{pmatrix} 10 \\ x \end{pmatrix}p^x (1-p)^{10-x}\)</span></p>
 <p><span class="math inline">\(\star p &lt;1\)</span> 구간에서 증가함수다.</p>
-<p><span class="math inline">\(\Pi(\frac{1}{2}) = \sum_{x\ge7} \begin{pmatrix} 10 \\ x \end{pmatrix} (\frac{1}{2})^2 = \{ \begin{pmatrix} 10 \\ 7 \end{pmatrix} + \begin{pmatrix} 10 \\ 8 \end{pmatrix} + \begin{pmatrix} 10 \\ 9 \end{pmatrix} + \begin{pmatrix} 10 \\ 10 \end{pmatrix} \} \{ (\frac{1}{2})^{10}\}\)</span></p>
+<p><span class="math inline">\(\Pi(\frac{1}{2}) = \sum_{x\ge7} \begin{pmatrix} 10 \\ x \end{pmatrix} (\frac{1}{2})^2 = \{ \begin{pmatrix} 10 \\ 7 \end{pmatrix} + \begin{pmatrix} 10 \\ 8 \end{pmatrix} + \begin{pmatrix} 10 \\ 9 \end{pmatrix} + \begin{pmatrix} 10 \\ 10 \end{pmatrix} \} \{ (\frac{1}{2})^{8}\}\)</span></p>
 </section>
 <section id="section-9" class="level2">
 <h2 class="anchored" data-anchor-id="section-9">(2)</h2>
@@ -839,8 +859,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\frac{L(\theta_0)}{L(\theta_1)} = \frac{(\theta_0 + 1)^n(\Pi^n_{i=1}x_i)^{\theta_0} \Pi^n_{i=1}I(0&lt;x_i &lt;1)}{(\theta_1+1)^n(\Pi^n_{i=1}x_i)^{\theta_1}\Pi^n_{i=1}I(0&lt;x_i&lt;1)}\)</span></p>
 <p><span class="math inline">\(\star \uparrow \Pi^n_{i=1}I(0&lt;x_i&lt;1) \to \theta\)</span>랑 무관한 영역이라 무시</p>
 <p><span class="math inline">\((\Pi^n_{i=1}x_i)^{\theta_0 - \theta_1} \le k\)</span></p>
-<p><span class="math inline">\((\theta_0 - \theta_1) \sum^n_{i=1} log x_i \le k\)</span></p>
-<p><span class="math inline">\(\sum^n_{i=1} log x_i \ge k\)</span></p>
+<p><span class="math inline">\(log(\theta_0 - \theta_1)\sum^n_{i=1} x_i \le k\)</span></p>
+<p><span class="math inline">\((\theta_0 - \theta_1) \sum^n_{i=1} x_i \le k\)</span></p>
 <p><span class="math inline">\(\star \theta_1 &gt; \theta_0 \to \theta_0 - \theta_1 &lt; 0 \therefore\)</span> 부등호 방향 바뀜</p>
 <p><span class="math inline">\(c = \{ (x_1,\dots, x_n:\sum^n_{i=1}log x_i \ge k \}\)</span></p>
 </section>
@@ -848,8 +868,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="section-15">(2)</h2>
 <p>(1)에서 구한 검정이 대립가설 <span class="math inline">\(\theta&gt;\theta_0\)</span>에 대하여 균일최강력 검정이 되는지를 밝혀라.</p>
 <p><strong>answer</strong></p>
-<p>기각역 <span class="math inline">\(\sum^n_{i=1}log x_i \ge k\)</span>는 <span class="math inline">\(\theta_1\)</span>과 무관하다.</p>
-<p><span class="math inline">\(\theta &gt; \theta_0\)</span>에 대해 <span class="math inline">\(\sum^n_{i=1}log x_i\)</span>는 최강력 기각역이다.</p>
+<p>기각역 <span class="math inline">\(\sum^n_{i=1} x_i \ge k\)</span>는 <span class="math inline">\(\theta_1\)</span>과 무관하다.</p>
+<p><span class="math inline">\(\theta &gt; \theta_0\)</span>에 대해 <span class="math inline">\(\sum^n_{i=1} x_i \ge k\)</span>는 최강력 기각역이다.</p>
 <p><span class="math inline">\(H_0 : \theta = \theta_0\)</span> vs <span class="math inline">\(H_1 : \theta &gt; \theta_0\)</span>의 균일 최강력 기각역이 될 수 있다.</p>
 </section>
 </section>
@@ -864,8 +884,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(L(\theta) = \Pi^n_{i=1}f(x:\theta) = \Pi^n_{i=1}\theta x^{\theta-1}_i I(0&lt;x_i &lt; 1)\)</span></p>
 <p><span class="math inline">\(\frac{L(\theta_0)}{L(\theta_1)} = \frac{\Pi^n_{i=1} \theta_0 x_i^{\theta_0 - 1} I(0&lt;x_i&lt;1)}{\Pi^n_{i=1} \theta_1 x_i^{\theta_1-1}I(0&lt;x_i&lt;1)} = (\frac{\theta_0}{\theta_1})^n (\Pi^n_{i=1}x_i)^{\theta_0-\theta_1} \le k\)</span></p>
 <p><span class="math inline">\(\to (\Pi^n_{i=1}x_i)^{\theta_0 - \theta_1} \le k\)</span></p>
-<p><span class="math inline">\(\to (\theta_0 - \theta_1\Pi^n_{i=1} log x_i \le k\)</span></p>
-<p><span class="math inline">\(\to \sum^n_{i=1} log x_i \le k\)</span> 만족하는 표본의 영역이 기각역이다. <span class="math inline">\(\sim\)</span> 최강력 기각역</p>
+<p><span class="math inline">\(\to (\theta_0 - \theta_1) log\Pi^n_{i=1} x_i \le k\)</span></p>
+<p><span class="math inline">\(\to (\theta_0 - \theta_1)\Pi^n_{i=1} x_i \le k\)</span></p>
+<p><span class="math inline">\(\to \sum^n_{i=1} x_i \le k\)</span> 만족하는 표본의 영역이 기각역이다. <span class="math inline">\(\sim\)</span> 최강력 기각역</p>
 <p><span class="math inline">\(\to \theta_1\)</span>과 무관하게 결정되는 기각역</p>
 <p><span class="math inline">\(\therefore\)</span> 이 기각역은 <span class="math inline">\(H_0:\theta = \theta_0, H_1 : \theta_1 &lt; \theta_0\)</span>의 균일 최강력 기각역이다.</p>
 <ul>
@@ -874,19 +895,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\frac{L(\theta_0)}{L(\theta_1)} = \frac{\Pi^n_{i=1} \theta_0 x_i^{\theta_0 - 1} I(0&lt;x_i&lt;1)}{\Pi^n_{i=1} \theta_1 x_i^{\theta_1-1}I(0&lt;x_i&lt;1)} = (\frac{\theta_0}{\theta_1})^n (\Pi^n_{i=1}x_i)^{\theta_0-\theta_1} \le k\)</span></p>
 <p><span class="math inline">\(\to (\Pi^n_{i=1}x_i)^{\theta_0 - \theta_1} \le k\)</span></p>
 <p><span class="math inline">\(\star \theta_0&lt;\theta_1\)</span>이라 부등호 바뀜</p>
-<p><span class="math inline">\(\to (\theta_0 - \theta_1\Pi^n_{i=1} log x_i \ge k\)</span></p>
-<p><span class="math inline">\(\to \sum^n_{i=1} log x_i \ge k\)</span> 만족하는 표본의 영역이 기각역이다.</p>
+<p><span class="math inline">\(\to (\theta_0 - \theta_1)\Pi^n_{i=1} x_i \ge k\)</span></p>
+<p><span class="math inline">\(\to \sum^n_{i=1} x_i \ge k\)</span> 만족하는 표본의 영역이 기각역이다.</p>
 <p><span class="math inline">\(\to \theta_1\)</span>과 무관하게 결정되는 기각역</p>
 <p>이 기각역은 <span class="math inline">\(H_0 : \theta = \theta_0, H_1 : \theta &gt; \theta_0\)</span>인 모든 경우의 균일 최강력 기각역이다.</p>
 <p>균일 최강력 기각역</p>
-<p><span class="math inline">\(H_0 :\theta = \theta_0, H_1 :\theta&lt;\theta_0: \sum^n_{i=1}log x_i \le k_1\)</span></p>
-<p><span class="math inline">\(H_0 :\theta = \theta_0, H_1 :\theta&gt;\theta_0: \sum^n_{i=1}log x_i \ge k_1\)</span></p>
+<p><span class="math inline">\(H_0 :\theta = \theta_0, H_1 :\theta&lt;\theta_0: \sum^n_{i=1} x_i \le k_1\)</span></p>
+<p><span class="math inline">\(H_0 :\theta = \theta_0, H_1 :\theta&gt;\theta_0: \sum^n_{i=1}x_i \ge k_1\)</span></p>
 <p><span class="math inline">\(H_0 :\theta = \theta_0, H_1 :\theta\neq\theta_0 \to \theta &lt; \theta_0\)</span> or $ &gt; _0$</p>
 <p><span class="math inline">\(\therefore\)</span> 어떤 값이냐에 따라 최강력 기각역이 달라지기 때문에 균일 최강력 기각역이 존재하지 않는다.</p>
 </section>
 <section id="section-17" class="level1">
 <h1>24.</h1>
-<p><span class="math inline">\(X_1, X-2,\dots,X_n\)</span>이 확률밀도함수가 <span class="math inline">\(f(x)\)</span>인 어떤 모집단에서 얻어진 랜덤표본이다. <span class="math inline">\(f_0(x) = I(0&lt;x&lt;1)\)</span>와 <span class="math inline">\(f_1(x) = e^{-x}I(x&gt;0)\)</span>인 <span class="math inline">\(f_0,f_1\)</span>에 대해</p>
+<p><span class="math inline">\(X_1, X_2,\dots,X_n\)</span>이 확률밀도함수가 <span class="math inline">\(f(x)\)</span>인 어떤 모집단에서 얻어진 랜덤표본이다. <span class="math inline">\(f_0(x) = I(0&lt;x&lt;1)\)</span>와 <span class="math inline">\(f_1(x) = e^{-x}I(x&gt;0)\)</span>인 <span class="math inline">\(f_0,f_1\)</span>에 대해</p>
 <p><span class="math display">\[H_0: f(x) = f_0(x) \text{ vs } H_1 : f(x) = f_1(x)\]</span></p>
 <p>을 검정하려고 한다.</p>
 <section id="section-18" class="level2">
@@ -916,7 +937,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>균등분포 평균, 분산 이용한 중심극한정리 <span class="math inline">\(\to \frac{\bar{x} - \frac{1}{2}}{\sqrt{1/12}/\sqrt{50}} \sim N(0,1)\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
 <p><span class="math inline">\(P(\frac{\sum^n_{i=1}x_i}{50} = \bar{x} \le \frac{c}{50}|H_0)\)</span></p>
-<p>$-z_{0.05} = </p>
+<p><span class="math inline">\(-z_{0.05} = \frac{c/50 - 1/2}{1/\sqrt{600}}\)</span></p>
 <p><span class="math inline">\(-z_{0.05} = -1.645\)</span>, <span class="math inline">\(c=21.6422\)</span></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -936,7 +957,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 21.6424565936689
 </div>
 </div>
-<p><span class="math inline">\(c = \{ \sum^50_{i=1}x_i \le 21.6422 \}\)</span></p>
+<p><span class="math inline">\(c = \{ \sum^{50}_{i=1}x_i \le 21.6422 \}\)</span></p>
 </section>
 </section>
 <section id="section-20" class="level1">
@@ -1071,8 +1092,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>28.</h1>
 <p>독립 이표본 <span class="math inline">\(X_1, X_2, \dots, X_n\)</span>과 <span class="math inline">\(Y_1,Y_2,\dots,Y_n\)</span>이 각각 정규분포 <span class="math inline">\(N(\mu_x,4)\)</span>와 <span class="math inline">\(N(\mu_y,4)\)</span>로부터 구한 랜덤표본이라 하자. 이제 <span class="math inline">\(H_0:\mu_x = \mu_y\)</span> vs <span class="math inline">\(H_1 : \mu_x \neq \mu_y\)</span>에 대한 유의수준 <span class="math inline">\(\alpha=0.05\)</span>인 일반화 가능도비 검정법을 제시하라.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\Omega_0 = \{ (\mu_x, \mu_y): -\infty (\mu_x=\mu_y &lt; \infty\} \sim \{ (\mu, \mu): -\infty (\mu&lt; \infty\}\)</span></p>
-<p><span class="math inline">\(\Omega = \{ (\mu_x,\mu_y) : -\infty &lt; \mu_x &lt; \infty , -\infty &lt; \mu)y &lt; \infty\}\)</span></p>
+<p><span class="math inline">\(\Omega_0 = \{ (\mu_x, \mu_y): -\infty &lt; \mu_x=\mu_y &lt; \infty\} \sim \{ (\mu, \mu): -\infty &lt;\mu&lt; \infty\}\)</span></p>
+<p><span class="math inline">\(\Omega = \{ (\mu_x,\mu_y) : -\infty &lt; \mu_x &lt; \infty , -\infty &lt; \mu_y &lt; \infty\}\)</span></p>
 <p><span class="math inline">\(\Lambda = \frac{L(\hat{\mu}_0)}{L(\hat{\mu}_x,\hat{\mu}_y)} \le k\)</span> 인 표본공간 = 기각역의 모양</p>
 <p><span class="math inline">\(L(\mu_x, \mu_y) = f(x_1,\dots,x_n, y_1,\dots,y_n | \mu_x,\mu_y)\)</span>, <span class="math inline">\(X,Y\)</span>모두 독립!</p>
 <p><span class="math inline">\(= f_x(x_1|\mu_x)f(x_2|\mu_x)\dots f_x(x_n|\mu_x)f_y(y_1|\mu_y)f_y(y_2|\mu_y)\dots f_y(y_n|\mu_y)\)</span></p>
@@ -1169,10 +1190,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(L(p_x,p_y) = f(x,y:p_x,p_y)\)</span> 서로 독립이다.문제에 언급은 없다.</p>
 <p><span class="math inline">\(= f_x(x:p_x)f_y(y:p_y)= \begin{pmatrix} 100 \\ x\end{pmatrix} p_x^x(1-p_x)^{100-x} \begin{pmatrix} 106 \\ y\end{pmatrix} p_y^y(1-p_y)^{106-x}\)</span></p>
 <ul>
-<li>_0 = {(p_x,p_y): 0&lt;p_x=p_y&lt;1}$</li>
-<li>= {(p_x,p_y): 0&lt;p_x&lt;1,0&lt;p_y&lt;1}$</li>
+<li><span class="math inline">\(\Omega_0 = \{(p_x,p_y): 0&lt;p_x=p_y&lt;1\}\)</span></li>
+<li><span class="math inline">\(\Omega = \{(p_x,p_y): 0&lt;p_x&lt;1,0&lt;p_y&lt;1\}\)</span></li>
 </ul>
-<p><span class="math inline">\(\frac{\partial log L(p_x,p_y)}{\partial p_x} = 0 = \partial x log p_x + (100-x) log (1-p_x) + c \to \hat{p_x} = \frac{x}{100}\)</span></p>
+<p><span class="math inline">\(\frac{\partial log L(p_x,p_y)}{\partial p_x} = 0 \to x log p_x + (100-x) log (1-p_x) + c \to \hat{p_x} \to \frac{x}{p_x} - \frac{(100-x)}{(1-p_x)} + c =0\to \hat{p_x} = \frac{x}{100}\)</span></p>
 <p><span class="math inline">\(\frac{\partial log L (p_x, p_y)}{\partial p_y} = 0 \to \hat{p}_y = \frac{y}{106}\)</span></p>
 <p><span class="math inline">\(p_x = p_y = p\)</span>, <span class="math inline">\(L(p) = \begin{pmatrix} 100 \\ x\end{pmatrix} p_x^x(1-p_x)^{100-x} \begin{pmatrix} 106 \\ y\end{pmatrix} p_y^y(1-p_y)^{106-x} = \begin{pmatrix} 100 \\ x\end{pmatrix} p^{x+y}(1-p)^{206-x-y} \begin{pmatrix} 106 \\ y\end{pmatrix}\)</span></p>
 <p><span class="math inline">\(\frac{\partial log L(p)}{\partial p} = 0 = \frac{\partial(x+y) log p + (106 -x-y)log(1-p) + c}{\partial p} \to \hat{p}_0 = \frac{x+y}{206}\)</span></p>

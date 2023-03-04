@@ -236,6 +236,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-23-rl-final_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Final Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis GT</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Mid Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">Regression HW 1</a>
   </div>
 </li>
@@ -477,6 +492,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/ts/2023-01-25-ts-final term.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Final term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-graduation_test.html" class="sidebar-item-text sidebar-link">Theoritical Statistics GT</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -769,10 +789,10 @@ F-statistic: 47.56 on 3 and 16 DF,  p-value: 3.405e-08</code></pre>
 <p><span class="math inline">\(M : x_2=0 \to E(y|M) = \beta_0+\beta_1x_1\)</span></p>
 <p><span class="math inline">\(F : x_2=1 \to E(y|F) = \beta_0 + \beta_1x_1 + \beta_2 + \beta_3x_1 = (\beta_0+\beta_2) + (\beta_1+\beta_3)x_1\)</span></p>
 <ul>
-<li><p>식으로 봤을 때절편, 기울기 모두 차이가 난다.</p></li>
-<li><p>절편 차이는 유의하다.</p></li>
-<li><p>기울기 차이는 거의 없다.</p></li>
-<li><p>교호작용은 없는 것으로 확인.</p></li>
+<li>식으로 봤을 때 절편, 기울기 모두 차이가 난다.</li>
+<li>절편 차이는 유의하다.</li>
+<li>기울기 차이는 거의 없다.</li>
+<li>교호작용은 없는 것으로 확인.</li>
 </ul>
 <div class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(x1, y, <span class="at">col=</span>x2)) <span class="sc">+</span> </span>

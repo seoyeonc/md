@@ -170,6 +170,21 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-23-rl-final_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Final Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis GT</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Mid Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">Regression HW 1</a>
   </div>
 </li>
@@ -415,6 +430,11 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-graduation_test.html" class="sidebar-item-text sidebar-link">Theoritical Statistics GT</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ts/2023-01-05-ts_HW1.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW1</a>
   </div>
 </li>
@@ -519,13 +539,15 @@ ul.task-list li input[type="checkbox"] {
 <p>평균이 1인 지수분포로부터 랜덤표본 <span class="math inline">\(X_1, X_2, \dots, X_n\)</span>을 얻었다.</p>
 <p><span class="math inline">\(\sqrt{n}(\sqrt{\bar{X}_n} - 1)\)</span>의 극한 분포를 구하라.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(E(X_i) = 1\)</span>, <span class="math inline">\(Var(X) = 1\)</span></p>
-<p><span class="math inline">\(\frac{\sum^n_{i=1} X_i}{n} \sim N(1,\frac{1}{n})\)</span></p>
-<p><span class="math inline">\(\frac{\bar{X} - 1}{1/\sqrt{n}} \sim Z(0,1)\)</span></p>
-<p><span class="math inline">\(\sqrt{n}(\bar{X}_n - 1) \xrightarrow[]{d} Z(0,1)\)</span></p>
+<p>중심극한정리에 의해 <span class="math inline">\(\sqrt{n}(\bar{X}_n - 1) \xrightarrow[]{d} N(0,1)\)</span>이고,</p>
+<p>정리 3.16에 의해 <span class="math inline">\(g(x) = \sqrt(x)\)</span>에서 <span class="math inline">\(\sqrt{n}(g(\bar{X}_n) - g(1)) \xrightarrow[]{d} N(0,(g'(2))^2)\)</span>이다.</p>
 <p><span class="math inline">\(g(x) = \sqrt{x}\)</span>, <span class="math inline">\(g'(x) = \frac{1}{2\sqrt{x}}\)</span></p>
-<p><span class="math inline">\(\sqrt{n} (g(\bar{X}_n) - g(1)) \xrightarrow[]{d} N(0,(g'(1))^2)\)</span></p>
-<p><span class="math inline">\(\sqrt{n}(\sqrt{\bar{X}}_n - 1) \xrightarrow[]{d} N(0,\frac{1}{4})\)</span></p>
+<p>즉, <span class="math inline">\(\sqrt{n}(\sqrt{\bar{X}_n} - 1) \xrightarrow[]{d} N(0,\frac{1}{4})\)</span>이다.</p>
+<p><span class="math inline">\(\star\)</span> 정리 3.16</p>
+<p>(델타 방법) 확률변수의 열 <span class="math inline">\(X_1, X_2,\dots, X_n,\dots\)</span>에 대해서</p>
+<p><span class="math display">\[\sqrt{n}(X_n - \theta) \xrightarrow[]{d}N(0,\sigma^2)\]</span></p>
+<p>이라고 하자. 이때 함수 <span class="math inline">\(g(\theta)\)</span>의 연속인 도함수 <span class="math inline">\(g'(\theta)\)</span>가 존재하고, <span class="math inline">\(0\)</span>이 아니면</p>
+<p><span class="math inline">\(\sqrt{n}(g(X_n) - g(\theta)) \xrightarrow[]{d} N(0,\sigma^2[g'(\theta)]^2)\)</span>이 성립한다.</p>
 </section>
 <section id="section-2" class="level1">
 <h1>34.</h1>

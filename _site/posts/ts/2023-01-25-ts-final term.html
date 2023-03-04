@@ -236,6 +236,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-23-rl-final_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Final Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis GT</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Mid Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">Regression HW 1</a>
   </div>
 </li>
@@ -481,6 +496,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-graduation_test.html" class="sidebar-item-text sidebar-link">Theoritical Statistics GT</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ts/2023-01-05-ts_HW1.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW1</a>
   </div>
 </li>
@@ -612,7 +632,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>비편향추정량인 <span class="math inline">\(\hat{\theta}_{a_1,a_2}\)</span> 중에서 가장 작은 분산을 가지는 추정량을 구하시오.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(Var(\hat{\theta}_1) = \sigma^2_1\)</span>, <span class="math inline">\(Var(\hat{\theta}_2) = \sigma^2_2\)</span></p>
-<p><span class="math inline">\(Var(\hat{\theta}_{a_1,a_2}) = Var(a_1\hat{\theta}_1 + a_2\hat{\theta}_2) = a_1^2 Var(\hat{\theta}_1) + a_2^2 Var(\hat{\theta}_2) = a_1^2 \sigma^2_1 + a_2^2 \sigma^2_2\)</span></p>
+<p><span class="math inline">\(Var(\hat{\theta}_{a_1,a_2}) = Var((a_1 + a_2)\bar{\theta}) = (a_1 + a_2)^2 Var(\hat{\theta})\)</span></p>
+<p><span class="math inline">\((a_1 + a_2)^2\)</span>이 최소이면서 <span class="math inline">\(a_1 + a_2=1\)</span>일 때, 즉 <span class="math inline">\(a_1 = 0.5, a_2 = 0.5\)</span>일 때 가장 작은 분산을 가진다.</p>
 </section>
 </section>
 <section id="section-1" class="level1">
@@ -644,13 +665,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="c">(c)</h2>
 <p><span class="math inline">\(p(1-p)\)</span>에 대한 최소분산 비편향 추정량을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(E(\bar{X}_n - \bar{X}^2_n) = \frac{(n-1)p(1-p)}{n}\)</span>, <span class="math inline">\(\frac{nE(\bar{X}_n - \bar{X}^2_n)}{(n-1)} = p(1-p)\)</span>이므로, <span class="math inline">\(\frac{n\bar{X}_n(1-\bar{X}_n)}{(n-1)}\)</span></p>
+<p><span class="math inline">\(E(\bar{X}_n(1 - \bar{X}_n)) = \frac{(n-1)p(1-p)}{n}\)</span></p>
+<p><span class="math inline">\(p(1-p) = \frac{n\bar{X}_n(1-\bar{X}_n)}{n-1}\)</span></p>
 </section>
 <section id="d" class="level2">
 <h2 class="anchored" data-anchor-id="d">(d)</h2>
 <p><span class="math inline">\(p(1-p)\)</span>에 대한 적률추정량을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(M'_t = \frac{\bar{X}}{n}(1-\frac{\bar{X}}{n}) = \mu_1(p(1-p)) = p(1-p)\)</span></p>
+<p><span class="math inline">\(M_1 = E(\bar{X}) = p\)</span></p>
+<p><span class="math inline">\(M_2 = Var(\bar{X}) + E(\bar{X})^2 = p(1-p) + p^2 = p\)</span></p>
+<p><span class="math inline">\(p(1-p)\)</span>의 적률추정량 <span class="math inline">\((p(1-p))^{MME} = M_2 - M^2_1 = p - p^2 = p(1-p)\)</span></p>
 </section>
 <section id="e" class="level2">
 <h2 class="anchored" data-anchor-id="e">(e)</h2>
@@ -660,7 +684,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(L(p) = f(x_1|p)\dots f(x_n|p) = p^{x_1}(1-p)^{1-x_1}\dots p^{x_n}(1-p)^{1-x_n} = p^{\sum x_i}(1-p)^{n-\sum x_i}\)</span></p>
 <p><span class="math inline">\(l(p) = \sum x_i log p + (n-\sum x_i) log (1-p)\)</span></p>
 <p><span class="math inline">\(l'(p) = \frac{\sum x_i}{p} - \frac{n-\sum x_i}{1-p} = 0\)</span></p>
-<p><span class="math inline">\(\hat{p} = \frac{\sum x_i}{n} = \bar{X}\)</span>, <span class="math inline">\(\hat{p}(1-\hat{p}) = \bar{X}(1-\bar{X})\)</span></p>
+<p><span class="math inline">\(\hat{p} = \frac{\sum x_i}{n} = \bar{X}\)</span></p>
+<p><span class="math inline">\((\hat{p}(1-\hat{p}))^{MLE} = \bar{X}(1-\bar{X})\)</span></p>
 </section>
 </section>
 <section id="section-2" class="level1">
@@ -670,6 +695,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>모집단으로부터의 랜덤표본 <span class="math inline">\(X_1,\dots,X_n\)</span>을 이용하여 <span class="math inline">\(\theta\)</span>에 대한 신뢰구간을 구하고, 다음 가설</p>
 <p><span class="math display">\[H_0 : \theta = 2 \text{ vs } H_1 : \theta \neq 2\]</span></p>
 <p>을 검정하고자 한다. 다음에 답하시오.</p>
+<p><a href="https://miruetoto.github.io/yechan3/posts/1_Essays/2023-02-14-LRTtest_in_Exp.html">교수님 review</a></p>
 <section id="a-2" class="level2">
 <h2 class="anchored" data-anchor-id="a-2">(a)</h2>
 <p><span class="math inline">\(\theta\)</span>에 대한 적절한 추축변량을 구하고, 해당 추축변량의 분포를 명시하시오.</p>
@@ -677,37 +703,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(X_i \sim exp(\frac{1}{\theta})\)</span></p>
 <p><span class="math inline">\(2X_i \theta \sim exp(2)\)</span></p>
 <p><span class="math inline">\(2n\bar{X}\theta \sim \chi^2 (2n)\)</span></p>
-<p><strong>sy</strong></p>
-<p><span class="math inline">\(L(\theta) = \theta^n e^{-\theta\sum x_i}\)</span></p>
-<p><span class="math inline">\(logL(\theta) = n log(\theta) - \theta \sum x_i\)</span></p>
-<p><span class="math inline">\(\frac{\partial^2L(\theta)}{\partial \theta} = \frac{n}{\theta} - \sum x_i = 0\)</span></p>
-<p><span class="math inline">\(\hat{\theta}^{MLE} = \bar{X}\)</span></p>
-<p>정리 4.13(?) 이용 <span class="math inline">\(\sqrt{n} (\bar{X} - \theta) \xrightarrow[]{d} N(0,\frac{1}{I(\theta)})\)</span></p>
-<p><span class="math inline">\(\star\)</span> 여기서 <span class="math inline">\(\bar{X}\)</span>는 꼭 최대가능도 추정량이어야 함!</p>
-<p><span class="math inline">\(I(\theta) = -E(\frac{\partial^2 logf(x;\theta)}{\partial \theta} log f(x|\theta)) = -E(\frac{\partial^2 logf(x;\theta)}{\partial \theta} log (\theta e^{-\theta x})) = -E(\frac{\partial^2 logf(x;\theta)}{\partial \theta} (log\theta - \theta x)) = -E(\frac{\partial logf(x;\theta)}{\partial \theta} ( \frac{1}{\theta} - x)) = -E(-\frac{1}{\theta^2}) = \frac{1}{\theta^2}\)</span></p>
-<p><span class="math inline">\(\therefore \sqrt{n} (\bar{X} - \theta) \xrightarrow[]{d} N(0,\theta^2)\)</span></p>
-<p><strong>단, MVUE</strong></p>
-<p><span class="math inline">\(T(x_1,x_2,\dots,x_n) \to \theta\)</span>, <span class="math inline">\(E(T) = \theta\)</span> 비편향 추정량이라면, <span class="math inline">\(Var(T) \ge \frac{1^2}{nI(\theta)}, g(\theta) = \theta, g'(\theta) = 1\)</span></p>
-<p><span class="math inline">\(Var(\bar{X}) = \frac{1}{nI(\theta)}\)</span>일까?</p>
-<p><span class="math inline">\(\frac{1}{nI(\theta)} = \frac{\theta^2}{n}, Var(\bar{X}) = \frac{\theta^2}{n}, \therefore \bar{X}\)</span>는 최소분산비편향추정량이다.</p>
+<p><a href="https://guebin.github.io/SC2022/0419.html">참고</a></p>
 </section>
 <section id="b-2" class="level2">
 <h2 class="anchored" data-anchor-id="b-2">(b)</h2>
 <p><span class="math inline">\(\theta\)</span>에 대한 95%신뢰구간을 구하시오.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\((\chi^2_{0.025} (2n) \le 2n \bar{X} \theta \le \chi^2_{0.975} (2n)) = 0.95\)</span></p>
-<p><span class="math inline">\(\theta_{0.95} \to (\frac{\chi^2_{o/025}(2n)}{2n\bar{X}} , \frac{\chi^2_{0.975}(2n)}{2n\bar{X}})\)</span></p>
-<p><strong>sy</strong></p>
-<p><span class="math inline">\((Z_{1-\alpha/2} \le \frac{\sqrt{n} (\bar{X} - \theta)}{\sqrt{\theta^2}} \le Z_{\alpha/2})\)</span></p>
-<p><span class="math inline">\((\frac{Z_{0.025} \theta}{\sqrt{n}} - \bar{X} \le \theta \le \frac{Z_{0/975} \theta}{\sqrt{n}} + \bar{X})\)</span></p>
+<p><span class="math inline">\(\theta_{0.95} \to (\frac{\chi^2_{0.025}(2n)}{2n\bar{X}} , \frac{\chi^2_{0.975}(2n)}{2n\bar{X}})\)</span></p>
 </section>
 <section id="c-1" class="level2">
 <h2 class="anchored" data-anchor-id="c-1">(c)</h2>
 <p><span class="math inline">\(P(X&gt;1)\)</span>에 대한 95% 신뢰구간을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(P(X&gt;1) = \int^{\infty}_1 \theta e^{-x\theta} dx = [ e^{x\theta}]^{\infty}_1 = e^{-\infty}\)</span></p>
-<p><strong>sy</strong></p>
-<p><span class="math inline">\(P(X&gt;1) = 1-P(X&lt;1) = 1-\int^{1}_0 \theta e^{x\theta} dx = 1 + [e^{x\theta}]^1_0 = \frac{1}{e^{\theta}}\)</span></p>
+<p><span class="math inline">\(P(X&gt;1) = \int^{\infty}_1 \theta e^{-x\theta} dx = [ e^{x\theta}]^{\infty}_1 = e^{-\theta}\)</span></p>
+<p><span class="math inline">\(P(X&gt;1)\)</span> <span class="math inline">\(95\)</span>% CI : <span class="math inline">\((exp(\frac{\chi^2_{0.9755}(2n)}{2n\bar{X}} , exp(\frac{\chi^2_{0.025}(2n)}{2n\bar{X}}))\)</span></p>
 </section>
 <section id="d-1" class="level2">
 <h2 class="anchored" data-anchor-id="d-1">(d)</h2>
@@ -720,7 +730,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="e-1">(e)</h2>
 <p><span class="math inline">\(\theta\)</span>의 가능도 함수를 기술하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(L(\theta) = \theta^n e^{\theta n \bar{X}}\)</span></p>
+<p><span class="math inline">\(L(\theta) = \theta^n e^{-\theta n \bar{X}}\)</span></p>
 </section>
 <section id="f" class="level2">
 <h2 class="anchored" data-anchor-id="f">(f)</h2>
@@ -733,29 +743,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="g">(g)</h2>
 <p>일반화 가능도 비 <span class="math inline">\(\Lambda\)</span>을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\frac{L(\hat{\theta}^{\Omega_0})}{L(\hat{\theta}^{\Omega})} = \frac{\hat{\theta}^{n,\Omega_0} e^{\hat{\theta} n \bar{X}}}{\hat{\theta}^{n,\Omega} e^{\hat{\theta} n \bar{X}}} = \frac{2 \bar{X} e^{2n \bar{X}}}{e^{n}}\)</span></p>
+<p><span class="math inline">\(\frac{L(\hat{\theta}^{\Omega_0})}{L(\hat{\theta}^{\Omega})} = \frac{\hat{\theta}^{n,\Omega_0} e^{-\hat{\theta} n \bar{X}}}{\hat{\theta}^{n,\Omega} e^{-\hat{\theta} n \bar{X}}} = (\frac{2}{n})^2 e^{n\bar{x}(\theta-2)}\)</span></p>
 </section>
 <section id="h" class="level2">
 <h2 class="anchored" data-anchor-id="h">(h)</h2>
 <p>유의수준 <span class="math inline">\(\alpha\)</span>인 가능도비 검정법의 기각역을 <span class="math inline">\(\chi^2\)</span>분포의 분위수를 사용하여 표현하시오.</p>
-<p><span class="math inline">\(\star\)</span> 참고</p>
-<p>가능도비 검정; 적절한 조건 하에서 <span class="math inline">\(-2 log \Lambda(X_1, \dots, X_n)\)</span>는 귀무가설이 참일 때 점근적으로 카이제곱분포를 따른다.</p>
-<p><span class="math display">\[-2 log \Lambda(X_1, \dots, X_n) \sim \chi^2(d)\]</span></p>
-<p>단, <span class="math inline">\(d\)</span>는 모수공간 <span class="math inline">\(\Omega\)</span>의 차원과 모수공간 <span class="math inline">\(\Omega_0\)</span>의 차원의 차이</p>
-<p>가능도비 검정의 유의수준 <span class="math inline">\(\alpha\)</span> 점근적인 기각역</p>
-<p><span class="math display">\[\{ (x_1, \dots , x_n) : -2 log \Lambda(X_1, \dots, X_n) \ge \chi^2_\alpha(d) \}\]</span></p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(-2log \frac{2 \bar{X} e^{2n \bar{X}}}{e^{n}} &gt;\chi^2_{\alpha, df}\)</span></p>
-<p><span class="math inline">\(\frac{2 \bar{X} e^{2n \bar{X}}}{e^{n}} &lt; \chi^2_{\alpha, df}\)</span></p>
+<p><strong>7장 예제 7.2.3. 참고</strong></p>
+<p><span class="math inline">\(2(l(\hat{\theta}^{\Omega}) - l(\hat{\theta}^{\Omega_0})) = 2n(\bar{x}\theta_0 - 1 -log(\bar{X}\theta_0))\)</span></p>
+<p>최대가능도비 검정의 기각역 형태 <span class="math inline">\(2n(\bar{x}\theta_0 - 1 -log(\bar{X}\theta_0))\ge c\)</span></p>
+<p>기각역</p>
+<p><span class="math inline">\(\begin{cases} \bar{x}\theta_0 \le c_1 \text{ 또는 } \bar{x}\theta_0\ge c_2 \\ c_1 log c_1 = c_2 - log c_2\end{cases}\)</span></p>
 </section>
 </section>
 <section id="section-3" class="level1">
 <h1>4.</h1>
 <p>확률밀도한수가</p>
 <p><span class="math display">\[f(x;\theta) = \frac{1}{\theta} I (0\le x \le \theta)\]</span></p>
-<p>인 분포로부터 하나의 관찰값 <span class="math inline">\(X\)</span>를 얻었다. 이 떄 가설</p>
+<p>인 분포로부터 하나의 관찰값 <span class="math inline">\(X\)</span>를 얻었다. 이 때 가설</p>
 <p><span class="math display">\[H_0 : \theta = 1 \text{ vs } H_1 : \theta = 2\]</span></p>
-<p>에 대한 기각역역을 <span class="math inline">\(C = \{x:x&gt;0.8\}\)</span>로 했을 때 제1종오류를 범할 확률과 검정력을 계산하시오.</p>
+<p>에 대한 기각역을 <span class="math inline">\(C = \{x:x&gt;0.8\}\)</span>로 했을 때 제1종오류를 범할 확률과 검정력을 계산하시오.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(\alpha = P(\text{Reject } H_0 | H_0 \text{True})\)</span></p>
 <p><span class="math inline">\(\alpha = P(x&gt;0.8 | \theta = 1)\)</span></p>
@@ -763,6 +770,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\beta = P(\text{type 2 Error}) = P(\text{Not Reject } H_0 | H_0 \text{ False})\)</span></p>
 <p><span class="math inline">\(P(x&lt;0.8 | \theta = 2)\)</span></p>
 <p><span class="math inline">\(= \int^{0.8}_0 \frac{1}{2} dx = [\frac{1}{2} x]^{0.8}_0 = \frac{0.8}{2} - \frac{0}{2} = \frac{0.8}{2} = 0.4\)</span></p>
+<p><span class="math inline">\(\therefore\)</span> 검정력 :<span class="math inline">\(1-\beta = 0.6\)</span></p>
 </section>
 <section id="section-4" class="level1">
 <h1>5.</h1>
@@ -786,16 +794,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="b-3" class="level2">
 <h2 class="anchored" data-anchor-id="b-3">(b)</h2>
-<p>표본의 크기가 <span class="math inline">\(n=20\)</span>일 떄 유의수준이 <span class="math inline">\(\alpha=0.05\)</span>이기 위한 상수 <span class="math inline">\(c\)</span>의 값을 <span class="math inline">\(\chi^2\)</span>분포의 분위수를 사용하여 표현하시오.</p>
+<p>표본의 크기가 <span class="math inline">\(n=20\)</span>일 때 유의수준이 <span class="math inline">\(\alpha=0.05\)</span>이기 위한 상수 <span class="math inline">\(c\)</span>의 값을 <span class="math inline">\(\chi^2\)</span>분포의 분위수를 사용하여 표현하시오.</p>
 <p><strong>answer</strong></p>
 <p><span class="math inline">\(\alpha = P(\text{Reject } H_0 | H_0 \text{True})\)</span></p>
 <p><span class="math inline">\(= P(\sum^n_{i=1}x^2_i \ge k | \sigma^2 = 4)\)</span></p>
-<p><span class="math inline">\(\star\)</span></p>
-<p>모집단 분포 <span class="math inline">\(X_i \sim N(0,\sigma^2)\)</span></p>
-<p>표준화 <span class="math inline">\(\frac{X_i}{\sigma} \sim N(0,1)\)</span></p>
-<p>표분화 제곱 분포는 카이제곱 <span class="math inline">\((\frac{X_i^2}{\sigma})^2 \sim \chi^2_1, i=1,2,\dots, n\)</span></p>
-<p>카이제곱의 합의 자유도 합 <span class="math inline">\(\sum^n_{i=1}(\frac{X_i}{\sigma})^2 \sim \chi^2_{(n)}\)</span></p>
-<p><span class="math inline">\(\star\)</span></p>
 <p><span class="math inline">\(= P(\sum^n_{i=1}\frac{\chi^2_i}{\sigma^2} \ge \frac{k}{\sigma^2}|\sigma^2 = 4)\)</span></p>
 <p><span class="math inline">\(= P(\sum^{20}_{i=1} \frac{\chi^2_i}{4} \ge \frac{k}{4} | \sigma^2 = 4)\)</span></p>
 <div class="quarto-figure quarto-figure-center">
@@ -811,10 +813,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 31.4104328442309
 </div>
 </div>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">*</span><span class="fu">qchisq</span>(<span class="fl">0.95</span>,<span class="dv">20</span>)</span></code></pre></div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">4</span><span class="sc">*</span><span class="fu">qchisq</span>(<span class="fl">0.95</span>,<span class="dv">20</span>),<span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-125.641731376924
+125.64
 </div>
 </div>
 <p><span class="math inline">\(k = 4\chi^2_{0.05(20)} = 125.64\)</span></p>
@@ -824,37 +826,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="c-2">(c)</h2>
 <p>표본의 크기가 <span class="math inline">\(n=20\)</span>일 때 (b)에서 찾은 기각역에 대한 제2종오류를 범할 확률을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\alpha = P(\text{Reject } H_0 | H_0 \text{True})\)</span></p>
-<p><span class="math inline">\(= P(\sum^n_{i=1}x^2_i \ge k | \sigma^2 = 4)\)</span></p>
+<p><span class="math inline">\(\beta = P(\text{Not Reject } H_0 | H_1 \text{True})\)</span></p>
+<p><span class="math inline">\(= P(\sum^n_{i=1}x^2_i \le k | \sigma^2 = 9)\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
 <p>모집단 분포 <span class="math inline">\(X_i \sim N(0,\sigma^2)\)</span></p>
 <p>표준화 <span class="math inline">\(\frac{X_i}{\sigma} \sim N(0,1)\)</span></p>
 <p>표분화 제곱 분포는 카이제곱 <span class="math inline">\((\frac{X_i^2}{\sigma})^2 \sim \chi^2_1, i=1,2,\dots, n\)</span></p>
 <p>카이제곱의 합의 자유도 합 <span class="math inline">\(\sum^n_{i=1}(\frac{X_i}{\sigma})^2 \sim \chi^2_{(n)}\)</span></p>
 <p><span class="math inline">\(\star\)</span></p>
-<p><span class="math inline">\(= P(\sum^n_{i=1}\frac{\chi^2_i}{\sigma^2} \ge \frac{k}{\sigma^2}|\sigma^2 = 4)\)</span></p>
-<p><span class="math inline">\(= P(\sum^{20}_{i=1} \frac{\chi^2_i}{4} \ge \frac{k}{4} | \sigma^2 = 4)\)</span></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="2023-01-25-ts-final term_files/figure-html/223387ab-3847-4d77-88ca-71d58cc1085f-1-923a4786-c041-427b-9ae8-701b7bed1fd4.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
-</figure>
-</div>
-<p><span class="math inline">\(\frac{k}{4} = \chi^2_{0.05(20)}\)</span></p>
-<div class="cell" data-execution_count="9">
+<p><span class="math inline">\(= P(\sum^n_{i=1}\frac{\chi^2_i}{\sigma^2} \le \frac{k}{\sigma^2}|\sigma^2 = 9)\)</span></p>
+<p><span class="math inline">\(= P(\sum^{20}_{i=1} \frac{\chi^2_i}{9} \le \frac{k}{9} | \sigma^2 = 9)\)</span></p>
+<p><span class="math inline">\(\frac{k}{9} = \chi^2_{0.05(20)}\)</span></p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qchisq</span>(<span class="fl">0.95</span>,<span class="dv">20</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 31.4104328442309
 </div>
 </div>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">*</span><span class="fu">qchisq</span>(<span class="fl">0.95</span>,<span class="dv">20</span>)</span></code></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">9</span><span class="sc">*</span><span class="fu">qchisq</span>(<span class="fl">0.95</span>,<span class="dv">20</span>),<span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-125.641731376924
+282.69
 </div>
 </div>
-<p><span class="math inline">\(k = 4\chi^2_{0.05(20)} = 125.64\)</span></p>
-<p><span class="math inline">\(c = \{(x_1,\dots,x_n) : \sum^n_{i=1}\ge 125.64\}\)</span></p>
+<p><span class="math inline">\(k = 9\chi^2_{0.05(20)} = 282.69\)</span></p>
+<p><span class="math inline">\(c = \{(x_1,\dots,x_n) : \sum^n_{i=1}\le 282.69\}\)</span></p>
 <p>랜덤표본<span class="math inline">\(X_1,X_2,\dots,X_n\)</span>의 분포가 확률밀도함수 <span class="math inline">\(f(x;\theta), \theta\in\Omega\)</span>를 따른다고 하자. 이때 표본과 모수 <span class="math inline">\(\theta\)</span>의 함수인 확률변량 <span class="math inline">\(T(X_1,X_2,\dots, X_n;\theta)\)</span>의 분포가 모수 <span class="math inline">\(\theta\)</span>에 의존하지 않으면 이를 추축변량이라 한다.</p>
 </section>
 </section>
@@ -875,76 +871,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="b-4">(b)</h2>
 <p>유의수준 <span class="math inline">\(\alpha\)</span>인 일반화 가능도비 검정 기각역을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\mu\)</span>가 장애요소</p>
-<p><span class="math inline">\(L(\mu, \sigma^2) = (\frac{1}{2\pi \sigma^2})^{\frac{n}{2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\)</span></p>
-<p><span class="math inline">\(\Lambda = \frac{L(\hat{\mu}_0,\hat{\sigma}^2_0)}{L(\hat{\mu},\hat{\sigma}^2)}\)</span></p>
-<ul>
-<li><span class="math inline">\(\Omega_0 = \{ (\mu,\sigma^2) : -\infty &lt; \mu &lt; \infty , \sigma^2 = 4 \}\)</span>
-<ul>
-<li><span class="math inline">\(\hat{\mu}_0 = {argmax}_{(\mu,\sigma^2)\in\Omega_0} L(\mu,\sigma^2) = \bar{x}\)</span></li>
-<li><span class="math inline">\(\hat{\sigma}^2_0 = 4\)</span></li>
-</ul></li>
-<li><span class="math inline">\(\Omega = \{ (\mu, \sigma^2) : -\infty &lt; \mu &lt; \infty , \sigma^2 \ne 4, \sigma^2 &gt; 0 \}\)</span>
-<ul>
-<li><span class="math inline">\(\hat{\mu} = \bar{x}\)</span></li>
-<li><span class="math inline">\(\hat{\sigma}^2 = {max}(\frac{1}{n}\sum^n_{i=1}(x_i - \bar{x})^2, 4)\)</span>
-<ul>
-<li>왼쪽은 <span class="math inline">\(4\)</span>보다 클때, 오른쪽은 <span class="math inline">\(4\)</span>보다 작을때</li>
-</ul></li>
-</ul></li>
-</ul>
-<p><span class="math inline">\(\Lambda = \frac{L(\hat{\mu}_0, \hat{\sigma}^2_0)}{L(\hat{\mu},\hat{\sigma}^2)}= \frac{(\frac{1}{2\pi\hat{\sigma}^2_0})^{\frac{n}{2}} e^{-\frac{\sum(x_i - \bar{x})^2}{2\hat{\sigma}^2_0}}}{(\frac{1}{2\pi\hat{\sigma}^2})^{\frac{n}{2}} e^{-\frac{\sum(x_i - \bar{x})^2}{2\hat{\sigma}^2}}}\)</span></p>
-<p><span class="math inline">\(\to (\frac{1}{2\pi\hat{\sigma}^2_0}) = \frac{1}{2\pi \sigma^2}\)</span></p>
-<p><span class="math inline">\(\to -\frac{\sum(x_i - \bar{x})^2}{2\hat{\sigma}^2_0} = -\frac{\sum(x_i - \bar{x})^2}{2\sigma^2_0}\)</span></p>
-<p><span class="math inline">\(= (\frac{\hat{\sigma}^2}{4})^{\frac{n}{2}} e^{-\frac{1}{2}\sum^n_{i=1}(x_i - \bar{x})^2 (\frac{\hat{\sigma}^2 - 4}{4\hat{\sigma}^2})} \le k\)</span></p>
-<ol type="1">
-<li><span class="math inline">\(\frac{1}{n} \sum^n_{i=1}(x_i - \bar{x})^2 &lt; 4 \to 4 \to \Lambda = 1\)</span></li>
-</ol>
-<ul>
-<li><span class="math inline">\(k=1\)</span>이 되어 의미가 없어짐</li>
-</ul>
-<ol start="2" type="1">
-<li><span class="math inline">\(\frac{1}{n}\sum^n_{i=1}(x_i-\bar{x})^2 &gt; 4 \to \hat{\sigma}^2 = \frac{1}{n}\sum^n_{i=1}(x_i - \bar{x})^2\)</span></li>
-</ol>
-<ul>
-<li>예 5.24에서 다룬 식, <span class="math inline">\(\Lambda\)</span>는 <span class="math inline">\(\frac{\hat{\sigma}}{4}\)</span>의 감소함수이다.</li>
-</ul>
-<p>기각역 : <span class="math inline">\(\frac{1}{n}\sum(x_i - \bar{x})^2 \ge k\)</span></p>
-<p><span class="math inline">\(\alpha = P(\sum^n_{i=1}(x_i - \bar{x})^2 \ge k | \sigma^2 = 4)\)</span></p>
-<p><span class="math inline">\(\star \frac{\sum^n_{i=1}(x_i - \bar{x})^2}{\sigma^2} \sim \chi^2_{(n-1)}\)</span></p>
-<p><span class="math inline">\(= P(\frac{\sum^n_{i=1}(x_i - \bar{x})^2}{4} \ge \frac{k}{4} | \sigma^2 = 4)\)</span></p>
-<p><span class="math inline">\(\frac{k}{4} = \chi^2_{0.05(n-1)}\)</span></p>
-<p><span class="math inline">\(k = 4 \chi^2_{0.05(n-1)}\)</span></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="2023-01-25-ts-final term_files/figure-html/6d3a72a6-cc21-4887-852d-077f48bb699e-1-188ba1cd-2e88-4d34-b130-5049376b65fd.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
-</figure>
-</div>
-<p><span class="math inline">\(c = \{ (x_1,\dots,x_n):\sum^n_{i=1}(x_i - \bar{x})^2 \ge 4 \chi^2_{0.05(n-1)}\)</span></p>
-<p>유의수준 <span class="math inline">\(\alpha\)</span> 일반화 가능도비 검정법의 기각역이다.</p>
+<p>모평균 <span class="math inline">\(\mu\)</span>의 최대가능도 추정량은 가설에 관계없이 언제나 <span class="math inline">\(\bar{X}\)</span></p>
+<p>모분산 <span class="math inline">\(\sigma^2\)</span>의 최대가능도 추정량은 귀무가설 하에서는 <span class="math inline">\(4\)</span>이며, 전체 모수공간<span class="math inline">\(\Omega\)</span>내에서는 <span class="math inline">\(\hat{\sigma}^2 = \frac{\sum^n_{i=1}(X - \bar{X})^2}{n}\)</span></p>
+<p>일반화 가능도비 <span class="math inline">\(\Lambda(X_1,X_2,\dots,X_n) = (\frac{\sum^n_{i=1} (X_i - \bar{X}_n)^2}{4n})^{n/2} \times exp[-\frac{1}{2} \{ \frac{\sum^n_{i=1}\{(X_i - \bar{X}_i)}{4} \}^2 + \frac{n}{2}]\)</span></p>
+<p><span class="math inline">\(= (\frac{\hat{\sigma}^2}{4})^{n/2} exp\{ -(\frac{n}{2})(\frac{\hat{\sigma^2}}{4}) + \frac{n}{2} \}\)</span></p>
+<p><span class="math inline">\(\Lambda = \frac{\hat{\sigma}^2}{4}^{n/2} exp(-\frac{n}{2}\frac{\hat{\sigma}^2}{4} + \frac{n}{2})\)</span></p>
+<p><span class="math inline">\(\frac{\hat{\sigma}^2}{4} exp(-\frac{\hat{\sigma}^2}{4}) \le (\lambda^*)^{2/n} exp(-1) = c^*\)</span></p>
+<p><span class="math inline">\(\frac{\hat{\sigma}^2}{4}&lt;1\)</span>일 떄는 단조증가, <span class="math inline">\(\frac{\hat{\sigma}^2}{4}&gt;1\)</span>일 때는 단조감소</p>
+<p>기각영역 ; <span class="math inline">\(C = \{ (x_1,x_2,\dots,x_n):(\frac{\hat{\sigma}^2}{4} \le a\)</span> 또는 <span class="math inline">\(\frac{\hat{\sigma}^2}{4} \ge b \}\)</span></p>
+<p><span class="math inline">\(n\frac{\hat{\sigma}^2}{4} = \frac{\sum^n_{i=1}(X_i - \bar{X}_n)^2}{4} \sim \chi^2(n-1)\)</span></p>
+<p><span class="math inline">\(P[\frac{\sum^n_{i=1}(X_i - \bar{X}_n)^2}{4} \le \chi^2_{1-\alpha/2}(n-1)|H_0]\)</span></p>
+<p><span class="math inline">\(= P[\frac{\sum^n_{i=1}(X_i - \bar{X}_n)^2}{4} \ge \chi^2_{\alpha/2}(n-1)|H_0]\)</span></p>
+<p><span class="math inline">\(= \frac{\alpha}{2}\)</span></p>
+<p>그러므로 카이제곱분포의 양쪽꼬리에서 <span class="math inline">\(\alpha/2\)</span>씩 고려한 일반화 가능도비 검정법의 근사꼴로서 기각영역은</p>
+<p><span class="math inline">\(\frac{\sum^n_{i=1}(X_i - \bar{X}_n)^2}{4} \le \chi^2_{1-\alpha/2}(n-1)\)</span></p>
+<p>또는 <span class="math inline">\(\frac{\sum^n_{i=1}(X_i - \bar{X}_n)^2}{4} \ge \chi^2_{\alpha/2}(n-1)\)</span></p>
 </section>
 <section id="c-3" class="level2">
 <h2 class="anchored" data-anchor-id="c-3">(c)</h2>
-<p><span class="math inline">\(n=10\)</span>이고 표본분산 <span class="math inline">\(S^2\)</span>의 관측값은 <span class="math inline">\(6\)</span>이라고 한다. (b)의 일반화 가능도비 검정법으로 유의확률 (p-value)을 구하시오.</p>
+<p><span class="math inline">\(n=10\)</span>이고 표본분산 <span class="math inline">\(S^2\)</span>의 관측값은 <span class="math inline">\(6\)</span>이라고 한다. (b)의 일반화 가능도비 검정법으로 유의확률 (<span class="math inline">\(p-value\)</span>)을 구하시오.</p>
 <p><strong>answer</strong></p>
-<p><span class="math inline">\(\sum^n_{i=1}(x_i - \bar{x})^2 = (n-1)S^2\)</span></p>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">10-1</span>)<span class="sc">*</span><span class="dv">6</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>54</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">*</span><span class="fu">pchisq</span>(<span class="fl">0.95</span>,<span class="dv">9</span>)</span></code></pre></div>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(<span class="dv">6</span><span class="sc">/</span><span class="dv">4</span><span class="sc">*</span><span class="dv">9</span>,<span class="dv">9</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-0.00182260981541067
-</div>
-</div>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"유의확률 : "</span> ,<span class="fu">round</span>(<span class="dv">4</span><span class="sc">*</span><span class="fu">pchisq</span>(<span class="fl">0.95</span>,<span class="dv">9</span>),<span class="dv">4</span>))</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>유의확률 :  0.0018</code></pre>
+0.14125582649328
 </div>
 </div>
 

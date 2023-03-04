@@ -236,6 +236,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-23-rl-final_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Final Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis GT</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Mid Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link active">Regression HW 1</a>
   </div>
 </li>
@@ -481,6 +496,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-graduation_test.html" class="sidebar-item-text sidebar-link">Theoritical Statistics GT</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ts/2023-01-05-ts_HW1.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW1</a>
   </div>
 </li>
@@ -543,7 +563,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">1.</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2.</a>
+  <ul class="collapse">
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">(1)</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">(2)</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">(3)</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">(4)</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">(5)</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">(6)</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">(7)</a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">(8)</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">(9)</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">(10)</a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">(11)</a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">(12)</a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">(13)</a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">(14)</a></li>
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16">(15)</a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17">(16)</a></li>
+  </ul></li>
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18">3.</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -565,17 +611,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>직접 제출 (607호) 또는 스캔, 사진, tex 작업, 문서 작업 등 후 pdf로 변환 후 제출</p>
 <p>pdf 아닌 경우 미제출 처리</p>
 <hr>
-<ol type="1">
-<li>원점을 지나는 회귀모형은 다음과 같이 정의할 수 있다. <span class="math display">\[y_i =β_1x_i +ε_i, ε_i ∼_{i.i.d.} N(0,σ^2), i=1,...,n\]</span> 오차제곱합을 정의하고 <span class="math inline">\(β_1\)</span> 의 최소제곱추정량 (<span class="math inline">\(\hat{β}_1\)</span>)을 구하여라.</li>
-</ol>
+<section id="section" class="level1">
+<h1>1.</h1>
+<p>원점을 지나는 회귀모형은 다음과 같이 정의할 수 있다. <span class="math display">\[y_i =β_1x_i +ε_i, ε_i ∼_{i.i.d.} N(0,σ^2), i=1,...,n\]</span> 오차제곱합을 정의하고 <span class="math inline">\(β_1\)</span> 의 최소제곱추정량 (<span class="math inline">\(\hat{β}_1\)</span>)을 구하여라.</p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(SSE = \sum(y_i - \hat{y_i})^2 = \sum(y_i - \hat{\beta_1}x_i)^2\)</span></p>
 <p><span class="math inline">\(SSE' = 0 = \sum(-x_i)2(y_i - \hat{\beta_1}x_i )\)</span></p>
 <p><span class="math inline">\(\sum(-x_iy_i) + \sum(x_i^2\hat{\beta_1}) = 0\)</span></p>
 <p><span class="math inline">\(\hat{\beta_1} = \frac{\sum(x_iy_i)}{\sum(x_i^2)}\)</span></p>
-<ol start="2" type="1">
-<li>자동차의 무게가 무거우면 이를 움직이는 데 더 많은 연료가 소모된다는 것은 알려진 사실이다. 자동차의 무게와 자동차를 1km 움직이는 데 필요한 에너지량과의 함수관계를 정확히 판단하기 위하여 A 자동차회사는 다음의 자료를 실험을 통하여 얻었다. 실험 비용이 많이 드는 관계로 9번만 실험하였다.</li>
-</ol>
+</section>
+<section id="section-1" class="level1">
+<h1>2.</h1>
+<p>자동차의 무게가 무거우면 이를 움직이는 데 더 많은 연료가 소모된다는 것은 알려진 사실이다. 자동차의 무게와 자동차를 1km 움직이는 데 필요한 에너지량과의 함수관계를 정확히 판단하기 위하여 A 자동차회사는 다음의 자료를 실험을 통하여 얻었다. 실험 비용이 많이 드는 관계로 9번만 실험하였다.</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -622,9 +669,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<ol type="1">
-<li>이 데이터의 산점도를 그리시오.</li>
-</ol>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">(1)</h2>
+<p>이 데이터의 산점도를 그리시오.</p>
 <div class="cell" data-execution_count="83">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fl">0.9</span>,<span class="fl">1.3</span>,<span class="fl">2.1</span>,<span class="fl">2.5</span>,<span class="fl">2.4</span>,<span class="fl">1.7</span>,<span class="fl">0.7</span>,<span class="fl">1.2</span>,<span class="fl">1.6</span>),</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> <span class="fu">c</span>(<span class="fl">2.0</span>,<span class="fl">2.6</span>,<span class="fl">4.3</span>,<span class="fl">5.8</span>,<span class="fl">5.1</span>,<span class="fl">3.2</span>,<span class="fl">1.8</span>,<span class="fl">2.3</span>,<span class="fl">3.0</span>))</span>
@@ -669,9 +716,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>무게가 커질수록 에너지소모량도 큰 경향이 보이기 때문이다.</li>
 <li>우상향의 모양이라, 단순상관선형 적용해보면 되겠다.</li>
 </ul>
-<ol start="2" type="1">
-<li>최소제곱법의 의한 회귀직선을 적합시키시오.</li>
-</ol>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">(2)</h2>
+<p>최소제곱법의 의한 회귀직선을 적합시키시오.</p>
 <p><strong>Answer</strong></p>
 <div class="cell" data-execution_count="85">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dt1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
@@ -758,9 +806,10 @@ Coefficients:
     -0.1157       2.1626  </code></pre>
 </div>
 </div>
-<ol start="3" type="1">
-<li>데이터의 산점도를 그리고 추정한 회귀직선을 (1)에서 그린 산점도 위에 그리시오.</li>
-</ol>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">(3)</h2>
+<p>데이터의 산점도를 그리고 추정한 회귀직선을 (1)에서 그린 산점도 위에 그리시오.</p>
 <p><strong>Answer</strong></p>
 <div class="cell" data-execution_count="92">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y<span class="sc">~</span>x, </span>
@@ -785,9 +834,10 @@ Coefficients:
 <ul>
 <li>추정한 회귀직선을 그려보니 오차가 클 것처럼 y와 <span class="math inline">\(\hat{y}\)</span>가 떨어진 값이 많아보인다.</li>
 </ul>
-<ol start="4" type="1">
-<li>결정계수와 상관계수를 구하시오.</li>
-</ol>
+</section>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">(4)</h2>
+<p>결정계수와 상관계수를 구하시오.</p>
 <p><span class="math inline">\(r_{xy} = \frac{S_{xy}}{\sqrt{S_{xx}S_{yy}}}\)</span></p>
 <div class="cell" data-execution_count="93">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>rxy <span class="ot">=</span> <span class="fu">colSums</span>(dt1)[<span class="dv">8</span>]<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">colSums</span>(dt1)[<span class="dv">6</span>]<span class="sc">*</span><span class="fu">colSums</span>(dt1)[<span class="dv">7</span>])</span>
@@ -834,9 +884,10 @@ SSE =  0.7560566</code></pre>
 <ul>
 <li>결정계수는 약 95%로, 설명력도 높은 편이라고 말할 수 있지만, 결정계수는 다른 모델과 비교할때 언급되는 것이 적절하다.</li>
 </ul>
-<ol start="5" type="1">
-<li>분산분석표를 작성하고 회귀직선의 유의 여부를 검정하시오 (유의수준 <span class="math inline">\(α = 0.05\)</span> 사용).</li>
-</ol>
+</section>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">(5)</h2>
+<p>분산분석표를 작성하고 회귀직선의 유의 여부를 검정하시오 (유의수준 <span class="math inline">\(α = 0.05\)</span> 사용).</p>
 <div class="cell" data-execution_count="100">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>MSR <span class="ot">=</span> SSR<span class="sc">/</span><span class="dv">1</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>MSE <span class="ot">=</span> SSE<span class="sc">/</span><span class="dv">7</span></span></code></pre></div>
@@ -915,9 +966,10 @@ MSE =  0.1080081</code></pre>
 </table>
 </div>
 </div>
-<ol start="6" type="1">
-<li><span class="math inline">\(β_0,β_1\)</span> 에 대한 90% 신뢰구간을 구하시오.</li>
-</ol>
+</section>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7">(6)</h2>
+<p><span class="math inline">\(\beta_0,\beta_1\)</span> 에 대한 90% 신뢰구간을 구하시오.</p>
 <p><strong>Answer</strong></p>
 <p><span class="math display">\[\hat{\beta_0} \pm t_{(\alpha/2,n-2)}\hat{\sigma} \sqrt{\frac{1}{n} + \frac{\bar{x}^2}{S_{xx}}}\]</span></p>
 <div class="cell" data-execution_count="22">
@@ -938,9 +990,10 @@ MSE =  0.1080081</code></pre>
 <li><span class="math inline">\(\beta_1\)</span>의 신뢰구간은 0을 포함하지 않았다.(<span class="math inline">\(H_0 : \beta_1=0\)</span> 기각)</li>
 <li>신뢰구간으로 신뢰구간에 0이 포함된 <span class="math inline">\(\beta_1\)</span> 계수만 유의미하다는 것을 알 수 있다.</li>
 </ul>
-<ol start="7" type="1">
-<li><span class="math inline">\(H_0 :β_1 =1\)</span> vs.&nbsp;<span class="math inline">\(H_1 :β_1 \ne 1\)</span>의 가설검정을 유의수준 <span class="math inline">\(α=0.1\)</span>에서 수행하시오.</li>
-</ol>
+</section>
+<section id="section-8" class="level2">
+<h2 class="anchored" data-anchor-id="section-8">(7)</h2>
+<p><span class="math inline">\(H_0 :\beta_1 =1\)</span> vs.&nbsp;<span class="math inline">\(H_1 :\beta_1 \ne 1\)</span>의 가설검정을 유의수준 <span class="math inline">\(α=0.1\)</span>에서 수행하시오.</p>
 <p><span class="math display">\[\text{t value} = \frac{\hat{\beta_1} - 1}{s.e(\hat{\beta_1})}\]</span></p>
 <div class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>Tvalue <span class="ot">=</span> (beta1 <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>(<span class="fu">sqrt</span>((MSE<span class="sc">/</span><span class="fu">sum</span>((dt<span class="sc">$</span>x <span class="sc">-</span> <span class="fu">mean</span>(dt<span class="sc">$</span>x))<span class="sc">^</span><span class="dv">2</span>))))</span></code></pre></div>
@@ -988,9 +1041,10 @@ MSE =  0.1080081</code></pre>
 <p><img src="2022-09-21-rl_HW1_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<ol start="8" type="1">
-<li>무게가 3,000kg 이 되는 차량의 평균 에너지 소모량을 예측하시오. 이것은 무게가 1,000kg이 되는 차량의 에너지 소모량의 몇 배인가?</li>
-</ol>
+</section>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9">(8)</h2>
+<p>무게가 3,000kg 이 되는 차량의 평균 에너지 소모량을 예측하시오. 이것은 무게가 1,000kg이 되는 차량의 에너지 소모량의 몇 배인가?</p>
 <p><span class="math display">\[\hat{\mu}_0 = \hat{\beta_0} + \hat{\beta_1} x_0\]</span></p>
 <div class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"평균 에너지 소모량 = "</span>,beta0 <span class="sc">+</span> beta1 <span class="sc">*</span> <span class="dv">3</span>)</span></code></pre></div>
@@ -1004,9 +1058,10 @@ MSE =  0.1080081</code></pre>
 <pre><code>무게가 3,000kg 이 되는 차량의 평균 에너지 소모량을 예측해보니 무게가 1,000kg이 되는 차량의 에너지 소모량의 3.113028 배 였다.</code></pre>
 </div>
 </div>
-<ol start="9" type="1">
-<li>무게가 3,000kg 이 되는 차량의 평균 에너지 소모량과 하나의 개별 <span class="math inline">\(y\)</span> 값의 90% 신뢰구간을 각각 구하시오.</li>
-</ol>
+</section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10">(9)</h2>
+<p>무게가 3,000kg 이 되는 차량의 평균 에너지 소모량과 하나의 개별 <span class="math inline">\(y\)</span> 값의 90% 신뢰구간을 각각 구하시오.</p>
 <p><strong>Answer</strong></p>
 <div class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"무게가 3,000kg 이 되는 차량의 평균 에너지 소모량은"</span>,beta0 <span class="sc">+</span> beta1 <span class="sc">*</span> <span class="dv">3</span>,<span class="st">"이다."</span>)</span></code></pre></div>
@@ -1082,9 +1137,10 @@ MSE =  0.1080081</code></pre>
 <pre><code>개별 y값의 90% 신뢰구간은 ( 5.455369 ~ 7.288735 ) 이다.</code></pre>
 </div>
 </div>
-<ol start="10" type="1">
-<li>잔차 <span class="math inline">\(e_i = y_i − \hat{y}_i\)</span> 를 구하고 잔차의 합이 0 임을 확인하시오.</li>
-</ol>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11">(10)</h2>
+<p>잔차 <span class="math inline">\(e_i = y_i − \hat{y}_i\)</span> 를 구하고 잔차의 합이 0 임을 확인하시오.</p>
 <p><strong>Answer</strong></p>
 <div class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>epsilon <span class="ot">=</span> dt<span class="sc">$</span>y <span class="sc">-</span> (beta0 <span class="sc">+</span> beta1<span class="sc">*</span>dt<span class="sc">$</span>x)</span></code></pre></div>
@@ -1107,9 +1163,10 @@ MSE =  0.1080081</code></pre>
 </div>
 </div>
 <p>합이 0인 것을 확인했다.</p>
-<ol start="11" type="1">
-<li>잔차들의 <span class="math inline">\(x_i\)</span> 에 대한 가중합, <span class="math inline">\(\sum x_ie_i\)</span> 를 구하시오.</li>
-</ol>
+</section>
+<section id="section-12" class="level2">
+<h2 class="anchored" data-anchor-id="section-12">(11)</h2>
+<p>잔차들의 <span class="math inline">\(x_i\)</span> 에 대한 가중합, <span class="math inline">\(\sum x_ie_i\)</span> 를 구하시오.</p>
 <div class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dt<span class="sc">$</span>x <span class="sc">*</span> epsilon)</span></code></pre></div>
 <div class="cell-output cell-output-display">
@@ -1117,9 +1174,10 @@ MSE =  0.1080081</code></pre>
 </div>
 </div>
 <p>잔차들의 <span class="math inline">\(x_i\)</span> 에 대한 가중합, <span class="math inline">\(\sum x_ie_i\)</span>이 0인 것을 확인했다.</p>
-<ol start="12" type="1">
-<li>잔차들의 <span class="math inline">\(\hat{y}\)</span>에 대한 가중합 <span class="math inline">\(\sum \hat{y}_ie_i\)</span>, 를 구하시오.</li>
-</ol>
+</section>
+<section id="section-13" class="level2">
+<h2 class="anchored" data-anchor-id="section-13">(12)</h2>
+<p>잔차들의 <span class="math inline">\(\hat{y}\)</span>에 대한 가중합 <span class="math inline">\(\sum \hat{y}_ie_i\)</span>, 를 구하시오.</p>
 <div class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((beta0 <span class="sc">+</span> beta1<span class="sc">*</span>dt<span class="sc">$</span>x)<span class="sc">*</span>epsilon)</span></code></pre></div>
 <div class="cell-output cell-output-display">
@@ -1127,9 +1185,10 @@ MSE =  0.1080081</code></pre>
 </div>
 </div>
 <p>잔차들의 <span class="math inline">\(\hat{y}\)</span>에 대한 가중합 <span class="math inline">\(\sum \hat{y}_ie_i\)</span>이 0인 것을 확인했다.</p>
-<ol start="13" type="1">
-<li>원점을 지나는 회귀직선을 구하시오.</li>
-</ol>
+</section>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14">(13)</h2>
+<p>원점을 지나는 회귀직선을 구하시오.</p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(\hat{\beta_1} = \frac{\sum(x_iy_i)}{\sum(x_i^2)}\)</span></p>
 <div class="cell" data-execution_count="49">
@@ -1150,9 +1209,10 @@ MSE =  0.1080081</code></pre>
 <ul>
 <li>원점을 지나는 회귀직선은 <span class="math inline">\(\hat{y} = 2.09924x\)</span>의 모형으로 적합되었다.</li>
 </ul>
-<ol start="14" type="1">
-<li>위 회귀직선에서 회귀계수(기울기)의 90% 신뢰구간을 구하시오.</li>
-</ol>
+</section>
+<section id="section-15" class="level2">
+<h2 class="anchored" data-anchor-id="section-15">(14)</h2>
+<p>위 회귀직선에서 회귀계수(기울기)의 90% 신뢰구간을 구하시오.</p>
 <p><strong>Answer</strong></p>
 <p><span class="math display">\[\hat{\beta_1} \pm t_{(\alpha/2,n-1)}\frac{\hat{\sigma}}{\sqrt{S_{xx}}}\]</span></p>
 <div class="cell" data-execution_count="52">
@@ -1201,9 +1261,10 @@ MSE =  0.1080081</code></pre>
 <li><span class="math inline">\(\beta_1\)</span>의 신뢰구간은 0을 포함하지 않았다.(<span class="math inline">\(H_0 : \beta_1=0\)</span> 기각)</li>
 <li>신뢰구간으로 신뢰구간에 0이 포함된 <span class="math inline">\(\beta_1\)</span> 계수가 유의미하다는 것을 알 수 있다.</li>
 </ul>
-<ol start="15" type="1">
-<li>원점을 지나는 회귀직선의 결정계수를 구하시오.</li>
-</ol>
+</section>
+<section id="section-16" class="level2">
+<h2 class="anchored" data-anchor-id="section-16">(15)</h2>
+<p>원점을 지나는 회귀직선의 결정계수를 구하시오.</p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(R^2 = \frac{SSR}{SST} = r^2\)</span></p>
 <div class="cell" data-execution_count="62">
@@ -1218,9 +1279,10 @@ MSE =  0.1080081</code></pre>
 <pre><code>원점을 지나는 회귀직선의 결정계수는  0.9933922 로 약 0.99 % 였다.</code></pre>
 </div>
 </div>
-<ol start="16" type="1">
-<li>원점을 포함한 회귀직선과 포함하지 않은 회귀직선의 결과를 비교하여라.</li>
-</ol>
+</section>
+<section id="section-17" class="level2">
+<h2 class="anchored" data-anchor-id="section-17">(16)</h2>
+<p>원점을 포함한 회귀직선과 포함하지 않은 회귀직선의 결과를 비교하여라.</p>
 <p><strong>Answer</strong></p>
 <div class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"원점을 포함하지 않는 회귀직선의 결정계수는 "</span>,SSR<span class="sc">/</span>SST,<span class="st">"로, 원점을 포함하는 회귀직선의 결정계수인 "</span>,SSR_0<span class="sc">/</span>SST_0,<span class="st">"보다 작다."</span>)</span></code></pre></div>
@@ -1389,9 +1451,11 @@ W = 0.95279, p-value = 0.7207</code></pre>
 </tr>
 </tbody>
 </table>
-<ol start="3" type="1">
-<li>(강의노트 CH04, p9) 다음이 성립함을 증명하시오.</li>
-</ol>
+</section>
+</section>
+<section id="section-18" class="level1">
+<h1>3.</h1>
+<p>(강의노트 CH04, p9) 다음이 성립함을 증명하시오.</p>
 <p><span class="math display">\[\hat{\beta}_0 \sim N\big( \beta_0 , \sigma^2\big( \frac{1}{n} + \frac{\bar{x}^2}{S_{(xx)}} \big) \big)\]</span></p>
 <p><strong>Answer</strong></p>
 <p><span class="math inline">\(\hat{\beta_0}\)</span></p>
@@ -1417,6 +1481,7 @@ W = 0.95279, p-value = 0.7207</code></pre>
 <p><span class="math inline">\(\star \sum a_i^2 = \sum\frac{(x_i - \bar{x})^2}{S_{xx}^2} = \frac{1}{S_{xx}^2}\sum(x_i - \bar{x})^2 = \frac{1}{S_{xx}}\)</span></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
