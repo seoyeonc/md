@@ -2151,49 +2151,49 @@
   {
     "objectID": "posts/ts/2023-03-03-graduation_test.html",
     "href": "posts/ts/2023-03-03-graduation_test.html",
-    "title": "Theoritical Statistics Graduation Test",
+    "title": "Theoritical Statistics GT",
     "section": "",
-    "text": "Graduation Test"
+    "text": "GT"
   },
   {
     "objectID": "posts/ts/2023-03-03-graduation_test.html#a",
     "href": "posts/ts/2023-03-03-graduation_test.html#a",
-    "title": "Theoritical Statistics Graduation Test",
+    "title": "Theoritical Statistics GT",
     "section": "(a)",
     "text": "(a)\n이 랜덤표본의 결합확률밀도함수를 기술하시오."
   },
   {
     "objectID": "posts/ts/2023-03-03-graduation_test.html#b",
     "href": "posts/ts/2023-03-03-graduation_test.html#b",
-    "title": "Theoritical Statistics Graduation Test",
+    "title": "Theoritical Statistics GT",
     "section": "(b)",
     "text": "(b)\n\\(p(1-p)\\)에 대한 최대가능도추정량을 구하시오."
   },
   {
     "objectID": "posts/ts/2023-03-03-graduation_test.html#c",
     "href": "posts/ts/2023-03-03-graduation_test.html#c",
-    "title": "Theoritical Statistics Graduation Test",
+    "title": "Theoritical Statistics GT",
     "section": "(c)",
     "text": "(c)\n\\(X_1(1-X_2)\\)의 기댓값을 구하시오."
   },
   {
     "objectID": "posts/ts/2023-03-03-graduation_test.html#d",
     "href": "posts/ts/2023-03-03-graduation_test.html#d",
-    "title": "Theoritical Statistics Graduation Test",
+    "title": "Theoritical Statistics GT",
     "section": "(d)",
     "text": "(d)\n\\(E[X_1(1-X_2)|\\sum^n_{i=1} X_i = t]\\)을 구하시오."
   },
   {
     "objectID": "posts/ts/2023-03-03-graduation_test.html#e",
     "href": "posts/ts/2023-03-03-graduation_test.html#e",
-    "title": "Theoritical Statistics Graduation Test",
+    "title": "Theoritical Statistics GT",
     "section": "(e)",
     "text": "(e)\n\\(p=\\frac{1}{2}\\)일 때의 점근분포를 구체적으로 제시하라."
   },
   {
     "objectID": "posts/ts/2023-03-03-graduation_test.html#f",
     "href": "posts/ts/2023-03-03-graduation_test.html#f",
-    "title": "Theoritical Statistics Graduation Test",
+    "title": "Theoritical Statistics GT",
     "section": "(f)",
     "text": "(f)\n가설 \\(H_0 : p = \\frac{1}{2}\\) vs \\(H_1 : p \\neq \\frac{1}{2}\\) 일때, 일반화 가능도비를 이용하여 기각 영역을 제시하라."
   },
@@ -2410,98 +2410,98 @@
   {
     "objectID": "posts/rl/2023-03-02-graduation_test.html",
     "href": "posts/rl/2023-03-02-graduation_test.html",
-    "title": "Advanced Regression Analysis Graduation Test",
+    "title": "Advanced Regression Analysis GT",
     "section": "",
-    "text": "Graduation Test"
+    "text": "GT"
   },
   {
     "objectID": "posts/rl/2023-03-02-graduation_test.html#section-1",
     "href": "posts/rl/2023-03-02-graduation_test.html#section-1",
-    "title": "Advanced Regression Analysis Graduation Test",
+    "title": "Advanced Regression Analysis GT",
     "section": "(1)",
     "text": "(1)\n\\(\\beta\\)에 대한 최소제곱추정량(\\(LSE\\)) \\(\\hat{\\beta}\\)을 구하시오\nanswer\n\\(\\hat{\\beta} = argmin_{\\beta \\in R} S = \\sum^n_{i=1} (y_i - \\beta x_i)^2 \\to \\frac{\\partial S}{\\partial \\beta}|_{\\beta = \\hat{\\beta}} = 0\\)\n\\(\\frac{\\partial S}{\\partial \\beta} = \\sum^n_{i=1} (-2x_i)(y_i - \\beta x_i) \\to \\sum^n_{i=1} x_i(y_i - \\hat{\\beta}x_i) = 0 \\to \\hat{\\beta} = \\frac{\\sum^n_{i=1} x_iy_i}{\\sum^n_{i=1} x^2_i}\\)"
   },
   {
     "objectID": "posts/rl/2023-03-02-graduation_test.html#section-2",
     "href": "posts/rl/2023-03-02-graduation_test.html#section-2",
-    "title": "Advanced Regression Analysis Graduation Test",
+    "title": "Advanced Regression Analysis GT",
     "section": "(2)",
     "text": "(2)\n\\(E(\\hat{\\beta})\\)을 구하시오\nanswer\n\\(\\hat{\\beta} = \\frac{\\sum^n_{i=1} x_i y_i}{\\sum^n_{i=1} x^2_i} = \\sum^n_{i=1} \\frac{x_i}{\\sum^n_{j=1} s^2_j} y_i\\)\n\\(\\to E(\\hat{\\beta})= \\sum^n_{i=1} \\frac{x_i}{\\sum^n_{i=1} x^2_j} E(y_i) = \\sum^n_{i=1}\\frac{x_i}{\\sum^n_{j=1} x^2_j} \\beta x_i = \\beta\\frac{\\sum^n_{i=1} x^2_{i=1} x^2_i}{\\sum^n_{i=1} x^2_i} = \\beta\\)"
   },
   {
     "objectID": "posts/rl/2023-03-02-graduation_test.html#section-3",
     "href": "posts/rl/2023-03-02-graduation_test.html#section-3",
-    "title": "Advanced Regression Analysis Graduation Test",
+    "title": "Advanced Regression Analysis GT",
     "section": "(3)",
     "text": "(3)\n\\(Var(\\hat{\\beta})\\)을 구하시오\nanswer\n\\(Var(\\hat{\\beta}) = \\sum^n_{i=1} \\frac{x^2_i}{(\\sum^n_{j=1} x^2_j)^2} Var(y_i) = \\sum^n_{i=1} \\frac{x^2_i}{(\\sum^n_{j=1} x^2_j)^2} \\sigma^2 = \\sigma^2 \\frac{\\sum^n_{i=1} x^2_i}{(\\sum^n_{i=1} x^2_i)^2} = \\frac{\\sigma^2}{\\sum^n_{i=1} x^2_i}\\)"
   },
   {
     "objectID": "posts/rl/2023-03-02-graduation_test.html#section-5",
     "href": "posts/rl/2023-03-02-graduation_test.html#section-5",
-    "title": "Advanced Regression Analysis Graduation Test",
+    "title": "Advanced Regression Analysis GT",
     "section": "(1)",
     "text": "(1)\n\\(\\sum^n_{j=1} Var(\\hat{y}_j) = (p+1) \\sigma^2\\)\nanswer\n\\(\\hat{\\bf{y}}= X\\hat{\\beta} = X(X^\\top X)^{-1} X^\\top y = Hy\\)\n\\(Var(X\\hat{\\beta}) = XVar(\\hat{\\beta})X^\\top\\)\n\\(Var(\\hat{\\beta}) = Var((X^\\top X)^{-1} X^\\top y) = (X^\\top X)^{-1} X^\\top Var(y)X(X^\\top X)^{-1} = (X^\\top X)^{-1} X^\\top X(X^\\top X)^{-1} \\sigma^2 = (X^\\top X )^{-1} \\sigma^2\\)\n\\(Var(\\hat{y}) = Var(X\\hat{\\beta}) = X(X^\\top X)^{-1} X^\\top \\sigma^2\\)\n\\(\\to Var(\\hat{y}) = HVar(y) H^\\top = HH\\sigma^2 = H\\sigma^2\\)\n\\(\\star H^\\top = H, H^2 = H, Var(y) = I_n \\sigma^2\\)\n\\(\\sum^{n}_{j=1} Var(\\hat{y}_j) = tr(Var(\\hat{y})) = tr(H\\sigma^2) = \\sigma^2 tr(H) = tr((X^\\top X)^{-1} X^\\top X)\\sigma^2 = tr(I_{p+1})\\sigma^2 = (p+1)\\sigma^2\\)\n\\(\\star tr(X (X^\\top X)^{-1} X^\\top)\\)"
   },
   {
     "objectID": "posts/rl/2023-03-02-graduation_test.html#section-6",
     "href": "posts/rl/2023-03-02-graduation_test.html#section-6",
-    "title": "Advanced Regression Analysis Graduation Test",
+    "title": "Advanced Regression Analysis GT",
     "section": "(2)",
     "text": "(2)\n\\(Cov(\\mathbf{e,y}) = \\sigma^2[I_n - X(X^\\top X)^{-1} X^\\top]\\)\nanswer\n\\(\\bf{e} = y - \\hat{y} = y - Hy = (I-H)y\\)\n\\(Cov(\\bf{e},y) = Cov((I-H)y,y) = (I-H)Var(y) = (I-H) \\sigma^2\\)\n\\(\\star Cov(Ax,y) = A Cov(X,Y)\\)\n\\(\\star Var(y) = \\sigma^2\\)"
   },
   {
     "objectID": "posts/rl/2023-03-02-graduation_test.html#section-7",
     "href": "posts/rl/2023-03-02-graduation_test.html#section-7",
-    "title": "Advanced Regression Analysis Graduation Test",
+    "title": "Advanced Regression Analysis GT",
     "section": "(3)",
     "text": "(3)\n\\(Cov(\\mathbf{e,\\hat{y}}) = O_n\\)\nanswer\n\\(Cov(e(I - H)\\bf{y},Hy) = (I-H) Cov(y,y)H^\\top = (I-H)H\\sigma^2 = \\mathbb{O}_n \\sigma^2\\)\n\\(\\star Cov(Ax,By) = ACov(X,Y)B^\\top\\)\n\\(\\star H^\\top= H\\)\n\\(\\star H^2 = H\\)"
   },
   {
     "objectID": "posts/rl/2023-03-02-graduation_test.html#section-8",
     "href": "posts/rl/2023-03-02-graduation_test.html#section-8",
-    "title": "Advanced Regression Analysis Graduation Test",
+    "title": "Advanced Regression Analysis GT",
     "section": "(4)",
     "text": "(4)\n\\(Cov(\\mathbf{e,\\hat{\\beta}}) = O_{n \\times (p+1)}\\)\nanswer\n\\(Cov((I-H)\\bf{y},(X^\\top X)^{-1} y) = (I-H) Cov(y,y) X (X^\\top X)^{-1} = (I - X(X^\\top X)^{-1} X^\\top ) X (X^\\top X)^{-1} \\sigma^2 = \\{ X(X^\\top X)^{-1} - X(X^\\top X)^{-1} \\} \\sigma^2 = \\mathbb{O}_{n \\times ([+1)}\\)"
   },
   {
     "objectID": "posts/rl/2023-03-02-graduation_test.html#section-9",
     "href": "posts/rl/2023-03-02-graduation_test.html#section-9",
-    "title": "Advanced Regression Analysis Graduation Test",
+    "title": "Advanced Regression Analysis GT",
     "section": "(5)",
     "text": "(5)\n\\(Cov(\\mathbf{\\epsilon, \\hat{\\beta}}) = \\sigma^2 X(X^\\top X)^{-1}\\)\nanswer\n\\(\\bf{\\hat{\\beta}} = (X^\\top X)^{-1} X^\\top y = (X^\\top X)^{-1} X^\\top (X\\beta + \\epsilon) = \\beta + (X^\\top X)^{-1} X^\\top \\epsilon\\)\n\\(Cov(\\bf{\\epsilon} , \\beta + (X^\\top X)^{-1} X^\\top \\epsilon ) = Cov(\\epsilon, \\beta) + Cov(\\epsilon, \\epsilon)X(X^\\top X)^{-1} = \\sigma^2 X(X^\\top X)^{-1}\\)\n\\(\\star Cov(\\epsilon, \\beta) = 0\\)\n\\(\\star Cov(\\epsilon, \\epsilon) = I_n \\sigma^2\\)"
   },
   {
     "objectID": "posts/rl/2023-03-02-graduation_test.html#section-10",
     "href": "posts/rl/2023-03-02-graduation_test.html#section-10",
-    "title": "Advanced Regression Analysis Graduation Test",
+    "title": "Advanced Regression Analysis GT",
     "section": "(6)",
     "text": "(6)\n\\(\\mathbf{e^\\top y} = SSE\\)\nanswer\n\\(\\sum^{n}_{j=1} e_j y_j = \\bf{e^\\top y} = \\{ (I - H)y\\}^\\top y = y^\\top (I-H)y\\)\n\\(\\star \\bf{e}^\\top (e_1, \\dots , e_n) = (y-\\hat{y})^\\top\\)\n\\(\\star \\bf{y}^\\top = (y_1 , \\dots , y_n)\\)\n\\(SSE = \\sum^n_{j=1} (y_i - \\hat{y}_j)^2 = (\\bf{y} - \\hat{y} ) ^\\top ( y - \\hat{y} ) = e^\\top e = \\{ (I - H)y \\}^\\top \\{ (I - H)y \\} = y^\\top (I - H) (I-H)y = y^\\top (I - H)y\\)\n\\(\\star I - H_H+H^2 = I-H, H^2 = H\\)\n\\(\\therefore \\sum^{n}_{j=1} e_j y_j = SSE\\)"
   },
   {
     "objectID": "posts/rl/2023-03-02-graduation_test.html#section-11",
     "href": "posts/rl/2023-03-02-graduation_test.html#section-11",
-    "title": "Advanced Regression Analysis Graduation Test",
+    "title": "Advanced Regression Analysis GT",
     "section": "(7)",
     "text": "(7)\n\\(\\mathbf{e^\\top \\hat{y}}=0\\)\nanswer\n\\(\\sum^{n}_{j=1} \\bf{e_j \\hat{y}_j} = e^\\top \\hat{y} = y^\\top (I-H) Hy = y^\\top_{1\\times n} \\mathbb{O}_{n\\times n} y_{n \\times 1} = 0\\)\n\\(\\star H - H^2 = H - H = \\mathbb{O}_{n \\times n}\\)"
   },
   {
     "objectID": "posts/rl/2023-03-02-graduation_test.html#section-12",
     "href": "posts/rl/2023-03-02-graduation_test.html#section-12",
-    "title": "Advanced Regression Analysis Graduation Test",
+    "title": "Advanced Regression Analysis GT",
     "section": "(8)",
     "text": "(8)\n\\(E(\\frac{SSE}{n-p-1}) = \\sigma^2\\)\nanswer\n정리 5.1\n\\(y \\sim N(\\mu,V)\\) 이면\n\\(E(y^\\top A y) = tr(AV) + \\mu^\\top A \\mu, cov(y,y^\\top A y) = 2VA\\mu\\)\n\\(\\frac{SSE}{\\sigma^2} = y^\\top \\frac{1}{\\sigma^2}(I-H)y\\)\n\\(B = \\frac{1}{\\sigma^2}(I-H)\\)\n\\(y \\sim N(X\\beta, I \\sigma^2)\\)\n\\(BV = \\frac{1}{\\sigma^2}(I-H)I\\sigma^2 = B, BV=B\\)\n\\(B, BV\\)는 멱등행렬\n\\(tr(BV) = tr(B) = tr(I-H) = tr(I) - tr(H) = n-p-1\\)\n\\(\\star\\) \\(X\\)가 \\(n \\times (p+1)\\) 행렬이고, \\(rank\\)가 \\(p+1\\), \\(\\therefore tr(H) = p+1\\)\n\\(\\mu = X B\\)\n\\(B = \\frac{1}{\\sigma^2}(I-H)\\)\n\\(B\\mu = \\frac{1}{\\sigma^2}(I-H) X \\beta = \\frac{1}{\\sigma^2}(X B - HXB) = 0\\)\n\\(\\star HX = X\\)\n\\(\\therefore \\mu^\\top B \\mu = 0\\)\n\\(E(\\frac{SSE}{\\sigma^2}) = n-p-1\\)\n\\(E(SSE) = (n-p-1)\\sigma^2\\)\n\\(\\therefore E(\\frac{SSE}{(n-p-1)}) = \\sigma^2\\)"
   },
   {
     "objectID": "posts/rl/2023-03-02-graduation_test.html#section-14",
     "href": "posts/rl/2023-03-02-graduation_test.html#section-14",
-    "title": "Advanced Regression Analysis Graduation Test",
+    "title": "Advanced Regression Analysis GT",
     "section": "(1)",
     "text": "(1)\n적합결여검정을 위한 가설을 제시하라."
   },
   {
     "objectID": "posts/rl/2023-03-02-graduation_test.html#section-15",
     "href": "posts/rl/2023-03-02-graduation_test.html#section-15",
-    "title": "Advanced Regression Analysis Graduation Test",
+    "title": "Advanced Regression Analysis GT",
     "section": "(2)",
     "text": "(2)\n적합결여검정 수행을 위한 과정과 결과 추론을 구체적으로 제시하라(계산 X)"
   },
@@ -3413,7 +3413,7 @@
     "href": "index.html",
     "title": ";)",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nMar 3, 2023\n\n\nTheoritical Statistics Graduation Test\n\n\nSEOYEON CHOI\n\n\n\n\nMar 3, 2023\n\n\nAdvanced Regression Analysis Graduation Test\n\n\nSEOYEON CHOI\n\n\n\n\nFeb 23, 2023\n\n\nAdvanced Regression Analysis Final Term\n\n\nSEOYEON CHOI\n\n\n\n\nFeb 22, 2023\n\n\nAdvanced Regression Analysis Mid Term\n\n\nSEOYEON CHOI\n\n\n\n\nFeb 12, 2023\n\n\nArrayList & LinkedList\n\n\nSEOYEON CHOI\n\n\n\n\nJan 30, 2023\n\n\n코딩 테스트 공부(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 26, 2023\n\n\nTheoritical Statistics Final term\n\n\nSEOYEON CHOI\n\n\n\n\nJan 23, 2023\n\n\n두 큐 합 같게 만들기(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 21, 2023\n\n\n성격 유형 검사하기(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 20, 2023\n\n\nTheoritical Statistics HW9\n\n\nSEOYEON CHOI\n\n\n\n\nJan 18, 2023\n\n\nTheoritical Statistics HW7\n\n\nSEOYEON CHOI\n\n\n\n\nJan 18, 2023\n\n\nTheoritical Statistics HW8\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\nAlgorithm\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\n내장함수\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\nTheoritical Statistics Mid term\n\n\nSEOYEON CHOI\n\n\n\n\nJan 14, 2023\n\n\nTheoritical Statistics HW6\n\n\nSEOYEON CHOI\n\n\n\n\nJan 12, 2023\n\n\nTheoritical Statistics HW5\n\n\nSEOYEON CHOI\n\n\n\n\nJan 11, 2023\n\n\nTheoritical Statistics HW4\n\n\nSEOYEON CHOI\n\n\n\n\nJan 8, 2023\n\n\nTheoritical Statistics HW3\n\n\nSEOYEON CHOI\n\n\n\n\nJan 6, 2023\n\n\nTheoritical Statistics HW2\n\n\nSEOYEON CHOI\n\n\n\n\nJan 5, 2023\n\n\nTheoritical Statistics HW1\n\n\nSEOYEON CHOI\n\n\n\n\nJan 1, 2023\n\n\nChapter 03 Greedy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 31, 2022\n\n\n확률변수와 확률분포\n\n\nSEOYEON CHOI\n\n\n\n\nDec 28, 2022\n\n\nCoding Test\n\n\nSEOYEON CHOI\n\n\n\n\nDec 27, 2022\n\n\nTheoritical Statistics\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-1: 추천시스템\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-2: 생성모형(GAN)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-3: 딥러닝의 기초 (5)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 13, 2022\n\n\nFinalterm\n\n\nSEOYEON CHOI\n\n\n\n\nDec 11, 2022\n\n\n고급회귀분석 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nstudy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRNN (13주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRegression HW 4\n\n\nSEOYEON CHOI\n\n\n\n\nDec 7, 2022\n\n\nA1: 깊은복사와 얕은복사 (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 5, 2022\n\n\n고급회귀분석 실습 CH11\n\n\nSEOYEON CHOI\n\n\n\n\nNov 30, 2022\n\n\nRNN (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 29, 2022\n\n\nDeep Learning final example\n\n\nSEOYEON CHOI\n\n\n\n\nNov 28, 2022\n\n\n고급회귀분석 실습 CH13\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRNN (11주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRegression HW 3\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\n고급회귀분석 실습 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nNov 14, 2022\n\n\n고급회귀분석 실습 CH06, CH07\n\n\nSEOYEON CHOI\n\n\n\n\nNov 9, 2022\n\n\nRNN (10주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nMidterm\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nRNN (9주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 1\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 23, 2022\n\n\nRegression HW 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 19, 2022\n\n\nCNN (7주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 12, 2022\n\n\nDNN (6주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nHomework\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nDNN (5주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 29, 2022\n\n\nDNN (4주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nDNN (3주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\n고급회귀분석 실습 CH03, CH04\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nRegression HW 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 19, 2022\n\n\nAssignment 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 14, 2022\n\n\nDNN (2주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nIntro\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nDNN (1주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nSpecial Topics in Machine Learning\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nAdvanced Regression Analysis\n\n\nSEOYEON CHOI\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nMar 3, 2023\n\n\nTheoritical Statistics GT\n\n\nSEOYEON CHOI\n\n\n\n\nMar 3, 2023\n\n\nAdvanced Regression Analysis GT\n\n\nSEOYEON CHOI\n\n\n\n\nFeb 23, 2023\n\n\nAdvanced Regression Analysis Final Term\n\n\nSEOYEON CHOI\n\n\n\n\nFeb 22, 2023\n\n\nAdvanced Regression Analysis Mid Term\n\n\nSEOYEON CHOI\n\n\n\n\nFeb 12, 2023\n\n\nArrayList & LinkedList\n\n\nSEOYEON CHOI\n\n\n\n\nJan 30, 2023\n\n\n코딩 테스트 공부(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 26, 2023\n\n\nTheoritical Statistics Final term\n\n\nSEOYEON CHOI\n\n\n\n\nJan 23, 2023\n\n\n두 큐 합 같게 만들기(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 21, 2023\n\n\n성격 유형 검사하기(Done)\n\n\nSEOYEON CHOI\n\n\n\n\nJan 20, 2023\n\n\nTheoritical Statistics HW9\n\n\nSEOYEON CHOI\n\n\n\n\nJan 18, 2023\n\n\nTheoritical Statistics HW7\n\n\nSEOYEON CHOI\n\n\n\n\nJan 18, 2023\n\n\nTheoritical Statistics HW8\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\nAlgorithm\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\n내장함수\n\n\nSEOYEON CHOI\n\n\n\n\nJan 15, 2023\n\n\nTheoritical Statistics Mid term\n\n\nSEOYEON CHOI\n\n\n\n\nJan 14, 2023\n\n\nTheoritical Statistics HW6\n\n\nSEOYEON CHOI\n\n\n\n\nJan 12, 2023\n\n\nTheoritical Statistics HW5\n\n\nSEOYEON CHOI\n\n\n\n\nJan 11, 2023\n\n\nTheoritical Statistics HW4\n\n\nSEOYEON CHOI\n\n\n\n\nJan 8, 2023\n\n\nTheoritical Statistics HW3\n\n\nSEOYEON CHOI\n\n\n\n\nJan 6, 2023\n\n\nTheoritical Statistics HW2\n\n\nSEOYEON CHOI\n\n\n\n\nJan 5, 2023\n\n\nTheoritical Statistics HW1\n\n\nSEOYEON CHOI\n\n\n\n\nJan 1, 2023\n\n\nChapter 03 Greedy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 31, 2022\n\n\n확률변수와 확률분포\n\n\nSEOYEON CHOI\n\n\n\n\nDec 28, 2022\n\n\nCoding Test\n\n\nSEOYEON CHOI\n\n\n\n\nDec 27, 2022\n\n\nTheoritical Statistics\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-1: 추천시스템\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-2: 생성모형(GAN)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 21, 2022\n\n\nExtra-3: 딥러닝의 기초 (5)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 13, 2022\n\n\nFinalterm\n\n\nSEOYEON CHOI\n\n\n\n\nDec 11, 2022\n\n\n고급회귀분석 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nstudy\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRNN (13주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 8, 2022\n\n\nRegression HW 4\n\n\nSEOYEON CHOI\n\n\n\n\nDec 7, 2022\n\n\nA1: 깊은복사와 얕은복사 (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nDec 5, 2022\n\n\n고급회귀분석 실습 CH11\n\n\nSEOYEON CHOI\n\n\n\n\nNov 30, 2022\n\n\nRNN (12주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 29, 2022\n\n\nDeep Learning final example\n\n\nSEOYEON CHOI\n\n\n\n\nNov 28, 2022\n\n\n고급회귀분석 실습 CH13\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRNN (11주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\nRegression HW 3\n\n\nSEOYEON CHOI\n\n\n\n\nNov 21, 2022\n\n\n고급회귀분석 실습 CH10\n\n\nSEOYEON CHOI\n\n\n\n\nNov 14, 2022\n\n\n고급회귀분석 실습 CH06, CH07\n\n\nSEOYEON CHOI\n\n\n\n\nNov 9, 2022\n\n\nRNN (10주차)\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nMidterm\n\n\nSEOYEON CHOI\n\n\n\n\nNov 2, 2022\n\n\nRNN (9주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 1\n\n\nSEOYEON CHOI\n\n\n\n\nOct 26, 2022\n\n\nCNN (8주차) 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 23, 2022\n\n\nRegression HW 2\n\n\nSEOYEON CHOI\n\n\n\n\nOct 19, 2022\n\n\nCNN (7주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 12, 2022\n\n\nDNN (6주차)\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nHomework\n\n\nSEOYEON CHOI\n\n\n\n\nOct 5, 2022\n\n\nDNN (5주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 29, 2022\n\n\nDNN (4주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nDNN (3주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\n고급회귀분석 실습 CH03, CH04\n\n\nSEOYEON CHOI\n\n\n\n\nSep 21, 2022\n\n\nRegression HW 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 19, 2022\n\n\nAssignment 1\n\n\nSEOYEON CHOI\n\n\n\n\nSep 14, 2022\n\n\nDNN (2주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nIntro\n\n\nSEOYEON CHOI\n\n\n\n\nSep 7, 2022\n\n\nDNN (1주차)\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nSpecial Topics in Machine Learning\n\n\nSEOYEON CHOI\n\n\n\n\nSep 1, 2022\n\n\nAdvanced Regression Analysis\n\n\nSEOYEON CHOI\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
