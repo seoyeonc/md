@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="SEOYEON CHOI">
-<meta name="dcterms.date" content="2023-01-05">
+<meta name="author" content="GUEBIN CHOI">
+<meta name="dcterms.date" content="2023-01-26">
 
-<title>Seoyeon’s Blog for classes - Theoritical Statistics HW1</title>
+<title>Seoyeon’s Blog for classes - Theoritical Statistics Final term 6 Explanation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -98,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Theoritical Statistics HW1</h1>
+      <h1 class="quarto-secondary-nav-title">Theoritical Statistics Final term 6 Explanation</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -109,9 +172,11 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">Theoritical Statistics HW1</h1>
+      <h1 class="title d-none d-lg-block">Theoritical Statistics Final term 6 Explanation</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Theoritical Statistics</div>
+                <div class="quarto-category">박스뮬러변환</div>
+                <div class="quarto-category">지수분포와 카이제곱</div>
               </div>
                   </div>
   </div>
@@ -122,14 +187,14 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>SEOYEON CHOI </p>
+               <p>GUEBIN CHOI </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 5, 2023</p>
+        <p class="date">January 26, 2023</p>
       </div>
     </div>
     
@@ -430,7 +495,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-03-03-ts-final_qanda.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Final term 6 Explanation</a>
+  <a href="../../posts/ts/2023-03-03-ts-final_qanda.html" class="sidebar-item-text sidebar-link active">Theoritical Statistics Final term 6 Explanation</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -440,7 +505,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-01-05-ts_HW1.html" class="sidebar-item-text sidebar-link active">Theoritical Statistics HW1</a>
+  <a href="../../posts/ts/2023-01-05-ts_HW1.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW1</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -506,15 +571,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">1.</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2.</a>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">6.</a>
   <ul class="collapse">
-  <li><a href="#a-x의-주변분포를-구하시오." id="toc-a-x의-주변분포를-구하시오." class="nav-link" data-scroll-target="#a-x의-주변분포를-구하시오.">(a) <span class="math inline">\(X\)</span>의 주변분포를 구하시오.</a></li>
-  <li><a href="#b-y의-주변분포를-구하시오." id="toc-b-y의-주변분포를-구하시오." class="nav-link" data-scroll-target="#b-y의-주변분포를-구하시오.">(b) <span class="math inline">\(Y\)</span>의 주변분포를 구하시오.</a></li>
-  <li><a href="#c-y10-일-때-x의-조건부분포를-구하시오" id="toc-c-y10-일-때-x의-조건부분포를-구하시오" class="nav-link" data-scroll-target="#c-y10-일-때-x의-조건부분포를-구하시오">(c) <span class="math inline">\(Y=10\)</span> 일 때 <span class="math inline">\(X\)</span>의 조건부분포를 구하시오</a></li>
+  <li><a href="#alpha-구해보자.-시뮬레이션" id="toc-alpha-구해보자.-시뮬레이션" class="nav-link" data-scroll-target="#alpha-구해보자.-시뮬레이션"><span class="math inline">\(\alpha\)</span> 구해보자. (시뮬레이션)</a></li>
+  <li><a href="#beta를-구해보자.시뮬레이션" id="toc-beta를-구해보자.시뮬레이션" class="nav-link" data-scroll-target="#beta를-구해보자.시뮬레이션"><span class="math inline">\(\beta\)</span>를 구해보자.(시뮬레이션)</a></li>
+  <li><a href="#alpha를-구해보자.-이론" id="toc-alpha를-구해보자.-이론" class="nav-link" data-scroll-target="#alpha를-구해보자.-이론"><span class="math inline">\(\alpha\)</span>를 구해보자. (이론)</a></li>
+  <li><a href="#beta를-구해보자.-이론" id="toc-beta를-구해보자.-이론" class="nav-link" data-scroll-target="#beta를-구해보자.-이론"><span class="math inline">\(\beta\)</span>를 구해보자. (이론)</a></li>
   </ul></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">3.</a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">4.</a></li>
+  <li><a href="#박스뮬러변환" id="toc-박스뮬러변환" class="nav-link" data-scroll-target="#박스뮬러변환">박스뮬러변환</a></li>
   </ul>
 </nav>
     </div>
@@ -525,157 +589,138 @@ ul.task-list li input[type="checkbox"] {
 
 
 <blockquote class="blockquote">
-<p>확률변수와 확률분포</p>
+<p>Final term 질문</p>
 </blockquote>
+<p><a href="https://guebin.github.io/SC2022/0329.html">참고</a></p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Distributions</span>, <span class="bu">Plots</span></span></code></pre></div>
+</div>
 <section id="section" class="level1">
-<h1>1.</h1>
-<p>세 개의 상자에는 각각 1,2,3,4가 적혀있는 네 장의 카드가 들어 있다. 각 상자에서 임의로 카드를 한 장씩 선택하여 <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>를 다음과 같이 정의할 때, <span class="math inline">\(X\)</span>롸 <span class="math inline">\(Y\)</span>의 결합확률분포를 구하시오</p>
+<h1>6.</h1>
+<p><span class="math inline">\(f(x) = \frac{1}{\theta} exp(-\frac{x}{\theta}) \to\)</span> 평균이 <span class="math inline">\(\theta\)</span>인 지수분포</p>
+<p><span class="math inline">\(H_0 : \theta = 2, H_1 : \theta = 1\)</span></p>
+<p>검정통계량 <span class="math inline">\(T\)</span></p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>T<span class="op">=</span> x <span class="op">-&gt;</span> <span class="fl">0.5</span><span class="fu">*exp</span>(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>x[<span class="fl">1</span>]) <span class="op">*</span> <span class="fl">0.5</span><span class="fu">*exp</span>(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>x[<span class="fl">2</span>])  <span class="op">/</span> (<span class="fu">exp</span>(<span class="op">-</span>x[<span class="fl">1</span>])<span class="fu">*exp</span>(<span class="op">-</span>x[<span class="fl">2</span>]))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>#1 (generic function with 1 method)</code></pre>
+</div>
+</div>
+<section id="alpha-구해보자.-시뮬레이션" class="level2">
+<h2 class="anchored" data-anchor-id="alpha-구해보자.-시뮬레이션"><span class="math inline">\(\alpha\)</span> 구해보자. (시뮬레이션)</h2>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>θ<span class="op">=</span><span class="fl">2</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>2-element Vector{Float64}:
+ 0.6687906085363371
+ 1.5350253919744037</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">T</span>(x)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>0.7524758613118447</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Ts <span class="op">=</span> [<span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>) <span class="op">|&gt;</span> T for i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1400000</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Ts <span class="op">.&lt;</span> <span class="fl">1</span><span class="op">/</span><span class="fl">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>0.15347</code></pre>
+</div>
+</div>
+</section>
+<section id="beta를-구해보자.시뮬레이션" class="level2">
+<h2 class="anchored" data-anchor-id="beta를-구해보자.시뮬레이션"><span class="math inline">\(\beta\)</span>를 구해보자.(시뮬레이션)</h2>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>θ<span class="op">=</span><span class="fl">1</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>2-element Vector{Float64}:
+ 3.8233540141024713
+ 1.6552057743570938</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Ts <span class="op">=</span> [<span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>) <span class="op">|&gt;</span> T for i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1400000</span>]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Ts <span class="op">.&gt;</span> <span class="fl">1</span><span class="op">/</span><span class="fl">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>0.5970164285714286</code></pre>
+</div>
+</div>
+</section>
+<section id="alpha를-구해보자.-이론" class="level2">
+<h2 class="anchored" data-anchor-id="alpha를-구해보자.-이론"><span class="math inline">\(\alpha\)</span>를 구해보자. (이론)</h2>
+<p><span class="math inline">\(T(X_1,X_2) = \frac{0.25 exp(-0.5 X_1 - 0.5 X_2)}{exp(-X_1 - X_2)} = 0.25 exp(0.5 X_1 + 0.5 X_2)\)</span></p>
+<p><span class="math inline">\(T(X_1,X_2) &lt; \frac{1}{2} \iff exp(0.5 X_1 + 0.5 X_2) &lt; 2 \iff X_1 + X_2 &lt; 2 ln2\)</span></p>
+<p>그런데 <span class="math inline">\(X_1 + X_2 \sim \chi^2(4)\)</span> under <span class="math inline">\(H_0\)</span></p>
+<p><span class="math inline">\(P(X_1 + X_2 &lt; 2 ln 2) = \int^{2ln2}_{0} \frac{1}{4 \Gamma(2)} x e^{-x/2} dx = \int^{ln2}_{0} t e^{-t} dt = [ t(-e^{-t}) -e^{-t}]^{ln 2}_{0}\)</span></p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fu">log</span>(<span class="fl">2</span>) </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> <span class="fu">t*</span>(<span class="fu">-exp</span>(<span class="op">-</span>t)) <span class="op">-</span> <span class="fu">exp</span>(<span class="op">-</span>t)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">0</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> <span class="fu">t*</span>(<span class="fu">-exp</span>(<span class="op">-</span>t)) <span class="op">-</span> <span class="fu">exp</span>(<span class="op">-</span>t)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>-1.0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>u<span class="op">-</span>l</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>0.1534264097200273</code></pre>
+</div>
+</div>
+</section>
+<section id="beta를-구해보자.-이론" class="level2">
+<h2 class="anchored" data-anchor-id="beta를-구해보자.-이론"><span class="math inline">\(\beta\)</span>를 구해보자. (이론)</h2>
+<p><span class="math inline">\(T(X_1,X_2) &gt; \frac{1}{2} \iff exp(0.5 X_1 + 0.5 X_2) &lt; 2 \iff 2(X_1 + X_2) &lt; 4 ln2\)</span></p>
+<p>그런데 <span class="math inline">\(2(X_1 + X_2) \sim \chi^2(4)\)</span> under <span class="math inline">\(H_0\)</span></p>
+<p><span class="math inline">\(P(2(X_1 + X_2) &lt; 4 ln 2) = \int_{4ln2}^{\infty} \frac{1}{4 \Gamma(2)} x e^{-x/2} dx = \int_{2ln2}^{\infty} t e^{-t} dt = [ t(-e^{-t}) -e^{-t}]_{2ln 2}^{0}\)</span></p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> <span class="fl">0</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">2</span><span class="fu">*log</span>(<span class="fl">2</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> <span class="fu">t*</span>(<span class="fu">-exp</span>(<span class="op">-</span>t)) <span class="op">-</span> <span class="fu">exp</span>(<span class="op">-</span>t)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>-0.5965735902799727</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>u<span class="op">-</span>l</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>0.5965735902799727</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="박스뮬러변환" class="level1">
+<h1>박스뮬러변환</h1>
+$
+<span class="math display">\[\begin{cases} \frac{R^2}{2} \sim Exp(1) \\ \Theta \sim U(0,2\pi) \end{cases}\]</span>
+
+<span class="math display">\[\begin{bmatrix} R \cos\Theta \\ R \sin \Theta \end{bmatrix}\]</span>
+N(
+<span class="math display">\[\begin{bmatrix} 0\\0 \end{bmatrix} \begin{bmatrix} 1 &amp;0  \\ 0 &amp; 1 \end{bmatrix}\]</span>
+<p>) $</p>
+<p>위에서 <span class="math inline">\(R^2\)</span>은 반지름의 제곱</p>
 <ul>
-<li><span class="math inline">\(X\)</span> = 세 장의 카드 중 가장 작은 값, <span class="math inline">\(Y\)</span> = 세 장의 카드 중 가장 큰 값</li>
+<li>지수분포 <span class="math inline">\(\times\)</span> 2는 평균이 2배가 되는 지수분포가 된다.(스케일링 가능)</li>
 </ul>
-<p><strong>Answer</strong></p>
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">X,Y</th>
-<th style="text-align: center;">1</th>
-<th style="text-align: center;">2</th>
-<th style="text-align: center;">3</th>
-<th style="text-align: center;">4</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;"><span class="math inline">\(\frac{1}{64}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\frac{6}{64}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\frac{12}{64}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\frac{18}{64}\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;"><span class="math inline">\(\frac{1}{64}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\frac{6}{64}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\frac{12}{64}\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;"><span class="math inline">\(\frac{1}{64}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\frac{6}{64}\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;"><span class="math inline">\(\frac{1}{64}\)</span></td>
-</tr>
-</tbody>
-</table>
-<p>총 64 cases 존재, <span class="math inline">\(\begin{pmatrix} 4 \\ 1 \end{pmatrix} \begin{pmatrix} 4 \\ 1 \end{pmatrix} \begin{pmatrix} 4 \\ 1 \end{pmatrix} = 64\)</span></p>
-<p><span class="math inline">\(P(X=1,Y=2) , (1,2) \to \frac{3 \times 2 \times 1}{2} \times 2 = \frac{6}{64}\)</span></p>
-<p><span class="math inline">\(P(X=1,Y=3) , (1,2,3) \to (\frac{3 \times 2 \times 1}{2} \times 2) + (3 \times 2 \times 1) = \frac{12}{64}\)</span></p>
-<p><span class="math inline">\(P(X=1,Y=4) , (1,2,3,4) \to (\frac{3 \times 2 \times 1}{2} \times 2) + (3 \times 2 \times 1 \times 2) = \frac{18}{64}\)</span></p>
-<p><span class="math inline">\(P(X=2,Y=3) , (2,3) \to (\frac{3 \times 2 \times 1}{2} \times 2) + (3 \times 2 \times 1) = \frac{6}{64}\)</span></p>
-<p><span class="math inline">\(P(X=2,Y=4) , (2,3,4) \to (\frac{3 \times 2 \times 1}{2} \times 2) + (3 \times 2 \times 1) = \frac{12}{64}\)</span></p>
-<p><span class="math inline">\(P(X=3,Y=4) , (3,4) \to (\frac{3 \times 2 \times 1}{2} \times 2) + (3 \times 2 \times 1) = \frac{6}{64}\)</span></p>
-<p><span class="math inline">\(P(X=1,Y=1) = P(X=2,Y=2) = P(X=3,Y=3) = P(X=4,Y=4) = \frac{1}{64}\)</span></p>
-<p><span class="math inline">\(\sum^n_{n=1}\sum^m_{m=1}(X,Y) = 1\)</span></p>
-</section>
-<section id="section-1" class="level1">
-<h1>2.</h1>
-<p><span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>는 다음과 같은 결합분포를 가지고 있다.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th></th>
-<th><span class="math inline">\(y\)</span></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td><span class="math inline">\(10\)</span></td>
-<td><span class="math inline">\(20\)</span></td>
-<td><span class="math inline">\(30\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(x\)</span></td>
-<td><span class="math inline">\(0\)</span></td>
-<td><span class="math inline">\(\frac{1}{9}\)</span></td>
-<td><span class="math inline">\(\frac{1}{9}\)</span></td>
-<td><span class="math inline">\(0\)</span></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><span class="math inline">\(1\)</span></td>
-<td><span class="math inline">\(\frac{1}{6}\)</span></td>
-<td><span class="math inline">\(0\)</span></td>
-<td><span class="math inline">\(\frac{1}{6}\)</span></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><span class="math inline">\(2\)</span></td>
-<td><span class="math inline">\(0\)</span></td>
-<td><span class="math inline">\(\frac{2}{9}\)</span></td>
-<td><span class="math inline">\(\frac{2}{9}\)</span></td>
-</tr>
-</tbody>
-</table>
-<section id="a-x의-주변분포를-구하시오." class="level2">
-<h2 class="anchored" data-anchor-id="a-x의-주변분포를-구하시오.">(a) <span class="math inline">\(X\)</span>의 주변분포를 구하시오.</h2>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(F_X(X)\)</span></p>
+<p>따라서 <span class="math inline">\(R^2\)</span>은 <span class="math inline">\(X_1^2 + X_2^2\)</span>랑 분포가 같다.</p>
 <ul>
-<li><span class="math inline">\(P(X=0) = \frac{1}{9} + \frac{1}{9} = \frac{2}{9}\)</span></li>
-<li><span class="math inline">\(P(X=1) = \frac{1}{6} + \frac{1}{6} =\frac{2}{6} = \frac{1}{3}\)</span></li>
-<li><span class="math inline">\(P(X=2) = \frac{2}{9} + \frac{2}{9} = \frac{4}{9}\)</span></li>
+<li>여기에서 <span class="math inline">\(X_1, X_2 \sim N(0,1)\)</span> 각각 표준정규분포를 따른다.</li>
+<li>표준정규분포를 각각 제곱해서 더하면 <span class="math inline">\(\chi^2\)</span>을 따른다.</li>
 </ul>
-</section>
-<section id="b-y의-주변분포를-구하시오." class="level2">
-<h2 class="anchored" data-anchor-id="b-y의-주변분포를-구하시오.">(b) <span class="math inline">\(Y\)</span>의 주변분포를 구하시오.</h2>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(F_Y(Y)\)</span></p>
+<ol type="1">
+<li><p><span class="math inline">\(Exp(2) \sim \chi^2(2)\)</span></p></li>
+<li><p><span class="math inline">\(Exp(2) + Exp(2) \sim \chi^2(4)\)</span></p></li>
+<li><p><span class="math inline">\(Exp(2) + Exp(2)+ Exp(2) \sim \chi^2(6)\)</span></p></li>
+<li><p><span class="math inline">\(\dots\)</span></p></li>
+<li><p><span class="math inline">\(\sum^n Exp(2) \sim Gamma(n,2)\)</span></p>
 <ul>
-<li><span class="math inline">\(P(Y=10) = \frac{1}{9} + \frac{1}{6} = \frac{15}{54} = \frac{5}{18}\)</span></li>
-<li><span class="math inline">\(P(Y=20) = \frac{1}{9} + \frac{2}{9} =\frac{3}{9} = \frac{1}{3}\)</span></li>
-<li><span class="math inline">\(P(Y=30) = \frac{1}{6} + \frac{2}{9} = \frac{21}{54} = \frac{7}{18}\)</span></li>
-</ul>
-</section>
-<section id="c-y10-일-때-x의-조건부분포를-구하시오" class="level2">
-<h2 class="anchored" data-anchor-id="c-y10-일-때-x의-조건부분포를-구하시오">(c) <span class="math inline">\(Y=10\)</span> 일 때 <span class="math inline">\(X\)</span>의 조건부분포를 구하시오</h2>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(F_X(Y=10|X=0) = \frac{1/9}{5/18} = \frac{2}{5}\)</span></p>
-<p><span class="math inline">\(F_X(Y=10|X=1) = \frac{1/6}{5/18} = \frac{3}{5}\)</span></p>
-<p><span class="math inline">\(F_X(Y = 10|X = 2) = \frac{0}{5/18} = 0\)</span></p>
-</section>
-</section>
-<section id="section-2" class="level1">
-<h1>3.</h1>
-<p>두 연속형 확률변수 <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>의 결합확률밀도함수 <span class="math inline">\(f(x,y) = 2I(0&lt;x&lt;y&lt;1)\)</span>일 때, <span class="math inline">\(X\)</span>의 주변확률밀도함수를 구하고, <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>는 서로 독립인지 확인하시오.</p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(f_X(X) = \int^1_x 2 dy = [ 2y]^1_x = 2(1-x)\)</span></p>
-<p><span class="math inline">\(f_Y(Y) \int^y_0 2 dx = [2x]^y_0 = 2y\)</span></p>
-<p><span class="math inline">\(f_{XY}(X,Y) \neq f_X(X)\times f_Y(Y)\)</span></p>
-<p><span class="math inline">\(X,Y\)</span>는 독립이 아니다.</p>
-</section>
-<section id="section-3" class="level1">
-<h1>4.</h1>
-<p>두 연속형 확률변수 <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>의 결합확률밀도함수 <span class="math inline">\(f(x,y) = 2xe^{x+2y}I(0&lt;x&lt;\inf, 0&lt; y&lt; \inf)\)</span> 일 때, <span class="math inline">\(Y\)</span>의 주변확률밀도함수를 구하고, <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>는 서로 독립인지 확인하시오.</p>
-<p><strong>Answer</strong></p>
-<p><span class="math inline">\(f_Y(Y) = \int^{\infty}_0 2xe^{-(x+2y)} dx\)</span></p>
-<p><span class="math inline">\(= [-2xe^{-(x+2y)}]^{\infty}_0 - \int^{\infty}_0 -2 e^{-(x+2y)} dx\)</span></p>
-<p><span class="math inline">\(= 2[-e^{-(x+2y)}]^{\infty}_0 = 2e^{-2y}\)</span></p>
-<p><span class="math inline">\(f_X(X) = \int^{\infty}_0 2xe^{-(x+2y)} dy = [-xe^{-(x+2y)}]^{\infty}_0 = xe^{-x}\)</span></p>
-<p><span class="math inline">\(f_{XY}(X,Y) = f_X(X) \times f_Y(Y)\)</span></p>
-<p><span class="math inline">\(X,Y\)</span>는 서로 독립이다.</p>
+<li>책에 따라 <span class="math inline">\(Gamma(n,2)\)</span> 혹은 <span class="math inline">\(Gamma(n,\frac{1}{2}\)</span> 혹은 <span class="math inline">\(Gamma\frac{1}{2},1)\)</span> 쓰기도 한다.</li>
+</ul></li>
+</ol>
 
 
 </section>
