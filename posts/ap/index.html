@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="SEOYEON CHOI">
-<meta name="dcterms.date" content="2022-12-31">
+<meta name="dcterms.date" content="2023-03-07">
 
-<title>Seoyeon’s Blog for classes - 확률변수와 확률분포</title>
+<title>Seoyeon’s Blog for classes - Advanced Probability Theory</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,7 +61,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -98,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">확률변수와 확률분포</h1>
+      <h1 class="quarto-secondary-nav-title">Advanced Probability Theory</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -109,9 +108,9 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">확률변수와 확률분포</h1>
+      <h1 class="title d-none d-lg-block">Advanced Probability Theory</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Theoritical Statistics</div>
+                <div class="quarto-category">Advanced Probability Theory</div>
               </div>
                   </div>
   </div>
@@ -129,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 31, 2022</p>
+        <p class="date">March 7, 2023</p>
       </div>
     </div>
     
@@ -162,12 +161,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../posts/ap/index.html" class="sidebar-item-text sidebar-link">Advanced Probability Theory</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a href="../../posts/ap/index.html" class="sidebar-item-text sidebar-link active">Advanced Probability Theory</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/ap/2023-03-07-ap_1wk.html" class="sidebar-item-text sidebar-link">1주차: 측도론</a>
@@ -438,11 +437,11 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../posts/ts/index.html" class="sidebar-item-text sidebar-link">Theoritical Statistics</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/ts/2023-01-25-ts-final term.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Final term</a>
@@ -510,7 +509,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2022-12-31-ts_1.html" class="sidebar-item-text sidebar-link active">확률변수와 확률분포</a>
+  <a href="../../posts/ts/2022-12-31-ts_1.html" class="sidebar-item-text sidebar-link">확률변수와 확률분포</a>
   </div>
 </li>
       </ul>
@@ -522,15 +521,7 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#확률" id="toc-확률" class="nav-link active" data-scroll-target="#확률">확률</a></li>
-  <li><a href="#확률변수" id="toc-확률변수" class="nav-link" data-scroll-target="#확률변수">확률변수</a></li>
-  <li><a href="#확률밀도함수-및-확률분포함수" id="toc-확률밀도함수-및-확률분포함수" class="nav-link" data-scroll-target="#확률밀도함수-및-확률분포함수">확률밀도함수 및 확률분포함수</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -538,135 +529,9 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<blockquote class="blockquote">
-<p>확률변수와 확률분포</p>
-</blockquote>
-<section id="확률" class="level2">
-<h2 class="anchored" data-anchor-id="확률">확률</h2>
-<ul>
-<li>표본공간; 모든 관찰 가능한 조합</li>
-<li>사건; 표본 공간의 부분 집합</li>
-<li>확률의 공리적 정의
-<ul>
-<li><span class="math inline">\(P(S) = 1\)</span>, 사건이 일어날 확률은 1</li>
-<li><span class="math inline">\(0&lt;P(A)&lt;1\)</span>, 표본공간 안에서 사건 A의 확률은 0과 1 사이</li>
-<li><span class="math inline">\(A_1,A_2, \dots\)</span>사건들 중 임의의 두 사건을 뽑았을 때, 공집합 이어야 함 <span class="math inline">\(\to\)</span> 상호배반
-<ul>
-<li><span class="math inline">\(P(A_i \cap A_j) = \varnothing\)</span></li>
-<li><span class="math inline">\(P(\sum A) = \sum P(A)\)</span></li>
-</ul></li>
-</ul></li>
-</ul>
-<p>Example</p>
-<ul>
-<li>동전 3회 던지는 실험
-<ul>
-<li><span class="math inline">\(S\{ (H,H), (H,T), (T,H), (T,T) \}\)</span> <span class="math inline">\(\to\)</span> 배반사건
-<ul>
-<li><span class="math inline">\(P((H,H)) = \frac{1}{9}\)</span></li>
-<li><span class="math inline">\(P((H,T)) = \frac{2}{9}\)</span></li>
-<li><span class="math inline">\(P((T,H)) = \frac{2}{9}\)</span></li>
-<li><span class="math inline">\(P((T,T)) = \frac{4}{9}\)</span></li>
-</ul></li>
-<li><span class="math inline">\(P(S) = 1\)</span></li>
-<li><span class="math inline">\(P(\sum A_i) = \sum P(A_i)\)</span></li>
-</ul></li>
-<li>어떤 기계의 수명시간 측정</li>
-</ul>
-</section>
-<section id="확률변수" class="level2">
-<h2 class="anchored" data-anchor-id="확률변수">확률변수</h2>
-<p>확률변수 : 표본공간 S에 정의된 실수값을 가지는 합수(real-valued function), X 영문 대문자</p>
-<ul>
-<li>사건을 수치화, 실험 결과에 따라 변하는 변수</li>
-<li>사건의 가능성을 확률적으로 결정</li>
-<li>확률밀도함수 = 확률질량함수</li>
-<li><span class="math inline">\(P(X = x)\)</span>라는 사건을 가징 확률 <span class="math inline">\(P(X=x)\)</span>는 <span class="math inline">\(f(x)\)</span>에 속해 있다.</li>
-</ul>
-<p>이산형</p>
-<ul>
-<li><span class="math inline">\(f(1) = P(X = 1)\)</span></li>
-</ul>
-<p>연속형</p>
-<ul>
-<li><span class="math inline">\(f(1)\)</span> 이렇게 나타낼 수는 없지만, 넓이로 표현; 사건을 구간으로 표현</li>
-</ul>
-<p><span class="math inline">\(\star\)</span> 확률변수는 대문자로, 관측값은 소문자로 표현</p>
-</section>
-<section id="확률밀도함수-및-확률분포함수" class="level2">
-<h2 class="anchored" data-anchor-id="확률밀도함수-및-확률분포함수">확률밀도함수 및 확률분포함수</h2>
-<p>확률밀도함수(probablity density function) - <span class="math inline">\(f(x)\)</span></p>
-<p>확률분포함수(probablity distribution function) - <span class="math inline">\(F(x)\)</span></p>
-<p>확률변수의 분포형태를 나타내는 데 사용</p>
-<p><strong>이산형 확률변수의 확률밀도함수</strong></p>
-<p>다음 조건 만족</p>
-<ul>
-<li>모든 실수 <span class="math inline">\(x\)</span>애 대하여 <span class="math inline">\(f(x) \ge 0\)</span></li>
-<li>확률변수가 가질 수 있는 값 <span class="math inline">\(x_1, x_2, \dots\)</span>에 대하여
-<ul>
-<li><span class="math inline">\(f(x_i) &gt; 0, \sum_{all x_i} f(x_i) = 1\)</span></li>
-</ul></li>
-<li>확률질량함수(probablity mass function)으로 부르기도 함</li>
-<li><span class="math inline">\(f(x) = P(X = x)\)</span></li>
-</ul>
-<p><strong>연속형 확률변수의 확률밀도함수</strong></p>
-<ul>
-<li>셀 수 없이 무한히 많은 가능한 값 하나하나에 확률을 부여하지 않고 구간에 확률 부여, 즉 <span class="math inline">\(P(X=x)=0\)</span></li>
-</ul>
-<p>다음 조건 만족</p>
-<ul>
-<li>모든 실수 <span class="math inline">\(x\)</span>에 대하여 <span class="math inline">\(f(x) \ge 0\)</span></li>
-<li><span class="math inline">\(\int_{-\inf}^\inf f(x) dx = 1\)</span></li>
-</ul>
-<p><span class="math inline">\(P(a \le X \le b) = \int_a^b f(x) dx\)</span></p>
-<p><span class="math display">\[P(X \in A) = \begin{cases} \sum_{x_i \in A} f(x_i) &amp; \text{discrete  } X \\ \int_A f(x) dx &amp; \text{continuous  } X \end{cases}\]</span></p>
-<p>Example</p>
-<p>구간 (0,3)에서 정의된 함수</p>
-<ul>
-<li><span class="math inline">\(f(x) = \frac{x^2}{9}\)</span>
-<ul>
-<li><span class="math inline">\(\frac{x^2}{9} \ge 0\)</span></li>
-<li><span class="math inline">\(\int_0^3 \frac{x^2}{9} dx = \frac{1}{9} \begin{bmatrix} \frac{x^2}{3} \end{bmatrix}^3_0 = 1\)</span></li>
-</ul></li>
-</ul>
-<p><span class="math inline">\(\therefore\)</span> 확률밀도함수가 맞다.</p>
-<p>(누적)분포함수(cumulative distribution function): 확률변수 <span class="math inline">\(X\)</span>가 주어진 점 <span class="math inline">\(x\)</span> 이하인 값을 가질 확률 <span class="math display">\[F(x) = P(X \le x)\]</span></p>
-<p><strong>참고</strong></p>
-<ul>
-<li><span class="math inline">\(X \sim f(x)\)</span> : 확률변수 <span class="math inline">\(X\)</span>가 확률밀도함수 <span class="math inline">\(f(x)\)</span>를 가짐</li>
-<li><span class="math inline">\(X \sim F(x)\)</span> : 확률변수 <span class="math inline">\(X\)</span>가 확률분포함수 <span class="math inline">\(F(x)\)</span>를 가짐</li>
-</ul>
-<p><span class="math display">\[F(x) = \begin{cases} \sum_{x_i \le x} f(x_i) &amp; \text{discrete  } X \\ \int_{-\inf}^x f(t)dt &amp; \text{continuous  } X \end{cases}\]</span></p>
-<p><strong>확률뷴포함수의 성질</strong></p>
-<p>함수 <span class="math inline">\(F(x)\)</span>가 어떤 확률변수 <span class="math inline">\(X\)</span>의 누적분포함수가 되는 필요충분조건</p>
-<ul>
-<li><span class="math inline">\(lim_{x \to -\inf} F(x) = 0\)</span></li>
-<li><span class="math inline">\(lim_{x \to \inf} F(x) = 1\)</span></li>
-<li><span class="math inline">\(lim_{h \to 0+} F(x+h) = F(x)\)</span></li>
-<li><span class="math inline">\(a &lt; b\)</span>이면 <span class="math inline">\(F(a) \le F(b)\)</span></li>
-</ul>
-<p><span class="math display">\[P(a &lt; X \le b) = F(b) - F(a)\]</span></p>
-<p><span class="math inline">\(\star\)</span> 연속형이라면? 각 점에서 확률이 0이니까</p>
-<ul>
-<li><span class="math inline">\(P(a \le X \le b) = P(a \le X &lt; b) = P(a&lt; X \le b) = P(a&lt; X &lt; b)\)</span></li>
-</ul>
-<p><span class="math inline">\(\star\)</span> 이산형이라면?</p>
-<ul>
-<li>probability density function 미분하면 step function 을 가지는 probability distribution function</li>
-</ul>
-<p>Example</p>
-<p>앞면 나올 확률이 <span class="math inline">\(\frac{1}{2}\)</span>인 동전 3회 던지는 실험에서 관심있는 변수 <span class="math inline">\(X\)</span> = 앞면의 수일때 <span class="math inline">\(f(x)\)</span>와 <span class="math inline">\(F(x)\)</span>는?</p>
-<ul>
-<li>각각 독립이다.</li>
-<li><span class="math inline">\(f(3) = P(X = 3) = P(A)P(B)P(C) = \frac{1}{2} \times \frac{1}{2} \times \frac{1}{2} = \frac{1}{8}\)</span></li>
-<li><span class="math inline">\(f(2) = P(X = 2) = P(A)P(B)P(C) = \frac{1}{8} \times 3\)</span></li>
-<li><span class="math inline">\(f(1) = P(X = 1) = P(A)P(B)P(C) = \frac{1}{8} \times 3\)</span></li>
-<li><span class="math inline">\(f(0) = P(X = 0) = P(A)P(B)P(C) = \frac{1}{2} \times \frac{1}{2} \times \frac{1}{2} = \frac{1}{8}\)</span></li>
-<li><span class="math inline">\(f(3) + f(2) + f(1) + f(0) = 1\)</span></li>
-</ul>
+<p>Advanced Probability Theory</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

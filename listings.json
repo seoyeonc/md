@@ -2,6 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/ap/index.html",
+      "/posts/ap/2023-03-07-ap_1wk.html",
       "/posts/ct/2023-03-05-Coding_Test__Stack.html",
       "/posts/ts/2023-03-03-graduation_test.html",
       "/posts/ts/2023-03-03-ts-final_qanda.html",
