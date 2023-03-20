@@ -7,7 +7,7 @@ website:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/seoyeonc/md
+        href: https://github.com/seoyeonc/md/
   sidebar:
     style: "docked"
     search: true
@@ -15,11 +15,9 @@ website:
     
 format:
   html:
-    theme:
-        light: Pulse
+    theme: pulse
     css: styles.css
     toc: true
     code-fold: false
     code-line-numbers: false
     code-copy: false
-    # fontsize: 0.9em
