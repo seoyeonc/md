@@ -18,14 +18,49 @@
     "href": "posts/ml_basic/2023-03-23-Linear regression.html",
     "title": "Support Vector Machine",
     "section": "",
-    "text": "Support Vector Machine"
+    "text": "Support Vector Machine\nReference : 핸즈 온 머신러닝"
   },
   {
     "objectID": "posts/ml_basic/2023-03-23-Linear regression.html#소프트-마진-분류",
     "href": "posts/ml_basic/2023-03-23-Linear regression.html#소프트-마진-분류",
     "title": "Support Vector Machine",
     "section": "1) 소프트 마진 분류",
-    "text": "1) 소프트 마진 분류\n\n클래스 분류의 경계에 샘플이 없을 때 하드 마진 분류\n\n선형적으로 구분되어야 함\n이상치에 민감함\n\n\n이 떄 생기는 이상치를 마진 오류로 보는데, 하드 마진 분류"
+    "text": "1) 소프트 마진 분류\n\n클래스 분류의 경계에 샘플이 없을 때 = 마진 오류가 하나도 없을때, 하드 마진 분류\n\n선형적으로 구분되어야 함\n이상치에 민감함\n\n\n이 떄 생기는 이상치를 마진 오류로 본다.\n\n이상치 \\(\\to\\) 클래스 구분했을때 그어지는 선에 걸쳐지는 값들 \\(\\to\\) 마진 오류 margin violation\n\n적절한 균형 잡는 것이 필요\n소프트 마진 분류 필요한 이유.\n\nhyper parameter C가 너무 크면 과대적합 가능성 존재\n\n손실함수는 힌지 손실 Hinge Loss\n\n주로 SVM과 함께 쓰임. \\(max(0,1-y), max(0,1+y)\\) 로 \\(y\\)의 범위가 [-1,1]에 오도록 함\n\n\n# Code source: Gaël Varoquaux\n# Modified for documentation by Jaques Grobler\n# License: BSD 3 clause\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom matplotlib import cm\nfrom sklearn import svm\n\n# we create 40 separable points\nnp.random.seed(0)\nX = np.r_[np.random.randn(20, 2) - [2, 2], np.random.randn(20, 2) + [2, 2]]\nY = [0] * 20 + [1] * 20\n\n# figure number\nfignum = 1\n\n# fit the model\nfor name, penalty in ((\"unreg\", 1), (\"reg\", 0.05)):\n\n    clf = svm.SVC(kernel=\"linear\", C=penalty)\n    clf.fit(X, Y)\n\n    # get the separating hyperplane\n    w = clf.coef_[0]\n    a = -w[0] / w[1]\n    xx = np.linspace(-5, 5)\n    yy = a * xx - (clf.intercept_[0]) / w[1]\n\n    # plot the parallels to the separating hyperplane that pass through the\n    # support vectors (margin away from hyperplane in direction\n    # perpendicular to hyperplane). This is sqrt(1+a^2) away vertically in\n    # 2-d.\n    margin = 1 / np.sqrt(np.sum(clf.coef_**2))\n    yy_down = yy - np.sqrt(1 + a**2) * margin\n    yy_up = yy + np.sqrt(1 + a**2) * margin\n\n    # plot the line, the points, and the nearest vectors to the plane\n    plt.figure(fignum, figsize=(4, 3))\n    plt.clf()\n    plt.plot(xx, yy, \"k-\")\n    plt.plot(xx, yy_down, \"k--\")\n    plt.plot(xx, yy_up, \"k--\")\n\n    plt.scatter(\n        clf.support_vectors_[:, 0],\n        clf.support_vectors_[:, 1],\n        s=80,\n        facecolors=\"none\",\n        zorder=10,\n        edgecolors=\"k\",\n        cmap=cm.get_cmap(\"RdBu\"),\n    )\n    plt.scatter(\n        X[:, 0], X[:, 1], c=Y, zorder=10, cmap=cm.get_cmap(\"RdBu\"), edgecolors=\"k\"\n    )\n\n    plt.axis(\"tight\")\n    x_min = -4.8\n    x_max = 4.2\n    y_min = -6\n    y_max = 6\n\n    YY, XX = np.meshgrid(yy, xx)\n    xy = np.vstack([XX.ravel(), YY.ravel()]).T\n    Z = clf.decision_function(xy).reshape(XX.shape)\n\n    # Put the result into a contour plot\n    plt.contourf(XX, YY, Z, cmap=cm.get_cmap(\"RdBu\"), alpha=0.5, linestyles=[\"-\"])\n\n    plt.xlim(x_min, x_max)\n    plt.ylim(y_min, y_max)\n\n    plt.xticks(())\n    plt.yticks(())\n    fignum = fignum + 1\n\nplt.show()\n\n\n\n\n\n\n\n\n위처럼 선에 걸친게 마진 오류 margin violation"
+  },
+  {
+    "objectID": "posts/ml_basic/2023-03-23-Linear regression.html#다항식-커널",
+    "href": "posts/ml_basic/2023-03-23-Linear regression.html#다항식-커널",
+    "title": "Support Vector Machine",
+    "section": "1) 다항식 커널",
+    "text": "1) 다항식 커널\n\n다항식은 잘 작동하기는 한데 설명변수가 너무 많아지면 오히려 모델을 느리게 만들어서 안 좋아.."
+  },
+  {
+    "objectID": "posts/ml_basic/2023-03-23-Linear regression.html#유사도-특성",
+    "href": "posts/ml_basic/2023-03-23-Linear regression.html#유사도-특성",
+    "title": "Support Vector Machine",
+    "section": "2) 유사도 특성",
+    "text": "2) 유사도 특성\n\n특정 랜드마크와 얼마나 닮았는지 유사도 함수 similarity function = similarity measure = similarity metric 로 계산1\n\n특정 랜드마크 -> 특징인건가..\n\n\n유사도 함수의 종류\n\n유클리디안 거리 Euclidean Distance ; 모든 속성 고려\n코사인 유사도 Cosine Similarity ; 각으로 고려; -1~1사이\n마할라라비스 거리 ; 값들 사이의 공분산 이용\n민코스키 거리 Minkowski Distance ; 가장 큰 값만 고려"
+  },
+  {
+    "objectID": "posts/ml_basic/2023-03-23-Linear regression.html#가우시안-rbf-커널",
+    "href": "posts/ml_basic/2023-03-23-Linear regression.html#가우시안-rbf-커널",
+    "title": "Support Vector Machine",
+    "section": "3) 가우시안 RBF 커널",
+    "text": "3) 가우시안 RBF 커널\n\nGaussian Radical Basis Function = Gaussian Kernel"
+  },
+  {
+    "objectID": "posts/ml_basic/2023-03-23-Linear regression.html#계산-복잡도",
+    "href": "posts/ml_basic/2023-03-23-Linear regression.html#계산-복잡도",
+    "title": "Support Vector Machine",
+    "section": "4) 계산 복잡도",
+    "text": "4) 계산 복잡도\n\\(O(m\\times n)\\)\ncomputational complexity theory"
+  },
+  {
+    "objectID": "posts/ml_basic/2023-03-23-Linear regression.html#결정-함수와-예측",
+    "href": "posts/ml_basic/2023-03-23-Linear regression.html#결정-함수와-예측",
+    "title": "Support Vector Machine",
+    "section": "1) 결정 함수와 예측",
+    "text": "1) 결정 함수와 예측"
   },
   {
     "objectID": "posts/rl/index.html",
@@ -2783,7 +2818,7 @@
     "href": "posts/ts/index.html",
     "title": "Theoritical Statistics",
     "section": "",
-    "text": "Those are posts of Theoritical Statistics.\n(참고)[https://seoyeonc.github.io/chch/theoritical%20statistics/2022/04/17/ts-3%EC%9E%A5%EA%B3%BC%EC%A0%9C.html]"
+    "text": "Those are posts of Theoritical Statistics.\n[참고(https://seoyeonc.github.io/chch/theoritical%20statistics/2022/04/17/ts-3%EC%9E%A5%EA%B3%BC%EC%A0%9C.html)"
   },
   {
     "objectID": "posts/ts/2023-01-09-ts_HW4.html",
