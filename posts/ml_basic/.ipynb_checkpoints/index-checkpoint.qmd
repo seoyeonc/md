@@ -1,0 +1,8 @@
+---
+title: "Machine learning basic"
+author: "SEOYEON CHOI"
+date: "2023-03-23"
+categories: [Machine learning basic]
+---
+
+Let's study Machine learning from begining.
