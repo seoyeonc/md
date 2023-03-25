@@ -2,286 +2,302 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://seoyeonc.github.io/md/index.html</loc>
-    <lastmod>2023-03-23T11:58:39.601Z</lastmod>
+    <lastmod>2023-03-25T01:11:29.166Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml_basic/index.html</loc>
+    <lastmod>2023-03-25T01:11:29.566Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ml_basic/2023-03-23-Linear regression.html</loc>
+    <lastmod>2023-03-25T01:11:29.958Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/rl/index.html</loc>
-    <lastmod>2023-03-23T11:58:40.013Z</lastmod>
+    <lastmod>2023-03-25T01:11:30.326Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/rl/2023-03-02-graduation_test.html</loc>
-    <lastmod>2023-03-23T11:58:40.513Z</lastmod>
+    <lastmod>2023-03-25T01:11:30.754Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/rl/2022-12-05-rl-CH11.html</loc>
-    <lastmod>2023-03-23T11:58:41.373Z</lastmod>
+    <lastmod>2023-03-25T01:11:31.614Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/rl/2022-11-21-rl-HW3.html</loc>
-    <lastmod>2023-03-23T11:58:43.013Z</lastmod>
+    <lastmod>2023-03-25T01:11:33.246Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/rl/2022-11-23-rl-CH10.html</loc>
-    <lastmod>2023-03-23T11:58:44.177Z</lastmod>
+    <lastmod>2023-03-25T01:11:34.382Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/rl/2022-10-23-rl-HW2.html</loc>
-    <lastmod>2023-03-23T11:58:45.609Z</lastmod>
+    <lastmod>2023-03-25T01:11:35.902Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/rl/2022-12-11-rl-Ch10.html</loc>
-    <lastmod>2023-03-23T11:58:46.345Z</lastmod>
+    <lastmod>2023-03-25T01:11:36.610Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/rl/2023-02-22-rl-mid_term.html</loc>
-    <lastmod>2023-03-23T11:58:47.129Z</lastmod>
+    <lastmod>2023-03-25T01:11:37.366Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/rl/2022-09-21-rl_HW1.html</loc>
-    <lastmod>2023-03-23T11:58:48.237Z</lastmod>
+    <lastmod>2023-03-25T01:11:38.362Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/rl/2022-11-28-rl-CH13.html</loc>
-    <lastmod>2023-03-23T11:58:48.985Z</lastmod>
+    <lastmod>2023-03-25T01:11:39.126Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/rl/2023-02-23-rl-final_term.html</loc>
-    <lastmod>2023-03-23T11:58:49.901Z</lastmod>
+    <lastmod>2023-03-25T01:11:40.014Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/rl/2022-09-21-rl_CH03, CH04.html</loc>
-    <lastmod>2023-03-23T11:58:50.913Z</lastmod>
+    <lastmod>2023-03-25T01:11:40.954Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/rl/2022-11-14-rl_CH06, CH07.html</loc>
-    <lastmod>2023-03-23T11:58:51.769Z</lastmod>
+    <lastmod>2023-03-25T01:11:41.894Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/rl/2022-12-08-rl-HW4.html</loc>
-    <lastmod>2023-03-23T11:58:53.173Z</lastmod>
+    <lastmod>2023-03-25T01:11:43.298Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/index.html</loc>
-    <lastmod>2023-03-23T11:58:53.613Z</lastmod>
+    <lastmod>2023-03-25T01:11:43.690Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-09-19-Assignment-1-Copy1.html</loc>
-    <lastmod>2023-03-23T11:58:54.377Z</lastmod>
+    <lastmod>2023-03-25T01:11:44.338Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-11-09-ml-10w.html</loc>
-    <lastmod>2023-03-23T11:58:55.765Z</lastmod>
+    <lastmod>2023-03-25T01:11:45.678Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-10-12-ml-6w.html</loc>
-    <lastmod>2023-03-23T11:58:57.469Z</lastmod>
+    <lastmod>2023-03-25T01:11:47.378Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-11-21-ml-11w.html</loc>
-    <lastmod>2023-03-23T11:58:58.997Z</lastmod>
+    <lastmod>2023-03-25T01:11:49.114Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-11-30-12wk.html</loc>
-    <lastmod>2023-03-23T11:59:00.117Z</lastmod>
+    <lastmod>2023-03-25T01:11:50.138Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-12-13-final_seoyeon.html</loc>
-    <lastmod>2023-03-23T11:59:00.773Z</lastmod>
+    <lastmod>2023-03-25T01:11:50.742Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-09-21-ml_3w.html</loc>
-    <lastmod>2023-03-23T11:59:05.137Z</lastmod>
+    <lastmod>2023-03-25T01:11:55.178Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-12-07-13wk.html</loc>
-    <lastmod>2023-03-23T11:59:06.429Z</lastmod>
+    <lastmod>2023-03-25T01:11:56.442Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-12-21-Extra-2.html</loc>
-    <lastmod>2023-03-23T11:59:07.009Z</lastmod>
+    <lastmod>2023-03-25T01:11:57.006Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-10-26-ml_8w_2.html</loc>
-    <lastmod>2023-03-23T11:59:08.089Z</lastmod>
+    <lastmod>2023-03-25T01:11:58.090Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-12-21-Extra-1.html</loc>
-    <lastmod>2023-03-23T11:59:08.809Z</lastmod>
+    <lastmod>2023-03-25T01:11:58.794Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-09-07-ml.html</loc>
-    <lastmod>2023-03-23T11:59:09.177Z</lastmod>
+    <lastmod>2023-03-25T01:11:59.190Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-12-23-Extra-3.html</loc>
-    <lastmod>2023-03-23T11:59:09.909Z</lastmod>
+    <lastmod>2023-03-25T01:11:59.926Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-12-08-13wk.html</loc>
-    <lastmod>2023-03-23T11:59:10.473Z</lastmod>
+    <lastmod>2023-03-25T01:12:00.418Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-09-14-ml_2w.html</loc>
-    <lastmod>2023-03-23T11:59:11.953Z</lastmod>
+    <lastmod>2023-03-25T01:12:01.922Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-11-29-13wk-2-final.html</loc>
-    <lastmod>2023-03-23T11:59:12.525Z</lastmod>
+    <lastmod>2023-03-25T01:12:02.494Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-12-14-study.html</loc>
-    <lastmod>2023-03-23T11:59:13.225Z</lastmod>
+    <lastmod>2023-03-25T01:12:03.154Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-10-19-ml_7w.html</loc>
-    <lastmod>2023-03-23T11:59:14.125Z</lastmod>
+    <lastmod>2023-03-25T01:12:04.018Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-10-26-ml_8w_1.html</loc>
-    <lastmod>2023-03-23T11:59:15.069Z</lastmod>
+    <lastmod>2023-03-25T01:12:04.922Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-10-05-ml-HW.html</loc>
-    <lastmod>2023-03-23T11:59:15.553Z</lastmod>
+    <lastmod>2023-03-25T01:12:05.522Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-11-02-ml-midterm.html</loc>
-    <lastmod>2023-03-23T11:59:16.682Z</lastmod>
+    <lastmod>2023-03-25T01:12:06.682Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-11-02-ml_9w.html</loc>
-    <lastmod>2023-03-23T11:59:17.534Z</lastmod>
+    <lastmod>2023-03-25T01:12:07.558Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-09-29-ml_4w.html</loc>
-    <lastmod>2023-03-23T11:59:19.006Z</lastmod>
+    <lastmod>2023-03-25T01:12:09.045Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-09-07-ml_1w.html</loc>
-    <lastmod>2023-03-23T11:59:19.926Z</lastmod>
+    <lastmod>2023-03-25T01:12:09.873Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ml/2022-10-05-ml-5w.html</loc>
-    <lastmod>2023-03-23T11:59:23.966Z</lastmod>
+    <lastmod>2023-03-25T01:12:13.865Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ap/index.html</loc>
-    <lastmod>2023-03-23T11:59:24.426Z</lastmod>
+    <lastmod>2023-03-25T01:12:14.313Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ap/2023-03-14-ap-2wk.html</loc>
+    <lastmod>2023-03-25T01:12:14.841Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ap/2023-03-07-ap_1wk.html</loc>
-    <lastmod>2023-03-23T11:59:25.026Z</lastmod>
+    <lastmod>2023-03-25T01:12:15.361Z</lastmod>
   </url>
   <url>
-    <loc>https://seoyeonc.github.io/md/posts/ap/2023-03-14-2wk.html</loc>
-    <lastmod>2023-03-23T11:59:25.578Z</lastmod>
+    <loc>https://seoyeonc.github.io/md/posts/ap/2023-03-21-ap-3wk.html</loc>
+    <lastmod>2023-03-25T01:12:16.089Z</lastmod>
+  </url>
+  <url>
+    <loc>https://seoyeonc.github.io/md/posts/ap/2023-03-28-ap-4wk.html</loc>
+    <lastmod>2023-03-25T01:12:16.637Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ct/2023-01-30-Coding_Test_Q3.html</loc>
-    <lastmod>2023-03-23T11:59:26.086Z</lastmod>
+    <lastmod>2023-03-25T01:12:17.129Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ct/2023-01-01-Coding_Test_Greedy.html</loc>
-    <lastmod>2023-03-23T11:59:26.806Z</lastmod>
+    <lastmod>2023-03-25T01:12:17.849Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ct/index.html</loc>
-    <lastmod>2023-03-23T11:59:27.166Z</lastmod>
+    <lastmod>2023-03-25T01:12:18.245Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ct/2023-03-05-Coding_Test_Stack.html</loc>
-    <lastmod>2023-03-23T11:59:27.594Z</lastmod>
+    <lastmod>2023-03-25T01:12:18.645Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ct/2023-03-12-Coding_Test_Queue.html</loc>
-    <lastmod>2023-03-23T11:59:28.030Z</lastmod>
+    <lastmod>2023-03-25T01:12:19.053Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ct/2023-01-21-Coding_Test_Q1.html</loc>
-    <lastmod>2023-03-23T11:59:28.522Z</lastmod>
+    <lastmod>2023-03-25T01:12:19.525Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ct/2023-01-15-Coding_Test_Algorithm.html</loc>
-    <lastmod>2023-03-23T11:59:28.966Z</lastmod>
+    <lastmod>2023-03-25T01:12:19.965Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ct/2023-01-15-Coding_Test_interfunction.html</loc>
-    <lastmod>2023-03-23T11:59:29.522Z</lastmod>
+    <lastmod>2023-03-25T01:12:20.493Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ct/2023-01-23-Coding_Test_Q2.html</loc>
-    <lastmod>2023-03-23T11:59:29.994Z</lastmod>
+    <lastmod>2023-03-25T01:12:20.965Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ct/2023-02-12-Coding_Test.html</loc>
-    <lastmod>2023-03-23T11:59:30.390Z</lastmod>
+    <lastmod>2023-03-25T01:12:21.357Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ct/2023-03-22-Coding_Test_Tree.html</loc>
-    <lastmod>2023-03-23T11:59:30.858Z</lastmod>
+    <lastmod>2023-03-25T01:12:21.805Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ts/index.html</loc>
-    <lastmod>2023-03-23T11:59:31.214Z</lastmod>
+    <lastmod>2023-03-25T01:12:22.157Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ts/2023-01-09-ts_HW4.html</loc>
-    <lastmod>2023-03-23T11:59:31.922Z</lastmod>
+    <lastmod>2023-03-25T01:12:22.917Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ts/2022-12-31-ts_1.html</loc>
-    <lastmod>2023-03-23T11:59:32.354Z</lastmod>
+    <lastmod>2023-03-25T01:12:23.345Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ts/2023-01-14-ts_HW6.html</loc>
-    <lastmod>2023-03-23T11:59:32.818Z</lastmod>
+    <lastmod>2023-03-25T01:12:23.817Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ts/2023-03-03-graduation_test.html</loc>
-    <lastmod>2023-03-23T11:59:33.206Z</lastmod>
+    <lastmod>2023-03-25T01:12:24.193Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ts/2023-03-03-ts-final_qanda.html</loc>
-    <lastmod>2023-03-23T11:59:33.702Z</lastmod>
+    <lastmod>2023-03-25T01:12:24.685Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ts/2023-01-14-ts_Mid term.html</loc>
-    <lastmod>2023-03-23T11:59:34.406Z</lastmod>
+    <lastmod>2023-03-25T01:12:25.393Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ts/2023-01-18-ts-HW8.html</loc>
-    <lastmod>2023-03-23T11:59:34.842Z</lastmod>
+    <lastmod>2023-03-25T01:12:25.813Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ts/2023-01-05-ts_HW1.html</loc>
-    <lastmod>2023-03-23T11:59:35.282Z</lastmod>
+    <lastmod>2023-03-25T01:12:26.237Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ts/2023-01-18-ts_HW7.html</loc>
-    <lastmod>2023-03-23T11:59:35.702Z</lastmod>
+    <lastmod>2023-03-25T01:12:26.629Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ts/2023-01-25-ts-final term.html</loc>
-    <lastmod>2023-03-23T11:59:36.462Z</lastmod>
+    <lastmod>2023-03-25T01:12:27.393Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ts/2023-01-12-ts_HW5.html</loc>
-    <lastmod>2023-03-23T11:59:36.858Z</lastmod>
+    <lastmod>2023-03-25T01:12:27.769Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ts/2023-01-05-ts_HW2.html</loc>
-    <lastmod>2023-03-23T11:59:37.330Z</lastmod>
+    <lastmod>2023-03-25T01:12:28.237Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ts/2023-01-21-ts-HW9.html</loc>
-    <lastmod>2023-03-23T11:59:38.334Z</lastmod>
+    <lastmod>2023-03-25T01:12:29.197Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/posts/ts/2023-01-05-ts_HW3.html</loc>
-    <lastmod>2023-03-23T11:59:38.830Z</lastmod>
+    <lastmod>2023-03-25T01:12:29.685Z</lastmod>
   </url>
   <url>
     <loc>https://seoyeonc.github.io/md/about.html</loc>
-    <lastmod>2023-03-23T11:59:39.178Z</lastmod>
+    <lastmod>2023-03-25T01:12:30.033Z</lastmod>
   </url>
 </urlset>
