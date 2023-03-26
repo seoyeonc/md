@@ -18,14 +18,14 @@
     "href": "posts/ml_basic/2023-03-23-Linear regression.html",
     "title": "Support Vector Machine",
     "section": "",
-    "text": "Support Vector Machine\nReference : 핸즈 온 머신러닝"
+    "text": "Support Vector Machine\nReference : 핸즈 온 머신러닝\n힌지 손실 Hinge Loss"
   },
   {
     "objectID": "posts/ml_basic/2023-03-23-Linear regression.html#소프트-마진-분류",
     "href": "posts/ml_basic/2023-03-23-Linear regression.html#소프트-마진-분류",
     "title": "Support Vector Machine",
     "section": "1) 소프트 마진 분류",
-    "text": "1) 소프트 마진 분류\n\n클래스 분류의 경계에 샘플이 없을 때 = 마진 오류가 하나도 없을때, 하드 마진 분류\n\n선형적으로 구분되어야 함\n이상치에 민감함\n\n\n이 떄 생기는 이상치를 마진 오류로 본다.\n\n이상치 \\(\\to\\) 클래스 구분했을때 그어지는 선에 걸쳐지는 값들 \\(\\to\\) 마진 오류 margin violation\n\n적절한 균형 잡는 것이 필요\n소프트 마진 분류 필요한 이유.\n\nhyper parameter C가 너무 크면 과대적합 가능성 존재\n\n손실함수는 힌지 손실 Hinge Loss\n\n주로 SVM과 함께 쓰임. \\(max(0,1-y), max(0,1+y)\\) 로 \\(y\\)의 범위가 [-1,1]에 오도록 함\n\n\n# Code source: Gaël Varoquaux\n# Modified for documentation by Jaques Grobler\n# License: BSD 3 clause\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom matplotlib import cm\nfrom sklearn import svm\n\n# we create 40 separable points\nnp.random.seed(0)\nX = np.r_[np.random.randn(20, 2) - [2, 2], np.random.randn(20, 2) + [2, 2]]\nY = [0] * 20 + [1] * 20\n\n# figure number\nfignum = 1\n\n# fit the model\nfor name, penalty in ((\"unreg\", 1), (\"reg\", 0.05)):\n\n    clf = svm.SVC(kernel=\"linear\", C=penalty)\n    clf.fit(X, Y)\n\n    # get the separating hyperplane\n    w = clf.coef_[0]\n    a = -w[0] / w[1]\n    xx = np.linspace(-5, 5)\n    yy = a * xx - (clf.intercept_[0]) / w[1]\n\n    # plot the parallels to the separating hyperplane that pass through the\n    # support vectors (margin away from hyperplane in direction\n    # perpendicular to hyperplane). This is sqrt(1+a^2) away vertically in\n    # 2-d.\n    margin = 1 / np.sqrt(np.sum(clf.coef_**2))\n    yy_down = yy - np.sqrt(1 + a**2) * margin\n    yy_up = yy + np.sqrt(1 + a**2) * margin\n\n    # plot the line, the points, and the nearest vectors to the plane\n    plt.figure(fignum, figsize=(4, 3))\n    plt.clf()\n    plt.plot(xx, yy, \"k-\")\n    plt.plot(xx, yy_down, \"k--\")\n    plt.plot(xx, yy_up, \"k--\")\n\n    plt.scatter(\n        clf.support_vectors_[:, 0],\n        clf.support_vectors_[:, 1],\n        s=80,\n        facecolors=\"none\",\n        zorder=10,\n        edgecolors=\"k\",\n        cmap=cm.get_cmap(\"RdBu\"),\n    )\n    plt.scatter(\n        X[:, 0], X[:, 1], c=Y, zorder=10, cmap=cm.get_cmap(\"RdBu\"), edgecolors=\"k\"\n    )\n\n    plt.axis(\"tight\")\n    x_min = -4.8\n    x_max = 4.2\n    y_min = -6\n    y_max = 6\n\n    YY, XX = np.meshgrid(yy, xx)\n    xy = np.vstack([XX.ravel(), YY.ravel()]).T\n    Z = clf.decision_function(xy).reshape(XX.shape)\n\n    # Put the result into a contour plot\n    plt.contourf(XX, YY, Z, cmap=cm.get_cmap(\"RdBu\"), alpha=0.5, linestyles=[\"-\"])\n\n    plt.xlim(x_min, x_max)\n    plt.ylim(y_min, y_max)\n\n    plt.xticks(())\n    plt.yticks(())\n    fignum = fignum + 1\n\nplt.show()\n\n\n\n\n\n\n\n\n위처럼 선에 걸친게 마진 오류 margin violation"
+    "text": "1) 소프트 마진 분류\n\n클래스 분류의 경계에 샘플이 없을 때 = 마진 오류가 하나도 없을때, 하드 마진 분류\n\n선형적으로 구분되어야 함\n이상치에 민감함\n\n\n이 떄 생기는 이상치를 마진 오류로 본다.\n\n이상치 \\(\\to\\) 클래스 구분했을때 그어지는 선에 걸쳐지는 값들 \\(\\to\\) 마진 오류 margin violation\n\n적절한 균형 잡는 것이 필요\n소프트 마진 분류 필요한 이유.\n\nhyper parameter C가 너무 크면 과대적합 가능성 존재\n\n손실함수는 힌지 손실 Hinge Loss\n\n주로 SVM과 함께 쓰임. \\(max(0,1-y), max(0,1+y)\\) 로 \\(y\\)의 범위가 [-1,1]에 오도록 함\n\n\n\n\n\n\n\n\n\n\n위처럼 선에 걸친게 마진 오류 margin violation"
   },
   {
     "objectID": "posts/ml_basic/2023-03-23-Linear regression.html#다항식-커널",
@@ -60,7 +60,42 @@
     "href": "posts/ml_basic/2023-03-23-Linear regression.html#결정-함수와-예측",
     "title": "Support Vector Machine",
     "section": "1) 결정 함수와 예측",
-    "text": "1) 결정 함수와 예측"
+    "text": "1) 결정 함수와 예측\n선형 SVM을 훈련한다 = 마진 오류를 하나도 발생하지 않거나(하드 마진) 제한적인 마진 오류를 가지면서(소프트 마진) 가능한 한 마진을 크게 하는 \\(\\mathbb{w}\\)와 \\(b\\)를 찾는 것\n단순히 선형 회귀식 계산해서 0인지 1인지를 나눈다.\n\\(\\hat{y} = \\begin{cases} 0 & \\mathbb{w}^\\top \\mathbb{x} + b < 0 \\text{ 일 때} \\\\ 1 & \\mathbb{w}^\\top \\mathbb{x} + b \\ge 0 \\text{ 일 때} \\end{cases}\\)"
+  },
+  {
+    "objectID": "posts/ml_basic/2023-03-23-Linear regression.html#목적-함수",
+    "href": "posts/ml_basic/2023-03-23-Linear regression.html#목적-함수",
+    "title": "Support Vector Machine",
+    "section": "2) 목적 함수",
+    "text": "2) 목적 함수\n결정 함수의 기울기는 가중치 벡터의 노름 \\(||w||\\)와 같다.\n\n마진 크게 = \\(||w||\\) 최소화\n\n하드 마진 선형 SVM 분류기의 목적 함수\n\\(minimize_{w,b} \\frac{1}{2} \\mathbb{w^\\top w}\\)\n\\(\\star\\) 왜 \\(\\frac{1}{2} \\mathbb{w^\\top w}\\)? \\(||w||\\)는 \\(w=0\\)에서 미분도 되지 않음\n소프트 마진 선형 SVM 분류기의 목적 함수\n\n슬랙 변수 slack variable \\(\\zeta^{(i)} \\ge 0\\) 도입\n\n마진 오류 최소화 방법\n\n슬랙 변수 값을 작게 만들기\n마진 크게 하기 위해 \\(\\frac{1}{2} \\mathbb{w^\\top w}\\) 최소화\n\n\\(minimize_{w,b,\\zeta} \\frac{1}{2} \\mathbb{w^\\top w} + C \\sum^m_{i=1}\\zeta^{(i)}\\)\n\\(\\star\\) hyper parameter \\(C\\) \\(\\to\\) 두 목표object 사이의 트레이드 오프 정의"
+  },
+  {
+    "objectID": "posts/ml_basic/2023-03-23-Linear regression.html#콰드라틱-프로그래밍",
+    "href": "posts/ml_basic/2023-03-23-Linear regression.html#콰드라틱-프로그래밍",
+    "title": "Support Vector Machine",
+    "section": "3) 콰드라틱 프로그래밍",
+    "text": "3) 콰드라틱 프로그래밍\n콰드라틱 프로그래밍 Quadratic Programming, QP = 하드 마진과 소프트 마진 문제는 모두 선형적인 제약 조건이 있는 볼록 함수의 이차 최적화 문제"
+  },
+  {
+    "objectID": "posts/ml_basic/2023-03-23-Linear regression.html#쌍대-문제",
+    "href": "posts/ml_basic/2023-03-23-Linear regression.html#쌍대-문제",
+    "title": "Support Vector Machine",
+    "section": "4) 쌍대 문제",
+    "text": "4) 쌍대 문제"
+  },
+  {
+    "objectID": "posts/ml_basic/2023-03-23-Linear regression.html#커널-svm",
+    "href": "posts/ml_basic/2023-03-23-Linear regression.html#커널-svm",
+    "title": "Support Vector Machine",
+    "section": "5) 커널 SVM",
+    "text": "5) 커널 SVM"
+  },
+  {
+    "objectID": "posts/ml_basic/2023-03-23-Linear regression.html#온라인-svm",
+    "href": "posts/ml_basic/2023-03-23-Linear regression.html#온라인-svm",
+    "title": "Support Vector Machine",
+    "section": "6) 온라인 SVM",
+    "text": "6) 온라인 SVM"
   },
   {
     "objectID": "posts/rl/index.html",
