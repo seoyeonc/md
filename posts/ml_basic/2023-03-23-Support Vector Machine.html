@@ -353,6 +353,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/Untitled.html" class="sidebar-item-text sidebar-link">Map</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ct/2023-03-12-Coding_Test_Queue.html" class="sidebar-item-text sidebar-link">Queue</a>
   </div>
 </li>
@@ -789,7 +794,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\star\)</span> 왜 <span class="math inline">\(\frac{1}{2} \mathbb{w^\top w}\)</span>? <span class="math inline">\(||w||\)</span>는 <span class="math inline">\(w=0\)</span>에서 미분도 되지 않음</p>
 <p>소프트 마진 선형 SVM 분류기의 목적 함수</p>
 <ul>
-<li>슬랙 변수 slack variable <span class="math inline">\(\zeta^{(i)} \ge 0\)</span> 도입</li>
+<li>슬랙 변수 slack variable <span class="math inline">\(\zeta^{(i)} \ge 0\)</span> 도입
+<ul>
+<li>i번째 샘플이 얼마나 마진을 위반할지 정함</li>
+<li><span class="math inline">\(x &gt; b\)</span></li>
+<li><span class="math inline">\(x = b + slack\)</span></li>
+</ul></li>
 </ul>
 <p>마진 오류 최소화 방법</p>
 <ol type="1">
