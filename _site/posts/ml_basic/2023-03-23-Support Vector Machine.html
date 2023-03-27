@@ -403,6 +403,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-37-Principal Component Analysis.html" class="sidebar-item-text sidebar-link">Principal Component Analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ml_basic/2023-03-23-Support Vector Machine.html" class="sidebar-item-text sidebar-link active">Support Vector Machine</a>
   </div>
 </li>
@@ -656,6 +661,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#커널-svm" id="toc-커널-svm" class="nav-link" data-scroll-target="#커널-svm">5) 커널 SVM</a></li>
   <li><a href="#온라인-svm" id="toc-온라인-svm" class="nav-link" data-scroll-target="#온라인-svm">6) 온라인 SVM</a></li>
   </ul></li>
+  <li><a href="#svm과-로지스틱-회귀의-차이" id="toc-svm과-로지스틱-회귀의-차이" class="nav-link" data-scroll-target="#svm과-로지스틱-회귀의-차이">SVM과 로지스틱 회귀의 차이</a></li>
   </ul>
 </nav>
     </div>
@@ -751,7 +757,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </section>
 <section id="가우시안-rbf-커널" class="level2">
-<h2 class="anchored" data-anchor-id="가우시안-rbf-커널">3) 가우시안 RBF 커널</h2>
+<h2 class="anchored" data-anchor-id="가우시안-rbf-커널">3) 가우시안 RBF 커널<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Radial_basis_function_kernel">Gaussian Radical Basis Function = Gaussian Kernel</a></li>
 </ul>
@@ -801,6 +807,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(x = b + slack\)</span></li>
 </ul></li>
 </ul>
+<p>-&gt; 슬랙변수는 경계를 나눌때 생기는 최소한의 오차로 생각하자</p>
 <p>마진 오류 최소화 방법</p>
 <ol type="1">
 <li>슬랙 변수 값을 작게 만들기</li>
@@ -861,15 +868,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>linear_svc <span class="op">=</span> svm.SVC(kernel<span class="op">=</span><span class="st">'linear'</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>linear_svc.kernel</span></code></pre></div>
 <p>선형 커널</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rbf_svc <span class="op">=</span> svm.SVC(kernel<span class="op">=</span><span class="st">'rbf'</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>rbf_svc.kernel</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>linear_svc <span class="op">=</span> svm.SVC(kernel<span class="op">=</span><span class="st">'sigmoid'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>linear_svc.kernel</span></code></pre></div>
+<p>시그모이드 커널</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>linear_svc <span class="op">=</span> svm.SVC(kernel<span class="op">=</span><span class="st">'poly'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>linear_svc.kernel</span></code></pre></div>
+<p>다항 커널</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rbf_svc <span class="op">=</span> svm.SVC(kernel<span class="op">=</span><span class="st">'rbf'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>rbf_svc.kernel</span></code></pre></div>
 <p>rbf 커널</p>
 </section>
 <section id="온라인-svm" class="level2">
 <h2 class="anchored" data-anchor-id="온라인-svm">6) 온라인 SVM</h2>
-
-
 </section>
+</section>
+<section id="svm과-로지스틱-회귀의-차이" class="level1">
+<h1>SVM과 로지스틱 회귀의 차이</h1>
+<blockquote class="blockquote">
+<p>둘 다 지도학습이다!</p>
+</blockquote>
+<ul>
+<li>SVM은 경계면으로 데이터 classification, 로지스틱은 시그모이드 함수로0~1 사이 확률값 추정해서 분류</li>
+<li>대용량 데이터에서는 SVM이 적당, 로지스틱 회귀는 느리다</li>
+<li>multi-class를 위해 로지스틱 회귀 이용, SVM은 이진 분류만 가능</li>
+<li>슬랙변수 쓰는 SVM은 이상치에 덜 민감함, 하지만 로지스틱은 이런 역할 하는 변수 없어서 민감</li>
+</ul>
+
+
 </section>
 
 
@@ -877,6 +902,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ol>
 <li id="fn1"><p>a real-valued function that quantifies the similarity between two objects<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>커널svm 참고<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
