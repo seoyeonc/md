@@ -175,6 +175,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <h1 class="title d-none d-lg-block">Support Vector Machine</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Machine learning basic</div>
+                <div class="quarto-category">지도학습</div>
               </div>
                   </div>
   </div>
@@ -403,7 +404,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-03-37-Principal Component Analysis.html" class="sidebar-item-text sidebar-link">Principal Component Analysis</a>
+  <a href="../../posts/ml_basic/2023-03-28-Linear Regression, Logistic Regression.html" class="sidebar-item-text sidebar-link">Linear Regression, Logistic Regression</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-28-Principal Component Analysis.html" class="sidebar-item-text sidebar-link">Principal Component Analysis</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -641,8 +647,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#선형-svm-분류" id="toc-선형-svm-분류" class="nav-link active" data-scroll-target="#선형-svm-분류">1. 선형 SVM 분류</a>
   <ul class="collapse">
-  <li><a href="#하드-마진-분류" id="toc-하드-마진-분류" class="nav-link" data-scroll-target="#하드-마진-분류">2) 하드 마진 분류</a></li>
-  <li><a href="#소프트-마진-분류" id="toc-소프트-마진-분류" class="nav-link" data-scroll-target="#소프트-마진-분류">1) 소프트 마진 분류</a></li>
+  <li><a href="#하드-마진-분류" id="toc-하드-마진-분류" class="nav-link" data-scroll-target="#하드-마진-분류">1) 하드 마진 분류</a></li>
+  <li><a href="#소프트-마진-분류" id="toc-소프트-마진-분류" class="nav-link" data-scroll-target="#소프트-마진-분류">2) 소프트 마진 분류</a></li>
   </ul></li>
   <li><a href="#비선형-svm-분류" id="toc-비선형-svm-분류" class="nav-link" data-scroll-target="#비선형-svm-분류">2. 비선형 SVM 분류</a>
   <ul class="collapse">
@@ -662,6 +668,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#온라인-svm" id="toc-온라인-svm" class="nav-link" data-scroll-target="#온라인-svm">6) 온라인 SVM</a></li>
   </ul></li>
   <li><a href="#svm과-로지스틱-회귀의-차이" id="toc-svm과-로지스틱-회귀의-차이" class="nav-link" data-scroll-target="#svm과-로지스틱-회귀의-차이">SVM과 로지스틱 회귀의 차이</a></li>
+  <li><a href="#예제" id="toc-예제" class="nav-link" data-scroll-target="#예제">예제</a></li>
   </ul>
 </nav>
     </div>
@@ -680,6 +687,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>주로 사용하는 손실함수는 힌지손실 Hinge Loss</li>
 </ul>
 <p>Reference : <a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/">핸즈 온 머신러닝</a>, <a href="https://jpub.tistory.com/992">머신러닝 도감</a>, <a href="https://scikit-learn.org/stable/modules/svm.html">사이킷런 홈페이지</a></p>
+<p><a href="https://math.stackexchange.com/questions/1305925/why-is-the-svm-margin-equal-to-frac2-mathbfw">마진이 아래 식으로 구해지는 이유</a></p>
+<ul>
+<li>margin = <span class="math inline">\(\frac{2}{||w||}\)</span></li>
+</ul>
+<p><a href="https://www.robots.ox.ac.uk/~az/lectures/ml/lect2.pdf">어딘가의 SVM lecture 노트임!</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/SVM_margin.png/450px-SVM_margin.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li>샘플들을 서포트벡터라고 보자</li>
+<li>마진은 <span class="math inline">\(\frac{2}{||w||}\)</span></li>
+<li>점 하나가 랜드마크. 랜드마크를 어떤 기준으로 뽑을 것임.</li>
+<li>그 기준으로 슬랙 변수를 계산할건데</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-03-23-Support Vector Machine_files/figure-html/7300e212-c3b2-4e1f-90f3-ba049ce06454-1-4605bb29-2b44-419f-a7fd-00ba904fc034.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li>위의 경우는 소프트 마진에 한 함</li>
+<li>마진 경계선으로부터 반대쪽까지 거리를 슬랙 변수로 정의함</li>
+<li>경계에 걸치면 슬랙변수는 0이 됌.</li>
+<li>0과 1사이에 있으면 마진 오차 margin violation</li>
+<li>2보다 크다면 잘못 분류됨 misclassified</li>
+<li>소프트 마진에서는 1이나 -1이 아니라 <span class="math inline">\(1- \zeta_1\)</span>을 기준으로 경계선이 나눠져서!</li>
+<li>소프트 마진에서는 하이퍼파라미터 C를 거의 0으로 만들어서 하드 마진처럼 strick 하게 만들 수 있음</li>
+</ul>
 <p><strong>힌지 손실 Hinge Loss</strong></p>
 <ul>
 <li><span class="math inline">\(max(0,1-t)\)</span> function</li>
@@ -692,7 +731,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>클래스 분류의 경계에 있는 샘플 = 서포트 벡터</li>
 </ul>
 <section id="하드-마진-분류" class="level2">
-<h2 class="anchored" data-anchor-id="하드-마진-분류">2) 하드 마진 분류</h2>
+<h2 class="anchored" data-anchor-id="하드-마진-분류">1) 하드 마진 분류</h2>
 <ul>
 <li><p>클래스 분류의 경계에 샘플이 없을 때 = 마진 오류가 하나도 없을때, 하드 마진 분류</p>
 <ul>
@@ -700,14 +739,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>이상치에 민감함</li>
 </ul></li>
 </ul>
-<p>이 떄 생기는 이상치를 마진 오류로 본다.</p>
+<p>이 때 생기는 이상치를 마진 오류로 본다.</p>
 <ul>
 <li>이상치 <span class="math inline">\(\to\)</span> 클래스 구분했을때 그어지는 선에 걸쳐지는 값들 <span class="math inline">\(\to\)</span> 마진 오류 margin violation</li>
 </ul>
 <p>적절한 균형 잡는 것이 필요</p>
+<p><span class="math inline">\(minimize_{w,b} ||w||^2_2\)</span></p>
+<p>subject to <span class="math inline">\(y_i(w^\top x_i - b) \ge 1 \forall_i \in \{1, \dots , n \}\)</span></p>
+<ul>
+<li>거의 불가능..한 자료 구조..</li>
+</ul>
 </section>
 <section id="소프트-마진-분류" class="level2">
-<h2 class="anchored" data-anchor-id="소프트-마진-분류">1) 소프트 마진 분류</h2>
+<h2 class="anchored" data-anchor-id="소프트-마진-분류">2) 소프트 마진 분류</h2>
 <p>소프트 마진 분류 필요한 이유.</p>
 <ul>
 <li>hyper parameter C가 너무 크면 과대적합 가능성 존재</li>
@@ -716,16 +760,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>주로 SVM과 함께 쓰임. <span class="math inline">\(max(0,1-y), max(0,1+y)\)</span> 로 <span class="math inline">\(y\)</span>의 범위가 [-1,1]에 오도록 함</li>
 </ul>
-<div class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display">
-<p><img src="2023-03-23-Support Vector Machine_files/figure-html/cell-2-output-1.png" class="img-fluid"></p>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="2023-03-23-Support Vector Machine_files/figure-html/cell-2-output-2.png" class="img-fluid"></p>
-</div>
-</div>
+<p><span class="math inline">\(minimize_{w,b,\zeta} ||w||^2_2 + C\sum^n_{i=1} \zeta_i\)</span></p>
+<p>subject to <span class="math inline">\(y_i(w^\top x_i - b) \ge 1-\zeta_i, \zeta_i \ge 0 \forall_i \in \{ 1 ,\dots, n\}\)</span></p>
 <ul>
-<li>위처럼 선에 걸친게 마진 오류 margin violation</li>
+<li><p><span class="math inline">\(1-\zeta_i\)</span>로 잡음으로써 더 유연하게 이상치 정의 및 경계선 정의</p></li>
+<li><p>위처럼 선에 걸친게 마진 오류 margin violation</p></li>
 </ul>
 </section>
 </section>
@@ -745,7 +784,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>특정 랜드마크와 얼마나 닮았는지 유사도 함수 similarity function = similarity measure = similarity metric 로 계산<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
 <ul>
-<li>특정 랜드마크 -&gt; 특징인건가..</li>
+<li>특정 랜드마크 -&gt; 데이터 분포가 있을떄 뽑아진 임의의 점?</li>
 </ul></li>
 </ul>
 <p><a href="https://en.wikipedia.org/wiki/Similarity_measure">유사도 함수의 종류</a></p>
@@ -825,7 +864,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="커널-svm" class="level2">
 <h2 class="anchored" data-anchor-id="커널-svm">5) 커널 SVM</h2>
-<p>원래 선형 분리할 수 없는 데이터를 선형 분리함</p>
+<p>원래 선형 분리할 수 없는 비선형 데이터를 커널을 통해서 선형화 시킴!</p>
 <p><span class="math inline">\(\star\)</span> 가우시안 커널이 복잡한 결정 경게를 학습한다고 데이터에 무조건 비선형 커널 기법을 적용하지 말고(분석에 의미가 없을 수 있음), 선형 커널을 이용한 분석으로 확린 후 커널 함수를 적용한 분석을 하는 것이 좋음</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -893,6 +932,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>multi-class를 위해 로지스틱 회귀 이용, SVM은 이진 분류만 가능</li>
 <li>슬랙변수 쓰는 SVM은 이상치에 덜 민감함, 하지만 로지스틱은 이런 역할 하는 변수 없어서 민감</li>
 </ul>
+</section>
+<section id="예제" class="level1">
+<h1>예제</h1>
+<p>SVM</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> LinearSVC</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 분류의 중심 위치 정의</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>centers <span class="op">=</span> [(<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="fl">0.125</span>), (<span class="fl">0.5</span>, <span class="fl">0.5</span>)]</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 특징과 종속 변수 생성</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_blobs(n_samples<span class="op">=</span><span class="dv">50</span>, n_features<span class="op">=</span><span class="dv">2</span>, centers<span class="op">=</span>centers, cluster_std<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 특징과 종속 변수 각각을 학습 데이터와 검증 데이터로 나누기</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 선형 서포트 벡터 머신 모델 생성</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearSVC()</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train)    <span class="co"># 학습</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test) <span class="co"># 예측</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_pred, y_test) <span class="co"># 평가</span></span></code></pre></div>
+</div>
+<p>커널 기법 이용</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_gaussian_quantiles</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 특징과 종속 변수 생성</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_gaussian_quantiles(n_features<span class="op">=</span><span class="dv">2</span>, n_classes<span class="op">=</span><span class="dv">2</span>, n_samples<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 특징과 종속 변수 각각을 학습 데이터와 검증 데이터로 나누기</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 서포트 벡터 머신 모델 생성</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> SVC(gamma<span class="op">=</span><span class="st">'auto'</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train)    <span class="co"># 학습</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test) <span class="co"># 예측</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_pred, y_test) <span class="co"># 평가</span></span></code></pre></div>
+</div>
 
 
 </section>
