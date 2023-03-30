@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="SEOYEON CHOI">
-<meta name="dcterms.date" content="2022-09-01">
+<meta name="dcterms.date" content="2023-03-29">
 
-<title>Seoyeon’s Blog for classes - Advanced Regression Analysis</title>
+<title>Seoyeon’s Blog for classes - Lasso and Ridge</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,6 +61,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -97,7 +98,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Advanced Regression Analysis</h1>
+      <h1 class="quarto-secondary-nav-title">Lasso and Ridge</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -108,9 +109,9 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">Advanced Regression Analysis</h1>
+      <h1 class="title d-none d-lg-block">Lasso and Ridge</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Advanced Regression Analysis</div>
+                <div class="quarto-category">Machine learning basic</div>
               </div>
                   </div>
   </div>
@@ -128,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 1, 2022</p>
+        <p class="date">March 29, 2023</p>
       </div>
     </div>
     
@@ -191,12 +192,12 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../posts/rl/index.html" class="sidebar-item-text sidebar-link active">Advanced Regression Analysis</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a href="../../posts/rl/index.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/rl/2023-02-23-rl-final_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Final Term</a>
@@ -332,14 +333,14 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../posts/ml_basic/index.html" class="sidebar-item-text sidebar-link">Machine Learning basic</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-03-29-Lasso and Ridge.html" class="sidebar-item-text sidebar-link">Lasso and Ridge</a>
+  <a href="../../posts/ml_basic/2023-03-29-Lasso and Ridge.html" class="sidebar-item-text sidebar-link active">Lasso and Ridge</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -581,7 +582,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#예제" id="toc-예제" class="nav-link active" data-scroll-target="#예제">예제)</a></li>
+  <li><a href="#ridge와-lasso" id="toc-ridge와-lasso" class="nav-link" data-scroll-target="#ridge와-lasso">Ridge와 Lasso</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -589,9 +597,112 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Those are posts of Advanced Regression Analysis.</p>
+<blockquote class="blockquote">
+<p>Lasso and Ridge</p>
+</blockquote>
+<p>Refernece: <a href="https://hastie.su.domains/Papers/ESLII.pdf">책_The Elements of Statistical Learning</a></p>
+<p><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/">핸즈 온 머신러닝</a>, <a href="https://guebin.github.io/SC2022/">최규빈교수님 통계전산강의노트</a> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">사이킷런 홈페이지</a></p>
+<p>기본 가정 : <span class="math inline">\(\bf{y= X\beta + \epsilon}\)</span> 의 회귀식이 있을때, <span class="math inline">\(\bf{\hat{\beta} = (X'X)^{-1} X' y}\)</span>로 정의할 수 있음.</p>
+<ul>
+<li>의문 : <span class="math inline">\(\bf{(X'X)^{-1}}\)</span>을 구할 수 없을 때는?
+<ul>
+<li><ol type="1">
+<li><span class="math inline">\(\bf{(X'X)^{-1}}\)</span>가 full-rank 일 때</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li><span class="math inline">\(\bf{(X'X)^{-1}}\)</span>가 full rank 라면 rank = <span class="math inline">\(p\)</span></li>
+</ol>
+<ul>
+<li><span class="math inline">\(\to\)</span> <span class="math inline">\(\bf{(X'X)^{-1}}\)</span>가 존재하지 않는다는 의미는 <span class="math inline">\(rank(\bf{X'X})&lt;p\)</span></li>
+<li>이유 1) 공선성 때문</li>
+<li>이유 2) <span class="math inline">\(n&lt;p\)</span>, 데이터가 부족할 때 이러한 현상이 발생한다.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>해결 방법</p>
+<ol type="1">
+<li>리지 Ridge</li>
+</ol>
+<ul>
+<li>idea : <span class="math inline">\(\bf{(X'X+\lambda I)^{-1}}\)</span>을 대신 계산한다.</li>
+</ul>
+<ol start="2" type="1">
+<li>PCA를 이용하여 <span class="math inline">\(\bf{(X'X)} = \Psi \Lambda \Psi\)</span>로 대신 구함</li>
+</ol>
+<ul>
+<li>idea : <span class="math inline">\(\bf{(X'X)}\)</span> <span class="math inline">\(\to\)</span> 대칭이고 실수면 <span class="math inline">\(\to\)</span> 고유 분해 가능</li>
+<li><span class="math inline">\(\bf{(X'X) = \Psi \lambda \Psi^\top}\)</span>는 <span class="math inline">\(\bf{(X'X)^{-1} = \Psi \lambda^{-1} \Psi^\top}\)</span>을 의미하니까
+<ul>
+<li><span class="math inline">\(\bf{(X'X)(X'X)^{-1}} = I\)</span></li>
+</ul></li>
+</ul>
+<section id="예제" class="level2">
+<h2 class="anchored" data-anchor-id="예제">예제)</h2>
+<p><span class="math inline">\(y = \beta_1 x_{i1} + \beta_2 x_{i2} + \epsilon, \epsilon \sim N(0,\sigma^2)_{idd}\)</span>임 모형이 있다고 할 때,</p>
+<p>원래 모형은 <span class="math inline">\(y = 5 x_{i1} + 600 x_{i2}\)</span>이다.</p>
+<p>이 때, <span class="math inline">\(x_{i3}\)</span>이 <span class="math inline">\(x_{i1}\)</span>과 거의 <span class="math inline">\(1\)</span>의 상관관계를 가지고 있다면? <span class="math inline">\(\to\)</span> 다중공선성을 가지고 있다면?</p>
+<p><span class="math inline">\(\beta_1 + \beta_3 = 5\)</span>만 된다면 원래 모형에 근사하다고 나올 터, 심지어 음수가 나올 때 조차도.</p>
+<ul>
+<li>다중공선성의 특징
+<ul>
+<li>추정하는 <span class="math inline">\(\beta\)</span>가 어떤 값인지 거의 예측이 안 된다.
+<ul>
+<li><span class="math inline">\(\beta\)</span>들의 분산이 크다. (다양한 값 나오고 그러니..)</li>
+</ul></li>
+<li><span class="math inline">\(\beta\)</span>는 그래도 더하면 원래 값에 근사함.</li>
+</ul></li>
+</ul>
+<p>모두 참이라고 생각되는 모형 <span class="math inline">\(\to\)</span> 합은 일단 원히던 5임</p>
+<ul>
+<li>조건) 다중공선성 없는 <span class="math inline">\(x_{i2}\)</span>는 <span class="math inline">\(y\)</span>쪽으로 옮긴 상황. 즉 신경 안 써도 됌</li>
+</ul>
+<ol type="1">
+<li><span class="math inline">\(\beta_1=2,\beta_2=3\)</span></li>
+<li><span class="math inline">\(\beta_1=5,\beta_2=0\)</span></li>
+<li><span class="math inline">\(\beta_1=10,\beta_2=-5\)</span></li>
+<li><span class="math inline">\(\beta_1=10000,\beta_2=-9995\)</span></li>
+</ol>
+<p><span class="math inline">\(\dots\)</span></p>
+<p>-&gt; 음수 있는 해석 불가한 이상한 모형들 다 가능하겠다. 해석 불가능.</p>
+</section>
+<section id="ridge와-lasso" class="level2">
+<h2 class="anchored" data-anchor-id="ridge와-lasso">Ridge와 Lasso</h2>
+<p><span class="math inline">\(loss = \sum(y-X_1\beta_1 - X_2\beta_2)^2\)</span></p>
+<p><span class="math inline">\(loss = (y-XB)^\top (y-XB) + \lambda B^\top B\)</span>, <span class="math inline">\(\bf{\hat{B} = X'X + \lambda I}\)</span>$</p>
+<ul>
+<li><span class="math inline">\((X'X)\)</span>가 양정치 행렬이라는 조건이 필요하지만, 저절로 만족되어 고려하지 않아도 됌.</li>
+</ul>
+<p>벌점화를 주자. = 패널티를 주자 <span class="math inline">\(loss + \lambda(\beta^2_1 + \beta^2_2)\)</span></p>
+<ol type="1">
+<li><span class="math inline">\(\lambda(2^2 + 3^2)\)</span></li>
+<li><span class="math inline">\(\lambda(5^2_)\)</span></li>
+<li><span class="math inline">\(\lambda(10^2+(-5)^2)\)</span></li>
+<li><span class="math inline">\(\lambda((10000)^2 + (-9995)^2)\)</span></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://miro.medium.com/v2/resize:fit:761/1*nrWncnoJ4V_BkzEf1pd4MA.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image</figcaption><p></p>
+</figure>
+</div>
+<p><a href="https://en.wikipedia.org/wiki/Ridge_regression">Ridge</a> = L2 norm = Regularization = 정규화</p>
+<ul>
+<li><span class="math inline">\((\lambda(\beta_1^2 +\beta^2_2)\)</span>이니까 원 모형이 나오지
+<ul>
+<li><span class="math inline">\((\lambda(\beta_1^2 +\beta^2_2) = k\)</span></li>
+<li><span class="math inline">\(\beta_1^2 +\beta^2_2 = \frac{k}{\lambda}\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\lambda\)</span> 가 0이면 loss와 ridge 함수가 만나는 면,</li>
+<li><span class="math inline">\(\lambda\)</span> 가 <span class="math inline">\(\infty\)</span>이면 중심(0,0)에 있을터.</li>
+</ul>
+<p><a href="https://en.wikipedia.org/wiki/Lasso_(statistics)">Lasso</a> = L1Norm</p>
+<ul>
+<li><span class="math inline">\((\lambda(|\beta_1| +|\beta^2|)\)</span>이니까 마름모 모형이 나오지</li>
+</ul>
+<p>합쳐쓰기도 함 = elastic-net</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
