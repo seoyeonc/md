@@ -112,6 +112,8 @@ ul.task-list li input[type="checkbox"] {
       <h1 class="title d-none d-lg-block">Lasso and Ridge</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Machine learning basic</div>
+                <div class="quarto-category">벌점화모형</div>
+                <div class="quarto-category">능형회귀</div>
               </div>
                   </div>
   </div>
@@ -338,6 +340,11 @@ ul.task-list li input[type="checkbox"] {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2021-03-31-Ridge Regression_note3_0331.html" class="sidebar-item-text sidebar-link">Lasso and Ridge</a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/ml_basic/2023-03-29-Lasso and Ridge.html" class="sidebar-item-text sidebar-link active">Lasso and Ridge</a>
@@ -586,7 +593,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#예제" id="toc-예제" class="nav-link active" data-scroll-target="#예제">예제)</a></li>
+  <li><a href="#벌점화모형" id="toc-벌점화모형" class="nav-link active" data-scroll-target="#벌점화모형">벌점화모형</a>
+  <ul class="collapse">
+  <li><a href="#예제" id="toc-예제" class="nav-link" data-scroll-target="#예제">예제)</a></li>
+  </ul></li>
   <li><a href="#ridge와-lasso" id="toc-ridge와-lasso" class="nav-link" data-scroll-target="#ridge와-lasso">Ridge와 Lasso</a></li>
   </ul>
 </nav>
@@ -600,8 +610,10 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>Lasso and Ridge</p>
 </blockquote>
-<p>Refernece: <a href="https://hastie.su.domains/Papers/ESLII.pdf">책_The Elements of Statistical Learning</a></p>
-<p><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/">핸즈 온 머신러닝</a>, <a href="https://guebin.github.io/SC2022/">최규빈교수님 통계전산강의노트</a> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">사이킷런 홈페이지</a></p>
+<p>릿지ridge 회귀 = 능형회귀 = 티호노프 tikhonov 규제 = L2 노름</p>
+<p>Refernece: <a href="https://hastie.su.domains/Papers/ESLII.pdf">책_The Elements of Statistical Learning</a>, <a href="https://product.kyobobook.co.kr/detail/S000001875111">그림과 수식으로 배우는 통통 머신러닝</a></p>
+<section id="벌점화모형" class="level1">
+<h1>벌점화모형</h1>
 <p>기본 가정 : <span class="math inline">\(\bf{y= X\beta + \epsilon}\)</span> 의 회귀식이 있을때, <span class="math inline">\(\bf{\hat{\beta} = (X'X)^{-1} X' y}\)</span>로 정의할 수 있음.</p>
 <ul>
 <li>의문 : <span class="math inline">\(\bf{(X'X)^{-1}}\)</span>을 구할 수 없을 때는?
@@ -665,12 +677,24 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(\dots\)</span></p>
 <p>-&gt; 음수 있는 해석 불가한 이상한 모형들 다 가능하겠다. 해석 불가능.</p>
 </section>
-<section id="ridge와-lasso" class="level2">
-<h2 class="anchored" data-anchor-id="ridge와-lasso">Ridge와 Lasso</h2>
+</section>
+<section id="ridge와-lasso" class="level1">
+<h1>Ridge와 Lasso</h1>
 <p><span class="math inline">\(loss = \sum(y-X_1\beta_1 - X_2\beta_2)^2\)</span></p>
-<p><span class="math inline">\(loss = (y-XB)^\top (y-XB) + \lambda B^\top B\)</span>, <span class="math inline">\(\bf{\hat{B} = X'X + \lambda I}\)</span>$</p>
+<p><span class="math inline">\(loss\tilde{} = (y-XB)^\top (y-XB) + \lambda B^\top B\)</span>, <span class="math inline">\(\bf{\hat{B} = X'X + \lambda I} \to \hat{\beta}\)</span>과 달리 <strong>불편추정량</strong>이 아님을 알 수 있음</p>
 <ul>
-<li><span class="math inline">\((X'X)\)</span>가 양정치 행렬이라는 조건이 필요하지만, 저절로 만족되어 고려하지 않아도 됌.</li>
+<li><p>하지만, 분산이 더 작다!</p></li>
+<li><p>수정된 loss 값 구별 위해 <span class="math inline">\(\tilde{}\)</span> 기호 추가</p></li>
+<li><p><span class="math inline">\((X'X)\)</span>가 양정치 행렬이라는 조건이 필요하지만, 저절로 만족되어 고려하지 않아도 됌.</p></li>
+<li><p><span class="math inline">\(\lambda\)</span> 잘 찾으면 항상 ridge regression이 linear regression 보다 좋다고 주장할 수 있다.</p></li>
+</ul>
+<p><span class="math inline">\(\beta^{QLS} = (X^\top X)^{-1}X^\top Y\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><span class="math inline">\(\beta^{R} = (X^\top X + \lambda I)^{-1}X^\top Y\)</span></p>
+<ul>
+<li><span class="math inline">\((X^\top X)\)</span> 가 역행렬 구할 수 없다고 보고 <span class="math inline">\(\lambda I\)</span>를 더해줘서 역행렬 구할 수 있게
+<ul>
+<li>왜냐하면 역행렬 구할 수 없다는 말은 대각선에 0이 존재한다는 것이니까.</li>
+</ul></li>
 </ul>
 <p>벌점화를 주자. = 패널티를 주자 <span class="math inline">\(loss + \lambda(\beta^2_1 + \beta^2_2)\)</span></p>
 <ol type="1">
@@ -679,32 +703,73 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\(\lambda(10^2+(-5)^2)\)</span></li>
 <li><span class="math inline">\(\lambda((10000)^2 + (-9995)^2)\)</span></li>
 </ol>
+<p><span class="math inline">\(\lambda\)</span> = hyperparameter 하이퍼파라메터 = 조율 모수 tuning parameter = Regularization parameter 규제화항</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://miro.medium.com/v2/resize:fit:761/1*nrWncnoJ4V_BkzEf1pd4MA.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image</figcaption><p></p>
 </figure>
 </div>
-<p><a href="https://en.wikipedia.org/wiki/Ridge_regression">Ridge</a> = L2 norm = Regularization = 정규화</p>
+<p><code>1</code></p>
+<p><span class="math inline">\(loss = SSE + L_2-panalty:Ridge\)</span></p>
 <ul>
-<li><span class="math inline">\((\lambda(\beta_1^2 +\beta^2_2)\)</span>이니까 원 모형이 나오지
+<li><p><a href="https://en.wikipedia.org/wiki/Ridge_regression">Ridge</a> = <span class="math inline">\(L_2\)</span> norm = Regularization 정규화 = <span class="math inline">\(L_2\)</span> 패널티 = 벌점</p></li>
+<li><p><span class="math inline">\((\lambda(\beta_1^2 +\beta^2_2)\)</span>이니까 원 모형이 나오지</p>
 <ul>
 <li><span class="math inline">\((\lambda(\beta_1^2 +\beta^2_2) = k\)</span></li>
 <li><span class="math inline">\(\beta_1^2 +\beta^2_2 = \frac{k}{\lambda}\)</span></li>
 </ul></li>
-<li><span class="math inline">\(\lambda\)</span> 가 0이면 loss와 ridge 함수가 만나는 면,</li>
-<li><span class="math inline">\(\lambda\)</span> 가 <span class="math inline">\(\infty\)</span>이면 중심(0,0)에 있을터.</li>
+<li><p><span class="math inline">\(\lambda\)</span> 가 0이면 loss와 ridge 함수가 만나는 면,</p></li>
+<li><p><span class="math inline">\(\lambda\)</span> 가 <span class="math inline">\(\infty\)</span>이면 중심(0,0)에 있을터.</p></li>
+<li><p>너무 큰 <span class="math inline">\(\beta_i\)</span>들을 구할 때 패널티를 부여하여 되도록 작은 <span class="math inline">\(\beta_i\)</span>들을 선택하게 제약을 거는 것</p></li>
 </ul>
-<p><a href="https://en.wikipedia.org/wiki/Lasso_(statistics)">Lasso</a> = L1Norm</p>
+<p><code>2</code></p>
+<p><span class="math inline">\(loss = SSE + L_1-panalty:Lasso\)</span></p>
 <ul>
-<li><span class="math inline">\((\lambda(|\beta_1| +|\beta^2|)\)</span>이니까 마름모 모형이 나오지</li>
+<li><p><a href="https://en.wikipedia.org/wiki/Lasso_(statistics)">Lasso</a> = <span class="math inline">\(L_1\)</span> norm</p></li>
+<li><p><span class="math inline">\((\lambda(|\beta_1| +|\beta_2|)\)</span>이니까 마름모 모형이 나오지</p>
+<ul>
+<li><span class="math inline">\((\lambda(|\beta_1| +|\beta_2|) = k\)</span></li>
+<li><span class="math inline">\(|\beta_1| +|\beta_2| = \frac{k}{\lambda}\)</span></li>
+</ul></li>
+<li><p><span class="math inline">\(\lambda\)</span> 가 0이면 loss와 lasso 함수가 만나는 면,</p></li>
+<li><p><span class="math inline">\(\lambda\)</span> 가 <span class="math inline">\(\infty\)</span>이면 중심(0,0)에 있을터.</p></li>
 </ul>
-<p>합쳐쓰기도 함 = elastic-net</p>
+<p><code>3</code></p>
+<p><span class="math inline">\(loss = SSE + L_1-panalty + L_2-panalty : Elastic-net\)</span></p>
+<ul>
+<li>섞어쓰기도 함</li>
+</ul>
+<p><span class="math inline">\(\lambda \beta^\top\beta\)</span></p>
+<ul>
+<li>패널티항= 벌점항 = L2-패널티, 정규화항이라 부른다.</li>
+<li>Ridge(최소제곱학습은 <span class="math inline">\(L_2\)</span>norm노름에 대한 제약조건 사용)
+<ul>
+<li><span class="math inline">\(\lambda ||\beta||^2_2\)</span>로 표현하기도 한다. <span class="math inline">\(||\dot||_2\)</span>는 벡터의 <span class="math inline">\(L_2\)</span>-norm노름 이라고 한다.
+<ul>
+<li><span class="math inline">\(x = (x_1,x_2) \to ||x||^2_2 := x^2_1 + x^2_2. ||x||_2 := \sqrt{x^2_1 + x^2_2}\)</span></li>
+<li><span class="math inline">\(\lambda \beta^\top \beta = \lambda(\beta^2_1 + \beta^2_2)\)</span></li>
+</ul></li>
+</ul></li>
+<li>Lasso(희소 학습에서는 <span class="math inline">\(L_1\)</span>norm노름에 대한 제약조건 사용)
+<ul>
+<li>희소 학습이라 부르는 이유
+<ul>
+<li><span class="math inline">\(|\beta_1| +|\beta_2|\)</span>해가 0이 되는 구간이 마름모라 4 꼭짓점 나오는데, 이게 희소한 해를 갖는다고 말함</li>
+</ul></li>
+</ul></li>
+</ul>
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Constrained Least Squares<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
