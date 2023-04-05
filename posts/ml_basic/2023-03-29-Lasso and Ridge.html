@@ -187,7 +187,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-03-28-ap-4wk.html" class="sidebar-item-text sidebar-link">4주차: 측도론</a>
+  <a href="../../posts/ap/2023-03-29-ap-4wk_2.html" class="sidebar-item-text sidebar-link">4wk: 측도론 (1)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-28-ap-4wk.html" class="sidebar-item-text sidebar-link">4wk: 측도론 intro (4)</a>
   </div>
 </li>
       </ul>
@@ -342,7 +347,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2021-03-31-Ridge Regression_note3_0331.html" class="sidebar-item-text sidebar-link">Lasso and Ridge</a>
+  <a href="../../posts/ml_basic/2023-04-02-Ensemble and Random Forest.html" class="sidebar-item-text sidebar-link">Ensemble and Random Forest</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -358,6 +363,11 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/ml_basic/2023-03-28-Principal Component Analysis.html" class="sidebar-item-text sidebar-link">Principal Component Analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2021-03-31-Ridge Regression_note3_0331.html" class="sidebar-item-text sidebar-link">Ridge Regression</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -611,7 +621,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Lasso and Ridge</p>
 </blockquote>
 <p>릿지ridge 회귀 = 능형회귀 = 티호노프 tikhonov 규제 = L2 노름</p>
-<p>Refernece: <a href="https://hastie.su.domains/Papers/ESLII.pdf">책_The Elements of Statistical Learning</a>, <a href="https://product.kyobobook.co.kr/detail/S000001875111">그림과 수식으로 배우는 통통 머신러닝</a></p>
+<p><span class="math inline">\(\star\)</span> <strong>숙지!</strong></p>
+<p>릿지 회귀는 L2 규제를 사용하여 모델의 가중치가 커지지 않도록 제한합니다. 이 규제는 일반적으로 극단적인 가중치 값을 갖는 것을 방지하고, 모델의 일반화 성능을 향상시킵니다.</p>
+<p>하지만 릿지 회귀는 가중치를 완전히 0으로 만들지는 않습니다. 대신, 가중치를 작게 만들어 모델이 더 일반적인 패턴을 학습하도록 유도합니다. 이는 희소성을 가진 데이터에서 모델의 성능을 향상시키는 데 도움이 됩니다.</p>
+<p>반면, 라쏘 회귀는 L1 규제를 사용하여 가중치를 0으로 만들 수 있습니다. 이는 희귀 학습에서 유용합니다. 희소성을 가진 데이터에서는 많은 특성 중 일부만 중요하다는 것을 알 수 있습니다. 따라서, 라쏘 회귀는 이러한 특성을 선택하고 다른 특성을 제거하여 모델을 희소하게 만들 수 있습니다.</p>
+<p>Refernece: <a href="https://hastie.su.domains/Papers/ESLII.pdf">책_The Elements of Statistical Learning</a>, <a href="https://product.kyobobook.co.kr/detail/S000001875111">그림과 수식으로 배우는 통통 머신러닝</a>, <a href="https://seoyeonc.github.io/md/posts/ml_basic/2021-03-31-Ridge%20Regression_note3_0331.html">2021데이터과학 최규빈교수님 lecture 노트</a></p>
 <section id="벌점화모형" class="level1">
 <h1>벌점화모형</h1>
 <p>기본 가정 : <span class="math inline">\(\bf{y= X\beta + \epsilon}\)</span> 의 회귀식이 있을때, <span class="math inline">\(\bf{\hat{\beta} = (X'X)^{-1} X' y}\)</span>로 정의할 수 있음.</p>
@@ -722,6 +736,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p><span class="math inline">\(\lambda\)</span> 가 0이면 loss와 ridge 함수가 만나는 면,</p></li>
 <li><p><span class="math inline">\(\lambda\)</span> 가 <span class="math inline">\(\infty\)</span>이면 중심(0,0)에 있을터.</p></li>
 <li><p>너무 큰 <span class="math inline">\(\beta_i\)</span>들을 구할 때 패널티를 부여하여 되도록 작은 <span class="math inline">\(\beta_i\)</span>들을 선택하게 제약을 거는 것</p></li>
+<li><p>가장 최적의 점 <span class="math inline">\(\beta_1 = \beta_2\)</span></p></li>
 </ul>
 <p><code>2</code></p>
 <p><span class="math inline">\(loss = SSE + L_1-panalty:Lasso\)</span></p>
@@ -734,6 +749,7 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li><p><span class="math inline">\(\lambda\)</span> 가 0이면 loss와 lasso 함수가 만나는 면,</p></li>
 <li><p><span class="math inline">\(\lambda\)</span> 가 <span class="math inline">\(\infty\)</span>이면 중심(0,0)에 있을터.</p></li>
+<li><p>가장 최적의 점 <span class="math inline">\((0,절편), (절편,0)\)</span></p></li>
 </ul>
 <p><code>3</code></p>
 <p><span class="math inline">\(loss = SSE + L_1-panalty + L_2-panalty : Elastic-net\)</span></p>
