@@ -193,6 +193,11 @@ ul.task-list li input[type="checkbox"] {
   <a href="../../posts/ap/2023-03-28-ap-4wk.html" class="sidebar-item-text sidebar-link active">4wk: 측도론 intro (4)</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-05-5wk.html" class="sidebar-item-text sidebar-link">5wk: 측도론 (1)</a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -752,7 +757,17 @@ ul.task-list li input[type="checkbox"] {
 <p><code>-</code> 이제 우리가 따져봐야 할 것은 (1) 확률을 정의하기 위한 조건으로 1-8이면 충분한지 (혹시 더 많은 조건들이 필요한건 아닌지) (2) 위에서 리스팅한 조건들이 꼭 모두 다 필요한지? (예를 들면 한 두개의 조건이 다른조건을 암시하는건 아닌지) 이다.</p>
 <p><code>-</code> 결론적으로는 말하면 1,2,3,7만 있으면 충분하다.</p>
 <p><code>-</code> 연습1: <span class="math inline">\((3),(4) \Rightarrow (5)\)</span> 임을 보여라.</p>
+<p><span class="math inline">\(P(A \cup A^c) = P(\Omega)\)</span></p>
+<p>3.에 의해 <span class="math inline">\(P(\Omega)=`\)</span></p>
+<p>4.에 의해 <span class="math inline">\(P(A \cup A^c) = P(A) + P(A^c)\)</span></p>
+<p>5.에 의해 <span class="math inline">\(P(A \cup A^c) = P(\Omega) = 1 = P(A) + P(A)\)</span></p>
 <p><code>-</code> 연습2: <span class="math inline">\((2),(4) \Rightarrow (6)\)</span> 임을 보여라.</p>
+<p><span class="math inline">\(A \in B\)</span> 일때,</p>
+<p><span class="math inline">\(B = A \cup (B-A)\)</span></p>
+<p>4.에 의해 <span class="math inline">\(B = A \cup (B \bigcap A^c)\)</span></p>
+<p><span class="math inline">\(P(B) = P(A) + P(B \bigcap A^c)\)</span></p>
+<p>2.에 의해 <span class="math inline">\(P(B \bigcap A^c)\)</span>는 양수</p>
+<p><span class="math inline">\(\therefore P(B) \ge P(A)\)</span></p>
 </section>
 <section id="확률측도의-정의" class="level1">
 <h1>확률측도의 정의</h1>
