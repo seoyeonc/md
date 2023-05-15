@@ -1,0 +1,3080 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="SEOYEON CHOI">
+<meta name="dcterms.date" content="2022-12-21">
+
+<title>Seoyeon’s Blog for classes - Extra-1: 추천시스템</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Seoyeon’s Blog for classes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../about.html" aria-current="page">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/seoyeonc/md/"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Extra-1: 추천시스템</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title d-none d-lg-block">Extra-1: 추천시스템</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">추천시스템</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>SEOYEON CHOI </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 21, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">About</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Posts</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ap/index.html" class="sidebar-item-text sidebar-link">Advanced Probability Theory</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-09-ap-10wk.html" class="sidebar-item-text sidebar-link">10wk: 확률변수, 분포 (2)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-07-ap_1wk.html" class="sidebar-item-text sidebar-link">1주차: 측도론</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-14-ap-2wk.html" class="sidebar-item-text sidebar-link">2주차: 측도론</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-21-ap-3wk.html" class="sidebar-item-text sidebar-link">3주차: 측도론</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-29-ap-4wk_2.html" class="sidebar-item-text sidebar-link">4wk: 측도론 (1)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-28-ap-4wk.html" class="sidebar-item-text sidebar-link">4wk: 측도론 intro (4)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-05-ap-5wk.html" class="sidebar-item-text sidebar-link">5wk: 측도론 (1)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-11-ap-6wk.html" class="sidebar-item-text sidebar-link">6wk: 측도론 (2)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-18-ap-7wk.html" class="sidebar-item-text sidebar-link">7wk: 측도론 (3)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-25-ap-8wk.html" class="sidebar-item-text sidebar-link">8wk: 확률공간,분포,확률변수</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-02-ap-9wk.html" class="sidebar-item-text sidebar-link">9wk: 확률변수, 분포 (1)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/rl/index.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-23-rl-final_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Final Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis GT</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Mid Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">Regression HW 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-10-23-rl-HW2.html" class="sidebar-item-text sidebar-link">Regression HW 2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-21-rl-HW3.html" class="sidebar-item-text sidebar-link">Regression HW 3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-08-rl-HW4.html" class="sidebar-item-text sidebar-link">Regression HW 4</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-11-rl-Ch10.html" class="sidebar-item-text sidebar-link">고급회귀분석 CH10</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-09-21-rl_CH03, CH04.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH03, CH04</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-14-rl_CH06, CH07.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH06, CH07</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-23-rl-CH10.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH10</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-05-rl-CH11.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH11</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-28-rl-CH13.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH13</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/anything/index.html" class="sidebar-item-text sidebar-link">Anything</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-04-27-Clinical Trial Data and Survival Analysis.html" class="sidebar-item-text sidebar-link">Clinical Trial Data and Survival Analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-04-20-hazard_ratio,odds_ratio.html" class="sidebar-item-text sidebar-link">Hazard ratio, Odds ratio</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-05-04-questions of pytorch geometric temporal.html" class="sidebar-item-text sidebar-link">Questions of PyTorch Geometric Temporal</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-04-17-Survival_Analysis.html" class="sidebar-item-text sidebar-link">Survival Analysis</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ct/index.html" class="sidebar-item-text sidebar-link">Coding Test</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-15-Coding_Test_Algorithm.html" class="sidebar-item-text sidebar-link">Algorithm</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-02-12-Coding_Test.html" class="sidebar-item-text sidebar-link">ArrayList &amp; LinkedList</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-01-Coding_Test_Greedy.html" class="sidebar-item-text sidebar-link">Chapter 03 Greedy</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/Untitled.html" class="sidebar-item-text sidebar-link">Map</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-03-12-Coding_Test_Queue.html" class="sidebar-item-text sidebar-link">Queue</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-03-05-Coding_Test_Stack.html" class="sidebar-item-text sidebar-link">Stack</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-03-22-Coding_Test_Tree.html" class="sidebar-item-text sidebar-link">Tree</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-15-Coding_Test_interfunction.html" class="sidebar-item-text sidebar-link">내장함수</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-23-Coding_Test_Q2.html" class="sidebar-item-text sidebar-link">두 큐 합 같게 만들기(Done)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-21-Coding_Test_Q1.html" class="sidebar-item-text sidebar-link">성격 유형 검사하기(Done)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-30-Coding_Test_Q3.html" class="sidebar-item-text sidebar-link">코딩 테스트 공부(Done)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ml_basic/index.html" class="sidebar-item-text sidebar-link">Machine Learning basic</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-04-09-Clustering.html" class="sidebar-item-text sidebar-link">Clustering</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-04-02-Ensemble and Random Forest.html" class="sidebar-item-text sidebar-link">Ensemble and Random Forest</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-09-EM_algorithm.html" class="sidebar-item-text sidebar-link">Expectation Maximization(EM algorithm)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-29-Lasso and Ridge.html" class="sidebar-item-text sidebar-link">Lasso and Ridge</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-28-Linear Regression, Logistic Regression.html" class="sidebar-item-text sidebar-link">Logistic Regression</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-28-Principal Component Analysis.html" class="sidebar-item-text sidebar-link">Principal Component Analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2021-03-31-Ridge Regression_note3_0331.html" class="sidebar-item-text sidebar-link">Ridge Regression</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-23-Support Vector Machine.html" class="sidebar-item-text sidebar-link">Support Vector Machine</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ml/index.html" class="sidebar-item-text sidebar-link">Special Topics in Machine Learning</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-07-13wk.html" class="sidebar-item-text sidebar-link">A1: 깊은복사와 얕은복사 (12주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-19-Assignment-1-Copy1.html" class="sidebar-item-text sidebar-link">Assignment 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-19-ml_7w.html" class="sidebar-item-text sidebar-link">CNN (7주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-26-ml_8w_1.html" class="sidebar-item-text sidebar-link">CNN (8주차) 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-26-ml_8w_2.html" class="sidebar-item-text sidebar-link">CNN (8주차) 2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-29-13wk-2-final.html" class="sidebar-item-text sidebar-link">Deep Learning final example</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-07-ml_1w.html" class="sidebar-item-text sidebar-link">DNN (1주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-14-ml_2w.html" class="sidebar-item-text sidebar-link">DNN (2주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-21-ml_3w.html" class="sidebar-item-text sidebar-link">DNN (3주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-29-ml_4w.html" class="sidebar-item-text sidebar-link">DNN (4주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-05-ml-5w.html" class="sidebar-item-text sidebar-link">DNN (5주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-12-ml-6w.html" class="sidebar-item-text sidebar-link">DNN (6주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-21-Extra-1.html" class="sidebar-item-text sidebar-link active">Extra-1: 추천시스템</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-21-Extra-2.html" class="sidebar-item-text sidebar-link">Extra-2: 생성모형(GAN)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-23-Extra-3.html" class="sidebar-item-text sidebar-link">Extra-3: 딥러닝의 기초 (5)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-13-final_seoyeon.html" class="sidebar-item-text sidebar-link">Finalterm</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-05-ml-HW.html" class="sidebar-item-text sidebar-link">Homework</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-07-ml.html" class="sidebar-item-text sidebar-link">Intro</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-02-ml-midterm.html" class="sidebar-item-text sidebar-link">Midterm</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-09-ml-10w.html" class="sidebar-item-text sidebar-link">RNN (10주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-21-ml-11w.html" class="sidebar-item-text sidebar-link">RNN (11주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-30-12wk.html" class="sidebar-item-text sidebar-link">RNN (12주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-08-13wk.html" class="sidebar-item-text sidebar-link">RNN (13주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-02-ml_9w.html" class="sidebar-item-text sidebar-link">RNN (9주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-14-study.html" class="sidebar-item-text sidebar-link">study</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ts/index.html" class="sidebar-item-text sidebar-link">Theoritical Statistics</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-25-ts-final term.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Final term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-ts-final_qanda.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Final term 6 Explanation</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-graduation_test.html" class="sidebar-item-text sidebar-link">Theoritical Statistics GT</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW1.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW2.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW3.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-09-ts_HW4.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW4</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-12-ts_HW5.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW5</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-14-ts_HW6.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW6</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-18-ts_HW7.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW7</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-18-ts-HW8.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW8</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-21-ts-HW9.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW9</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-14-ts_Mid term.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Mid term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2022-12-31-ts_1.html" class="sidebar-item-text sidebar-link">확률변수와 확률분포</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#imports" id="toc-imports" class="nav-link active" data-scroll-target="#imports">imports</a></li>
+  <li><a href="#나는-솔로" id="toc-나는-솔로" class="nav-link" data-scroll-target="#나는-솔로">나는 솔로</a>
+  <ul class="collapse">
+  <li><a href="#주절주절-intro" id="toc-주절주절-intro" class="nav-link" data-scroll-target="#주절주절-intro">주절주절 intro</a></li>
+  <li><a href="#torch를-이용한-학습" id="toc-torch를-이용한-학습" class="nav-link" data-scroll-target="#torch를-이용한-학습">torch를 이용한 학습</a></li>
+  <li><a href="#fastai를-이용한-학습" id="toc-fastai를-이용한-학습" class="nav-link" data-scroll-target="#fastai를-이용한-학습">fastai를 이용한 학습</a></li>
+  </ul></li>
+  <li><a href="#커피-or-홍차" id="toc-커피-or-홍차" class="nav-link" data-scroll-target="#커피-or-홍차">커피 or 홍차</a>
+  <ul class="collapse">
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">data</a></li>
+  <li><a href="#모형" id="toc-모형" class="nav-link" data-scroll-target="#모형">모형</a></li>
+  <li><a href="#학습" id="toc-학습" class="nav-link" data-scroll-target="#학습">학습</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<blockquote class="blockquote">
+<p>추천시스템</p>
+</blockquote>
+<section id="imports" class="level1">
+<h1>imports</h1>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.collab <span class="im">import</span> <span class="op">*</span> </span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/home/csy/anaconda3/envs/py37/lib/python3.7/site-packages/tqdm/auto.py:22: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm</code></pre>
+</div>
+</div>
+</section>
+<section id="나는-솔로" class="level1">
+<h1>나는 솔로</h1>
+<section id="주절주절-intro" class="level2">
+<h2 class="anchored" data-anchor-id="주절주절-intro">주절주절 intro</h2>
+<p><code>-</code> Data</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_view <span class="op">=</span> pd.read_csv(<span class="st">'2022-12-21-rcmdsolo.csv'</span>,index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df_view </span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>영식</th>
+      <th>영철</th>
+      <th>영호</th>
+      <th>광수</th>
+      <th>상철</th>
+      <th>영수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>옥순</th>
+      <td>3.9</td>
+      <td>4.1</td>
+      <td>NaN</td>
+      <td>0.5</td>
+      <td>0.3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>영자</th>
+      <td>4.5</td>
+      <td>NaN</td>
+      <td>3.7</td>
+      <td>0.5</td>
+      <td>NaN</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>정숙</th>
+      <td>NaN</td>
+      <td>4.9</td>
+      <td>4.7</td>
+      <td>NaN</td>
+      <td>1.2</td>
+      <td>1.3</td>
+    </tr>
+    <tr>
+      <th>영숙</th>
+      <td>0.6</td>
+      <td>0.2</td>
+      <td>NaN</td>
+      <td>4.1</td>
+      <td>4.3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>순자</th>
+      <td>0.7</td>
+      <td>0.9</td>
+      <td>NaN</td>
+      <td>4.2</td>
+      <td>NaN</td>
+      <td>3.9</td>
+    </tr>
+    <tr>
+      <th>현숙</th>
+      <td>NaN</td>
+      <td>0.2</td>
+      <td>0.3</td>
+      <td>NaN</td>
+      <td>3.5</td>
+      <td>3.4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p><code>-</code> 데이터를 이해할때 필요한 가정들 – 내맘대로 한 설정임.</p>
+<ul>
+<li>(옥순,영자,정숙)은 (영식,영철,영호)와 성격이 잘 맞고 (영숙,순자,현숙)은 (광수,상철,영수)와 성격이 잘맞음</li>
+<li>((옥순,영자,정숙),(영식,영철,영호))은 MBTI가 I로 시작하고 ((영숙,순자,현숙),(광수,상철,영수))는 MBTI가 E로 시작한다.</li>
+</ul>
+<p><code>-</code> 목표: NaN 을 추론</p>
+<p><code>-</code> 수동추론:</p>
+<ul>
+<li>(옥순,영호)이 만난다면? <span class="math inline">\(\to\)</span> 둘다 I성향이니까 잘 맞지 않을까? <span class="math inline">\(\to\)</span> 4.0 정도?</li>
+<li>(정숙,영식)조합은? <span class="math inline">\(\to\)</span> 둘다 I성향이니까 잘 맞지 않을까? + 정숙은 다 잘맞던데..? <span class="math inline">\(\to\)</span> 4.8 정도?</li>
+<li>(현숙,영식)조합은? <span class="math inline">\(\to\)</span> 현숙은 E성향인데 영식은 I성향이므로 잘 안맞을 것임 + 현숙은 원래 좀 눈이 높음 <span class="math inline">\(\to\)</span> 0.25 정도?</li>
+</ul>
+<p><code>-</code> 좀 더 체계적인 추론</p>
+<p>사람들이 가지고 있는 성향들을 두 개의 숫자로 표현하자.</p>
+<ul>
+<li>옥순의 성향 = (I성향,E성향) = (1.9, 0.0)</li>
+<li>영식의 성향 = (I성향,E성향) = (2.0, 0.1)</li>
+<li>현숙의 성향 = (I성향,E성향) = (0.0, 1.5)</li>
+</ul>
+<p><strong>(1)</strong> 옥순과 영식의 궁합 <span class="math inline">\(\approx\)</span> 옥순의I성향<span class="math inline">\(\times\)</span>영식의I성향 <span class="math inline">\(+\)</span> 옥순의E성향<span class="math inline">\(\times\)</span>영식의E성향 // 적합</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>a1<span class="op">=</span> np.array([<span class="fl">1.9</span>,<span class="fl">0.0</span>]).reshape(<span class="dv">2</span>,<span class="dv">1</span>) <span class="co"># a1은 옥순의 성향, col-vec으로 선언하자. </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>b1<span class="op">=</span> np.array([<span class="fl">2.0</span>,<span class="fl">0.1</span>]).reshape(<span class="dv">2</span>,<span class="dv">1</span>) <span class="co"># b1은 영식의 성향, col-vec으로 선언하자.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>(a1<span class="op">*</span>b1).<span class="bu">sum</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>3.8</code></pre>
+</div>
+</div>
+<p><strong>(2)</strong> 현숙과 영식의 궁합 <span class="math inline">\(\approx\)</span> 현숙의I성향<span class="math inline">\(\times\)</span>영식의I성향 <span class="math inline">\(+\)</span> 현숙의E성향<span class="math inline">\(\times\)</span>영식의E성향 // 예측</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>a6<span class="op">=</span> np.array([<span class="fl">0.0</span>,<span class="fl">1.5</span>]).reshape(<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(a6<span class="op">*</span>b1).<span class="bu">sum</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>0.15000000000000002</code></pre>
+</div>
+</div>
+<ul>
+<li>그럴듯함..</li>
+</ul>
+<p><code>-</code> 모델링</p>
+<p>아래가 같음을 관찰하라. (차원만 다름)</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(a1<span class="op">*</span>b1).<span class="bu">sum</span>(), a1.T<span class="op">@</span>b1</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>(3.8, array([[3.8]]))</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(a6<span class="op">*</span>b1).<span class="bu">sum</span>(), a6.T<span class="op">@</span>b1</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>(0.15000000000000002, array([[0.15]]))</code></pre>
+</div>
+</div>
+<p>만약에 여자의성향, 남자의성향을 적당한 매트릭스로 정리할 수 있다면 궁합매트릭스를 만들 수 있음</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>a1<span class="op">=</span> np.array([<span class="fl">1.9</span>,<span class="fl">0.0</span>]).reshape(<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>a2<span class="op">=</span> np.array([<span class="fl">2.0</span>,<span class="fl">0.1</span>]).reshape(<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>a3<span class="op">=</span> np.array([<span class="fl">2.5</span>,<span class="fl">1.0</span>]).reshape(<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>a4<span class="op">=</span> np.array([<span class="fl">0.1</span>,<span class="fl">1.9</span>]).reshape(<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>a5<span class="op">=</span> np.array([<span class="fl">0.2</span>,<span class="fl">2.1</span>]).reshape(<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>a6<span class="op">=</span> np.array([<span class="fl">0.0</span>,<span class="fl">1.5</span>]).reshape(<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.concatenate([a1,a2,a3,a4,a5,a6],axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>A</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>array([[1.9, 2. , 2.5, 0.1, 0.2, 0. ],
+       [0. , 0.1, 1. , 1.9, 2.1, 1.5]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>b1<span class="op">=</span> np.array([<span class="fl">2.0</span>,<span class="fl">0.1</span>]).reshape(<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>b2<span class="op">=</span> np.array([<span class="fl">1.9</span>,<span class="fl">0.2</span>]).reshape(<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>b3<span class="op">=</span> np.array([<span class="fl">1.8</span>,<span class="fl">0.3</span>]).reshape(<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>b4<span class="op">=</span> np.array([<span class="fl">0.3</span>,<span class="fl">2.1</span>]).reshape(<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>b5<span class="op">=</span> np.array([<span class="fl">0.2</span>,<span class="fl">2.0</span>]).reshape(<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>b6<span class="op">=</span> np.array([<span class="fl">0.1</span>,<span class="fl">1.9</span>]).reshape(<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.concatenate([b1,b2,b3,b4,b5,b6],axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>B</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>array([[2. , 1.9, 1.8, 0.3, 0.2, 0.1],
+       [0.1, 0.2, 0.3, 2.1, 2. , 1.9]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>A.T<span class="op">@</span>B</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>array([[3.8 , 3.61, 3.42, 0.57, 0.38, 0.19],
+       [4.01, 3.82, 3.63, 0.81, 0.6 , 0.39],
+       [5.1 , 4.95, 4.8 , 2.85, 2.5 , 2.15],
+       [0.39, 0.57, 0.75, 4.02, 3.82, 3.62],
+       [0.61, 0.8 , 0.99, 4.47, 4.24, 4.01],
+       [0.15, 0.3 , 0.45, 3.15, 3.  , 2.85]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>a1.T<span class="op">@</span>b1, a2.T<span class="op">@</span>b2, a3.T<span class="op">@</span>b1</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>(array([[3.8]]), array([[3.82]]), array([[5.1]]))</code></pre>
+</div>
+</div>
+<p>결국 모형은 아래와 같다.</p>
+<p><span class="math display">\[\text{궁합매트릭스} = {\bf A}^\top {\bf B} + \text{오차}\]</span></p>
+<p><code>-</code> 학습전략: 아래의 매트릭스중에서 어떤값은 관측하였고 어떤값은 관측하지 못함 <span class="math inline">\(\to\)</span> 관측한 값들만 대충 비슷하게 하면 되는거 아니야?</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>A.T<span class="op">@</span>B </span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>array([[3.8 , 3.61, 3.42, 0.57, 0.38, 0.19],
+       [4.01, 3.82, 3.63, 0.81, 0.6 , 0.39],
+       [5.1 , 4.95, 4.8 , 2.85, 2.5 , 2.15],
+       [0.39, 0.57, 0.75, 4.02, 3.82, 3.62],
+       [0.61, 0.8 , 0.99, 4.47, 4.24, 4.01],
+       [0.15, 0.3 , 0.45, 3.15, 3.  , 2.85]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df_view</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>영식</th>
+      <th>영철</th>
+      <th>영호</th>
+      <th>광수</th>
+      <th>상철</th>
+      <th>영수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>옥순</th>
+      <td>3.9</td>
+      <td>4.1</td>
+      <td>NaN</td>
+      <td>0.5</td>
+      <td>0.3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>영자</th>
+      <td>4.5</td>
+      <td>NaN</td>
+      <td>3.7</td>
+      <td>0.5</td>
+      <td>NaN</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>정숙</th>
+      <td>NaN</td>
+      <td>4.9</td>
+      <td>4.7</td>
+      <td>NaN</td>
+      <td>1.2</td>
+      <td>1.3</td>
+    </tr>
+    <tr>
+      <th>영숙</th>
+      <td>0.6</td>
+      <td>0.2</td>
+      <td>NaN</td>
+      <td>4.1</td>
+      <td>4.3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>순자</th>
+      <td>0.7</td>
+      <td>0.9</td>
+      <td>NaN</td>
+      <td>4.2</td>
+      <td>NaN</td>
+      <td>3.9</td>
+    </tr>
+    <tr>
+      <th>현숙</th>
+      <td>NaN</td>
+      <td>0.2</td>
+      <td>0.3</td>
+      <td>NaN</td>
+      <td>3.5</td>
+      <td>3.4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p><code>-</code> 자료를 아래와 같이 정리한다면?</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame([(f,m,df_view.loc[f,m]) <span class="cf">for</span> f <span class="kw">in</span> df_view.index <span class="cf">for</span> m <span class="kw">in</span> df_view.columns <span class="cf">if</span> <span class="kw">not</span> np.isnan(df_view.loc[f,m])])</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> [<span class="st">'X1'</span>,<span class="st">'X2'</span>,<span class="st">'y'</span>]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>X1</th>
+      <th>X2</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>옥순</td>
+      <td>영식</td>
+      <td>3.9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>옥순</td>
+      <td>영철</td>
+      <td>4.1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>옥순</td>
+      <td>광수</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>옥순</td>
+      <td>상철</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>영자</td>
+      <td>영식</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>영자</td>
+      <td>영호</td>
+      <td>3.7</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>영자</td>
+      <td>광수</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>영자</td>
+      <td>영수</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>정숙</td>
+      <td>영철</td>
+      <td>4.9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>정숙</td>
+      <td>영호</td>
+      <td>4.7</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>정숙</td>
+      <td>상철</td>
+      <td>1.2</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>정숙</td>
+      <td>영수</td>
+      <td>1.3</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>영숙</td>
+      <td>영식</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>영숙</td>
+      <td>영철</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>영숙</td>
+      <td>광수</td>
+      <td>4.1</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>영숙</td>
+      <td>상철</td>
+      <td>4.3</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>순자</td>
+      <td>영식</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>순자</td>
+      <td>영철</td>
+      <td>0.9</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>순자</td>
+      <td>광수</td>
+      <td>4.2</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>순자</td>
+      <td>영수</td>
+      <td>3.9</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>현숙</td>
+      <td>영철</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>현숙</td>
+      <td>영호</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>현숙</td>
+      <td>상철</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>현숙</td>
+      <td>영수</td>
+      <td>3.4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mapp1 <span class="op">=</span> {k[<span class="dv">1</span>]:k[<span class="dv">0</span>] <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">enumerate</span>(df.X1.unique())}</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>mapp2 <span class="op">=</span> {k[<span class="dv">1</span>]:k[<span class="dv">0</span>] <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">enumerate</span>(df.X2.unique())}</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>mapp1,mapp2</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>({'옥순': 0, '영자': 1, '정숙': 2, '영숙': 3, '순자': 4, '현숙': 5},
+ {'영식': 0, '영철': 1, '광수': 2, '상철': 3, '영호': 4, '영수': 5})</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>X1 <span class="op">=</span> torch.tensor(<span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> name: mapp1[name], df.X1)))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>X2 <span class="op">=</span> torch.tensor(<span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> name: mapp2[name], df.X2)))</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>X1 <span class="op">=</span> torch.nn.functional.one_hot(X1).<span class="bu">float</span>()</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>X2 <span class="op">=</span> torch.nn.functional.one_hot(X2).<span class="bu">float</span>()</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor(df.y).<span class="bu">float</span>()</span></code></pre></div>
+</div>
+<p><code>-</code> yhat을 구하는 과정..</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>l1 <span class="op">=</span> torch.nn.Linear(in_features<span class="op">=</span><span class="dv">6</span>,out_features<span class="op">=</span><span class="dv">2</span>) </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>l2 <span class="op">=</span> torch.nn.Linear(in_features<span class="op">=</span><span class="dv">6</span>,out_features<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>l1(X1) <span class="co"># 옥순~현숙의 성향들 </span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>tensor([[ 0.5101,  0.1558],
+        [ 0.5101,  0.1558],
+        [ 0.5101,  0.1558],
+        [ 0.5101,  0.1558],
+        [ 0.1860, -0.1332],
+        [ 0.1860, -0.1332],
+        [ 0.1860, -0.1332],
+        [ 0.1860, -0.1332],
+        [ 0.5840, -0.5035],
+        [ 0.5840, -0.5035],
+        [ 0.5840, -0.5035],
+        [ 0.5840, -0.5035],
+        [ 0.0356, -0.3052],
+        [ 0.0356, -0.3052],
+        [ 0.0356, -0.3052],
+        [ 0.0356, -0.3052],
+        [ 0.5411, -0.3360],
+        [ 0.5411, -0.3360],
+        [ 0.5411, -0.3360],
+        [ 0.5411, -0.3360],
+        [ 0.0738,  0.1614],
+        [ 0.0738,  0.1614],
+        [ 0.0738,  0.1614],
+        [ 0.0738,  0.1614]], grad_fn=&lt;AddmmBackward0&gt;)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>l2(X2) <span class="co"># 영식~영수의 성향들 </span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>tensor([[ 0.1939,  0.0405],
+        [ 0.1073, -0.2484],
+        [-0.0011, -0.2328],
+        [-0.1622, -0.1059],
+        [ 0.1939,  0.0405],
+        [-0.1635, -0.0460],
+        [-0.0011, -0.2328],
+        [-0.1319,  0.1783],
+        [ 0.1073, -0.2484],
+        [-0.1635, -0.0460],
+        [-0.1622, -0.1059],
+        [-0.1319,  0.1783],
+        [ 0.1939,  0.0405],
+        [ 0.1073, -0.2484],
+        [-0.0011, -0.2328],
+        [-0.1622, -0.1059],
+        [ 0.1939,  0.0405],
+        [ 0.1073, -0.2484],
+        [-0.0011, -0.2328],
+        [-0.1319,  0.1783],
+        [ 0.1073, -0.2484],
+        [-0.1635, -0.0460],
+        [-0.1622, -0.1059],
+        [-0.1319,  0.1783]], grad_fn=&lt;AddmmBackward0&gt;)</code></pre>
+</div>
+</div>
+<p><code>-</code> 몇개의 관측치만 생각해보자..</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>X1</th>
+      <th>X2</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>옥순</td>
+      <td>영식</td>
+      <td>3.9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>옥순</td>
+      <td>영철</td>
+      <td>4.1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>옥순</td>
+      <td>광수</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>옥순</td>
+      <td>상철</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>영자</td>
+      <td>영식</td>
+      <td>4.5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(l1(X1)[<span class="dv">0</span>]<span class="op">*</span>l2(X2)[<span class="dv">0</span>]).<span class="bu">sum</span>() <span class="co"># (옥순의성향 * 영식의성향).sum()</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>tensor(0.1052, grad_fn=&lt;SumBackward0&gt;)</code></pre>
+</div>
+</div>
+<ul>
+<li>이 값이 실제로는 3.9 이어야 한다.</li>
+</ul>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(l1(X1)[<span class="dv">1</span>]<span class="op">*</span>l2(X2)[<span class="dv">1</span>]).<span class="bu">sum</span>() <span class="co"># (옥순의성향 * 영철의성향).sum()</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>tensor(0.0160, grad_fn=&lt;SumBackward0&gt;)</code></pre>
+</div>
+</div>
+<ul>
+<li>이 값이 실제로는 4.1 이어야 한다.</li>
+</ul>
+<p><code>-</code> yhat을 구하면!</p>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>yhat <span class="op">=</span> (l1(X1) <span class="op">*</span> l2(X2)).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>) <span class="co"># (l1(X1) * l2(X2)).sum(1)와 결과가 같음 </span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>yhat</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>tensor([ 0.1052,  0.0160, -0.0369, -0.0992,  0.0307, -0.0243,  0.0308, -0.0483,
+         0.1877, -0.0724, -0.0414, -0.1668, -0.0054,  0.0796,  0.0710,  0.0265,
+         0.0913,  0.1415,  0.0776, -0.1313, -0.0322, -0.0195, -0.0291,  0.0190],
+       grad_fn=&lt;SumBackward1&gt;)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>yhat[:<span class="dv">2</span>],y[:<span class="dv">2</span>] <span class="co"># 이 값들이 비슷해야 하는데..</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>(tensor([0.1052, 0.0160], grad_fn=&lt;SliceBackward0&gt;), tensor([3.9000, 4.1000]))</code></pre>
+</div>
+</div>
+<p><code>-</code> 0~5 까지의 범위로 고정되어 있으니까 아래와 같이 해도 되겠음..</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>sig <span class="op">=</span> torch.nn.Sigmoid()</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>yhat <span class="op">=</span> sig((l1(X1) <span class="op">*</span> l2(X2)).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>))<span class="op">*</span><span class="dv">5</span> <span class="co"># (l1(X1) * l2(X2)).sum(1)와 결과가 같음 </span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>yhat</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>tensor([2.6314, 2.5200, 2.4539, 2.3760, 2.5383, 2.4696, 2.5385, 2.4397, 2.7340,
+        2.4096, 2.4482, 2.2920, 2.4932, 2.5995, 2.5887, 2.5332, 2.6140, 2.6766,
+        2.5970, 2.3361, 2.4598, 2.4756, 2.4637, 2.5238],
+       grad_fn=&lt;MulBackward0&gt;)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> torch.mean((y<span class="op">-</span>yhat)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>loss</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>tensor(3.2296, grad_fn=&lt;MeanBackward0&gt;)</code></pre>
+</div>
+</div>
+</section>
+<section id="torch를-이용한-학습" class="level2">
+<h2 class="anchored" data-anchor-id="torch를-이용한-학습">torch를 이용한 학습</h2>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">43052</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>l1 <span class="op">=</span> torch.nn.Linear(<span class="dv">6</span>,<span class="dv">2</span>) </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>l2 <span class="op">=</span> torch.nn.Linear(<span class="dv">6</span>,<span class="dv">2</span>)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>sig <span class="op">=</span> torch.nn.Sigmoid() </span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>loss_fn <span class="op">=</span> torch.nn.MSELoss() </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>optimizr <span class="op">=</span> torch.optim.Adam(<span class="bu">list</span>(l1.parameters())<span class="op">+</span><span class="bu">list</span>(l2.parameters()))</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoc <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5000</span>):</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 1 </span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    feature1 <span class="op">=</span> l1(X1)</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    feature2 <span class="op">=</span> l2(X2) </span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    matching_score <span class="op">=</span> (feature1<span class="op">*</span>feature2).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>) </span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    yhat <span class="op">=</span> sig(matching_score)<span class="op">*</span><span class="dv">5</span> <span class="co"># 만약에 1~3점이라면 "1+sig(matching_score)*2" 와 같이 하면 되었을듯 </span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 2 </span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> loss_fn(yhat,y)    </span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 3 </span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    loss.backward()    </span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 4 </span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>    optimizr.step()</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>    optimizr.zero_grad()</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>yhat</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>tensor([3.9382, 4.0624, 0.4665, 0.3353, 4.5038, 3.6975, 0.3562, 0.3558, 4.8614,
+        4.7208, 1.1813, 1.3158, 0.4606, 0.3573, 4.1288, 4.2734, 0.8611, 0.7347,
+        4.0493, 4.0464, 0.1810, 0.3124, 3.5031, 3.3948],
+       grad_fn=&lt;MulBackward0&gt;)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>tensor([3.9000, 4.1000, 0.5000, 0.3000, 4.5000, 3.7000, 0.5000, 0.2000, 4.9000,
+        4.7000, 1.2000, 1.3000, 0.6000, 0.2000, 4.1000, 4.3000, 0.7000, 0.9000,
+        4.2000, 3.9000, 0.2000, 0.3000, 3.5000, 3.4000])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>l1(X1) <span class="co"># 두번째 칼럼이 I 성향 점수로 "해석"된다</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>tensor([[-1.4663,  0.2938],
+        [-1.4663,  0.2938],
+        [-1.4663,  0.2938],
+        [-1.4663,  0.2938],
+        [-1.7086,  0.6597],
+        [-1.7086,  0.6597],
+        [-1.7086,  0.6597],
+        [-1.7086,  0.6597],
+        [-0.8705,  1.2945],
+        [-0.8705,  1.2945],
+        [-0.8705,  1.2945],
+        [-0.8705,  1.2945],
+        [ 1.1046, -0.8298],
+        [ 1.1046, -0.8298],
+        [ 1.1046, -0.8298],
+        [ 1.1046, -0.8298],
+        [ 0.9880, -0.5193],
+        [ 0.9880, -0.5193],
+        [ 0.9880, -0.5193],
+        [ 0.9880, -0.5193],
+        [ 0.6834, -1.2201],
+        [ 0.6834, -1.2201],
+        [ 0.6834, -1.2201],
+        [ 0.6834, -1.2201]], grad_fn=&lt;AddmmBackward0&gt;)</code></pre>
+</div>
+</div>
+<ul>
+<li>포인트: 여성출연자중, 정숙은 대체로 잘 맞춰주고 현숙은 그렇지 않았음.. <span class="math inline">\(\to\)</span> 그러한 가중치가 잘 드러남!!</li>
+</ul>
+</section>
+<section id="fastai를-이용한-학습" class="level2">
+<h2 class="anchored" data-anchor-id="fastai를-이용한-학습">fastai를 이용한 학습</h2>
+<p><code>(1)</code> dls</p>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>df.head() <span class="co"># 앞단계 전처리의 산물</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>X1</th>
+      <th>X2</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>옥순</td>
+      <td>영식</td>
+      <td>3.9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>옥순</td>
+      <td>영철</td>
+      <td>4.1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>옥순</td>
+      <td>광수</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>옥순</td>
+      <td>상철</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>영자</td>
+      <td>영식</td>
+      <td>4.5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> CollabDataLoaders.from_df(df,bs<span class="op">=</span><span class="dv">2</span>,valid_pct<span class="op">=</span><span class="dv">2</span><span class="op">/</span><span class="dv">24</span>)</span></code></pre></div>
+</div>
+<p><code>(2)</code> lrnr 생성</p>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>lrnr <span class="op">=</span> collab_learner(dls,n_factors<span class="op">=</span><span class="dv">2</span>,y_range<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span></code></pre></div>
+</div>
+<p><code>(3)</code> 학습</p>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>lrnr.fit(<span class="dv">30</span>,lr<span class="op">=</span><span class="fl">0.05</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>3.591074</td>
+      <td>3.904783</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>3.101654</td>
+      <td>3.466946</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2.374579</td>
+      <td>1.997278</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1.698134</td>
+      <td>0.770927</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1.231943</td>
+      <td>0.426845</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>0.926442</td>
+      <td>0.370695</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>0.712243</td>
+      <td>0.409414</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>0.555685</td>
+      <td>0.388226</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>0.438495</td>
+      <td>0.432698</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>0.349056</td>
+      <td>0.497208</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>0.280163</td>
+      <td>0.439011</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>0.225661</td>
+      <td>0.401682</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>0.182180</td>
+      <td>0.352246</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>0.147650</td>
+      <td>0.385491</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>0.119871</td>
+      <td>0.335851</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>0.097699</td>
+      <td>0.352764</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>0.079746</td>
+      <td>0.317207</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>0.065122</td>
+      <td>0.334073</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>0.053214</td>
+      <td>0.318105</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>0.043502</td>
+      <td>0.307008</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>0.035621</td>
+      <td>0.297896</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>0.029218</td>
+      <td>0.296005</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>0.024133</td>
+      <td>0.273959</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>0.019993</td>
+      <td>0.212600</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>0.016710</td>
+      <td>0.216026</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>0.014002</td>
+      <td>0.240446</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>0.012028</td>
+      <td>0.239832</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>0.011325</td>
+      <td>0.132652</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>0.011786</td>
+      <td>0.154043</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>0.010474</td>
+      <td>0.395495</td>
+      <td>00:00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<p><code>(4)</code> 예측</p>
+<p><strong>적합값 확인</strong></p>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>lrnr.show_results()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>X1</th>
+      <th>X2</th>
+      <th>y</th>
+      <th>y_pred</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>4.3</td>
+      <td>3.425303</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>0.5</td>
+      <td>0.660918</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<p><strong>(옥순의 궁합)</strong></p>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>df_new <span class="op">=</span> pd.DataFrame({<span class="st">'X1'</span>:[<span class="st">'옥순'</span>]<span class="op">*</span><span class="dv">6</span>, <span class="st">'X2'</span>:[<span class="st">'영식'</span>,<span class="st">'영철'</span>,<span class="st">'영호'</span>,<span class="st">'광수'</span>,<span class="st">'상철'</span>,<span class="st">'영수'</span>]})</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>df_new</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>X1</th>
+      <th>X2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>옥순</td>
+      <td>영식</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>옥순</td>
+      <td>영철</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>옥순</td>
+      <td>영호</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>옥순</td>
+      <td>광수</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>옥순</td>
+      <td>상철</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>옥순</td>
+      <td>영수</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>lrnr.get_preds(dl<span class="op">=</span>dls.test_dl(df_new))</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>(tensor([3.9011, 4.1288, 3.6021, 0.6609, 0.3678, 0.5451]), None)</code></pre>
+</div>
+</div>
+<p>비교를 위해서</p>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>df_view</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>영식</th>
+      <th>영철</th>
+      <th>영호</th>
+      <th>광수</th>
+      <th>상철</th>
+      <th>영수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>옥순</th>
+      <td>3.9</td>
+      <td>4.1</td>
+      <td>NaN</td>
+      <td>0.5</td>
+      <td>0.3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>영자</th>
+      <td>4.5</td>
+      <td>NaN</td>
+      <td>3.7</td>
+      <td>0.5</td>
+      <td>NaN</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>정숙</th>
+      <td>NaN</td>
+      <td>4.9</td>
+      <td>4.7</td>
+      <td>NaN</td>
+      <td>1.2</td>
+      <td>1.3</td>
+    </tr>
+    <tr>
+      <th>영숙</th>
+      <td>0.6</td>
+      <td>0.2</td>
+      <td>NaN</td>
+      <td>4.1</td>
+      <td>4.3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>순자</th>
+      <td>0.7</td>
+      <td>0.9</td>
+      <td>NaN</td>
+      <td>4.2</td>
+      <td>NaN</td>
+      <td>3.9</td>
+    </tr>
+    <tr>
+      <th>현숙</th>
+      <td>NaN</td>
+      <td>0.2</td>
+      <td>0.3</td>
+      <td>NaN</td>
+      <td>3.5</td>
+      <td>3.4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p><strong>(정숙의 궁합)</strong></p>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>df_new <span class="op">=</span> pd.DataFrame({<span class="st">'X1'</span>:[<span class="st">'정숙'</span>]<span class="op">*</span><span class="dv">6</span>, <span class="st">'X2'</span>:[<span class="st">'영식'</span>,<span class="st">'영철'</span>,<span class="st">'영호'</span>,<span class="st">'광수'</span>,<span class="st">'상철'</span>,<span class="st">'영수'</span>]})</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>df_new</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>X1</th>
+      <th>X2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>정숙</td>
+      <td>영식</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>정숙</td>
+      <td>영철</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>정숙</td>
+      <td>영호</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>정숙</td>
+      <td>광수</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>정숙</td>
+      <td>상철</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>정숙</td>
+      <td>영수</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>lrnr.get_preds(dl<span class="op">=</span>dls.test_dl(df_new))</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>(tensor([4.8320, 4.8423, 4.6991, 1.5996, 1.1552, 1.2886]), None)</code></pre>
+</div>
+</div>
+<p>높으면 잘 맞는다,</p>
+<p>비교를 위해서</p>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>df_view</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>영식</th>
+      <th>영철</th>
+      <th>영호</th>
+      <th>광수</th>
+      <th>상철</th>
+      <th>영수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>옥순</th>
+      <td>3.9</td>
+      <td>4.1</td>
+      <td>NaN</td>
+      <td>0.5</td>
+      <td>0.3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>영자</th>
+      <td>4.5</td>
+      <td>NaN</td>
+      <td>3.7</td>
+      <td>0.5</td>
+      <td>NaN</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>정숙</th>
+      <td>NaN</td>
+      <td>4.9</td>
+      <td>4.7</td>
+      <td>NaN</td>
+      <td>1.2</td>
+      <td>1.3</td>
+    </tr>
+    <tr>
+      <th>영숙</th>
+      <td>0.6</td>
+      <td>0.2</td>
+      <td>NaN</td>
+      <td>4.1</td>
+      <td>4.3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>순자</th>
+      <td>0.7</td>
+      <td>0.9</td>
+      <td>NaN</td>
+      <td>4.2</td>
+      <td>NaN</td>
+      <td>3.9</td>
+    </tr>
+    <tr>
+      <th>현숙</th>
+      <td>NaN</td>
+      <td>0.2</td>
+      <td>0.3</td>
+      <td>NaN</td>
+      <td>3.5</td>
+      <td>3.4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p><code>-</code> Appedix: fastai 구조공부..</p>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>lrnr.model</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>EmbeddingDotBias(
+  (u_weight): Embedding(7, 2)
+  (i_weight): Embedding(7, 2)
+  (u_bias): Embedding(7, 1)
+  (i_bias): Embedding(7, 1)
+)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>lrnr.model.forward??</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span> lrnr<span class="ansi-blue-fg">.</span>model<span class="ansi-blue-fg">.</span>forward<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">)</span>
+<span class="ansi-red-fg">Docstring:</span>
+Defines the computation performed at every call.
+Should be overridden by all subclasses.
+.. note::
+    Although the recipe for forward pass needs to be defined within
+    this function, one should call the :class:`Module` instance afterwards
+    instead of this since the former takes care of running the
+    registered hooks while the latter silently ignores them.
+<span class="ansi-red-fg">Source:</span>   
+    <span class="ansi-green-fg">def</span> forward<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> x<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+        users<span class="ansi-blue-fg">,</span>items <span class="ansi-blue-fg">=</span> x<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span>x<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span>
+        dot <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>u_weight<span class="ansi-blue-fg">(</span>users<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">*</span> self<span class="ansi-blue-fg">.</span>i_weight<span class="ansi-blue-fg">(</span>items<span class="ansi-blue-fg">)</span>
+        res <span class="ansi-blue-fg">=</span> dot<span class="ansi-blue-fg">.</span>sum<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">+</span> self<span class="ansi-blue-fg">.</span>u_bias<span class="ansi-blue-fg">(</span>users<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>squeeze<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">+</span> self<span class="ansi-blue-fg">.</span>i_bias<span class="ansi-blue-fg">(</span>items<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>squeeze<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+        <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>y_range <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span> <span class="ansi-green-fg">return</span> res
+        <span class="ansi-green-fg">return</span> torch<span class="ansi-blue-fg">.</span>sigmoid<span class="ansi-blue-fg">(</span>res<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">*</span> <span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>y_range<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">-</span>self<span class="ansi-blue-fg">.</span>y_range<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">+</span> self<span class="ansi-blue-fg">.</span>y_range<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-red-fg">File:</span>      ~/anaconda3/envs/py37/lib/python3.7/site-packages/fastai/collab.py
+<span class="ansi-red-fg">Type:</span>      method
+</pre>
+</div>
+</div>
+</div>
+<ul>
+<li>bias를 제외하면 우리가 짠 모형과 같음!</li>
+</ul>
+</section>
+</section>
+<section id="커피-or-홍차" class="level1">
+<h1>커피 or 홍차</h1>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">data</h2>
+<p><code>-</code> 예전에 살펴본 예제</p>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/DL2022/main/posts/I.%20Overview/2022-09-08-rcmd_anal.csv'</span>)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>user</th>
+      <th>item</th>
+      <th>rating</th>
+      <th>item_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>15</td>
+      <td>1.084308</td>
+      <td>홍차5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>4.149209</td>
+      <td>커피1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>11</td>
+      <td>1.142659</td>
+      <td>홍차1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>5</td>
+      <td>4.033415</td>
+      <td>커피5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>4</td>
+      <td>4.078139</td>
+      <td>커피4</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>995</th>
+      <td>100</td>
+      <td>18</td>
+      <td>4.104276</td>
+      <td>홍차8</td>
+    </tr>
+    <tr>
+      <th>996</th>
+      <td>100</td>
+      <td>17</td>
+      <td>4.164773</td>
+      <td>홍차7</td>
+    </tr>
+    <tr>
+      <th>997</th>
+      <td>100</td>
+      <td>14</td>
+      <td>4.026915</td>
+      <td>홍차4</td>
+    </tr>
+    <tr>
+      <th>998</th>
+      <td>100</td>
+      <td>4</td>
+      <td>0.838720</td>
+      <td>커피4</td>
+    </tr>
+    <tr>
+      <th>999</th>
+      <td>100</td>
+      <td>7</td>
+      <td>1.094826</td>
+      <td>커피7</td>
+    </tr>
+  </tbody>
+</table>
+<p>1000 rows × 4 columns</p>
+</div>
+</div>
+</div>
+<p><code>-</code> 기억을 살리기 위해서..</p>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>df_view <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/DL2022/main/posts/I.%20Overview/2022-09-08-rcmd_view.csv'</span>)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>df_view</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>커피1</th>
+      <th>커피2</th>
+      <th>커피3</th>
+      <th>커피4</th>
+      <th>커피5</th>
+      <th>커피6</th>
+      <th>커피7</th>
+      <th>커피8</th>
+      <th>커피9</th>
+      <th>커피10</th>
+      <th>홍차1</th>
+      <th>홍차2</th>
+      <th>홍차3</th>
+      <th>홍차4</th>
+      <th>홍차5</th>
+      <th>홍차6</th>
+      <th>홍차7</th>
+      <th>홍차8</th>
+      <th>홍차9</th>
+      <th>홍차10</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.149209</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.078139</td>
+      <td>4.033415</td>
+      <td>4.071871</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.142659</td>
+      <td>1.109452</td>
+      <td>NaN</td>
+      <td>0.603118</td>
+      <td>1.084308</td>
+      <td>NaN</td>
+      <td>0.906524</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.903826</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.031811</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.822704</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.071410</td>
+      <td>3.996206</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.839565</td>
+      <td>1.011315</td>
+      <td>NaN</td>
+      <td>1.120552</td>
+      <td>0.911340</td>
+      <td>NaN</td>
+      <td>0.860954</td>
+      <td>0.871482</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.082178</td>
+      <td>4.196436</td>
+      <td>NaN</td>
+      <td>3.956876</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.450931</td>
+      <td>3.972090</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.983838</td>
+      <td>NaN</td>
+      <td>0.918576</td>
+      <td>1.206796</td>
+      <td>0.913116</td>
+      <td>NaN</td>
+      <td>0.956194</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>4.000621</td>
+      <td>3.895570</td>
+      <td>NaN</td>
+      <td>3.838781</td>
+      <td>3.967183</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.105741</td>
+      <td>1.147554</td>
+      <td>NaN</td>
+      <td>1.346860</td>
+      <td>NaN</td>
+      <td>0.614099</td>
+      <td>1.297301</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.147545</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.888208</td>
+      <td>NaN</td>
+      <td>3.970330</td>
+      <td>3.979490</td>
+      <td>NaN</td>
+      <td>4.010982</td>
+      <td>NaN</td>
+      <td>0.920995</td>
+      <td>1.081111</td>
+      <td>0.999345</td>
+      <td>NaN</td>
+      <td>1.195183</td>
+      <td>NaN</td>
+      <td>0.818332</td>
+      <td>1.236331</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>0.511905</td>
+      <td>1.066144</td>
+      <td>NaN</td>
+      <td>1.315430</td>
+      <td>NaN</td>
+      <td>1.285778</td>
+      <td>NaN</td>
+      <td>0.678400</td>
+      <td>1.023020</td>
+      <td>0.886803</td>
+      <td>NaN</td>
+      <td>4.055996</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.156489</td>
+      <td>4.127622</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>NaN</td>
+      <td>1.035022</td>
+      <td>NaN</td>
+      <td>1.085834</td>
+      <td>NaN</td>
+      <td>0.812558</td>
+      <td>NaN</td>
+      <td>1.074543</td>
+      <td>NaN</td>
+      <td>0.852806</td>
+      <td>3.894772</td>
+      <td>NaN</td>
+      <td>4.071385</td>
+      <td>3.935935</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.989815</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.267142</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>NaN</td>
+      <td>1.115511</td>
+      <td>NaN</td>
+      <td>1.101395</td>
+      <td>0.878614</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.329319</td>
+      <td>NaN</td>
+      <td>4.125190</td>
+      <td>NaN</td>
+      <td>4.354638</td>
+      <td>3.811209</td>
+      <td>4.144648</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.116915</td>
+      <td>3.887823</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>NaN</td>
+      <td>0.850794</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.927884</td>
+      <td>0.669895</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.665429</td>
+      <td>1.387329</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.329404</td>
+      <td>4.111706</td>
+      <td>3.960197</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.725288</td>
+      <td>4.122072</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.413968</td>
+      <td>0.838720</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.094826</td>
+      <td>0.987888</td>
+      <td>NaN</td>
+      <td>1.177387</td>
+      <td>3.957383</td>
+      <td>4.136731</td>
+      <td>NaN</td>
+      <td>4.026915</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.164773</td>
+      <td>4.104276</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 20 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="모형" class="level2">
+<h2 class="anchored" data-anchor-id="모형">모형</h2>
+<p>(편의상 바이어스를 제외하면)</p>
+<p><code>-</code> 특징벡터:</p>
+<ul>
+<li>유저1의 취향 = [커피를 좋아하는 정도, 홍차를 좋아하는 정도]</li>
+<li>아이템1의 특징 = [커피의 특징, 홍차인 특징]</li>
+</ul>
+<p><code>-</code> 평점</p>
+<ul>
+<li>유저1이 아이템1을 먹었을경우 평점: 유저1의 취향과 아이템1의 특징의 내적 = (유저1의 취향 <span class="math inline">\(\odot\)</span> 아이템1의 특징).sum()</li>
+</ul>
+</section>
+<section id="학습" class="level2">
+<h2 class="anchored" data-anchor-id="학습">학습</h2>
+<p><code>(1)</code> dls</p>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> CollabDataLoaders.from_df(df)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>dls.items</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>user</th>
+      <th>item</th>
+      <th>rating</th>
+      <th>item_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>961</th>
+      <td>97</td>
+      <td>4</td>
+      <td>1.085834</td>
+      <td>커피4</td>
+    </tr>
+    <tr>
+      <th>320</th>
+      <td>33</td>
+      <td>4</td>
+      <td>3.994618</td>
+      <td>커피4</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>6</td>
+      <td>20</td>
+      <td>1.018980</td>
+      <td>홍차10</td>
+    </tr>
+    <tr>
+      <th>743</th>
+      <td>75</td>
+      <td>13</td>
+      <td>3.745429</td>
+      <td>홍차3</td>
+    </tr>
+    <tr>
+      <th>369</th>
+      <td>37</td>
+      <td>3</td>
+      <td>4.010463</td>
+      <td>커피3</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>14</td>
+      <td>4</td>
+      <td>3.826174</td>
+      <td>커피4</td>
+    </tr>
+    <tr>
+      <th>613</th>
+      <td>62</td>
+      <td>5</td>
+      <td>1.257438</td>
+      <td>커피5</td>
+    </tr>
+    <tr>
+      <th>543</th>
+      <td>55</td>
+      <td>20</td>
+      <td>4.140480</td>
+      <td>홍차10</td>
+    </tr>
+    <tr>
+      <th>351</th>
+      <td>36</td>
+      <td>9</td>
+      <td>4.057546</td>
+      <td>커피9</td>
+    </tr>
+    <tr>
+      <th>432</th>
+      <td>44</td>
+      <td>11</td>
+      <td>1.374712</td>
+      <td>홍차1</td>
+    </tr>
+  </tbody>
+</table>
+<p>800 rows × 4 columns</p>
+</div>
+</div>
+</div>
+<p><code>(2)</code> lrnr</p>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>lrnr <span class="op">=</span> collab_learner(dls,n_factors<span class="op">=</span><span class="dv">2</span>) <span class="co"># 교재에는 y_range 를 설정하도록 되어있지만 설정 안해도 적합에는 크게 상관없음..</span></span></code></pre></div>
+</div>
+<p><code>(3)</code> fit</p>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>lrnr.fit(<span class="dv">10</span>,<span class="fl">0.1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>5.737049</td>
+      <td>2.797844</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>3.731511</td>
+      <td>2.010181</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2.508080</td>
+      <td>0.507782</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1.719157</td>
+      <td>0.202478</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1.232710</td>
+      <td>0.094146</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>0.906034</td>
+      <td>0.071345</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>0.680708</td>
+      <td>0.064701</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>0.520706</td>
+      <td>0.060424</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>0.404349</td>
+      <td>0.059761</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>0.318644</td>
+      <td>0.064408</td>
+      <td>00:00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<p><code>(4)</code> predict</p>
+<p>(적합된 값 확인)</p>
+<div class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>lrnr.show_results() <span class="co"># 누를때마다 결과다름</span></span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>user</th>
+      <th>item</th>
+      <th>rating</th>
+      <th>rating_pred</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>60.0</td>
+      <td>14.0</td>
+      <td>4.000825</td>
+      <td>3.871396</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>44.0</td>
+      <td>1.0</td>
+      <td>3.906349</td>
+      <td>3.825386</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>67.0</td>
+      <td>20.0</td>
+      <td>4.144467</td>
+      <td>3.897682</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>22.0</td>
+      <td>4.0</td>
+      <td>4.192549</td>
+      <td>3.861295</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>22.0</td>
+      <td>5.0</td>
+      <td>3.576439</td>
+      <td>3.764175</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>20.0</td>
+      <td>5.0</td>
+      <td>4.457733</td>
+      <td>3.844410</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>96.0</td>
+      <td>2.0</td>
+      <td>1.066144</td>
+      <td>1.056824</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>28.0</td>
+      <td>7.0</td>
+      <td>3.968184</td>
+      <td>4.046108</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>14.0</td>
+      <td>11.0</td>
+      <td>0.829723</td>
+      <td>0.991227</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<p>(예측값)</p>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>df_new <span class="op">=</span> pd.DataFrame({<span class="st">'user'</span>:[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>], <span class="st">'item'</span>:[<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>]})</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>df_new</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>user</th>
+      <th>item</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>lrnr.get_preds(dl<span class="op">=</span>dls.test_dl(df_new))</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+<pre><code>(tensor([3.9138, 3.9825, 0.9447, 0.8223]), None)</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
