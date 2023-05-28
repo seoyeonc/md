@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="SEOYEON CHOI">
+<meta name="dcterms.date" content="2023-05-28">
+
+<title>Seoyeon’s Blog for classes - Attention Mechanism</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Seoyeon’s Blog for classes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../about.html" aria-current="page">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/seoyeonc/md/"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Attention Mechanism</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title d-none d-lg-block">Attention Mechanism</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Attention Mechanism</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>SEOYEON CHOI </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 28, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">About</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Posts</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ap/index.html" class="sidebar-item-text sidebar-link">Advanced Probability Theory</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-09-ap-10wk.html" class="sidebar-item-text sidebar-link">10wk: 확률변수, 분포 (2)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-07-ap_1wk.html" class="sidebar-item-text sidebar-link">1주차: 측도론</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-14-ap-2wk.html" class="sidebar-item-text sidebar-link">2주차: 측도론</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-21-ap-3wk.html" class="sidebar-item-text sidebar-link">3주차: 측도론</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-29-ap-4wk_2.html" class="sidebar-item-text sidebar-link">4wk: 측도론 (1)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-28-ap-4wk.html" class="sidebar-item-text sidebar-link">4wk: 측도론 intro (4)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-05-ap-5wk.html" class="sidebar-item-text sidebar-link">5wk: 측도론 (1)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-05-ap-5wk_2.html" class="sidebar-item-text sidebar-link">5wk: 측도론 (1)_2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-11-ap-6wk.html" class="sidebar-item-text sidebar-link">6wk: 측도론 (2)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-18-ap-7wk.html" class="sidebar-item-text sidebar-link">7wk: 측도론 (3)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-25-ap-8wk.html" class="sidebar-item-text sidebar-link">8wk: 확률공간,분포,확률변수</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-02-ap-9wk.html" class="sidebar-item-text sidebar-link">9wk: 확률변수, 분포 (1)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/rl/index.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-23-rl-final_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Final Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis GT</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Mid Term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">Regression HW 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-10-23-rl-HW2.html" class="sidebar-item-text sidebar-link">Regression HW 2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-21-rl-HW3.html" class="sidebar-item-text sidebar-link">Regression HW 3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-08-rl-HW4.html" class="sidebar-item-text sidebar-link">Regression HW 4</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-11-rl-Ch10.html" class="sidebar-item-text sidebar-link">고급회귀분석 CH10</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-09-21-rl_CH03, CH04.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH03, CH04</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-14-rl_CH06, CH07.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH06, CH07</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-23-rl-CH10.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH10</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-05-rl-CH11.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH11</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-28-rl-CH13.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH13</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/anything/index.html" class="sidebar-item-text sidebar-link">Anything</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-04-27-Clinical Trial Data and Survival Analysis.html" class="sidebar-item-text sidebar-link">Clinical Trial Data and Survival Analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-04-20-hazard_ratio,odds_ratio.html" class="sidebar-item-text sidebar-link">Hazard ratio, Odds ratio</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-05-04-questions of pytorch geometric temporal.html" class="sidebar-item-text sidebar-link">Questions of PyTorch Geometric Temporal</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-04-17-Survival_Analysis.html" class="sidebar-item-text sidebar-link">Survival Analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-05-25-Survival_R.html" class="sidebar-item-text sidebar-link">Survival Analysis Tutorial with R</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ct/index.html" class="sidebar-item-text sidebar-link">Coding Test</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-15-Coding_Test_Algorithm.html" class="sidebar-item-text sidebar-link">Algorithm</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-02-12-Coding_Test.html" class="sidebar-item-text sidebar-link">ArrayList &amp; LinkedList</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-01-Coding_Test_Greedy.html" class="sidebar-item-text sidebar-link">Chapter 03 Greedy</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/Untitled.html" class="sidebar-item-text sidebar-link">Map</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-03-12-Coding_Test_Queue.html" class="sidebar-item-text sidebar-link">Queue</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-03-05-Coding_Test_Stack.html" class="sidebar-item-text sidebar-link">Stack</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-03-22-Coding_Test_Tree.html" class="sidebar-item-text sidebar-link">Tree</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-15-Coding_Test_interfunction.html" class="sidebar-item-text sidebar-link">내장함수</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-23-Coding_Test_Q2.html" class="sidebar-item-text sidebar-link">두 큐 합 같게 만들기(Done)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-21-Coding_Test_Q1.html" class="sidebar-item-text sidebar-link">성격 유형 검사하기(Done)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-30-Coding_Test_Q3.html" class="sidebar-item-text sidebar-link">코딩 테스트 공부(Done)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ml_basic/index.html" class="sidebar-item-text sidebar-link">Machine Learning basic</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Attention Mechanism.html" class="sidebar-item-text sidebar-link active">Attention Mechanism</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-04-09-Clustering.html" class="sidebar-item-text sidebar-link">Clustering</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-04-02-Ensemble and Random Forest.html" class="sidebar-item-text sidebar-link">Ensemble and Random Forest</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-09-EM_algorithm.html" class="sidebar-item-text sidebar-link">Expectation Maximization(EM algorithm)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-29-Lasso and Ridge.html" class="sidebar-item-text sidebar-link">Lasso and Ridge</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-28-Linear Regression, Logistic Regression.html" class="sidebar-item-text sidebar-link">Logistic Regression</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-20-Manifold learning Embedding.html" class="sidebar-item-text sidebar-link">Manifold learning Embedding</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-28-Principal Component Analysis.html" class="sidebar-item-text sidebar-link">Principal Component Analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-31-Ridge Regression_note3_0331.html" class="sidebar-item-text sidebar-link">Ridge Regression</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Sequence-to-Sequence, seq2seq.html" class="sidebar-item-text sidebar-link">Sequence-to-Sequence, seq2seq</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-23-Support Vector Machine.html" class="sidebar-item-text sidebar-link">Support Vector Machine</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Attention is all you need.html" class="sidebar-item-text sidebar-link">Transformers</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ml/index.html" class="sidebar-item-text sidebar-link">Special Topics in Machine Learning</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-07-13wk.html" class="sidebar-item-text sidebar-link">A1: 깊은복사와 얕은복사 (12주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-19-Assignment-1-Copy1.html" class="sidebar-item-text sidebar-link">Assignment 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-19-ml_7w.html" class="sidebar-item-text sidebar-link">CNN (7주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-26-ml_8w_1.html" class="sidebar-item-text sidebar-link">CNN (8주차) 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-26-ml_8w_2.html" class="sidebar-item-text sidebar-link">CNN (8주차) 2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-29-13wk-2-final.html" class="sidebar-item-text sidebar-link">Deep Learning final example</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-07-ml_1w.html" class="sidebar-item-text sidebar-link">DNN (1주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-14-ml_2w.html" class="sidebar-item-text sidebar-link">DNN (2주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-21-ml_3w.html" class="sidebar-item-text sidebar-link">DNN (3주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-29-ml_4w.html" class="sidebar-item-text sidebar-link">DNN (4주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-05-ml-5w.html" class="sidebar-item-text sidebar-link">DNN (5주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-12-ml-6w.html" class="sidebar-item-text sidebar-link">DNN (6주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-21-Extra-1.html" class="sidebar-item-text sidebar-link">Extra-1: 추천시스템</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-21-Extra-2.html" class="sidebar-item-text sidebar-link">Extra-2: 생성모형(GAN)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-23-Extra-3.html" class="sidebar-item-text sidebar-link">Extra-3: 딥러닝의 기초 (5)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-13-final_seoyeon.html" class="sidebar-item-text sidebar-link">Finalterm</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-05-ml-HW.html" class="sidebar-item-text sidebar-link">Homework</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-07-ml.html" class="sidebar-item-text sidebar-link">Intro</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-02-ml-midterm.html" class="sidebar-item-text sidebar-link">Midterm</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-09-ml-10w.html" class="sidebar-item-text sidebar-link">RNN (10주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-21-ml-11w.html" class="sidebar-item-text sidebar-link">RNN (11주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-30-12wk.html" class="sidebar-item-text sidebar-link">RNN (12주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-08-13wk.html" class="sidebar-item-text sidebar-link">RNN (13주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-02-ml_9w.html" class="sidebar-item-text sidebar-link">RNN (9주차)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-14-study.html" class="sidebar-item-text sidebar-link">study</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ts/index.html" class="sidebar-item-text sidebar-link">Theoritical Statistics</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-25-ts-final term.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Final term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-ts-final_qanda.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Final term 6 Explanation</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-graduation_test.html" class="sidebar-item-text sidebar-link">Theoritical Statistics GT</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW1.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW2.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW3.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-09-ts_HW4.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW4</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-12-ts_HW5.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW5</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-14-ts_HW6.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW6</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-18-ts_HW7.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW7</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-18-ts-HW8.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW8</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-21-ts-HW9.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW9</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-14-ts_Mid term.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Mid term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2022-12-31-ts_1.html" class="sidebar-item-text sidebar-link">확률변수와 확률분포</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#attention-function" id="toc-attention-function" class="nav-link active" data-scroll-target="#attention-function">Attention Function</a>
+  <ul class="collapse">
+  <li><a href="#어텐션-모델의-요소" id="toc-어텐션-모델의-요소" class="nav-link" data-scroll-target="#어텐션-모델의-요소">어텐션 모델의 요소</a></li>
+  <li><a href="#dot-product-attention" id="toc-dot-product-attention" class="nav-link" data-scroll-target="#dot-product-attention">Dot-Product Attention</a>
+  <ul class="collapse">
+  <li><a href="#어텐션-스코어를-구한다." id="toc-어텐션-스코어를-구한다." class="nav-link" data-scroll-target="#어텐션-스코어를-구한다.">1. 어텐션 스코어를 구한다.</a></li>
+  <li><a href="#소프트맥스-함수를-통해-어텐션-분포를-구한다." id="toc-소프트맥스-함수를-통해-어텐션-분포를-구한다." class="nav-link" data-scroll-target="#소프트맥스-함수를-통해-어텐션-분포를-구한다.">2. 소프트맥스 함수를 통해 어텐션 분포를 구한다.</a></li>
+  <li><a href="#각-인코더의-어텐션-가중치와-은닉-상태를-가중합하여-어텐션-값을-구한다." id="toc-각-인코더의-어텐션-가중치와-은닉-상태를-가중합하여-어텐션-값을-구한다." class="nav-link" data-scroll-target="#각-인코더의-어텐션-가중치와-은닉-상태를-가중합하여-어텐션-값을-구한다.">3. 각 인코더의 어텐션 가중치와 은닉 상태를 가중합하여 어텐션 값을 구한다.</a></li>
+  <li><a href="#어텐션-값과-디코더의-t-시점의-은닉-상태를-연결한다." id="toc-어텐션-값과-디코더의-t-시점의-은닉-상태를-연결한다." class="nav-link" data-scroll-target="#어텐션-값과-디코더의-t-시점의-은닉-상태를-연결한다.">4. 어텐션 값과 디코더의 t 시점의 은닉 상태를 연결한다.</a></li>
+  <li><a href="#출력층-연산의-입력이-되는-tildes_t를-계산한다." id="toc-출력층-연산의-입력이-되는-tildes_t를-계산한다." class="nav-link" data-scroll-target="#출력층-연산의-입력이-되는-tildes_t를-계산한다.">5. 출력층 연산의 입력이 되는 <span class="math inline">\(\tilde{s}_t\)</span>를 계산한다.</a></li>
+  <li><a href="#tildes_t를-출력층의-입력으로-사용한다." id="toc-tildes_t를-출력층의-입력으로-사용한다." class="nav-link" data-scroll-target="#tildes_t를-출력층의-입력으로-사용한다.">6. <span class="math inline">\(\tilde{s}_t\)</span>를 출력층의 입력으로 사용한다.</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#다양한-종류의-어텐션" id="toc-다양한-종류의-어텐션" class="nav-link" data-scroll-target="#다양한-종류의-어텐션">다양한 종류의 어텐션</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<blockquote class="blockquote">
+<p>Attention Mechanism</p>
+</blockquote>
+<p>Ref: <a href="https://wikidocs.net/22893">딥 러닝을 위한 자연어 처리 입문</a></p>
+<p>RNN에 기반한 seq2seq 모델의 문제점</p>
+<ol type="1">
+<li>하나의 고정된 크기의 벡터에 모든 정보를 압축하려고 하니까 정보 손실이 발생</li>
+<li>RNN의 고질적인 문제인 기울기 소실 문제 존재</li>
+</ol>
+<p><span class="math inline">\(\to\)</span> 기계 번역 동안 입력 문장이 길면 품질이 떨어지는 현상 발생, 이의 대안으로 입력 시퀀스가 길어지면 출력 시퀀스의 정확도가 떨어지는 것을 보정해주기 위해 들장한 어텐션.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>그레디언트 기반의 학습에서 역전파할때 발생하는 문제로 0 근처의 숫자를 계속 곱하여 터지거나 0ㅇ으로 사는 상황</p></li>
+<li><p>그레디언트 기반의 학습</p>
+<ul>
+<li>소실함수의 기울기를 통하여 업데이트하는 방식</li>
+</ul></li>
+<li><p>역전파</p>
+<ul>
+<li>손실함수를 여러 단계로 쪼갠다(여러 합성 함수로 표현한다).</li>
+<li>각 단계의 미분값을 구한다,</li>
+<li>그것들을 모두 곱하여 기울기를 계산한다.</li>
+</ul></li>
+</ul>
+<p>참고: <a href="https://seoyeonc.github.io/chch/big%20data%20analysis/%EA%B8%B0%EC%9A%B8%EA%B8%B0%EC%86%8C%EB%A9%B8/%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C/2022/01/23/bd-12%EC%A3%BC%EC%B0%A8.html">빅데이터 분석 12주차</a></p>
+</div>
+</div>
+<section id="attention-function" class="level1">
+<h1>Attention Function</h1>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+    subgraph "Source"
+        subgraph B2
+            direction BT
+            Key1 --&gt; Value1
+            Key2 --&gt; Value2
+            Key3 --&gt; Value3
+        end
+    end
+  Query --&gt; Source --&gt; Attention\nValue
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[Attention(Q, K, V) = Attention Value\]</span></p>
+<ol type="1">
+<li>주어진 쿼리에 대해서 모든 키와의 유사도를 각각 구한다.</li>
+<li>구한 유사도를 키와 맵핑되어 있는 각각의 값value에 반영한다.</li>
+<li>유사도가 반영된 값을 모두 더해서 리턴한다. 여기서 값 = <strong>어텐션 값 attention value</strong></li>
+</ol>
+<section id="어텐션-모델의-요소" class="level3">
+<h3 class="anchored" data-anchor-id="어텐션-모델의-요소">어텐션 모델의 요소</h3>
+<ul>
+<li><code>Q</code>= Query
+<ul>
+<li>t 시점의 디코더 셀에서의 은닉 상태</li>
+</ul></li>
+<li><code>K</code> = Keys
+<ul>
+<li>모든 시점의 인코더 셀의 은닉 상태들</li>
+</ul></li>
+<li><code>V</code> = Values
+<ul>
+<li>모든 시점의 인코더 셀의 은닉 상태들</li>
+</ul></li>
+</ul>
+</section>
+<section id="dot-product-attention" class="level2">
+<h2 class="anchored" data-anchor-id="dot-product-attention">Dot-Product Attention</h2>
+<ul>
+<li>디코더의 마지막 LSTM 셀이 출력단어를 예측하기 위해 인코더의 모든 입력 단어들의 정보를 다시 참고하고자 함</li>
+<li>이 때, 소프트 맥스를 이용
+<ul>
+<li>인코더에 입력된 값들이 출력 단어를 예측할 때 얼마나 도움이 되었는지 수치화한 결과</li>
+<li>다시 디코더로 전달</li>
+<li>디코더가 출력 단어를 더 정확하게 예측하게 도와줌</li>
+</ul></li>
+</ul>
+<section id="어텐션-스코어를-구한다." class="level3">
+<h3 class="anchored" data-anchor-id="어텐션-스코어를-구한다.">1. 어텐션 스코어를 구한다.</h3>
+<ul>
+<li>인코더의 은닉 시점 time stamp = <span class="math inline">\(1,2, \dots, N\)</span></li>
+<li>인코더의 은닉 상태 hidden state = <span class="math inline">\(s_t\)</span>
+<ul>
+<li>단, 인코더와 디코더의 은닉 상태는 차원이 같음</li>
+</ul></li>
+</ul>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>디코더의 현재시점 t에서 필요한 입력값</p>
+<p>seq2seq</p>
+<ul>
+<li>이전 시점인 t-1의 은닉 상태</li>
+<li>이전 시점 t-1에서 나온 출력 단어</li>
+</ul>
+<p>attention</p>
+<ul>
+<li>이전 시점인 t-1의 은닉 상태</li>
+<li>이전 시점 t-1에서 나온 출력 단어</li>
+<li>어텐션 값 <span class="math inline">\(a_t\)</span></li>
+</ul>
+</div>
+</div>
+<p><strong>attention score 어텐션 값</strong></p>
+<ul>
+<li>현재 디코더의 시점 t에서 단어를 예측하기 위해 인코더의 모든 은닉 상태 각각이 디코더의 현 시점의 은닉 상태 <span class="math inline">\(s_t\)</span>와 얼마나 유사한지를 판단하는 스코어 값</li>
+</ul>
+<p>닷 프로덕트 어텐션은 은닉 상태 <span class="math inline">\(s_t\)</span>를 전치(transpose)하고, 각 은닉 상태와 내적(dot product)를 수행하여 스칼라 결과 어텐션 스코어 score 추출</p>
+<ul>
+<li><strong>닷 프러덕트 어텐션이라고 부르는 이유</strong></li>
+</ul>
+<p><span class="math display">\[score(s_t, h_i) = s_t^\top h_i\]</span></p>
+<p><span class="math display">\[e^t = [s_t^\top h_1, \dots, s_t^\top h_N]\]</span></p>
+<p><span class="math inline">\(e^t\)</span>는 <span class="math inline">\(s_t\)</span>와 인코더의 모든 은닉 상태의 어텐션 스코어의 모음값</p>
+</section>
+<section id="소프트맥스-함수를-통해-어텐션-분포를-구한다." class="level3">
+<h3 class="anchored" data-anchor-id="소프트맥스-함수를-통해-어텐션-분포를-구한다.">2. 소프트맥스 함수를 통해 어텐션 분포를 구한다.</h3>
+<ul>
+<li><span class="math inline">\(e^t\)</span>에 소프트맥스 함수 적용해서 합이 1이 되는 확률 분포 도출
+<ul>
+<li>각각 값은 어텐션 가중치 Attention weight</li>
+<li>분포는 어텐션 분포 Attention Distribution <span class="math inline">\(\alpha^t\)</span></li>
+</ul></li>
+</ul>
+<p><span class="math display">\[\alpha^t = softmax(e^t)\]</span></p>
+</section>
+<section id="각-인코더의-어텐션-가중치와-은닉-상태를-가중합하여-어텐션-값을-구한다." class="level3">
+<h3 class="anchored" data-anchor-id="각-인코더의-어텐션-가중치와-은닉-상태를-가중합하여-어텐션-값을-구한다.">3. 각 인코더의 어텐션 가중치와 은닉 상태를 가중합하여 어텐션 값을 구한다.</h3>
+<ul>
+<li>어텐션의 최종 결과값을 얻기 위해 각 인코더의 은닉상태 <span class="math inline">\(s_t\)</span>와 어텐션 가중치 값attention weight를 곱하고 가중합weighted sum인 어텐션 값attention value <span class="math inline">\(a_t\)</span>을 구한다.</li>
+</ul>
+<p><span class="math display">\[a_t = \sum^N_{i=1} \alpha_i^t h_i\]</span></p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>어텐션 값 attention value <span class="math inline">\(a_t\)</span>는 인코더의 문맥을 포함하고 있다고 하여 컨텐스트 벡터 context vector라고도 부른다.</p>
+<p>단, seq2seq에서는 인코더의 마지막 은닉 상태를 컨텍스트 벡터context vector라고 불렀음.</p>
+</div>
+</div>
+</section>
+<section id="어텐션-값과-디코더의-t-시점의-은닉-상태를-연결한다." class="level3">
+<h3 class="anchored" data-anchor-id="어텐션-값과-디코더의-t-시점의-은닉-상태를-연결한다.">4. 어텐션 값과 디코더의 t 시점의 은닉 상태를 연결한다.</h3>
+<ul>
+<li>어텐션 값<span class="math inline">\(a_t\)</span>와 디코더의 은닉 상태 <span class="math inline">\(s_t\)</span>를 결합concatenate하여 하나의 벡터로 만드는 작업을 수행한다. <span class="math inline">\(\to\)</span> <span class="math inline">\(v_t\)</span></li>
+<li>아 <span class="math inline">\(v_t\)</span>를 예측 연산의 입력으로 사용하무로서 인코더로부터 얻은 정보를 활용하여 <span class="math inline">\(\hat{y}\)</span>를 더 잘 예측할 수 있게 됨 <span class="math inline">\(\to\)</span> 어텐션 메커니즘의 핵심</li>
+</ul>
+</section>
+<section id="출력층-연산의-입력이-되는-tildes_t를-계산한다." class="level3">
+<h3 class="anchored" data-anchor-id="출력층-연산의-입력이-되는-tildes_t를-계산한다.">5. 출력층 연산의 입력이 되는 <span class="math inline">\(\tilde{s}_t\)</span>를 계산한다.</h3>
+<ul>
+<li>어텐션 값과 디코더의 t시점의 은닉 상태를 연결하고<span class="math inline">\(a_t s_t\)</span> tanh하이퍼볼릭탄젠트 함수를 통과하도록 해서 출력층 연산을 위한 새로운 벡터 <span class="math inline">\(\tilde{s}_t\)</span>를 얻는다.</li>
+</ul>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>seq2seq</p>
+<ul>
+<li>출력층의 입력이 t시점의 은닉 상태인 <span class="math inline">\(s_t\)</span></li>
+</ul>
+<p>attention</p>
+<ul>
+<li>출력츨의 입력이 <span class="math inline">\(\tilde{s}_t\)</span></li>
+</ul>
+</div>
+</div>
+<p><span class="math display">\[\tilde{s}_t = tanh(W_c[a_t;s_t] + b_c\]</span></p>
+<p><span class="math inline">\(b_c\)</span>는 편향</p>
+<p>참고: <a href="https://seoyeonc.github.io/chch/special%20topics%20in%20machine%20learning/%EC%88%9C%ED%99%98%EC%8B%A0%EA%B2%BD%EB%A7%9D/embedding%20layer/2022/11/02/ml_(9%EC%A3%BC%EC%B0%A8)_10%EC%9B%9431%EC%9D%BC.html">기계학습 특강 9주차 tanh</a></p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tanh <span class="op">=</span> torch.nn.Tanh()</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>_x <span class="op">=</span> torch.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">100</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.plot(_x,tanh(_x))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"tanh(x)"</span>, size<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>Text(0.5, 1.0, 'tanh(x)')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-05-28-Attention Mechanism_files/figure-html/cell-4-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="tildes_t를-출력층의-입력으로-사용한다." class="level3">
+<h3 class="anchored" data-anchor-id="tildes_t를-출력층의-입력으로-사용한다.">6. <span class="math inline">\(\tilde{s}_t\)</span>를 출력층의 입력으로 사용한다.</h3>
+<p><span class="math display">\[\hat{y}_t = Softmax(W_y \tilde{s}_t + b_y)\]</span></p>
+</section>
+</section>
+</section>
+<section id="다양한-종류의-어텐션" class="level1">
+<h1>다양한 종류의 어텐션</h1>
+<p><span class="math inline">\(s_t\)</span>는 query, <span class="math inline">\(h_i\)</span>는 keys, <span class="math inline">\(W_a\)</span>, <span class="math inline">\(W_b\)</span>는 학습 가능한 가중치 행렬</p>
+<table class="table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 27%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>이름</th>
+<th style="text-align: left;">스코어 함수</th>
+<th style="text-align: left;">defined by</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dot</td>
+<td style="text-align: left;"><span class="math inline">\(score(s_t,h_i) = s_t^\top h_i\)</span></td>
+<td style="text-align: left;">Luong et al.&nbsp;(2015)</td>
+</tr>
+<tr class="even">
+<td>scaled dot</td>
+<td style="text-align: left;"><span class="math inline">\(score(s_t,h_i) = \frac{s_t^\top h_i}{\sqrt{n}}\)</span></td>
+<td style="text-align: left;">Vaswani et al.&nbsp;(2017)</td>
+</tr>
+<tr class="odd">
+<td>general</td>
+<td style="text-align: left;"><span class="math inline">\(score(s_t,h_i) = s_t^\top W_a h_i\)</span> 단, <span class="math inline">\(W_a\)</span>는 학습 가능한 가중치 행렬</td>
+<td style="text-align: left;">Luong et al.&nbsp;(2015)</td>
+</tr>
+<tr class="even">
+<td>concat</td>
+<td style="text-align: left;"><span class="math inline">\(score(s_t, h_i) = W_a^\top tanh(W_b[s_t;h_i]),score(s_t,h_i) = W_a^\top tanh(W_b s_t + W_c h_i)\)</span></td>
+<td style="text-align: left;">Bahdanau et al.&nbsp;(2015)</td>
+</tr>
+<tr class="odd">
+<td>location-base</td>
+<td style="text-align: left;"><span class="math inline">\(\alpha_t = softmax(W_a s_t)\)</span> <span class="math inline">\(\alpha_t\)</span> 산출 시에 <span class="math inline">\(s_t\)</span>만 사용하는 방법</td>
+<td style="text-align: left;">Luong et al.&nbsp;(2015)</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
