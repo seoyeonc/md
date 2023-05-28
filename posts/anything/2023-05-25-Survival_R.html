@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="SEOYEON CHOI">
+<meta name="dcterms.date" content="2023-05-25">
 
-<title>Seoyeon's Blog for classes – survival_r</title>
+<title>Seoyeon’s Blog for classes - Survival Analysis Tutorial with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -121,6 +123,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -159,7 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"></h1>
+      <h1 class="quarto-secondary-nav-title">Survival Analysis Tutorial with R</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -167,7 +172,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title d-none d-lg-block">Survival Analysis Tutorial with R</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Suvival</div>
+                <div class="quarto-category">Hazard Ratio</div>
+                <div class="quarto-category">Odds Ratio</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>SEOYEON CHOI </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 25, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -355,17 +393,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/anything/2023-05-25-Survival_R.html" class="sidebar-item-text sidebar-link active">Odds Ratio</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../posts/anything/2023-05-04-questions of pytorch geometric temporal.html" class="sidebar-item-text sidebar-link">Questions of PyTorch Geometric Temporal</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/anything/2023-04-17-Survival_Analysis.html" class="sidebar-item-text sidebar-link">Survival Analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-05-25-Survival_R.html" class="sidebar-item-text sidebar-link active">Survival Analysis Tutorial with R</a>
   </div>
 </li>
       </ul>
@@ -445,6 +483,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Attention Mechanism.html" class="sidebar-item-text sidebar-link">Attention Mechanism</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ml_basic/2023-04-09-Clustering.html" class="sidebar-item-text sidebar-link">Clustering</a>
   </div>
 </li>
@@ -480,7 +523,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2021-03-31-Ridge Regression_note3_0331.html" class="sidebar-item-text sidebar-link">Ridge Regression</a>
+  <a href="../../posts/ml_basic/2023-03-31-Ridge Regression_note3_0331.html" class="sidebar-item-text sidebar-link">Ridge Regression</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -491,6 +534,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/ml_basic/2023-03-23-Support Vector Machine.html" class="sidebar-item-text sidebar-link">Support Vector Machine</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Attention is all you need.html" class="sidebar-item-text sidebar-link">Transformers</a>
   </div>
 </li>
       </ul>
@@ -746,29 +794,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>title: <span class="st">"Survival Analysis Tutorial with R"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>author: <span class="st">"SEOYEON CHOI"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>date: <span class="st">"2023-05-25"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>categories:</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> Suvival</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> Hazard Ratio</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> Odds Ratio</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="op">---</span></span></code></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>library(survival)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>library(survminer)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>library(epitools)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>library(tidyverse)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>library(ggplot2)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survminer)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(epitools)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 </div>
 <section id="odds-ratio" class="level1">
 <h1>Odds Ratio</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>head(lung) <span class="co"># survival package에 있는 lung 데이터 사용</span></span></code></pre></div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lung) <span class="co"># survival package에 있는 lung 데이터 사용</span></span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+<caption>A data.frame: 6 × 10</caption>
+<thead>
+    <tr><th></th><th scope="col">inst</th><th scope="col">time</th><th scope="col">status</th><th scope="col">age</th><th scope="col">sex</th><th scope="col">ph.ecog</th><th scope="col">ph.karno</th><th scope="col">pat.karno</th><th scope="col">meal.cal</th><th scope="col">wt.loss</th></tr>
+    <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td> 3</td><td> 306</td><td>2</td><td>74</td><td>1</td><td>1</td><td> 90</td><td>100</td><td>1175</td><td>NA</td></tr>
+    <tr><th scope="row">2</th><td> 3</td><td> 455</td><td>2</td><td>68</td><td>1</td><td>0</td><td> 90</td><td> 90</td><td>1225</td><td>15</td></tr>
+    <tr><th scope="row">3</th><td> 3</td><td>1010</td><td>1</td><td>56</td><td>1</td><td>0</td><td> 90</td><td> 90</td><td>  NA</td><td>15</td></tr>
+    <tr><th scope="row">4</th><td> 5</td><td> 210</td><td>2</td><td>57</td><td>1</td><td>1</td><td> 90</td><td> 60</td><td>1150</td><td>11</td></tr>
+    <tr><th scope="row">5</th><td> 1</td><td> 883</td><td>2</td><td>60</td><td>1</td><td>0</td><td>100</td><td> 90</td><td>  NA</td><td> 0</td></tr>
+    <tr><th scope="row">6</th><td>12</td><td>1022</td><td>1</td><td>74</td><td>1</td><td>1</td><td> 50</td><td> 80</td><td> 513</td><td> 0</td></tr>
+</tbody>
+</table>
+</div>
 </div>
 <section id="독립변수가-범주형변수일때" class="level2">
 <h2 class="anchored" data-anchor-id="독립변수가-범주형변수일때">독립변수가 범주형변수일때</h2>
@@ -793,43 +849,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="op">&lt;-</span> lung <span class="op">%&gt;%</span> mutate(tmp <span class="op">=</span> ifelse(ph.karno <span class="op">&lt;</span> <span class="dv">70</span>, <span class="dv">1</span>, <span class="dv">0</span>))<span class="op">;</span>tmp</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> lung <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">tmp =</span> <span class="fu">ifelse</span>(ph.karno <span class="sc">&lt;</span> <span class="dv">70</span>, <span class="dv">1</span>, <span class="dv">0</span>));tmp</span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="op">%&gt;%</span> select(sex, tmp) <span class="op">%&gt;%</span> table()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="sc">%&gt;%</span> <span class="fu">select</span>(sex, tmp) <span class="sc">%&gt;%</span> <span class="fu">table</span>()</span></code></pre></div>
 </div>
 <p>위의 표에서 tmp 가 0인 것이 성공, 1인 것이 실패로 보고, A집단이 성별 = 1, B집단이 성별 = 2로 본다면 오즈비는 아래와 같이 계산된다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A의 성공 확률</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">122</span><span class="op">/</span><span class="dv">137</span>)<span class="op">/</span>(<span class="dv">15</span><span class="op">/</span><span class="dv">137</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># = (122/137)/((137-122)/137)</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A의 성공 확률</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">122</span><span class="sc">/</span><span class="dv">137</span>)<span class="sc">/</span>(<span class="dv">15</span><span class="sc">/</span><span class="dv">137</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># = (122/137)/((137-122)/137)</span></span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># B의 성공 확률</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">80</span><span class="op">/</span><span class="dv">90</span>)<span class="op">/</span>(<span class="dv">10</span><span class="op">/</span><span class="dv">90</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># = (80/90)/((80-10)/90)</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># B의 성공 확률</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">80</span><span class="sc">/</span><span class="dv">90</span>)<span class="sc">/</span>(<span class="dv">10</span><span class="sc">/</span><span class="dv">90</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># = (80/90)/((80-10)/90)</span></span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 오즈비</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>((<span class="dv">122</span><span class="op">/</span><span class="dv">137</span>)<span class="op">/</span>(<span class="dv">15</span><span class="op">/</span><span class="dv">137</span>))<span class="op">/</span>((<span class="dv">80</span><span class="op">/</span><span class="dv">90</span>)<span class="op">/</span>(<span class="dv">10</span><span class="op">/</span><span class="dv">90</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 오즈비</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>((<span class="dv">122</span><span class="sc">/</span><span class="dv">137</span>)<span class="sc">/</span>(<span class="dv">15</span><span class="sc">/</span><span class="dv">137</span>))<span class="sc">/</span>((<span class="dv">80</span><span class="sc">/</span><span class="dv">90</span>)<span class="sc">/</span>(<span class="dv">10</span><span class="sc">/</span><span class="dv">90</span>))</span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>rst <span class="op">&lt;-</span> oddsratio.wald(tmp <span class="op">%&gt;%</span> select(sex, tmp) <span class="op">%&gt;%</span> table())</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>rst</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>rst <span class="ot">&lt;-</span> <span class="fu">oddsratio.wald</span>(tmp <span class="sc">%&gt;%</span> <span class="fu">select</span>(sex, tmp) <span class="sc">%&gt;%</span> <span class="fu">table</span>())</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>rst</span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rst$data</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>rst<span class="sc">$</span>data</span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>rst$measure <span class="co"># Odds Ratio</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rst<span class="sc">$</span>measure <span class="co"># Odds Ratio</span></span></code></pre></div>
 </div>
 <p>1보다 크게 나왔으니까 sex=1인 집단이 성공할 활률이 sex=2인 집단이 성공할 확률보다 높다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>rst$p.value <span class="co"># fisher or chi-square test result</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>rst<span class="sc">$</span>p.value <span class="co"># fisher or chi-square test result</span></span></code></pre></div>
 </div>
 <p>p값이 0.05보다 높게 나와 오즈비가 유의하지 않다는 것을 알 수 있다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>rst$correction <span class="co"># correction </span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>rst<span class="sc">$</span>correction <span class="co"># correction </span></span></code></pre></div>
 </div>
 </section>
 <section id="독립변수가-연속형변수일때" class="level2">
@@ -850,14 +906,14 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">&lt;-</span> glm(tmp <span class="op">~</span> wt.loss, data <span class="op">=</span> tmp, family <span class="op">=</span> binomial)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>summary(model)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(tmp <span class="sc">~</span> wt.loss, <span class="at">data =</span> tmp, <span class="at">family =</span> binomial)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>odds_ratio <span class="op">&lt;-</span> exp(coef(model))[[<span class="dv">2</span>]] <span class="co"># 오즈비</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ci_lower <span class="op">&lt;-</span> exp(confint(model))[<span class="dv">2</span>,][<span class="dv">1</span>] <span class="co"># 95% 신뢰구간 하한</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>ci_upper <span class="op">&lt;-</span> exp(confint(model))[<span class="dv">2</span>,][<span class="dv">2</span>] <span class="co"># 95% 신뢰구간 상한</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(odds_ratio<span class="op">=</span>odds_ratio,ci_lower<span class="op">=</span>ci_lower,ci_upper<span class="op">=</span>ci_upper)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>odds_ratio <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(model))[[<span class="dv">2</span>]] <span class="co"># 오즈비</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>ci_lower <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">confint</span>(model))[<span class="dv">2</span>,][<span class="dv">1</span>] <span class="co"># 95% 신뢰구간 하한</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>ci_upper <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">confint</span>(model))[<span class="dv">2</span>,][<span class="dv">2</span>] <span class="co"># 95% 신뢰구간 상한</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="at">odds_ratio=</span>odds_ratio,<span class="at">ci_lower=</span>ci_lower,<span class="at">ci_upper=</span>ci_upper)</span></code></pre></div>
 </div>
 </section>
 <section id="odds-ratio-plot" class="level2">
@@ -865,35 +921,35 @@ Tip
 <p>Data Ref: <a href="https://stackoverflow.com/questions/47085514/simple-way-to-visualise-odds-ratios-in-r">stackoverflow</a></p>
 <p>and Odds plot code made by me</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">&lt;-</span> data.frame(yAxis <span class="op">=</span> length(boxLabels):<span class="dv">1</span>, </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                 boxOdds <span class="op">=</span> log(c(<span class="fl">0.9410685</span>, </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="fl">0.6121181</span>, <span class="fl">1.1232907</span>, <span class="fl">1.2222137</span>, <span class="fl">0.4712629</span>, <span class="fl">0.9376822</span>, <span class="fl">1.0010816</span>, </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="fl">0.7121452</span>)), </span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                 boxCILow <span class="op">=</span> c(<span class="op">-</span><span class="fl">0.1789719</span>, <span class="op">-</span><span class="fl">0.8468693</span>,<span class="op">-</span><span class="fl">0.00109809</span>, <span class="fl">0.09021224</span>,</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                              <span class="op">-</span><span class="fl">1.0183040</span>, <span class="op">-</span><span class="fl">0.2014975</span>, <span class="op">-</span><span class="fl">0.1001832</span>,<span class="op">-</span><span class="fl">0.4695449</span>), </span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                 boxCIHigh <span class="op">=</span> c(<span class="fl">0.05633076</span>, <span class="op">-</span><span class="fl">0.1566818</span>, <span class="fl">0.2326694</span>, <span class="fl">0.3104405</span>, </span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                               <span class="op">-</span><span class="fl">0.4999281</span>, <span class="fl">0.07093752</span>, <span class="fl">0.1018351</span>, <span class="op">-</span><span class="fl">0.2113544</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">yAxis =</span> <span class="fu">length</span>(boxLabels)<span class="sc">:</span><span class="dv">1</span>, </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boxOdds =</span> <span class="fu">log</span>(<span class="fu">c</span>(<span class="fl">0.9410685</span>, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="fl">0.6121181</span>, <span class="fl">1.1232907</span>, <span class="fl">1.2222137</span>, <span class="fl">0.4712629</span>, <span class="fl">0.9376822</span>, <span class="fl">1.0010816</span>, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="fl">0.7121452</span>)), </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boxCILow =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1789719</span>, <span class="sc">-</span><span class="fl">0.8468693</span>,<span class="sc">-</span><span class="fl">0.00109809</span>, <span class="fl">0.09021224</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                              <span class="sc">-</span><span class="fl">1.0183040</span>, <span class="sc">-</span><span class="fl">0.2014975</span>, <span class="sc">-</span><span class="fl">0.1001832</span>,<span class="sc">-</span><span class="fl">0.4695449</span>), </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boxCIHigh =</span> <span class="fu">c</span>(<span class="fl">0.05633076</span>, <span class="sc">-</span><span class="fl">0.1566818</span>, <span class="fl">0.2326694</span>, <span class="fl">0.3104405</span>, </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                               <span class="sc">-</span><span class="fl">0.4999281</span>, <span class="fl">0.07093752</span>, <span class="fl">0.1018351</span>, <span class="sc">-</span><span class="fl">0.2113544</span>)</span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ggplot(data <span class="op">=</span> df,</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>       mapping <span class="op">=</span> aes(y <span class="op">=</span> forcats::fct_rev(f <span class="op">=</span> forcats::fct_inorder(f <span class="op">=</span> boxLabels)))) <span class="op">+</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  geom_point(aes(x <span class="op">=</span> boxOdds),size <span class="op">=</span> <span class="fl">1.5</span>, color <span class="op">=</span> <span class="st">"black"</span>)<span class="op">+</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  geom_errorbarh(aes(xmax <span class="op">=</span> boxCIHigh, xmin <span class="op">=</span> boxCILow), size <span class="op">=</span> <span class="fl">.5</span>, height <span class="op">=</span> <span class="fl">.2</span>, color <span class="op">=</span> <span class="st">"gray50"</span>) <span class="op">+</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  theme_classic()<span class="op">+</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  geom_vline(xintercept <span class="op">=</span> <span class="dv">1</span>) <span class="op">+</span> <span class="co"># 오즈비는 1을 기준으로 보기 때문에 1의 수직선을 그려줘야 한다.</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  theme(panel.grid.minor <span class="op">=</span> element_blank()) <span class="op">+</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  labs(x <span class="op">=</span> <span class="st">""</span>,  y <span class="op">=</span> <span class="st">""</span>, title <span class="op">=</span> <span class="st">"Odds ratio plot"</span>) <span class="op">+</span> </span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  scale_y_discrete(labels <span class="op">=</span> boxLabels)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> forcats<span class="sc">::</span><span class="fu">fct_rev</span>(<span class="at">f =</span> forcats<span class="sc">::</span><span class="fu">fct_inorder</span>(<span class="at">f =</span> boxLabels)))) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> boxOdds),<span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"black"</span>)<span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbarh</span>(<span class="fu">aes</span>(<span class="at">xmax =</span> boxCIHigh, <span class="at">xmin =</span> boxCILow), <span class="at">size =</span> .<span class="dv">5</span>, <span class="at">height =</span> .<span class="dv">2</span>, <span class="at">color =</span> <span class="st">"gray50"</span>) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># 오즈비는 1을 기준으로 보기 때문에 1의 수직선을 그려줘야 한다.</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>,  <span class="at">y =</span> <span class="st">""</span>, <span class="at">title =</span> <span class="st">"Odds ratio plot"</span>) <span class="sc">+</span> </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels =</span> boxLabels)</span></code></pre></div>
 </div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the method of save ggplot file</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># You can allocate path</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">file=</span> <span class="fu">paste0</span>(path,<span class="st">"name.png"</span>, <span class="at">sep=</span><span class="st">''</span>), <span class="at">width=</span><span class="dv">15</span>, <span class="at">height=</span><span class="dv">8</span>, <span class="at">units =</span> <span class="fu">c</span>(<span class="st">"cm"</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the method of save ggplot file</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># You can allocate path</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">file=</span> <span class="fu">paste0</span>(path,<span class="st">"name.png"</span>, <span class="at">sep=</span><span class="st">''</span>), <span class="at">width=</span><span class="dv">15</span>, <span class="at">height=</span><span class="dv">8</span>, <span class="at">units =</span> <span class="fu">c</span>(<span class="st">"cm"</span>))</span></code></pre></div>
 </section>
 </section>
 <section id="hazard-ratio" class="level1">
 <h1>Hazard Ratio</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>head(ovarian) <span class="co"># survival 패키지에 내장된 데이터 사용</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ovarian) <span class="co"># survival 패키지에 내장된 데이터 사용</span></span></code></pre></div>
 </div>
 <p>데이터 설명</p>
 <ul>
@@ -909,7 +965,7 @@ Tip
 <li>Surv()에 시간 <code>time</code>과 사건 <code>event</code>를 지정해주고 다변량 변수로서 rx와 age를 지정해주었다.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>summary(coxph(Surv(time <span class="op">=</span> futime, event <span class="op">=</span> fustat) <span class="op">~</span> <span class="im">as</span>.factor(rx) <span class="op">+</span> age, data<span class="op">=</span>ovarian))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">coxph</span>(<span class="fu">Surv</span>(<span class="at">time =</span> futime, <span class="at">event =</span> fustat) <span class="sc">~</span> <span class="fu">as.factor</span>(rx) <span class="sc">+</span> age, <span class="at">data=</span>ovarian))</span></code></pre></div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -940,15 +996,15 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>cova <span class="op">&lt;-</span> c(<span class="st">"resid.ds"</span>,<span class="st">"rx"</span>,<span class="st">"age"</span>) <span class="co"># 보고 싶은 단변량 변수명을 입력한다.</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>cova <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"resid.ds"</span>,<span class="st">"rx"</span>,<span class="st">"age"</span>) <span class="co"># 보고 싶은 단변량 변수명을 입력한다.</span></span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>univ <span class="op">&lt;-</span> lapply(cova, function(x) <span class="im">as</span>.formula(paste(<span class="st">'Surv(time = futime, event = fustat)~'</span>, x)))</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>univ</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 아래의 리스트를 생성</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Surv(time = futime, event = fustat) ~ resid.ds</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Surv(time = futime, event = fustat) ~ rx</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Surv(time = futime, event = fustat) ~ age</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>univ <span class="ot">&lt;-</span> <span class="fu">lapply</span>(cova, <span class="cf">function</span>(x) <span class="fu">as.formula</span>(<span class="fu">paste</span>(<span class="st">'Surv(time = futime, event = fustat)~'</span>, x)))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>univ</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 아래의 리스트를 생성</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Surv(time = futime, event = fustat) ~ resid.ds</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Surv(time = futime, event = fustat) ~ rx</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Surv(time = futime, event = fustat) ~ age</span></span></code></pre></div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -967,17 +1023,17 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>univ_rst <span class="op">&lt;-</span> lapply(univ, function(x) {</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  model <span class="op">&lt;-</span> coxph(x, data <span class="op">=</span> ovarian)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  summary <span class="op">&lt;-</span> summary(model)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  HR <span class="op">&lt;-</span> summary$coef[<span class="dv">2</span>]  <span class="co"># Hazard ratio</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  CI_lower <span class="op">&lt;-</span> summary$conf.<span class="bu">int</span>[,<span class="st">"lower .95"</span>]  <span class="co"># Lower bound of confidence interval</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  CI_upper <span class="op">&lt;-</span> summary$conf.<span class="bu">int</span>[,<span class="st">"upper .95"</span>]  <span class="co"># Upper bound of confidence interval</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  p_value <span class="op">&lt;-</span> summary$wald[<span class="st">"pvalue"</span>]  <span class="co"># P-value</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  tab <span class="op">&lt;-</span> c(HR, CI_lower, CI_upper)</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  names(tab) <span class="op">&lt;-</span> c(<span class="st">"HR"</span>, <span class="st">"lower"</span>, <span class="st">"upper"</span>)</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span>(tab)</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>univ_rst <span class="ot">&lt;-</span> <span class="fu">lapply</span>(univ, <span class="cf">function</span>(x) {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">coxph</span>(x, <span class="at">data =</span> ovarian)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  HR <span class="ot">&lt;-</span> summary<span class="sc">$</span>coef[<span class="dv">2</span>]  <span class="co"># Hazard ratio</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  CI_lower <span class="ot">&lt;-</span> summary<span class="sc">$</span>conf.int[,<span class="st">"lower .95"</span>]  <span class="co"># Lower bound of confidence interval</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  CI_upper <span class="ot">&lt;-</span> summary<span class="sc">$</span>conf.int[,<span class="st">"upper .95"</span>]  <span class="co"># Upper bound of confidence interval</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  p_value <span class="ot">&lt;-</span> summary<span class="sc">$</span>wald[<span class="st">"pvalue"</span>]  <span class="co"># P-value</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> <span class="fu">c</span>(HR, CI_lower, CI_upper)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(tab) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"HR"</span>, <span class="st">"lower"</span>, <span class="st">"upper"</span>)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(tab)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 </div>
 <p>콕스 비례 모형</p>
 <ul>
@@ -987,34 +1043,34 @@ Tip
 </ul>
 <p>ref: <a href="https://ko.wikipedia.org/wiki/%EB%B9%84%EB%A1%80%EC%9C%84%ED%97%98%EB%AA%A8%ED%98%95">콕스 비례 모형</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>univ_rst <span class="co"># 리스트별로 Hazard Rtio, 95% 신뢰구간을 구했다.</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>univ_rst <span class="co"># 리스트별로 Hazard Rtio, 95% 신뢰구간을 구했다.</span></span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>tab <span class="op">&lt;-</span> data.frame(t(data.frame(univ_rst, check.names <span class="op">=</span> FALSE)))</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># check.names = FALSE는 유효한 변수명인지 확인하지 말라는 옵션, 기본은 TRUE다.</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">t</span>(<span class="fu">data.frame</span>(univ_rst, <span class="at">check.names =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># check.names = FALSE는 유효한 변수명인지 확인하지 말라는 옵션, 기본은 TRUE다.</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div>
 </div>
 </section>
 <section id="hazard-ratio-plot" class="level2">
 <h2 class="anchored" data-anchor-id="hazard-ratio-plot">Hazard Ratio Plot</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">&lt;-</span> data.frame(yAxis <span class="op">=</span> length(cova):<span class="dv">1</span>, <span class="co"># 그래프에 그려지는 변수의 순서를 지정해주기 위함</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                 boxhz <span class="op">=</span> tab$HR,</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                 boxCILow <span class="op">=</span> tab$lower,</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                 boxCIHigh <span class="op">=</span> tab$upper)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">yAxis =</span> <span class="fu">length</span>(cova)<span class="sc">:</span><span class="dv">1</span>, <span class="co"># 그래프에 그려지는 변수의 순서를 지정해주기 위함</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boxhz =</span> tab<span class="sc">$</span>HR,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boxCILow =</span> tab<span class="sc">$</span>lower,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boxCIHigh =</span> tab<span class="sc">$</span>upper)</span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ggplot(data <span class="op">=</span> df,</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>       mapping <span class="op">=</span> aes(y <span class="op">=</span> forcats::fct_rev(f <span class="op">=</span> forcats::fct_inorder(f <span class="op">=</span> cova)))) <span class="op">+</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  geom_point(aes(x <span class="op">=</span> boxhz), size <span class="op">=</span> <span class="fl">1.5</span>, color <span class="op">=</span> <span class="st">"black"</span>)<span class="op">+</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  geom_errorbarh(aes(xmax <span class="op">=</span> boxCIHigh, xmin <span class="op">=</span> boxCILow), size <span class="op">=</span> <span class="fl">.5</span>, height <span class="op">=</span> <span class="fl">.2</span>, color <span class="op">=</span> <span class="st">"gray50"</span>) <span class="op">+</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  theme_classic()<span class="op">+</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  geom_vline(xintercept <span class="op">=</span> <span class="dv">1</span>) <span class="op">+</span></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  theme(panel.grid.minor <span class="op">=</span> element_blank()) <span class="op">+</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  labs(x <span class="op">=</span> <span class="st">""</span>,  y <span class="op">=</span> <span class="st">""</span>, title <span class="op">=</span> <span class="st">"Hazard ratio plot"</span>)  <span class="op">+</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  scale_y_discrete(labels <span class="op">=</span> rev(c(<span class="st">'residual disease present (1=no,2=yes)'</span>,</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">'treatment group'</span>,</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">'in years'</span>)))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df,</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> forcats<span class="sc">::</span><span class="fu">fct_rev</span>(<span class="at">f =</span> forcats<span class="sc">::</span><span class="fu">fct_inorder</span>(<span class="at">f =</span> cova)))) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> boxhz), <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"black"</span>)<span class="sc">+</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbarh</span>(<span class="fu">aes</span>(<span class="at">xmax =</span> boxCIHigh, <span class="at">xmin =</span> boxCILow), <span class="at">size =</span> .<span class="dv">5</span>, <span class="at">height =</span> .<span class="dv">2</span>, <span class="at">color =</span> <span class="st">"gray50"</span>) <span class="sc">+</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>,  <span class="at">y =</span> <span class="st">""</span>, <span class="at">title =</span> <span class="st">"Hazard ratio plot"</span>)  <span class="sc">+</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels =</span> <span class="fu">rev</span>(<span class="fu">c</span>(<span class="st">'residual disease present (1=no,2=yes)'</span>,</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">'treatment group'</span>,</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">'in years'</span>)))</span></code></pre></div>
 </div>
 </section>
 </section>
@@ -1026,10 +1082,10 @@ Tip
 <li>비모수적 분석방법</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>Surv(time <span class="op">=</span> lung$time, event <span class="op">=</span> lung$status)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Surv</span>(<span class="at">time =</span> lung<span class="sc">$</span>time, <span class="at">event =</span> lung<span class="sc">$</span>status)</span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot(Surv(time <span class="op">=</span> lung$time, event <span class="op">=</span> lung$status))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">Surv</span>(<span class="at">time =</span> lung<span class="sc">$</span>time, <span class="at">event =</span> lung<span class="sc">$</span>status))</span></code></pre></div>
 </div>
 <section id="log-rank-test" class="level2">
 <h2 class="anchored" data-anchor-id="log-rank-test">Log-Rank Test</h2>
@@ -1040,7 +1096,7 @@ Tip
 <li>p값이 0.05보다 작을 경우 생존 곡선 간에 차이가 있는 것으로 본다.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>survdiff(Surv(time <span class="op">=</span> time, event <span class="op">=</span> status) <span class="op">~</span> sex, data<span class="op">=</span>lung) <span class="co"># lung 데이터에서 성별에 따른 생존곡선 차이 비교</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">survdiff</span>(<span class="fu">Surv</span>(<span class="at">time =</span> time, <span class="at">event =</span> status) <span class="sc">~</span> sex, <span class="at">data=</span>lung) <span class="co"># lung 데이터에서 성별에 따른 생존곡선 차이 비교</span></span></code></pre></div>
 </div>
 <p>p 값이 0.0001로 나와 생존 곡선 간에 차이가 있다는 것을 알 수 있다.</p>
 </section>
@@ -1048,62 +1104,62 @@ Tip
 <h2 class="anchored" data-anchor-id="survival-plot">Survival plot</h2>
 <p>Ref : <a href="https://gist.github.com/araastat/9927677">ggkm</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>ggkm <span class="op">&lt;-</span> function(sfit, returns <span class="op">=</span> FALSE,</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>xlabs <span class="op">=</span> <span class="st">"Time"</span>, ylabs <span class="op">=</span> <span class="st">"survival probability"</span>,</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>ystratalabs <span class="op">=</span> NULL, ystrataname <span class="op">=</span> NULL,</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>timeby <span class="op">=</span> <span class="dv">100</span>, main <span class="op">=</span> <span class="st">"Kaplan-Meier Plot"</span>,</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>pval <span class="op">=</span> TRUE, ...) {</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>require(plyr)</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>require(ggplot2)</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>require(survival)</span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>require(gridExtra)</span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="kw">is</span>.null(ystratalabs)) {</span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>   ystratalabs <span class="op">&lt;-</span> <span class="im">as</span>.character(levels(summary(sfit)$strata))</span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>m <span class="op">&lt;-</span> <span class="bu">max</span>(nchar(ystratalabs))</span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="kw">is</span>.null(ystrataname)) ystrataname <span class="op">&lt;-</span> <span class="st">"Strata"</span></span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>times <span class="op">&lt;-</span> seq(<span class="dv">0</span>, <span class="bu">max</span>(sfit$time), by <span class="op">=</span> timeby)</span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>.df <span class="op">&lt;-</span> data.frame(time <span class="op">=</span> sfit$time, n.risk <span class="op">=</span> sfit$n.risk,</span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>    n.event <span class="op">=</span> sfit$n.event, surv <span class="op">=</span> sfit$surv, strata <span class="op">=</span> summary(sfit, censored <span class="op">=</span> T)$strata,</span>
-<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>    upper <span class="op">=</span> sfit$upper, lower <span class="op">=</span> sfit$lower)</span>
-<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>levels(.df$strata) <span class="op">&lt;-</span> ystratalabs</span>
-<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>zeros <span class="op">&lt;-</span> data.frame(time <span class="op">=</span> <span class="dv">0</span>, surv <span class="op">=</span> <span class="dv">1</span>, strata <span class="op">=</span> factor(ystratalabs, levels<span class="op">=</span>levels(.df$strata)),</span>
-<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>    upper <span class="op">=</span> <span class="dv">1</span>, lower <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>.df <span class="op">&lt;-</span> rbind.fill(zeros, .df)</span>
-<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>d <span class="op">&lt;-</span> length(levels(.df$strata))</span>
-<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> ggplot(.df, aes(time, surv, group <span class="op">=</span> strata)) <span class="op">+</span></span>
-<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>    geom_step(aes(linetype <span class="op">=</span> strata), size <span class="op">=</span> <span class="fl">0.7</span>) <span class="op">+</span></span>
-<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>    theme_bw() <span class="op">+</span></span>
-<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>    theme(axis.title.x <span class="op">=</span> element_text(vjust <span class="op">=</span> <span class="fl">0.5</span>)) <span class="op">+</span></span>
-<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>    scale_x_continuous(xlabs, breaks <span class="op">=</span> times, limits <span class="op">=</span> c(<span class="dv">0</span>, <span class="bu">max</span>(sfit$time))) <span class="op">+</span></span>
-<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>    scale_y_continuous(ylabs, limits <span class="op">=</span> c(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="op">+</span></span>
-<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>    theme(panel.grid.minor <span class="op">=</span> element_blank()) <span class="op">+</span></span>
-<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>    theme(legend.position <span class="op">=</span> c(ifelse(m <span class="op">&lt;</span> <span class="dv">10</span>, <span class="fl">.28</span>, <span class="fl">.35</span>), ifelse(d <span class="op">&lt;</span> <span class="dv">4</span>, <span class="fl">.25</span>, <span class="fl">.35</span>))) <span class="op">+</span></span>
-<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>    theme(legend.key <span class="op">=</span> element_rect(colour <span class="op">=</span> NA)) <span class="op">+</span></span>
-<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a>    labs(linetype <span class="op">=</span> ystrataname) <span class="op">+</span></span>
-<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>    theme(plot.margin <span class="op">=</span> unit(c(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">.5</span>, ifelse(m <span class="op">&lt;</span> <span class="dv">10</span>, <span class="fl">1.5</span>, <span class="fl">2.5</span>)), <span class="st">"lines"</span>)) <span class="op">+</span></span>
-<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>    ggtitle(main)</span>
-<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(pval) {</span>
-<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a>    sdiff <span class="op">&lt;-</span> survdiff(<span class="bu">eval</span>(sfit$call$formula), data <span class="op">=</span> <span class="bu">eval</span>(sfit$call$data))</span>
-<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a>    pval <span class="op">&lt;-</span> pchisq(sdiff$chisq, length(sdiff$n)<span class="op">-</span><span class="dv">1</span>, lower.tail <span class="op">=</span> FALSE)</span>
-<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>    pvaltxt <span class="op">&lt;-</span> ifelse(pval <span class="op">&lt;</span> <span class="fl">0.0001</span>, <span class="st">"p &lt; 0.0001"</span>, paste(<span class="st">"p ="</span>, sprintf(<span class="st">"</span><span class="sc">%.4f</span><span class="st">"</span>, pval) ))</span>
-<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a>    p <span class="op">&lt;-</span> p <span class="op">+</span> annotate(<span class="st">"text"</span>, x <span class="op">=</span> <span class="fl">0.6</span> <span class="op">*</span> <span class="bu">max</span>(sfit$time), y <span class="op">=</span> <span class="fl">0.1</span>, label <span class="op">=</span> pvaltxt)</span>
-<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a><span class="co">## Plotting the graphs</span></span>
-<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(p)</span>
-<span id="cb31-45"><a href="#cb31-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(returns) <span class="cf">return</span>(p)</span>
-<span id="cb31-46"><a href="#cb31-46" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>ggkm <span class="ot">&lt;-</span> <span class="cf">function</span>(sfit, <span class="at">returns =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="at">xlabs =</span> <span class="st">"Time"</span>, <span class="at">ylabs =</span> <span class="st">"survival probability"</span>,</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="at">ystratalabs =</span> <span class="cn">NULL</span>, <span class="at">ystrataname =</span> <span class="cn">NULL</span>,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="at">timeby =</span> <span class="dv">100</span>, <span class="at">main =</span> <span class="st">"Kaplan-Meier Plot"</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="at">pval =</span> <span class="cn">TRUE</span>, ...) {</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(plyr)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ggplot2)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(survival)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(gridExtra)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.null</span>(ystratalabs)) {</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>   ystratalabs <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">levels</span>(<span class="fu">summary</span>(sfit)<span class="sc">$</span>strata))</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="fu">nchar</span>(ystratalabs))</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.null</span>(ystrataname)) ystrataname <span class="ot">&lt;-</span> <span class="st">"Strata"</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>times <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">max</span>(sfit<span class="sc">$</span>time), <span class="at">by =</span> timeby)</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time =</span> sfit<span class="sc">$</span>time, <span class="at">n.risk =</span> sfit<span class="sc">$</span>n.risk,</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">n.event =</span> sfit<span class="sc">$</span>n.event, <span class="at">surv =</span> sfit<span class="sc">$</span>surv, <span class="at">strata =</span> <span class="fu">summary</span>(sfit, <span class="at">censored =</span> T)<span class="sc">$</span>strata,</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">upper =</span> sfit<span class="sc">$</span>upper, <span class="at">lower =</span> sfit<span class="sc">$</span>lower)</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(.df<span class="sc">$</span>strata) <span class="ot">&lt;-</span> ystratalabs</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>zeros <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time =</span> <span class="dv">0</span>, <span class="at">surv =</span> <span class="dv">1</span>, <span class="at">strata =</span> <span class="fu">factor</span>(ystratalabs, <span class="at">levels=</span><span class="fu">levels</span>(.df<span class="sc">$</span>strata)),</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">upper =</span> <span class="dv">1</span>, <span class="at">lower =</span> <span class="dv">1</span>)</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>.df <span class="ot">&lt;-</span> <span class="fu">rbind.fill</span>(zeros, .df)</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">levels</span>(.df<span class="sc">$</span>strata))</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(.df, <span class="fu">aes</span>(time, surv, <span class="at">group =</span> strata)) <span class="sc">+</span></span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_step</span>(<span class="fu">aes</span>(<span class="at">linetype =</span> strata), <span class="at">size =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(xlabs, <span class="at">breaks =</span> times, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(sfit<span class="sc">$</span>time))) <span class="sc">+</span></span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(ylabs, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fu">ifelse</span>(m <span class="sc">&lt;</span> <span class="dv">10</span>, .<span class="dv">28</span>, .<span class="dv">35</span>), <span class="fu">ifelse</span>(d <span class="sc">&lt;</span> <span class="dv">4</span>, .<span class="dv">25</span>, .<span class="dv">35</span>))) <span class="sc">+</span></span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.key =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="cn">NA</span>)) <span class="sc">+</span></span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">linetype =</span> ystrataname) <span class="sc">+</span></span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.margin =</span> <span class="fu">unit</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, .<span class="dv">5</span>, <span class="fu">ifelse</span>(m <span class="sc">&lt;</span> <span class="dv">10</span>, <span class="fl">1.5</span>, <span class="fl">2.5</span>)), <span class="st">"lines"</span>)) <span class="sc">+</span></span>
+<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(main)</span>
+<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(pval) {</span>
+<span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a>    sdiff <span class="ot">&lt;-</span> <span class="fu">survdiff</span>(<span class="fu">eval</span>(sfit<span class="sc">$</span>call<span class="sc">$</span>formula), <span class="at">data =</span> <span class="fu">eval</span>(sfit<span class="sc">$</span>call<span class="sc">$</span>data))</span>
+<span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a>    pval <span class="ot">&lt;-</span> <span class="fu">pchisq</span>(sdiff<span class="sc">$</span>chisq, <span class="fu">length</span>(sdiff<span class="sc">$</span>n)<span class="sc">-</span><span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a>    pvaltxt <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(pval <span class="sc">&lt;</span> <span class="fl">0.0001</span>, <span class="st">"p &lt; 0.0001"</span>, <span class="fu">paste</span>(<span class="st">"p ="</span>, <span class="fu">sprintf</span>(<span class="st">"%.4f"</span>, pval) ))</span>
+<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">0.6</span> <span class="sc">*</span> <span class="fu">max</span>(sfit<span class="sc">$</span>time), <span class="at">y =</span> <span class="fl">0.1</span>, <span class="at">label =</span> pvaltxt)</span>
+<span id="cb30-42"><a href="#cb30-42" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb30-43"><a href="#cb30-43" aria-hidden="true" tabindex="-1"></a><span class="do">## Plotting the graphs</span></span>
+<span id="cb30-44"><a href="#cb30-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(p)</span>
+<span id="cb30-45"><a href="#cb30-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(returns) <span class="fu">return</span>(p)</span>
+<span id="cb30-46"><a href="#cb30-46" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb30-47"><a href="#cb30-47" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <p>사용법</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>labs<span class="op">=</span>paste(<span class="st">"성별"</span>,c(<span class="st">"Male"</span>,<span class="st">"Female"</span>))  <span class="co"># legend 항목 지정 test-ref 순</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>strataname<span class="op">=</span>paste(<span class="st">"Sex"</span>) <span class="co"># legend 명 지정</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>labs<span class="ot">=</span><span class="fu">paste</span>(<span class="st">"성별"</span>,<span class="fu">c</span>(<span class="st">"Male"</span>,<span class="st">"Female"</span>))  <span class="co"># legend 항목 지정 test-ref 순</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>strataname<span class="ot">=</span><span class="fu">paste</span>(<span class="st">"Sex"</span>) <span class="co"># legend 명 지정</span></span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>lung$temp<span class="op">=</span>ifelse(lung$sex<span class="op">==</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># Ref 지정, Ref=0, Test-Ref 순으로 그래프가 그려짐</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 여기서는 여성(sex=2)를 ref로 지정해주었다.</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>lung<span class="sc">$</span>temp<span class="ot">=</span><span class="fu">ifelse</span>(lung<span class="sc">$</span>sex<span class="sc">==</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># Ref 지정, Ref=0, Test-Ref 순으로 그래프가 그려짐</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 여기서는 여성(sex=2)를 ref로 지정해주었다.</span></span></code></pre></div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -1119,56 +1175,56 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>fit<span class="op">=</span>survfit(Surv(time <span class="op">=</span> time, event <span class="op">=</span> status)<span class="op">~</span>temp ,data<span class="op">=</span>lung)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>fit</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">=</span><span class="fu">survfit</span>(<span class="fu">Surv</span>(<span class="at">time =</span> time, <span class="at">event =</span> status)<span class="sc">~</span>temp ,<span class="at">data=</span>lung)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>fit</span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>ggkm(fit,timeby<span class="op">=</span><span class="dv">500</span>,ystratalabs<span class="op">=</span>labs,ystrataname<span class="op">=</span>strataname, main <span class="op">=</span> <span class="st">'Survival'</span>, ylab<span class="op">=</span><span class="st">'Event'</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggkm</span>(fit,<span class="at">timeby=</span><span class="dv">500</span>,<span class="at">ystratalabs=</span>labs,<span class="at">ystrataname=</span>strataname, <span class="at">main =</span> <span class="st">'Survival'</span>, <span class="at">ylab=</span><span class="st">'Event'</span>)</span></code></pre></div>
 </div>
 <p>참고로, 아래와 같이 <code>summary</code> 해주면 단변량의 항목별로 시간별로 볼 수 있다.</p>
 <p>또한, 가장 마지막 값 저장하기 위해 아래 코드 사용 가능</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>(<span class="st">'summary.txt'</span>)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit) </span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>(<span class="st">'summary.txt'</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit) </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>()</span></code></pre></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>summary(fit)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
 </div>
 </section>
 </section>
 <section id="appendix" class="level1">
 <h1>Appendix</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>surv_func_each <span class="op">&lt;-</span> function(df, date_col, event_col, cova_col) {</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  df_temp <span class="op">&lt;-</span> df[complete.cases(df[, c(date_col, event_col, cova_col)]), ]</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  date_temp <span class="op">&lt;-</span> df_temp[, date_col] <span class="op">/</span> <span class="fl">365.25</span> <span class="co"># for using data as day</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  surv_temp <span class="op">&lt;-</span> Surv(time <span class="op">=</span> date_temp, event <span class="op">=</span> <span class="im">as</span>.numeric(df_temp[, event_col]))</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  coxph_fit <span class="op">&lt;-</span> coxph(<span class="im">as</span>.formula(paste(<span class="st">"surv_temp ~"</span>, cova_col)), data <span class="op">=</span> df_temp) <span class="co"># cox model</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  result_temp <span class="op">&lt;-</span> summary(survfit(surv_temp <span class="op">~</span> df_temp[, cova_col], data <span class="op">=</span> df_temp))</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># p_val &lt;- pfunc(round(summary(coxph_fit)$coefficients[paste(cova_col), "Pr(&gt;|z|)"],4))</span></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  nor <span class="op">&lt;-</span> survdiff(surv_temp <span class="op">~</span> df_temp[, cova_col], data <span class="op">=</span> df_temp) <span class="co"># km test</span></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  nor_p <span class="op">&lt;-</span> <span class="bu">round</span>((<span class="dv">1</span> <span class="op">-</span> pchisq(nor$chisq, length(nor$n) <span class="op">-</span> <span class="dv">1</span>)),<span class="dv">4</span>) <span class="co"># log rank test</span></span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  <span class="bu">list</span>(<span class="st">"surv"</span> <span class="op">=</span> result_temp, <span class="st">"nor_p"</span> <span class="op">=</span> nor_p,<span class="st">"coxph_fit"</span><span class="op">=</span>coxph_fit)</span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>surv_log_p <span class="op">&lt;-</span>function(df,date_col,event_col,cova_col,title){</span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>  df_temp <span class="op">&lt;-</span> surv_func_each(df,date_col,event_col,cova_col)</span>
-<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>  filename <span class="op">&lt;-</span> paste(path4,cova_col,<span class="st">"_"</span>,title,<span class="st">".txt"</span>, sep<span class="op">=</span><span class="st">''</span>)</span>
-<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>  sink(filename)</span>
-<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(df_temp$surv) <span class="co">#데이터 결과 txt로 저장</span></span>
-<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>  sink()</span>
-<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>  lines <span class="op">&lt;-</span> readLines(filename)</span>
-<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>  index <span class="op">&lt;-</span> which(grepl( <span class="st">"  time n.risk n.event survival std.err lower 95% CI upper 95% CI"</span>, lines))</span>
-<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>  line1 <span class="op">&lt;-</span> strsplit(lines[index <span class="op">-</span> <span class="dv">3</span>][<span class="dv">2</span>], <span class="st">"</span><span class="ch">\\</span><span class="st">s+"</span>)[[<span class="dv">1</span>]]</span>
-<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>  line2 <span class="op">&lt;-</span> strsplit(tail(lines, n <span class="op">=</span> <span class="dv">2</span>)[<span class="dv">1</span>], <span class="st">"</span><span class="ch">\\</span><span class="st">s+"</span>)[[<span class="dv">1</span>]]</span>
-<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>  out <span class="op">&lt;-</span> rbind(cbind(line2[<span class="dv">5</span>],paste(<span class="st">'('</span>,line2[<span class="dv">7</span>],<span class="st">'-'</span>,line2[<span class="dv">8</span>],<span class="st">')'</span>),df_temp$nor_p),</span>
-<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>               cbind(line1[<span class="dv">5</span>],paste(<span class="st">'('</span>,line1[<span class="dv">7</span>],<span class="st">'-'</span>,line1[<span class="dv">8</span>],<span class="st">')'</span>),<span class="st">''</span>))</span>
-<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>  colnames(out) <span class="op">&lt;-</span> c(<span class="st">"Survival"</span>,<span class="st">"95% CI"</span>,<span class="st">"Log rank test"</span>)</span>
-<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a>  <span class="bu">list</span>(data.frame(out), df_temp$coxph_fit, df_temp$nor_p)</span>
-<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>surv_func_each <span class="ot">&lt;-</span> <span class="cf">function</span>(df, date_col, event_col, cova_col) {</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  df_temp <span class="ot">&lt;-</span> df[<span class="fu">complete.cases</span>(df[, <span class="fu">c</span>(date_col, event_col, cova_col)]), ]</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  date_temp <span class="ot">&lt;-</span> df_temp[, date_col] <span class="sc">/</span> <span class="fl">365.25</span> <span class="co"># for using data as day</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  surv_temp <span class="ot">&lt;-</span> <span class="fu">Surv</span>(<span class="at">time =</span> date_temp, <span class="at">event =</span> <span class="fu">as.numeric</span>(df_temp[, event_col]))</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  coxph_fit <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">as.formula</span>(<span class="fu">paste</span>(<span class="st">"surv_temp ~"</span>, cova_col)), <span class="at">data =</span> df_temp) <span class="co"># cox model</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  result_temp <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">survfit</span>(surv_temp <span class="sc">~</span> df_temp[, cova_col], <span class="at">data =</span> df_temp))</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># p_val &lt;- pfunc(round(summary(coxph_fit)$coefficients[paste(cova_col), "Pr(&gt;|z|)"],4))</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  nor <span class="ot">&lt;-</span> <span class="fu">survdiff</span>(surv_temp <span class="sc">~</span> df_temp[, cova_col], <span class="at">data =</span> df_temp) <span class="co"># km test</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  nor_p <span class="ot">&lt;-</span> <span class="fu">round</span>((<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(nor<span class="sc">$</span>chisq, <span class="fu">length</span>(nor<span class="sc">$</span>n) <span class="sc">-</span> <span class="dv">1</span>)),<span class="dv">4</span>) <span class="co"># log rank test</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="st">"surv"</span> <span class="ot">=</span> result_temp, <span class="st">"nor_p"</span> <span class="ot">=</span> nor_p,<span class="st">"coxph_fit"</span><span class="ot">=</span>coxph_fit)</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>surv_log_p <span class="ot">&lt;-</span><span class="cf">function</span>(df,date_col,event_col,cova_col,title){</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>  df_temp <span class="ot">&lt;-</span> <span class="fu">surv_func_each</span>(df,date_col,event_col,cova_col)</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>  filename <span class="ot">&lt;-</span> <span class="fu">paste</span>(path4,cova_col,<span class="st">"_"</span>,title,<span class="st">".txt"</span>, <span class="at">sep=</span><span class="st">''</span>)</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sink</span>(filename)</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(df_temp<span class="sc">$</span>surv) <span class="co">#데이터 결과 txt로 저장</span></span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sink</span>()</span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>  lines <span class="ot">&lt;-</span> <span class="fu">readLines</span>(filename)</span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>  index <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">grepl</span>( <span class="st">"  time n.risk n.event survival std.err lower 95% CI upper 95% CI"</span>, lines))</span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>  line1 <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(lines[index <span class="sc">-</span> <span class="dv">3</span>][<span class="dv">2</span>], <span class="st">"</span><span class="sc">\\</span><span class="st">s+"</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>  line2 <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(<span class="fu">tail</span>(lines, <span class="at">n =</span> <span class="dv">2</span>)[<span class="dv">1</span>], <span class="st">"</span><span class="sc">\\</span><span class="st">s+"</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">cbind</span>(line2[<span class="dv">5</span>],<span class="fu">paste</span>(<span class="st">'('</span>,line2[<span class="dv">7</span>],<span class="st">'-'</span>,line2[<span class="dv">8</span>],<span class="st">')'</span>),df_temp<span class="sc">$</span>nor_p),</span>
+<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a>               <span class="fu">cbind</span>(line1[<span class="dv">5</span>],<span class="fu">paste</span>(<span class="st">'('</span>,line1[<span class="dv">7</span>],<span class="st">'-'</span>,line1[<span class="dv">8</span>],<span class="st">')'</span>),<span class="st">''</span>))</span>
+<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(out) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Survival"</span>,<span class="st">"95% CI"</span>,<span class="st">"Log rank test"</span>)</span>
+<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="fu">data.frame</span>(out), df_temp<span class="sc">$</span>coxph_fit, df_temp<span class="sc">$</span>nor_p)</span>
+<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 
 
