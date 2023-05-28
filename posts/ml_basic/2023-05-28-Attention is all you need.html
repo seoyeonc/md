@@ -123,6 +123,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -766,6 +772,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#seq2seq-의-한계" id="toc-seq2seq-의-한계" class="nav-link active" data-scroll-target="#seq2seq-의-한계">seq2seq 의 한계</a></li>
   <li><a href="#트랜스포머의-주요-하이퍼파라미터" id="toc-트랜스포머의-주요-하이퍼파라미터" class="nav-link" data-scroll-target="#트랜스포머의-주요-하이퍼파라미터">트랜스포머의 주요 하이퍼파라미터</a></li>
+  <li><a href="#transformer" id="toc-transformer" class="nav-link" data-scroll-target="#transformer">Transformer</a>
+  <ul class="collapse">
+  <li><a href="#positional-encoding" id="toc-positional-encoding" class="nav-link" data-scroll-target="#positional-encoding">Positional Encoding</a></li>
+  </ul></li>
+  <li><a href="#attention" id="toc-attention" class="nav-link" data-scroll-target="#attention">Attention</a></li>
+  <li><a href="#encoder" id="toc-encoder" class="nav-link" data-scroll-target="#encoder">Encoder</a></li>
+  <li><a href="#self-attention-of-encoder" id="toc-self-attention-of-encoder" class="nav-link" data-scroll-target="#self-attention-of-encoder">Self Attention of Encoder</a>
+  <ul class="collapse">
+  <li><a href="#self-attention" id="toc-self-attention" class="nav-link" data-scroll-target="#self-attention">1. Self Attention</a></li>
+  <li><a href="#q-k-v" id="toc-q-k-v" class="nav-link" data-scroll-target="#q-k-v">2. Q, K, V</a></li>
+  <li><a href="#scaled-dot-product-attention" id="toc-scaled-dot-product-attention" class="nav-link" data-scroll-target="#scaled-dot-product-attention">3. Scaled dot-product Attention</a></li>
+  <li><a href="#행렬-연산으로-일괄-처리" id="toc-행렬-연산으로-일괄-처리" class="nav-link" data-scroll-target="#행렬-연산으로-일괄-처리">4. 행렬 연산으로 일괄 처리</a></li>
+  <li><a href="#scaled-dot-product-attention-구현" id="toc-scaled-dot-product-attention-구현" class="nav-link" data-scroll-target="#scaled-dot-product-attention-구현">5. Scaled dot-product attention 구현</a></li>
+  <li><a href="#multi-head-attention" id="toc-multi-head-attention" class="nav-link" data-scroll-target="#multi-head-attention">6. Multi-head Attention</a></li>
+  <li><a href="#multi-head-attention-구현" id="toc-multi-head-attention-구현" class="nav-link" data-scroll-target="#multi-head-attention-구현">7. Multi-head Attention 구현</a></li>
+  <li><a href="#padding-mask" id="toc-padding-mask" class="nav-link" data-scroll-target="#padding-mask">8. Padding Mask</a></li>
+  </ul></li>
+  <li><a href="#position-wise-feed-forward-neural-network" id="toc-position-wise-feed-forward-neural-network" class="nav-link" data-scroll-target="#position-wise-feed-forward-neural-network">Position-wise Feed Forward Neural Network</a></li>
+  <li><a href="#residual-connection-and-layer-normalization" id="toc-residual-connection-and-layer-normalization" class="nav-link" data-scroll-target="#residual-connection-and-layer-normalization">Residual connection and Layer Normalization</a>
+  <ul class="collapse">
+  <li><a href="#잔차-연결" id="toc-잔차-연결" class="nav-link" data-scroll-target="#잔차-연결">1. 잔차 연결</a></li>
+  <li><a href="#층-정규화" id="toc-층-정규화" class="nav-link" data-scroll-target="#층-정규화">2. 층 정규화</a></li>
+  </ul></li>
+  <li><a href="#encoder-구현" id="toc-encoder-구현" class="nav-link" data-scroll-target="#encoder-구현">Encoder 구현</a></li>
+  <li><a href="#encoder-쌓기" id="toc-encoder-쌓기" class="nav-link" data-scroll-target="#encoder-쌓기">Encoder 쌓기</a></li>
+  <li><a href="#encoder에서-decoder로" id="toc-encoder에서-decoder로" class="nav-link" data-scroll-target="#encoder에서-decoder로">Encoder에서 Decoder로</a></li>
+  <li><a href="#decoder-self-attention-and-look-ahead-mask" id="toc-decoder-self-attention-and-look-ahead-mask" class="nav-link" data-scroll-target="#decoder-self-attention-and-look-ahead-mask">Decoder: Self-Attention and Look-ahead Mask</a>
+  <ul class="collapse">
+  <li><a href="#nd-decoder-sublayer-encoder-decoder-attention" id="toc-nd-decoder-sublayer-encoder-decoder-attention" class="nav-link" data-scroll-target="#nd-decoder-sublayer-encoder-decoder-attention">2nd Decoder sublayer : Encoder-Decoder Attention</a></li>
+  </ul></li>
+  <li><a href="#decoder-구현" id="toc-decoder-구현" class="nav-link" data-scroll-target="#decoder-구현">Decoder 구현</a></li>
+  <li><a href="#decoder-쌓기" id="toc-decoder-쌓기" class="nav-link" data-scroll-target="#decoder-쌓기">Decoder 쌓기</a></li>
+  <li><a href="#transformer-구현" id="toc-transformer-구현" class="nav-link" data-scroll-target="#transformer-구현">Transformer 구현</a></li>
+  <li><a href="#transformer-hyperparameter-정하기" id="toc-transformer-hyperparameter-정하기" class="nav-link" data-scroll-target="#transformer-hyperparameter-정하기">Transformer hyperparameter 정하기</a></li>
+  <li><a href="#loss-function-정의" id="toc-loss-function-정의" class="nav-link" data-scroll-target="#loss-function-정의">Loss Function 정의</a></li>
+  <li><a href="#학습률" id="toc-학습률" class="nav-link" data-scroll-target="#학습률">학습률</a></li>
   </ul>
 </nav>
     </div>
@@ -801,6 +843,1148 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="트랜스포머의-주요-하이퍼파라미터" class="level1">
 <h1>트랜스포머의 주요 하이퍼파라미터</h1>
+<p>각 값은 논문의 설정으로서, 바뀔 수 있음</p>
+<p><span class="math inline">\(d_{model} = 512\)</span></p>
+<ul>
+<li>인코더와 디코더에서의 정해진 입력 및 출력의 크기</li>
+<li>임베딩 벡터의 차원도 이와 같음</li>
+<li>각 인코더와 디코더가 다음 층의 인코더와 디코더로 값을 보낼 때도 유지</li>
+</ul>
+<p><span class="math inline">\(num_layers = 6\)</span></p>
+<ul>
+<li>하나의 인코더와 디코더를 층으로 생각하였을때, 모델에서 인코더와 디코더가 몇 층으로 구성되어 있는지를 의미</li>
+</ul>
+<p><span class="math inline">\(num_heads = 8\)</span></p>
+<ul>
+<li>어텐션을 병렬로 수행하고 결과값을 다시 합치는 방식을 수행하기 위함, 즉 병렬의 개수</li>
+</ul>
+<p><span class="math inline">\(d_{ff} = 2048\)</span></p>
+<ul>
+<li>트랜스포머 내부에 피드 포워드 신경망이 존재, 그 신경망의 은닉층의 크기를 의미</li>
+<li>단, 피드 포워드 신경망의 입력층과 출력층의 크기는 <span class="math inline">\(d_{model}\)</span></li>
+</ul>
+</section>
+<section id="transformer" class="level1">
+<h1>Transformer</h1>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+  subgraph _
+    direction LR
+    subgraph Transformer
+        direction LR
+        Encoders --&gt;Decoders
+    end
+  end
+  Text1("'I am a student`") --&gt; _ --&gt; Text2("'je suis étudiant`")
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<ul>
+<li>인코더-디코더 구조를 가진 트랜스포머</li>
+<li>인코더와 디코더라는 단위가 N개로 구성되는 구조 <span class="math inline">\(\to\)</span> Encoders, Decoders로 표현
+<ul>
+<li>seq2seq에서는 인코더와 디코더에서 각각 하나의 RNN이 t개의 시점time step을 가지는 구조</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">flowchart LR
+    _--&gt;__
+    __--&gt;out
+    subgraph _
+    direction BT
+    Embedding1--&gt;Encoders
+        subgraph Encoders
+        Encoder
+        end
+        subgraph Embedding1
+        Text1("'I|am|a|student'")
+        end
+    end
+    subgraph __
+    direction BT
+    Embedding2--&gt;Decoders
+        subgraph Decoders
+        Decoder
+        end
+        subgraph Embedding2
+        Text2("'&lt;\br&gt;sos|je|suis|étudiant'")
+        end
+    end
+    out("'je|suis|étudiant|eos'")
+</pre>
+<div id="mermaid-tooltip-2" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<ul>
+<li>symbol인 sos를 입력받아 eos symbol 나올때까지 연산을 진행하는, RNN을 사용하지 않지만 인코더 디코더 구조 유지되는 모습을 보임</li>
+</ul>
+<section id="positional-encoding" class="level2">
+<h2 class="anchored" data-anchor-id="positional-encoding">Positional Encoding</h2>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>RNN이 자연어 처리에서 유용했던 이유</p>
+<ul>
+<li>단어의 위치에 따라 단어를 순차적으로 입력받아서 처리하는 RNN의 특성으로 인해 각 단어의 위치 정보 position information을 가질 수 있어서</li>
+</ul>
+</div>
+</div>
+<p><strong>포지셔널 인코딩</strong></p>
+<ul>
+<li>트랜스포머는 단어의 위치 정보를 얻기 위해서 각 단어의 임베딩 벡터에 위치 정보들을 더하여 모델의 입력으로 사용</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-3">flowchart LR
+    _--&gt;__
+    __--&gt;out
+    subgraph _
+    direction BT
+    Embedding_en--&gt;Positional\nEncoding_en
+    Positional\nEncoding_en--&gt;Encoders
+        subgraph Encoders
+        Encoder
+        end
+        subgraph Embedding_en
+        Text1("'I|am|a|student'")
+        end
+    end
+    subgraph __
+    direction BT
+    Embedding_de--&gt;Positional\nEncoding_de
+    Positional\nEncoding_de--&gt;Decoders
+        subgraph Decoders
+        Decoder
+        end
+        subgraph Embedding_de
+        Text2("'&lt;\br&gt;sos|je|suis|étudiant'")
+        end
+    end
+    out("'je|suis|étudiant|eos'")
+</pre>
+<div id="mermaid-tooltip-3" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<ul>
+<li>입력으로 사용되는 임베딩 벡터들이 트랜스포머의 입력으로 사용되기 전에 포지셔널 인코딩 값이 더해지는 과정</li>
+</ul>
+<p><span class="math display">\[PE_{(pos, 2i)} = \sin(pos/10000^{2i/d_{model}})\]</span></p>
+<p><span class="math display">\[PE_{(pos, 2i+1)} = \cos(pos/10000^{2i/d_{model}})\]</span></p>
+<ul>
+<li>트랜스포머가 위치 정보를 가진 값을 만들기 위해 사용하는 두 개의 함수</li>
+</ul>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>d_model <span class="op">=</span> pd.DataFrame(np.empty((<span class="dv">4</span>, <span class="dv">4</span>), dtype<span class="op">=</span><span class="bu">str</span>), index<span class="op">=</span>[<span class="st">'I'</span>, <span class="st">'am'</span>, <span class="st">'a'</span>, <span class="st">'student'</span>])</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [<span class="st">'pos1,i1'</span>, <span class="st">'pos1,i2'</span>, <span class="st">'pos1,i3'</span>, <span class="st">'pos1,i4'</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>          <span class="st">'pos2,i1'</span>, <span class="st">'pos2,i2'</span>, <span class="st">'pos2,i3'</span>, <span class="st">'pos2,i4'</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>          <span class="st">'pos3,i1'</span>, <span class="st">'pos3,i2'</span>, <span class="st">'pos3,i3'</span>, <span class="st">'pos3,i4'</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>          <span class="st">'pos4,i1'</span>, <span class="st">'pos4,i2'</span>, <span class="st">'pos4,i3'</span>, <span class="st">'pos4,i4'</span>]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        d_model.iloc[i, j] <span class="op">=</span> values[i <span class="op">*</span> <span class="dv">4</span> <span class="op">+</span> j]</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>d_model</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>I</th>
+      <td>pos1,i1</td>
+      <td>pos1,i2</td>
+      <td>pos1,i3</td>
+      <td>pos1,i4</td>
+    </tr>
+    <tr>
+      <th>am</th>
+      <td>pos2,i1</td>
+      <td>pos2,i2</td>
+      <td>pos2,i3</td>
+      <td>pos2,i4</td>
+    </tr>
+    <tr>
+      <th>a</th>
+      <td>pos3,i1</td>
+      <td>pos3,i2</td>
+      <td>pos3,i3</td>
+      <td>pos3,i4</td>
+    </tr>
+    <tr>
+      <th>student</th>
+      <td>pos4,i1</td>
+      <td>pos4,i2</td>
+      <td>pos4,i3</td>
+      <td>pos4,i4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li>pos는 입력 문장에서 임베딩 벡터의 위치</li>
+<li>i는 임베딩 벡터 내의 차원의 인덱스를 의미</li>
+<li>위 식에 따르면
+<ul>
+<li><strong>짝수</strong>면 <em>sin</em>함수 사용 <span class="math inline">\(\to\)</span> (pos,2i)</li>
+<li><strong>홀수</strong>면 <em>cos</em>함수 사용 <span class="math inline">\(\to\)</span> (pos,2i+1)</li>
+</ul></li>
+<li>여기서 <span class="math inline">\(d_{model}\)</span>은 트랜스포머의 모든 층의 출력 차원을 의미하는 하이퍼파라미터</li>
+<li>임베딩 벡터도 같은 차원임</li>
+<li>이와 깉은 포지셔널 인코딩 방법을 사용하면 순서 정보가 보존됨.
+<ul>
+<li><strong>각 임베딩 멕터에 포지셔널 인코딩의 값을 더하면(차원 같음!) 같은 단어라도 문장 내의 위치에 따라 트랜스포머의 입력으로 들어가는 임베딩 벡터의 값이 달라짐</strong></li>
+</ul></li>
+</ul>
+<div class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PositionalEncoding(tf.keras.layers.Layer):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, position, d_model):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(PositionalEncoding, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.pos_encoding <span class="op">=</span> <span class="va">self</span>.positional_encoding(position, d_model)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_angles(<span class="va">self</span>, position, i, d_model):</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        angles <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> tf.<span class="bu">pow</span>(<span class="dv">10000</span>, (<span class="dv">2</span> <span class="op">*</span> (i <span class="op">//</span> <span class="dv">2</span>)) <span class="op">/</span> tf.cast(d_model, tf.float32))</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> position <span class="op">*</span> angles</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> positional_encoding(<span class="va">self</span>, position, d_model):</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        angle_rads <span class="op">=</span> <span class="va">self</span>.get_angles(</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>            position<span class="op">=</span>tf.<span class="bu">range</span>(position, dtype<span class="op">=</span>tf.float32)[:, tf.newaxis],</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            i<span class="op">=</span>tf.<span class="bu">range</span>(d_model, dtype<span class="op">=</span>tf.float32)[tf.newaxis, :],</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>            d_model<span class="op">=</span>d_model)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 배열의 짝수 인덱스(2i)에는 사인 함수 적용</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        sines <span class="op">=</span> tf.math.sin(angle_rads[:, <span class="dv">0</span>::<span class="dv">2</span>])</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 배열의 홀수 인덱스(2i+1)에는 코사인 함수 적용</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        cosines <span class="op">=</span> tf.math.cos(angle_rads[:, <span class="dv">1</span>::<span class="dv">2</span>])</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        angle_rads <span class="op">=</span> np.zeros(angle_rads.shape)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        angle_rads[:, <span class="dv">0</span>::<span class="dv">2</span>] <span class="op">=</span> sines</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        angle_rads[:, <span class="dv">1</span>::<span class="dv">2</span>] <span class="op">=</span> cosines</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>        pos_encoding <span class="op">=</span> tf.constant(angle_rads)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>        pos_encoding <span class="op">=</span> pos_encoding[tf.newaxis, ...]</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(pos_encoding.shape)</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> tf.cast(pos_encoding, tf.float32)</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> call(<span class="va">self</span>, inputs):</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> inputs <span class="op">+</span> <span class="va">self</span>.pos_encoding[:, :tf.shape(inputs)[<span class="dv">1</span>], :]</span></code></pre></div>
+</div>
+<p>포지셔널 인코딩 행렬 시각화</p>
+<div class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 문장의 길이 50, 임베딩 벡터의 차원 128</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sample_pos_encoding <span class="op">=</span> PositionalEncoding(<span class="dv">50</span>, <span class="dv">128</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.pcolormesh(sample_pos_encoding.pos_encoding.numpy()[<span class="dv">0</span>], cmap<span class="op">=</span><span class="st">'RdBu'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Depth'</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.xlim((<span class="dv">0</span>, <span class="dv">128</span>))</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Position'</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(1, 50, 128)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-05-28-Attention is all you need_files/figure-html/cell-9-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="attention" class="level1">
+<h1>Attention</h1>
+<p><strong>Encoder Self-Attention</strong></p>
+<ul>
+<li>인코더에서 이루어짐</li>
+<li>Query = Key = Value(값이 같다는 말이 아님)</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-4">flowchart LR
+    Encoder1 --&gt; Encoder2 
+    Encoder2 --&gt; Encoder1
+    Encoder2 --&gt; Encoder3
+    Encoder3 --&gt; Encoder2
+    Encoder1 --&gt; Encoder3
+    Encoder3 --&gt; Encoder1
+</pre>
+<div id="mermaid-tooltip-4" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<p><strong>Masked Decoder Self-Attention</strong></p>
+<ul>
+<li>디코더에서 이루어짐</li>
+<li>Query = Key = Value(값이 같다는 말이 아님)</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-5">flowchart RL
+    Decoder1
+    Decoder2 --&gt; Decoder1
+    Decoder3 --&gt; Decoder1
+    Decoder3 --&gt; Decoder2
+</pre>
+<div id="mermaid-tooltip-5" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<p><strong>Encoder-Decoder Attention</strong></p>
+<ul>
+<li>디코더에서 이루어짐</li>
+<li>Query = 디코더 벡터, Key = Value = 인코더 벡터</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-6">flowchart RL
+    Encoder1
+    Encoder2
+    Encoder3
+    Decoder --&gt; Encoder1
+    Decoder --&gt; Encoder2
+    Decoder --&gt; Encoder3
+</pre>
+<div id="mermaid-tooltip-6" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>셀프 어텐션은 Query, Key, Value가 동일한 경우를 말함</p>
+<p>Encoder-Decoder Attention의 경우 Query가 디코더의 벡터인 반면에 Key와 Value가 인코더의 벡터이므로 셀프 어텐션이라고 부르지 않음</p>
+<p><strong>여기서 Query, Key 등이 같다는 것은 벡터의 값이 같다는 것이 아닌 벡터의 출처가 같다는 의미</strong></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-7">flowchart BT
+  subgraph Encoders
+    direction BT
+        direction BT
+        Multi-head\nSelf-Attention --&gt;Position-wise\nFFNN_en
+    end
+    subgraph Decoders
+    direction BT
+        direction BT
+        Masked\nMulti-head\nSelf-Attention --&gt;Multi-head\nAttention --&gt; Position-wise\nFFNN_de
+    end
+  Position-wise\nFFNN_en --&gt; Multi-head\nAttention
+  embedding_en--&gt;Positional\nencoding_en--&gt;Multi-head\nSelf-Attention
+  embedding_de--&gt;Positional\nencoding_de--&gt;Masked\nMulti-head\nSelf-Attention 
+</pre>
+<div id="mermaid-tooltip-7" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<p>위(각각 하나의 층으로 봄)의 인코더, 디코더가 num_layer지정한 수만큼 있음</p>
+</section>
+<section id="encoder" class="level1">
+<h1>Encoder</h1>
+<ul>
+<li>하나의 인코더 층은 크게 두 개의 서브층sublayer로 나뉨
+<ul>
+<li>셀프 어텐션 Self Attention</li>
+<li>피드 포워드 신경망 Feed Forward Neural Network</li>
+</ul></li>
+</ul>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Multi-head Self Attention</strong></p>
+<ul>
+<li>셀프 어텐션을 병렬적으로 사용하였다는 의미</li>
+</ul>
+<p><strong>Position-wise FFNN</strong></p>
+<ul>
+<li>순방향신경망</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="self-attention-of-encoder" class="level1">
+<h1>Self Attention of Encoder</h1>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remind</p>
+<ul>
+<li>어텐션 함수는 주어진 Query에 대해 모든 Key와의 유사도를 구함</li>
+<li>유사도를 가중치로 하여 Key와 맴핑되어 있는 각각의 Value에 반영해 좀</li>
+<li>이 유사도가 반영된 Value를 모두 가중합하여 Return</li>
+</ul>
+</div>
+</div>
+<ul>
+<li>seq2seq에서의 Q,K,V의 정의
+<ul>
+<li>Q = Query, t 시점의 디코더 셀에서의 은닉상태</li>
+<li>K = Key, 모든 시점의 인코더 셀의 은닉상태들</li>
+<li>V = Value, 모든 시점의 인코더 셀의 은닉상태들</li>
+</ul></li>
+</ul>
+<p><span class="math inline">\(\to\)</span> t 시점의~의 의미는 변하면서 반복적으로 쿼리 수행하니까 결국은 전체 시점에 대해서 일반화 가능</p>
+<ul>
+<li>seq2seq에서의 Q,K,V의 정의
+<ul>
+<li>Q = Query, 모든 시점의 디코더 셀에서의 은닉상태들</li>
+<li>K = Key, 모든 시점의 인코더 셀의 은닉상태들</li>
+<li>V = Value, 모든 시점의 인코더 셀의 은닉상태들</li>
+</ul></li>
+</ul>
+<section id="self-attention" class="level2">
+<h2 class="anchored" data-anchor-id="self-attention">1. Self Attention</h2>
+<ul>
+<li><em>셀프 어텐션</em>
+<ul>
+<li>Q = 입력 문장의 모든 단어 벡터들</li>
+<li>K = 입력 문장의 모든 단어 벡터들</li>
+<li>V = 입력 문장의 모든 단어 벡터들</li>
+</ul></li>
+<li><strong>연속된 문장들에 대하여 지칭하는 단어가 다르지만 의미는 같을 수 있는데, 셀프 어텐션은 이 유사도를 구하여서 연관 가능성을 찾아낸다.</strong></li>
+</ul>
+</section>
+<section id="q-k-v" class="level2">
+<h2 class="anchored" data-anchor-id="q-k-v">2. Q, K, V</h2>
+<ul>
+<li>셀프 어텐션은 일단 문장의 각 단어 벡터로부터 Q벡터, K벡터, V벡터를 얻음.
+<ul>
+<li>Q벡터, K벡터, V벡터는 <span class="math inline">\(d_{model}\)</span> 차원을 가지는 단어 벡터들보다 더 작은 차원을 가짐</li>
+<li>논문을 예로 들면 <span class="math inline">\(d_{model}\)</span>의 차원은 512, Q벡터, K벡터, V벡터의 차원은 각각 64</li>
+<li>이 64는 또 다른 하이퍼파라미터인 num_heads로 결정되는데, 트랜스포머는 <span class="math inline">\(d_{model}\)</span>을 num_heads로 나눈 값을 Q벡터, K벡터, V벡터의 차원으로 결정.</li>
+<li>논문의 num_heads = 8이었으니까 <span class="math inline">\(512/8 = 64\)</span>로 결정된 것</li>
+<li>이 Q벡터, K벡터, V벡터는 단어마다, 벡터마다 서로 다른 가중치 행렬을 곱하여 얻음</li>
+<li>각 단어마다 Q벡터, K벡터, V벡터 각각의 가중치, Q벡터, K벡터, V벡터 각각이 존재하는 것</li>
+</ul></li>
+</ul>
+</section>
+<section id="scaled-dot-product-attention" class="level2">
+<h2 class="anchored" data-anchor-id="scaled-dot-product-attention">3. Scaled dot-product Attention</h2>
+<p>각 단어 별로 Q벡터, K벡터, V벡터를 구한 후 각 Q벡터는 모든 K벡터에 대해서 어텐션 스코어를 구하고, 어텐션 분포를 구한 뒤 이를 사용하여 모든 V벡터를 가중합하여 어텐션 값 또는 컨텍스트 벡터를 구함-&gt; 모든 Q벡터에 대해 반복</p>
+<ul>
+<li>내적한 후 특정값을 나눔으로써 값을 조정하는 과정 추가한 스케일드 갓-프로덕트 어텐션</li>
+</ul>
+<p><span class="math display">\[score(q,k) = \frac{q k}{\sqrt{n}}\]</span></p>
+<p><span class="math inline">\(\sqrt{n}\)</span>이 결정되는 과정</p>
+<ul>
+<li>논문을 예로 들면 <span class="math inline">\(d_{model}\)</span>의 차원이 512, num_heads가 8, Q,K,V의 차원 <span class="math inline">\(d_k\)</span>가 64(512/8) 이었음, 여기서 64에 root 취한 8으로 결정되는 것</li>
+</ul>
+</section>
+<section id="행렬-연산으로-일괄-처리" class="level2">
+<h2 class="anchored" data-anchor-id="행렬-연산으로-일괄-처리">4. 행렬 연산으로 일괄 처리</h2>
+<p>Q 벡터마다 3을 연산하는 것을 피하기 위함</p>
+<ol type="1">
+<li>문장 행렬에 가중치 행렬을 곱하여 Q행렬, K행렬, V행렬을 구한다(단지 벡터를 행렬화한 것 뿐).</li>
+<li>각 단어의 Q벡터와 전치한 K벡터의 내적이 각 행렬의 원소가 되는 행렬을 결과로 추출.</li>
+<li>2번의 결과에 <span class="math inline">\(\sqrt{d_k}\)</span>를 나누어 softmax취한 후 V행렬을 곱하여 각 행과 열이 어텐션 스코어 값을 가지는 행렬을 구함.</li>
+</ol>
+<p><span class="math display">\[Attention(Q,K,V) = softmax(\frac{QK^\top}{\sqrt{d_k}})V\]</span></p>
+<p>입력 문장의 길이가 seq_len이라면, 문장 행렬의 크기는 (seq_len,<span class="math inline">\(d_{model}\)</span>)</p>
+<p><em>차원 정리</em></p>
+<ul>
+<li><span class="math inline">\(Q\)</span> = (seq_len, <span class="math inline">\(d_k)\)</span>
+<ul>
+<li><span class="math inline">\(W^Q = (d_{model},d_k)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(K^\top\)</span> = (<span class="math inline">\(d_k\)</span>, seq_len)
+<ul>
+<li><span class="math inline">\(W^K = (d_{model},d_k)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(V\)</span> = (seq_len, <span class="math inline">\(d_v)\)</span>
+<ul>
+<li><span class="math inline">\(W^V = (d_{model},d_v)\)</span></li>
+</ul></li>
+<li>논문에서는 <span class="math inline">\(d_k,d_v\)</span>의 차원이 <span class="math inline">\(d_{model}\)</span>/num_heads로 같게 설정함</li>
+<li>attention score matrix = (seq_len, <span class="math inline">\(d_v\)</span>)</li>
+</ul>
+</section>
+<section id="scaled-dot-product-attention-구현" class="level2">
+<h2 class="anchored" data-anchor-id="scaled-dot-product-attention-구현">5. Scaled dot-product attention 구현</h2>
+<div class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> scaled_dot_product_attention(query, key, value, mask):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># query 크기 : (batch_size, num_heads, query의 문장 길이, d_model/num_heads)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># key 크기 : (batch_size, num_heads, key의 문장 길이, d_model/num_heads)</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># value 크기 : (batch_size, num_heads, value의 문장 길이, d_model/num_heads)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># padding_mask : (batch_size, 1, 1, key의 문장 길이)</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Q와 K의 곱. 어텐션 스코어 행렬.</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    matmul_qk <span class="op">=</span> tf.matmul(query, key, transpose_b<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 스케일링</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># dk의 루트값으로 나눠준다.</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    depth <span class="op">=</span> tf.cast(tf.shape(key)[<span class="op">-</span><span class="dv">1</span>], tf.float32)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> matmul_qk <span class="op">/</span> tf.math.sqrt(depth)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 마스킹. 어텐션 스코어 행렬의 마스킹 할 위치에 매우 작은 음수값을 넣는다.</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 매우 작은 값이므로 소프트맥스 함수를 지나면 행렬의 해당 위치의 값은 0이 된다.</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> mask <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        logits <span class="op">+=</span> (mask <span class="op">*</span> <span class="op">-</span><span class="fl">1e9</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 소프트맥스 함수는 마지막 차원인 key의 문장 길이 방향으로 수행된다.</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># attention weight : (batch_size, num_heads, query의 문장 길이, key의 문장 길이)</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    attention_weights <span class="op">=</span> tf.nn.softmax(logits, axis<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># output : (batch_size, num_heads, query의 문장 길이, d_model/num_heads)</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> tf.matmul(attention_weights, value)</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output, attention_weights</span></code></pre></div>
+</div>
+<p>scaled_dot_product_attention 실행</p>
+<div class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 임의의 Query, Key, Value인 Q, K, V 행렬 생성</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(suppress<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>temp_k <span class="op">=</span> tf.constant([[<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                      [<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>],</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                      [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">10</span>],</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                      [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">10</span>]], dtype<span class="op">=</span>tf.float32)  <span class="co"># (4, 3)</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>temp_v <span class="op">=</span> tf.constant([[   <span class="dv">1</span>,<span class="dv">0</span>],</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                      [  <span class="dv">10</span>,<span class="dv">0</span>],</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                      [ <span class="dv">100</span>,<span class="dv">5</span>],</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                      [<span class="dv">1000</span>,<span class="dv">6</span>]], dtype<span class="op">=</span>tf.float32)  <span class="co"># (4, 2)</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>temp_q <span class="op">=</span> tf.constant([[<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>]], dtype<span class="op">=</span>tf.float32)  <span class="co"># (1, 3)</span></span></code></pre></div>
+</div>
+<p>query에 해당하는 [0,10,0]은 key에 해당하는 두 번째 값과 일치해야 함.</p>
+<div class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 함수 실행</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>temp_out, temp_attn <span class="op">=</span> scaled_dot_product_attention(temp_q, temp_k, temp_v, <span class="va">None</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(temp_attn) <span class="co"># 어텐션 분포(어텐션 가중치의 나열)</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(temp_out) <span class="co"># 어텐션 값</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor([[0. 1. 0. 0.]], shape=(1, 4), dtype=float32)
+tf.Tensor([[10.  0.]], shape=(1, 2), dtype=float32)</code></pre>
+</div>
+</div>
+<p>두 번째 값과 일치했어서 두 번째가 1인 값을 반환, 결과적으로 [10,0]의 어텐션 값 반환</p>
+<div class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>temp_q <span class="op">=</span> tf.constant([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">10</span>]], dtype<span class="op">=</span>tf.float32)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>temp_out, temp_attn <span class="op">=</span> scaled_dot_product_attention(temp_q, temp_k, temp_v, <span class="va">None</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(temp_attn) <span class="co"># 어텐션 분포(어텐션 가중치의 나열)</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(temp_out) <span class="co"># 어텐션 값</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor([[0.  0.  0.5 0.5]], shape=(1, 4), dtype=float32)
+tf.Tensor([[550.    5.5]], shape=(1, 2), dtype=float32)</code></pre>
+</div>
+</div>
+<p>세 번째 값과 네 번째 값이 같이 일치하다면? 합이 1이되게 나눠서 0.5,0.5씩 나눠짐</p>
+<ul>
+<li>[100,5] * 0.5 + [1000,6] * 0.5 = [550,5.5]</li>
+</ul>
+<div class="cell" data-execution_count="74">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">100</span><span class="op">*</span><span class="fl">0.5</span> <span class="op">+</span> <span class="dv">1000</span><span class="op">*</span><span class="fl">0.5</span>,<span class="dv">5</span><span class="op">*</span><span class="fl">0.5</span> <span class="op">+</span> <span class="dv">6</span><span class="op">*</span><span class="fl">0.5</span>]</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="74">
+<pre><code>[550.0, 5.5]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>temp_q <span class="op">=</span> tf.constant([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">10</span>], [<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>], [<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">0</span>]], dtype<span class="op">=</span>tf.float32)  <span class="co"># (3, 3)</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>temp_out, temp_attn <span class="op">=</span> scaled_dot_product_attention(temp_q, temp_k, temp_v, <span class="va">None</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(temp_attn) <span class="co"># 어텐션 분포(어텐션 가중치의 나열)</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(temp_out) <span class="co"># 어텐션 값</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor(
+[[0.  0.  0.5 0.5]
+ [0.  1.  0.  0. ]
+ [0.5 0.5 0.  0. ]], shape=(3, 4), dtype=float32)
+tf.Tensor(
+[[550.    5.5]
+ [ 10.    0. ]
+ [  5.5   0. ]], shape=(3, 2), dtype=float32)</code></pre>
+</div>
+</div>
+</section>
+<section id="multi-head-attention" class="level2">
+<h2 class="anchored" data-anchor-id="multi-head-attention">6. Multi-head Attention</h2>
+<p>왜 스케일링하여 어텐션 스코어를 구했을까?</p>
+<ul>
+<li>논문에서는 한 번의 어텐션보다 여러번의 어텐션을 병렬로 사용하는 것이 더 효과적이라고 판단</li>
+<li>그래서 <span class="math inline">\(d_{model}\)</span>의 차원을 num_heads로 나누어 <span class="math inline">\(d_{model}\)</span>/num_heads의 차원을 가지는 Q,K,V에 대해서 num_heads 개의 병렬 어텐션 수행</li>
+<li>num_heads만큼 병렬이 이뤄지는데, 이 때 나오는 각각의 <strong>어텐션 값 행렬을 어텐션 헤드</strong>라고 함.
+<ul>
+<li>이 때 가중치 행렬의 값<span class="math inline">\(W^Q,W^K,W^V\)</span>은 num_heads의 어텐션 해드마다 전부 다름</li>
+</ul></li>
+</ul>
+<p>병렬로 수행한 효과?</p>
+<ul>
+<li>어텐션을 병렬로 수행하여 다른 시각으로 정보를 수집할 수 있음</li>
+</ul>
+</section>
+<section id="multi-head-attention-구현" class="level2">
+<h2 class="anchored" data-anchor-id="multi-head-attention-구현">7. Multi-head Attention 구현</h2>
+<p>가중치 행렬</p>
+<ul>
+<li>Q, K, V 행렬을 만들기 위한 가중치 행렬 <span class="math inline">\(W^Q,W^K,W^V\)</span></li>
+<li>어텐션 헤드들을 연결concatenation 후에 곱해주는 행렬 <span class="math inline">\(W^O\)</span></li>
+</ul>
+<p>가중치 행렬을 곱하는 것은 Dense layer 지나게 하여 구현</p>
+<ol type="1">
+<li><span class="math inline">\(W^Q,W^K,W^V\)</span>에 해당하는 <span class="math inline">\(d_{model}\)</span>의 크기의 밀집층(Dense layer)을 지나게 한다.</li>
+<li>지정된 헤드수 num_heads 만큼 나눈다(split).</li>
+<li>scaled dot-product attention</li>
+<li>나눠졌던 헤드들을 연결concatenatetion한다.</li>
+<li><span class="math inline">\(W^O\)</span>에 해당하는 밀집층을 지나게 한다.</li>
+</ol>
+<div class="cell" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MultiHeadAttention(tf.keras.layers.Layer):</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, d_model, num_heads, name<span class="op">=</span><span class="st">"multi_head_attention"</span>):</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(MultiHeadAttention, <span class="va">self</span>).<span class="fu">__init__</span>(name<span class="op">=</span>name)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_heads <span class="op">=</span> num_heads</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.d_model <span class="op">=</span> d_model</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> d_model <span class="op">%</span> <span class="va">self</span>.num_heads <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># d_model을 num_heads로 나눈 값.</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 논문 기준 : 64</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.depth <span class="op">=</span> d_model <span class="op">//</span> <span class="va">self</span>.num_heads</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WQ, WK, WV에 해당하는 밀집층 정의</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.query_dense <span class="op">=</span> tf.keras.layers.Dense(units<span class="op">=</span>d_model)</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.key_dense <span class="op">=</span> tf.keras.layers.Dense(units<span class="op">=</span>d_model)</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.value_dense <span class="op">=</span> tf.keras.layers.Dense(units<span class="op">=</span>d_model)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WO에 해당하는 밀집층 정의</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.dense <span class="op">=</span> tf.keras.layers.Dense(units<span class="op">=</span>d_model)</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># num_heads 개수만큼 q, k, v를 split하는 함수</span></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> split_heads(<span class="va">self</span>, inputs, batch_size):</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>        inputs <span class="op">=</span> tf.reshape(</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>            inputs, shape<span class="op">=</span>(batch_size, <span class="op">-</span><span class="dv">1</span>, <span class="va">self</span>.num_heads, <span class="va">self</span>.depth))</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> tf.transpose(inputs, perm<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>])</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> call(<span class="va">self</span>, inputs):</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>        query, key, value, mask <span class="op">=</span> inputs[<span class="st">'query'</span>], inputs[<span class="st">'key'</span>], inputs[</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>            <span class="st">'value'</span>], inputs[<span class="st">'mask'</span>]</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>        batch_size <span class="op">=</span> tf.shape(query)[<span class="dv">0</span>]</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 1. WQ, WK, WV에 해당하는 밀집층 지나기</span></span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>        <span class="co"># q : (batch_size, query의 문장 길이, d_model)</span></span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>        <span class="co"># k : (batch_size, key의 문장 길이, d_model)</span></span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>        <span class="co"># v : (batch_size, value의 문장 길이, d_model)</span></span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 참고) 인코더(k, v)-디코더(q) 어텐션에서는 query 길이와 key, value의 길이는 다를 수 있다.</span></span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>        query <span class="op">=</span> <span class="va">self</span>.query_dense(query)</span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>        key <span class="op">=</span> <span class="va">self</span>.key_dense(key)</span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>        value <span class="op">=</span> <span class="va">self</span>.value_dense(value)</span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 2. 헤드 나누기</span></span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>        <span class="co"># q : (batch_size, num_heads, query의 문장 길이, d_model/num_heads)</span></span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>        <span class="co"># k : (batch_size, num_heads, key의 문장 길이, d_model/num_heads)</span></span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>        <span class="co"># v : (batch_size, num_heads, value의 문장 길이, d_model/num_heads)</span></span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>        query <span class="op">=</span> <span class="va">self</span>.split_heads(query, batch_size)</span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>        key <span class="op">=</span> <span class="va">self</span>.split_heads(key, batch_size)</span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>        value <span class="op">=</span> <span class="va">self</span>.split_heads(value, batch_size)</span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 3. 스케일드 닷 프로덕트 어텐션. 앞서 구현한 함수 사용.</span></span>
+<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a>        <span class="co"># (batch_size, num_heads, query의 문장 길이, d_model/num_heads)</span></span>
+<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a>        scaled_attention, _ <span class="op">=</span> scaled_dot_product_attention(query, key, value, mask)</span>
+<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a>        <span class="co"># (batch_size, query의 문장 길이, num_heads, d_model/num_heads)</span></span>
+<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>        scaled_attention <span class="op">=</span> tf.transpose(scaled_attention, perm<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>])</span>
+<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 4. 헤드 연결(concatenate)하기</span></span>
+<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a>        <span class="co"># (batch_size, query의 문장 길이, d_model)</span></span>
+<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>        concat_attention <span class="op">=</span> tf.reshape(scaled_attention,</span>
+<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a>                                      (batch_size, <span class="op">-</span><span class="dv">1</span>, <span class="va">self</span>.d_model))</span>
+<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 5. WO에 해당하는 밀집층 지나기</span></span>
+<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a>        <span class="co"># (batch_size, query의 문장 길이, d_model)</span></span>
+<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a>        outputs <span class="op">=</span> <span class="va">self</span>.dense(concat_attention)</span>
+<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> outputs</span></code></pre></div>
+</div>
+</section>
+<section id="padding-mask" class="level2">
+<h2 class="anchored" data-anchor-id="padding-mask">8. Padding Mask</h2>
+<p>어텐션에서 제외하기 위해 값을 가리는 역할</p>
+<ul>
+<li>방법: 어텐션 스코어 행렬의 마스킹 위치에 매우 작은 음수값을 넣어주기
+<ul>
+<li>소프트맥스 함수를 지나면 값이 0이 되어 유사도 구할때 반영되지 않름.</li>
+</ul></li>
+</ul>
+<div class="cell" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_padding_mask(x):</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    mask <span class="op">=</span> tf.cast(tf.math.equal(x, <span class="dv">0</span>), tf.float32)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># (batch_size, 1, 1, key의 문장 길이)</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mask[:, tf.newaxis, tf.newaxis, :]</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(create_padding_mask(tf.constant([[<span class="dv">1</span>, <span class="dv">21</span>, <span class="dv">777</span>, <span class="dv">0</span>, <span class="dv">0</span>]])))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor([[[[0. 0. 0. 1. 1.]]]], shape=(1, 1, 1, 5), dtype=float32)</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="position-wise-feed-forward-neural-network" class="level1">
+<h1>Position-wise Feed Forward Neural Network</h1>
+<p>인코더와 디코더에서 공통적으로 가지고 있는 서브층</p>
+<p>= FFNN(Fully Connected FFNN)</p>
+<p><span class="math display">\[FFNN(x) = MAX(0,xW-1 + b_1)W_2 + b_2\]</span></p>
+<p><span class="math inline">\(x\)</span> -&gt; <span class="math inline">\(F_1 = xW_1 + b_1\)</span> -&gt; 활성화 함수:ReLU <span class="math inline">\(F_2 = max(0,F_1)\)</span> -&gt; <span class="math inline">\(F_3 = F_2W_2 + b_2\)</span></p>
+<ul>
+<li>여기서 <span class="math inline">\(x\)</span>는 멀티 헤드 어텐션의 결과로 나온 (seq_len, <span class="math inline">\(d_{model}\)</span>)의 차원을 가지는 행렬</li>
+<li>가중치 행렬 <span class="math inline">\(W_1\)</span> = (<span class="math inline">\(d_{model}, d_{ff}\)</span>)</li>
+<li>가중치 행렬 <span class="math inline">\(W_2\)</span> = (<span class="math inline">\(d_{ff},d_{model}\)</span>)</li>
+<li>논문은 <span class="math inline">\(d_{ff}\)</span>를 2048로 정의</li>
+<li>매개변수 <span class="math inline">\(W_1,W_2,b_1,b_2\)</span>는 각 인코더 층마다 동일하게 계산되지만 값은 층마다 다 다르다.</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 다음의 코드는 인코더와 디코더 내부에서 사용할 예정입니다.</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>outputs <span class="op">=</span> tf.keras.layers.Dense(units<span class="op">=</span>dff, activation<span class="op">=</span><span class="st">'relu'</span>)(attention)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>outputs <span class="op">=</span> tf.keras.layers.Dense(units<span class="op">=</span>d_model)(outputs)</span></code></pre></div>
+</section>
+<section id="residual-connection-and-layer-normalization" class="level1">
+<h1>Residual connection and Layer Normalization</h1>
+<section id="잔차-연결" class="level2">
+<h2 class="anchored" data-anchor-id="잔차-연결">1. 잔차 연결</h2>
+<p><span class="math display">\[H(x) = x + F(x)\]</span></p>
+<ul>
+<li><span class="math inline">\(F(x)\)</span>는 트랜스포머에서 서브층에 해당</li>
+<li>즉, 장차 연결은 서브층의 입력과 출력을 더하는 것</li>
+<li>서브층의 입력과 출력은 동일한 차원을 갖고 있어서 가능</li>
+<li>그래서 재귀하는 것처럼 다이어그램 그려보면 화살표가 출력층에서 나와 입력층으로 들어가는 모습</li>
+<li><em>잔차 연결은 컴퓨터 비전 분야에서 주로 사용되는 모델의 학습을 돕는 기법</em></li>
+</ul>
+<p>식으로 표현 -&gt; <span class="math inline">\(x + Sublayer(x)\)</span></p>
+<p>서브층이 멀티 헤드 어텐션이었다면 $H(x) - x + Multi - head Attention(x)</p>
+<p>참고 : <a href="https://arxiv.org/pdf/1512.03385.pdf">잔차연결 관련 논문</a></p>
+</section>
+<section id="층-정규화" class="level2">
+<h2 class="anchored" data-anchor-id="층-정규화">2. 층 정규화</h2>
+<p>잔차연결과 층 정규화 모두 수행한 함수</p>
+<p><span class="math display">\[LN = LayerNorm(x+Sublayer(x))\]</span></p>
+<p>텐서의 마지막 차원에 대하여 평균과 분산을 구하고, 이를 가지고 어떤 수식을 통해 값을 정규화하여 학습을 도움</p>
+<ul>
+<li>텐서의 마지막 차원 = 트랜스포머에서는 <span class="math inline">\(d_{model}\)</span> 차원을 의미</li>
+</ul>
+<ol type="1">
+<li><p>평균과 분산을 통한 벡터 <span class="math inline">\(x_i\)</span> 정규화</p>
+<ul>
+<li>스칼라인 평균과 분산 도출</li>
+<li><span class="math inline">\(\epsilon\)</span>은 분모가 0이 되는 것을 방지</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[\hat{x}_{i,k} = \frac{x_{i,k} - \mu_i}{\sqrt{\sigma^2_i + \epsilon}}\]</span></p>
+<ol start="2" type="1">
+<li>감마와 베타 도입</li>
+</ol>
+<ul>
+<li>LayerNormalization(케라스에 내장되어 있음)</li>
+</ul>
+<p><span class="math display">\[ln_i = \gamma \hat{x}_i + \beta = LayerNorm(x_i)\]</span></p>
+<p>참고: <a href="https://arxiv.org/pdf/1607.06450.pdf">층 정규화 관련 논문</a></p>
+</section>
+</section>
+<section id="encoder-구현" class="level1">
+<h1>Encoder 구현</h1>
+<p>인코더 입력으로 들어가는 문장에는 패딩이 있을 수 있으므로 어텐션 시 패딩 토큰을 제외하도록 패딩 마스크를 사용</p>
+<ul>
+<li>multiheadattention 함수의 mask 인자값으로 padding_mask가 사용되는 이유</li>
+<li>인코더는 두 개의 서브층으로 이루어짐
+<ul>
+<li>멀티 헤드 어텐션</li>
+<li>피드 포워드 신경망</li>
+</ul></li>
+<li>서브층 이후 드롭 아웃, 잔차 연결, 층 정규화 수행</li>
+</ul>
+<div class="cell" data-execution_count="86">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> encoder_layer(dff, d_model, num_heads, dropout, name<span class="op">=</span><span class="st">"encoder_layer"</span>):</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> tf.keras.Input(shape<span class="op">=</span>(<span class="va">None</span>, d_model), name<span class="op">=</span><span class="st">"inputs"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 인코더는 패딩 마스크 사용</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    padding_mask <span class="op">=</span> tf.keras.Input(shape<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="va">None</span>), name<span class="op">=</span><span class="st">"padding_mask"</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 멀티-헤드 어텐션 (첫번째 서브층 / 셀프 어텐션)</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    attention <span class="op">=</span> MultiHeadAttention(</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>      d_model, num_heads, name<span class="op">=</span><span class="st">"attention"</span>)({</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>          <span class="st">'query'</span>: inputs, <span class="st">'key'</span>: inputs, <span class="st">'value'</span>: inputs, <span class="co"># Q = K = V</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>          <span class="st">'mask'</span>: padding_mask <span class="co"># 패딩 마스크 사용</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 드롭아웃 + 잔차 연결과 층 정규화</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    attention <span class="op">=</span> tf.keras.layers.Dropout(rate<span class="op">=</span>dropout)(attention)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    attention <span class="op">=</span> tf.keras.layers.LayerNormalization(</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>      epsilon<span class="op">=</span><span class="fl">1e-6</span>)(inputs <span class="op">+</span> attention)</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 포지션 와이즈 피드 포워드 신경망 (두번째 서브층)</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> tf.keras.layers.Dense(units<span class="op">=</span>dff, activation<span class="op">=</span><span class="st">'relu'</span>)(attention)</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> tf.keras.layers.Dense(units<span class="op">=</span>d_model)(outputs)</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 드롭아웃 + 잔차 연결과 층 정규화</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> tf.keras.layers.Dropout(rate<span class="op">=</span>dropout)(outputs)</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> tf.keras.layers.LayerNormalization(</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>      epsilon<span class="op">=</span><span class="fl">1e-6</span>)(attention <span class="op">+</span> outputs)</span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tf.keras.Model(</span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>        inputs<span class="op">=</span>[inputs, padding_mask], outputs<span class="op">=</span>outputs, name<span class="op">=</span>name)</span></code></pre></div>
+</div>
+</section>
+<section id="encoder-쌓기" class="level1">
+<h1>Encoder 쌓기</h1>
+<div class="cell" data-execution_count="89">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> encoder(vocab_size, num_layers, dff,</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>            d_model, num_heads, dropout,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>            name<span class="op">=</span><span class="st">"encoder"</span>):</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> tf.keras.Input(shape<span class="op">=</span>(<span class="va">None</span>,), name<span class="op">=</span><span class="st">"inputs"</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 인코더는 패딩 마스크 사용</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    padding_mask <span class="op">=</span> tf.keras.Input(shape<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="va">None</span>), name<span class="op">=</span><span class="st">"padding_mask"</span>)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 포지셔널 인코딩 + 드롭아웃</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    embeddings <span class="op">=</span> tf.keras.layers.Embedding(vocab_size, d_model)(inputs)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    embeddings <span class="op">*=</span> tf.math.sqrt(tf.cast(d_model, tf.float32))</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    embeddings <span class="op">=</span> PositionalEncoding(vocab_size, d_model)(embeddings)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> tf.keras.layers.Dropout(rate<span class="op">=</span>dropout)(embeddings)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 인코더를 num_layers개 쌓기</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_layers):</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>        outputs <span class="op">=</span> encoder_layer(dff<span class="op">=</span>dff, d_model<span class="op">=</span>d_model, num_heads<span class="op">=</span>num_heads,</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>            dropout<span class="op">=</span>dropout, name<span class="op">=</span><span class="st">"encoder_layer_</span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(i),</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>        )([outputs, padding_mask])</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tf.keras.Model(</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>      inputs<span class="op">=</span>[inputs, padding_mask], outputs<span class="op">=</span>outputs, name<span class="op">=</span>name)</span></code></pre></div>
+</div>
+<p>인코더 층을 num_layers 만큼 쌓는 클래스</p>
+</section>
+<section id="encoder에서-decoder로" class="level1">
+<h1>Encoder에서 Decoder로</h1>
+<p>인코더에서 num_layers만큼 총 연산을 순차적으로 한 후 마지막 층의 인코더의 출력을 디코더로 전달</p>
+</section>
+<section id="decoder-self-attention-and-look-ahead-mask" class="level1">
+<h1>Decoder: Self-Attention and Look-ahead Mask</h1>
+<p>트랜스포머는 문장 행렬로 입력을 한 번에 받기 때문에 현재 시점의 단어를 예측하고자 할 때 입력 문장 행렬로부터 미래 시점의 단어까지 참고하느 현상이 발생</p>
+<p>이를 위해 디코더에서 현재 시점의 예측에서 현재 시점보다 미래에 있는 단어들을 참고하지 못하도록 룩-어헤드 마스크 도입</p>
+<p><strong>디코더의 첫번때 서브층에서 이루어짐</strong></p>
+<p><strong>디코더의 셀프 어텐션은 인코더의 멀티 헤드 셀프 어텐션과 동일한 연산을 수행하나, 어텐션 스코어 행렬에서 마스킹을 적용하는 점이 다름</strong></p>
+<p>-&gt; 미리보기 방지를 위함</p>
+<p>트랜스포머 마스킹의 종류</p>
+<ol type="1">
+<li>인코더의 셀프 어텐션 = 패딩 마스크를 전달</li>
+<li>디코더의 첫번째 서브층인 마스크드 셀프 어텐션 = 룩-어헤드 마스크를 전달</li>
+<li>디코더의 두번째 서브층인 인코더-디코더 어텐션 = 패딩 마스크를 전달</li>
+</ol>
+<div class="cell" data-execution_count="90">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 디코더의 첫번째 서브층(sublayer)에서 미래 토큰을 Mask하는 함수</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_look_ahead_mask(x):</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    seq_len <span class="op">=</span> tf.shape(x)[<span class="dv">1</span>]</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    look_ahead_mask <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> tf.linalg.band_part(tf.ones((seq_len, seq_len)), <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    padding_mask <span class="op">=</span> create_padding_mask(x) <span class="co"># 패딩 마스크도 포함</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tf.maximum(look_ahead_mask, padding_mask)</span></code></pre></div>
+</div>
+<p>마스킹을 하고자 하는 위치에 1, 마스킹을 하지 않고자 하는 위이에 0을 리턴</p>
+<div class="cell" data-execution_count="92">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(create_look_ahead_mask(tf.constant([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">5</span>]])))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor(
+[[[[0. 1. 1. 1. 1.]
+   [0. 0. 1. 1. 1.]
+   [0. 0. 1. 1. 1.]
+   [0. 0. 1. 0. 1.]
+   [0. 0. 1. 0. 0.]]]], shape=(1, 1, 5, 5), dtype=float32)</code></pre>
+</div>
+</div>
+<section id="nd-decoder-sublayer-encoder-decoder-attention" class="level2">
+<h2 class="anchored" data-anchor-id="nd-decoder-sublayer-encoder-decoder-attention">2nd Decoder sublayer : Encoder-Decoder Attention</h2>
+<p>디코더 두번째 서브층은 멀티 헤드 어텐션을 수행한다는 점에서 이전의 어텐션들(인코더와 디코더의 첫번째 서브층)과는 공통점이 있으나 이건 <strong>셀프 어텐션이 아님!</strong></p>
+<ul>
+<li><p><strong>셀프 어텐션은 Query, Key, Value가 출처가 같은 경우를 말하는데, 인코더-디코더 어텐션은 Query가 디코더인 행렬인 반면, Key, Value가 인코더 행렬이기 때문</strong></p></li>
+<li><p>인코더의 첫번째 서브층 = Query = Key = Value</p></li>
+<li><p>디코더의 첫번째 서브층 = Query = Key = Value</p></li>
+<li><p>디코더의 두번째 서브층 = Query = 디코더 행렬(의 첫번째 서브층 결과), Key = Value = 인코더 행렬(의 마지막 층에서 얻은 값)</p></li>
+</ul>
+</section>
+</section>
+<section id="decoder-구현" class="level1">
+<h1>Decoder 구현</h1>
+<p>첫번째 서브층은 mask 인자값으로 look_ahead_mask가 들어가고, 두 번째 서브층은 mask의 인자값으로 padding_mask가 들어가있음</p>
+<p>세 개의 서브층 모두 서브층 연산 후에는 드롭 아웃, 잔차 연결, 층 정규화가 수행</p>
+<div class="cell" data-execution_count="93">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> decoder_layer(dff, d_model, num_heads, dropout, name<span class="op">=</span><span class="st">"decoder_layer"</span>):</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> tf.keras.Input(shape<span class="op">=</span>(<span class="va">None</span>, d_model), name<span class="op">=</span><span class="st">"inputs"</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    enc_outputs <span class="op">=</span> tf.keras.Input(shape<span class="op">=</span>(<span class="va">None</span>, d_model), name<span class="op">=</span><span class="st">"encoder_outputs"</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 룩어헤드 마스크(첫번째 서브층)</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    look_ahead_mask <span class="op">=</span> tf.keras.Input(</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>      shape<span class="op">=</span>(<span class="dv">1</span>, <span class="va">None</span>, <span class="va">None</span>), name<span class="op">=</span><span class="st">"look_ahead_mask"</span>)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 패딩 마스크(두번째 서브층)</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    padding_mask <span class="op">=</span> tf.keras.Input(shape<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="va">None</span>), name<span class="op">=</span><span class="st">'padding_mask'</span>)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 멀티-헤드 어텐션 (첫번째 서브층 / 마스크드 셀프 어텐션)</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    attention1 <span class="op">=</span> MultiHeadAttention(</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>      d_model, num_heads, name<span class="op">=</span><span class="st">"attention_1"</span>)(inputs<span class="op">=</span>{</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>          <span class="st">'query'</span>: inputs, <span class="st">'key'</span>: inputs, <span class="st">'value'</span>: inputs, <span class="co"># Q = K = V</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>          <span class="st">'mask'</span>: look_ahead_mask <span class="co"># 룩어헤드 마스크</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 잔차 연결과 층 정규화</span></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>    attention1 <span class="op">=</span> tf.keras.layers.LayerNormalization(</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>      epsilon<span class="op">=</span><span class="fl">1e-6</span>)(attention1 <span class="op">+</span> inputs)</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 멀티-헤드 어텐션 (두번째 서브층 / 디코더-인코더 어텐션)</span></span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>    attention2 <span class="op">=</span> MultiHeadAttention(</span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>      d_model, num_heads, name<span class="op">=</span><span class="st">"attention_2"</span>)(inputs<span class="op">=</span>{</span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>          <span class="st">'query'</span>: attention1, <span class="st">'key'</span>: enc_outputs, <span class="st">'value'</span>: enc_outputs, <span class="co"># Q != K = V</span></span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>          <span class="st">'mask'</span>: padding_mask <span class="co"># 패딩 마스크</span></span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 드롭아웃 + 잔차 연결과 층 정규화</span></span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a>    attention2 <span class="op">=</span> tf.keras.layers.Dropout(rate<span class="op">=</span>dropout)(attention2)</span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>    attention2 <span class="op">=</span> tf.keras.layers.LayerNormalization(</span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a>      epsilon<span class="op">=</span><span class="fl">1e-6</span>)(attention2 <span class="op">+</span> attention1)</span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 포지션 와이즈 피드 포워드 신경망 (세번째 서브층)</span></span>
+<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> tf.keras.layers.Dense(units<span class="op">=</span>dff, activation<span class="op">=</span><span class="st">'relu'</span>)(attention2)</span>
+<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> tf.keras.layers.Dense(units<span class="op">=</span>d_model)(outputs)</span>
+<span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 드롭아웃 + 잔차 연결과 층 정규화</span></span>
+<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> tf.keras.layers.Dropout(rate<span class="op">=</span>dropout)(outputs)</span>
+<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> tf.keras.layers.LayerNormalization(</span>
+<span id="cb30-42"><a href="#cb30-42" aria-hidden="true" tabindex="-1"></a>      epsilon<span class="op">=</span><span class="fl">1e-6</span>)(outputs <span class="op">+</span> attention2)</span>
+<span id="cb30-43"><a href="#cb30-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-44"><a href="#cb30-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tf.keras.Model(</span>
+<span id="cb30-45"><a href="#cb30-45" aria-hidden="true" tabindex="-1"></a>      inputs<span class="op">=</span>[inputs, enc_outputs, look_ahead_mask, padding_mask],</span>
+<span id="cb30-46"><a href="#cb30-46" aria-hidden="true" tabindex="-1"></a>      outputs<span class="op">=</span>outputs,</span>
+<span id="cb30-47"><a href="#cb30-47" aria-hidden="true" tabindex="-1"></a>      name<span class="op">=</span>name)</span></code></pre></div>
+</div>
+</section>
+<section id="decoder-쌓기" class="level1">
+<h1>Decoder 쌓기</h1>
+<p>num_layers 개수만큼 쌓기</p>
+<div class="cell" data-execution_count="95">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> decoder(vocab_size, num_layers, dff,</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>            d_model, num_heads, dropout,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>            name<span class="op">=</span><span class="st">'decoder'</span>):</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> tf.keras.Input(shape<span class="op">=</span>(<span class="va">None</span>,), name<span class="op">=</span><span class="st">'inputs'</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    enc_outputs <span class="op">=</span> tf.keras.Input(shape<span class="op">=</span>(<span class="va">None</span>, d_model), name<span class="op">=</span><span class="st">'encoder_outputs'</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 디코더는 룩어헤드 마스크(첫번째 서브층)와 패딩 마스크(두번째 서브층) 둘 다 사용.</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    look_ahead_mask <span class="op">=</span> tf.keras.Input(</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>      shape<span class="op">=</span>(<span class="dv">1</span>, <span class="va">None</span>, <span class="va">None</span>), name<span class="op">=</span><span class="st">'look_ahead_mask'</span>)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    padding_mask <span class="op">=</span> tf.keras.Input(shape<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="va">None</span>), name<span class="op">=</span><span class="st">'padding_mask'</span>)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 포지셔널 인코딩 + 드롭아웃</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    embeddings <span class="op">=</span> tf.keras.layers.Embedding(vocab_size, d_model)(inputs)</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    embeddings <span class="op">*=</span> tf.math.sqrt(tf.cast(d_model, tf.float32))</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    embeddings <span class="op">=</span> PositionalEncoding(vocab_size, d_model)(embeddings)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> tf.keras.layers.Dropout(rate<span class="op">=</span>dropout)(embeddings)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 디코더를 num_layers개 쌓기</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_layers):</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>        outputs <span class="op">=</span> decoder_layer(dff<span class="op">=</span>dff, d_model<span class="op">=</span>d_model, num_heads<span class="op">=</span>num_heads,</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>            dropout<span class="op">=</span>dropout, name<span class="op">=</span><span class="st">'decoder_layer_</span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(i),</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>        )(inputs<span class="op">=</span>[outputs, enc_outputs, look_ahead_mask, padding_mask])</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tf.keras.Model(</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>      inputs<span class="op">=</span>[inputs, enc_outputs, look_ahead_mask, padding_mask],</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>      outputs<span class="op">=</span>outputs,</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>      name<span class="op">=</span>name)</span></code></pre></div>
+</div>
+</section>
+<section id="transformer-구현" class="level1">
+<h1>Transformer 구현</h1>
+<p>vocab_size는 다중 클래스 분류 문제를 풀 수 있도록 추가</p>
+<div class="cell" data-execution_count="96">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformer(vocab_size, num_layers, dff,</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                d_model, num_heads, dropout,</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                name<span class="op">=</span><span class="st">"transformer"</span>):</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 인코더의 입력</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> tf.keras.Input(shape<span class="op">=</span>(<span class="va">None</span>,), name<span class="op">=</span><span class="st">"inputs"</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 디코더의 입력</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    dec_inputs <span class="op">=</span> tf.keras.Input(shape<span class="op">=</span>(<span class="va">None</span>,), name<span class="op">=</span><span class="st">"dec_inputs"</span>)</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 인코더의 패딩 마스크</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    enc_padding_mask <span class="op">=</span> tf.keras.layers.Lambda(</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>      create_padding_mask, output_shape<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="va">None</span>),</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>      name<span class="op">=</span><span class="st">'enc_padding_mask'</span>)(inputs)</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 디코더의 룩어헤드 마스크(첫번째 서브층)</span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>    look_ahead_mask <span class="op">=</span> tf.keras.layers.Lambda(</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>      create_look_ahead_mask, output_shape<span class="op">=</span>(<span class="dv">1</span>, <span class="va">None</span>, <span class="va">None</span>),</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>      name<span class="op">=</span><span class="st">'look_ahead_mask'</span>)(dec_inputs)</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 디코더의 패딩 마스크(두번째 서브층)</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>    dec_padding_mask <span class="op">=</span> tf.keras.layers.Lambda(</span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>      create_padding_mask, output_shape<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="va">None</span>),</span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>      name<span class="op">=</span><span class="st">'dec_padding_mask'</span>)(inputs)</span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 인코더의 출력은 enc_outputs. 디코더로 전달된다.</span></span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a>    enc_outputs <span class="op">=</span> encoder(vocab_size<span class="op">=</span>vocab_size, num_layers<span class="op">=</span>num_layers, dff<span class="op">=</span>dff,</span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a>      d_model<span class="op">=</span>d_model, num_heads<span class="op">=</span>num_heads, dropout<span class="op">=</span>dropout,</span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a>    )(inputs<span class="op">=</span>[inputs, enc_padding_mask]) <span class="co"># 인코더의 입력은 입력 문장과 패딩 마스크</span></span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 디코더의 출력은 dec_outputs. 출력층으로 전달된다.</span></span>
+<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a>    dec_outputs <span class="op">=</span> decoder(vocab_size<span class="op">=</span>vocab_size, num_layers<span class="op">=</span>num_layers, dff<span class="op">=</span>dff,</span>
+<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a>      d_model<span class="op">=</span>d_model, num_heads<span class="op">=</span>num_heads, dropout<span class="op">=</span>dropout,</span>
+<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a>    )(inputs<span class="op">=</span>[dec_inputs, enc_outputs, look_ahead_mask, dec_padding_mask])</span>
+<span id="cb32-35"><a href="#cb32-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-36"><a href="#cb32-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 다음 단어 예측을 위한 출력층</span></span>
+<span id="cb32-37"><a href="#cb32-37" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> tf.keras.layers.Dense(units<span class="op">=</span>vocab_size, name<span class="op">=</span><span class="st">"outputs"</span>)(dec_outputs)</span>
+<span id="cb32-38"><a href="#cb32-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-39"><a href="#cb32-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tf.keras.Model(inputs<span class="op">=</span>[inputs, dec_inputs], outputs<span class="op">=</span>outputs, name<span class="op">=</span>name)</span></code></pre></div>
+</div>
+</section>
+<section id="transformer-hyperparameter-정하기" class="level1">
+<h1>Transformer hyperparameter 정하기</h1>
+<p>예제 - num_layers = 4 # 인코더,디코더 층의 개수 - <span class="math inline">\(d_{ff}\)</span> = 128 # 포지션 와이즈 피드 포워드 신경망의 은닉층 - <span class="math inline">\(d_{model}\)</span> = 128 # 인코더와 디코더의 입, 출력의 차원 - num_heads = 4 # 멀티-헤드 어텐션에서 병렬적으로 사용할 헤드의 수 - <span class="math inline">\(d_v\)</span> = 128 / 4 = 32</p>
+<div class="cell" data-execution_count="97">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>small_transformer <span class="op">=</span> transformer(</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    vocab_size <span class="op">=</span> <span class="dv">9000</span>,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    num_layers <span class="op">=</span> <span class="dv">4</span>,</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    dff <span class="op">=</span> <span class="dv">512</span>,</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    d_model <span class="op">=</span> <span class="dv">128</span>,</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    num_heads <span class="op">=</span> <span class="dv">4</span>,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    dropout <span class="op">=</span> <span class="fl">0.3</span>,</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">"small_transformer"</span>)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>tf.keras.utils.plot_model(</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    small_transformer, to_file<span class="op">=</span><span class="st">'small_transformer.png'</span>, show_shapes<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(1, 9000, 128)
+(1, 9000, 128)
+You must install pydot (`pip install pydot`) and install graphviz (see instructions at https://graphviz.gitlab.io/download/) for plot_model to work.</code></pre>
+</div>
+</div>
+</section>
+<section id="loss-function-정의" class="level1">
+<h1>Loss Function 정의</h1>
+<p>예제가 다중 클래스라 크로스 엔트로피 함수를 손실 함수로 정의함</p>
+<div class="cell" data-execution_count="99">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> loss_function(y_true, y_pred):</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    y_true <span class="op">=</span> tf.reshape(y_true, shape<span class="op">=</span>(<span class="op">-</span><span class="dv">1</span>, MAX_LENGTH <span class="op">-</span> <span class="dv">1</span>))</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> tf.keras.losses.SparseCategoricalCrossentropy(</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>      from_logits<span class="op">=</span><span class="va">True</span>, reduction<span class="op">=</span><span class="st">'none'</span>)(y_true, y_pred)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    mask <span class="op">=</span> tf.cast(tf.not_equal(y_true, <span class="dv">0</span>), tf.float32)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> tf.multiply(loss, mask)</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tf.reduce_mean(loss)</span></code></pre></div>
+</div>
+</section>
+<section id="학습률" class="level1">
+<h1>학습률</h1>
+<p><span class="math display">\[lrate = d^{-0.5}_{model} \times min(step_num^{-0.5} , step_num \times warmup_steps^{-1/4})\]</span></p>
+<div class="cell" data-execution_count="100">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CustomSchedule(tf.keras.optimizers.schedules.LearningRateSchedule):</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, d_model, warmup_steps<span class="op">=</span><span class="dv">4000</span>):</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(CustomSchedule, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.d_model <span class="op">=</span> d_model</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.d_model <span class="op">=</span> tf.cast(<span class="va">self</span>.d_model, tf.float32)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.warmup_steps <span class="op">=</span> warmup_steps</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, step):</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>        arg1 <span class="op">=</span> tf.math.rsqrt(step)</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>        arg2 <span class="op">=</span> step <span class="op">*</span> (<span class="va">self</span>.warmup_steps<span class="op">**-</span><span class="fl">1.5</span>)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> tf.math.rsqrt(<span class="va">self</span>.d_model) <span class="op">*</span> tf.math.minimum(arg1, arg2)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="101">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>sample_learning_rate <span class="op">=</span> CustomSchedule(d_model<span class="op">=</span><span class="dv">128</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plt.plot(sample_learning_rate(tf.<span class="bu">range</span>(<span class="dv">200000</span>, dtype<span class="op">=</span>tf.float32)))</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Learning Rate"</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Train Step"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="101">
+<pre><code>Text(0.5, 0, 'Train Step')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-05-28-Attention is all you need_files/figure-html/cell-29-output-2.png" class="img-fluid"></p>
+</div>
+</div>
 
 
 </section>

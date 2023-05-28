@@ -123,9 +123,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -767,9 +764,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#attention-function" id="toc-attention-function" class="nav-link active" data-scroll-target="#attention-function">Attention Function</a>
-  <ul class="collapse">
-  <li><a href="#어텐션-모델의-요소" id="toc-어텐션-모델의-요소" class="nav-link" data-scroll-target="#어텐션-모델의-요소">어텐션 모델의 요소</a></li>
+  <li><a href="#어텐션-모델의-요소" id="toc-어텐션-모델의-요소" class="nav-link active" data-scroll-target="#어텐션-모델의-요소">어텐션 모델의 요소</a></li>
   <li><a href="#dot-product-attention" id="toc-dot-product-attention" class="nav-link" data-scroll-target="#dot-product-attention">Dot-Product Attention</a>
   <ul class="collapse">
   <li><a href="#어텐션-스코어를-구한다." id="toc-어텐션-스코어를-구한다." class="nav-link" data-scroll-target="#어텐션-스코어를-구한다.">1. 어텐션 스코어를 구한다.</a></li>
@@ -778,7 +773,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#어텐션-값과-디코더의-t-시점의-은닉-상태를-연결한다." id="toc-어텐션-값과-디코더의-t-시점의-은닉-상태를-연결한다." class="nav-link" data-scroll-target="#어텐션-값과-디코더의-t-시점의-은닉-상태를-연결한다.">4. 어텐션 값과 디코더의 t 시점의 은닉 상태를 연결한다.</a></li>
   <li><a href="#출력층-연산의-입력이-되는-tildes_t를-계산한다." id="toc-출력층-연산의-입력이-되는-tildes_t를-계산한다." class="nav-link" data-scroll-target="#출력층-연산의-입력이-되는-tildes_t를-계산한다.">5. 출력층 연산의 입력이 되는 <span class="math inline">\(\tilde{s}_t\)</span>를 계산한다.</a></li>
   <li><a href="#tildes_t를-출력층의-입력으로-사용한다." id="toc-tildes_t를-출력층의-입력으로-사용한다." class="nav-link" data-scroll-target="#tildes_t를-출력층의-입력으로-사용한다.">6. <span class="math inline">\(\tilde{s}_t\)</span>를 출력층의 입력으로 사용한다.</a></li>
-  </ul></li>
   </ul></li>
   <li><a href="#다양한-종류의-어텐션" id="toc-다양한-종류의-어텐션" class="nav-link" data-scroll-target="#다양한-종류의-어텐션">다양한 종류의 어텐션</a></li>
   </ul>
@@ -794,45 +788,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Attention Mechanism</p>
 </blockquote>
 <p>Ref: <a href="https://wikidocs.net/22893">딥 러닝을 위한 자연어 처리 입문</a></p>
-<p>RNN에 기반한 seq2seq 모델의 문제점</p>
-<ol type="1">
-<li>하나의 고정된 크기의 벡터에 모든 정보를 압축하려고 하니까 정보 손실이 발생</li>
-<li>RNN의 고질적인 문제인 기울기 소실 문제 존재</li>
-</ol>
-<p><span class="math inline">\(\to\)</span> 기계 번역 동안 입력 문장이 길면 품질이 떨어지는 현상 발생, 이의 대안으로 입력 시퀀스가 길어지면 출력 시퀀스의 정확도가 떨어지는 것을 보정해주기 위해 들장한 어텐션.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><p>그레디언트 기반의 학습에서 역전파할때 발생하는 문제로 0 근처의 숫자를 계속 곱하여 터지거나 0ㅇ으로 사는 상황</p></li>
-<li><p>그레디언트 기반의 학습</p>
-<ul>
-<li>소실함수의 기울기를 통하여 업데이트하는 방식</li>
-</ul></li>
-<li><p>역전파</p>
-<ul>
-<li>손실함수를 여러 단계로 쪼갠다(여러 합성 함수로 표현한다).</li>
-<li>각 단계의 미분값을 구한다,</li>
-<li>그것들을 모두 곱하여 기울기를 계산한다.</li>
-</ul></li>
-</ul>
-<p>참고: <a href="https://seoyeonc.github.io/chch/big%20data%20analysis/%EA%B8%B0%EC%9A%B8%EA%B8%B0%EC%86%8C%EB%A9%B8/%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C/2022/01/23/bd-12%EC%A3%BC%EC%B0%A8.html">빅데이터 분석 12주차</a></p>
-</div>
-</div>
-<section id="attention-function" class="level1">
-<h1>Attention Function</h1>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+<p>::: {.callout-note}</p>
+<p><strong>my own summary</strong></p>
+<p>현재 디코더의 시점 t에서 단어를 예측하기 위해 인코더의 모든 은닉 상태 각각이 디코더의 현 시점의 은닉 상태와 얼마나 유사한지를 판단하는 스코어 값인 어텐션 스코어를 이용하여 인코더의 문맥context를 포함한 값을 입력으로 넣어 정확도를 높이는 방법</p>
+<pre><code>
+RNN에 기반한 seq2seq 모델의 문제점
+
+1. 하나의 고정된 크기의 벡터에 모든 정보를 압축하려고 하니까 정보 손실이 발생
+2. RNN의 고질적인 문제인 기울기 소실 문제 존재
+
+$\to$ 기계 번역 동안 입력 문장이 길면 품질이 떨어지는 현상 발생, 이의 대안으로 입력 시퀀스가 길어지면 출력 시퀀스의 정확도가 떨어지는 것을 보정해주기 위해 들장한 어텐션.
+
+::: {.callout-note}
+
+- 그레디언트 기반의 학습에서 역전파할때 발생하는 문제로 0 근처의 숫자를 계속 곱하여 터지거나 0으로 가는 상황
+
+- 그레디언트 기반의 학습
+    - 소실함수의 기울기를 통하여 업데이트하는 방식
+- 역전파
+    - 손실함수를 여러 단계로 쪼갠다(여러 합성 함수로 표현한다).
+    - 각 단계의 미분값을 구한다,
+    - 그것들을 모두 곱하여 기울기를 계산한다.
+
+참고: [빅데이터 분석 12주차](https://seoyeonc.github.io/chch/big%20data%20analysis/%EA%B8%B0%EC%9A%B8%EA%B8%B0%EC%86%8C%EB%A9%B8/%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C/2022/01/23/bd-12%EC%A3%BC%EC%B0%A8.html)
+
+:::
+
+# Attention Function
+
+```{mermaid}
+flowchart LR
     subgraph "Source"
         subgraph B2
             direction BT
@@ -841,16 +826,8 @@ Note
             Key3 --&gt; Value3
         end
     end
-  Query --&gt; Source --&gt; Attention\nValue
-</pre>
-<div id="mermaid-tooltip-1" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-<p><span class="math display">\[Attention(Q, K, V) = Attention Value\]</span></p>
+  Query --&gt; Source --&gt; Attention\nValue</code></pre>
+<p><span class="math display">\[Attention(Q, K, V) = \text{Attention Value}\]</span></p>
 <ol type="1">
 <li>주어진 쿼리에 대해서 모든 키와의 유사도를 각각 구한다.</li>
 <li>구한 유사도를 키와 맵핑되어 있는 각각의 값value에 반영한다.</li>
@@ -965,7 +942,7 @@ Tip
 <h3 class="anchored" data-anchor-id="어텐션-값과-디코더의-t-시점의-은닉-상태를-연결한다.">4. 어텐션 값과 디코더의 t 시점의 은닉 상태를 연결한다.</h3>
 <ul>
 <li>어텐션 값<span class="math inline">\(a_t\)</span>와 디코더의 은닉 상태 <span class="math inline">\(s_t\)</span>를 결합concatenate하여 하나의 벡터로 만드는 작업을 수행한다. <span class="math inline">\(\to\)</span> <span class="math inline">\(v_t\)</span></li>
-<li>아 <span class="math inline">\(v_t\)</span>를 예측 연산의 입력으로 사용하무로서 인코더로부터 얻은 정보를 활용하여 <span class="math inline">\(\hat{y}\)</span>를 더 잘 예측할 수 있게 됨 <span class="math inline">\(\to\)</span> 어텐션 메커니즘의 핵심</li>
+<li>아 <span class="math inline">\(v_t\)</span>를 예측 연산의 입력으로 사용함으로써 인코더로부터 얻은 정보를 활용하여 <span class="math inline">\(\hat{y}\)</span>를 더 잘 예측할 수 있게 됨 <span class="math inline">\(\to\)</span> 어텐션 메커니즘의 핵심</li>
 </ul>
 </section>
 <section id="출력층-연산의-입력이-되는-tildes_t를-계산한다." class="level3">
@@ -989,7 +966,7 @@ Note
 </ul>
 <p>attention</p>
 <ul>
-<li>출력츨의 입력이 <span class="math inline">\(\tilde{s}_t\)</span></li>
+<li>출력층의 입력이 <span class="math inline">\(\tilde{s}_t\)</span></li>
 </ul>
 </div>
 </div>
@@ -997,17 +974,17 @@ Note
 <p><span class="math inline">\(b_c\)</span>는 편향</p>
 <p>참고: <a href="https://seoyeonc.github.io/chch/special%20topics%20in%20machine%20learning/%EC%88%9C%ED%99%98%EC%8B%A0%EA%B2%BD%EB%A7%9D/embedding%20layer/2022/11/02/ml_(9%EC%A3%BC%EC%B0%A8)_10%EC%9B%9431%EC%9D%BC.html">기계학습 특강 9주차 tanh</a></p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tanh <span class="op">=</span> torch.nn.Tanh()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tanh <span class="op">=</span> torch.nn.Tanh()</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>_x <span class="op">=</span> torch.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">100</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.plot(_x,tanh(_x))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"tanh(x)"</span>, size<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>_x <span class="op">=</span> torch.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">100</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.plot(_x,tanh(_x))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"tanh(x)"</span>, size<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>Text(0.5, 1.0, 'tanh(x)')</code></pre>
 </div>
@@ -1019,7 +996,6 @@ Note
 <section id="tildes_t를-출력층의-입력으로-사용한다." class="level3">
 <h3 class="anchored" data-anchor-id="tildes_t를-출력층의-입력으로-사용한다.">6. <span class="math inline">\(\tilde{s}_t\)</span>를 출력층의 입력으로 사용한다.</h3>
 <p><span class="math display">\[\hat{y}_t = Softmax(W_y \tilde{s}_t + b_y)\]</span></p>
-</section>
 </section>
 </section>
 <section id="다양한-종류의-어텐션" class="level1">
