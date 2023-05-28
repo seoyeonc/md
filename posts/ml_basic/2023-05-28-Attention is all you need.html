@@ -124,6 +124,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -759,7 +760,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#seq2seq-의-한계" id="toc-seq2seq-의-한계" class="nav-link active" data-scroll-target="#seq2seq-의-한계">seq2seq 의 한계</a></li>
+  <li><a href="#트랜스포머의-주요-하이퍼파라미터" id="toc-트랜스포머의-주요-하이퍼파라미터" class="nav-link" data-scroll-target="#트랜스포머의-주요-하이퍼파라미터">트랜스포머의 주요 하이퍼파라미터</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -771,14 +779,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Attention is all you need</p>
 </blockquote>
 <p>ref: <a href="https://wikidocs.net/31379">딥 러닝을 이용한 자연어 처리 입문</a>, <a href="https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf">Attention is all you need</a></p>
+<p><span class="math inline">\(\star\)</span> seq2seq 구조인 인코더-디코더를 따르면서 어텐션만으로 구현한 모델, RNN을 사용하지 않고 인코더-디코더 구조로 설계하였지만 RNN보다 우수한 성능을 보임</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>https:<span class="op">//</span>github.com<span class="op">/</span>huggingface<span class="op">/</span>transformers</span></code></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>https:<span class="op">//</span>github.com<span class="op">/</span>huggingface<span class="op">/</span>transformers<span class="op">/</span>blob<span class="op">/</span>main<span class="op">/</span>README_ko.md</span></code></pre></div>
 </div>
+<section id="seq2seq-의-한계" class="level1">
+<h1>seq2seq 의 한계</h1>
+<ul>
+<li><p>인코더, 디코더로 구성되어 있는 seq2seq</p></li>
+<li><p>인코더는 입력 시퀀스를 하나의 벡터 표현으로 압축</p>
+<ul>
+<li><span class="math inline">\(\to\)</span> 입력 시퀀스의 정보가 일부 손실된다는 단점 존재</li>
+<li><span class="math inline">\(\to\)</span> 이를 위해 어텐션 메카니즘 등장</li>
+</ul></li>
+<li><p>디코더는 이 벡터 표현을 통해 출력 시퀀스를 만듦</p></li>
+<li><p><span class="math inline">\(\star\)</span> 어텐션을 RNN의 보정을 위한 용도로 사용하는 것이 아니라 어텐션만으로 인코더와 디코더를 만든다면??</p></li>
+</ul>
+</section>
+<section id="트랜스포머의-주요-하이퍼파라미터" class="level1">
+<h1>트랜스포머의 주요 하이퍼파라미터</h1>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
