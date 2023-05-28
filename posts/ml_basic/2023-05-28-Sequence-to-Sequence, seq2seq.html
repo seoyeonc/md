@@ -821,19 +821,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>컨텍스트 벡터를 받아서 번역된 단어를 하나씩 순차적으로 출력</li>
 </ul>
 <p><em>내부 확대</em></p>
-<div class="cell" data-fig-width="6.5">
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <p>
 </p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">flowchart LR
-  A[Encoder, LSTM(**I**)] --&gt; B[LSTM(**am**)]
-  B --&gt; C[LSTM(**a**)]
-  C --&gt; D[LSTM(**student**)]
-  D --&gt; E{Context}
-  E --&gt; F[Decoder, LSTM(**&lt;sos&gt;**$\to$**je**)]
-  F --&gt; G[LSTM(**je**$\to$**suis**)]
-  G --&gt; H[LSTM(**suis**$\to$**étudiant**)]
-  H --&gt; I[LSTM(**étudiant**$\to$**&lt;eos&gt;**)]
+    a4--&gt;b1
+    b1--&gt;c1
+    subgraph Encoder
+    a1[LSTM**I**]--&gt;a2[LSTM**am**]
+    a2--&gt;a3[LSTM**a**]
+    a3--&gt;a4[LSTM**student**]
+    end
+    subgraph context
+    b1
+    end
+    subgraph Decoder
+    c1[LSTM**eos**]--&gt;c2[LSTM**je**]
+    c2--&gt;c3[LSTM**suis**]
+    c3--&gt;c4[LSTM**étudiant**]
+    end
 </pre>
 <div id="mermaid-tooltip-2" class="mermaidTooltip">
 
@@ -897,7 +904,7 @@ Tip
 <li>입력 문장의 단어 토큰들의 정보를 요약해서 담고 있다고 할 수 있음</li>
 </ul></li>
 </ul>
-<div class="cell" data-fig-width="6.5">
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <p>
@@ -910,9 +917,6 @@ Tip
     suis_out &lt;|-- Decoder
     étudiant_out &lt;|-- Decoder
     eos &lt;|-- Decoder
-    Decoder : LSTM
-    Decoder : LSTM
-    Decoder : LSTM
     Decoder : LSTM
     class sos{
       embedding
