@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="SEOYEON CHOI">
-<meta name="dcterms.date" content="2023-06-15">
+<meta name="dcterms.date" content="2023-06-09">
 
 <title>Seoyeon’s Blog for classes - Pharmacokinetic Analysis</title>
 <style>
@@ -85,6 +85,25 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -195,7 +214,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 15, 2023</p>
+        <p class="date">June 9, 2023</p>
       </div>
     </div>
     
@@ -820,10 +839,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote class="blockquote">
 <p>Pharmacokinetic Analysis</p>
 </blockquote>
-<p>Ref: <a href="https://onlinehelp.certara.com/phoenix/8.3/responsive_html5_!MasterPage!/WinNonlin%20User%27s%20Guide.pdf">Winnonlin Guide 8.3</a>, <a href="ttps://books.google.co.kr/books?hl=ko&amp;lr=&amp;id=KtKJFGJeV3MC&amp;oi=fnd&amp;pg=PP1&amp;dq=Design+and+analysis+of+bioavailability+and+bioequivalence+studies+,+Third+edition,+Chapman+%26+Hall&amp;ots=scXq3Y2TPA&amp;sig=S_FTX9fEmubxjz2RlouUnbWL7f0#v=onepage&amp;q=Design%20and%20analysis%20of%20bioavailability%20and%20bioequivalence%20studies%20%2C%20Third%20edition%2C%20Chapman%20%26%20Hall&amp;f=false">Design and Analysis of Bioavailability and Bioequivalence Studies</a>, <a href="http://koreascience.or.kr/article/JAKO201436351074280.pf">2×k 교차설계법에서 생물학적 동등성 추가시험의 통계적 절 †</a>d, <a href="https://www.law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2100000129149">식품의약품안전처 의약품 동등성 시험 기준</a></p>
+<p>Ref: <a href="https://onlinehelp.certara.com/phoenix/8.3/responsive_html5_!MasterPage!/WinNonlin%20User%27s%20Guide.pdf">Winnonlin Guide 8.3</a>, <a href="https://books.google.co.kr/books?hl=ko&amp;lr=&amp;id=KtKJFGJeV3MC&amp;oi=fnd&amp;pg=PP1&amp;dq=Design+and+analysis+of+bioavailability+and+bioequivalence+studies+,+Third+edition,+Chapman+%26+Hall&amp;ots=scXq3Y2TPA&amp;sig=S_FTX9fEmubxjz2RlouUnbWL7f0#v=onepage&amp;q=Design%20and%20analysis%20of%20bioavailability%20and%20bioequivalence%20studies%20%2C%20Third%20edition%2C%20Chapman%20%26%20Hall&amp;f=false">Design and Analysis of Bioavailability and Bioequivalence Studies</a>, <a href="http://koreascience.or.kr/article/JAKO201436351074280.pdf">2×k 교차설계법에서 생물학적 동등성 추가시험의 통계적 절차</a>, <a href="https://www.law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2100000129149">식품의약품안전처 의약품 동등성 시험 기준</a></p>
 <section id="import" class="level1">
 <h1>Import</h1>
-<div class="cell" data-execution_count="262">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> trapz <span class="co"># AUC</span></span>
@@ -842,15 +861,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="generic-medicine">Generic Medicine</h2>
 <ul>
 <li><p>a generic medicine works in the same way and provides the same clinical benefit as the brand-name medicine.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
-<li><p>특허기간이 만료된 오리지널 의약품과 주성분, 함량 및 제형이 동일하게 복제된 제네릭 의약품은 생 물학적 동등성 (이하‘생동성’이라 한다)시험을 통해 오리지널 의약품과 약효가 동등하다는 것을 입증 면 시장에 진입할 수 있다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>d</p></li>
-<li><p>제네릭 의약품을 승인 받기 위해 생동성 시험을 거쳐야 한다]</p></li>
+<li><p>특허기간이 만료된 오리지널 의약품과 주성분, 함량 및 제형이 동일하게 복제된 제네릭 의약품은 생물학적 동등성 (이하‘생동성’이라 한다)시험을 통해 오리지널 의약품과 약효가 동등하다는 것을 입증 하면 시장에 진입할 수 있다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
+<li><p>제네릭 의약품을 승인 받기 위해 생동성 시험을 거쳐야 한다</p></li>
 </ul>
 </section>
 <section id="bioequivalent" class="level2">
 <h2 class="anchored" data-anchor-id="bioequivalent">Bioequivalent</h2>
 <ul>
 <li><p>Drug companies must submit an abbreviated new drug application (ANDA) to FDA for approval to market a generic drug that is the same as (or bioequivalent to) the brand product<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p></li>
-<li><p>생동성 시험은 제재학적으로 동등한 두 제제의 동등성 입증을 위해 실시하는 샐체내 실험으로, 통계학적으로 두 제제의 생체이용률의 유사성을 비교하는 시험을 의미한다.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p></li>
+<li><p>생동성 시험은 제재학적으로 동등한 두 제제의 동등성 입증을 위해 실시하는 샐체내 실험으로, 통계학적으로 두 제제의 생체이용률의 유사성을 비교하는 시험을 의미한다.<span class="citation" data-cites="우화형20142">(<a href="#ref-우화형20142" role="doc-biblioref">우화형 and 박상규 2014</a>)</span></p></li>
 </ul>
 </section>
 <section id="parameter" class="level2">
@@ -904,14 +923,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>where Cmin and Cmax were obtained between dosing time and dosing time plus Tau</li>
 <li>약물 농도의 최소값(<span class="math inline">\(C_{min}\)</span>)과 최대값(<span class="math inline">\(C_{max}\)</span>) 사이의 변동을 약물 투여 간격 내에서 평균 농도(<span class="math inline">\(C_{avg}\)</span>)에 대한 백분율로 나타내는 약동학적 파라미터 .</li>
 </ul>
-<p>약동학 파라메터 산출 프로그램 윈놀린 가이드 참고<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>약동학 파라메터 산출 프로그램 윈놀린 가이드 참고<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <ul>
 <li>page 146 정도부터 파라메터 설명 및 계산법 확인</li>
 </ul>
 <p>아래는 식품의약품 안전처 규칙 내용 중 일부</p>
-<p>AUCt: 투약시간부터 최종 혈중농도 정량 시간 t까지의 혈중농도-시간곡선하면적</p>
-<p>AUC∞ : 투약시간부터 무한시간까지의 혈중농도-시간곡선하면적 (AUC∞ = AUCt + Ct/λZ</p>
-<p>Ct : 최종정- 도 λZ : 말단 소실 - 정수 AUCt/AUC∞ : AUCt의 AUC대 - 한 비 t1/2β : 소실 - 반감기 AUCτ : 정상상태의 투여간격τ중의 혈-시간 - 곡선하면적 x : - 최고혈중농도 Css,max정상상태의 - 최고혈중농도 Css,m: 정상상태 - 의 최저혈중농도 ax : 최고 - 혈중농도 간 Umax - : 최대뇨중배설속도 Aet최종 채뇨시간 t - 까지의 뇨중누적배설량 Aeτ : 정상상태의 투여간 τ중의 뇨중누적배설량 가능</p>
+<ul>
+<li>AUCt: 투약시간부터 최종 혈중농도 정량 시간 t까지의 혈중농도-시간곡선하면적</li>
+<li>AUC∞ : 투약시간부터 무한시간까지의 혈중농도-시간곡선하면적 (AUC∞ = AUCt + Ct/λZ</li>
+<li>Ct : 최종정량농도</li>
+<li>λZ : 말단 소실 정수</li>
+<li>AUCt/AUC∞ : AUCt의 AUC대한 비</li>
+<li>t1/2β : 소실 반감기</li>
+<li>AUCτ : 정상상태의 투여간격τ중의 혈중농도-시간 곡선하면적</li>
+<li>Cmax :최고혈중농도</li>
+<li>Css,max정상상태의 최고혈중농도</li>
+<li>Css,m: 정상상태의 최저혈중농도</li>
+</ul>
 <p><strong>동등성 기준 : Tmax를 제외한 대조약과 시험약의 비교평가항목치를 로그변환하여 통계처리 하였을 때, 로그변환한 평균치 차의 90% 신뢰구간이 log 0.8에서 log 1.25 이내이어야 한다</strong></p>
 </section>
 <section id="x-2-crossover-design" class="level2">
@@ -943,31 +971,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[S_{l(j)} \sim iid N(0,\sigma^2_s) , \epsilon_{jkl} \sim iid N(0, \sigma^2_\epsilon)\]</span></p>
 <section id="혈중-농도-곡선-예시" class="level3">
 <h3 class="anchored" data-anchor-id="혈중-농도-곡선-예시">혈중 농도 곡선 예시</h3>
-<div class="cell" data-execution_count="178">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>_seq <span class="op">=</span> [<span class="st">'1'</span>] <span class="op">*</span> <span class="dv">18</span> <span class="op">+</span> [<span class="st">'2'</span>] <span class="op">*</span> <span class="dv">18</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>random.shuffle(_seq)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="179">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>seq <span class="op">=</span> _seq.copy()</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="180">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>prd <span class="op">=</span> [<span class="st">'1'</span>, <span class="st">'2'</span>]</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="181">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the two-compartment model function</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> two_compartment_model(t, ka, ke, Vc, Vp, dose):</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    Cp <span class="op">=</span> dose <span class="op">/</span> (Vc <span class="op">+</span> Vp) <span class="op">*</span> (ka <span class="op">/</span> (ka <span class="op">-</span> ke)) <span class="op">*</span> (np.exp(<span class="op">-</span>ke <span class="op">*</span> t) <span class="op">-</span> np.exp(<span class="op">-</span>ka <span class="op">*</span> t))</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Cp</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="182">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Time range</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">24</span>, <span class="dv">20</span>)  <span class="co"># Generate 100 time points from 0 to 24 hours</span></span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="183">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of subjects</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>n_subjects <span class="op">=</span> <span class="dv">36</span></span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="184">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subject-specific pharmacokinetic parameter values</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ka_values <span class="op">=</span> np.random.uniform(<span class="fl">0.2</span>, <span class="fl">0.8</span>, n_subjects)   <span class="co"># Elimination rate constant (1/hour)</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ke_values <span class="op">=</span> np.random.uniform(<span class="fl">0.05</span>, <span class="fl">0.15</span>, n_subjects)  <span class="co"># Absorption rate constant (1/hour)</span></span>
@@ -987,7 +1015,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    Cp <span class="op">=</span> two_compartment_model(t, ka, ke, Vc, Vp, dose)</span>
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    Conc1.append(Cp)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="185">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subject-specific pharmacokinetic parameter values</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ka_values <span class="op">=</span> np.random.uniform(<span class="fl">0.2</span>, <span class="fl">0.8</span>, n_subjects)   <span class="co"># Elimination rate constant (1/hour)</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ke_values <span class="op">=</span> np.random.uniform(<span class="fl">0.05</span>, <span class="fl">0.15</span>, n_subjects)  <span class="co"># Absorption rate constant (1/hour)</span></span>
@@ -1007,7 +1035,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    Cp <span class="op">=</span> two_compartment_model(t, ka, ke, Vc, Vp, dose)</span>
 <span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    Conc2.append(Cp)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="186">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1,ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">6</span>))</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'Pharmacokinetic Concentration Profile (36 Subjects)'</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_subjects):</span>
@@ -1017,7 +1045,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Concentration (mg/L)'</span>)</span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">'Time (hours), Period2'</span>)</span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'Concentration (mg/L)'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="186">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>Text(0, 0.5, 'Concentration (mg/L)')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -1025,58 +1053,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>사다리꼴 공식으로 AUC 계산</p>
-<div class="cell" data-execution_count="187">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>auc<span class="op">=</span>[]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># AUC 계산</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_subjects):</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    auc.append(trapz(Conc1, t))</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>auc[<span class="dv">1</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="187">
-<pre><code>array([ 65.48305637,  87.70558202,  65.77279922,  59.94537394,
-        70.32030545,  54.830946  ,  52.00339   ,  62.81545225,
-        62.93439762,  65.30458169,  47.62114112,  66.71389266,
-        68.1867998 ,  56.77251002,  64.09797772,  82.141763  ,
-        59.82448205,  65.18336814,  65.27591651, 100.33765543,
-        44.22544578,  81.59585084,  73.20916947,  91.99372264,
-        56.22611766,  69.04274613,  71.32365628,  63.94443322,
-        86.26100397,  51.10227925,  77.43600209,  58.37683203,
-        41.9120698 ,  61.92932377,  55.13465117,  39.61787006])</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>array([56.95045738, 47.86409131, 42.21622527, 59.539426  , 86.67551908,
+       47.16716698, 69.1238562 , 48.31886351, 41.10456731, 77.54870044,
+       44.17471182, 84.86979417, 51.38750987, 56.38187092, 93.31926042,
+       64.86536492, 41.39841529, 49.34549501, 55.17694992, 47.80196397,
+       77.1173659 , 62.99088402, 67.81589046, 45.75082563, 41.08144901,
+       57.4092617 , 70.38694013, 60.65264211, 59.20130041, 78.037517  ,
+       75.13235504, 73.39727457, 45.94199314, 76.49863041, 52.37590008,
+       65.83072325])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="188">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>auc<span class="op">=</span>[]</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># AUC 계산</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_subjects):</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    auc.append(trapz(Conc2, t))</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>auc[<span class="dv">1</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="188">
-<pre><code>array([72.24554463, 45.67302827, 55.22267657, 54.03227611, 45.79396067,
-       44.44177142, 63.11845007, 67.75464512, 96.85244179, 54.02986197,
-       75.10242799, 76.21511204, 36.75342324, 48.93779038, 71.93973006,
-       69.66625787, 52.18119891, 53.12882909, 72.32075252, 59.32807271,
-       41.57184726, 97.97448963, 75.01783082, 54.11019149, 50.90283589,
-       72.5896015 , 70.9594968 , 76.65021835, 52.49766328, 45.4630971 ,
-       75.06595204, 99.07751472, 68.77344579, 49.04134908, 51.21056483,
-       44.92970944])</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>array([84.4561748 , 64.38750901, 64.54764973, 78.25285497, 83.33710259,
+       42.09336221, 39.00740636, 46.58495744, 47.68689149, 61.33957607,
+       49.50640257, 51.21446227, 57.54921195, 60.33096918, 75.4969536 ,
+       70.99863328, 49.58934078, 39.85776773, 85.49622606, 85.15095208,
+       44.31980906, 54.2843326 , 45.06451141, 78.41403231, 54.24686961,
+       57.3555638 , 91.1838877 , 73.63435573, 46.36158269, 53.44649347,
+       60.8944747 , 41.69662451, 77.70187433, 76.08368653, 44.59083617,
+       67.45281013])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="189">
+<div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>trapz?</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg ansi-bold">Signature:</span> trapz<span class="ansi-yellow-fg ansi-bold">(</span>y<span class="ansi-yellow-fg ansi-bold">,</span> x<span class="ansi-yellow-fg ansi-bold">=</span><span class="ansi-green-fg ansi-bold">None</span><span class="ansi-yellow-fg ansi-bold">,</span> dx<span class="ansi-yellow-fg ansi-bold">=</span><span class="ansi-cyan-fg ansi-bold">1.0</span><span class="ansi-yellow-fg ansi-bold">,</span> axis<span class="ansi-yellow-fg ansi-bold">=</span><span class="ansi-yellow-fg ansi-bold">-</span><span class="ansi-cyan-fg ansi-bold">1</span><span class="ansi-yellow-fg ansi-bold">)</span>
-<span class="ansi-red-fg ansi-bold">Docstring:</span>
+<pre><span class="ansi-red-fg">Signature:</span> trapz<span class="ansi-blue-fg">(</span>y<span class="ansi-blue-fg">,</span> x<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> dx<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">1.0</span><span class="ansi-blue-fg">,</span> axis<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">-</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-red-fg">Docstring:</span>
 An alias of `trapezoid`.
 `trapz` is kept for backwards compatibility. For new code, prefer
 `trapezoid` instead.
-<span class="ansi-red-fg ansi-bold">File:</span>      c:\users\hp\appdata\local\programs\python\python311\lib\site-packages\scipy\integrate\_quadrature.py
-<span class="ansi-red-fg ansi-bold">Type:</span>      function</pre>
+<span class="ansi-red-fg">File:</span>      ~/anaconda3/envs/temp_csy/lib/python3.8/site-packages/scipy/integrate/_quadrature.py
+<span class="ansi-red-fg">Type:</span>      function
+</pre>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="258">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>_df <span class="op">=</span> pd.DataFrame()</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_subjects):</span>
@@ -1097,30 +1125,30 @@ An alias of `trapezoid`.
 <span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(_df)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Subject Sequence Period  Concentration
-0        0        2      1       0.000000
-1        0        2      1       3.442018
-2        0        2      1       4.663287
-3        0        2      1       4.900282
-4        0        2      1       4.718385
+0        0        1      1       0.000000
+1        0        1      1       2.468394
+2        0        1      1       3.712638
+3        0        1      1       4.216262
+4        0        1      1       4.284278
 ..     ...      ...    ...            ...
-15      35        2      2       0.972756
-16      35        2      2       0.832899
-17      35        2      2       0.711424
-18      35        2      2       0.606438
-19      35        2      2       0.516069
+15      35        2      2       1.571857
+16      35        2      2       1.412285
+17      35        2      2       1.268903
+18      35        2      2       1.140074
+19      35        2      2       1.024323
 
 [1440 rows x 4 columns]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="259">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>_df.loc[(_df[<span class="st">'Sequence'</span>] <span class="op">==</span> <span class="st">'1'</span>) <span class="op">&amp;</span> (_df[<span class="st">'Period'</span>] <span class="op">==</span> <span class="st">'1'</span>), <span class="st">'Trearmet'</span>] <span class="op">=</span> <span class="st">'R'</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>_df.loc[(_df[<span class="st">'Sequence'</span>] <span class="op">==</span> <span class="st">'2'</span>) <span class="op">&amp;</span> (_df[<span class="st">'Period'</span>] <span class="op">==</span> <span class="st">'2'</span>), <span class="st">'Trearmet'</span>] <span class="op">=</span> <span class="st">'R'</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>_df.loc[(_df[<span class="st">'Sequence'</span>] <span class="op">==</span> <span class="st">'1'</span>) <span class="op">&amp;</span> (_df[<span class="st">'Period'</span>] <span class="op">==</span> <span class="st">'2'</span>), <span class="st">'Trearmet'</span>] <span class="op">=</span> <span class="st">'T'</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>_df.loc[(_df[<span class="st">'Sequence'</span>] <span class="op">==</span> <span class="st">'2'</span>) <span class="op">&amp;</span> (_df[<span class="st">'Period'</span>] <span class="op">==</span> <span class="st">'1'</span>), <span class="st">'Trearmet'</span>] <span class="op">=</span> <span class="st">'T'</span></span></code></pre></div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>_df.loc[(_df[<span class="st">'Sequence'</span>] <span class="op">==</span> <span class="st">'1'</span>) <span class="op">&amp;</span> (_df[<span class="st">'Period'</span>] <span class="op">==</span> <span class="st">'1'</span>), <span class="st">'Treatment'</span>] <span class="op">=</span> <span class="st">'R'</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>_df.loc[(_df[<span class="st">'Sequence'</span>] <span class="op">==</span> <span class="st">'2'</span>) <span class="op">&amp;</span> (_df[<span class="st">'Period'</span>] <span class="op">==</span> <span class="st">'2'</span>), <span class="st">'Treatment'</span>] <span class="op">=</span> <span class="st">'R'</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>_df.loc[(_df[<span class="st">'Sequence'</span>] <span class="op">==</span> <span class="st">'1'</span>) <span class="op">&amp;</span> (_df[<span class="st">'Period'</span>] <span class="op">==</span> <span class="st">'2'</span>), <span class="st">'Treatment'</span>] <span class="op">=</span> <span class="st">'T'</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>_df.loc[(_df[<span class="st">'Sequence'</span>] <span class="op">==</span> <span class="st">'2'</span>) <span class="op">&amp;</span> (_df[<span class="st">'Period'</span>] <span class="op">==</span> <span class="st">'1'</span>), <span class="st">'Treatment'</span>] <span class="op">=</span> <span class="st">'T'</span></span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="260">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>_df</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="260">
+<div class="cell-output cell-output-display" data-execution_count="16">
 
 <div>
 
@@ -1132,49 +1160,49 @@ An alias of `trapezoid`.
       <th>Sequence</th>
       <th>Period</th>
       <th>Concentration</th>
-      <th>Trearmet</th>
+      <th>Treatment</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>2</td>
+      <td>1</td>
       <td>1</td>
       <td>0.000000</td>
-      <td>T</td>
+      <td>R</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0</td>
-      <td>2</td>
       <td>1</td>
-      <td>3.442018</td>
-      <td>T</td>
+      <td>1</td>
+      <td>2.468394</td>
+      <td>R</td>
     </tr>
     <tr>
       <th>2</th>
       <td>0</td>
-      <td>2</td>
       <td>1</td>
-      <td>4.663287</td>
-      <td>T</td>
+      <td>1</td>
+      <td>3.712638</td>
+      <td>R</td>
     </tr>
     <tr>
       <th>3</th>
       <td>0</td>
-      <td>2</td>
       <td>1</td>
-      <td>4.900282</td>
-      <td>T</td>
+      <td>1</td>
+      <td>4.216262</td>
+      <td>R</td>
     </tr>
     <tr>
       <th>4</th>
       <td>0</td>
-      <td>2</td>
       <td>1</td>
-      <td>4.718385</td>
-      <td>T</td>
+      <td>1</td>
+      <td>4.284278</td>
+      <td>R</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1189,7 +1217,7 @@ An alias of `trapezoid`.
       <td>35</td>
       <td>2</td>
       <td>2</td>
-      <td>0.972756</td>
+      <td>1.571857</td>
       <td>R</td>
     </tr>
     <tr>
@@ -1197,7 +1225,7 @@ An alias of `trapezoid`.
       <td>35</td>
       <td>2</td>
       <td>2</td>
-      <td>0.832899</td>
+      <td>1.412285</td>
       <td>R</td>
     </tr>
     <tr>
@@ -1205,7 +1233,7 @@ An alias of `trapezoid`.
       <td>35</td>
       <td>2</td>
       <td>2</td>
-      <td>0.711424</td>
+      <td>1.268903</td>
       <td>R</td>
     </tr>
     <tr>
@@ -1213,7 +1241,7 @@ An alias of `trapezoid`.
       <td>35</td>
       <td>2</td>
       <td>2</td>
-      <td>0.606438</td>
+      <td>1.140074</td>
       <td>R</td>
     </tr>
     <tr>
@@ -1221,7 +1249,7 @@ An alias of `trapezoid`.
       <td>35</td>
       <td>2</td>
       <td>2</td>
-      <td>0.516069</td>
+      <td>1.024323</td>
       <td>R</td>
     </tr>
   </tbody>
@@ -1230,29 +1258,37 @@ An alias of `trapezoid`.
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="270">
+<p>데이터 설명</p>
+<ul>
+<li>Subject: 대상자</li>
+<li>Sequence: 순서군</li>
+<li>Period: 시기군</li>
+<li>Concentration: 혈중농도</li>
+<li>Treatment: 치료군</li>
+</ul>
+<div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA 모델 적합</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.mixedlm(<span class="st">'Concentration ~ Trearmet + Period + Sequence'</span>, data<span class="op">=</span>_df, groups<span class="op">=</span>_df[<span class="st">'Subject'</span>]).fit()</span></code></pre></div>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.mixedlm(<span class="st">'Concentration ~ Treatment + Period + Sequence'</span>, data<span class="op">=</span>_df, groups<span class="op">=</span>_df[<span class="st">'Subject'</span>]).fit()</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="273">
+<div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary())</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Mixed Linear Model Regression Results
 ===========================================================
 Model:            MixedLM Dependent Variable: Concentration
 No. Observations: 1440    Method:             REML         
-No. Groups:       36      Scale:              1.8735       
-Min. group size:  40      Log-Likelihood:     -2526.5366   
+No. Groups:       36      Scale:              1.7059       
+Min. group size:  40      Log-Likelihood:     -2460.9348   
 Max. group size:  40      Converged:          Yes          
 Mean group size:  40.0                                     
 -----------------------------------------------------------
-                 Coef.  Std.Err.   z    P&gt;|z| [0.025 0.975]
+                  Coef. Std.Err.   z    P&gt;|z| [0.025 0.975]
 -----------------------------------------------------------
-Intercept         2.637    0.120 21.978 0.000  2.402  2.873
-Trearmet[T.T]    -0.045    0.072 -0.622 0.534 -0.186  0.097
-Period[T.2]      -0.121    0.072 -1.679 0.093 -0.263  0.020
-Sequence[T.2]    -0.011    0.154 -0.070 0.944 -0.312  0.290
-Group Var         0.166    0.038                           
+Intercept         2.386    0.119 19.991 0.000  2.152  2.620
+Treatment[T.T]    0.055    0.069  0.804 0.421 -0.080  0.190
+Period[T.2]       0.034    0.069  0.494 0.621 -0.101  0.169
+Sequence[T.2]     0.005    0.154  0.033 0.974 -0.297  0.307
+Group Var         0.171    0.040                           
 ===========================================================
 </code></pre>
 </div>
@@ -1265,19 +1301,23 @@ Group Var         0.166    0.038
 </ul>
 
 
+
 </section>
 </section>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-우화형20142" class="csl-entry" role="doc-biblioentry">
+우화형, and 박상규. 2014. <span>“2<span class="math inline">\(\times\)</span> k 교차설계법에서 생물학적 동등성 추가시험의 통계적 절차.”</span> <em>한국데이터정보과학회지</em> 25 (6): 1181–93.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>https://www.fda.gov/drugs/frequently-asked-questions-popular-topics/generic-drugs-questions-answers<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>http://koreascience.or.kr/article/JAKO201436351074280.df<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>식품의약품안전처 의약품 동등성 시험 기준<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>https://www.fda.gov/drugs/frequently-asked-questions-popular-topics/generic-drugs-questions-answers<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>http://koreascience.or.kr/article/JAKO201436351074280.pdf<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>https://onlinehelp.certara.com/phoenix/8.3/responsive_html5_!MasterPage!/WinNonlin%20User%27s%20Guide.pdf<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>https://onlinehelp.certara.com/phoenix/8.3/responsive_html5_!MasterPage!/WinNonlin%20User%27s%20Guide.pdf<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
