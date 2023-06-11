@@ -21,6 +21,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
@@ -708,7 +771,8 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
+  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">Import</a></li>
+  <li><a href="#강의영상" id="toc-강의영상" class="nav-link" data-scroll-target="#강의영상">강의영상</a></li>
   <li><a href="#칸토어집합" id="toc-칸토어집합" class="nav-link" data-scroll-target="#칸토어집합">칸토어집합</a>
   <ul class="collapse">
   <li><a href="#정의" id="toc-정의" class="nav-link" data-scroll-target="#정의">정의</a></li>
@@ -735,6 +799,13 @@ div.csl-indent {
 <p class="date">5/30/23</p>
 </header>
 
+<section id="import" class="level1">
+<h1>Import</h1>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
+</div>
+</section>
 <section id="강의영상" class="level1">
 <h1>강의영상</h1>
 <blockquote class="blockquote">
@@ -1099,6 +1170,18 @@ div.csl-indent {
 <li>A measure <span class="math inline">\(\mu_X\)</span> is abosolutely continous with respect to Lebesgue measure <span class="math inline">\(\lambda\)</span></li>
 <li><span class="math inline">\(\mu_X &lt;&lt; \lambda\)</span></li>
 </ul>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<p><span class="math inline">\(\mu_X((-\infty, x]) = F_X(x)\)</span></p>
+<p><span class="math inline">\((a,b] = (-\infty,b] - (-\infty,a] = F_X(b) - F_x(a)\)</span></p>
+<p><span class="math inline">\(\mu_X([a,b]) = F_X(b) - F_X(a)\)</span></p>
+<p><span class="math inline">\(\lambda(B)\)</span> = 구간 <span class="math inline">\(B\)</span>의 길이</p>
+<p><span class="math inline">\(\mu(B)\)</span> = 구간 <span class="math inline">\(B\)</span>에 <span class="math inline">\(F_X\)</span>의 차이</p>
+<p><span class="math inline">\(\therefore \lambda(B) =0 \Rightarrow \mu_X(B)=0\)</span>의 의미는 구간 <span class="math inline">\(B\)</span> 길이가 작아질수록 <span class="math inline">\(F_X\)</span>의 차이 차이도 작아야 한다는 의미</p>
+<p><span class="math inline">\(\to\)</span> 위의 정의로 <span class="math inline">\(F_X\)</span>가 절대 연속이다고 말할 수 있다.</p>
+<hr>
 <p><code>-</code> <strong>정의:</strong> 좀 더 일반적으로는 아래와 같이 정의할 수 있다. <span class="citation" data-cites="durrett2019probability">(<a href="#ref-durrett2019probability" role="doc-biblioref">Durrett 2019</a>, p 470)</span></p>
 <p>가측공간 <span class="math inline">\((\mathbb{R},{\cal R})\)</span>를 고려하고 <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\lambda\)</span>를 <span class="math inline">\((\mathbb{R},{\cal R})\)</span>에서의 메져라고 하자. <span class="math inline">\(\mu\)</span>가 <strong><em>absolutely continuous w.r.t. <span class="math inline">\(\lambda\)</span></em></strong> 라는 의미는</p>
 <p><span class="math display">\[\forall B \in {\cal R}:~ \lambda(B) =0 \Rightarrow \mu(B)=0\]</span></p>
@@ -1106,6 +1189,13 @@ div.csl-indent {
 <blockquote class="blockquote">
 <p>여기에서 공간 <span class="math inline">\((\mathbb{R},{\cal R})\)</span> 은 이해를 돕기위해서 제한한 것이며, 대부분 교재에서는 좀 더 일반적인 가측공간에서 절대연속을 정의한다.</p>
 </blockquote>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<p><span class="math inline">\(\to\)</span> 위의 정의로 <span class="math inline">\(\mu\)</span>는 <span class="math inline">\(\lambda\)</span>에 대하여 <span class="math inline">\((\mathbb{R},{\cal R})\)</span>에서 절대연속이다고 말할 수 있다.</p>
+<p>또는 일반적인 measurable space <span class="math inline">\((\mathbb{S},{\cal S})\)</span>에서도 절대연속이라고 할 수 있다.</p>
+<hr>
 <p><code>-</code> 절대연속의 예제를 살펴보기전에 필요한 예비학습</p>
 <p>이런게 있었거든요.. // 7주차 강의노트</p>
 <p>함수 <span class="math inline">\(\mu\)</span>가 잴 수 있는 공간 <span class="math inline">\((\Omega, {\cal F})\)</span>에서 정의된 메져라고 하자.</p>
@@ -1114,6 +1204,106 @@ div.csl-indent {
 <li><span class="math inline">\(A_i \downarrow A\)</span> with <span class="math inline">\(\mu(A_1)&lt;\infty\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n)\)</span></li>
 <li>감소하거나 증가하는 집합열에서는 <span class="math inline">\(\lim\)</span>을 넣거나 뺼 수 있다. (정확하지 않은 state, 그냥 기억을 위한 문장)</li>
 </ul>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<ul>
+<li><span class="math inline">\(A_i \uparrow A\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n)\)</span> 에 대한 설명</li>
+</ul>
+<p><span class="math inline">\(A_i \uparrow A\)</span> = <span class="math inline">\(A_1 \subset A_2 \subset A_3 \subset \dots , A_i \in \cal{F}\)</span> &amp; <span class="math inline">\(\cup^\infty_{i=1}A_i = A\)</span></p>
+<p>이때, <span class="math inline">\(A\)</span>가 증가하는 집합열이라면</p>
+<p><span class="math inline">\(A_i \uparrow A\)</span> = <span class="math inline">\(A_1 \subset A_2 \subset A_3 \subset \dots , A_i \in \cal{F}\)</span> &amp; <span class="math inline">\(lim_{n \to \infty}A_n = A\)</span></p>
+<p>라 쓸 수 있다.</p>
+<p><span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n)\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(A_n\)</span>이 증가하는 집합열이므로 <span class="math inline">\(lim_{n \to \infty}A_n = \cup^\infty_{i=1}A_i\)</span>이라고 쓸 수 있다.</p>
+<p><span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n) = \mu(\uplus_{n=1}^{\infty} B_n)\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(A_1,A_2, \dots \in \cal{F}\)</span>이고 <span class="math inline">\(\cal{F}\)</span>는 차집합에 반쯤 닫혀 있어서 disjoint화 가능하다.</p>
+<p><span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n) = \mu(\uplus_{n=1}^{\infty} B_n) = \sum^\infty_{n=1} \mu(B_n)\)</span></p>
+<p><span class="math inline">\(\to\)</span> msr의 정의인 <span class="math inline">\(\sigma-add\)</span>에 의해 가능하다.</p>
+<p><span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n) = \mu(\uplus_{n=1}^{\infty} B_n) = \sum^\infty_{n=1} \mu(B_n) = lim_{b \to \infty} \sum^n_{k=1} \mu(B_k) = lim_{n \to \infty} \mu(\uplus^n_{k=1} B_k)\)</span></p>
+<p><span class="math inline">\(\to\)</span> msr <span class="math inline">\(\sigma-add\)</span>에 의해 가능하다.</p>
+<p><span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n) = \mu(\uplus_{n=1}^{\infty} B_n) = \sum^\infty_{n=1} \mu(B_n) = lim_{b \to \infty} \sum^n_{k=1} \mu(B_k) = lim_{n \to \infty} \mu(\uplus^n_{k=1} B_k) = lim_{n \to \infty} \mu (\uplus^{n}_{k=1} A_k)\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(A_1,A_2, \dots \in \cal{F}\)</span>이고 <span class="math inline">\(\cal{F}\)</span>는 차집합에 반쯤 닫혀 있어서 disjoint화 가능하다.</p>
+<p><span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n) = \mu(\uplus_{n=1}^{\infty} B_n) = \sum^\infty_{n=1} \mu(B_n) = lim_{b \to \infty} \sum^n_{k=1} \mu(B_k) = lim_{n \to \infty} \mu(\uplus^n_{k=1} B_k) = lim_{n \to \infty} \mu (\uplus^{n}_{k=1} A_k) = lim_{n \to \infty} \mu (A_n)\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(A_1,A_2, \dots\)</span>가 증가하는 집합열이기 때문에 가능하다.</p>
+<ul>
+<li><span class="math inline">\(A_i \downarrow A\)</span> with <span class="math inline">\(\mu(A_1)&lt;\infty\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n)\)</span>에 대한 설명</li>
+</ul>
+<p><span class="math inline">\(A_i \downarrow A\)</span> = <span class="math inline">\(A_1 \supset A_2 \supset \dots, A_i \in \cal{F}\)</span> &amp; <span class="math inline">\(\cap^\infty_{n=1} A_n = A\)</span></p>
+<p>이때, <span class="math inline">\(A\)</span>가 감소하는 집합열이라면</p>
+<p><span class="math inline">\(A_i \downarrow A\)</span> = <span class="math inline">\(A_1 \supset A_2 \supset \dots, A_i \in \cal{F}\)</span> &amp; <span class="math inline">\(lim_{n \to \infty} A_n = A\)</span></p>
+<p><span class="math inline">\(A_1 \supset A_2 \supset \dots, A_i \in \cal{F}\)</span> &amp; <span class="math inline">\(\cap^\infty_{n=1} A_n = A\)</span></p>
+<p>증가하는 집합열에 대해 증명했으니 같은 방법으로 보이기 위해 증가하는 집합열로 바꿔준다.</p>
+<p><span class="math inline">\(A_1 - A_1 \supset A_1 - A_2 \supset A_1 - A_3 \dots A_1 - A_i \in \cal{F}\)</span> &amp; <span class="math inline">\(\cap^\infty_{n=1} (A_1 - A_n) = A_1 - A\)</span></p>
+<p><span class="math inline">\(LHS\)</span> <span class="math inline">\(\mu(lim_{n \to \infty} (A_1 - A_n)) = lim_{n \to \infty} \mu((A_1 - A_n)\)</span> <span class="math inline">\(RHS\)</span></p>
+<p><span class="math inline">\(LHS\)</span> <span class="math inline">\(\mu(A_1 - lim_{n \to \infty} A_n) = \mu(A_1 - lim_{n \to \infty} A_n)\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(lim_{n \to \infty} A_n = A\)</span> 이 성립하기 때문이고, 이게 성립하는 이유는 감소하는 집합열이기 때문에$ ^_{n=1} A_n = A$라 쓸 수 있어서이다.</p>
+<p><span class="math inline">\(LHS\)</span> <span class="math inline">\(\mu(A_1 - lim_{n \to \infty} A_n) = \mu(A_1 - lim_{n \to \infty} A_n) = \mu(A_1) - \mu(lim_{n \to \infty} A_n)\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(A_1 \supset A\)</span> 이라서, 포함관계에 있는 차집합은 msr에서 뺀 것과 같다.</p>
+<p><span class="math inline">\(RHS\)</span> <span class="math inline">\(lim_{n \to \infty} \mu((A_1 - A_n) = lim_{n \to \infty} \{ \mu(A_1) - \mu(A_n)\}\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(A_1 \supset A\)</span> 이라서, 포함관계에 있는 차집합은 msr에서 뺀 것과 같다.</p>
+<p><span class="math inline">\(RHS\)</span> <span class="math inline">\(lim_{n \to \infty} \mu((A_1 - A_n) = lim_{n \to \infty} \{ \mu(A_1) - \mu(A_n)\} = \mu(A_1 ) - lim_{n \to \infty} \mu(A_n)\)</span></p>
+<p><span class="math inline">\(\therefore\)</span> <span class="math inline">\(LHS\)</span> <span class="math inline">\(\mu(A_1) - \mu(lim_{n \to \infty} A_n = \mu(A_1 ) - lim_{n \to \infty} \mu(A_n)\)</span> <span class="math inline">\(RHS\)</span></p>
+<p><span class="math inline">\(\mu(lim_{n \to \infty} A_n) = lim_{n \to \infty} \mu(A_n)\)</span></p>
+<p>단, <span class="math inline">\(\mu(A_1)\)</span>가 <span class="math inline">\(\infty\)</span>보다 작아야 가능하다. 따라서 <span class="math inline">\(\mu(A_1)\)</span>가 <span class="math inline">\(\infty\)</span>보다 작다.</p>
+<ul>
+<li><span class="math inline">\(A_i \downarrow A\)</span> with <span class="math inline">\(\mu(A_1)&lt;\infty\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n)\)</span>여기서 <span class="math inline">\(\mu(A_1)&lt;\infty\)</span> 조건을 만족하지 않아서 안 되는 예제</li>
+</ul>
+<p><span class="math inline">\((mathbb{N} , 2^\mathbb{N})\)</span> 잴 수 있는 공간</p>
+<p>이 공간에서 counting msr <span class="math inline">\(\# : 2^\mathbb{N} \to [0, \infty]\)</span>로 정의하자.</p>
+<p><span class="math inline">\(A_n = \{ n,n+1,n+2 ,\dots\}\)</span></p>
+<p><span class="math inline">\(A_1 = \mathbb{N}\)</span></p>
+<p><span class="math inline">\(A_2 = \mathbb{N} - \{1\} = \{2,3,4,\dots\}\)</span></p>
+<p><span class="math inline">\(A_3 = \mathbb{N} - \{1,2\} = \{3,4,5,\dots\}\)</span></p>
+<p>여기서</p>
+<p><span class="math inline">\(lim_{n \to \infty} A_n = \oslash\)</span></p>
+<p><span class="math inline">\(\forall_n \in \mathbb{N} : A_n \ne \oslash\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(\mathbb{N}\)</span> 여기에는 <span class="math inline">\(\infty\)</span>가 포함되어 있지 않다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(n\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(n=1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(n=2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(n=3\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\dots\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\infty\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(A_n\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\{1,2,\dots\}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\{2,3,4,\dots\}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\{3,4,5,\dots\}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\to\)</span> 감소</td>
+<td style="text-align: center;"><span class="math inline">\(\oslash\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\#(A_n)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\infty\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\infty\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\infty\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\infty\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(A_n \downarrow \oslash\)</span>이다. <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\#(lim_{n \to \infty} A_n) = lim_{n \to \infty} \# (A_n)\)</span></p>
+<p><span class="math inline">\(\#(lim_{n \to \infty} A_n)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\#(\oslash) = 0\)</span></p>
+<p><span class="math inline">\(lim_{n \to \infty} \# (A_n)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\infty\)</span></p>
+<p>이유는 <span class="math inline">\(\#(A_1) &lt; \infty\)</span> 조건이 없기 때문이다.</p>
+<p>따라서 <span class="math inline">\(\#(A_1) &lt; \infty\)</span>이 필요하다.</p>
+<hr>
 <p><code>-</code> 예제1: – 베르누이</p>
 <p>아래와 같은 함수를 고려하자.</p>
 <p><span class="math display">\[F_X(x) = \begin{cases}
@@ -1121,6 +1311,28 @@ div.csl-indent {
 \frac{1}{2} &amp; 0\leq x&lt; 1 \\
 1 &amp; x \geq 1 \\
 \end{cases}\]</span></p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> F_X(x):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="dv">0</span> <span class="op">&lt;=</span> x <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1000</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [F_X(i) <span class="cf">for</span> i <span class="kw">in</span> x]</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'F_X(x)'</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Cumulative Distribution Function'</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-05-30-ap-13wk_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
+</div>
+</div>
 <p>이 함수는 르벡메져에 대하여 <strong><em>absolutely continuous</em></strong> 하지 않다.</p>
 <p>(해설1)</p>
 <p>연속이 아니므로 절대연속이 아니다.</p>
@@ -1141,6 +1353,26 @@ div.csl-indent {
 <blockquote class="blockquote">
 <p>위에서 언급한 경우 이외에서는 연속임. <span class="math inline">\(\lambda(\{0.77\})=0 \Rightarrow \mu_X(\{0.77\})=F_X(0.77)-\lim_{n\to\infty}F_X(0.77-\frac{1}{n})=\frac{1}{2}-\frac{1}{2}\)</span></p>
 </blockquote>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<p>Question: <span class="math inline">\(F_X\)</span>는 절대 연속인지? 연속이 아니라서 절대연속이 아니다?</p>
+<p><span class="math inline">\(\forall B \in \cal{R} : \lambda(B) = 0\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\mu_X(B) = 0\)</span> <span class="math inline">\(\dots \star\)</span></p>
+<p>추측: <span class="math inline">\(B = \{0\} , B = \{1\}\)</span>일 경우는 <span class="math inline">\(\star\)</span>가 성립하지 않을 것이다.</p>
+<p><span class="math inline">\(B = \{0\}\)</span>로 생각 <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\lambda(B) = 0, \mu_X(B) \ne 0\)</span> 일 것 같다. (둘 다 0 이면 <span class="math inline">\(\star\)</span>가 성립한다는 말이 되니까)</p>
+<p><span class="math inline">\(\mu_X(B)\)</span>만 계산하면 되겠다, <span class="math inline">\(\mu_X(\{0\})\)</span>만 계산하면 되겠다.</p>
+<p><span class="math inline">\(\{0\} = lim_{n \to \infty} (0 - \frac{1}{n},0]\)</span> <span class="math inline">\(\rightarrow\)</span> 감소하는 집합열 <span class="math inline">\(= \cap^{\infty}_{n=1}(-\frac{1}{n},0]\)</span></p>
+<p>또, <span class="math inline">\(\{0\} \in \cap^\infty_{n=1}(-\frac{1}{n},0]\)</span></p>
+<p><span class="math inline">\(x&lt;0\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\{ x\} \notin \cap^\infty_{n=1}(-\frac{1}{n},0]\)</span></p>
+<p><span class="math inline">\(\to\)</span> 아무리 <span class="math inline">\(0\)</span>에 가까운 <span class="math inline">\(x\)</span>라도 그것보다 더 <span class="math inline">\(0\)</span>에 가까운 <span class="math inline">\(-\frac{1}{n}\)</span>이 존재하므로, 그러한 <span class="math inline">\(-\infty\)</span>에 대해서는 <span class="math inline">\(x \notin (-\frac{1}{n},0]\)</span></p>
+<p><span class="math inline">\(\therefore \mu_X(\{0\}) = \mu_X (lim_{n \to \infty} ( -\frac{1}{n},0]) = lim_{n \to \infty} \mu_X ((-\frac{1}{n},0])\)</span></p>
+<p><span class="math inline">\(\bullet\)</span> <span class="math inline">\(\mu_X((a,b]) = F_X(b) - F_X(a)\)</span></p>
+<p><span class="math inline">\(\bullet\)</span> <span class="math inline">\((a,b] = (-\infty,b] - (-\infty,a]\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\mu_X((a,b])= \mu((-\infty,b] - (-\infty,a]) = \mu((-\infty,b]) - \mu((-\infty,a]) = F_X(b) - F_x(a)\)</span></p>
+<p><span class="math inline">\(\therefore \mu_X ((-\frac{1}{n},0]) = F_X(0) - F_X(-\frac{1}{n})\)</span></p>
+<p><span class="math inline">\(\mu_X(\{0\}) = \mu_X (lim_{n \to \infty} ( -\frac{1}{n},0]) = lim_{n \to \infty} \mu_X ((-\frac{1}{n},0]) = lim_{n \to \infty} \{ F_X(0) - F_X(-\frac{1}{n}\} = \frac{1}{2} - lim_{n \to \infty} F_X(-\frac{1}{n}) = \frac{1}{2} -0 = \frac{1}{2}\)</span></p>
+<p><span class="math inline">\(\therefore \lambda(B) = 0, \mu_X(B) = \frac{1}{2}\)</span>이다. 그래서 절대연속 조건인 <span class="math inline">\(\lambda(B) = 0\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\mu_X(B) = 0\)</span>가 성립하지 않는다.</p>
+<hr>
 <p><code>-</code> 예제2: – 균등분포</p>
 <p>아래와 같은 함수를 고려하자.</p>
 <p><span class="math display">\[F_X(x) = \begin{cases}
@@ -1148,22 +1380,92 @@ div.csl-indent {
 x &amp; 0\leq  x \leq  1 \\
 1 &amp; x&gt; 1 \\
 \end{cases}\]</span></p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> F_X(x):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="dv">0</span> <span class="op">&lt;=</span> x <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1000</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [F_X(i) <span class="cf">for</span> i <span class="kw">in</span> x]</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'F_X(x)'</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Cumulative Distribution Function'</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-05-30-ap-13wk_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
+</div>
+</div>
 <p>이 함수는 르벡메져에 대하여 <strong><em>absolutely continuous</em></strong> 하다.</p>
 <p>(해설)</p>
 <p><span class="math inline">\(\forall B\in {\cal R}: \mu_X(B) \leq \lambda(B)\)</span> 이므로 자명함</p>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<p><span class="math inline">\(B\)</span>가 ~ 0 까지의 구간과 1 ~ 의 구간에서는 <span class="math inline">\(\mu_X(B) = 0\)</span></p>
+<p><span class="math inline">\(B\)</span>가 0~1의 구간에서 선택된다면 <span class="math inline">\(\mu_X(B) = \lambda(B)\)</span>, <span class="math inline">\(\mu_X([a,b]) = F_X(b) - F_X(a) = b-a\)</span></p>
+<p>결국 <span class="math inline">\(\mu_X(B) \le \lambda(B)\)</span>의 결과로 나올 것이다.</p>
+<p>따라서 <span class="math inline">\(\lambda(B)\)</span>이 0이면 <span class="math inline">\(\mu_X(B)\)</span>도 0이 될 것이기 때문에 절대연속의 조건이 성립한다.</p>
+<hr>
 <p><code>-</code> 예제3 – 혼합된 균등분포</p>
 <p>아래와 같은 distribution function <span class="math inline">\(F_X\)</span>을 가지는 확률변수 <span class="math inline">\(X\)</span>를 고려하자.</p>
 <p><span class="math display">\[F_X(x) = \begin{cases} 0 &amp; x&lt;0\\ \frac{3}{2}x &amp; 0\leq x &lt; \frac{1}{2} \\ \frac{1}{2}+\frac{1}{2}x &amp; \frac{1}{2}\leq x&lt;1 \\ 1 &amp; 1\leq x\end{cases}\]</span></p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> F_X(x):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="dv">0</span> <span class="op">&lt;=</span> x <span class="op">&lt;</span> <span class="fl">0.5</span>:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>) <span class="op">*</span> x</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="fl">0.5</span> <span class="op">&lt;=</span> x <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">0.5</span> <span class="op">+</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>) <span class="op">*</span> x</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1000</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [F_X(i) <span class="cf">for</span> i <span class="kw">in</span> x]</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'F_X(x)'</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Cumulative Distribution Function'</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-05-30-ap-13wk_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+</div>
+</div>
 <p>이러한 함수 <span class="math inline">\(F_X\)</span>는 르벡메져에 대하여 absolutely continuous 한가?</p>
 <p>(해설)</p>
 <p><span class="math inline">\(\forall B \in {\cal R}: \mu_X(B) \leq \frac{3}{2}\lambda(B)\)</span> 이므로 자명함.</p>
 <blockquote class="blockquote">
 <p>예제2,3으로 관찰하고 착각할 수 있는 것: 그냥 연속이면 다 절대연속 아니야?</p>
 </blockquote>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<p><span class="math inline">\(F_X(x) = \begin{cases} 0 &amp; x&lt;0\\ \frac{3}{2}x &amp; 0\leq x &lt; \frac{1}{2} &amp; \mu_X(B) = \frac{3}{2}\lambda(B)\\ \frac{1}{2}+\frac{1}{2}x &amp; \frac{1}{2}\leq x&lt;1&amp; \mu_X(B) = \frac{1}{2}\lambda(B)\\ 1 &amp; 1\leq x&amp;\mu_X(B) = 0\end{cases}\)</span></p>
+<p><span class="math inline">\(\mu_X(B) \leq \frac{3}{2}\lambda(B)\)</span> 결국은 다 이렇게 되겠네.</p>
+<p>따라서 절대연속이다.</p>
+<hr>
 <p><code>-</code> 예제3 – 칸토어함수</p>
 <p>칸토어함수 <span class="math inline">\(F_X\)</span>는 르벡메져에 대하여 <strong><em>absolutely continuous</em></strong> 하지 않다.</p>
 <p>(해설)</p>
 <p>칸토어함수 <span class="math inline">\(F_X\)</span>가 <strong><em>absolutely continuous</em></strong> 하다고 하자. 그러면 <span class="math inline">\(\mu_X((a,b]) = \mu_X([a,b])\)</span> 가 성립한다.</p>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<p><span class="math inline">\(\mu_X([a,b]) = \mu_X(\{a\}) + \mu_X((a,b]) = 0+ \mu_X(\{a\}) = 0\)</span></p>
+<p><span class="math inline">\(\lambda(\{a\}) = 0\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\mu_x(\{a\}) = 0\)</span>, 왜냐하면 <span class="math inline">\(\mu_X &lt;&lt; \lambda\)</span>(절대연속이니까)</p>
+<hr>
 <p><span class="math inline">\(n=0\)</span>:</p>
 <ul>
 <li><span class="math inline">\(C_0=[0,1]\)</span></li>
