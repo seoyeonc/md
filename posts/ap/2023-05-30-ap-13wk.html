@@ -390,7 +390,17 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-06-12-post_hoc.html" class="sidebar-item-text sidebar-link">Post Hoc Tests</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/anything/2023-05-04-questions of pytorch geometric temporal.html" class="sidebar-item-text sidebar-link">Questions of PyTorch Geometric Temporal</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-06-12-Steady State.html" class="sidebar-item-text sidebar-link">Steady State</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1238,7 +1248,7 @@ div.csl-indent {
 <p><span class="math inline">\(A_1 - A_1 \supset A_1 - A_2 \supset A_1 - A_3 \dots A_1 - A_i \in \cal{F}\)</span> &amp; <span class="math inline">\(\cap^\infty_{n=1} (A_1 - A_n) = A_1 - A\)</span></p>
 <p><span class="math inline">\(LHS\)</span> <span class="math inline">\(\mu(lim_{n \to \infty} (A_1 - A_n)) = lim_{n \to \infty} \mu((A_1 - A_n)\)</span> <span class="math inline">\(RHS\)</span></p>
 <p><span class="math inline">\(LHS\)</span> <span class="math inline">\(\mu(A_1 - lim_{n \to \infty} A_n) = \mu(A_1 - lim_{n \to \infty} A_n)\)</span></p>
-<p><span class="math inline">\(\to\)</span> <span class="math inline">\(lim_{n \to \infty} A_n = A\)</span> 이 성립하기 때문이고, 이게 성립하는 이유는 감소하는 집합열이기 때문에$ ^_{n=1} A_n = A$라 쓸 수 있어서이다.</p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(lim_{n \to \infty} A_n = A\)</span> 이 성립하기 때문이고, 이게 성립하는 이유는 감소하는 집합열이기 때문에 <span class="math inline">\(\cap^\infty_{n=1} A_n = A\)</span>라 쓸 수 있어서이다.</p>
 <p><span class="math inline">\(LHS\)</span> <span class="math inline">\(\mu(A_1 - lim_{n \to \infty} A_n) = \mu(A_1 - lim_{n \to \infty} A_n) = \mu(A_1) - \mu(lim_{n \to \infty} A_n)\)</span></p>
 <p><span class="math inline">\(\to\)</span> <span class="math inline">\(A_1 \supset A\)</span> 이라서, 포함관계에 있는 차집합은 msr에서 뺀 것과 같다.</p>
 <p><span class="math inline">\(RHS\)</span> <span class="math inline">\(lim_{n \to \infty} \mu((A_1 - A_n) = lim_{n \to \infty} \{ \mu(A_1) - \mu(A_n)\}\)</span></p>
@@ -1250,7 +1260,7 @@ div.csl-indent {
 <ul>
 <li><span class="math inline">\(A_i \downarrow A\)</span> with <span class="math inline">\(\mu(A_1)&lt;\infty\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n)\)</span>여기서 <span class="math inline">\(\mu(A_1)&lt;\infty\)</span> 조건을 만족하지 않아서 안 되는 예제</li>
 </ul>
-<p><span class="math inline">\((mathbb{N} , 2^\mathbb{N})\)</span> 잴 수 있는 공간</p>
+<p><span class="math inline">\((\mathbb{N} , 2^\mathbb{N})\)</span> 잴 수 있는 공간</p>
 <p>이 공간에서 counting msr <span class="math inline">\(\# : 2^\mathbb{N} \to [0, \infty]\)</span>로 정의하자.</p>
 <p><span class="math inline">\(A_n = \{ n,n+1,n+2 ,\dots\}\)</span></p>
 <p><span class="math inline">\(A_1 = \mathbb{N}\)</span></p>
@@ -1660,7 +1670,7 @@ x &amp; 0\leq  x \leq  1 \\
 <p><span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\int_{\uplus^{\infty}_{i=1} A_i} f_X d \lambda = \mu_X(\uplus^{\infty}_{i=1} A_i)\)</span> 임을 보이면 된다.</p>
 <p><span class="math inline">\(\rightarrow\)</span> LHS = <span class="math inline">\(\sum^{\infty}_{i=1} \int_{A_i} f_X d \lambda = \sum^{\infty}_{i=1} \mu_X (A_i)\)</span> (<span class="math inline">\(A_1,A_2,\dots \in \cal{D}\)</span>라서 가능)</p>
 <p><span class="math inline">\(\rightarrow\)</span> = <span class="math inline">\(\mu_X(\uplus^{\infty}_{i=1} A_i)\)</span> = RHS</p>
-<p>위의 논의가 <span class="math inline">\(A_1,A_2,\dots \in \cal{D}\)</span> &amp; <span class="math inline">\(A_1,A_2 \dots\)</span> are disjoint 한 임의의 <span class="math inline">\(A_1,A_2, \dots\)</span>에 대하여 성립하므오 (3)이 확인되었다.</p>
+<p>위의 논의가 <span class="math inline">\(A_1,A_2,\dots \in \cal{D}\)</span> &amp; <span class="math inline">\(A_1,A_2 \dots\)</span> are disjoint 한 임의의 <span class="math inline">\(A_1,A_2, \dots\)</span>에 대하여 성립하므로 (3)이 확인되었다.</p>
 <p><span class="math inline">\(\therefore \cal{D}\)</span>는 <span class="math inline">\(\lambda\)</span>-system</p>
 <ol start="6" type="1">
 <li><p>5와 <span class="math inline">\(\pi\)</span>-<span class="math inline">\(\lambda\)</span> thm을 이용하면 모든 <span class="math inline">\(B \in {\cal R}\)</span>에 대하여 <span class="math inline">\(\mu_X(B) = \int_B f_X d\lambda\)</span> 가 성립한다.</p></li>
