@@ -496,6 +496,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-06-15-Laplace.html" class="sidebar-item-text sidebar-link">Laplace Distribution</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/ml_basic/2023-03-29-Lasso and Ridge.html" class="sidebar-item-text sidebar-link">Lasso and Ridge</a>
   </div>
 </li>
@@ -1278,7 +1283,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="3" type="1">
 <li><span class="math inline">\(0&lt;x&lt;\frac{1}{2}\)</span> , <span class="math inline">\(F_X(X)= \frac{1}{2}\)</span></li>
 </ol>
-<p><span class="math inline">\(\mu_X(B) = F_X(X) = \frac{1}{2}\)</span> _{-}^x f_X d_0 <span class="math inline">\(\int_{-\infty}^x f_X d\lambda\)</span><a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> <span class="math inline">\(+ \int_{-\infty}^x f_X d\delta_0 = 0 + \int_{\{0\}}^x f_X d\delta_0 = f_X(0) \delta_X(\{0\}) = \frac{1}{2} \times 1 = \frac{1}{2}\)</span></p>
+<p><span class="math inline">\(\mu_X(B) = F_X(X) = \frac{1}{2}\)</span></p>
+<p><span class="math inline">\(\int_{-\infty}^x f_X d\lambda\)</span><a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> <span class="math inline">\(+ \int_{-\infty}^x f_X d\delta_0 = 0 + \int_{\{0\}}^x f_X d\delta_0 = f_X(0) \delta_X(\{0\}) = \frac{1}{2} \times 1 = \frac{1}{2}\)</span></p>
 <p><span class="math inline">\(\rightarrow\)</span> 성립</p>
 <ol start="4" type="1">
 <li><span class="math inline">\(\frac{1}{2} \le x \le 1\)</span> <span class="math inline">\(F_X(x) = x\)</span></li>
@@ -1290,7 +1296,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(x&gt;1\)</span> <span class="math inline">\(F_X(x) = \mu_X(x) = 1\)</span></li>
 </ol>
 <p><span class="math inline">\(\mu_X(B) = F_X(x) = 1\)</span></p>
-<p>$<em>{-}^x f_X d+ </em>{-}^x f_X d_0 = <span class="math inline">\(\int_{\frac{1}{2}}^1 1 dx + \frac{1}{2} = \frac{1}{2}+ \frac{1}{2}\)</span></p>
+<p><span class="math inline">\(\int_{-\infty}^x f_X d\lambda + \int_{-\infty}^x f_X d\delta_0 = \int_{\frac{1}{2}}^1 1 dx + \frac{1}{2} = \frac{1}{2}+ \frac{1}{2}\)</span></p>
 <hr>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -1345,13 +1351,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="르벡분해정리" class="level1">
 <h1>르벡분해정리</h1>
-<p><code>-</code> <strong>Thm</strong>: 분포함수의 정의를 만족하는 임의의 <span class="math inline">\(F\)</span>는 항상 아래와 같이 분해가능하다.</p>
+<p><code>-</code> <strong>Thm</strong>: 분포함수의 정의<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>를 만족하는 임의의 <span class="math inline">\(F\)</span>는 항상 아래와 같이 분해가능하다.</p>
 <p><span class="math display">\[F = F_{ac}+F_{pp}+F_{sing}\]</span></p>
 <p>여기에서 <span class="math inline">\(F_{ac}\)</span>는 르벡메져에 대하여 절대연속이고 <span class="math inline">\(F_{pp}\)</span>는 카운팅메져에 대하여 절대연속이다. 따라서 <span class="math inline">\(F_{ac}\)</span>와 <span class="math inline">\(F_{pp}\)</span>는 각각 르벡메져와 카운팅메져에 대응하는 밀도함수가 존재한다. <span class="math inline">\(F_{sing}\)</span>는 칸토어분포와 같이 밀도함수가 존재하지 않는 경우이다.</p>
 <blockquote class="blockquote">
 <p>여기에서 <span class="math inline">\(ac\)</span>는 absolutely continuous 의 약자이고, <span class="math inline">\(pp\)</span> pure point 의 약자이며 <span class="math inline">\(sing\)</span>은 singular continuous 약자이다.</p>
 </blockquote>
-<p><code>-</code> 의미: <span class="math inline">\(F_{ac}\)</span>는 우리가 일반적으로 생각하는 singular하지 않은 연속함수를 상상하면 된다.<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a> <span class="math inline">\(F_{pp}\)</span>는 완벽한 불연속이며 오직 jump를 통해서만 증가하는 함수라 생각하면 된다. 즉 우리가 익숙한 이산형확률변수의 cdf를 상상하면 된다.</p>
+<p><code>-</code> 의미: <span class="math inline">\(F_{ac}\)</span>는 우리가 일반적으로 생각하는 singular하지 않은 연속함수를 상상하면 된다.<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a> <span class="math inline">\(F_{pp}\)</span>는 완벽한 불연속이며 오직 jump를 통해서만 증가하는 함수라 생각하면 된다. 즉 우리가 익숙한 이산형확률변수의 cdf를 상상하면 된다.</p>
 <p><code>-</code> 이론: <span class="math inline">\(F_{pp}\)</span>는 기껏해야 countable한 불연속점을 가진다. (jump 하는 point는 countable이라는 의미, 결국 이산형확률변수의 support는 countable이라는 의미)</p>
 <p><code>-</code> 이론: 분포함수 정의를 만족하는 임의의 <span class="math inline">\(F\)</span>가 아래와 같다면</p>
 <p><span class="math display">\[F=F_{ac}\]</span></p>
@@ -1365,7 +1371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="기대값" class="level1">
 <h1>기대값</h1>
-<p><code>-</code> 예제1: <span class="math inline">\((\Omega,{\cal F},P)\)</span>를 확률공간이라고 하고 <span class="math inline">\(\Omega=\{H,T\}\)</span>, <span class="math inline">\({\cal F}=2^\Omega\)</span>, <span class="math inline">\(P(H)=P(T)=\frac{1}{2}\)</span>라고 하자.<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a> 확률변수 <span class="math inline">\(X(H)=0\)</span>, <span class="math inline">\(X(T)=1\)</span>를 정의하자. 이 확률변수의 기대값 <span class="math inline">\(\mathbb{E}(X)\)</span>를 계산하여 보자.</p>
+<p><code>-</code> 예제1: <span class="math inline">\((\Omega,{\cal F},P)\)</span>를 확률공간이라고 하고 <span class="math inline">\(\Omega=\{H,T\}\)</span>, <span class="math inline">\({\cal F}=2^\Omega\)</span>, <span class="math inline">\(P(H)=P(T)=\frac{1}{2}\)</span>라고 하자.<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a> 확률변수 <span class="math inline">\(X(H)=0\)</span>, <span class="math inline">\(X(T)=1\)</span>를 정의하자. 이 확률변수의 기대값 <span class="math inline">\(\mathbb{E}(X)\)</span>를 계산하여 보자.</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -1452,7 +1458,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>로 쓸 수 있다.</p>
 </div>
 </div>
-<p><code>-</code> 예제2: <span class="math inline">\((\Omega,{\cal F},P)\)</span>를 확률공간이라고 하고 <span class="math inline">\(\Omega=[0,2\pi)\)</span>, <span class="math inline">\({\cal F}={\cal R} \cap [0,2\pi)\)</span><a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>, <span class="math inline">\(P([0,x))=\frac{x}{2\pi}\)</span>라고 하자.<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a> 확률변수 <span class="math inline">\(X(\omega)=\omega\)</span>에 대한 기대값 <span class="math inline">\(\mathbb{E}(X)\)</span>를 계산하여 보자.</p>
+<p><code>-</code> 예제2: <span class="math inline">\((\Omega,{\cal F},P)\)</span>를 확률공간이라고 하고 <span class="math inline">\(\Omega=[0,2\pi)\)</span>, <span class="math inline">\({\cal F}={\cal R} \cap [0,2\pi)\)</span><a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>, <span class="math inline">\(P([0,x))=\frac{x}{2\pi}\)</span>라고 하자.<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a> 확률변수 <span class="math inline">\(X(\omega)=\omega\)</span>에 대한 기대값 <span class="math inline">\(\mathbb{E}(X)\)</span>를 계산하여 보자.</p>
 <p>(풀이)</p>
 <p>아래와 같이 계산할 수 있다. (고등학교 수준)</p>
 <p><span class="math display">\[\mathbb{E}(X)=\int_0^{2\pi} x \frac{1}{2\pi}dx\]</span></p>
@@ -1525,10 +1531,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li id="fn12"><p><span class="math inline">\(\delta_0(B) = 0\)</span>이어서 0<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn13"><p><span class="math inline">\(x\)</span>가 0일때 <span class="math inline">\(\frac{1}{2}\)</span>이 되고 다 0임.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn14"><p>르벡적분할떄는 <span class="math inline">\(x=0\)</span> 안 봐도 되니까 <span class="math inline">\(\frac{1}{2}\le x \le1\)</span>만 신경쓰기<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn15"><p>칸토어처럼 이상한 연속함수 말고 상식적인 수준의 연속함수라는 의미<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn16"><p>이렇게 정의해도 되는 이유는 카라테오도리 확장정리덕분<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn17"><p><span class="math inline">\({\cal R} \cap [0,2\pi) := \{B \cap [0,2\pi): B \in {\cal R}\}\)</span><a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn18"><p>이렇게 정의해도 되는 이유는 카라테오도리 확장정리덕분<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>증가함수<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>칸토어처럼 이상한 연속함수 말고 상식적인 수준의 연속함수라는 의미<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p>이렇게 정의해도 되는 이유는 카라테오도리 확장정리덕분<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p><span class="math inline">\({\cal R} \cap [0,2\pi) := \{B \cap [0,2\pi): B \in {\cal R}\}\)</span><a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p>이렇게 정의해도 되는 이유는 카라테오도리 확장정리덕분<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
