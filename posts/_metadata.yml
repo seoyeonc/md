@@ -11,3 +11,8 @@ title-block-banner: true
 comments: 
   utterances: 
     repo: seoyeonc/md
+    
+    
+format: 
+  html: default
+  ipynb: default

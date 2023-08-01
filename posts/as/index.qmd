@@ -1,0 +1,8 @@
+---
+title: "Special Topics in Applied Statistics"
+author: "SEOYEON CHOI"
+date: "2023-07-30"
+categories: [Special Topics in Applied Statistics]
+---
+
+Let's study Special Topics in Applied Statistics.
