@@ -6,3 +6,8 @@ categories: [Advanced Probability Theory]
 ---
 
 Advanced Probability Theory
+
+마코프 체인(기본: finite한 공간에 있다.)
+
+1. P로 수렵
+2. 행값이 같음
