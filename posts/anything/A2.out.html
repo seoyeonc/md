@@ -1,0 +1,2080 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.315">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Seoyeon’s Blog for classes - A2: 강화학습 (2) – 4x4 grid</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Seoyeon’s Blog for classes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../about.html" aria-current="page"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/seoyeonc/md/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/anything/index.html">Anything</a></li><li class="breadcrumb-item"><a href="../../posts/anything/A2.out.html">A2: 강화학습 (2) – 4x4 grid</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/anything/index.html">Anything</a></li><li class="breadcrumb-item"><a href="../../posts/anything/A2.out.html">A2: 강화학습 (2) – 4x4 grid</a></li></ol></nav>
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">A2: 강화학습 (2) – 4x4 grid</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ml_basic/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Machine Learning basic</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-23-Support Vector Machine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support Vector Machine</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-28-Linear Regression, Logistic Regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logistic Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-28-Principal Component Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Principal Component Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-29-Lasso and Ridge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lasso and Ridge</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-31-Ridge Regression_note3_0331.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ridge Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-04-02-Ensemble and Random Forest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ensemble and Random Forest</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-04-09-Clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clustering</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-09-EM_algorithm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Expectation Maximization(EM algorithm)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-20-Manifold learning Embedding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manifold learning Embedding</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Attention Mechanism.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Attention Mechanism</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Sequence-to-Sequence, seq2seq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sequence-to-Sequence, seq2seq</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Transformer Chatbot Tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transformer Chatbot Tutorial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Transformers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transformers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-06-15-Laplace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Laplace Distribution</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/rl/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-09-21-rl_CH03, CH04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH03, CH04</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-10-23-rl-HW2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-14-rl_CH06, CH07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH06, CH07</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-21-rl-HW3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-23-rl-CH10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-28-rl-CH13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH13</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-05-rl-CH11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH11</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-08-rl-HW4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-11-rl-Ch10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 CH10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis Mid Term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-23-rl-final_term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis Final Term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis GT</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ml/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Special Topics in Machine Learning</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-07-ml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-07-ml_1w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (1주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-14-ml_2w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (2주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-19-Assignment-1-Copy1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-21-ml_3w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (3주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-29-ml_4w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (4주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-05-ml-5w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (5주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-05-ml-HW.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homework</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-12-ml-6w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (6주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-19-ml_7w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNN (7주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-26-ml_8w_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNN (8주차) 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-26-ml_8w_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNN (8주차) 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-02-ml_9w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (9주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-02-ml-midterm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Midterm</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-09-ml-10w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (10주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-21-ml-11w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (11주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-29-13wk-2-final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deep Learning final example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-30-12wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (12주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-07-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A1: 깊은복사와 얕은복사 (12주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-08-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (13주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-13-final_seoyeon.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Finalterm</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-14-study.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">study</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-21-Extra-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra-1: 추천시스템</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-21-Extra-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra-2: 생성모형(GAN)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-23-Extra-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra-3: 딥러닝의 기초 (5)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ap/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Probability Theory</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01wk-2: 강의소개</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-07-ap_1wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1주차: 측도론</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-09-2wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02wk-1: 측도론 intro (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-14-2wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02wk-2: 측도론 intro (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-14-ap-02wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02wk: 측도론 intro (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-16-3wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03wk-1: 측도론 intro (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-21-3wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03wk-2: 측도론 intro (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-21-ap-03wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03wk: 측도론 intro (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-23-4wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04wk-1: 측도론 intro (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-28-4wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04wk-2: 측도론 intro (6)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-28-ap-04wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04wk: 측도론 intro (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-29-5wk-2-hw1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05wk-2: HW1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-30-5wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05wk-1: 마코프체인 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-05-ap-05wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05wk: 측도론 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06wk-2: 중간고사</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-11-ap-06wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06wk: 측도론 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-13-7wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07wk-1: 마코프체인 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-13-7wk-2.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07wk-2: 마코프체인 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-18-ap-07wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7wk: 측도론 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-20-8wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08wk-1: 마코프체인 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-25-8wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08wk-2: 마코프체인 (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-25-ap-08wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08wk: 측도론 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-27-9wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09wk-1: 마코프체인 (6)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-02-ap-09wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09wk: 확률변수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-09-10wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10wk-2: 마코프체인 (7)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-09-ap-10wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10wk: 분포, 분포함수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-11-11wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11wk-1: 마코프체인 (8)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-16-11wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11wk-2: 마코프체인 (9)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-16-ap-11wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11wk: 적분 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-18-12wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12wk-1: 마코프체인 (10)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-23-12wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12wk-2: 마코프체인 (11)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-23-ap-12wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12wk: 적분 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-25-13wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13wk-1: 마코프체인 (12)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-30-13wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13wk-2: MCMC (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-30-ap-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13wk: 밀도함수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-01-14wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14wk-1,2: MCMC (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-06-ap-14wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14wk: 이산형과 연속형의 통합</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-08-15wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15wk-1: MCMC (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-13-fin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15wk: 기말고사</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-20-15wk-2-fin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15wk-2: 기말고사</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/anything/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Anything</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-04-17-Survival_Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survival Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-04-20-hazard_ratio,odds_ratio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hazard ratio, Odds ratio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-04-27-Clinical Trial Data and Survival Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clinical Trial Data and Survival Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-05-04-questions of pytorch geometric temporal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Questions of PyTorch Geometric Temporal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-06-01-Survival_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survival Analysis Tutorial with R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-06-12-post_hoc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Post Hoc Tests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-06-12-Steady State.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Steady State</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-06-15-PK Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pharmacokinetic Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/A1.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A1: 강화학습 (1) – bandit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/A2.out.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">A2: 강화학습 (2) – 4x4 grid</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/as/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Special Topics in Applied Statistics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/as/2023-07-30-multicollinearity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multicollinearity</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ct/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding Test</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-01-Coding_Test_Greedy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 03 Greedy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-15-Coding_Test_Algorithm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Algorithm</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-15-Coding_Test_interfunction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">내장함수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-21-Coding_Test_Q1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">성격 유형 검사하기(Done)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-23-Coding_Test_Q2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">두 큐 합 같게 만들기(Done)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-30-Coding_Test_Q3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">코딩 테스트 공부(Done)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-02-12-Coding_Test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ArrayList &amp; LinkedList</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-03-05-Coding_Test_Stack.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stack</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-03-12-Coding_Test_Queue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Queue</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-03-22-Coding_Test_Tree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tree</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/Untitled.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Map</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ts/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2022-12-31-ts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">확률변수와 확률분포</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-09-ts_HW4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-12-ts_HW5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW5</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-14-ts_HW6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW6</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-14-ts_Mid term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics Mid term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-18-ts_HW7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW7</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-18-ts-HW8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW8</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-21-ts-HW9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW9</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-25-ts-final term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics Final term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-graduation_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics GT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-ts-final_qanda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics Final term 6 Explanation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
+  <li><a href="#game2-4x4-grid" id="toc-game2-4x4-grid" class="nav-link" data-scroll-target="#game2-4x4-grid">Game2: 4x4 grid</a></li>
+  <li><a href="#imports" id="toc-imports" class="nav-link" data-scroll-target="#imports">imports</a></li>
+  <li><a href="#예비학습-시각화" id="toc-예비학습-시각화" class="nav-link" data-scroll-target="#예비학습-시각화">예비학습: 시각화</a></li>
+  <li><a href="#env-클래스-구현" id="toc-env-클래스-구현" class="nav-link" data-scroll-target="#env-클래스-구현">Env 클래스 구현</a></li>
+  <li><a href="#agent1-클래스-구현-run" id="toc-agent1-클래스-구현-run" class="nav-link" data-scroll-target="#agent1-클래스-구현-run">Agent1 클래스 구현 + Run</a></li>
+  <li><a href="#환경의-이해-1차원적-이해" id="toc-환경의-이해-1차원적-이해" class="nav-link" data-scroll-target="#환경의-이해-1차원적-이해">환경의 이해 (1차원적 이해)</a></li>
+  <li><a href="#환경의-깊은-이해-좀-더-고차원적인-이해" id="toc-환경의-깊은-이해-좀-더-고차원적인-이해" class="nav-link" data-scroll-target="#환경의-깊은-이해-좀-더-고차원적인-이해">환경의 깊은 이해 (좀 더 고차원적인 이해)</a></li>
+  <li><a href="#행동-전략-수립" id="toc-행동-전략-수립" class="nav-link" data-scroll-target="#행동-전략-수립">행동 전략 수립</a></li>
+  <li><a href="#agent2-클래스-구현-run" id="toc-agent2-클래스-구현-run" class="nav-link" data-scroll-target="#agent2-클래스-구현-run">Agent2 클래스 구현 + Run</a></li>
+  <li><a href="#agnet3-클래스-구현-run" id="toc-agnet3-클래스-구현-run" class="nav-link" data-scroll-target="#agnet3-클래스-구현-run">Agnet3 클래스 구현 + Run</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="A2.out.out.ipynb" download="A2.out.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>최규빈<br>
+2023-08-30</p>
+<section id="강의영상" class="level1">
+<h1>강의영상</h1>
+<p><a href="https://youtu.be/playlist?list=PLQqh36zP38-zHvVuJ92xfdypwHwDFgg8k&amp;si=iI4IhthblTsJTmIv" class="uri">https://youtu.be/playlist?list=PLQqh36zP38-zHvVuJ92xfdypwHwDFgg8k&amp;si=iI4IhthblTsJTmIv</a></p>
+</section>
+<section id="game2-4x4-grid" class="level1">
+<h1>Game2: 4x4 grid</h1>
+<p><code>-</code> 문제설명: 4x4 그리드월드에서 상하좌우로 움직이는 에이전트가 목표점에 도달하도록 학습하는 방법</p>
+</section>
+<section id="imports" class="level1">
+<h1>imports</h1>
+<div id="5b1cfd48-d338-4ddd-8b59-f8ab593ebda9" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gymnasium <span class="im">as</span> gym</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.animation <span class="im">import</span> FuncAnimation</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span></code></pre></div>
+</div>
+</section>
+<section id="예비학습-시각화" class="level1">
+<h1>예비학습: 시각화</h1>
+<div id="0b3ec243-70a1-46e7-bd95-2bb4a5338898" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show(states):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.Figure()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> fig.subplots()</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    ax.matshow(np.zeros([<span class="dv">4</span>,<span class="dv">4</span>]), cmap<span class="op">=</span><span class="st">'bwr'</span>,alpha<span class="op">=</span><span class="fl">0.0</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    sc <span class="op">=</span> ax.scatter(<span class="dv">0</span>, <span class="dv">0</span>, color<span class="op">=</span><span class="st">'red'</span>, s<span class="op">=</span><span class="dv">500</span>)  </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="dv">0</span>, <span class="dv">0</span>, <span class="st">'start'</span>, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="dv">3</span>, <span class="dv">3</span>, <span class="st">'end'</span>, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Adding grid lines to the plot</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    ax.set_xticks(np.arange(<span class="op">-</span><span class="fl">.5</span>, <span class="dv">4</span>, <span class="dv">1</span>), minor<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    ax.set_yticks(np.arange(<span class="op">-</span><span class="fl">.5</span>, <span class="dv">4</span>, <span class="dv">1</span>), minor<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    ax.grid(which<span class="op">=</span><span class="st">'minor'</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update(t):</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        sc.set_offsets(states[t])</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    ani <span class="op">=</span> FuncAnimation(fig,update,frames<span class="op">=</span><span class="bu">len</span>(states))</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    display(IPython.display.HTML(ani.to_jshtml()))</span></code></pre></div>
+</div>
+<div id="5379f2af-62d5-43ff-b16f-4689e7a53fe5" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>show([[<span class="dv">0</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>],[<span class="dv">1</span>,<span class="dv">1</span>],[<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">1</span>,<span class="dv">3</span>],[<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">1</span>,<span class="dv">3</span>],[<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">1</span>,<span class="dv">3</span>],[<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">1</span>,<span class="dv">3</span>]])</span></code></pre></div>
+</div>
+</section>
+<section id="env-클래스-구현" class="level1">
+<h1>Env 클래스 구현</h1>
+<p><code>-</code> GridWorld: 강화학습에서 많이 예시로 사용되는 기본적인 시뮬레이션 환경</p>
+<ol type="1">
+<li><strong>State</strong>: 각 격자 셀이 하나의 상태이며, 에이전트는 이러한 상태 중 하나에 있을 수 있음.</li>
+<li><strong>Action</strong>: 에이전트는 현재상태에서 다음상태로 이동하기 위해 상,하,좌,우 중 하나의 행동을 취할 수 있음.</li>
+<li><strong>Reward</strong>: 에이전트가 현재상태에서 특정 action을 하면 얻어지는 보상</li>
+<li><strong>Terminated</strong>: 하나의 에피소드가 종료되었음을 나타내는 상태</li>
+</ol>
+<div id="aedc105c-7a89-46c1-8f5b-100d938085a5" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>action <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>current_state <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">1</span>])</span></code></pre></div>
+</div>
+<div id="e50e1ecd-765b-4764-9ac4-30c4234352e5" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>next_state <span class="op">=</span> current_state <span class="op">+</span> action_to_direction[action]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>next_state</span></code></pre></div>
+</div>
+<div id="414b9e1a-c494-4c0f-abc3-16fe43d7ede5" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GridWorld:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.reset()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.state_space <span class="op">=</span> gym.spaces.MultiDiscrete([<span class="dv">4</span>,<span class="dv">4</span>])</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.action_space <span class="op">=</span> gym.spaces.Discrete(<span class="dv">4</span>) </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._action_to_direction <span class="op">=</span> { </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            <span class="dv">0</span> : np.array([<span class="dv">1</span>, <span class="dv">0</span>]), <span class="co"># x+ </span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            <span class="dv">1</span> : np.array([<span class="dv">0</span>, <span class="dv">1</span>]), <span class="co"># y+ </span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>            <span class="dv">2</span> : np.array([<span class="op">-</span><span class="dv">1</span> ,<span class="dv">0</span>]), <span class="co"># x- </span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            <span class="dv">3</span> : np.array([<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>]) <span class="co"># y- </span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> reset(<span class="va">self</span>):</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.agent_action <span class="op">=</span> <span class="va">None</span> </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.agent_state <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">0</span>])        </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.agent_state </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> step(<span class="va">self</span>,action):</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        direction <span class="op">=</span> <span class="va">self</span>._action_to_direction[action]</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.agent_state <span class="op">=</span> <span class="va">self</span>.agent_state <span class="op">+</span> direction</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.agent_state <span class="kw">not</span> <span class="kw">in</span> env.state_space: <span class="co"># 4x4 그리드 밖에 있는 경우</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>            reward <span class="op">=</span> <span class="op">-</span><span class="dv">10</span> </span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>            terminated <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.agent_state <span class="op">=</span> <span class="va">self</span>.agent_state <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span> <span class="op">*</span> direction</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> np.array_equal(env.agent_state, np.array([<span class="dv">3</span>,<span class="dv">3</span>])): <span class="co"># 목표지점에 도달할 경우 </span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>            reward <span class="op">=</span> <span class="dv">100</span> </span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            terminated <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: </span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>            reward <span class="op">=</span> <span class="op">-</span><span class="dv">1</span> </span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>            terminated <span class="op">=</span> <span class="va">False</span>         </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.agent_state, reward, terminated</span></code></pre></div>
+</div>
+<div id="d90d8d11-e438-4528-ac96-107fe32c39be" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>env <span class="op">=</span> GridWorld()</span></code></pre></div>
+</div>
+<div id="f8bcc04d-d188-4c44-86bb-bf2394cd66d8" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> [] </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>state <span class="op">=</span> env.reset()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>states.append(state) </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>):</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    action <span class="op">=</span> env.action_space.sample() </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    state,reward,terminated <span class="op">=</span> env.step(action)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    states.append(state) </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> terminated: <span class="cf">break</span> </span></code></pre></div>
+</div>
+<div id="886e5543-619a-4488-a39f-77bc8a2fa254" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>show(states)</span></code></pre></div>
+</div>
+</section>
+<section id="agent1-클래스-구현-run" class="level1">
+<h1>Agent1 클래스 구현 + Run</h1>
+<p><code>-</code> 우리가 구현하고 싶은 기능</p>
+<ul>
+<li><code>.act()</code>: 액션을 결정 –&gt; 여기서는 그냥 랜덤액션</li>
+<li><code>.save_experience()</code>: 데이터를 저장 –&gt; 여기에 일단 초점을 맞추자</li>
+<li><code>.learn()</code>: 데이터로에서 학습 –&gt; 패스</li>
+</ul>
+<p><code>-</code> 첫번째 시도</p>
+<div id="e146d5e8-4c91-45ce-990f-f501db858092" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Agent1:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>,env):</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.action_space <span class="op">=</span> env.action_space</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.state_spcae <span class="op">=</span> env.state_space </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_experiences <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_episodes <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.score <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># episode-wise info </span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.scores <span class="op">=</span> [] </span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.playtimes <span class="op">=</span> []</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># time-wise info</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.current_state <span class="op">=</span> <span class="va">None</span> </span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.action <span class="op">=</span> <span class="va">None</span> </span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.reward <span class="op">=</span> <span class="va">None</span> </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.next_state <span class="op">=</span> <span class="va">None</span>         </span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.terminated <span class="op">=</span> <span class="va">None</span> </span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># replay_buffer </span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.actions <span class="op">=</span> []</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.current_states <span class="op">=</span> [] </span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rewards <span class="op">=</span> []</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.next_states <span class="op">=</span> [] </span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.terminations <span class="op">=</span> [] </span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> act(<span class="va">self</span>):</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.action <span class="op">=</span> <span class="va">self</span>.action_space.sample() </span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> save_experience(<span class="va">self</span>):</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.actions.append(<span class="va">self</span>.action) </span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.current_states.append(<span class="va">self</span>.current_state)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rewards.append(<span class="va">self</span>.reward)</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.next_states.append(<span class="va">self</span>.next_state)</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.terminations.append(<span class="va">self</span>.terminated) </span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_experiences <span class="op">+=</span> <span class="dv">1</span> </span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.score <span class="op">=</span> <span class="va">self</span>.score <span class="op">+</span> <span class="va">self</span>.reward </span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> learn(<span class="va">self</span>):</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span> </span></code></pre></div>
+</div>
+<div id="1d53c7dc-4e20-4e65-9d10-56b071baef9a" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>env <span class="op">=</span> GridWorld() </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>agent <span class="op">=</span> Agent1(env) </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>):</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 본질적인 코드 </span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    agent.current_state <span class="op">=</span> env.reset()</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    agent.terminated <span class="op">=</span> <span class="va">False</span> </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    agent.score <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>):</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step1: agent &gt;&gt; env </span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        agent.act() </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        env.agent_action <span class="op">=</span> agent.action  </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step2: agent &lt;&lt; env </span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        agent.next_state, agent.reward, agent.terminated <span class="op">=</span> env.step(env.agent_action)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        agent.save_experience() </span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step3: learn </span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># agent.learn()</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step4: state update </span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        agent.current_state <span class="op">=</span> agent.next_state </span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step5: </span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> agent.terminated: <span class="cf">break</span> </span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    agent.scores.append(agent.score) </span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    agent.playtimes.append(t<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    agent.n_episodes <span class="op">=</span> agent.n_episodes <span class="op">+</span> <span class="dv">1</span> </span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 덜 본질적인 코드 </span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Epsiode: </span><span class="sc">{</span>agent<span class="sc">.</span>n_episodes<span class="sc">}</span><span class="ss"> </span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Score: </span><span class="sc">{</span>agent<span class="sc">.</span>scores[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss"> </span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Playtime: </span><span class="sc">{</span>agent<span class="sc">.</span>playtimes[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    )   </span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epsiode: 1  Score: -21  Playtime: 12
+Epsiode: 2  Score: -10  Playtime: 1
+Epsiode: 3  Score: -11  Playtime: 2
+Epsiode: 4  Score: -10  Playtime: 1
+Epsiode: 5  Score: -10  Playtime: 1
+Epsiode: 6  Score: -11  Playtime: 2
+Epsiode: 7  Score: -18  Playtime: 9
+Epsiode: 8  Score: 93   Playtime: 8
+Epsiode: 9  Score: -13  Playtime: 4
+Epsiode: 10     Score: -13  Playtime: 4
+Epsiode: 11     Score: -18  Playtime: 9
+Epsiode: 12     Score: -10  Playtime: 1
+Epsiode: 13     Score: -10  Playtime: 1
+Epsiode: 14     Score: -10  Playtime: 1
+Epsiode: 15     Score: -10  Playtime: 1
+Epsiode: 16     Score: -16  Playtime: 7
+Epsiode: 17     Score: -10  Playtime: 1
+Epsiode: 18     Score: -24  Playtime: 15
+Epsiode: 19     Score: -13  Playtime: 4
+Epsiode: 20     Score: -10  Playtime: 1</code></pre>
+</div>
+</div>
+<div id="39b306fe-1afb-4a96-9908-f931d1e96e8c" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(agent.playtimes[:<span class="dv">7</span>])</span></code></pre></div>
+</div>
+<div id="c93e1dd8-ceff-4789-8809-244f639a2d09" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(agent.playtimes[:<span class="dv">8</span>])</span></code></pre></div>
+</div>
+<div id="e251a785-472d-45ce-9aa8-9e5086fdd5d4" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> [np.array([<span class="dv">0</span>,<span class="dv">0</span>])] <span class="op">+</span> agent.next_states[<span class="dv">28</span>:<span class="dv">36</span>]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>show(states)</span></code></pre></div>
+</div>
+<ul>
+<li>우연히 잘맞춘 케이스</li>
+</ul>
+</section>
+<section id="환경의-이해-1차원적-이해" class="level1">
+<h1>환경의 이해 (1차원적 이해)</h1>
+<p><code>-</code> 무작위로 10000판을 진행해보자.</p>
+<div id="40b12099-567e-419d-b629-d34f01810511" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>env <span class="op">=</span> GridWorld() </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>agent <span class="op">=</span> Agent1(env) </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 본질적인 코드 </span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    agent.current_state <span class="op">=</span> env.reset()</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    agent.terminated <span class="op">=</span> <span class="va">False</span> </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    agent.score <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>):</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step1: agent &gt;&gt; env </span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        agent.act() </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        env.agent_action <span class="op">=</span> agent.action  </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step2: agent &lt;&lt; env </span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>        agent.next_state, agent.reward, agent.terminated <span class="op">=</span> env.step(env.agent_action)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        agent.save_experience() </span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step3: learn </span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># agent.learn()</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step4: state update </span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>        agent.current_state <span class="op">=</span> agent.next_state </span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step5: </span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> agent.terminated: <span class="cf">break</span> </span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    agent.scores.append(agent.score) </span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    agent.playtimes.append(t<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    agent.n_episodes <span class="op">=</span> agent.n_episodes <span class="op">+</span> <span class="dv">1</span> </span></code></pre></div>
+</div>
+<div id="ceba972e-030e-4bd1-ae1d-5367cea52107" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>agent.n_experiences</span></code></pre></div>
+</div>
+<p><code>-</code> 데이터관찰</p>
+<div id="907a43bc-1644-4ad2-ba8f-f9296035721a" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>agent.current_states[<span class="dv">0</span>], agent.actions[<span class="dv">0</span>], agent.rewards[<span class="dv">0</span>], agent.next_states[<span class="dv">0</span>]</span></code></pre></div>
+</div>
+<div id="57ae01f6-3178-477f-ba2b-b708a91338c4" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>agent.current_states[<span class="dv">1</span>], agent.actions[<span class="dv">1</span>], agent.rewards[<span class="dv">1</span>], agent.next_states[<span class="dv">1</span>]</span></code></pre></div>
+</div>
+<div id="9fdc44e3-02df-4b0b-a4e4-39765d50e7c2" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>agent.current_states[<span class="dv">2</span>], agent.actions[<span class="dv">2</span>], agent.rewards[<span class="dv">2</span>], agent.next_states[<span class="dv">2</span>]</span></code></pre></div>
+</div>
+<div id="69c21c21-3995-4167-8741-becd4ac9a2a1" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>agent.current_states[<span class="dv">3</span>], agent.actions[<span class="dv">3</span>], agent.rewards[<span class="dv">3</span>], agent.next_states[<span class="dv">3</span>]</span></code></pre></div>
+</div>
+<div id="4288e684-decd-4056-83bd-9f2a0b79ec35" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>agent.current_states[<span class="dv">4</span>], agent.actions[<span class="dv">4</span>], agent.rewards[<span class="dv">4</span>], agent.next_states[<span class="dv">4</span>]</span></code></pre></div>
+</div>
+<p><code>-</code> 환경을 이해하기 위한 기록 (1)</p>
+<div id="dc434942-f67f-4c5f-8315-6a6f2da7a175" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> np.zeros([<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>])</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> np.zeros([<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>])</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(agent.n_experiences):</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    x,y <span class="op">=</span> agent.current_states[i] </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> agent.actions[i] </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    q[x,y,a] <span class="op">=</span> q[x,y,a] <span class="op">+</span> agent.rewards[i] </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    count[x,y,a] <span class="op">=</span> count[x,y,a] <span class="op">+</span> <span class="dv">1</span> </span></code></pre></div>
+</div>
+<div id="6a2698f4-75cd-463b-9256-c84a23793b1a" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>count[count <span class="op">==</span> <span class="dv">0</span>] <span class="op">=</span> <span class="fl">0.01</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> q<span class="op">/</span>count</span></code></pre></div>
+</div>
+<div id="b0da7c22-98c3-421f-888c-a441da28700d" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>q[:,:,<span class="dv">3</span>]</span></code></pre></div>
+</div>
+<div id="c7575209-a13d-4851-a793-dc61bd46f5da" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"action = </span><span class="sc">{</span>a<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span> </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"action-value function = </span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>q[:,:,a]<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span> </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>action = 0
+action-value function = 
+ [[ -1.  -1.  -1.  -1.]
+ [ -1.  -1.  -1.  -1.]
+ [ -1.  -1.  -1. 100.]
+ [-10. -10. -10.   0.]]
+
+action = 1
+action-value function = 
+ [[ -1.  -1.  -1. -10.]
+ [ -1.  -1.  -1. -10.]
+ [ -1.  -1.  -1. -10.]
+ [ -1.  -1. 100.   0.]]
+
+action = 2
+action-value function = 
+ [[-10. -10. -10. -10.]
+ [ -1.  -1.  -1.  -1.]
+ [ -1.  -1.  -1.  -1.]
+ [ -1.  -1.  -1.   0.]]
+
+action = 3
+action-value function = 
+ [[-10.  -1.  -1.  -1.]
+ [-10.  -1.  -1.  -1.]
+ [-10.  -1.  -1.  -1.]
+ [-10.  -1.  -1.   0.]]</code></pre>
+</div>
+</div>
+<p><code>-</code> 환경을 이해하기 위한 기록 (2)</p>
+<div id="914e7423-5d32-4b5a-9a2c-3cf0324e721a" class="cell" data-execution_count="87">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> np.zeros([<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>])</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(agent.n_experiences):</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    x,y <span class="op">=</span> agent.current_states[i]</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> agent.actions[i]</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    q_estimated <span class="op">=</span> q[x,y,a] <span class="co"># 우리가 환경을 이해하고 있는 값, 우리가 풀어낸 답 </span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    q_realistic <span class="op">=</span> agent.rewards[i] <span class="co"># 실제 답 </span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    diff <span class="op">=</span> q_realistic <span class="op">-</span> q_estimated <span class="co"># 실제답과 풀이한값의 차이 = 오차피드백값 </span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    q[x,y,a] <span class="op">=</span> q_estimated <span class="op">+</span> <span class="fl">0.05</span> <span class="op">*</span> diff <span class="co">## 새로운답 = 원래답 + 오차피드백값 </span></span></code></pre></div>
+</div>
+<div id="0d2778f3-b24b-4a2b-9abd-78f1a687e9ca" class="cell" data-execution_count="88">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"action = </span><span class="sc">{</span>a<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span> </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"action-value function = </span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>q[:,:,a]<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span> </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>action = 0
+action-value function = 
+ [[-1.         -1.         -1.         -0.99866234]
+ [-1.         -1.         -1.         -0.99851783]
+ [-0.99999999 -1.         -0.99999593 98.43103943]
+ [-9.97394217 -9.99697776 -9.93439857  0.        ]]
+
+action = 1
+action-value function = 
+ [[-1.         -1.         -1.         -9.98591939]
+ [-1.         -1.         -0.99999996 -9.99588862]
+ [-1.         -0.99999999 -0.99999593 -9.92731143]
+ [-0.99915694 -0.99971289 98.50948746  0.        ]]
+
+action = 2
+action-value function = 
+ [[-10.         -10.          -9.99999999  -9.99065864]
+ [ -1.          -1.          -0.99999999  -0.99923914]
+ [ -1.          -1.          -0.99999321  -0.9884667 ]
+ [ -0.99946866  -0.99981905  -0.99465672   0.        ]]
+
+action = 3
+action-value function = 
+ [[-10.          -1.          -1.          -0.99919909]
+ [-10.          -1.          -1.          -0.99866234]
+ [ -9.99999999  -1.          -0.99999285  -0.99541881]
+ [ -9.99347658  -0.99987363  -0.99776587   0.        ]]</code></pre>
+</div>
+</div>
+</section>
+<section id="환경의-깊은-이해-좀-더-고차원적인-이해" class="level1">
+<h1>환경의 깊은 이해 (좀 더 고차원적인 이해)</h1>
+<p><code>-</code> action=1 일때 각 state의 가치 (=기대보상)</p>
+<div id="a1214644-c901-4eb9-8d32-563df474baf2" class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>q[:,:,<span class="dv">1</span>]</span></code></pre></div>
+</div>
+<p><code>-</code> 분석1</p>
+<div id="08ca1c41-211a-4c55-85e9-bce10f20b3d5" class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>q[<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>]</span></code></pre></div>
+</div>
+<ul>
+<li>상태 (3,2)에서 행동 1을 하게되면 100의 보상을 얻으므로 기대보상값은 100근처 –&gt; 합리적임</li>
+</ul>
+<p><code>-</code> 분석2</p>
+<div id="0586f726-9795-4435-89aa-f73dd145c176" class="cell" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>q[<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>]</span></code></pre></div>
+</div>
+<ul>
+<li>상태 (3,1)에서 행동 1을 하게되면 -1 의 보상을 얻으므로 기대보상값은 -1 근처 –&gt; 합리적일까??</li>
+</ul>
+<p><code>-</code> 비판: 분석2는 합리적인것 처럼 보이지만 data를 분석한 뒤에는 그다지 합리적이지 못함</p>
+<p><code>-</code> 상황상상</p>
+<ul>
+<li>빈 종이를 줌</li>
+<li>빈 종이에는 0 또는 1을 쓸 수 있음 (action = 0 혹은 1)</li>
+<li>0을 쓸때와 1을 쓸때 보상이 다름</li>
+<li>무수히 많은 데이터를 분석해보니, 0을 쓰면 0원을 주고 1을 쓰면 10만원을 보상을 준다는 것을 “알게 되었음”</li>
+<li>이때 빈 종이의 가치는 5만원인가? 10만원인가? –&gt; 10만원아니야?</li>
+</ul>
+<p><code>-</code> 직관: 생각해보니 현재 <span class="math inline">\(s=(3,1)\)</span> <span class="math inline">\(a=1\)</span>에서 추정된(esitated) 값은 <code>q[3,1,1]= -0.9997128867462345</code> 이지만[1], 현실적으로는 “실제보상(-1)과 잠재적보상(100)”을 동시에 고려해야 하는게 합리적임</p>
+<p>[1] 즉 next_state가 가지는 잠재적값어치는 고려되어있지 않음</p>
+<div id="cfa4a389-21a8-4505-a864-fe28600a15c5" class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>q_estimated <span class="op">=</span> q[<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>]</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>q_estimated</span></code></pre></div>
+</div>
+<div id="c9c2af60-dfdb-4053-8609-3aa02e559007" class="cell" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>q_realistic <span class="op">=</span> (<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span> <span class="fl">0.99</span> <span class="op">*</span> <span class="dv">100</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>q_realistic</span></code></pre></div>
+</div>
+<ul>
+<li>여기에서 0.99는 “미래에 받을 보상이 현재에 비해 얼마나 중요한지를 결정하는 가중치” 이다.</li>
+<li>1에 가까울수록 미래에 받을 보상을 매우 중시한다는 의미 (즉 빈종이= 십만원 으로 생각한다는 의미)</li>
+</ul>
+<p><code>-</code> 즉 <span class="math inline">\(q(s,a)\)</span>는 모든 <span class="math inline">\(s\)</span>, <span class="math inline">\(a\)</span>에 대하여</p>
+<p><span class="math display">\[q(s,a) \approx \text{reward}(s,a) + 0.99 \times \max_{a}q(s',a)\]</span></p>
+<p>가 성립한다면 <span class="math inline">\(q(s,a)\)</span>는 타당하게 추정된 것이라 볼 수 있다. 물론 수식을 좀 더 엄밀하게 쓰면 아래와 같다.</p>
+<p><span class="math display">\[q(s,a) \approx \begin{cases} \text{reward}(s,a) &amp; \text{terminated} \\  \text{reward}(s,a) + 0.99 \times \max_{a}q(s',a) &amp; \text{not terminated}\end{cases}\]</span></p>
+<div id="4d6ffc83-3edb-42a7-a12c-23dc77e849cc" class="cell" data-execution_count="96">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> np.zeros([<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>])</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(agent.n_experiences):</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    x,y <span class="op">=</span> agent.current_states[i]</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    xx,yy <span class="op">=</span> agent.next_states[i]</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> agent.actions[i]</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    q_estimated <span class="op">=</span> q[x,y,a] </span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> agent.terminations[i]:</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>        q_realistic <span class="op">=</span> agent.rewards[i]</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>        q_future <span class="op">=</span> q[xx,yy,:].<span class="bu">max</span>()</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>        q_realistic <span class="op">=</span> agent.rewards[i] <span class="op">+</span> <span class="fl">0.99</span> <span class="op">*</span> q_future</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>    diff <span class="op">=</span> q_realistic <span class="op">-</span> q_estimated </span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>    q[x,y,a] <span class="op">=</span> q_estimated <span class="op">+</span> <span class="fl">0.05</span> <span class="op">*</span> diff </span></code></pre></div>
+</div>
+<div id="ff789b47-1166-40f2-af86-1403f91a3643" class="cell" data-execution_count="97">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"action = </span><span class="sc">{</span>a<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span> </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"action-value function = </span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>q[:,:,a]<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span> </span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>action = 0
+action-value function = 
+ [[87.02554961 88.94759484 90.75390245 88.54847007]
+ [88.4709728  91.06852327 93.18709107 94.21998722]
+ [84.98258538 91.44091272 95.48024593 98.43103943]
+ [-9.97394217 -9.99697776 -9.93439857  0.        ]]
+
+action = 1
+action-value function = 
+ [[87.01670813 88.59888111 85.52951661 -9.98591939]
+ [88.98190464 91.03081993 91.50379877 -9.99588862]
+ [90.76721433 93.24316728 95.65715857 -9.92731143]
+ [89.20612688 94.47295823 98.50948746  0.        ]]
+
+action = 2
+action-value function = 
+ [[-10.         -10.          -9.99999999  -9.99065864]
+ [ 84.96179325  86.84873675  88.0518007   80.10750712]
+ [ 86.40784936  88.69218405  89.83203868  83.06339754]
+ [ 86.40852121  89.09508079  89.87262647   0.        ]]
+
+action = 3
+action-value function = 
+ [[-10.          84.96186287  86.49128928  84.57992176]
+ [-10.          86.73523202  88.56505447  86.7154156 ]
+ [ -9.99999999  88.3058275   90.27264766  87.96618484]
+ [ -9.99347658  80.88548565  86.63274331   0.        ]]</code></pre>
+</div>
+</div>
+</section>
+<section id="행동-전략-수립" class="level1">
+<h1>행동 전략 수립</h1>
+<p><code>-</code> 상태 (0,0)에 있다고 가정해보자.</p>
+<div id="4f17808b-c852-4027-baa0-f364d2dd3ee0" class="cell" data-execution_count="98">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>q[<span class="dv">0</span>,<span class="dv">0</span>,:]</span></code></pre></div>
+</div>
+<ul>
+<li>행동 0 혹은 행동 1을 하는게 유리하다. // 행동 2,3을 하면 망한다.</li>
+</ul>
+<p><code>-</code> 상태 (2,3)에 있다고 가정해보자.</p>
+<div id="b0a53547-7ae8-4950-b10c-2146755a87b7" class="cell" data-execution_count="99">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>q[<span class="dv">2</span>,<span class="dv">3</span>,:]</span></code></pre></div>
+</div>
+<ul>
+<li>행동 0을 하는게 유리함.</li>
+</ul>
+<p><code>-</code> 상태 (3,2)에 있다고 가정해보자.</p>
+<div id="92aac9f3-5e47-42bb-8e62-5bf64f36cc29" class="cell" data-execution_count="100">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>q[<span class="dv">3</span>,<span class="dv">2</span>,:]</span></code></pre></div>
+</div>
+<ul>
+<li>행동1을 하는게 유리함</li>
+</ul>
+<p><code>-</code> 각 상태에서 최적은 action은 아래와 같다.</p>
+<div id="f1b692c3-94b6-4c9e-8a92-ff0bb836c83b" class="cell" data-execution_count="102">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>q[<span class="dv">0</span>,<span class="dv">0</span>,:].argmax()</span></code></pre></div>
+</div>
+<div id="982e1340-a7d2-4e2a-84d8-f4d41072227b" class="cell" data-execution_count="103">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>q[<span class="dv">2</span>,<span class="dv">3</span>,:].argmax()</span></code></pre></div>
+</div>
+<div id="ede24e2e-ed08-405e-870e-f9b780ec5451" class="cell" data-execution_count="104">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>q[<span class="dv">3</span>,<span class="dv">2</span>,:].argmax()</span></code></pre></div>
+</div>
+<p><code>-</code> 전략(=정책)을 정리해보자.</p>
+<div id="a9cd5f06-8a65-46e7-9f74-92ec7c2d9d59" class="cell" data-execution_count="105">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>policy <span class="op">=</span> np.array([<span class="st">'?????'</span>]<span class="op">*</span><span class="dv">16</span>).reshape(<span class="dv">4</span>,<span class="dv">4</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>policy</span></code></pre></div>
+</div>
+<div id="dfdd98b8-89b5-450c-880c-1c408f564016" class="cell" data-execution_count="107">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>directions <span class="op">=</span> {<span class="dv">0</span>:<span class="st">'down'</span>, <span class="dv">1</span>: <span class="st">'right'</span>, <span class="dv">2</span>:<span class="st">'up'</span>, <span class="dv">3</span>:<span class="st">'left'</span>} </span></code></pre></div>
+</div>
+<div id="c2c85140-c119-4f09-8529-d293f75662e8" class="cell" data-execution_count="108">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>        policy[x,y] <span class="op">=</span> directions[q[x,y,:].argmax()]</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>policy</span></code></pre></div>
+</div>
+<div id="699a6066-80e7-415c-aa87-57036e07979f" class="cell" data-execution_count="111">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>q.<span class="bu">max</span>(axis<span class="op">=-</span><span class="dv">1</span>)</span></code></pre></div>
+</div>
+</section>
+<section id="agent2-클래스-구현-run" class="level1">
+<h1>Agent2 클래스 구현 + Run</h1>
+<div id="fbd05240-8d9f-45d9-a704-f4aff617d46c" class="cell" data-execution_count="114">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Agent2(Agent1):</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>,env):</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(env)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.q <span class="op">=</span> np.zeros([<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>]) </span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> learn(<span class="va">self</span>):</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>        x,y <span class="op">=</span> agent.current_state</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>        xx,yy <span class="op">=</span> agent.next_state</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> agent.action </span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>        q_estimated <span class="op">=</span> <span class="va">self</span>.q[x,y,a] </span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.terminated:</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>            q_realistic <span class="op">=</span> <span class="va">self</span>.reward</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>            q_future <span class="op">=</span> q[xx,yy,:].<span class="bu">max</span>()</span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>            q_realistic <span class="op">=</span> <span class="va">self</span>.reward <span class="op">+</span> <span class="fl">0.99</span> <span class="op">*</span> q_future</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>        diff <span class="op">=</span> q_realistic <span class="op">-</span> q_estimated </span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.q[x,y,a] <span class="op">=</span> q_estimated <span class="op">+</span> <span class="fl">0.05</span> <span class="op">*</span> diff </span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> act(<span class="va">self</span>):</span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.n_experiences <span class="op">&lt;</span> <span class="dv">3000</span>: </span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.action <span class="op">=</span> <span class="va">self</span>.action_space.sample() </span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a>            x,y <span class="op">=</span> <span class="va">self</span>.current_state </span>
+<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.action <span class="op">=</span> <span class="va">self</span>.q[x,y,:].argmax()</span></code></pre></div>
+</div>
+<div id="3bf71d4d-f5b3-48f7-a437-dd0eedb4d211" class="cell" data-execution_count="131">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>env <span class="op">=</span> GridWorld() </span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>agent <span class="op">=</span> Agent2(env) </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2000</span>):</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 본질적인 코드 </span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    agent.current_state <span class="op">=</span> env.reset()</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    agent.terminated <span class="op">=</span> <span class="va">False</span> </span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>    agent.score <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>):</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step1: agent &gt;&gt; env </span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>        agent.act() </span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>        env.agent_action <span class="op">=</span> agent.action  </span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step2: agent &lt;&lt; env </span></span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>        agent.next_state, agent.reward, agent.terminated <span class="op">=</span> env.step(env.agent_action)</span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>        agent.save_experience() </span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step3: learn </span></span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>        agent.learn()</span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step4: state update </span></span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>        agent.current_state <span class="op">=</span> agent.next_state </span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step5: </span></span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> agent.terminated: <span class="cf">break</span> </span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>    agent.scores.append(agent.score) </span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a>    agent.playtimes.append(t<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a>    agent.n_episodes <span class="op">=</span> agent.n_episodes <span class="op">+</span> <span class="dv">1</span> </span>
+<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 덜 본질적인 코드 </span></span>
+<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (agent.n_episodes <span class="op">%</span> <span class="dv">100</span>) <span class="op">==</span><span class="dv">0</span>:</span>
+<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(</span>
+<span id="cb50-27"><a href="#cb50-27" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f"Epsiode: </span><span class="sc">{</span>agent<span class="sc">.</span>n_episodes<span class="sc">}</span><span class="ss"> </span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb50-28"><a href="#cb50-28" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f"Score: </span><span class="sc">{</span>np<span class="sc">.</span>mean(agent.scores[<span class="op">-</span><span class="dv">100</span>:])<span class="sc">}</span><span class="ss"> </span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f"Playtime: </span><span class="sc">{</span>np<span class="sc">.</span>mean(agent.playtimes[<span class="op">-</span><span class="dv">100</span>:])<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a>        )   </span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epsiode: 100    Score: -11.62   Playtime: 3.72
+Epsiode: 200    Score: -11.71   Playtime: 3.81
+Epsiode: 300    Score: -10.34   Playtime: 3.54
+Epsiode: 400    Score: -9.17    Playtime: 3.47
+Epsiode: 500    Score: -10.06   Playtime: 3.26
+Epsiode: 600    Score: -10.99   Playtime: 3.09
+Epsiode: 700    Score: -7.6     Playtime: 3.0
+Epsiode: 800    Score: -10.29   Playtime: 3.49
+Epsiode: 900    Score: -22.82   Playtime: 17.62
+Epsiode: 1000   Score: -50.0    Playtime: 50.0
+Epsiode: 1100   Score: -50.0    Playtime: 50.0
+Epsiode: 1200   Score: -50.0    Playtime: 50.0
+Epsiode: 1300   Score: -50.0    Playtime: 50.0
+Epsiode: 1400   Score: -50.0    Playtime: 50.0
+Epsiode: 1500   Score: -50.0    Playtime: 50.0
+Epsiode: 1600   Score: -50.0    Playtime: 50.0
+Epsiode: 1700   Score: -50.0    Playtime: 50.0
+Epsiode: 1800   Score: -50.0    Playtime: 50.0
+Epsiode: 1900   Score: -50.0    Playtime: 50.0
+Epsiode: 2000   Score: -50.0    Playtime: 50.0</code></pre>
+</div>
+</div>
+<div id="3cc1eb34-48f5-4096-8bdb-d9af4cab8e62" class="cell" data-execution_count="132">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> [np.array([<span class="dv">0</span>,<span class="dv">0</span>])] <span class="op">+</span> agent.next_states[<span class="op">-</span>agent.playtimes[<span class="op">-</span><span class="dv">1</span>]:] </span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>show(states)</span></code></pre></div>
+</div>
+<div id="19b890c1-a87a-4371-ab09-093271b4a0e1" class="cell" data-execution_count="133">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>agent.q.<span class="bu">max</span>(<span class="op">-</span><span class="dv">1</span>).T</span></code></pre></div>
+</div>
+</section>
+<section id="agnet3-클래스-구현-run" class="level1">
+<h1>Agnet3 클래스 구현 + Run</h1>
+<div id="50575733-9c15-4c33-81fd-9a8b321a54d0" class="cell" data-execution_count="142">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Agent3(Agent2):</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>,env):</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(env)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.eps <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> act(<span class="va">self</span>):</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> <span class="va">self</span>.eps:</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.action <span class="op">=</span> <span class="va">self</span>.action_space.sample() </span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>            x,y <span class="op">=</span> <span class="va">self</span>.current_state </span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.action <span class="op">=</span> <span class="va">self</span>.q[x,y,:].argmax()</span></code></pre></div>
+</div>
+<div id="50ba284c-2a6f-4218-b521-533352867e68" class="cell" data-execution_count="161">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>env <span class="op">=</span> GridWorld() </span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>agent <span class="op">=</span> Agent3(env) </span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>agent.eps <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5000</span>):</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 본질적인 코드 </span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    agent.current_state <span class="op">=</span> env.reset()</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>    agent.terminated <span class="op">=</span> <span class="va">False</span> </span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>    agent.score <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>):</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step1: agent &gt;&gt; env </span></span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>        agent.act() </span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>        env.agent_action <span class="op">=</span> agent.action  </span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step2: agent &lt;&lt; env </span></span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a>        agent.next_state, agent.reward, agent.terminated <span class="op">=</span> env.step(env.agent_action)</span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a>        agent.save_experience() </span>
+<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step3: learn </span></span>
+<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a>        agent.learn()</span>
+<span id="cb55-18"><a href="#cb55-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step4: state update </span></span>
+<span id="cb55-19"><a href="#cb55-19" aria-hidden="true" tabindex="-1"></a>        agent.current_state <span class="op">=</span> agent.next_state </span>
+<span id="cb55-20"><a href="#cb55-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># step5: </span></span>
+<span id="cb55-21"><a href="#cb55-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> agent.terminated: <span class="cf">break</span> </span>
+<span id="cb55-22"><a href="#cb55-22" aria-hidden="true" tabindex="-1"></a>    agent.scores.append(agent.score) </span>
+<span id="cb55-23"><a href="#cb55-23" aria-hidden="true" tabindex="-1"></a>    agent.playtimes.append(t<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb55-24"><a href="#cb55-24" aria-hidden="true" tabindex="-1"></a>    agent.n_episodes <span class="op">=</span> agent.n_episodes <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb55-25"><a href="#cb55-25" aria-hidden="true" tabindex="-1"></a>    agent.eps <span class="op">=</span> agent.eps <span class="op">*</span> <span class="fl">0.999</span></span>
+<span id="cb55-26"><a href="#cb55-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 덜 본질적인 코드 </span></span>
+<span id="cb55-27"><a href="#cb55-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (agent.n_episodes <span class="op">%</span> <span class="dv">200</span>) <span class="op">==</span><span class="dv">0</span>:</span>
+<span id="cb55-28"><a href="#cb55-28" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(</span>
+<span id="cb55-29"><a href="#cb55-29" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f"Epsiode: </span><span class="sc">{</span>agent<span class="sc">.</span>n_episodes<span class="sc">}</span><span class="ss"> </span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb55-30"><a href="#cb55-30" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f"Score: </span><span class="sc">{</span>np<span class="sc">.</span>mean(agent.scores[<span class="op">-</span><span class="dv">100</span>:])<span class="sc">}</span><span class="ss"> </span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb55-31"><a href="#cb55-31" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f"Playtime: </span><span class="sc">{</span>np<span class="sc">.</span>mean(agent.playtimes[<span class="op">-</span><span class="dv">100</span>:])<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb55-32"><a href="#cb55-32" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f"Epsilon: </span><span class="sc">{</span>agent<span class="sc">.</span>eps <span class="sc">: .2f}</span><span class="ss">"</span></span>
+<span id="cb55-33"><a href="#cb55-33" aria-hidden="true" tabindex="-1"></a>        )   </span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epsiode: 200    Score: -8.49    Playtime: 3.89  Epsilon:  0.82
+Epsiode: 400    Score: -9.83    Playtime: 4.13  Epsilon:  0.67
+Epsiode: 600    Score: -10.72   Playtime: 6.12  Epsilon:  0.55
+Epsiode: 800    Score: -7.08    Playtime: 7.98  Epsilon:  0.45
+Epsiode: 1000   Score: -1.87    Playtime: 10.65 Epsilon:  0.37
+Epsiode: 1200   Score: 28.23    Playtime: 10.16 Epsilon:  0.30
+Epsiode: 1400   Score: 61.38    Playtime: 6.62  Epsilon:  0.25
+Epsiode: 1600   Score: 66.42    Playtime: 5.98  Epsilon:  0.20
+Epsiode: 1800   Score: 74.94    Playtime: 6.26  Epsilon:  0.17
+Epsiode: 2000   Score: 75.29    Playtime: 5.91  Epsilon:  0.14
+Epsiode: 2200   Score: 77.24    Playtime: 6.16  Epsilon:  0.11
+Epsiode: 2400   Score: 86.1     Playtime: 6.1   Epsilon:  0.09
+Epsiode: 2600   Score: 83.81    Playtime: 6.19  Epsilon:  0.07
+Epsiode: 2800   Score: 87.27    Playtime: 6.03  Epsilon:  0.06
+Epsiode: 3000   Score: 86.1     Playtime: 6.1   Epsilon:  0.05
+Epsiode: 3200   Score: 87.37    Playtime: 5.93  Epsilon:  0.04
+Epsiode: 3400   Score: 93.68    Playtime: 6.22  Epsilon:  0.03
+Epsiode: 3600   Score: 90.58    Playtime: 6.02  Epsilon:  0.03
+Epsiode: 3800   Score: 92.77    Playtime: 6.03  Epsilon:  0.02
+Epsiode: 4000   Score: 93.79    Playtime: 6.11  Epsilon:  0.02
+Epsiode: 4200   Score: 94.88    Playtime: 6.12  Epsilon:  0.01
+Epsiode: 4400   Score: 92.85    Playtime: 5.95  Epsilon:  0.01
+Epsiode: 4600   Score: 94.96    Playtime: 6.04  Epsilon:  0.01
+Epsiode: 4800   Score: 94.92    Playtime: 6.08  Epsilon:  0.01
+Epsiode: 5000   Score: 93.9     Playtime: 6.0   Epsilon:  0.01</code></pre>
+</div>
+</div>
+<div id="c1513a2f-7822-4b77-af8f-6a11be9eb192" class="cell" data-execution_count="162">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> [np.array([<span class="dv">0</span>,<span class="dv">0</span>])] <span class="op">+</span> agent.next_states[<span class="op">-</span>agent.playtimes[<span class="op">-</span><span class="dv">1</span>]:] </span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>show(states)</span></code></pre></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        console.log("RESIZE");
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="seoyeonc/md" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

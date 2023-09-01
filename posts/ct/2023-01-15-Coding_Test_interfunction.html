@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.315">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -111,6 +82,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -120,10 +96,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
@@ -135,44 +113,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Seoyeon’s Blog for classes</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../../about.html" aria-current="page">
- <span class="menu-text">About</span></a>
+    <a class="nav-link active" href="../../about.html" aria-current="page"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/seoyeonc/md/"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/seoyeonc/md/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">내장함수</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/ct/index.html">Coding Test</a></li><li class="breadcrumb-item"><a href="../../posts/ct/2023-01-15-Coding_Test_interfunction.html">내장함수</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/ct/index.html">Coding Test</a></li><li class="breadcrumb-item"><a href="../../posts/ct/2023-01-15-Coding_Test_interfunction.html">내장함수</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">내장함수</h1>
+      <h1 class="title">내장함수</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Coding Test</div>
               </div>
@@ -202,728 +187,881 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-      <div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../about.html" class="sidebar-item-text sidebar-link">About</a>
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Posts</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../posts/ap/index.html" class="sidebar-item-text sidebar-link">Advanced Probability Theory</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a href="../../posts/ml_basic/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Machine Learning basic</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">01wk-2: 강의소개</a>
+  <a href="../../posts/ml_basic/2023-03-23-Support Vector Machine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support Vector Machine</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-03-09-2wk-1.html" class="sidebar-item-text sidebar-link">02wk-1: 측도론 intro (1)</a>
+  <a href="../../posts/ml_basic/2023-03-28-Linear Regression, Logistic Regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logistic Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-03-14-2wk-2.html" class="sidebar-item-text sidebar-link">02wk-2: 측도론 intro (2)</a>
+  <a href="../../posts/ml_basic/2023-03-28-Principal Component Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Principal Component Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-03-14-ap-02wk.html" class="sidebar-item-text sidebar-link">02wk: 측도론 intro (2)</a>
+  <a href="../../posts/ml_basic/2023-03-29-Lasso and Ridge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lasso and Ridge</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-03-16-3wk-1.html" class="sidebar-item-text sidebar-link">03wk-1: 측도론 intro (3)</a>
+  <a href="../../posts/ml_basic/2023-03-31-Ridge Regression_note3_0331.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ridge Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-03-21-3wk-2.html" class="sidebar-item-text sidebar-link">03wk-2: 측도론 intro (4)</a>
+  <a href="../../posts/ml_basic/2023-04-02-Ensemble and Random Forest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ensemble and Random Forest</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-03-21-ap-03wk.html" class="sidebar-item-text sidebar-link">03wk: 측도론 intro (3)</a>
+  <a href="../../posts/ml_basic/2023-04-09-Clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clustering</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-03-23-4wk-1.html" class="sidebar-item-text sidebar-link">04wk-1: 측도론 intro (5)</a>
+  <a href="../../posts/ml_basic/2023-05-09-EM_algorithm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Expectation Maximization(EM algorithm)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-03-28-4wk-2.html" class="sidebar-item-text sidebar-link">04wk-2: 측도론 intro (6)</a>
+  <a href="../../posts/ml_basic/2023-05-20-Manifold learning Embedding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manifold learning Embedding</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-03-28-ap-04wk.html" class="sidebar-item-text sidebar-link">04wk: 측도론 intro (4)</a>
+  <a href="../../posts/ml_basic/2023-05-28-Attention Mechanism.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Attention Mechanism</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-03-30-5wk-1.html" class="sidebar-item-text sidebar-link">05wk-1: 마코프체인 (1)</a>
+  <a href="../../posts/ml_basic/2023-05-28-Sequence-to-Sequence, seq2seq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sequence-to-Sequence, seq2seq</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-03-29-5wk-2-hw1.html" class="sidebar-item-text sidebar-link">05wk-2: HW1</a>
+  <a href="../../posts/ml_basic/2023-05-28-Transformer Chatbot Tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transformer Chatbot Tutorial</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-04-05-ap-05wk.html" class="sidebar-item-text sidebar-link">05wk: 측도론 (1)</a>
+  <a href="../../posts/ml_basic/2023-05-28-Transformers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transformers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">06wk-2: 중간고사</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-04-11-ap-06wk.html" class="sidebar-item-text sidebar-link">06wk: 측도론 (2)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-04-13-7wk-1.html" class="sidebar-item-text sidebar-link">07wk-1: 마코프체인 (2)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-04-20-8wk-1.html" class="sidebar-item-text sidebar-link">08wk-1: 마코프체인 (4)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-04-25-8wk-2.html" class="sidebar-item-text sidebar-link">08wk-2: 마코프체인 (5)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-04-25-ap-08wk.html" class="sidebar-item-text sidebar-link">08wk: 측도론 (4)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-04-27-9wk-1.html" class="sidebar-item-text sidebar-link">09wk-1: 마코프체인 (6)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-05-02-ap-09wk.html" class="sidebar-item-text sidebar-link">09wk: 확률변수</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-05-09-10wk-2.html" class="sidebar-item-text sidebar-link">10wk-2: 마코프체인 (7)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-05-09-ap-10wk.html" class="sidebar-item-text sidebar-link">10wk: 분포, 분포함수</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-05-11-11wk-1.html" class="sidebar-item-text sidebar-link">11wk-1: 마코프체인 (8)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-05-16-11wk-2.html" class="sidebar-item-text sidebar-link">11wk-2: 마코프체인 (9)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-05-16-ap-11wk.html" class="sidebar-item-text sidebar-link">11wk: 적분 (1)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-05-18-12wk-1.html" class="sidebar-item-text sidebar-link">12wk-1: 마코프체인 (10)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-05-23-12wk-2.html" class="sidebar-item-text sidebar-link">12wk-2: 마코프체인 (11)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-05-23-ap-12wk.html" class="sidebar-item-text sidebar-link">12wk: 적분 (2)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-05-25-13wk-1.html" class="sidebar-item-text sidebar-link">13wk-1: 마코프체인 (12)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-05-30-13wk-2.html" class="sidebar-item-text sidebar-link">13wk-2: MCMC (1)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-05-30-ap-13wk.html" class="sidebar-item-text sidebar-link">13wk: 밀도함수</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-06-01-14wk-1.html" class="sidebar-item-text sidebar-link">14wk-1,2: MCMC (2)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-06-06-ap-14wk.html" class="sidebar-item-text sidebar-link">14wk: 이산형과 연속형의 통합</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-06-08-15wk-1.html" class="sidebar-item-text sidebar-link">15wk-1: MCMC (3)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-06-20-15wk-2-fin.html" class="sidebar-item-text sidebar-link">15wk-2: 기말고사</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-06-13-fin.html" class="sidebar-item-text sidebar-link">15wk: 기말고사</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-03-07-ap_1wk.html" class="sidebar-item-text sidebar-link">1주차: 측도론</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ap/2023-04-18-ap-07wk.html" class="sidebar-item-text sidebar-link">7wk: 측도론 (3)</a>
+  <a href="../../posts/ml_basic/2023-06-15-Laplace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Laplace Distribution</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../posts/rl/index.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a href="../../posts/rl/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2023-02-23-rl-final_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Final Term</a>
+  <a href="../../posts/rl/2022-09-21-rl_CH03, CH04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH03, CH04</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis GT</a>
+  <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">Advanced Regression Analysis Mid Term</a>
+  <a href="../../posts/rl/2022-10-23-rl-HW2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">Regression HW 1</a>
+  <a href="../../posts/rl/2022-11-14-rl_CH06, CH07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH06, CH07</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-10-23-rl-HW2.html" class="sidebar-item-text sidebar-link">Regression HW 2</a>
+  <a href="../../posts/rl/2022-11-21-rl-HW3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 3</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-11-21-rl-HW3.html" class="sidebar-item-text sidebar-link">Regression HW 3</a>
+  <a href="../../posts/rl/2022-11-23-rl-CH10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH10</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-12-08-rl-HW4.html" class="sidebar-item-text sidebar-link">Regression HW 4</a>
+  <a href="../../posts/rl/2022-11-28-rl-CH13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH13</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-12-11-rl-Ch10.html" class="sidebar-item-text sidebar-link">고급회귀분석 CH10</a>
+  <a href="../../posts/rl/2022-12-05-rl-CH11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH11</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-09-21-rl_CH03, CH04.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH03, CH04</a>
+  <a href="../../posts/rl/2022-12-08-rl-HW4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 4</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-11-14-rl_CH06, CH07.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH06, CH07</a>
+  <a href="../../posts/rl/2022-12-11-rl-Ch10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 CH10</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-11-23-rl-CH10.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH10</a>
+  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis Mid Term</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-12-05-rl-CH11.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH11</a>
+  <a href="../../posts/rl/2023-02-23-rl-final_term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis Final Term</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-11-28-rl-CH13.html" class="sidebar-item-text sidebar-link">고급회귀분석 실습 CH13</a>
+  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis GT</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../posts/anything/index.html" class="sidebar-item-text sidebar-link">Anything</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a href="../../posts/ml/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Special Topics in Machine Learning</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/anything/2023-04-27-Clinical Trial Data and Survival Analysis.html" class="sidebar-item-text sidebar-link">Clinical Trial Data and Survival Analysis</a>
+  <a href="../../posts/ml/2022-09-07-ml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/anything/2023-04-20-hazard_ratio,odds_ratio.html" class="sidebar-item-text sidebar-link">Hazard ratio, Odds ratio</a>
+  <a href="../../posts/ml/2022-09-07-ml_1w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (1주차)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/anything/2023-06-15-PK Analysis.html" class="sidebar-item-text sidebar-link">Pharmacokinetic Analysis</a>
+  <a href="../../posts/ml/2022-09-14-ml_2w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (2주차)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/anything/2023-06-12-post_hoc.html" class="sidebar-item-text sidebar-link">Post Hoc Tests</a>
+  <a href="../../posts/ml/2022-09-19-Assignment-1-Copy1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/anything/2023-05-04-questions of pytorch geometric temporal.html" class="sidebar-item-text sidebar-link">Questions of PyTorch Geometric Temporal</a>
+  <a href="../../posts/ml/2022-09-21-ml_3w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (3주차)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/anything/2023-06-12-Steady State.html" class="sidebar-item-text sidebar-link">Steady State</a>
+  <a href="../../posts/ml/2022-09-29-ml_4w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (4주차)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/anything/2023-04-17-Survival_Analysis.html" class="sidebar-item-text sidebar-link">Survival Analysis</a>
+  <a href="../../posts/ml/2022-10-05-ml-5w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (5주차)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/anything/2023-06-01-Survival_R.html" class="sidebar-item-text sidebar-link">Survival Analysis Tutorial with R</a>
+  <a href="../../posts/ml/2022-10-05-ml-HW.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homework</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-12-ml-6w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (6주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-19-ml_7w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNN (7주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-26-ml_8w_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNN (8주차) 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-26-ml_8w_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNN (8주차) 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-02-ml_9w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (9주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-02-ml-midterm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Midterm</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-09-ml-10w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (10주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-21-ml-11w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (11주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-29-13wk-2-final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deep Learning final example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-30-12wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (12주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-07-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A1: 깊은복사와 얕은복사 (12주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-08-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (13주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-13-final_seoyeon.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Finalterm</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-14-study.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">study</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-21-Extra-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra-1: 추천시스템</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-21-Extra-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra-2: 생성모형(GAN)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-23-Extra-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra-3: 딥러닝의 기초 (5)</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../posts/ct/index.html" class="sidebar-item-text sidebar-link">Coding Test</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a href="../../posts/ap/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Probability Theory</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-01-15-Coding_Test_Algorithm.html" class="sidebar-item-text sidebar-link">Algorithm</a>
+  <a href="../../posts/ap/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01wk-2: 강의소개</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-02-12-Coding_Test.html" class="sidebar-item-text sidebar-link">ArrayList &amp; LinkedList</a>
+  <a href="../../posts/ap/2023-03-07-ap_1wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1주차: 측도론</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-01-01-Coding_Test_Greedy.html" class="sidebar-item-text sidebar-link">Chapter 03 Greedy</a>
+  <a href="../../posts/ap/2023-03-09-2wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02wk-1: 측도론 intro (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/Untitled.html" class="sidebar-item-text sidebar-link">Map</a>
+  <a href="../../posts/ap/2023-03-14-2wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02wk-2: 측도론 intro (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-03-12-Coding_Test_Queue.html" class="sidebar-item-text sidebar-link">Queue</a>
+  <a href="../../posts/ap/2023-03-14-ap-02wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02wk: 측도론 intro (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-03-05-Coding_Test_Stack.html" class="sidebar-item-text sidebar-link">Stack</a>
+  <a href="../../posts/ap/2023-03-16-3wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03wk-1: 측도론 intro (3)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-03-22-Coding_Test_Tree.html" class="sidebar-item-text sidebar-link">Tree</a>
+  <a href="../../posts/ap/2023-03-21-3wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03wk-2: 측도론 intro (4)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-01-15-Coding_Test_interfunction.html" class="sidebar-item-text sidebar-link active">내장함수</a>
+  <a href="../../posts/ap/2023-03-21-ap-03wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03wk: 측도론 intro (3)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-01-23-Coding_Test_Q2.html" class="sidebar-item-text sidebar-link">두 큐 합 같게 만들기(Done)</a>
+  <a href="../../posts/ap/2023-03-23-4wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04wk-1: 측도론 intro (5)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-01-21-Coding_Test_Q1.html" class="sidebar-item-text sidebar-link">성격 유형 검사하기(Done)</a>
+  <a href="../../posts/ap/2023-03-28-4wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04wk-2: 측도론 intro (6)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ct/2023-01-30-Coding_Test_Q3.html" class="sidebar-item-text sidebar-link">코딩 테스트 공부(Done)</a>
+  <a href="../../posts/ap/2023-03-28-ap-04wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04wk: 측도론 intro (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-29-5wk-2-hw1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05wk-2: HW1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-30-5wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05wk-1: 마코프체인 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-05-ap-05wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05wk: 측도론 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06wk-2: 중간고사</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-11-ap-06wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06wk: 측도론 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-13-7wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07wk-1: 마코프체인 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-13-7wk-2.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07wk-2: 마코프체인 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-18-ap-07wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7wk: 측도론 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-20-8wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08wk-1: 마코프체인 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-25-8wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08wk-2: 마코프체인 (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-25-ap-08wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08wk: 측도론 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-27-9wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09wk-1: 마코프체인 (6)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-02-ap-09wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09wk: 확률변수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-09-10wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10wk-2: 마코프체인 (7)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-09-ap-10wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10wk: 분포, 분포함수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-11-11wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11wk-1: 마코프체인 (8)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-16-11wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11wk-2: 마코프체인 (9)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-16-ap-11wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11wk: 적분 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-18-12wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12wk-1: 마코프체인 (10)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-23-12wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12wk-2: 마코프체인 (11)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-23-ap-12wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12wk: 적분 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-25-13wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13wk-1: 마코프체인 (12)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-30-13wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13wk-2: MCMC (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-30-ap-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13wk: 밀도함수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-01-14wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14wk-1,2: MCMC (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-06-ap-14wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14wk: 이산형과 연속형의 통합</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-08-15wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15wk-1: MCMC (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-13-fin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15wk: 기말고사</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-20-15wk-2-fin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15wk-2: 기말고사</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../posts/ml_basic/index.html" class="sidebar-item-text sidebar-link">Machine Learning basic</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a href="../../posts/anything/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Anything</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-05-28-Attention Mechanism.html" class="sidebar-item-text sidebar-link">Attention Mechanism</a>
+  <a href="../../posts/anything/2023-04-17-Survival_Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survival Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-04-09-Clustering.html" class="sidebar-item-text sidebar-link">Clustering</a>
+  <a href="../../posts/anything/2023-04-20-hazard_ratio,odds_ratio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hazard ratio, Odds ratio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-04-02-Ensemble and Random Forest.html" class="sidebar-item-text sidebar-link">Ensemble and Random Forest</a>
+  <a href="../../posts/anything/2023-04-27-Clinical Trial Data and Survival Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clinical Trial Data and Survival Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-05-09-EM_algorithm.html" class="sidebar-item-text sidebar-link">Expectation Maximization(EM algorithm)</a>
+  <a href="../../posts/anything/2023-05-04-questions of pytorch geometric temporal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Questions of PyTorch Geometric Temporal</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-06-15-Laplace.html" class="sidebar-item-text sidebar-link">Laplace Distribution</a>
+  <a href="../../posts/anything/2023-06-01-Survival_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survival Analysis Tutorial with R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-03-29-Lasso and Ridge.html" class="sidebar-item-text sidebar-link">Lasso and Ridge</a>
+  <a href="../../posts/anything/2023-06-12-post_hoc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Post Hoc Tests</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-03-28-Linear Regression, Logistic Regression.html" class="sidebar-item-text sidebar-link">Logistic Regression</a>
+  <a href="../../posts/anything/2023-06-12-Steady State.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Steady State</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-05-20-Manifold learning Embedding.html" class="sidebar-item-text sidebar-link">Manifold learning Embedding</a>
+  <a href="../../posts/anything/2023-06-15-PK Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pharmacokinetic Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-03-28-Principal Component Analysis.html" class="sidebar-item-text sidebar-link">Principal Component Analysis</a>
+  <a href="../../posts/anything/A1.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A1: 강화학습 (1) – bandit</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-03-31-Ridge Regression_note3_0331.html" class="sidebar-item-text sidebar-link">Ridge Regression</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-05-28-Sequence-to-Sequence, seq2seq.html" class="sidebar-item-text sidebar-link">Sequence-to-Sequence, seq2seq</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-03-23-Support Vector Machine.html" class="sidebar-item-text sidebar-link">Support Vector Machine</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-05-28-Transformer Chatbot Tutorial.html" class="sidebar-item-text sidebar-link">Transformer Chatbot Tutorial</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-05-28-Transformers.html" class="sidebar-item-text sidebar-link">Transformers</a>
+  <a href="../../posts/anything/A2.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A2: 강화학습 (2) – 4x4 grid</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../posts/as/index.html" class="sidebar-item-text sidebar-link">Special Topics in Applied Statistics</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <a href="../../posts/as/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Special Topics in Applied Statistics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/as/2023-07-30-multicollinearity.html" class="sidebar-item-text sidebar-link">Multicollinearity</a>
+  <a href="../../posts/as/2023-07-30-multicollinearity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multicollinearity</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../posts/ml/index.html" class="sidebar-item-text sidebar-link">Special Topics in Machine Learning</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a href="../../posts/ct/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding Test</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-12-07-13wk.html" class="sidebar-item-text sidebar-link">A1: 깊은복사와 얕은복사 (12주차)</a>
+  <a href="../../posts/ct/2023-01-01-Coding_Test_Greedy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 03 Greedy</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-09-19-Assignment-1-Copy1.html" class="sidebar-item-text sidebar-link">Assignment 1</a>
+  <a href="../../posts/ct/2023-01-15-Coding_Test_Algorithm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Algorithm</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-10-19-ml_7w.html" class="sidebar-item-text sidebar-link">CNN (7주차)</a>
+  <a href="../../posts/ct/2023-01-15-Coding_Test_interfunction.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">내장함수</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-10-26-ml_8w_1.html" class="sidebar-item-text sidebar-link">CNN (8주차) 1</a>
+  <a href="../../posts/ct/2023-01-21-Coding_Test_Q1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">성격 유형 검사하기(Done)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-10-26-ml_8w_2.html" class="sidebar-item-text sidebar-link">CNN (8주차) 2</a>
+  <a href="../../posts/ct/2023-01-23-Coding_Test_Q2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">두 큐 합 같게 만들기(Done)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-11-29-13wk-2-final.html" class="sidebar-item-text sidebar-link">Deep Learning final example</a>
+  <a href="../../posts/ct/2023-01-30-Coding_Test_Q3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">코딩 테스트 공부(Done)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-09-07-ml_1w.html" class="sidebar-item-text sidebar-link">DNN (1주차)</a>
+  <a href="../../posts/ct/2023-02-12-Coding_Test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ArrayList &amp; LinkedList</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-09-14-ml_2w.html" class="sidebar-item-text sidebar-link">DNN (2주차)</a>
+  <a href="../../posts/ct/2023-03-05-Coding_Test_Stack.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stack</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-09-21-ml_3w.html" class="sidebar-item-text sidebar-link">DNN (3주차)</a>
+  <a href="../../posts/ct/2023-03-12-Coding_Test_Queue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Queue</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-09-29-ml_4w.html" class="sidebar-item-text sidebar-link">DNN (4주차)</a>
+  <a href="../../posts/ct/2023-03-22-Coding_Test_Tree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tree</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-10-05-ml-5w.html" class="sidebar-item-text sidebar-link">DNN (5주차)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-10-12-ml-6w.html" class="sidebar-item-text sidebar-link">DNN (6주차)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-12-21-Extra-1.html" class="sidebar-item-text sidebar-link">Extra-1: 추천시스템</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-12-21-Extra-2.html" class="sidebar-item-text sidebar-link">Extra-2: 생성모형(GAN)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-12-23-Extra-3.html" class="sidebar-item-text sidebar-link">Extra-3: 딥러닝의 기초 (5)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-12-13-final_seoyeon.html" class="sidebar-item-text sidebar-link">Finalterm</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-10-05-ml-HW.html" class="sidebar-item-text sidebar-link">Homework</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-09-07-ml.html" class="sidebar-item-text sidebar-link">Intro</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-11-02-ml-midterm.html" class="sidebar-item-text sidebar-link">Midterm</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-11-09-ml-10w.html" class="sidebar-item-text sidebar-link">RNN (10주차)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-11-21-ml-11w.html" class="sidebar-item-text sidebar-link">RNN (11주차)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-11-30-12wk.html" class="sidebar-item-text sidebar-link">RNN (12주차)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-12-08-13wk.html" class="sidebar-item-text sidebar-link">RNN (13주차)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-11-02-ml_9w.html" class="sidebar-item-text sidebar-link">RNN (9주차)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ml/2022-12-14-study.html" class="sidebar-item-text sidebar-link">study</a>
+  <a href="../../posts/ct/Untitled.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Map</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../posts/ts/index.html" class="sidebar-item-text sidebar-link">Theoritical Statistics</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <a href="../../posts/ts/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-01-25-ts-final term.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Final term</a>
+  <a href="../../posts/ts/2022-12-31-ts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">확률변수와 확률분포</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-03-03-ts-final_qanda.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Final term 6 Explanation</a>
+  <a href="../../posts/ts/2023-01-05-ts_HW1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-03-03-graduation_test.html" class="sidebar-item-text sidebar-link">Theoritical Statistics GT</a>
+  <a href="../../posts/ts/2023-01-05-ts_HW2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-01-05-ts_HW1.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW1</a>
+  <a href="../../posts/ts/2023-01-05-ts_HW3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW3</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-01-05-ts_HW2.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW2</a>
+  <a href="../../posts/ts/2023-01-09-ts_HW4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW4</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-01-05-ts_HW3.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW3</a>
+  <a href="../../posts/ts/2023-01-12-ts_HW5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW5</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-01-09-ts_HW4.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW4</a>
+  <a href="../../posts/ts/2023-01-14-ts_HW6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW6</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-01-12-ts_HW5.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW5</a>
+  <a href="../../posts/ts/2023-01-14-ts_Mid term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics Mid term</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-01-14-ts_HW6.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW6</a>
+  <a href="../../posts/ts/2023-01-18-ts_HW7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW7</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-01-18-ts_HW7.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW7</a>
+  <a href="../../posts/ts/2023-01-18-ts-HW8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW8</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-01-18-ts-HW8.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW8</a>
+  <a href="../../posts/ts/2023-01-21-ts-HW9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW9</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-01-21-ts-HW9.html" class="sidebar-item-text sidebar-link">Theoritical Statistics HW9</a>
+  <a href="../../posts/ts/2023-01-25-ts-final term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics Final term</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2023-01-14-ts_Mid term.html" class="sidebar-item-text sidebar-link">Theoritical Statistics Mid term</a>
+  <a href="../../posts/ts/2023-03-03-graduation_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics GT</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ts/2022-12-31-ts_1.html" class="sidebar-item-text sidebar-link">확률변수와 확률분포</a>
+  <a href="../../posts/ts/2023-03-03-ts-final_qanda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics Final term 6 Explanation</span></a>
   </div>
 </li>
       </ul>
@@ -933,6 +1071,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -970,7 +1109,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#math" id="toc-math" class="nav-link" data-scroll-target="#math">math</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-01-15-Coding_Test_interfunction.out.ipynb" download="2023-01-15-Coding_Test_interfunction.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -985,7 +1124,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>내장 함수</h1>
 <section id="sum" class="level2">
 <h2 class="anchored" data-anchor-id="sum">sum</h2>
-<div class="cell" data-execution_count="1">
+<div id="10e6012a-99b6-4a36-9b03-3a578ca336ce" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>([<span class="dv">1</span>,<span class="dv">2</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>3</code></pre>
@@ -994,7 +1133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="min" class="level2">
 <h2 class="anchored" data-anchor-id="min">min</h2>
-<div class="cell" data-execution_count="3">
+<div id="91cc2fe1-71b3-4137-a432-f4658d86f1e5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>([<span class="dv">14</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">0</span>,<span class="dv">3</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>0</code></pre>
@@ -1003,7 +1142,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="max" class="level2">
 <h2 class="anchored" data-anchor-id="max">max</h2>
-<div class="cell" data-execution_count="7">
+<div id="d2456dfe-1261-4f0c-aff9-c41524f8dee2" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">33</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>33</code></pre>
@@ -1013,13 +1152,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="eval" class="level2">
 <h2 class="anchored" data-anchor-id="eval">eval</h2>
 <p>수학 수식이 문자열 형식으로 들어오면 해당 수식을 계산한 결과를 반환</p>
-<div class="cell" data-execution_count="8">
+<div id="a77493f3-b8d1-496d-b528-d840438af6b0" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span>(<span class="st">"3+4"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>7</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="9">
+<div id="f0919f80-680c-4858-bf5f-fb345eadd05b" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span>(<span class="st">"3*4"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>12</code></pre>
@@ -1028,34 +1167,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sorted" class="level2">
 <h2 class="anchored" data-anchor-id="sorted">sorted</h2>
-<div class="cell" data-execution_count="11">
+<div id="9bc01a51-d64d-4c70-b234-1a8d3fa806e7" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>[1, 2, 2, 3, 3]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="15">
+<div id="d8555494-8e99-4891-9d4f-6a4eaf42afa9" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>],reverse<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>[3, 3, 2, 2, 1]</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\star\)</span> List 형식이어야 함</p>
-<div class="cell" data-execution_count="12">
+<div id="a343282e-b3be-41ed-b2aa-ee3021e04e17" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span></code></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>TypeError: sorted expected 1 argument, got 5</code></pre>
 </div>
 </div>
 <p>group 가능</p>
-<div class="cell" data-execution_count="17">
+<div id="f0572e77-632e-4009-816f-8cba45c23b89" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>([(<span class="st">'a'</span>,<span class="dv">3</span>),(<span class="st">'b'</span>,<span class="dv">4</span>)],reverse<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>[('b', 4), ('a', 3)]</code></pre>
 </div>
 </div>
 <p>사실 list 는 iterable 객체라 기본으로 sort()함수 가지고 있음</p>
-<div class="cell" data-execution_count="23">
+<div id="aaa9b114-37d6-49c5-a8f3-b68ab440f6d8" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>a.sort()</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code></pre></div>
@@ -1068,7 +1207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="itertools">itertools</h2>
 <section id="permutations-순열중복-허용하지-않음" class="level3">
 <h3 class="anchored" data-anchor-id="permutations-순열중복-허용하지-않음">permutations 순열(중복 허용하지 않음)</h3>
-<div class="cell" data-execution_count="25">
+<div id="ce703a50-3da6-42e2-ad83-e08c1770e84c" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> permutations</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>]</span>
@@ -1083,7 +1222,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="combinations-조합중복-허용하지-않음" class="level3">
 <h3 class="anchored" data-anchor-id="combinations-조합중복-허용하지-않음">combinations 조합(중복 허용하지 않음)</h3>
-<div class="cell" data-execution_count="26">
+<div id="888e9a04-e507-4fad-bd0d-85e31d26c355" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> combinations</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'r'</span>,<span class="st">'t'</span>,<span class="st">'e'</span>]</span>
@@ -1097,7 +1236,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="product-순열중복-허용" class="level3">
 <h3 class="anchored" data-anchor-id="product-순열중복-허용">product 순열(중복 허용)</h3>
-<div class="cell" data-execution_count="30">
+<div id="1efb7dac-2048-4742-9f78-077519a7e52a" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> product</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>]</span>
@@ -1112,7 +1251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="combinations_with_replacement중복-허용" class="level3">
 <h3 class="anchored" data-anchor-id="combinations_with_replacement중복-허용">combinations_with_replacement(중복 허용)</h3>
-<div class="cell" data-execution_count="31">
+<div id="61be170b-9793-4cd3-bb7f-df9b75f7b6bb" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> combinations_with_replacement</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'r'</span>,<span class="st">'t'</span>,<span class="st">'e'</span>]</span>
@@ -1128,7 +1267,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="heapq" class="level2">
 <h2 class="anchored" data-anchor-id="heapq">heapq</h2>
 <p>다익스트라 최단 경로 알고리즘을 포함해 다양한 알고리즘에서 우선순위 큐 기능을 구현하고자 할 때 사용</p>
-<div class="cell" data-execution_count="34">
+<div id="f96cbab8-03a9-430d-8385-157d32c63abb" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> heapq</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> heapsort(iterable):</span>
@@ -1146,31 +1285,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>[1, 2, 2, 3, 4, 5, 6, 25, 77]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="43">
+<div id="10ce8ac9-d44e-4779-80fe-8ac9037c2514" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> []</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>heapq.heappush(a,<span class="dv">5</span>)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="44">
+<div id="99a885b3-b65a-4c16-8b21-520d85575e32" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 <pre><code>[5]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="45">
+<div id="ef5a9678-e281-4a1d-be1d-7e760570f28f" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>heapq.heappush(a,<span class="dv">3</span>)</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>[3, 5]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="46">
+<div id="ee395955-4180-455c-88c3-2ff77a66ecec" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>heapq.heappush(a,<span class="dv">2</span>)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>[2, 5, 3]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="47">
+<div id="360484e5-6acf-419c-8510-aac15cd04daa" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>heapq.heappop(a)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>2</code></pre>
@@ -1178,7 +1317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <section id="max-heap" class="level3">
 <h3 class="anchored" data-anchor-id="max-heap">max heap</h3>
-<div class="cell" data-execution_count="49">
+<div id="ff885a09-455c-49e9-839b-5e75cf864235" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> heapq</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> heapsort(iterable):</span>
@@ -1196,31 +1335,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>[77, 25, 6, 5, 4, 3, 2, 2, 1]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="55">
+<div id="2ea96f6c-83a9-4990-9201-660b4228b8b6" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> []</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>heapq.heappush(a,<span class="op">-</span><span class="dv">5</span>)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="56">
+<div id="96aa0297-4bb0-40c7-a630-b9b787e610a3" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
 <pre><code>[-5]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="57">
+<div id="7493d1a5-3216-4694-8d5f-20cd9fb2a114" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>heapq.heappush(a,<span class="op">-</span><span class="dv">3</span>)</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>[-5, -3]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="58">
+<div id="e683c203-b09d-42d4-af17-24bb9a49f492" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>heapq.heappush(a,<span class="op">-</span><span class="dv">2</span>)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>[-5, -3, -2]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="60">
+<div id="8906237f-3c0a-4e2e-9ebd-aa2e1b33ccb3" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span>heapq.heappop(a)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
 <pre><code>5</code></pre>
@@ -1241,7 +1380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="bisect_rightax" class="level3">
 <h3 class="anchored" data-anchor-id="bisect_rightax">bisect_right(a,x)</h3>
 <p>정렬된 순서를 유지하면서 리스트 a에 데이터 x를 삽입할 가장 오른쪽 인덱스를 찾는 메서드</p>
-<div class="cell" data-execution_count="69">
+<div id="8eb4f9f9-dbca-4773-80b2-7f661463a990" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bisect <span class="im">import</span> bisect_left, bisect_right</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">33</span>,<span class="dv">3</span>]</span>
@@ -1256,7 +1395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 3</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="77">
+<div id="d7e5df79-802f-49e4-abd0-3fcba325600d" class="cell" data-execution_count="77">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bisect <span class="im">import</span> bisect_left, bisect_right</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count_by_range(a,left_value,right_value):</span>
@@ -1281,7 +1420,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="collections">collections</h2>
 <section id="deque" class="level3">
 <h3 class="anchored" data-anchor-id="deque">deque</h3>
-<div class="cell" data-execution_count="94">
+<div id="3276f9ac-1d7c-4d17-a48d-e66f86564e23" class="cell" data-execution_count="94">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> deque([<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">3</span>])</span>
@@ -1296,25 +1435,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 [3, 2, 5, 4, 6, 3, 1]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="95">
+<div id="ff45faf4-3ed0-46eb-8252-71209b35f6fd" class="cell" data-execution_count="95">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>data.pop()</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="95">
 <pre><code>1</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="96">
+<div id="28ad6c55-6495-41dd-bdca-c83c0f4f6d0c" class="cell" data-execution_count="96">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="96">
 <pre><code>deque([3, 2, 5, 4, 6, 3])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="97">
+<div id="436c65fd-2f4c-4d5d-9785-3c061886fb11" class="cell" data-execution_count="97">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>data.popleft()</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="97">
 <pre><code>3</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="98">
+<div id="11035337-0233-4dc0-8575-7399d7b21396" class="cell" data-execution_count="98">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="98">
 <pre><code>deque([2, 5, 4, 6, 3])</code></pre>
@@ -1324,7 +1463,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="counter" class="level3">
 <h3 class="anchored" data-anchor-id="counter">Counter</h3>
 <p>등장 횟수 세는 기능</p>
-<div class="cell" data-execution_count="101">
+<div id="f6c1b93e-a92f-49f4-8edf-694db0a6fc99" class="cell" data-execution_count="101">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span> Counter([<span class="st">'d'</span>,<span class="st">'d'</span>,<span class="st">'d'</span>,<span class="st">'a'</span>,<span class="st">'e'</span>,<span class="st">'q'</span>,<span class="st">'d'</span>])</span>
@@ -1339,7 +1478,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 사전자료형으로 반환</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="100">
+<div id="9c00b6a2-14f9-4171-9986-790b571da7e0" class="cell" data-execution_count="100">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>counter</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="100">
 <pre><code>Counter({'d': 4, 'a': 1, 'e': 1, 'q': 1})</code></pre>
@@ -1349,20 +1488,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="math" class="level2">
 <h2 class="anchored" data-anchor-id="math">math</h2>
-<div class="cell" data-execution_count="102">
+<div id="83f2c36a-f903-4b48-bd86-e5bacb677def" class="cell" data-execution_count="102">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.factorial(<span class="dv">4</span>))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>24</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="103">
+<div id="a339e528-1c41-4bce-b3ef-e20f7aa9834c" class="cell" data-execution_count="103">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="op">*</span><span class="dv">3</span><span class="op">*</span><span class="dv">2</span><span class="op">*</span><span class="dv">1</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="103">
 <pre><code>24</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="104">
+<div id="458a2207-7b37-4b00-a97b-79e9bab77e00" class="cell" data-execution_count="104">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.sqrt(<span class="dv">25</span>))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1370,14 +1509,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>최대 공약수</p>
-<div class="cell" data-execution_count="105">
+<div id="fd4dc06c-3507-4f57-8c9b-86a32791070b" class="cell" data-execution_count="105">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.gcd(<span class="dv">30</span>,<span class="dv">25</span>))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>5</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="106">
+<div id="37c2a695-347c-49d6-9821-58e31eefbb13" class="cell" data-execution_count="106">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.pi)</span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.e)</span></code></pre></div>
@@ -1419,10 +1558,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1432,8 +1570,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1448,6 +1595,195 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        console.log("RESIZE");
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1490,6 +1826,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <script src="https://utteranc.es/client.js" repo="seoyeonc/md" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
+
 
 
 
