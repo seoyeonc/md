@@ -858,6 +858,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">A2: 강화학습 (2) – 4x4 grid</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/A3.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A3: 강화학습 (3) – LunarLander</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -1607,15 +1613,15 @@ action-value function =
 </section>
 <section id="agent2-클래스-구현-run" class="level1">
 <h1>Agent2 클래스 구현 + Run</h1>
-<div id="fbd05240-8d9f-45d9-a704-f4aff617d46c" class="cell" data-execution_count="114">
+<div id="fbd05240-8d9f-45d9-a704-f4aff617d46c" class="cell" data-execution_count="163">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Agent2(Agent1):</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>,env):</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(env)</span>
 <span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.q <span class="op">=</span> np.zeros([<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>]) </span>
 <span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> learn(<span class="va">self</span>):</span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>        x,y <span class="op">=</span> agent.current_state</span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>        xx,yy <span class="op">=</span> agent.next_state</span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> agent.action </span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>        x,y <span class="op">=</span> <span class="va">self</span>.current_state</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>        xx,yy <span class="op">=</span> <span class="va">self</span>.next_state</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> <span class="va">self</span>.action </span>
 <span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>        q_estimated <span class="op">=</span> <span class="va">self</span>.q[x,y,a] </span>
 <span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.terminated:</span>
 <span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>            q_realistic <span class="op">=</span> <span class="va">self</span>.reward</span>
@@ -1631,7 +1637,7 @@ action-value function =
 <span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a>            x,y <span class="op">=</span> <span class="va">self</span>.current_state </span>
 <span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.action <span class="op">=</span> <span class="va">self</span>.q[x,y,:].argmax()</span></code></pre></div>
 </div>
-<div id="3bf71d4d-f5b3-48f7-a437-dd0eedb4d211" class="cell" data-execution_count="131">
+<div id="3bf71d4d-f5b3-48f7-a437-dd0eedb4d211" class="cell" data-execution_count="164">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>env <span class="op">=</span> GridWorld() </span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>agent <span class="op">=</span> Agent2(env) </span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2000</span>):</span>
@@ -1663,15 +1669,15 @@ action-value function =
 <span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f"Playtime: </span><span class="sc">{</span>np<span class="sc">.</span>mean(agent.playtimes[<span class="op">-</span><span class="dv">100</span>:])<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a>        )   </span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epsiode: 100    Score: -11.62   Playtime: 3.72
-Epsiode: 200    Score: -11.71   Playtime: 3.81
-Epsiode: 300    Score: -10.34   Playtime: 3.54
-Epsiode: 400    Score: -9.17    Playtime: 3.47
-Epsiode: 500    Score: -10.06   Playtime: 3.26
-Epsiode: 600    Score: -10.99   Playtime: 3.09
-Epsiode: 700    Score: -7.6     Playtime: 3.0
-Epsiode: 800    Score: -10.29   Playtime: 3.49
-Epsiode: 900    Score: -22.82   Playtime: 17.62
+<pre><code>Epsiode: 100    Score: -10.36   Playtime: 3.56
+Epsiode: 200    Score: -10.9    Playtime: 3.0
+Epsiode: 300    Score: -11.02   Playtime: 3.12
+Epsiode: 400    Score: -6.64    Playtime: 4.24
+Epsiode: 500    Score: -11.08   Playtime: 3.18
+Epsiode: 600    Score: -10.53   Playtime: 3.73
+Epsiode: 700    Score: -9.96    Playtime: 3.16
+Epsiode: 800    Score: -8.6     Playtime: 2.9
+Epsiode: 900    Score: -13.6    Playtime: 7.61
 Epsiode: 1000   Score: -50.0    Playtime: 50.0
 Epsiode: 1100   Score: -50.0    Playtime: 50.0
 Epsiode: 1200   Score: -50.0    Playtime: 50.0
@@ -1685,7 +1691,7 @@ Epsiode: 1900   Score: -50.0    Playtime: 50.0
 Epsiode: 2000   Score: -50.0    Playtime: 50.0</code></pre>
 </div>
 </div>
-<div id="3cc1eb34-48f5-4096-8bdb-d9af4cab8e62" class="cell" data-execution_count="132">
+<div id="3cc1eb34-48f5-4096-8bdb-d9af4cab8e62" class="cell" data-execution_count="165">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> [np.array([<span class="dv">0</span>,<span class="dv">0</span>])] <span class="op">+</span> agent.next_states[<span class="op">-</span>agent.playtimes[<span class="op">-</span><span class="dv">1</span>]:] </span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>show(states)</span></code></pre></div>
 </div>

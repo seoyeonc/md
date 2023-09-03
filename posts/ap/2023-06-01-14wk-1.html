@@ -844,6 +844,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">A2: 강화학습 (2) – 4x4 grid</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/A3.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A3: 강화학습 (3) – LunarLander</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -1104,6 +1110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <p><code>-</code> <strong>Thm</strong>: <span class="math inline">\(\{X_t\}\)</span>가 IRR-HMC라고 하고 <span class="math inline">\({\bf P}\)</span> 가 <span class="math inline">\(\{X_t\}\)</span>의 transition matrix (혹은 그 비슷한 것) 이라고 하자. 분포의 정의를 만족하는 어떠한 벡터 <span class="math inline">\({\boldsymbol \mu}\)</span>가 아래의 조건을 만족한다면</p>
 <p><span class="math display">\[\forall i,j \in E:~\mu_ip_{ij} = \mu_jp_{ji} \quad \quad \cdots (\star)\]</span></p>
+<p><font color="green">위에가 아래보다 강한 조건</font></p>
 <p>벡터 <span class="math inline">\({\boldsymbol \mu}\)</span>는 정상분포이다. 즉 아래가 성립한다.</p>
 <p><span class="math display">\[{\boldsymbol \mu}^\top {\bf P} = {\boldsymbol \mu}^\top \quad \cdots (\star\star)\]</span></p>
 <p>단 여기에서 편의상 아래와 같이 생각하자.</p>
@@ -1112,6 +1119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><span class="math inline">\({\bf P} = \begin{bmatrix} p_{00} &amp; p_{01} &amp; \dots \\ p_{10} &amp; p_{11} &amp; \dots \\ \dots &amp; \dots &amp; \dots \end{bmatrix}\)</span></p></li>
 </ul>
 <p><code>-</code> 조건 <span class="math inline">\((\star)\)</span>를 detailed balance condition (DBC) 라고 부른다. 이 조건은 정상분포가 존재할 조건 <span class="math inline">\((\star\star)\)</span> 보다 강한조건이다. 즉 <span class="math inline">\((\star) \Rightarrow (\star\star)\)</span> 이다.</p>
+<p><font color="green"><span class="math inline">\(\Rightarrow\)</span>imply 한다고 표현, 위에서 반대는 안 됌!</font></p>
 <p><code>-</code> DBC가 <span class="math inline">\({\boldsymbol \mu}^\top {\bf P} = {\boldsymbol \mu}^\top\)</span> 를 하는 이유를 체크하기 위해서 <span class="math inline">\((\star)\)</span>의 양변에 <span class="math inline">\(\sum_i\)</span>를 취하면 된다. 아래의 1,2,3을 관찰해볼 것.</p>
 <ol type="1">
 <li><span class="math inline">\(\forall j\in E:~ \sum_{i}\mu_i p_{ij} = \sum_{i} \mu_j p_{ji}\)</span></li>
@@ -1171,6 +1179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>DBC를 만족하므로 <span class="math inline">\({\boldsymbol \pi}\)</span>는 정상분포이다. 또한 이 예제에서는 IRR조건이 만족하므로 이 정상분포는 유일해진다. 그리고 IRR이고 “<span class="math inline">\(\exists! {\boldsymbol \pi}\)</span>” 이므로 이 마코프체인은 PR이다. 그리고 이 마코프체인은 AP이므로 결국에는 에르고딕 마코프체인이 된다.</p>
 <p><code>-</code> 샘플링: 아래와 같은 분포 <span class="math inline">\({\boldsymbol \pi}\)</span>를 따르는 확률변수 <span class="math inline">\(X\)</span>를 생성하고 싶다고 하자.</p>
+<p><font color="green"><span class="math inline">\(\exists!\)</span> 정상분포이고 유일하다는 뜻</font></p>
 <table class="table">
 <thead>
 <tr class="header">
