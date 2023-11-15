@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.315">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="GUEBIN CHOI">
+<meta name="dcterms.date" content="2023-05-30">
+
+<title>Seoyeon’s Blog for classes - 13wk: 밀도함수</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Seoyeon’s Blog for classes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../about.html" aria-current="page"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/seoyeonc/md/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/ap/index.html">Advanced Probability Theory</a></li><li class="breadcrumb-item"><a href="../../posts/ap/2023-05-30-ap-13wk.html">13wk: 밀도함수</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ml_basic/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Machine Learning basic</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-23-Support Vector Machine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support Vector Machine</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-28-Linear Regression, Logistic Regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logistic Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-28-Principal Component Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Principal Component Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-29-Lasso and Ridge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lasso and Ridge</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-31-Ridge Regression_note3_0331.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ridge Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-04-02-Ensemble and Random Forest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ensemble and Random Forest</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-04-09-Clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clustering</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-09-EM_algorithm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Expectation Maximization(EM algorithm)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-20-Manifold learning Embedding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manifold learning Embedding</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Attention Mechanism.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Attention Mechanism</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Sequence-to-Sequence, seq2seq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sequence-to-Sequence, seq2seq</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Transformer Chatbot Tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transformer Chatbot Tutorial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Transformers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transformers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-06-15-Laplace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Laplace Distribution</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/rl/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-09-21-rl_CH03, CH04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH03, CH04</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-10-23-rl-HW2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-14-rl_CH06, CH07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH06, CH07</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-21-rl-HW3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-23-rl-CH10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-28-rl-CH13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH13</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-05-rl-CH11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH11</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-08-rl-HW4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-11-rl-Ch10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 CH10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis Mid Term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-23-rl-final_term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis Final Term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis GT</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ml/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Special Topics in Machine Learning</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-07-ml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-07-ml_1w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (1주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-14-ml_2w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (2주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-19-Assignment-1-Copy1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-21-ml_3w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (3주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-29-ml_4w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (4주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-05-ml-5w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (5주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-05-ml-HW.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homework</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-12-ml-6w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (6주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-19-ml_7w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNN (7주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-26-ml_8w_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNN (8주차) 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-26-ml_8w_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNN (8주차) 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-02-ml_9w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (9주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-02-ml-midterm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Midterm</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-09-ml-10w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (10주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-21-ml-11w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (11주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-29-13wk-2-final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deep Learning final example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-30-12wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (12주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-07-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A1: 깊은복사와 얕은복사 (12주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-08-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (13주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-13-final_seoyeon.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Finalterm</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-14-study.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">study</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-21-Extra-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra-1: 추천시스템</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-21-Extra-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra-2: 생성모형(GAN)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-23-Extra-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra-3: 딥러닝의 기초 (5)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ap/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Probability Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01wk-2: 강의소개</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-07-ap_1wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1주차: 측도론</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-09-2wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02wk-1: 측도론 intro (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-14-2wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02wk-2: 측도론 intro (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-14-ap-02wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02wk: 측도론 intro (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-16-3wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03wk-1: 측도론 intro (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-21-3wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03wk-2: 측도론 intro (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-21-ap-03wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03wk: 측도론 intro (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-23-4wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04wk-1: 측도론 intro (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-28-4wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04wk-2: 측도론 intro (6)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-28-ap-04wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04wk: 측도론 intro (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-29-5wk-2-hw1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05wk-2: HW1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-30-5wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05wk-1: 마코프체인 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-05-ap-05wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05wk: 측도론 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06wk-2: 중간고사</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-11-ap-06wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06wk: 측도론 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-13-7wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07wk-1: 마코프체인 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-13-7wk-2.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07wk-2: 마코프체인 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-18-ap-07wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7wk: 측도론 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-20-8wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08wk-1: 마코프체인 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-25-8wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08wk-2: 마코프체인 (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-25-ap-08wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08wk: 측도론 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-27-9wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09wk-1: 마코프체인 (6)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-02-ap-09wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09wk: 확률변수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-09-10wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10wk-2: 마코프체인 (7)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-09-ap-10wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10wk: 분포, 분포함수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-11-11wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11wk-1: 마코프체인 (8)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-16-11wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11wk-2: 마코프체인 (9)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-16-ap-11wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11wk: 적분 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-18-12wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12wk-1: 마코프체인 (10)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-23-12wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12wk-2: 마코프체인 (11)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-23-ap-12wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12wk: 적분 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-25-13wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13wk-1: 마코프체인 (12)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-30-13wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13wk-2: MCMC (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-30-ap-13wk.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">13wk: 밀도함수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-01-14wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14wk-1,2: MCMC (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-06-ap-14wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14wk: 이산형과 연속형의 통합</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-08-15wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15wk-1: MCMC (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-13-fin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15wk: 기말고사</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-20-15wk-2-fin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15wk-2: 기말고사</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/anything/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Anything</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-04-17-Survival_Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survival Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-04-20-hazard_ratio,odds_ratio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hazard ratio, Odds ratio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-04-27-Clinical Trial Data and Survival Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clinical Trial Data and Survival Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-05-04-questions of pytorch geometric temporal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Questions of PyTorch Geometric Temporal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-06-01-Survival_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survival Analysis Tutorial with R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-06-12-post_hoc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Post Hoc Tests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-06-12-Steady State.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Steady State</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-06-15-PK Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pharmacokinetic Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-11-15-DV2023-09wk-1-mid.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09wk-1: 중간고사_sy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/A1.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A1: 강화학습 (1) – bandit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/A2.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A2: 강화학습 (2) – 4x4 grid</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/A3.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A3: 강화학습 (3) – LunarLander</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/as/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Special Topics in Applied Statistics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/as/2023-07-30-multicollinearity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multicollinearity</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ct/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding Test</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-01-Coding_Test_Greedy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 03 Greedy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-15-Coding_Test_Algorithm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Algorithm</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-15-Coding_Test_interfunction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">내장함수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-21-Coding_Test_Q1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">성격 유형 검사하기(Done)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-23-Coding_Test_Q2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">두 큐 합 같게 만들기(Done)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-30-Coding_Test_Q3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">코딩 테스트 공부(Done)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-02-12-Coding_Test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ArrayList &amp; LinkedList</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-03-05-Coding_Test_Stack.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stack</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-03-12-Coding_Test_Queue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Queue</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-03-22-Coding_Test_Tree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tree</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-08-26-Coding_Test_pp_hw.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>[Coding Test]</strong>Python Programming HW review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ts/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2022-12-31-ts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">확률변수와 확률분포</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-09-ts_HW4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-12-ts_HW5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW5</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-14-ts_HW6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW6</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-14-ts_Mid term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics Mid term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-18-ts_HW7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW7</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-18-ts-HW8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW8</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-21-ts-HW9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW9</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-25-ts-final term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics Final term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-graduation_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics GT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-ts-final_qanda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics Final term 6 Explanation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">Import</a></li>
+  <li><a href="#강의영상" id="toc-강의영상" class="nav-link" data-scroll-target="#강의영상">강의영상</a></li>
+  <li><a href="#칸토어집합" id="toc-칸토어집합" class="nav-link" data-scroll-target="#칸토어집합">칸토어집합</a>
+  <ul class="collapse">
+  <li><a href="#정의" id="toc-정의" class="nav-link" data-scroll-target="#정의">정의</a></li>
+  <li><a href="#성질" id="toc-성질" class="nav-link" data-scroll-target="#성질">성질</a></li>
+  </ul></li>
+  <li><a href="#밀도함수-density-function" id="toc-밀도함수-density-function" class="nav-link" data-scroll-target="#밀도함수-density-function">밀도함수 (density function)</a>
+  <ul class="collapse">
+  <li><a href="#정의-1" id="toc-정의-1" class="nav-link" data-scroll-target="#정의-1">정의</a></li>
+  <li><a href="#다양한-밀도함수-예시" id="toc-다양한-밀도함수-예시" class="nav-link" data-scroll-target="#다양한-밀도함수-예시">다양한 밀도함수 예시</a></li>
+  <li><a href="#칸토어함수-칸토어분포" id="toc-칸토어함수-칸토어분포" class="nav-link" data-scroll-target="#칸토어함수-칸토어분포">칸토어함수, 칸토어분포</a></li>
+  <li><a href="#절대연속" id="toc-절대연속" class="nav-link" data-scroll-target="#절대연속">절대연속</a></li>
+  <li><a href="#라돈니코딤-정리" id="toc-라돈니코딤-정리" class="nav-link" data-scroll-target="#라돈니코딤-정리">라돈니코딤 정리</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-05-30-ap-13wk.out.ipynb" download="2023-05-30-ap-13wk.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header">
+<h1 class="title display-7">13wk: 밀도함수</h1>
+<p class="author">GUEBIN CHOI</p>
+
+<p class="date">2023-05-30</p>
+</header>
+
+<section id="import" class="level1">
+<h1>Import</h1>
+<div id="b19e1cac-d2d2-4fb7-9ac3-7b1a62242520" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
+</div>
+</section>
+<section id="강의영상" class="level1">
+<h1>강의영상</h1>
+<blockquote class="blockquote">
+<p>youtube: <a href="https://youtube.com/playlist?list=PLQqh36zP38-xzs1sJhhsXTzssLICsc9t6" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-xzs1sJhhsXTzssLICsc9t6</a></p>
+</blockquote>
+</section>
+<section id="칸토어집합" class="level1">
+<h1>칸토어집합</h1>
+<p>ref: <a href="https://en.wikipedia.org/wiki/Cantor_set" class="uri">https://en.wikipedia.org/wiki/Cantor_set</a></p>
+<section id="정의" class="level2">
+<h2 class="anchored" data-anchor-id="정의">정의</h2>
+<p><code>-</code> 아래의 집합열 <span class="math inline">\(C_n\)</span>의 극한 <span class="math inline">\({\cal C}=\lim_{n\to\infty} C_n\)</span>를 생각하자.</p>
+<p><strong>실제수열</strong></p>
+<ul>
+<li><span class="math inline">\(C_0=[0,1]\)</span></li>
+<li><span class="math inline">\(C_1=[0,\frac{1}{3}] \cup [\frac{2}{3},1]\)</span></li>
+<li><span class="math inline">\(C_2=\big([0,\frac{1}{9}]\cup[\frac{2}{9},\frac{1}{3}] \big) \cup \big([\frac{2}{3},\frac{7}{9}]\cup [\frac{8}{9},1] \big)\)</span></li>
+<li><span class="math inline">\(\dots\)</span></li>
+</ul>
+<p><strong>언어버전:</strong> created by iteratively deleting the open middle third from a set of line segments.</p>
+<ul>
+<li><span class="math inline">\(C_0\)</span>: <span class="math inline">\([0,1]\)</span></li>
+<li><span class="math inline">\(C_1\)</span>: <span class="math inline">\(C_0\)</span>에서 정의된 line을 3등분한뒤 가운데를 제거</li>
+<li><span class="math inline">\(C_2\)</span>: <span class="math inline">\(C_1\)</span>에서 정의된 line segments를 각각 3등분한뒤 각각 가운데를 제거</li>
+<li><span class="math inline">\(\dots\)</span></li>
+</ul>
+<p><strong>수식버전</strong></p>
+<ul>
+<li><span class="math inline">\(C_0=[0,1]\)</span></li>
+<li><span class="math inline">\(C_1=\frac{C_{0}}{3}\cup(\frac{2}{3}+\frac{C_{0}}{3})\)</span></li>
+<li><span class="math inline">\(C_2=\frac{C_{1}}{3}\cup(\frac{2}{3}+\frac{C_{1}}{3})\)</span></li>
+<li><span class="math inline">\(\dots\)</span></li>
+<li><span class="math inline">\(C_n=\frac{C_{n-1}}{3}\cup(\frac{2}{3}+\frac{C_{n-1}}{3})\)</span></li>
+</ul>
+<p>단, 여기에서</p>
+<ul>
+<li><span class="math inline">\(\frac{1}{3}[a,b]= [\frac{a}{3},\frac{b}{3}]\)</span></li>
+<li><span class="math inline">\(\frac{2}{3}+[a,b]= [\frac{2}{3}+a,\frac{2}{3}+b]\)</span></li>
+</ul>
+<p>와 같이 정의한다.</p>
+<p><strong>그림버전</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Cantor_set_in_seven_iterations.svg/2880px-Cantor_set_in_seven_iterations.svg.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">그림1: 칸토어 집합</figcaption>
+</figure>
+</div>
+</section>
+<section id="성질" class="level2">
+<h2 class="anchored" data-anchor-id="성질">성질</h2>
+<p><code>-</code> 3진법의 표기: 칸토어 집합의 원소는 <span class="math inline">\([0,1]\)</span>사이의 원소를 삼진법으로 표현할때 모든 자리수가 0 또는 2가 되는 수만 모은 집합이다.</p>
+<ol type="1">
+<li><span class="math inline">\([0,1]\)</span> 사이의 모든 실수를 3진법을 표현한다고 생각하자.</li>
+<li><span class="math inline">\(C_1\)</span>은 <span class="math inline">\(0.1xxxx\dots_{3}\)</span>와 같은 숫자가 빠지고, <span class="math inline">\(C_2\)</span>에서는 <span class="math inline">\(0.01xxx\dots_{3}\)</span> 혹은 <span class="math inline">\(0.21xxx\dots_{3}\)</span> 에 대응하는 숫자가 빠지는 과정이 반복적으로 일어난다고 볼 수 있다.</li>
+<li>2의 결과를 잘 생각하면 칸토어 집합에 포함되는 수는 삼전법 소수로 표기했을 때 모든 자리수가 0 또는 2가 된다는 점을 쉽게 눈치챌 수 있다.</li>
+</ol>
+<p><code>-</code> 카디널리티: 칸토어 집합의 카디널리티는 구간 <span class="math inline">\([0,1]\)</span>의 카디널리티와 같다. 즉 <span class="math inline">\(2^{\aleph_0}\)</span> 이다.</p>
+<ol type="1">
+<li><span class="math inline">\(y\in [0,1]\)</span> 사이의 모든 실수는 임의의 2진수로 표현할 수 있다.</li>
+<li>예를들어 <span class="math inline">\(y=\frac{3}{5}=0.100110011001..._{2}\)</span>와 같이 표현할 수 있다.</li>
+<li>만약에 2의 결과에서 <span class="math inline">\(1\)</span>을 모두 <span class="math inline">\(2\)</span>로 바꾸어 3진법수를 만들면 <span class="math inline">\(0.200220022002..._{3}=\frac{7}{10}\)</span>와 같이 쓸 수 있는데, 이는 칸토르 집합의 원소가 된다.</li>
+<li>3을 2의 출력으로 바꾸는 과정을 수행하는 함수 <span class="math inline">\(f\)</span>를 정의하자. 즉 이 예제의 경우 <span class="math inline">\(f(\frac{7}{10})=\frac{3}{5}\)</span>.</li>
+<li><span class="math inline">\(f\)</span>는 전사함수이므로 <span class="math inline">\({\sf card}([0,1]) \leq {\sf card}({\cal C})\)</span>.</li>
+</ol>
+<p><code>-</code> 잴 수 있는 집합: <span class="math inline">\({\cal C} \in {\cal R}\)</span></p>
+<ol type="1">
+<li><span class="math inline">\(C_0,C_1,C_2\dots \in {\cal R}\)</span></li>
+<li><span class="math inline">\({\cal C} = \lim_{n\to \infty} C_n = \cap_{n=0}^{\infty} C_n\)</span> (<span class="math inline">\(C_0,C_1,C_2,\dots\)</span> 이 감소하는 집합열임을 이용)</li>
+<li>시그마필드 <span class="math inline">\({\cal R}\)</span>은 countable intersection에 닫혀있으므로 <span class="math inline">\({\cal C} \in {\cal R}\)</span></li>
+</ol>
+<p><code>-</code> 르벡측도값(길이): <span class="math inline">\(\lambda({\cal C})=0\)</span>이다. 여기에서 <span class="math inline">\(\lambda\)</span>은 르벡측도이다. 즉 칸토어집합의 길이는 0이다.</p>
+<ol type="1">
+<li>칸토어 집합을 만드는 과정에서 제외되는 집합의 길이는 순서대로 <span class="math inline">\(\frac{1}{3}, \frac{2}{9}, \frac{4}{27} \dots\)</span> 이다.</li>
+<li>이것은 첫째항이 <span class="math inline">\(\frac{1}{3}\)</span>이고 공비가 <span class="math inline">\(\frac{2}{3}\)</span>인 등비수열이므로 무한등비급수의 합을 이용하면 제외되는 길이의 합은 <span class="math inline">\(1\)</span>이 됨을 계산할 수 있다.</li>
+</ol>
+<p><code>-</code> 굉장히 오래전에 만들었던 표</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">집합</th>
+<th style="text-align: center;">카디널리티</th>
+<th style="text-align: center;">분류</th>
+<th style="text-align: center;">르벡메져</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\{1,2,3\}\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">가산집합</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\mathbb{N}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\aleph_0\)</span></td>
+<td style="text-align: center;">가산집합</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\mathbb{Z}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\aleph_0\)</span></td>
+<td style="text-align: center;">가산집합</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\mathbb{Q}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\aleph_0\)</span></td>
+<td style="text-align: center;">가산집합</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\([0,1]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2^{\aleph_0}\)</span></td>
+<td style="text-align: center;">비가산집합</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\([0,1]\cap \mathbb{Q}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\aleph_0\)</span></td>
+<td style="text-align: center;">가산집합</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\([0,1]\cup \mathbb{Q}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2^{\aleph_0}\)</span></td>
+<td style="text-align: center;">비가산집합</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\([0,1]\cap \mathbb{Q}^c\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2^{\aleph_0}\)</span></td>
+<td style="text-align: center;">비가산집합</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\([0,\infty)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2^{\aleph_0}\)</span></td>
+<td style="text-align: center;">비가산집합</td>
+<td style="text-align: center;"><span class="math inline">\(\infty\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">비탈리집합</td>
+<td style="text-align: center;"><span class="math inline">\(2^{\aleph_0}\)</span></td>
+<td style="text-align: center;">비가산집합</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">칸토어집합</td>
+<td style="text-align: center;"><span class="math inline">\(2^{\aleph_0}\)</span></td>
+<td style="text-align: center;">비가산집합</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+강의설명 오류 정정
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>이부분의 설명에서 제가 “가산집합이면 대부분 르벡메져가 0이다” 라는 식으로 설명했는데요, 이는 잘못된 설명입니다. 대부분의 가산집합이 르벡메져가 0이 아니고 “모든 가산집합은 무조건 르벡메져가 0입니다.” 왜냐하면 임의의 가산집합 <span class="math inline">\(A\)</span>는 아래와 같이 한점의 집합의 countable union으로</p>
+<p><span class="math display">\[A = \cup_{i=1}^{\infty} \{a_i\}\]</span></p>
+<p>으로 표현가능한데요, 여기에 르벡메져를 취하면</p>
+<p><span class="math display">\[\lambda(A) = \lambda\big(\cup_{i=1}^{\infty} \{a_i\}\big)=\sum_{i=1}^{\infty}\lambda( \{a_i\})=0\]</span></p>
+<p>와 같이 됩니다. 두번째 등호는 메져의 정의 (<span class="math inline">\(\sigma\)</span>-additivity) 에 의하여 성립합니다. 강의오류에 발견에 도움을 준 김보람학생 감사합니다.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="밀도함수-density-function" class="level1">
+<h1>밀도함수 (density function)</h1>
+<section id="정의-1" class="level2">
+<h2 class="anchored" data-anchor-id="정의-1">정의</h2>
+<p><code>-</code> <strong>(정의)</strong> <span class="math inline">\(X\)</span>를 확률공간 <span class="math inline">\((\Omega, {\cal F}, P)\)</span>에서 정의된 확률변수라고 하고 <span class="math inline">\(F_X\)</span>를 <span class="math inline">\(X\)</span>의 분포함수 라고 하자. 만약에 <span class="math inline">\(F_X\)</span>가 아래와 같은 방식으로 표현된다면 <span class="math inline">\(f_X\)</span>를 <span class="math inline">\(X\)</span>를 밀도함수 (density function) 이라고 한다.</p>
+<p><span class="math display">\[F_X(x)=\int_{-\infty}^xf_X(y)dy\]</span></p>
+<p><code>-</code> 저런 표현이 존재하지 않는다면 어쩌지?</p>
+<ul>
+<li><span class="math inline">\(F_X(x)\)</span>가 불연속인 경우: 미분 불가능</li>
+<li><span class="math inline">\(F_X(x)\)</span>가 연속인 경우: 미분가능할 수도 있고, 아닐 수도 있고</li>
+</ul>
+</section>
+<section id="다양한-밀도함수-예시" class="level2">
+<h2 class="anchored" data-anchor-id="다양한-밀도함수-예시">다양한 밀도함수 예시</h2>
+<p><code>-</code> 교양: 함수 <span class="math inline">\(F_X(x)\)</span>가 연속인 경우는 연속확률변수 <span class="math inline">\(X\)</span>의 분포함수 (distribution fucntion) 혹은 CDF라고 하고 함수 <span class="math inline">\(F_X(x)\)</span>가 jump만 존재하는 불연속인 경우는 이산확률변수의 분포함수 (distribution function) 혹은 CDF라고 한다.</p>
+<p><strong>(예제1)</strong> – 균등분포</p>
+<p>아래와 같은 distribution function <span class="math inline">\(F_X\)</span>을 가지는 확률변수 <span class="math inline">\(X\)</span>를 고려하자.</p>
+<p><span class="math display">\[F_X(x) = \begin{cases} 0 &amp; x&lt;0\\ x &amp; 0\leq x \leq 1 \\ 1 &amp; 1&lt;x\end{cases}\]</span></p>
+<p>이러한 함수 <span class="math inline">\(F_X\)</span>의 density가 존재하는가?</p>
+<p>체크: 일단 <span class="math inline">\(F_x(x)\)</span>는 (1) 비감소하며 (2) <span class="math inline">\(\lim_{x\to -\infty}F_X(x) = F_X(0) = 0\)</span>, <span class="math inline">\(\lim_{x\to \infty}F_X(x) = F_X(1) = 1\)</span> (3) 오른쪽연속 (그냥 연속임) 이므로 분포함수의 정의를 만족한다. 따라서 <span class="math inline">\(F_X(x)\)</span>에 대응하는 확률변수 <span class="math inline">\(X\)</span>가 있다.</p>
+<p>(해설)</p>
+<ol type="1">
+<li>대충 생각하면 (진짜 말 그대로 대충) 아래와 같이 생각할 수 있다.</li>
+</ol>
+<p><span class="math display">\[f_X(x) = \frac{d}{dx}F_x(x)\]</span></p>
+<ol start="2" type="1">
+<li>즉 <span class="math inline">\(f_X(x)\)</span>는 <span class="math inline">\(F_x(x)\)</span>의 도함수 같은 것으로 생각할 수 있다.</li>
+<li>문제는 <span class="math inline">\(F_X(x)\)</span>는 연속이지만 <span class="math inline">\(x=0\)</span>과 <span class="math inline">\(x=1\)</span>에서 미분가능하지는 않다는 점이다.</li>
+<li>그래서 <span class="math inline">\(F_X(x)\)</span>는 미분가능하지 않다.</li>
+<li>하지만 미분가능의 개념을 “함수”에 적용하는 것이 아니라 “하나의 포인트”에 적용한다면 어떨까?</li>
+<li><span class="math inline">\(F_X(x)\)</span>는 <span class="math inline">\(x=0\)</span>과 <span class="math inline">\(x=1\)</span>을 제외한 모든 점에서 미분가능하며 그 도함수는 대략적으로 아래와 같이 표현할 수 있다.</li>
+</ol>
+<p><span class="math display">\[f_X(x) = \begin{cases} 0 &amp; x&lt;0 \\ ?? &amp; x=0 \\ 1 &amp; 0&lt;x&lt;1 \\ ?? &amp; x=1 \\ 0 &amp; 1&lt;x \end{cases}\]</span></p>
+<ol start="7" type="1">
+<li>어차피 유한개의 점을 제외하여도 적분값에 영향이 없으므로 ??의 값은 아무값이나 넣어도 상관없다. 편의상 아래와 같은 <span class="math inline">\(f_X(x)\)</span>를 고려하자.</li>
+</ol>
+<p><span class="math display">\[f_X(x) = \begin{cases}  1 &amp; 0\leq x \leq 1 \\ 0 &amp; o.w. \end{cases}\]</span></p>
+<ol start="8" type="1">
+<li>위와 같은 <span class="math inline">\(f_X(x)\)</span>에 대하여 아래식이 성립한다고 볼 수 있다. <span class="math display">\[F_X(x) = \int_{-\infty}^x f_X(y)dy\]</span></li>
+</ol>
+<blockquote class="blockquote">
+<p><span class="math inline">\(F_X(x)\)</span>는 미분불가능하지만 또 어떠한 의미에서는 가능하다고 볼 수 도 있다.</p>
+</blockquote>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Uniform_cdf.svg/1920px-Uniform_cdf.svg.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">(a) 균등분포의 cdf</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Uniform_Distribution_PDF_SVG.svg/1920px-Uniform_Distribution_PDF_SVG.svg.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">(b) 균등분포의 pdf</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<p>그림2: 위키에서 긁어온 균등분포의 pdf, cdf 그림. 실제로는 <span class="math inline">\(x=0,1\)</span>에서 <span class="math inline">\(F_X'(x)\)</span>의 값이 존재하지 않으나 편의상 정의함.</p>
+</div>
+</div>
+</div>
+<p><strong>(예제1의 정답에 대한 의문)</strong></p>
+<p>만약에 누군가가 아래와 같은 <span class="math inline">\(f_X(x)\)</span>들이 pdf라고 주장한다면?</p>
+<ol type="1">
+<li><span class="math inline">\(f_X(x) = \begin{cases} 1 &amp; 0&lt; x &lt;1 \\ 0 &amp; o.w. \end{cases}\)</span></li>
+<li><span class="math inline">\(f_X(x) = \begin{cases} 1 &amp; 0\leq x &lt; 1 \\ 0 &amp; o.w. \end{cases}\)</span></li>
+<li><span class="math inline">\(f_X(x) = \begin{cases} 1 &amp; 0&lt; x \leq 1 \\ 0 &amp; o.w. \end{cases}\)</span></li>
+</ol>
+<p>별로 상관없을듯 하다. 어차피 <span class="math inline">\(\lambda(\{0\})=\lambda(\{1\})=0\)</span> 이므로 넓이에 영향이 없다. 위의 함수는 <span class="math inline">\(x=0,1\)</span>을 제외한 모든곳에서는 함수값이 일치하므로 거의 같다고 보아도 무방하다. 즉 아래의 함수들은 <strong><em>거의 모든 곳에서 같다.</em></strong></p>
+<ol type="1">
+<li><span class="math inline">\(f_X(x) = \begin{cases} 1 &amp; 0&lt; x &lt;1 \\ 0 &amp; o.w. \end{cases}\)</span></li>
+<li><span class="math inline">\(f_X(x) = \begin{cases} 1 &amp; 0\leq x &lt; 1 \\ 0 &amp; o.w. \end{cases}\)</span></li>
+<li><span class="math inline">\(f_X(x) = \begin{cases} 1 &amp; 0&lt; x \leq 1 \\ 0 &amp; o.w. \end{cases}\)</span></li>
+<li><span class="math inline">\(f_X(x) = \begin{cases} 1 &amp; 0\leq x \leq 1 \\ 0 &amp; o.w. \end{cases}\)</span></li>
+</ol>
+<p>여기에서 <strong><em>두 함수 <span class="math inline">\(f\)</span>, <span class="math inline">\(g\)</span>가 거의 모든 곳에서 같다</em></strong>라는 표현은</p>
+<p><span class="math display">\[\lambda\big(\{x: f(x) \neq g(x)\}\big)=0\]</span></p>
+<p>을 의미한다. 즉 함수값이 다른 집합의 르벡측도값이 0이라는 의미이다.</p>
+<p><strong>(예제2)</strong> – 혼합된 균등분포</p>
+<p>아래와 같은 distribution function <span class="math inline">\(F_X\)</span>을 가지는 확률변수 <span class="math inline">\(X\)</span>를 고려하자.</p>
+<p><span class="math display">\[F_X(x) = \begin{cases} 0 &amp; x&lt;0\\ \frac{3}{2}x &amp; 0\leq x &lt; \frac{1}{2} \\ \frac{1}{2}+\frac{1}{2}x &amp; \frac{1}{2}\leq x&lt;1 \\ 1 &amp; 1\leq x\end{cases}\]</span></p>
+<p>이러한 함수 <span class="math inline">\(F_X\)</span>의 density가 존재하는가?</p>
+<p>체크: 일단 <span class="math inline">\(F_x(x)\)</span>는 (1) 비감소하며 (2) <span class="math inline">\(\lim_{x\to -\infty}F_X(x) = F_X(0) = 0\)</span>, <span class="math inline">\(\lim_{x\to \infty}F_X(x) = F_X(1) = 1\)</span> (3) 오른쪽연속 (그냥 연속임) 이므로 분포함수의 정의를 만족한다. 따라서 <span class="math inline">\(F_X(x)\)</span>에 대응하는 확률변수 <span class="math inline">\(X\)</span>가 있다.</p>
+<p>(해설)</p>
+<p>함수 <span class="math inline">\(F_X(x)\)</span>는 <span class="math inline">\(x=0,\frac{1}{2},1\)</span> 에서 미분불가능하지만 어차피 미분불가능한 점이 countable 하므로 여기에서는 무시하고 <span class="math inline">\(f_X(x)\)</span> 값을 편의상 정의하여도 무방하다. 따라서 아래와 같은 함수 <span class="math inline">\(f_X(x)\)</span>가 pdf가 될 수 있다.</p>
+<p><span class="math display">\[f_X(x) = \begin{cases}  \frac{3}{2} &amp; 0 \leq x &lt;\frac{1}{2} \\ \frac{1}{2} &amp; \frac{1}{2}&lt; x &lt; 1 \end{cases}\]</span></p>
+<p>그 외에도 <span class="math inline">\(x=0,\frac{1}{2}, 1\)</span>에서의 함수값을 어떻게 정의하느냐에 따라서 여러개의 정답이 있을 수 있지만, 그러한 함수들은 <span class="math inline">\(f_X(x)\)</span>와 <strong><em>거의 모든 곳에서 같은</em></strong> 함수이다.</p>
+<blockquote class="blockquote">
+<p>여기서도 <span class="math inline">\(F_X(x)\)</span>는 미분불가능하지만 또 어떠한 의미에서는 가능하다고 볼 수 도 있다.</p>
+</blockquote>
+<p><code>-</code> 주장: <span class="math inline">\(F_X(x)\)</span>가 <strong><em>모든 곳에서 연속</em></strong> 이고 <strong><em>거의 모든 곳에서</em></strong> 미분가능하다고 가능하면 아래를 만족하는 (도함수 비스무리한) <span class="math inline">\(f_X(x)\)</span>가 존재한다.</p>
+<p><span class="math display">\[F_X(x) = \int_{-\infty}^{x} f_X(x) dx\]</span></p>
+<p>이때 <span class="math inline">\(F_X(x)\)</span>가 미분가능하지 않은 집합에 대하여서는 적분을 정의함에 있어서 제외하고 정의해도 무방하다.</p>
+<blockquote class="blockquote">
+<p>엄청 그럴듯해보이지만 칸토어함수의 존재로 인하여 이 주장은 틀렸다.</p>
+</blockquote>
+</section>
+<section id="칸토어함수-칸토어분포" class="level2">
+<h2 class="anchored" data-anchor-id="칸토어함수-칸토어분포">칸토어함수, 칸토어분포</h2>
+<p><code>-</code> 아래와 같은 과정으로 얻어지는 함수 <span class="math inline">\(F_0, F_1, F_2, \dots\)</span>를 고려하자.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Cantor_function_sequence.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">그림3: 위키에서 긁어온 칸토어함수의 생성예제</figcaption>
+</figure>
+</div>
+<p>그림에서는 <span class="math inline">\(f_0, f_1, f_2\)</span> 와 같이 표현하였지만 우리는 편의상 <span class="math inline">\(F_0, F_1, F_2\)</span>와 같이 표현하도록 하겠다.</p>
+<p><code>-</code> 이제 이러한 함수의 극한을 <span class="math inline">\(F\)</span>라고 하자. 즉</p>
+<p><span class="math display">\[F(x) = \lim_{n\to \infty} F_n(x)\]</span></p>
+<p>이다. 이것을 기호로 간단하기 <span class="math inline">\(F_n \to F\)</span> 와 같이 표현하기도 한다. 여기에서 <span class="math inline">\(F_n \to F\)</span>의 의미는 <span class="math inline">\(F_n\)</span>의 임의의 고정된 점 <span class="math inline">\(x^\star\)</span>에 대하여 <span class="math inline">\(F_n(x^\star) \to F(x^\star)\)</span>라는 의미이다.</p>
+<p><code>-</code> 함수 <span class="math inline">\(F_n\)</span>의 정의역을 칸토르 집합 <span class="math inline">\({\cal C}\)</span>와 연계하여 이해하면 아래와 같은 사실을 관찰할 수 있다.</p>
+<ol type="1">
+<li><span class="math inline">\(F_0\)</span>은 <span class="math inline">\(C_0\)</span>에서는 양의 기울기를 가지고 <span class="math inline">\([0,1]-C_0\)</span> 에서는 기울기가 0이다.</li>
+<li><span class="math inline">\(F_1\)</span>은 <span class="math inline">\(C_1\)</span>에서는 양의 기울기를 가지고 <span class="math inline">\([0,1]-C_1\)</span> 에서는 기울기가 0이다.</li>
+<li><span class="math inline">\(F_2\)</span>은 <span class="math inline">\(C_2\)</span>에서는 양의 기울기를 가지고 <span class="math inline">\([0,1]-C_2\)</span> 에서는 기울기가 0이다.</li>
+</ol>
+<p>따라서 아래의 사실을 유추할 수 있다.</p>
+<ul>
+<li><span class="math inline">\(F\)</span>는 <span class="math inline">\({\cal C}\)</span>에서는 양의 기울기를 가지고 <span class="math inline">\([0,1]-{\cal C}\)</span> 에서는 기울기가 0이다.</li>
+</ul>
+<p><code>-</code> 함수 <span class="math inline">\(F\)</span>를 칸토어 함수라고 부른다. 칸토어함수는 아래와 같은 특징이 있다.</p>
+<ol type="1">
+<li>칸토어 함수는 <strong><em>모든 곳에서</em></strong> 연속이다.</li>
+<li>칸토어 집합의 외부 <span class="math inline">\([0,1]-{\cal C}\)</span>에서는 상수함수이다. 즉 칸토어집합의 외부에서는 기울기가 0이다. <span class="math inline">\(m({\cal C})=0\)</span> 이므로 이 함수는 <strong><em>거의 모든 곳에서</em></strong> 기울기가 0이다.</li>
+<li><span class="math inline">\(F\)</span>는 비감소함수이다.</li>
+<li><span class="math inline">\(F(0)=0\)</span> 이고 <span class="math inline">\(F(1)=1\)</span>이다.</li>
+</ol>
+<p><code>-</code> 1,3,4에 의하여 <span class="math inline">\(F\)</span>는 분포함수의 정의를 만족한다. 1에 의하여 <span class="math inline">\(F\)</span>는 연속형확률변수의 분포함수가 된다. 칸토어 집합의 외부에서 (그러니까 <strong><em>[0,1]의 거의 모든 점에서</em></strong>) 도함수는 <span class="math inline">\(0\)</span> 이므로</p>
+<p><span class="math display">\[\frac{d}{dx}F(x)=f(x)=0,\quad \sf{a.e.}\]</span></p>
+<p>이다. 하지만 <span class="math inline">\(f(x)\)</span>는 pdf의 정의를 만족하지 않는다.</p>
+<p><code>-</code> 요약</p>
+<ul>
+<li>칸토어함수 <span class="math inline">\(F\)</span>는 분포함수의 정의를 만족한다. 따라서 <span class="math inline">\(F\)</span>에 대응하는 확률변수 <span class="math inline">\(X\)</span>가 반드시 있다.</li>
+<li>심지어 칸토어함수는 연속함수이므로, <span class="math inline">\(F\)</span>에 대응하는 확률변수 <span class="math inline">\(X\)</span>는 연속형 확률변수가 된다.</li>
+<li><span class="math inline">\(F\)</span>는 <strong><em>거의 모든 점에서 도함수가 존재하지만</em></strong> 그 도함수의 적분이 아니다.</li>
+<li>그래서 <span class="math inline">\(X\)</span>의 pdf는 존재하지 않는다.</li>
+</ul>
+<blockquote class="blockquote">
+<p>칸토어함수는 미적분학의 기본정리 성립하지 않는 반례를 찾기 위해 고안되었다. 즉 어떠한 함수 <span class="math inline">\(F\)</span>가 <strong><em>거의 모든 곳에서</em></strong> 미분가능하며, 그 도함수를 <span class="math inline">\(f\)</span>가 <strong><em>르벡적분 가능</em></strong> 할지라도 <span class="math inline">\(\int_{-\infty}^{x} f(y) dy= F(x)\)</span> 가 성립하지 않을 수 있다.</p>
+</blockquote>
+</section>
+<section id="절대연속" class="level2">
+<h2 class="anchored" data-anchor-id="절대연속">절대연속</h2>
+<p><code>-</code> 모티브</p>
+<ol type="1">
+<li><span class="math inline">\(F_X\)</span>의 “도함수 비슷한 함수”를 일반화 할 수 없을까? <span class="math inline">\(\Rightarrow\)</span> 라돈니코딤 도함수</li>
+<li><span class="math inline">\(F_X\)</span>의 1과 같이 도함수 비슷한 함수가 언제 존재하는지 조건을 알 수 있을까? <span class="math inline">\(\Rightarrow\)</span> 절대연속</li>
+</ol>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">함수</th>
+<th style="text-align: center;">도함수</th>
+<th style="text-align: center;">라돈니코딤 도함수</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">연속</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">절대연속</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">O</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">미분가능</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>암기: 절대연속은 연속보다 강하고, 미분가능보다 약한 조건이다.</p>
+</blockquote>
+<p><code>-</code> <strong>정의</strong>: 함수 <span class="math inline">\(F_X(x)\)</span>가 분포함수의 정의를 만족한다고 가정하자.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <span class="math inline">\(F_X(x)\)</span>에 대응하는 분포 <span class="math inline">\(\mu_X:{\cal R} \to [0,1]\)</span>를 생각하자. <span class="math inline">\(F_X(x)\)</span>가 절대연속이라는 뜻은 아래가 성립한다는 의미이다.</p>
+<p><span class="math display">\[\forall B \in {\cal R}: \lambda(B) =0 \Rightarrow \mu_X(B)=0\]</span></p>
+<p>이럴 경우 아래와 같이 표현한다.</p>
+<ul>
+<li>A measure <span class="math inline">\(\mu_X\)</span> is abosolutely continous with respect to Lebesgue measure <span class="math inline">\(\lambda\)</span></li>
+<li><span class="math inline">\(\mu_X &lt;&lt; \lambda\)</span></li>
+</ul>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<p><span class="math inline">\(\mu_X((-\infty, x]) = F_X(x)\)</span></p>
+<p><span class="math inline">\((a,b] = (-\infty,b] - (-\infty,a] = F_X(b) - F_x(a)\)</span></p>
+<p><span class="math inline">\(\mu_X([a,b]) = F_X(b) - F_X(a)\)</span></p>
+<p><span class="math inline">\(\lambda(B)\)</span> = 구간 <span class="math inline">\(B\)</span>의 길이</p>
+<p><span class="math inline">\(\mu(B)\)</span> = 구간 <span class="math inline">\(B\)</span>에 <span class="math inline">\(F_X\)</span>의 차이</p>
+<p><span class="math inline">\(\therefore \lambda(B) =0 \Rightarrow \mu_X(B)=0\)</span>의 의미는 구간 <span class="math inline">\(B\)</span> 길이가 작아질수록 <span class="math inline">\(F_X\)</span>의 차이 차이도 작아야 한다는 의미</p>
+<p><span class="math inline">\(\to\)</span> 위의 정의로 <span class="math inline">\(F_X\)</span>가 절대 연속이다고 말할 수 있다.</p>
+<hr>
+<p><code>-</code> <strong>정의:</strong> 좀 더 일반적으로는 아래와 같이 정의할 수 있다. <span class="citation" data-cites="durrett2019probability">(<a href="#ref-durrett2019probability" role="doc-biblioref">Durrett 2019</a>, p 470)</span></p>
+<p>가측공간 <span class="math inline">\((\mathbb{R},{\cal R})\)</span>를 고려하고 <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\lambda\)</span>를 <span class="math inline">\((\mathbb{R},{\cal R})\)</span>에서의 메져라고 하자. <span class="math inline">\(\mu\)</span>가 <strong><em>absolutely continuous w.r.t. <span class="math inline">\(\lambda\)</span></em></strong> 라는 의미는</p>
+<p><span class="math display">\[\forall B \in {\cal R}:~ \lambda(B) =0 \Rightarrow \mu(B)=0\]</span></p>
+<p>라는 의미이며 기호로는 <span class="math inline">\(\mu &lt;&lt; \lambda\)</span> 와 같이 나타낸다.</p>
+<blockquote class="blockquote">
+<p>여기에서 공간 <span class="math inline">\((\mathbb{R},{\cal R})\)</span> 은 이해를 돕기위해서 제한한 것이며, 대부분 교재에서는 좀 더 일반적인 가측공간에서 절대연속을 정의한다.</p>
+</blockquote>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<p><span class="math inline">\(\to\)</span> 위의 정의로 <span class="math inline">\(\mu\)</span>는 <span class="math inline">\(\lambda\)</span>에 대하여 <span class="math inline">\((\mathbb{R},{\cal R})\)</span>에서 절대연속이다고 말할 수 있다.</p>
+<p>또는 일반적인 measurable space <span class="math inline">\((\mathbb{S},{\cal S})\)</span>에서도 절대연속이라고 할 수 있다.</p>
+<hr>
+<p><code>-</code> 절대연속의 예제를 살펴보기전에 필요한 예비학습</p>
+<p>이런게 있었거든요.. // 7주차 강의노트</p>
+<p>함수 <span class="math inline">\(\mu\)</span>가 잴 수 있는 공간 <span class="math inline">\((\Omega, {\cal F})\)</span>에서 정의된 메져라고 하자.</p>
+<ul>
+<li><span class="math inline">\(A_i \uparrow A\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n)\)</span></li>
+<li><span class="math inline">\(A_i \downarrow A\)</span> with <span class="math inline">\(\mu(A_1)&lt;\infty\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n)\)</span></li>
+<li>감소하거나 증가하는 집합열에서는 <span class="math inline">\(\lim\)</span>을 넣거나 뺼 수 있다. (정확하지 않은 state, 그냥 기억을 위한 문장)</li>
+</ul>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<ul>
+<li><span class="math inline">\(A_i \uparrow A\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n)\)</span> 에 대한 설명</li>
+</ul>
+<p><span class="math inline">\(A_i \uparrow A\)</span> = <span class="math inline">\(A_1 \subset A_2 \subset A_3 \subset \dots , A_i \in \cal{F}\)</span> &amp; <span class="math inline">\(\cup^\infty_{i=1}A_i = A\)</span></p>
+<p>이때, <span class="math inline">\(A\)</span>가 증가하는 집합열이라면</p>
+<p><span class="math inline">\(A_i \uparrow A\)</span> = <span class="math inline">\(A_1 \subset A_2 \subset A_3 \subset \dots , A_i \in \cal{F}\)</span> &amp; <span class="math inline">\(lim_{n \to \infty}A_n = A\)</span></p>
+<p>라 쓸 수 있다.</p>
+<p><span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n)\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(A_n\)</span>이 증가하는 집합열이므로 <span class="math inline">\(lim_{n \to \infty}A_n = \cup^\infty_{i=1}A_i\)</span>이라고 쓸 수 있다.</p>
+<p><span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n) = \mu(\uplus_{n=1}^{\infty} B_n)\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(A_1,A_2, \dots \in \cal{F}\)</span>이고 <span class="math inline">\(\cal{F}\)</span>는 차집합에 반쯤 닫혀 있어서 disjoint화 가능하다.</p>
+<p><span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n) = \mu(\uplus_{n=1}^{\infty} B_n) = \sum^\infty_{n=1} \mu(B_n)\)</span></p>
+<p><span class="math inline">\(\to\)</span> msr의 정의인 <span class="math inline">\(\sigma-add\)</span>에 의해 가능하다.</p>
+<p><span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n) = \mu(\uplus_{n=1}^{\infty} B_n) = \sum^\infty_{n=1} \mu(B_n) = lim_{b \to \infty} \sum^n_{k=1} \mu(B_k) = lim_{n \to \infty} \mu(\uplus^n_{k=1} B_k)\)</span></p>
+<p><span class="math inline">\(\to\)</span> msr <span class="math inline">\(\sigma-add\)</span>에 의해 가능하다.</p>
+<p><span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n) = \mu(\uplus_{n=1}^{\infty} B_n) = \sum^\infty_{n=1} \mu(B_n) = lim_{b \to \infty} \sum^n_{k=1} \mu(B_k) = lim_{n \to \infty} \mu(\uplus^n_{k=1} B_k) = lim_{n \to \infty} \mu (\uplus^{n}_{k=1} A_k)\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(A_1,A_2, \dots \in \cal{F}\)</span>이고 <span class="math inline">\(\cal{F}\)</span>는 차집합에 반쯤 닫혀 있어서 disjoint화 가능하다.</p>
+<p><span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n) = \mu(\uplus_{n=1}^{\infty} B_n) = \sum^\infty_{n=1} \mu(B_n) = lim_{b \to \infty} \sum^n_{k=1} \mu(B_k) = lim_{n \to \infty} \mu(\uplus^n_{k=1} B_k) = lim_{n \to \infty} \mu (\uplus^{n}_{k=1} A_k) = lim_{n \to \infty} \mu (A_n)\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(A_1,A_2, \dots\)</span>가 증가하는 집합열이기 때문에 가능하다.</p>
+<ul>
+<li><span class="math inline">\(A_i \downarrow A\)</span> with <span class="math inline">\(\mu(A_1)&lt;\infty\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n)\)</span>에 대한 설명</li>
+</ul>
+<p><span class="math inline">\(A_i \downarrow A\)</span> = <span class="math inline">\(A_1 \supset A_2 \supset \dots, A_i \in \cal{F}\)</span> &amp; <span class="math inline">\(\cap^\infty_{n=1} A_n = A\)</span></p>
+<p>이때, <span class="math inline">\(A\)</span>가 감소하는 집합열이라면</p>
+<p><span class="math inline">\(A_i \downarrow A\)</span> = <span class="math inline">\(A_1 \supset A_2 \supset \dots, A_i \in \cal{F}\)</span> &amp; <span class="math inline">\(lim_{n \to \infty} A_n = A\)</span></p>
+<p><span class="math inline">\(A_1 \supset A_2 \supset \dots, A_i \in \cal{F}\)</span> &amp; <span class="math inline">\(\cap^\infty_{n=1} A_n = A\)</span></p>
+<p>증가하는 집합열에 대해 증명했으니 같은 방법으로 보이기 위해 증가하는 집합열로 바꿔준다.</p>
+<p><span class="math inline">\(A_1 - A_1 \supset A_1 - A_2 \supset A_1 - A_3 \dots A_1 - A_i \in \cal{F}\)</span> &amp; <span class="math inline">\(\cap^\infty_{n=1} (A_1 - A_n) = A_1 - A\)</span></p>
+<p><span class="math inline">\(LHS\)</span> <span class="math inline">\(\mu(lim_{n \to \infty} (A_1 - A_n)) = lim_{n \to \infty} \mu((A_1 - A_n)\)</span> <span class="math inline">\(RHS\)</span></p>
+<p><span class="math inline">\(LHS\)</span> <span class="math inline">\(\mu(A_1 - lim_{n \to \infty} A_n) = \mu(A_1 - lim_{n \to \infty} A_n)\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(lim_{n \to \infty} A_n = A\)</span> 이 성립하기 때문이고, 이게 성립하는 이유는 감소하는 집합열이기 때문에 <span class="math inline">\(\cap^\infty_{n=1} A_n = A\)</span>라 쓸 수 있어서이다.</p>
+<p><span class="math inline">\(LHS\)</span> <span class="math inline">\(\mu(A_1 - lim_{n \to \infty} A_n) = \mu(A_1 - lim_{n \to \infty} A_n) = \mu(A_1) - \mu(lim_{n \to \infty} A_n)\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(A_1 \supset A\)</span> 이라서, 포함관계에 있는 차집합은 msr에서 뺀 것과 같다.</p>
+<p><span class="math inline">\(RHS\)</span> <span class="math inline">\(lim_{n \to \infty} \mu((A_1 - A_n) = lim_{n \to \infty} \{ \mu(A_1) - \mu(A_n)\}\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(A_1 \supset A\)</span> 이라서, 포함관계에 있는 차집합은 msr에서 뺀 것과 같다.</p>
+<p><span class="math inline">\(RHS\)</span> <span class="math inline">\(lim_{n \to \infty} \mu((A_1 - A_n) = lim_{n \to \infty} \{ \mu(A_1) - \mu(A_n)\} = \mu(A_1 ) - lim_{n \to \infty} \mu(A_n)\)</span></p>
+<p><span class="math inline">\(\therefore\)</span> <span class="math inline">\(LHS\)</span> <span class="math inline">\(\mu(A_1) - \mu(lim_{n \to \infty} A_n = \mu(A_1 ) - lim_{n \to \infty} \mu(A_n)\)</span> <span class="math inline">\(RHS\)</span></p>
+<p><span class="math inline">\(\mu(lim_{n \to \infty} A_n) = lim_{n \to \infty} \mu(A_n)\)</span></p>
+<p>단, <span class="math inline">\(\mu(A_1)\)</span>가 <span class="math inline">\(\infty\)</span>보다 작아야 가능하다. 따라서 <span class="math inline">\(\mu(A_1)\)</span>가 <span class="math inline">\(\infty\)</span>보다 작다.</p>
+<ul>
+<li><span class="math inline">\(A_i \downarrow A\)</span> with <span class="math inline">\(\mu(A_1)&lt;\infty\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\mu(\lim_{n\to \infty}A_n) = \lim_{n \to \infty}\mu(A_n)\)</span>여기서 <span class="math inline">\(\mu(A_1)&lt;\infty\)</span> 조건을 만족하지 않아서 안 되는 예제</li>
+</ul>
+<p><span class="math inline">\((\mathbb{N} , 2^\mathbb{N})\)</span> 잴 수 있는 공간</p>
+<p>이 공간에서 counting msr <span class="math inline">\(\# : 2^\mathbb{N} \to [0, \infty]\)</span>로 정의하자.</p>
+<p><span class="math inline">\(A_n = \{ n,n+1,n+2 ,\dots\}\)</span></p>
+<p><span class="math inline">\(A_1 = \mathbb{N}\)</span></p>
+<p><span class="math inline">\(A_2 = \mathbb{N} - \{1\} = \{2,3,4,\dots\}\)</span></p>
+<p><span class="math inline">\(A_3 = \mathbb{N} - \{1,2\} = \{3,4,5,\dots\}\)</span></p>
+<p>여기서</p>
+<p><span class="math inline">\(lim_{n \to \infty} A_n = \oslash\)</span></p>
+<p><span class="math inline">\(\forall_n \in \mathbb{N} : A_n \ne \oslash\)</span></p>
+<p><span class="math inline">\(\to\)</span> <span class="math inline">\(\mathbb{N}\)</span> 여기에는 <span class="math inline">\(\infty\)</span>가 포함되어 있지 않다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(n\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(n=1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(n=2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(n=3\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\dots\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\infty\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(A_n\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\{1,2,\dots\}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\{2,3,4,\dots\}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\{3,4,5,\dots\}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\to\)</span> 감소</td>
+<td style="text-align: center;"><span class="math inline">\(\oslash\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\#(A_n)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\infty\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\infty\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\infty\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\infty\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(A_n \downarrow \oslash\)</span>이다. <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\#(lim_{n \to \infty} A_n) = lim_{n \to \infty} \# (A_n)\)</span></p>
+<p><span class="math inline">\(\#(lim_{n \to \infty} A_n)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\#(\oslash) = 0\)</span></p>
+<p><span class="math inline">\(lim_{n \to \infty} \# (A_n)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\infty\)</span></p>
+<p>이유는 <span class="math inline">\(\#(A_1) &lt; \infty\)</span> 조건이 없기 때문이다.</p>
+<p>따라서 <span class="math inline">\(\#(A_1) &lt; \infty\)</span>이 필요하다.</p>
+<hr>
+<p><code>-</code> 예제1: – 베르누이</p>
+<p>아래와 같은 함수를 고려하자.</p>
+<p><span class="math display">\[F_X(x) = \begin{cases}
+0 &amp; x&lt;0 \\
+\frac{1}{2} &amp; 0\leq x&lt; 1 \\
+1 &amp; x \geq 1 \\
+\end{cases}\]</span></p>
+<div id="fb09a539-9b0e-4abb-b879-f04e4825ab69" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> F_X(x):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="dv">0</span> <span class="op">&lt;=</span> x <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1000</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [F_X(i) <span class="cf">for</span> i <span class="kw">in</span> x]</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'F_X(x)'</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Cumulative Distribution Function'</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-05-30-ap-13wk_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>이 함수는 르벡메져에 대하여 <strong><em>absolutely continuous</em></strong> 하지 않다.</p>
+<p>(해설1)</p>
+<p>연속이 아니므로 절대연속이 아니다.</p>
+<p>(해설2)</p>
+<p>임의의 <span class="math inline">\(\{x\}\)</span>에 대하여 <span class="math inline">\(\mu_X(\{x\})\)</span>를 계산하기 위해서는 아래와 같이 하면 된다.</p>
+<ol type="1">
+<li><span class="math inline">\(\mu_{X}(\{x\})=\mu_{X}\big(\lim_{n\to\infty}(x-\frac{1}{n},x]\big)=\lim_{n\to\infty}\mu_{X}\big((x-\frac{1}{n},x]\big)\)</span></li>
+<li><span class="math inline">\((x-\frac{1}{n}, x]= (-\infty, x] - (-\infty,x-\frac{1}{n}]\)</span></li>
+<li><span class="math inline">\(\mu_{X}\big((x-\frac{1}{n},x]\big)=F_X(x)-F_X(x-\frac{1}{n})\)</span></li>
+<li><span class="math inline">\(\mu_{X}(\{x\})=F_X(x)-\lim_{n\to\infty}F_X(x-\frac{1}{n})\)</span></li>
+</ol>
+<p>이를 이용하면</p>
+<ul>
+<li><span class="math inline">\(\lambda(\{0\})=0 \not \Rightarrow \mu_X(\{0\})=F_X(0)-\lim_{n\to\infty}F_X(-\frac{1}{n})=\frac{1}{2}-0\)</span></li>
+<li><span class="math inline">\(\lambda(\{1\})=0 \not \Rightarrow \mu_X(\{1\})=F_X(1)-\lim_{n\to\infty}F_X(1-\frac{1}{n})=1-\frac{1}{2}\)</span></li>
+<li><span class="math inline">\(\lambda(\{0,1\})=0 \not \Rightarrow \mu_X(\{0,1\}) =\mu_X(\{0\})+\mu_X(\{1\})=1\)</span></li>
+</ul>
+<blockquote class="blockquote">
+<p>위에서 언급한 경우 이외에서는 연속임. <span class="math inline">\(\lambda(\{0.77\})=0 \Rightarrow \mu_X(\{0.77\})=F_X(0.77)-\lim_{n\to\infty}F_X(0.77-\frac{1}{n})=\frac{1}{2}-\frac{1}{2}\)</span></p>
+</blockquote>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<p>Question: <span class="math inline">\(F_X\)</span>는 절대 연속인지? 연속이 아니라서 절대연속이 아니다?</p>
+<p><span class="math inline">\(\forall B \in \cal{R} : \lambda(B) = 0\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\mu_X(B) = 0\)</span> <span class="math inline">\(\dots \star\)</span></p>
+<p>추측: <span class="math inline">\(B = \{0\} , B = \{1\}\)</span>일 경우는 <span class="math inline">\(\star\)</span>가 성립하지 않을 것이다.</p>
+<p><span class="math inline">\(B = \{0\}\)</span>로 생각 <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\lambda(B) = 0, \mu_X(B) \ne 0\)</span> 일 것 같다. (둘 다 0 이면 <span class="math inline">\(\star\)</span>가 성립한다는 말이 되니까)</p>
+<p><span class="math inline">\(\mu_X(B)\)</span>만 계산하면 되겠다, <span class="math inline">\(\mu_X(\{0\})\)</span>만 계산하면 되겠다.</p>
+<p><span class="math inline">\(\{0\} = lim_{n \to \infty} (0 - \frac{1}{n},0]\)</span> <span class="math inline">\(\rightarrow\)</span> 감소하는 집합열 <span class="math inline">\(= \cap^{\infty}_{n=1}(-\frac{1}{n},0]\)</span></p>
+<p>또, <span class="math inline">\(\{0\} \in \cap^\infty_{n=1}(-\frac{1}{n},0]\)</span></p>
+<p><span class="math inline">\(x&lt;0\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\{ x\} \notin \cap^\infty_{n=1}(-\frac{1}{n},0]\)</span></p>
+<p><span class="math inline">\(\to\)</span> 아무리 <span class="math inline">\(0\)</span>에 가까운 <span class="math inline">\(x\)</span>라도 그것보다 더 <span class="math inline">\(0\)</span>에 가까운 <span class="math inline">\(-\frac{1}{n}\)</span>이 존재하므로, 그러한 <span class="math inline">\(-\infty\)</span>에 대해서는 <span class="math inline">\(x \notin (-\frac{1}{n},0]\)</span></p>
+<p><span class="math inline">\(\therefore \mu_X(\{0\}) = \mu_X (lim_{n \to \infty} ( -\frac{1}{n},0]) = lim_{n \to \infty} \mu_X ((-\frac{1}{n},0])\)</span></p>
+<p><span class="math inline">\(\bullet\)</span> <span class="math inline">\(\mu_X((a,b]) = F_X(b) - F_X(a)\)</span></p>
+<p><span class="math inline">\(\bullet\)</span> <span class="math inline">\((a,b] = (-\infty,b] - (-\infty,a]\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\mu_X((a,b])= \mu((-\infty,b] - (-\infty,a]) = \mu((-\infty,b]) - \mu((-\infty,a]) = F_X(b) - F_x(a)\)</span></p>
+<p><span class="math inline">\(\therefore \mu_X ((-\frac{1}{n},0]) = F_X(0) - F_X(-\frac{1}{n})\)</span></p>
+<p><span class="math inline">\(\mu_X(\{0\}) = \mu_X (lim_{n \to \infty} ( -\frac{1}{n},0]) = lim_{n \to \infty} \mu_X ((-\frac{1}{n},0]) = lim_{n \to \infty} \{ F_X(0) - F_X(-\frac{1}{n}\} = \frac{1}{2} - lim_{n \to \infty} F_X(-\frac{1}{n}) = \frac{1}{2} -0 = \frac{1}{2}\)</span></p>
+<p><span class="math inline">\(\therefore \lambda(B) = 0, \mu_X(B) = \frac{1}{2}\)</span>이다. 그래서 절대연속 조건인 <span class="math inline">\(\lambda(B) = 0\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\mu_X(B) = 0\)</span>가 성립하지 않는다.</p>
+<hr>
+<p><code>-</code> 예제2: – 균등분포</p>
+<p>아래와 같은 함수를 고려하자.</p>
+<p><span class="math display">\[F_X(x) = \begin{cases}
+0 &amp; x&lt;0 \\
+x &amp; 0\leq  x \leq  1 \\
+1 &amp; x&gt; 1 \\
+\end{cases}\]</span></p>
+<div id="59c3a6cf-7654-45fa-ad15-d8ff2fb0494a" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> F_X(x):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="dv">0</span> <span class="op">&lt;=</span> x <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1000</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [F_X(i) <span class="cf">for</span> i <span class="kw">in</span> x]</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'F_X(x)'</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Cumulative Distribution Function'</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-05-30-ap-13wk_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>이 함수는 르벡메져에 대하여 <strong><em>absolutely continuous</em></strong> 하다.</p>
+<p>(해설)</p>
+<p><span class="math inline">\(\forall B\in {\cal R}: \mu_X(B) \leq \lambda(B)\)</span> 이므로 자명함</p>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<p><span class="math inline">\(B\)</span>가 ~ 0 까지의 구간과 1 ~ 의 구간에서는 <span class="math inline">\(\mu_X(B) = 0\)</span></p>
+<p><span class="math inline">\(B\)</span>가 0~1의 구간에서 선택된다면 <span class="math inline">\(\mu_X(B) = \lambda(B)\)</span>, <span class="math inline">\(\mu_X([a,b]) = F_X(b) - F_X(a) = b-a\)</span></p>
+<p>결국 <span class="math inline">\(\mu_X(B) \le \lambda(B)\)</span>의 결과로 나올 것이다.</p>
+<p>따라서 <span class="math inline">\(\lambda(B)\)</span>이 0이면 <span class="math inline">\(\mu_X(B)\)</span>도 0이 될 것이기 때문에 절대연속의 조건이 성립한다.</p>
+<hr>
+<p><code>-</code> 예제3 – 혼합된 균등분포</p>
+<p>아래와 같은 distribution function <span class="math inline">\(F_X\)</span>을 가지는 확률변수 <span class="math inline">\(X\)</span>를 고려하자.</p>
+<p><span class="math display">\[F_X(x) = \begin{cases} 0 &amp; x&lt;0\\ \frac{3}{2}x &amp; 0\leq x &lt; \frac{1}{2} \\ \frac{1}{2}+\frac{1}{2}x &amp; \frac{1}{2}\leq x&lt;1 \\ 1 &amp; 1\leq x\end{cases}\]</span></p>
+<div id="5cd9eb4e-9756-4c5a-8dda-8b1644f5be43" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> F_X(x):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="dv">0</span> <span class="op">&lt;=</span> x <span class="op">&lt;</span> <span class="fl">0.5</span>:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>) <span class="op">*</span> x</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="fl">0.5</span> <span class="op">&lt;=</span> x <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">0.5</span> <span class="op">+</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>) <span class="op">*</span> x</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1000</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [F_X(i) <span class="cf">for</span> i <span class="kw">in</span> x]</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'F_X(x)'</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Cumulative Distribution Function'</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-05-30-ap-13wk_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>이러한 함수 <span class="math inline">\(F_X\)</span>는 르벡메져에 대하여 absolutely continuous 한가?</p>
+<p>(해설)</p>
+<p><span class="math inline">\(\forall B \in {\cal R}: \mu_X(B) \leq \frac{3}{2}\lambda(B)\)</span> 이므로 자명함.</p>
+<blockquote class="blockquote">
+<p>예제2,3으로 관찰하고 착각할 수 있는 것: 그냥 연속이면 다 절대연속 아니야?</p>
+</blockquote>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<p><span class="math inline">\(F_X(x) = \begin{cases} 0 &amp; x&lt;0\\ \frac{3}{2}x &amp; 0\leq x &lt; \frac{1}{2} &amp; \mu_X(B) = \frac{3}{2}\lambda(B)\\ \frac{1}{2}+\frac{1}{2}x &amp; \frac{1}{2}\leq x&lt;1&amp; \mu_X(B) = \frac{1}{2}\lambda(B)\\ 1 &amp; 1\leq x&amp;\mu_X(B) = 0\end{cases}\)</span></p>
+<p><span class="math inline">\(\mu_X(B) \leq \frac{3}{2}\lambda(B)\)</span> 결국은 다 이렇게 되겠네.</p>
+<p>따라서 절대연속이다.</p>
+<hr>
+<p><code>-</code> 예제3 – 칸토어함수</p>
+<p>칸토어함수 <span class="math inline">\(F_X\)</span>는 르벡메져에 대하여 <strong><em>absolutely continuous</em></strong> 하지 않다.</p>
+<p>(해설)</p>
+<p>칸토어함수 <span class="math inline">\(F_X\)</span>가 <strong><em>absolutely continuous</em></strong> 하다고 하자. 그러면 <span class="math inline">\(\mu_X((a,b]) = \mu_X([a,b])\)</span> 가 성립한다.</p>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<p><span class="math inline">\(\mu_X([a,b]) = \mu_X(\{a\}) + \mu_X((a,b]) = 0+ \mu_X(\{a\}) = 0\)</span></p>
+<p><span class="math inline">\(\lambda(\{a\}) = 0\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\mu_x(\{a\}) = 0\)</span>, 왜냐하면 <span class="math inline">\(\mu_X &lt;&lt; \lambda\)</span>(절대연속이니까)</p>
+<hr>
+<p><span class="math inline">\(n=0\)</span>:</p>
+<ul>
+<li><span class="math inline">\(C_0=[0,1]\)</span></li>
+<li><span class="math inline">\(\mu_X(C_0)=\mu_X((0,1])=F_X(1)-F_X(0)=1\)</span></li>
+</ul>
+<p><span class="math inline">\(n=1\)</span>:</p>
+<ul>
+<li><span class="math inline">\(C_1=[0,\frac{1}{3}] \cup [\frac{2}{3},1]\)</span></li>
+<li><span class="math inline">\(\mu_X(C_1)=\mu_X((0,\frac{1}{3}])+\mu_X((\frac{2}{3},1])=F_X(\frac{1}{3})-F_X(0)+F_X(1)-F_X(\frac{2}{3})=1\)</span></li>
+</ul>
+<p>정리하면 아래와 같다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(n\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(C_n\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mu_X(C_n)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\([0,1]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\([0,\frac{1}{3}] \cup [\frac{2}{3},1]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\([0,\frac{1}{9}]\cup[\frac{2}{9},\frac{1}{3}] \cup[\frac{2}{3},\frac{7}{9}]\cup [\frac{8}{9},1]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\dots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>그런데 <span class="math inline">\(\lambda({\cal C})=0\)</span> 이지만 <span class="math inline">\(\mu_X(\lim_{n\to \infty}C_n)=\mu_X({\cal C})=1\)</span> 이므로 <span class="math inline">\(\mu&lt;&lt;\lambda\)</span>에 모순이다.</p>
+</section>
+<section id="라돈니코딤-정리" class="level2">
+<h2 class="anchored" data-anchor-id="라돈니코딤-정리">라돈니코딤 정리</h2>
+<p><code>-</code> <strong>이론</strong>: 분포함수 <span class="math inline">\(F_X:\mathbb{R} \to [0,1]\)</span>가 (르벡메져에 대하여) 절대연속이라면 아래를 만족하는 함수 <span class="math inline">\(f_X:\mathbb{R} \to \mathbb{R}^+\)</span>가 존재한다.</p>
+<p><span class="math display">\[F_X = \int_{(-\infty,x]}f_Xd\lambda\]</span></p>
+<p>여기에서 함수 <span class="math inline">\(f_X\)</span>를 <span class="math inline">\(F_X\)</span>의 밀도함수 (density function) 이라고 한다. 일반적으로 밀도함수 <span class="math inline">\(f_X\)</span>는 유일하지 않지만, 르벡측도로 재었을때 0인 집합을 제외한 부분에서는 유일하게 결정된다. (요약: 분포함수 <span class="math inline">\(F_X\)</span>가 절대연속이면 밀도함수 <span class="math inline">\(f_X\)</span>가 존재하고, <strong><em>거의</em></strong> 유일함)</p>
+<blockquote class="blockquote">
+<p>위에서 “르벡측도로 재었을때 0인 집합을 제외한 부분에서는 유일하게 결정된다”라는 부분은 “르벡메져 <span class="math inline">\(\lambda\)</span>에 대하여 <strong><em>거의 유일하다</em></strong>” 라고 이해해도 무방. 엄밀하게 쓰면 “분포함수 <span class="math inline">\(F_X\)</span>가 있다면 밀도함수의 정의하는 만족하는 함수가 반드시 하나는 존재한다. 만약에 두 함수 <span class="math inline">\(f\)</span>와 <span class="math inline">\(g\)</span>가 모두 밀도함수의 정의를 만족한다면 ‘<span class="math inline">\(f=g\)</span> <strong><em>a.e. with respect to</em></strong> <span class="math inline">\(\lambda\)</span>’ 가 성립한다.” 와 같은 식으로 쓸 수 있음.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>위에서 <span class="math inline">\(f\)</span>의 공역이 <span class="math inline">\(\mathbb{R}^+\)</span>인 이유는 <span class="math inline">\(F_X\)</span>가 증가함수라서..</p>
+</blockquote>
+<p><code>-</code> <strong>Thm</strong> (라돈니코딤 정리)<span class="citation" data-cites="durrett2019probability">(<a href="#ref-durrett2019probability" role="doc-biblioref">Durrett 2019</a>, Thm A.4.8.)</span>: 가측공간 <span class="math inline">\((S,{\cal S})\)</span>를 고려하자. 그리고 <span class="math inline">\(\mu\)</span>와 <span class="math inline">\(\lambda\)</span>가 <span class="math inline">\((S,{\cal S})\)</span>에서의 <span class="math inline">\(\sigma\)</span>-finite measure 라고 하자. 만약에 <span class="math inline">\(\mu &lt;&lt; \lambda\)</span> 이라면 아래를 만족하는 가측함수 <span class="math inline">\(f:(S,{\cal S}) \to (\mathbb{R}^+,{\cal R}^+)\)</span>가 <strong>거의 유일하게 (w.r.t. <span class="math inline">\(\lambda\)</span>)</strong> 존재한다.</p>
+<p><span class="math display">\[\forall B \in {\cal S}:~ \mu(B) = \int_B f d\lambda.\]</span></p>
+<p>여기에서 <span class="math inline">\(f\)</span>를 <strong><em>Radon-Nikodym derivative of <span class="math inline">\(\mu\)</span> w.r.t. <span class="math inline">\(\lambda\)</span></em></strong> 라고 하며, 이러한 의미에서 <span class="math inline">\(f=\frac{d\mu}{d\lambda}\)</span>와 같이 표현하기도 한다.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+강의 오류 정정
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(f: (S,{\cal S}) \to (S, {\cal S})\)</span>를 <span class="math inline">\(f:(S,{\cal S}) \to (\mathbb{R}^+, {\cal R}^+)\)</span>로 정정합니다.</p>
+</div>
+</div>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<p>정의역이 실수 전체를 가질 수 있다. <span class="math inline">\(\mathbb{R}\)</span></p>
+<p>증가함수라서 항상 양의 값을 가질 것이다. <span class="math inline">\(\mathbb{R}^+\)</span></p>
+<p><span class="math inline">\(\to\)</span> 따라서 pdf도 항상 양의 값을 가질 것이다.</p>
+<p><span class="math inline">\(\star\)</span> <span class="math inline">\(\mu_X\)</span>를 다룰때는 이라 finite 했는데 finite 이면 <span class="math inline">\(\sigma\)</span>-finite이라서 위에서는 언급 안 했다. 지금은 필요해서 언급</p>
+<p>이렇게 쓰기도 한다. <span class="math inline">\(\int_B f d\lambda = \int_B \frac{du}{d\lambda} d\lambda = \int_B du = \mu(B)\)</span></p>
+<hr>
+<p><code>-</code> 예제1 – 균등분포</p>
+<p>아래와 같은 함수를 고려하자.</p>
+<p><span class="math display">\[F_X(x) = \begin{cases}
+0 &amp; x&lt;0 \\
+x &amp; 0\leq  x \leq  1 \\
+1 &amp; x&gt; 1 \\
+\end{cases}\]</span></p>
+<p>또한 아래와 같은 함수 <span class="math inline">\(f_X: \mathbb{R} \to \mathbb{R}\)</span> 를 고려하자.</p>
+<p><span class="math display">\[f_X(x) = \begin{cases} 1 &amp; 0 \leq x \leq 1 \\ 0 &amp; o.w. \end{cases}\]</span></p>
+<p><span class="math inline">\(f_X(x)\)</span>가 <span class="math inline">\(F_X(x)\)</span>의 라돈니코딤 도함수임을 설명하라.</p>
+<div id="9cc7bdbc-6e60-4476-a658-0e7cb54b5eff" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cumulative_distribution_function(x):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1000</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([cumulative_distribution_function(i) <span class="cf">for</span> i <span class="kw">in</span> x])</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'F_X(x)'</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Cumulative Distribution Function'</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-05-30-ap-13wk_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>(해설)</p>
+<ol type="1">
+<li><span class="math inline">\(\mu_X\)</span>와 <span class="math inline">\(\lambda\)</span>는 모두 <span class="math inline">\((\mathbb{R},{\cal R})\)</span>에서 <span class="math inline">\(\sigma\)</span>-finite 하다.</li>
+<li><span class="math inline">\(\mu_X &lt;&lt; \lambda\)</span>이다. 따라서 적당한 <span class="math inline">\({\cal R} \to {\cal R}^+\)</span> measurable function이 존재하여 라돈니코딤 도함수의 조건을 만족함을 알 수 있다.</li>
+<li>우리가 생각하는 후보는 <span class="math inline">\(f_X\)</span>인데 이것이 만약에 (1) <span class="math inline">\({\cal R} \to {\cal R}^+\)</span> 가측함수이고 (2) 라돈니코딤 도함수의 조건을 만족한다면 <span class="math inline">\(f_X\)</span>는 <span class="math inline">\(F_X\)</span>의 거의 유일한 (<strong><em>w.r.t. <span class="math inline">\(\lambda\)</span></em></strong>) 밀도함수라고 주장할 수 있다.</li>
+<li><span class="math inline">\(f_X\)</span>는 simple function이므로 <span class="math inline">\({\cal R} \to {\cal R}^+\)</span> 가측함수이다.</li>
+<li>임의의 <span class="math inline">\(x\)</span>에 대하여 <span class="math inline">\(F_X(x)=\mu_X((-\infty,x])=\int_{(-\infty,x]}f_Xd\lambda\)</span> 이 성립한다.</li>
+<li>5와 <span class="math inline">\(\pi\)</span>-<span class="math inline">\(\lambda\)</span> thm을 이용하면 모든 <span class="math inline">\(B \in {\cal R}\)</span>에 대하여 <span class="math inline">\(\mu_X(B) = \int_B f_X d\lambda\)</span> 가 성립한다. <a href="https://github.com/guebin/AP2023/blob/main/posts/II.%20%ED%99%95%EB%A5%A0%EB%A1%A0%EA%B8%B0%EC%B4%88/supp_13wk_1.pdf">(풀이참고)</a></li>
+<li>따라서 <span class="math inline">\(f_X\)</span>는 <span class="math inline">\(F_X\)</span>의 밀도함수이다.</li>
+</ol>
+<hr>
+<blockquote class="blockquote">
+<p>서연 필기</p>
+</blockquote>
+<ol type="1">
+<li><span class="math inline">\(\mu_x\)</span>은 finite msr이고, <span class="math inline">\(\lambda\)</span>는 <span class="math inline">\(\sigma\)</span> finite msr라 <span class="math inline">\((\mathbb{R},\cal{R})\)</span>에서 <span class="math inline">\(\sigma\)</span>-finite하다.</li>
+</ol>
+<p><span class="math inline">\(\sigma\)</span>-finite은 <span class="math inline">\(\lambda(\mathbb{R}) = \infty\)</span>인 것은 상관없다.</p>
+<p>하지만 <span class="math inline">\(A_1,A_2, \dots \in \mathbb{R}\)</span>에서 (1) <span class="math inline">\(\lambda(A_n) &lt; \infty, \forall n \in \mathbb{N}\)</span>이고. (2) <span class="math inline">\(\cup^\infty_{n=1}A_n = \mathbb{R}\)</span>을 만족하면 <span class="math inline">\(\sigma\)</span>-finite msr라고 하기로 했다.(이렇게 쪼갤 수 있고 각각이 finite하고 이를 합쳐서 전체집합을 만들 수 있을때)</p>
+<ol start="2" type="1">
+<li><span class="math inline">\(\mu_X &lt;&lt; \lambda\)</span>이다. 따라서 적당한 <span class="math inline">\({\cal R} \to {\cal R}^+\)</span> measurable function이 존재하여 라돈니코딤 도함수의 조건을 만족함을 알 수 있다.</li>
+</ol>
+<p><span class="math inline">\(F_X\)</span>가 절대 연속, 왜냐하면 <span class="math inline">\(\forall B \in \cal{R}: \mu_X(B) \le \lambda(B)\)</span>. 따라서 <span class="math inline">\(\mu_X(B) = 0\)</span>, <span class="math inline">\(\lambda(B) = 0\)</span></p>
+<p>(1)<span class="math inline">\(\mu_X,\lambda\)</span>가 <span class="math inline">\(\sigma\)</span>-finite하고, (2)<span class="math inline">\(\mu_X&lt;&lt;\lambda\)</span>을 모두 만족하면, <span class="math inline">\(\forall B\in \cal{R}, \mu_X(B) = \inf f_X d \lambda\)</span>가 유일하게 존재한다는 것은 아나, 정확한 식은 알지 못한다.</p>
+<p>하지만 여기서는 예제로서 정해놨다. <span class="math inline">\(f_X(x) = \begin{cases} 1 &amp; 0 \leq x \leq 1 \\ 0 &amp; o.w. \end{cases}\)</span></p>
+<ol start="3" type="1">
+<li>우리가 생각하는 후보는 <span class="math inline">\(f_X\)</span>인데 이것이 만약에 (1) <span class="math inline">\({\cal R} \to {\cal R}^+\)</span> 가측함수이고 (2) 라돈니코딤 도함수의 조건을 만족한다면 <span class="math inline">\(f_X\)</span>는 <span class="math inline">\(F_X\)</span>의 거의 유일한 (<strong><em>w.r.t. <span class="math inline">\(\lambda\)</span></em></strong>) 밀도함수라고 주장할 수 있다.</li>
+</ol>
+<p>이 <span class="math inline">\(f_X(x) = \begin{cases} 1 &amp; 0 \leq x \leq 1 \\ 0 &amp; o.w. \end{cases}\)</span>가 <span class="math inline">\(\forall B \in \cal{R}\)</span>: <span class="math inline">\(\int_B f d \lambda \mu_X(B) \dots \star\)</span>를 만족한다면 이 <span class="math inline">\(f_X\)</span>는 <span class="math inline">\(F_X\)</span>의 라돈니코딘 도함수라고 주장할 수 있다.</p>
+<p>4번에 의해 “(1) <span class="math inline">\({\cal R} \to {\cal R}^+\)</span> 가측함수이고”는 해결</p>
+<p>우리가 알고 싶은 것 <span class="math inline">\(\forall B \in \cal{R}\)</span>: <span class="math inline">\(\int_B f d \lambda \mu_X(B)\)</span></p>
+<p>만약 <span class="math inline">\(B = (-\infty,x]\)</span>이면 <span class="math inline">\(\mu(B) = F_X(x) = \int_{(-\infty,x]} f d \lambda = \int^x_{-\infty} f(y) dy\)</span>로 쓸 수 있다.</p>
+<p>아니라면? <span class="math inline">\(\mu(B) = F_X(x) = \int_B f d \lambda\)</span>라고 주장하기 어려워진다.</p>
+<ol start="4" type="1">
+<li><p><span class="math inline">\(f_X\)</span>는 simple function이므로 <span class="math inline">\({\cal R} \to {\cal R}^+\)</span> 가측함수이다.</p></li>
+<li><p>임의의 <span class="math inline">\(x\)</span>에 대하여 <span class="math inline">\(F_X(x)=\mu_X((-\infty,x])=\int_{(-\infty,x]}f_Xd\lambda\)</span> 이 성립한다.</p></li>
+</ol>
+<p><span class="math inline">\(\cal{A} = \{(-\infty,x] : x \in \mathbb{R}\}\)</span>이라고 하자.</p>
+<p><span class="math inline">\(\forall A \in \cal{A} : \int_A f_X d \lambda = \mu_X (A)\)</span>임은 보였음.</p>
+<p>목표: <span class="math inline">\(\forall A \in \cal{R} : \int_A f_X d \lambda = \mu_X(A)\)</span>임을 보이자.</p>
+<p><em>Thm</em>: If <span class="math inline">\(\cal{AA}\)</span> is <span class="math inline">\(\pi\)</span>-system, then <span class="math inline">\(l(\cal{A}) = \sigma(\cal{A})\)</span></p>
+<p><em>wts</em> : <span class="math inline">\(\cal{D} = \{ A: \int_A f_X d\lambda = \mu_X(A)\} = \cal{R}\)</span><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> = <span class="math inline">\(\sigma(\cal{A})\)</span><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>따라서 <span class="math inline">\(\cal{D} \supset \cal{R}\)</span> &amp; <span class="math inline">\(\cal{D} \subset \cal{R}\)</span>임을 보이면 된다.</p>
+<p>이 때, <span class="math inline">\(\cal{D} \subset \cal{R}\)</span>임은 당연하므로, <span class="math inline">\(\cal{D} \supset \cal{R}\)</span>임을 보이면 된다. 그런데, <span class="math inline">\(\cal{D}\)</span>가 (1) <span class="math inline">\(\lambda\)</span>-system이고, (2)<span class="math inline">\(\cal{A}\)</span>를 포함한다면 (Note <span class="math inline">\(\cal{A}\)</span>is <span class="math inline">\(\pi\)</span>-sysyem)</p>
+<p><span class="math inline">\(\sigma(\cal{A}) = l(\cal{A} )\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\pi\)</span>-<span class="math inline">\(\lambda\)</span> thm 때문에 가능하다.</p>
+<p><span class="math inline">\(\sigma(\cal{A}) = l(\cal{A} ) = \cal{R}\)</span> <span class="math inline">\(\sigma(\cal{A})\)</span>는 <span class="math inline">\(\cal{R}\)</span>와 정의상 같아서 이렇게 식을 쓸 수 있다.</p>
+<p><span class="math inline">\(\cal{R}\)</span><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <span class="math inline">\(\subset\)</span> <span class="math inline">\(\cal{D}\)</span> <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> <span class="math inline">\(\dots \star\)</span></p>
+<p><span class="math inline">\(\star\)</span>가 성립하므로 <span class="math inline">\(\cal{R} \supset \cal{D}\)</span>이 해결된다.</p>
+<ul>
+<li>Check 1. <span class="math inline">\(\cal{A}\)</span>는 <span class="math inline">\(\pi\)</span>-system이고, <span class="math inline">\(\cal{A} \in \cal{D}\)</span>이다.</li>
+</ul>
+<p><span class="math inline">\(\cal{D} = \{ A: \int_A f d \lambda = \mu_X(A), A \in \cal{R}\}\)</span></p>
+<p><span class="math inline">\(A \in \cal{A}\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\int_A f d \lambda = \mu_X(A)\)</span> 성립. <span class="math inline">\(\rightarrow\)</span> A $</p>
+<ul>
+<li>Check 2. <span class="math inline">\(\cal{D}\)</span>가 <span class="math inline">\(\lambda\)</span>-system임을 보이면 증명이 끝</li>
+</ul>
+<ol type="1">
+<li><p><span class="math inline">\(\mathbb{R} \in \cal{D}\)</span></p></li>
+<li><p><span class="math inline">\(\forall A,B \in \cal{D}\)</span> such that <span class="math inline">\(A \subset B : B-A \in \cal{D}\)</span></p></li>
+<li><p><span class="math inline">\(\forall A_1 A_2 \dots \in \cal{D} : \uplus^{\infty}_{n=1} A_n \in \cal{D}\)</span></p></li>
+</ol>
+<p>참고: <span class="math inline">\(\cal{D} = \{ A : \int_A f_X d \lambda = \mu_X(A) , A \in \cal{R}\}\)</span></p>
+<ol type="1">
+<li><p>증명 <span class="math inline">\(\int_{\cal{R}} f_X d \lambda = 1 = \mu_X (\mathbb{R})\)</span></p></li>
+<li><p><strong>Fix</strong> <span class="math inline">\(A \in B\)</span> <span class="math inline">\(A \in \cal{A} , B \in \cal{D}\)</span></p></li>
+</ol>
+<p><span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(B-A \in \cal{D}\)</span> <span class="math inline">\(\leftrightarrow\)</span> <span class="math inline">\(\int_{B-A} f_X d \lambda = \mu_X (B-A)\)</span> 와 같음.</p>
+<p><span class="math inline">\(\rightarrow\)</span> LHS = <span class="math inline">\(\int_B f_X d \lambda - \int_A f_X d \lambda\)</span> (<span class="math inline">\(B \supset A\)</span>이기 때문에)</p>
+<p><span class="math inline">\(\rightarrow\)</span> = <span class="math inline">\(\mu_X(B) - \mu_X(A)\)</span> (<span class="math inline">\(A,B \in \cal{D}\)</span>)이기 때문에</p>
+<p><span class="math inline">\(\rightarrow\)</span> = <span class="math inline">\(\mu_X(B-A)\)</span> ((<span class="math inline">\(B \supset A\)</span>이기 때문에) = RHS</p>
+<p>하지만 <span class="math inline">\(A,B\)</span>를 고정하지 않고 임의의 <span class="math inline">\(A\subset B\)</span> &amp; <span class="math inline">\(A,B \in \cal{D}\)</span> 를 선택해도 위의 논리가 성립하므로 Check 2 확인 완료.</p>
+<ol start="3" type="1">
+<li>Fix <span class="math inline">\(A_1, A_2 \dots \in \cal{D}\)</span> &amp; $ A_1, A_2, $ are disjoiny일 때, <span class="math inline">\(\uplus^{\infty}_{i=1} A_i \in \cal{D}\)</span>임을 보이자.</li>
+</ol>
+<p><span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\int_{\uplus^{\infty}_{i=1} A_i} f_X d \lambda = \mu_X(\uplus^{\infty}_{i=1} A_i)\)</span> 임을 보이면 된다.</p>
+<p><span class="math inline">\(\rightarrow\)</span> LHS = <span class="math inline">\(\sum^{\infty}_{i=1} \int_{A_i} f_X d \lambda = \sum^{\infty}_{i=1} \mu_X (A_i)\)</span> (<span class="math inline">\(A_1,A_2,\dots \in \cal{D}\)</span>라서 가능)</p>
+<p><span class="math inline">\(\rightarrow\)</span> = <span class="math inline">\(\mu_X(\uplus^{\infty}_{i=1} A_i)\)</span> = RHS</p>
+<p>위의 논의가 <span class="math inline">\(A_1,A_2,\dots \in \cal{D}\)</span> &amp; <span class="math inline">\(A_1,A_2 \dots\)</span> are disjoint 한 임의의 <span class="math inline">\(A_1,A_2, \dots\)</span>에 대하여 성립하므로 (3)이 확인되었다.</p>
+<p><span class="math inline">\(\therefore \cal{D}\)</span>는 <span class="math inline">\(\lambda\)</span>-system</p>
+<ol start="6" type="1">
+<li><p>5와 <span class="math inline">\(\pi\)</span>-<span class="math inline">\(\lambda\)</span> thm을 이용하면 모든 <span class="math inline">\(B \in {\cal R}\)</span>에 대하여 <span class="math inline">\(\mu_X(B) = \int_B f_X d\lambda\)</span> 가 성립한다.</p></li>
+<li><p>따라서 <span class="math inline">\(f_X\)</span>는 <span class="math inline">\(F_X\)</span>의 밀도함수이다.</p></li>
+</ol>
+<hr>
+<p><code>-</code> 예제2 – 베르누이 분포</p>
+<p>아래와 같은 함수를 고려하자.</p>
+<p><span class="math display">\[F_X(x) = \begin{cases}
+0 &amp; x&lt;0 \\
+\frac{1}{2} &amp; 0 \leq  x &lt;1 \\
+1 &amp; x \geq 1
+\end{cases}\]</span></p>
+<div id="9fdd5bf6-77ee-4809-9a9a-dd538bfbe137" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> F_X(x):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="dv">0</span> <span class="op">&lt;=</span> x <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">0.5</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1000</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.vectorize(F_X)(x)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'F_X(x)'</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Cumulative Distribution Function'</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-05-30-ap-13wk_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>이 함수에 대응하는 <span class="math inline">\(\mu_X\)</span>를 아래와 같이 정의하자.</p>
+<ul>
+<li><span class="math inline">\(\mu_X(\emptyset)=0\)</span></li>
+<li><span class="math inline">\(\mu_X(\{0\})=\frac{1}{2}\)</span></li>
+<li><span class="math inline">\(\mu_X(\{1\})=\frac{1}{2}\)</span></li>
+<li><span class="math inline">\(\mu_X(\{0,1\})=1\)</span></li>
+<li><span class="math inline">\(\mu_X(B)=0\)</span> , <span class="math inline">\(B \in {\cal R} - \{0,1\} - \{0\} - \{1\}\)</span></li>
+</ul>
+<p><span class="math inline">\(\mu_X\)</span>는 <span class="math inline">\(\lambda\)</span>에 대한 라돈니코딤 도함수를 가지지 않음을 보여라.</p>
+<p>(해설) – 절대연속이 안되는걸?</p>
+
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-durrett2019probability" class="csl-entry" role="listitem">
+Durrett, Rick. 2019. <em>Probability: Theory and Examples</em>. Vol. 49. Cambridge university press.
+</div>
+</div></section><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>칸토어함수!!!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>원래는 이러한 가정이 없음<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>보렐셋<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>smallest sigma field<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><span class="math inline">\(\cal{A}\)</span>를 포함하는 가장 작은 <span class="math inline">\(\lambda\)</span>-system<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>(1)<span class="math inline">\(\lambda\)</span>-system(2)<span class="math inline">\(\cal{A}\)</span>를 포함<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        console.log("RESIZE");
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="seoyeonc/md" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
