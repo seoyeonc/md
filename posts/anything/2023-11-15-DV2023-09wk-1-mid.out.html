@@ -2465,20 +2465,160 @@ dtype: object</code></pre>
 <p><code>2</code>. 수도권의 전기에너지 사용비율은 아래와 같이 구한다.</p>
 <p><span class="math display">\[\text{2018년 수도권의 전기에너지 사용비율} = \frac{\text{2018년 수도권의 전기 사용량}}{\text{2018년 수도권의 전기 사용량}+\text{2018년 수도권의 도시가스 사용량}+\text{2018년 수도권의 지역난방 사용량}}\]</span></p>
 <p><code>3</code>. <code>facet_wrap</code> 사용시 <code>scales='free'</code> 옵션을 사용할 것</p>
-<div id="5d8afa16-afaa-4a61-9e1f-8855cad0aeaf" class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame([result_df.query(<span class="st">"Year == 2020 or Year == 2021"</span>).groupby([<span class="st">'Prov'</span>,<span class="st">'Year'</span>])[<span class="st">'Elec'</span>].<span class="bu">sum</span>().unstack().reset_index().iloc[:,<span class="dv">0</span>],<span class="op">\</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    result_df.query(<span class="st">"Year == 2020 or Year == 2021"</span>).groupby([<span class="st">'Prov'</span>,<span class="st">'Year'</span>])[<span class="st">'Elec'</span>].<span class="bu">sum</span>().unstack().diff(axis<span class="op">=</span><span class="dv">1</span>).reset_index().iloc[:,<span class="dv">2</span>]<span class="op">/</span> <span class="op">\</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    result_df.query(<span class="st">"Year == 2020 or Year == 2021"</span>).groupby([<span class="st">'Prov'</span>,<span class="st">'Year'</span>])[<span class="st">'Elec'</span>].<span class="bu">sum</span>().unstack().reset_index().iloc[:,<span class="dv">1</span>]]).transpose().rename(columns<span class="op">=</span>{<span class="st">'Unnamed 0'</span>: <span class="st">'ElectricUseInc'</span>}).<span class="op">\</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    assign(Rank<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="st">'ElectricUseInc'</span>].rank(ascending<span class="op">=</span><span class="va">False</span>), Top2<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="st">'ElectricUseInc'</span>].rank(ascending<span class="op">=</span><span class="va">False</span>) <span class="op">&lt;=</span> <span class="dv">2</span>).sort_values(by<span class="op">=</span><span class="st">'Rank'</span>)</span></code></pre></div>
+<div id="8d96f85c-b25a-4b81-a4fa-8ed5a31b5172" class="cell" data-execution_count="426">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pd.melt(result_df.assign(Metro<span class="op">=</span>result_df[<span class="st">'Prov'</span>].isin([<span class="st">'Seoul'</span>, <span class="st">'Gyeonggi-do'</span>, <span class="st">'Incheon'</span>])).<span class="op">\</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>        groupby([<span class="st">'Year'</span>,<span class="st">'Metro'</span>]).<span class="bu">sum</span>().reset_index().assign(ElecUse <span class="op">=</span> <span class="kw">lambda</span> x: (x[<span class="st">'Elec'</span>]<span class="op">+</span>x[<span class="st">'Gas'</span>]<span class="op">+</span>x[<span class="st">'Heat'</span>]),<span class="op">\</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                                                            ElecRate <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'Elec'</span>]<span class="op">/</span>(x[<span class="st">'Elec'</span>]<span class="op">+</span>x[<span class="st">'Gas'</span>]<span class="op">+</span>x[<span class="st">'Heat'</span>])).<span class="op">\</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>        iloc[:, [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">8</span>]],id_vars<span class="op">=</span>[<span class="st">'Year'</span>,<span class="st">'Metro'</span>], value_name<span class="op">=</span><span class="st">'Amount'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.</code></pre>
 </div>
-<div id="6c79adf3-ea64-44aa-b359-d5e23d0b7ff0" class="cell" data-execution_count="293">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> </span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="426">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Metro</th>
+<th data-quarto-table-cell-role="th">variable</th>
+<th data-quarto-table-cell-role="th">Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2018</td>
+<td>False</td>
+<td>ElecUse</td>
+<td>1.059633e+07</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2018</td>
+<td>True</td>
+<td>ElecUse</td>
+<td>1.275926e+07</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2019</td>
+<td>False</td>
+<td>ElecUse</td>
+<td>1.034739e+07</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2019</td>
+<td>True</td>
+<td>ElecUse</td>
+<td>1.231388e+07</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2020</td>
+<td>False</td>
+<td>ElecUse</td>
+<td>1.050697e+07</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2020</td>
+<td>True</td>
+<td>ElecUse</td>
+<td>1.232088e+07</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2021</td>
+<td>False</td>
+<td>ElecUse</td>
+<td>1.139371e+07</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2021</td>
+<td>True</td>
+<td>ElecUse</td>
+<td>1.508554e+07</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>2018</td>
+<td>False</td>
+<td>ElecRate</td>
+<td>4.812637e-01</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>2018</td>
+<td>True</td>
+<td>ElecRate</td>
+<td>3.727139e-01</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>2019</td>
+<td>False</td>
+<td>ElecRate</td>
+<td>4.819473e-01</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>2019</td>
+<td>True</td>
+<td>ElecRate</td>
+<td>3.796228e-01</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>2020</td>
+<td>False</td>
+<td>ElecRate</td>
+<td>4.746019e-01</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>2020</td>
+<td>True</td>
+<td>ElecRate</td>
+<td>3.774099e-01</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>2021</td>
+<td>False</td>
+<td>ElecRate</td>
+<td>4.827995e-01</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>2021</td>
+<td>True</td>
+<td>ElecRate</td>
+<td>4.191991e-01</td>
+</tr>
+</tbody>
+</table>
+
 </div>
-<div id="44e162c8-0609-4033-b3e3-dcf67e4e3dd3" class="cell" data-execution_count="296">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>result_df.assign(Metro <span class="op">=</span> <span class="cf">for</span> i <span class="kw">in</span> [<span class="st">'Seoul'</span>,<span class="st">'Gyeonggi-do'</span>,<span class="st">'Incheon'</span>]: np.where(result_df[<span class="st">'Prov'</span>] <span class="op">==</span> i,<span class="va">True</span>,<span class="va">False</span>))</span></code></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>SyntaxError: invalid syntax (&lt;ipython-input-296-2ebade943578&gt;, line 1)</code></pre>
+</div>
+</div>
+<div id="1f6c1dfb-6b72-4cd9-a24a-f5384f118db0" class="cell" data-execution_count="436">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(pd.melt(result_df.assign(Metro<span class="op">=</span>result_df[<span class="st">'Prov'</span>].isin([<span class="st">'Seoul'</span>, <span class="st">'Gyeonggi-do'</span>, <span class="st">'Incheon'</span>])).<span class="op">\</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>        groupby([<span class="st">'Year'</span>,<span class="st">'Metro'</span>]).<span class="bu">sum</span>().reset_index().assign(ElecUse <span class="op">=</span> <span class="kw">lambda</span> x: (x[<span class="st">'Elec'</span>]<span class="op">+</span>x[<span class="st">'Gas'</span>]<span class="op">+</span>x[<span class="st">'Heat'</span>]),<span class="op">\</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>                                                            ElecRate <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'Elec'</span>]<span class="op">/</span>(x[<span class="st">'Elec'</span>]<span class="op">+</span>x[<span class="st">'Gas'</span>]<span class="op">+</span>x[<span class="st">'Heat'</span>])).<span class="op">\</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>        iloc[:, [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">8</span>]],id_vars<span class="op">=</span>[<span class="st">'Year'</span>,<span class="st">'Metro'</span>], value_name<span class="op">=</span><span class="st">'Amount'</span>),aes(x<span class="op">=</span><span class="st">'Year'</span>,y<span class="op">=</span><span class="st">'Amount'</span>,color<span class="op">=</span><span class="st">'Metro'</span>)) <span class="op">+\</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>        geom_line() <span class="op">+</span> geom_point() <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>        facet_wrap(<span class="st">'variable'</span>, scales <span class="op">=</span> <span class="st">"free_y"</span>) </span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>p.draw()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>FutureWarning: The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="436">
+<p><img src="2023-11-15-DV2023-09wk-1-mid.out_files/figure-html/cell-26-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -2486,12 +2626,170 @@ dtype: object</code></pre>
 <section id="fifa-90점" class="level1">
 <h1>2. FIFA – 90점</h1>
 <p>아래는 FIFA22 자료를 불러오는 코드이다.</p>
-<div id="641ed4ec-b388-44b2-9d23-96f164dc9605" class="cell" data-tags="[]" data-execution_count="83">
+<div id="641ed4ec-b388-44b2-9d23-96f164dc9605" class="cell" data-tags="[]" data-execution_count="437">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/DV2021/master/_notebooks/2021-10-25-FIFA22_official_data.csv'</span>).drop([<span class="st">'Loaned From'</span>,<span class="st">'Marking'</span>],axis<span class="op">=</span><span class="dv">1</span>).dropna()</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="437">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Photo</th>
+<th data-quarto-table-cell-role="th">Nationality</th>
+<th data-quarto-table-cell-role="th">Flag</th>
+<th data-quarto-table-cell-role="th">Overall</th>
+<th data-quarto-table-cell-role="th">Potential</th>
+<th data-quarto-table-cell-role="th">Club</th>
+<th data-quarto-table-cell-role="th">Club Logo</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">SlidingTackle</th>
+<th data-quarto-table-cell-role="th">GKDiving</th>
+<th data-quarto-table-cell-role="th">GKHandling</th>
+<th data-quarto-table-cell-role="th">GKKicking</th>
+<th data-quarto-table-cell-role="th">GKPositioning</th>
+<th data-quarto-table-cell-role="th">GKReflexes</th>
+<th data-quarto-table-cell-role="th">Best Position</th>
+<th data-quarto-table-cell-role="th">Best Overall Rating</th>
+<th data-quarto-table-cell-role="th">Release Clause</th>
+<th data-quarto-table-cell-role="th">DefensiveAwareness</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>212198</td>
+<td>Bruno Fernandes</td>
+<td>26</td>
+<td>https://cdn.sofifa.com/players/212/198/22_60.png</td>
+<td>Portugal</td>
+<td>https://cdn.sofifa.com/flags/pt.png</td>
+<td>88</td>
+<td>89</td>
+<td>Manchester United</td>
+<td>https://cdn.sofifa.com/teams/11/30.png</td>
+<td>...</td>
+<td>65.0</td>
+<td>12.0</td>
+<td>14.0</td>
+<td>15.0</td>
+<td>8.0</td>
+<td>14.0</td>
+<td>CAM</td>
+<td>88.0</td>
+<td>€206.9M</td>
+<td>72.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>209658</td>
+<td>L. Goretzka</td>
+<td>26</td>
+<td>https://cdn.sofifa.com/players/209/658/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>87</td>
+<td>88</td>
+<td>FC Bayern München</td>
+<td>https://cdn.sofifa.com/teams/21/30.png</td>
+<td>...</td>
+<td>77.0</td>
+<td>13.0</td>
+<td>8.0</td>
+<td>15.0</td>
+<td>11.0</td>
+<td>9.0</td>
+<td>CM</td>
+<td>87.0</td>
+<td>€160.4M</td>
+<td>74.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>176580</td>
+<td>L. Suárez</td>
+<td>34</td>
+<td>https://cdn.sofifa.com/players/176/580/22_60.png</td>
+<td>Uruguay</td>
+<td>https://cdn.sofifa.com/flags/uy.png</td>
+<td>88</td>
+<td>88</td>
+<td>Atlético de Madrid</td>
+<td>https://cdn.sofifa.com/teams/240/30.png</td>
+<td>...</td>
+<td>38.0</td>
+<td>27.0</td>
+<td>25.0</td>
+<td>31.0</td>
+<td>33.0</td>
+<td>37.0</td>
+<td>ST</td>
+<td>88.0</td>
+<td>€91.2M</td>
+<td>42.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>192985</td>
+<td>K. De Bruyne</td>
+<td>30</td>
+<td>https://cdn.sofifa.com/players/192/985/22_60.png</td>
+<td>Belgium</td>
+<td>https://cdn.sofifa.com/flags/be.png</td>
+<td>91</td>
+<td>91</td>
+<td>Manchester City</td>
+<td>https://cdn.sofifa.com/teams/10/30.png</td>
+<td>...</td>
+<td>53.0</td>
+<td>15.0</td>
+<td>13.0</td>
+<td>5.0</td>
+<td>10.0</td>
+<td>13.0</td>
+<td>CM</td>
+<td>91.0</td>
+<td>€232.2M</td>
+<td>68.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>224334</td>
+<td>M. Acuña</td>
+<td>29</td>
+<td>https://cdn.sofifa.com/players/224/334/22_60.png</td>
+<td>Argentina</td>
+<td>https://cdn.sofifa.com/flags/ar.png</td>
+<td>84</td>
+<td>84</td>
+<td>Sevilla FC</td>
+<td>https://cdn.sofifa.com/teams/481/30.png</td>
+<td>...</td>
+<td>82.0</td>
+<td>8.0</td>
+<td>14.0</td>
+<td>13.0</td>
+<td>13.0</td>
+<td>14.0</td>
+<td>LB</td>
+<td>84.0</td>
+<td>€77.7M</td>
+<td>80.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 63 columns</p>
+</div>
+</div>
 </div>
 <p>아래의 딕셔너리를 이용하여 <code>Position</code>열을 변환하고 물음에 답하라.</p>
-<div id="3e5c2967-e0cd-47ce-8510-b422a72e9868" class="cell" data-tags="[]" data-execution_count="84">
+<div id="3e5c2967-e0cd-47ce-8510-b422a72e9868" class="cell" data-tags="[]" data-execution_count="438">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>position_dict <span class="op">=</span> {</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GOALKEEPER'</span>:{<span class="st">'GK'</span>},</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'DEFENDER'</span>:{<span class="st">'CB'</span>,<span class="st">'RCB'</span>,<span class="st">'LCB'</span>,<span class="st">'RB'</span>,<span class="st">'LB'</span>,<span class="st">'RWB'</span>,<span class="st">'LWB'</span>},</span>
@@ -2501,6 +2799,336 @@ dtype: object</code></pre>
 <span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'RES'</span>:{<span class="st">'RES'</span>}</span>
 <span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>position_dict</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="438">
+<pre><code>{'GOALKEEPER': {'GK'},
+ 'DEFENDER': {'CB', 'LB', 'LCB', 'LWB', 'RB', 'RCB', 'RWB'},
+ 'MIDFIELDER': {'CAM',
+  'CDM',
+  'CM',
+  'LAM',
+  'LCM',
+  'LDM',
+  'LM',
+  'RAM',
+  'RCM',
+  'RDM',
+  'RM'},
+ 'FORWARD': {'CF', 'LF', 'LS', 'LW', 'RF', 'RS', 'RW', 'ST'},
+ 'SUB': {'SUB'},
+ 'RES': {'RES'}}</code></pre>
+</div>
+</div>
+<div id="719d3c6d-eca8-4602-bc70-afa2ebbe29fc" class="cell" data-execution_count="569">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> map_position(position):</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> category, positions <span class="kw">in</span> position_dict.items():</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> position <span class="kw">in</span> positions:</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> category</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">'UNKNOWN'</span></span></code></pre></div>
+</div>
+<div id="f4736ca5-c3e2-4d0c-8b7b-a32b6e5a20d5" class="cell" data-execution_count="570">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df.assign(Position_Category <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'Position'</span>].<span class="bu">str</span>.split(<span class="st">'&gt;'</span>).<span class="bu">str</span>[<span class="dv">1</span>].<span class="bu">str</span>.strip().<span class="bu">apply</span>(map_position))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="570">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Photo</th>
+<th data-quarto-table-cell-role="th">Nationality</th>
+<th data-quarto-table-cell-role="th">Flag</th>
+<th data-quarto-table-cell-role="th">Overall</th>
+<th data-quarto-table-cell-role="th">Potential</th>
+<th data-quarto-table-cell-role="th">Club</th>
+<th data-quarto-table-cell-role="th">Club Logo</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">GKDiving</th>
+<th data-quarto-table-cell-role="th">GKHandling</th>
+<th data-quarto-table-cell-role="th">GKKicking</th>
+<th data-quarto-table-cell-role="th">GKPositioning</th>
+<th data-quarto-table-cell-role="th">GKReflexes</th>
+<th data-quarto-table-cell-role="th">Best Position</th>
+<th data-quarto-table-cell-role="th">Best Overall Rating</th>
+<th data-quarto-table-cell-role="th">Release Clause</th>
+<th data-quarto-table-cell-role="th">DefensiveAwareness</th>
+<th data-quarto-table-cell-role="th">Position_Category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>212198</td>
+<td>Bruno Fernandes</td>
+<td>26</td>
+<td>https://cdn.sofifa.com/players/212/198/22_60.png</td>
+<td>Portugal</td>
+<td>https://cdn.sofifa.com/flags/pt.png</td>
+<td>88</td>
+<td>89</td>
+<td>Manchester United</td>
+<td>https://cdn.sofifa.com/teams/11/30.png</td>
+<td>...</td>
+<td>12.0</td>
+<td>14.0</td>
+<td>15.0</td>
+<td>8.0</td>
+<td>14.0</td>
+<td>CAM</td>
+<td>88.0</td>
+<td>€206.9M</td>
+<td>72.0</td>
+<td>MIDFIELDER</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>209658</td>
+<td>L. Goretzka</td>
+<td>26</td>
+<td>https://cdn.sofifa.com/players/209/658/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>87</td>
+<td>88</td>
+<td>FC Bayern München</td>
+<td>https://cdn.sofifa.com/teams/21/30.png</td>
+<td>...</td>
+<td>13.0</td>
+<td>8.0</td>
+<td>15.0</td>
+<td>11.0</td>
+<td>9.0</td>
+<td>CM</td>
+<td>87.0</td>
+<td>€160.4M</td>
+<td>74.0</td>
+<td>MIDFIELDER</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>176580</td>
+<td>L. Suárez</td>
+<td>34</td>
+<td>https://cdn.sofifa.com/players/176/580/22_60.png</td>
+<td>Uruguay</td>
+<td>https://cdn.sofifa.com/flags/uy.png</td>
+<td>88</td>
+<td>88</td>
+<td>Atlético de Madrid</td>
+<td>https://cdn.sofifa.com/teams/240/30.png</td>
+<td>...</td>
+<td>27.0</td>
+<td>25.0</td>
+<td>31.0</td>
+<td>33.0</td>
+<td>37.0</td>
+<td>ST</td>
+<td>88.0</td>
+<td>€91.2M</td>
+<td>42.0</td>
+<td>FORWARD</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>192985</td>
+<td>K. De Bruyne</td>
+<td>30</td>
+<td>https://cdn.sofifa.com/players/192/985/22_60.png</td>
+<td>Belgium</td>
+<td>https://cdn.sofifa.com/flags/be.png</td>
+<td>91</td>
+<td>91</td>
+<td>Manchester City</td>
+<td>https://cdn.sofifa.com/teams/10/30.png</td>
+<td>...</td>
+<td>15.0</td>
+<td>13.0</td>
+<td>5.0</td>
+<td>10.0</td>
+<td>13.0</td>
+<td>CM</td>
+<td>91.0</td>
+<td>€232.2M</td>
+<td>68.0</td>
+<td>MIDFIELDER</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>224334</td>
+<td>M. Acuña</td>
+<td>29</td>
+<td>https://cdn.sofifa.com/players/224/334/22_60.png</td>
+<td>Argentina</td>
+<td>https://cdn.sofifa.com/flags/ar.png</td>
+<td>84</td>
+<td>84</td>
+<td>Sevilla FC</td>
+<td>https://cdn.sofifa.com/teams/481/30.png</td>
+<td>...</td>
+<td>8.0</td>
+<td>14.0</td>
+<td>13.0</td>
+<td>13.0</td>
+<td>14.0</td>
+<td>LB</td>
+<td>84.0</td>
+<td>€77.7M</td>
+<td>80.0</td>
+<td>DEFENDER</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16703</td>
+<td>259718</td>
+<td>F. Gebhardt</td>
+<td>19</td>
+<td>https://cdn.sofifa.com/players/259/718/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>52</td>
+<td>66</td>
+<td>FC Basel 1893</td>
+<td>https://cdn.sofifa.com/teams/896/30.png</td>
+<td>...</td>
+<td>53.0</td>
+<td>45.0</td>
+<td>47.0</td>
+<td>52.0</td>
+<td>57.0</td>
+<td>GK</td>
+<td>52.0</td>
+<td>€361K</td>
+<td>6.0</td>
+<td>RES</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16704</td>
+<td>251433</td>
+<td>B. Voll</td>
+<td>20</td>
+<td>https://cdn.sofifa.com/players/251/433/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>58</td>
+<td>69</td>
+<td>F.C. Hansa Rostock</td>
+<td>https://cdn.sofifa.com/teams/27/30.png</td>
+<td>...</td>
+<td>59.0</td>
+<td>60.0</td>
+<td>56.0</td>
+<td>55.0</td>
+<td>61.0</td>
+<td>GK</td>
+<td>58.0</td>
+<td>€656K</td>
+<td>5.0</td>
+<td>RES</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16706</td>
+<td>262846</td>
+<td>�. Dobre</td>
+<td>20</td>
+<td>https://cdn.sofifa.com/players/262/846/22_60.png</td>
+<td>Romania</td>
+<td>https://cdn.sofifa.com/flags/ro.png</td>
+<td>53</td>
+<td>63</td>
+<td>FC Academica Clinceni</td>
+<td>https://cdn.sofifa.com/teams/113391/30.png</td>
+<td>...</td>
+<td>57.0</td>
+<td>52.0</td>
+<td>53.0</td>
+<td>48.0</td>
+<td>58.0</td>
+<td>GK</td>
+<td>53.0</td>
+<td>€279K</td>
+<td>5.0</td>
+<td>RES</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16707</td>
+<td>241317</td>
+<td>21&nbsp;Xue Qinghao</td>
+<td>19</td>
+<td>https://cdn.sofifa.com/players/241/317/21_60.png</td>
+<td>China PR</td>
+<td>https://cdn.sofifa.com/flags/cn.png</td>
+<td>47</td>
+<td>60</td>
+<td>Shanghai Shenhua FC</td>
+<td>https://cdn.sofifa.com/teams/110955/30.png</td>
+<td>...</td>
+<td>49.0</td>
+<td>48.0</td>
+<td>45.0</td>
+<td>38.0</td>
+<td>52.0</td>
+<td>GK</td>
+<td>47.0</td>
+<td>€223K</td>
+<td>21.0</td>
+<td>RES</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16708</td>
+<td>259646</td>
+<td>A. Shaikh</td>
+<td>18</td>
+<td>https://cdn.sofifa.com/players/259/646/22_60.png</td>
+<td>India</td>
+<td>https://cdn.sofifa.com/flags/in.png</td>
+<td>47</td>
+<td>67</td>
+<td>ATK Mohun Bagan FC</td>
+<td>https://cdn.sofifa.com/teams/113146/30.png</td>
+<td>...</td>
+<td>49.0</td>
+<td>41.0</td>
+<td>39.0</td>
+<td>45.0</td>
+<td>49.0</td>
+<td>GK</td>
+<td>47.0</td>
+<td>€259K</td>
+<td>7.0</td>
+<td>SUB</td>
+</tr>
+</tbody>
+</table>
+
+<p>14398 rows × 64 columns</p>
+</div>
+</div>
 </div>
 <section id="나이와-포지션에-따른-선수-가치-및-급여-분석-10점" class="level2">
 <h2 class="anchored" data-anchor-id="나이와-포지션에-따른-선수-가치-및-급여-분석-10점"><code>(1)</code> 나이와 포지션에 따른 선수 가치 및 급여 분석 – 10점</h2>
@@ -2511,13 +3139,147 @@ dtype: object</code></pre>
 <p><code>1</code>. <code>Value</code>와 <code>Wage</code>는 log값을 취하여 시각화 하라.</p>
 <p><code>2</code>. <code>geom_point</code>를 사용할 시<code>alpha=0.2</code>, <code>size=0.1</code>, <code>position='jitter'</code>로 설정하라.</p>
 <p><code>3</code>. <code>SUB</code>와 <code>RES</code> 포지션은 제외하고 시각화 할 것</p>
+<div id="63ca402a-4ea6-4255-a6e0-1306f65e1cf4" class="cell" data-execution_count="571">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>pd.melt(df.assign(Position_Category <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'Position'</span>].<span class="bu">str</span>.split(<span class="st">'&gt;'</span>).<span class="bu">str</span>[<span class="dv">1</span>].<span class="bu">str</span>.strip().<span class="bu">apply</span>(map_position),</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>            logValue <span class="op">=</span> np.log(df[<span class="st">'Value'</span>].<span class="bu">str</span>.split(<span class="st">'€'</span>).<span class="bu">str</span>[<span class="dv">1</span>].<span class="bu">str</span>.strip().<span class="op">\</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>                        <span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">float</span>(x.replace(<span class="st">'€'</span>, <span class="st">''</span>).strip()[:<span class="op">-</span><span class="dv">1</span>]) <span class="op">*</span> <span class="dv">1000000</span> <span class="op">\</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>                              <span class="cf">if</span> x.endswith(<span class="st">'M'</span>) <span class="cf">else</span> <span class="bu">float</span>(x.replace(<span class="st">'€'</span>, <span class="st">''</span>).strip()[:<span class="op">-</span><span class="dv">1</span>]) <span class="op">*</span> <span class="dv">1000</span> <span class="op">\</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>                              <span class="cf">if</span> x.endswith(<span class="st">'K'</span>) <span class="cf">else</span> <span class="bu">float</span>(x))),</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>         logWage <span class="op">=</span> np.log(df[<span class="st">'Wage'</span>].<span class="bu">str</span>.split(<span class="st">'€'</span>).<span class="bu">str</span>[<span class="dv">1</span>].<span class="bu">str</span>.strip().<span class="op">\</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>                        <span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">float</span>(x.replace(<span class="st">'€'</span>, <span class="st">''</span>).strip()[:<span class="op">-</span><span class="dv">1</span>]) <span class="op">*</span> <span class="dv">1000000</span> <span class="op">\</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>                              <span class="cf">if</span> x.endswith(<span class="st">'M'</span>) <span class="cf">else</span> <span class="bu">float</span>(x.replace(<span class="st">'€'</span>, <span class="st">''</span>).strip()[:<span class="op">-</span><span class="dv">1</span>]) <span class="op">*</span> <span class="dv">1000</span> <span class="op">\</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>                              <span class="cf">if</span> x.endswith(<span class="st">'K'</span>) <span class="cf">else</span> <span class="bu">float</span>(x))))<span class="op">\</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>        [[<span class="st">'Position_Category'</span>,<span class="st">'Age'</span>, <span class="st">'logValue'</span>, <span class="st">'logWage'</span>]],id_vars<span class="op">=</span>[<span class="st">'Position_Category'</span>,<span class="st">'Age'</span>],var_name<span class="op">=</span><span class="st">'FinancialMetric'</span>,value_name<span class="op">=</span><span class="st">'LogAmount'</span>).<span class="op">\</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>        query(<span class="st">'Position_Category not in ["SUB","RES"]'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="571">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Position_Category</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">FinancialMetric</th>
+<th data-quarto-table-cell-role="th">LogAmount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>MIDFIELDER</td>
+<td>26</td>
+<td>logValue</td>
+<td>18.493001</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>MIDFIELDER</td>
+<td>26</td>
+<td>logValue</td>
+<td>18.348110</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>FORWARD</td>
+<td>34</td>
+<td>logValue</td>
+<td>17.611000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>MIDFIELDER</td>
+<td>30</td>
+<td>logValue</td>
+<td>18.647816</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>DEFENDER</td>
+<td>29</td>
+<td>logValue</td>
+<td>17.426428</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">28694</td>
+<td>GOALKEEPER</td>
+<td>24</td>
+<td>logWage</td>
+<td>6.214608</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">28740</td>
+<td>GOALKEEPER</td>
+<td>18</td>
+<td>logWage</td>
+<td>6.214608</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">28750</td>
+<td>GOALKEEPER</td>
+<td>18</td>
+<td>logWage</td>
+<td>6.214608</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">28759</td>
+<td>GOALKEEPER</td>
+<td>22</td>
+<td>logWage</td>
+<td>6.745236</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">28767</td>
+<td>GOALKEEPER</td>
+<td>25</td>
+<td>logWage</td>
+<td>6.907755</td>
+</tr>
+</tbody>
+</table>
+
+<p>11986 rows × 4 columns</p>
+</div>
+</div>
+</div>
+<div id="6ad6a2e9-3bb8-4bff-87f5-674aad99f14b" class="cell" data-execution_count="572">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(pd.melt(df.assign(Position_Category <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'Position'</span>].<span class="bu">str</span>.split(<span class="st">'&gt;'</span>).<span class="bu">str</span>[<span class="dv">1</span>].<span class="bu">str</span>.strip().<span class="bu">apply</span>(map_position),</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>            logValue <span class="op">=</span> np.log(df[<span class="st">'Value'</span>].<span class="bu">str</span>.split(<span class="st">'€'</span>).<span class="bu">str</span>[<span class="dv">1</span>].<span class="bu">str</span>.strip().<span class="op">\</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>                        <span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">float</span>(x.replace(<span class="st">'€'</span>, <span class="st">''</span>).strip()[:<span class="op">-</span><span class="dv">1</span>]) <span class="op">*</span> <span class="dv">1000000</span> <span class="op">\</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>                              <span class="cf">if</span> x.endswith(<span class="st">'M'</span>) <span class="cf">else</span> <span class="bu">float</span>(x.replace(<span class="st">'€'</span>, <span class="st">''</span>).strip()[:<span class="op">-</span><span class="dv">1</span>]) <span class="op">*</span> <span class="dv">1000</span> <span class="op">\</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>                              <span class="cf">if</span> x.endswith(<span class="st">'K'</span>) <span class="cf">else</span> <span class="bu">float</span>(x))),</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>         logWage <span class="op">=</span> np.log(df[<span class="st">'Wage'</span>].<span class="bu">str</span>.split(<span class="st">'€'</span>).<span class="bu">str</span>[<span class="dv">1</span>].<span class="bu">str</span>.strip().<span class="op">\</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>                        <span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">float</span>(x.replace(<span class="st">'€'</span>, <span class="st">''</span>).strip()[:<span class="op">-</span><span class="dv">1</span>]) <span class="op">*</span> <span class="dv">1000000</span> <span class="op">\</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>                              <span class="cf">if</span> x.endswith(<span class="st">'M'</span>) <span class="cf">else</span> <span class="bu">float</span>(x.replace(<span class="st">'€'</span>, <span class="st">''</span>).strip()[:<span class="op">-</span><span class="dv">1</span>]) <span class="op">*</span> <span class="dv">1000</span> <span class="op">\</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>                              <span class="cf">if</span> x.endswith(<span class="st">'K'</span>) <span class="cf">else</span> <span class="bu">float</span>(x))))<span class="op">\</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>        [[<span class="st">'Position_Category'</span>,<span class="st">'Age'</span>, <span class="st">'logValue'</span>, <span class="st">'logWage'</span>]],id_vars<span class="op">=</span>[<span class="st">'Position_Category'</span>,<span class="st">'Age'</span>],var_name<span class="op">=</span><span class="st">'FinancialMetric'</span>,value_name<span class="op">=</span><span class="st">'LogAmount'</span>).<span class="op">\</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>        query(<span class="st">'Position_Category not in ["SUB","RES"]'</span>),<span class="op">\</span></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>           aes(x<span class="op">=</span><span class="st">'Age'</span>,y<span class="op">=</span><span class="st">'LogAmount'</span>,color<span class="op">=</span><span class="st">'FinancialMetric'</span>)) <span class="op">+\</span></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>    geom_point(alpha<span class="op">=</span><span class="fl">0.2</span>, size<span class="op">=</span><span class="fl">0.1</span>, position<span class="op">=</span><span class="st">'jitter'</span>) <span class="op">+</span> geom_smooth()<span class="op">+\</span></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    facet_wrap(<span class="st">'Position_Category'</span>)</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>p.draw()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="572">
+<p><img src="2023-11-15-DV2023-09wk-1-mid.out_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+</div>
+</div>
 </section>
 <section id="골키퍼-능력치별-로그급여-추세-10점" class="level2">
 <h2 class="anchored" data-anchor-id="골키퍼-능력치별-로그급여-추세-10점"><code>(2)</code> 골키퍼 능력치별 로그급여 추세 – 10점</h2>
 <p>아래의 리스트는 골키퍼와 관련된 능력치이다.</p>
-<div id="33ce5daf-8c87-4e49-a7ee-30809810cd67" class="cell" data-tags="[]" data-execution_count="92">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>gkstats <span class="op">=</span> [<span class="st">'GKDiving'</span>,<span class="st">'GKHandling'</span>, <span class="st">'GKKicking'</span>, <span class="st">'GKPositioning'</span>, <span class="st">'GKReflexes'</span>]</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>gkstats</span></code></pre></div>
+<div id="33ce5daf-8c87-4e49-a7ee-30809810cd67" class="cell" data-tags="[]" data-execution_count="573">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>gkstats <span class="op">=</span> [<span class="st">'GKDiving'</span>,<span class="st">'GKHandling'</span>, <span class="st">'GKKicking'</span>, <span class="st">'GKPositioning'</span>, <span class="st">'GKReflexes'</span>]</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>gkstats</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="573">
+<pre><code>['GKDiving', 'GKHandling', 'GKKicking', 'GKPositioning', 'GKReflexes']</code></pre>
+</div>
 </div>
 <p><code>gkstats</code> 에 해당하는 능력치와 로그급여(<code>logWage</code>)를 산점도로 시각화하고 추세선을 추가하라.</p>
 <p><strong>시각화예시</strong></p>
@@ -2525,13 +3287,118 @@ dtype: object</code></pre>
 <p><strong>세부지침</strong></p>
 <p><code>1</code>. 포지션이 “골키퍼”인 선수에 한정하여 시각화 할 것</p>
 <p><code>2</code>. <code>geom_point</code>를 사용할 시 <code>alpha=0.5</code>,<code>size=0.5</code>,<code>position='jitter'</code> 를 설정하라.</p>
+<div id="7baefc82-95a7-42c0-8bb9-ca1ddb08d19d" class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>pd.melt(df.assign(logWage <span class="op">=</span> np.log(df[<span class="st">'Wage'</span>].<span class="bu">str</span>.split(<span class="st">'€'</span>).<span class="bu">str</span>[<span class="dv">1</span>].<span class="bu">str</span>.strip().<span class="op">\</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>                            <span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">float</span>(x.replace(<span class="st">'€'</span>, <span class="st">''</span>).strip()[:<span class="op">-</span><span class="dv">1</span>]) <span class="op">*</span> <span class="dv">1000000</span> <span class="op">\</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="cf">if</span> x.endswith(<span class="st">'M'</span>) <span class="cf">else</span> <span class="bu">float</span>(x.replace(<span class="st">'€'</span>, <span class="st">''</span>).strip()[:<span class="op">-</span><span class="dv">1</span>]) <span class="op">*</span> <span class="dv">1000</span> <span class="op">\</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="cf">if</span> x.endswith(<span class="st">'K'</span>) <span class="cf">else</span> <span class="bu">float</span>(x))))[[<span class="st">'logWage'</span>]<span class="op">+</span>gkstats],<span class="op">\</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>                id_vars<span class="op">=</span><span class="st">'logWage'</span>,var_name<span class="op">=</span><span class="st">'AbilType'</span>,value_name<span class="op">=</span><span class="st">'Abil'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="654">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">logWage</th>
+<th data-quarto-table-cell-role="th">AbilType</th>
+<th data-quarto-table-cell-role="th">Abil</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>12.429216</td>
+<td>GKDiving</td>
+<td>12.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>11.849398</td>
+<td>GKDiving</td>
+<td>13.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>11.813030</td>
+<td>GKDiving</td>
+<td>27.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>12.765688</td>
+<td>GKDiving</td>
+<td>15.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>10.714418</td>
+<td>GKDiving</td>
+<td>8.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">71985</td>
+<td>6.476972</td>
+<td>GKReflexes</td>
+<td>57.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">71986</td>
+<td>6.856462</td>
+<td>GKReflexes</td>
+<td>61.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">71987</td>
+<td>6.309918</td>
+<td>GKReflexes</td>
+<td>58.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">71988</td>
+<td>6.551080</td>
+<td>GKReflexes</td>
+<td>52.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">71989</td>
+<td>6.214608</td>
+<td>GKReflexes</td>
+<td>49.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>71990 rows × 3 columns</p>
+</div>
+</div>
+</div>
+<div id="d233a4c8-c375-4649-a353-05221bbfe2c8" class="cell" data-execution_count="646">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> ggplot(pd.melt(df.assign(logWage <span class="op">=</span> np.log(df[<span class="st">'Wage'</span>].<span class="bu">str</span>.split(<span class="st">'€'</span>).<span class="bu">str</span>[<span class="dv">1</span>].<span class="bu">str</span>.strip().<span class="op">\</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>                            <span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">float</span>(x.replace(<span class="st">'€'</span>, <span class="st">''</span>).strip()[:<span class="op">-</span><span class="dv">1</span>]) <span class="op">*</span> <span class="dv">1000</span> <span class="op">\</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="cf">if</span> x.endswith(<span class="st">'K'</span>) <span class="cf">else</span> <span class="bu">float</span>(x))))[[<span class="st">'logWage'</span>]<span class="op">+</span>gkstats],<span class="op">\</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>                id_vars<span class="op">=</span><span class="st">'logWage'</span>,var_name<span class="op">=</span><span class="st">'AbilType'</span>,value_name<span class="op">=</span><span class="st">'Abil'</span>),aes(x<span class="op">=</span><span class="st">'Abil'</span>,y<span class="op">=</span><span class="st">'logWage'</span>,color<span class="op">=</span><span class="st">'AbilType'</span>))<span class="op">+\</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    geom_point(alpha<span class="op">=</span><span class="fl">0.5</span>,size<span class="op">=</span><span class="fl">0.5</span>,position<span class="op">=</span><span class="st">'jitter'</span>) <span class="op">+</span> geom_smooth() <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    facet_wrap(<span class="st">'~AbilType'</span>)</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>p.draw()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="646">
+<p><img src="2023-11-15-DV2023-09wk-1-mid.out_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+</div>
+</div>
 </section>
 <section id="gkability에-따른-골키퍼의-overall-예측-20점" class="level2">
 <h2 class="anchored" data-anchor-id="gkability에-따른-골키퍼의-overall-예측-20점"><code>(3)</code> “GKAbility”에 따른 골키퍼의 Overall 예측 – 20점</h2>
 <p>아래의 리스트는 골키퍼와 관련된 능력치이다.</p>
 <div id="f7897087-8c46-4855-808a-5a5add1db199" class="cell" data-tags="[]" data-execution_count="95">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>gkstats <span class="op">=</span> [<span class="st">'GKDiving'</span>,<span class="st">'GKHandling'</span>, <span class="st">'GKKicking'</span>, <span class="st">'GKPositioning'</span>, <span class="st">'GKReflexes'</span>]</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>gkstats</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>gkstats <span class="op">=</span> [<span class="st">'GKDiving'</span>,<span class="st">'GKHandling'</span>, <span class="st">'GKKicking'</span>, <span class="st">'GKPositioning'</span>, <span class="st">'GKReflexes'</span>]</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>gkstats</span></code></pre></div>
 </div>
 <p><code>gkstats</code> 에 해당하는 능력치의 평균을 계산하고 <code>GKAbility</code>라는 변수에 저장하라. 골키퍼 포지션과 공격수 포지션을 가지는 선수들에 한정하여 <code>GKAbility</code>와 <code>OveraAll</code>(=선수의 전반적 능력치)의 관계를 산점도로 시각화하라.</p>
 <p><strong>시각화 예시</strong></p>
@@ -2540,27 +3407,27 @@ dtype: object</code></pre>
 <p><code>1</code>. <code>ID=212198</code>인 선수 <code>Bruno Fernandes</code>의 경우 <code>GKAbility</code>를 아래와 같이 계산할 수 있다.</p>
 <p><span class="math display">\[\text{Bruno Fernandes의 GKAbility} = \frac{\text{Bruno Fernandes의 GKDiving} + \dots + \text{Bruno Fernandes의 GKReflexes}}{5}\]</span></p>
 <p><code>2</code>. 시각화를 위한 세부옵션은 아래의 코드를 참고하라.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> ggplot(tidydata)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>point <span class="op">=</span> geom_point(aes(x<span class="op">=</span><span class="st">'GKAbility'</span>,y<span class="op">=</span><span class="st">'Overall'</span>,size<span class="op">=</span><span class="st">'logWage'</span>,alpha<span class="op">=</span><span class="st">'logWage'</span>,color<span class="op">=</span><span class="st">'Position'</span>),position<span class="op">=</span><span class="st">'jitter'</span>)</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>smooth <span class="op">=</span> geom_smooth(aes(x<span class="op">=</span><span class="st">'GKAbility'</span>,y<span class="op">=</span><span class="st">'Overall'</span>),linetype<span class="op">=</span><span class="st">'dashed'</span>)</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>facet <span class="op">=</span> facet_wrap(<span class="st">'Position'</span>,scales<span class="op">=</span><span class="st">'free'</span>)</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">+</span> point <span class="op">+</span> smooth <span class="op">+</span> facet</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> ggplot(tidydata)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>point <span class="op">=</span> geom_point(aes(x<span class="op">=</span><span class="st">'GKAbility'</span>,y<span class="op">=</span><span class="st">'Overall'</span>,size<span class="op">=</span><span class="st">'logWage'</span>,alpha<span class="op">=</span><span class="st">'logWage'</span>,color<span class="op">=</span><span class="st">'Position'</span>),position<span class="op">=</span><span class="st">'jitter'</span>)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>smooth <span class="op">=</span> geom_smooth(aes(x<span class="op">=</span><span class="st">'GKAbility'</span>,y<span class="op">=</span><span class="st">'Overall'</span>),linetype<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>facet <span class="op">=</span> facet_wrap(<span class="st">'Position'</span>,scales<span class="op">=</span><span class="st">'free'</span>)</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">+</span> point <span class="op">+</span> smooth <span class="op">+</span> facet</span></code></pre></div>
 </section>
 <section id="포워드와-수비수의-기술별-가치-평가-25점" class="level2">
 <h2 class="anchored" data-anchor-id="포워드와-수비수의-기술별-가치-평가-25점"><code>(4)</code> 포워드와 수비수의 기술별 가치 평가 – 25점</h2>
 <p>아래는 축구선수의 능력치와 관련이 있는 column들의 리스트이다. (골키퍼 관련 능력치는 제외하였음)</p>
 <div id="3143913c-b295-4107-93b1-d37eabfa356d" class="cell" data-tags="[]" data-execution_count="103">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>abilities_list <span class="op">=</span> [<span class="st">'Crossing'</span>, <span class="st">'Finishing'</span>, <span class="st">'HeadingAccuracy'</span>, <span class="st">'ShortPassing'</span>, <span class="st">'Volleys'</span>, <span class="st">'Dribbling'</span>, <span class="st">'Curve'</span>, <span class="st">'FKAccuracy'</span>, <span class="st">'LongPassing'</span>, <span class="st">'BallControl'</span>, <span class="st">'Acceleration'</span>, <span class="st">'SprintSpeed'</span>, <span class="st">'Agility'</span>, <span class="st">'Reactions'</span>, <span class="st">'Balance'</span>, <span class="st">'ShotPower'</span>, <span class="st">'Jumping'</span>, <span class="st">'Stamina'</span>, <span class="st">'Strength'</span>, <span class="st">'LongShots'</span>, <span class="st">'Aggression'</span>, <span class="st">'Interceptions'</span>, <span class="st">'Positioning'</span>, <span class="st">'Vision'</span>, <span class="st">'Penalties'</span>, <span class="st">'Composure'</span>, <span class="st">'StandingTackle'</span>, <span class="st">'SlidingTackle'</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>abilities_list <span class="op">=</span> [<span class="st">'Crossing'</span>, <span class="st">'Finishing'</span>, <span class="st">'HeadingAccuracy'</span>, <span class="st">'ShortPassing'</span>, <span class="st">'Volleys'</span>, <span class="st">'Dribbling'</span>, <span class="st">'Curve'</span>, <span class="st">'FKAccuracy'</span>, <span class="st">'LongPassing'</span>, <span class="st">'BallControl'</span>, <span class="st">'Acceleration'</span>, <span class="st">'SprintSpeed'</span>, <span class="st">'Agility'</span>, <span class="st">'Reactions'</span>, <span class="st">'Balance'</span>, <span class="st">'ShotPower'</span>, <span class="st">'Jumping'</span>, <span class="st">'Stamina'</span>, <span class="st">'Strength'</span>, <span class="st">'LongShots'</span>, <span class="st">'Aggression'</span>, <span class="st">'Interceptions'</span>, <span class="st">'Positioning'</span>, <span class="st">'Vision'</span>, <span class="st">'Penalties'</span>, <span class="st">'Composure'</span>, <span class="st">'StandingTackle'</span>, <span class="st">'SlidingTackle'</span>]</span></code></pre></div>
 </div>
 <p>아래는 위의 <code>abilities_list</code>을 적당한 카테고리로 묶은 것이다.</p>
 <div id="71a844b1-d137-49c4-92bb-26dd70c6cf3b" class="cell" data-tags="[]" data-execution_count="104">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>abilities_categories <span class="op">=</span> {</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"FinishingSkills"</span>: [<span class="st">'Finishing'</span>, <span class="st">'HeadingAccuracy'</span>, <span class="st">'Volleys'</span>, <span class="st">'LongShots'</span>, <span class="st">'Positioning'</span>, <span class="st">'Vision'</span>, <span class="st">'Penalties'</span>, <span class="st">'ShotPower'</span>, <span class="st">'Jumping'</span>],</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"BallControl_Passing"</span>: [<span class="st">'Dribbling'</span>, <span class="st">'Curve'</span>, <span class="st">'Crossing'</span>,<span class="st">'ShortPassing'</span>, <span class="st">'LongPassing'</span>, <span class="st">'BallControl'</span>,<span class="st">'FKAccuracy'</span>],</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Speed_Stamina"</span>: [<span class="st">'Acceleration'</span>, <span class="st">'SprintSpeed'</span>, <span class="st">'Agility'</span>, <span class="st">'Stamina'</span>],</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Reactions_PhysicalAttributes"</span>: [<span class="st">'Reactions'</span>, <span class="st">'Balance'</span>, <span class="st">'Strength'</span>, <span class="st">'Composure'</span>],</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DefensiveSkills"</span>: [<span class="st">'Aggression'</span>, <span class="st">'Interceptions'</span>, <span class="st">'StandingTackle'</span>, <span class="st">'SlidingTackle'</span>]</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>abilities_categories <span class="op">=</span> {</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"FinishingSkills"</span>: [<span class="st">'Finishing'</span>, <span class="st">'HeadingAccuracy'</span>, <span class="st">'Volleys'</span>, <span class="st">'LongShots'</span>, <span class="st">'Positioning'</span>, <span class="st">'Vision'</span>, <span class="st">'Penalties'</span>, <span class="st">'ShotPower'</span>, <span class="st">'Jumping'</span>],</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"BallControl_Passing"</span>: [<span class="st">'Dribbling'</span>, <span class="st">'Curve'</span>, <span class="st">'Crossing'</span>,<span class="st">'ShortPassing'</span>, <span class="st">'LongPassing'</span>, <span class="st">'BallControl'</span>,<span class="st">'FKAccuracy'</span>],</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Speed_Stamina"</span>: [<span class="st">'Acceleration'</span>, <span class="st">'SprintSpeed'</span>, <span class="st">'Agility'</span>, <span class="st">'Stamina'</span>],</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Reactions_PhysicalAttributes"</span>: [<span class="st">'Reactions'</span>, <span class="st">'Balance'</span>, <span class="st">'Strength'</span>, <span class="st">'Composure'</span>],</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DefensiveSkills"</span>: [<span class="st">'Aggression'</span>, <span class="st">'Interceptions'</span>, <span class="st">'StandingTackle'</span>, <span class="st">'SlidingTackle'</span>]</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <p>선수들의 여러 능력치를 <code>abilities_categories</code>에 따라 통합하고 각 스킬 카테고리별로 선수의 능력치의 평균을 구하여 <code>SkillValueCategories</code>값에 저장하라. 정리된 자료의 예시는 아래와 같다.</p>
 <p><img src="2023-11-15-DV2023-09wk-1-mid.out_files/figure-html/2c71b882-b6f5-4277-bd71-fbea27d5ec25-2-09wk-1-mid_files/figure-ipynb/c9f24126-80dc-4096-b143-3e3fb3adb1c5-1-46ff6bfd-875c-40d3-b9d9-a7f795d896fa.png" class="img-fluid"></p>
@@ -2573,17 +3440,17 @@ dtype: object</code></pre>
 <p>마지막 row의 SkillValueCategories의 값은 아래와 같이 구하였다.</p>
 <p><span class="math display">\[14.250 = \frac{\text{259646선수의 Aggression}+\dots+\text{259646선수의 SlidingTackle}}{4}=\frac{24+6+14+13}{4} \]</span></p>
 <div id="b6f5f449-2595-41c3-b089-e2722b99d65e" class="cell" data-tags="[]" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">24</span><span class="op">+</span><span class="dv">6</span><span class="op">+</span><span class="dv">14</span><span class="op">+</span><span class="dv">13</span>)<span class="op">/</span><span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">24</span><span class="op">+</span><span class="dv">6</span><span class="op">+</span><span class="dv">14</span><span class="op">+</span><span class="dv">13</span>)<span class="op">/</span><span class="dv">4</span></span></code></pre></div>
 </div>
 <p><code>-</code> 시각화를 위해 아래의 코드를 참고하라.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> ggplot(tidydata.query(<span class="st">"Position=='FORWARD' or Position=='DEFENDER'"</span>))</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>point <span class="op">=</span> geom_point(aes(x<span class="op">=</span><span class="st">'SkillValueCategories'</span>,y<span class="op">=</span><span class="st">'logValue'</span>,color<span class="op">=</span><span class="st">'Position'</span>),alpha<span class="op">=</span><span class="fl">0.05</span>,size<span class="op">=</span><span class="fl">0.05</span>)</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>smooth <span class="op">=</span> geom_smooth(aes(x<span class="op">=</span><span class="st">'SkillValueCategories'</span>,y<span class="op">=</span><span class="st">'logValue'</span>,color<span class="op">=</span><span class="st">'Position'</span>))</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>facet <span class="op">=</span> facet_wrap(<span class="st">'SkillTypeCategories'</span>)</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> (fig <span class="op">+</span> point <span class="op">+</span> smooth <span class="op">+</span> facet).draw()</span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>fig.set_dpi(<span class="dv">150</span>)</span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>fig.set_size_inches(<span class="dv">8</span>,<span class="dv">5</span>)</span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> ggplot(tidydata.query(<span class="st">"Position=='FORWARD' or Position=='DEFENDER'"</span>))</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>point <span class="op">=</span> geom_point(aes(x<span class="op">=</span><span class="st">'SkillValueCategories'</span>,y<span class="op">=</span><span class="st">'logValue'</span>,color<span class="op">=</span><span class="st">'Position'</span>),alpha<span class="op">=</span><span class="fl">0.05</span>,size<span class="op">=</span><span class="fl">0.05</span>)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>smooth <span class="op">=</span> geom_smooth(aes(x<span class="op">=</span><span class="st">'SkillValueCategories'</span>,y<span class="op">=</span><span class="st">'logValue'</span>,color<span class="op">=</span><span class="st">'Position'</span>))</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>facet <span class="op">=</span> facet_wrap(<span class="st">'SkillTypeCategories'</span>)</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> (fig <span class="op">+</span> point <span class="op">+</span> smooth <span class="op">+</span> facet).draw()</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>fig.set_dpi(<span class="dv">150</span>)</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>fig.set_size_inches(<span class="dv">8</span>,<span class="dv">5</span>)</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
 </section>
 <section id="스킬-카테고리별-선수의-로그-연봉-분석-25점" class="level2">
 <h2 class="anchored" data-anchor-id="스킬-카테고리별-선수의-로그-연봉-분석-25점"><code>(5)</code> 스킬 카테고리별 선수의 로그 연봉 분석 – 25점</h2>
@@ -2593,13 +3460,13 @@ dtype: object</code></pre>
 <p><strong>세부지침</strong></p>
 <p><code>1</code>. <code>logValue</code>는 <code>pd.qcut</code>을 이용하여 분할하고 이때 <code>q=10</code>으로 설정하라.</p>
 <p><code>2</code>. 시각화를 위해 아래의 코드를 사용하라.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> ggplot(tidydata.query(<span class="st">"Position=='FORWARD'"</span>)) </span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>col <span class="op">=</span> geom_col(aes(x<span class="op">=</span><span class="st">'logValueCut'</span>,y<span class="op">=</span><span class="st">'SkillValueCategories'</span>,fill<span class="op">=</span><span class="st">'logValueCut'</span>),position<span class="op">=</span><span class="st">'dodge'</span>)</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>facet <span class="op">=</span> facet_wrap(<span class="st">'SkillTypeCategories'</span>)</span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> (fig <span class="op">+</span> col <span class="op">+</span> facet <span class="op">+</span> theme(axis_text_x<span class="op">=</span>element_blank(), axis_ticks<span class="op">=</span>element_blank())).draw()</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>fig.set_dpi(<span class="dv">150</span>)</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>fig.set_size_inches(<span class="dv">8</span>,<span class="dv">5</span>)</span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> ggplot(tidydata.query(<span class="st">"Position=='FORWARD'"</span>)) </span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>col <span class="op">=</span> geom_col(aes(x<span class="op">=</span><span class="st">'logValueCut'</span>,y<span class="op">=</span><span class="st">'SkillValueCategories'</span>,fill<span class="op">=</span><span class="st">'logValueCut'</span>),position<span class="op">=</span><span class="st">'dodge'</span>)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>facet <span class="op">=</span> facet_wrap(<span class="st">'SkillTypeCategories'</span>)</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> (fig <span class="op">+</span> col <span class="op">+</span> facet <span class="op">+</span> theme(axis_text_x<span class="op">=</span>element_blank(), axis_ticks<span class="op">=</span>element_blank())).draw()</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>fig.set_dpi(<span class="dv">150</span>)</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>fig.set_size_inches(<span class="dv">8</span>,<span class="dv">5</span>)</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div>
 </section>
 </section>
 <section id="시각화의-해석-30점" class="level1">
@@ -2608,30 +3475,30 @@ dtype: object</code></pre>
 <h2 class="anchored" data-anchor-id="심슨의-역설-10점"><code>(1)</code> 심슨의 역설 – 10점</h2>
 <p>다음은 농구선수 A,B 의 시즌별 자유투 성공률이다.</p>
 <div id="ebb96aa4-daa2-428a-a527-0a9d96409d77" class="cell" data-tags="[]" data-execution_count="784">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Player'</span>: [<span class="st">'A'</span>,<span class="st">'A'</span>,<span class="st">'A'</span>,<span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'B'</span>,<span class="st">'B'</span>,<span class="st">'B'</span>], </span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Season'</span>: [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>]<span class="op">*</span><span class="dv">2</span>,</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Status'</span>: [<span class="st">'Success'</span>,<span class="st">'Failure'</span>]<span class="op">*</span><span class="dv">4</span>,</span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Count'</span>: [<span class="dv">7</span>,<span class="dv">3</span>,<span class="va">None</span>,<span class="va">None</span>,<span class="va">None</span>,<span class="va">None</span>,<span class="dv">4</span>,<span class="dv">0</span>]</span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Player'</span>: [<span class="st">'A'</span>,<span class="st">'A'</span>,<span class="st">'A'</span>,<span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'B'</span>,<span class="st">'B'</span>,<span class="st">'B'</span>], </span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Season'</span>: [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>]<span class="op">*</span><span class="dv">2</span>,</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Status'</span>: [<span class="st">'Success'</span>,<span class="st">'Failure'</span>]<span class="op">*</span><span class="dv">4</span>,</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Count'</span>: [<span class="dv">7</span>,<span class="dv">3</span>,<span class="va">None</span>,<span class="va">None</span>,<span class="va">None</span>,<span class="va">None</span>,<span class="dv">4</span>,<span class="dv">0</span>]</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 </div>
 <p>적절한 값을 채워 시즌 1,2 모두 B선수의 자유투 성공률이 높지만 시즌1-2를 전체 합치면 A선수의 자유투 성공률이 더 높도록 하라. (즉 적절한 값을 채워 심슨의 역설을 설명하기 위한 자료를 구성하라.) 만들어진 자료를 바탕으로 심슨의 역설을 시각화하라. (즉 시즌별 자유투 성공률과 전체 자유투 성공률을 barplot으로 시각화하라)</p>
 </section>
 <section id="histogram-equalization-5점" class="level2">
 <h2 class="anchored" data-anchor-id="histogram-equalization-5점"><code>(2)</code> Histogram Equalization – 5점</h2>
 <div id="b0e92d13-8f23-4190-8820-f09ce79fc2ee" class="cell" data-tags="[]" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Unequalized_Hawkes_Bay_NZ.jpg/300px-Unequalized_Hawkes_Bay_NZ.jpg'</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>img_before <span class="op">=</span> np.array(PIL.Image.<span class="bu">open</span>(io.BytesIO(requests.get(url).content)))</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>img_after <span class="op">=</span> cv2.equalizeHist(img_before)</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>)</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].imshow(img_before,cmap<span class="op">=</span><span class="st">'gray'</span>,vmax<span class="op">=</span><span class="dv">255</span>,vmin<span class="op">=</span><span class="dv">0</span>)<span class="op">;</span> ax[<span class="dv">0</span>,<span class="dv">0</span>].set_title(<span class="st">"(a) before: image"</span>)</span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].imshow(img_after,cmap<span class="op">=</span><span class="st">'gray'</span>,vmax<span class="op">=</span><span class="dv">255</span>,vmin<span class="op">=</span><span class="dv">0</span>)<span class="op">;</span> ax[<span class="dv">0</span>,<span class="dv">1</span>].set_title(<span class="st">"(b) after: image"</span>)</span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].hist(img_before.reshape(<span class="op">-</span><span class="dv">1</span>), bins<span class="op">=</span><span class="dv">255</span>)<span class="op">;</span> ax[<span class="dv">1</span>,<span class="dv">0</span>].set_title(<span class="st">"(c) before: histogram"</span>)</span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].hist(img_after.reshape(<span class="op">-</span><span class="dv">1</span>), bins<span class="op">=</span><span class="dv">255</span>)<span class="op">;</span> ax[<span class="dv">1</span>,<span class="dv">1</span>].set_title(<span class="st">"(d) after: histogram"</span>)</span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Unequalized_Hawkes_Bay_NZ.jpg/300px-Unequalized_Hawkes_Bay_NZ.jpg'</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>img_before <span class="op">=</span> np.array(PIL.Image.<span class="bu">open</span>(io.BytesIO(requests.get(url).content)))</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>img_after <span class="op">=</span> cv2.equalizeHist(img_before)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].imshow(img_before,cmap<span class="op">=</span><span class="st">'gray'</span>,vmax<span class="op">=</span><span class="dv">255</span>,vmin<span class="op">=</span><span class="dv">0</span>)<span class="op">;</span> ax[<span class="dv">0</span>,<span class="dv">0</span>].set_title(<span class="st">"(a) before: image"</span>)</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].imshow(img_after,cmap<span class="op">=</span><span class="st">'gray'</span>,vmax<span class="op">=</span><span class="dv">255</span>,vmin<span class="op">=</span><span class="dv">0</span>)<span class="op">;</span> ax[<span class="dv">0</span>,<span class="dv">1</span>].set_title(<span class="st">"(b) after: image"</span>)</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].hist(img_before.reshape(<span class="op">-</span><span class="dv">1</span>), bins<span class="op">=</span><span class="dv">255</span>)<span class="op">;</span> ax[<span class="dv">1</span>,<span class="dv">0</span>].set_title(<span class="st">"(c) before: histogram"</span>)</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].hist(img_after.reshape(<span class="op">-</span><span class="dv">1</span>), bins<span class="op">=</span><span class="dv">255</span>)<span class="op">;</span> ax[<span class="dv">1</span>,<span class="dv">1</span>].set_title(<span class="st">"(d) after: histogram"</span>)</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-11-15-DV2023-09wk-1-mid.out_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
+<p><img src="2023-11-15-DV2023-09wk-1-mid.out_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>위의 그림을 올바르게 해석한 사람을 모두 고르라. (모두 맞출 경우만 정답으로 인정)</p>
@@ -2645,25 +3512,25 @@ dtype: object</code></pre>
 <section id="엔스콤의-플랏-5점" class="level2">
 <h2 class="anchored" data-anchor-id="엔스콤의-플랏-5점"><code>(3)</code> 엔스콤의 플랏 – 5점</h2>
 <div id="a1602661-1b18-4c3d-80d2-c2052b98eb7e" class="cell" data-tags="[]" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>]</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> [<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>]</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>y2 <span class="op">=</span> [<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.10</span>, <span class="fl">6.13</span>, <span class="fl">3.10</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>]</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>y3 <span class="op">=</span> [<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>]</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>x4 <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>]</span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>y4 <span class="op">=</span> [<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>]</span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>fig, ((ax1,ax2),(ax3,ax4)) <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>)</span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>ax1.plot(x,y1,<span class="st">'.'</span>) </span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"(a)"</span>)</span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>ax2.plot(x,y2,<span class="st">'.'</span>) </span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"(b)"</span>)</span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>ax3.plot(x,y3,<span class="st">'.'</span>)<span class="op">;</span> ax3.plot(x[<span class="dv">2</span>],y3[<span class="dv">2</span>],<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'C1'</span>) </span>
-<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>ax3.set_title(<span class="st">"(c)"</span>)</span>
-<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>ax4.plot(x4,y4,<span class="st">'.'</span>)<span class="op">;</span> ax4.plot(x4[<span class="op">-</span><span class="dv">4</span>],y4[<span class="op">-</span><span class="dv">4</span>],<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
-<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>ax4.set_title(<span class="st">"(d)"</span>)</span>
-<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"Anscombe's quartet"</span>,size<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>]</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> [<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>]</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>y2 <span class="op">=</span> [<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.10</span>, <span class="fl">6.13</span>, <span class="fl">3.10</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>]</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>y3 <span class="op">=</span> [<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>]</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>x4 <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>]</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>y4 <span class="op">=</span> [<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>]</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>fig, ((ax1,ax2),(ax3,ax4)) <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>ax1.plot(x,y1,<span class="st">'.'</span>) </span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"(a)"</span>)</span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>ax2.plot(x,y2,<span class="st">'.'</span>) </span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"(b)"</span>)</span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a>ax3.plot(x,y3,<span class="st">'.'</span>)<span class="op">;</span> ax3.plot(x[<span class="dv">2</span>],y3[<span class="dv">2</span>],<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'C1'</span>) </span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a>ax3.set_title(<span class="st">"(c)"</span>)</span>
+<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a>ax4.plot(x4,y4,<span class="st">'.'</span>)<span class="op">;</span> ax4.plot(x4[<span class="op">-</span><span class="dv">4</span>],y4[<span class="op">-</span><span class="dv">4</span>],<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
+<span id="cb58-15"><a href="#cb58-15" aria-hidden="true" tabindex="-1"></a>ax4.set_title(<span class="st">"(d)"</span>)</span>
+<span id="cb58-16"><a href="#cb58-16" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"Anscombe's quartet"</span>,size<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb58-17"><a href="#cb58-17" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-11-15-DV2023-09wk-1-mid.out_files/figure-html/cell-37-output-1.png" class="img-fluid"></p>
+<p><img src="2023-11-15-DV2023-09wk-1-mid.out_files/figure-html/cell-42-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>위의 그림을 올바르게 해석한 사람을 모두 고르라. (모두 맞출경우만 정답으로 인정)</p>
@@ -2677,10 +3544,10 @@ dtype: object</code></pre>
 <section id="아이스크림을-많이-먹으면-걸리는-병-5점" class="level2">
 <h2 class="anchored" data-anchor-id="아이스크림을-많이-먹으면-걸리는-병-5점"><code>(4)</code> 아이스크림을 많이 먹으면 걸리는 병 – 5점</h2>
 <div id="19032366-cfb4-44fe-a0ee-33e09b749856" class="cell" data-tags="[]" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/DV2022/master/posts/icecream.csv'</span>)</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>ggplot(data<span class="op">=</span>df.assign(temp<span class="op">=</span>pd.cut(df.temp,[<span class="op">-</span>np.inf,<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">20</span>,<span class="dv">25</span>,<span class="dv">30</span>,np.inf])))<span class="op">\</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="op">+</span>geom_point(aes(x<span class="op">=</span><span class="st">'icecream'</span>,y<span class="op">=</span><span class="st">'disease'</span>,color<span class="op">=</span><span class="st">'temp'</span>))<span class="op">\</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="op">+</span>geom_smooth(aes(x<span class="op">=</span><span class="st">'icecream'</span>,y<span class="op">=</span><span class="st">'disease'</span>,color<span class="op">=</span><span class="st">'temp'</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/DV2022/master/posts/icecream.csv'</span>)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>ggplot(data<span class="op">=</span>df.assign(temp<span class="op">=</span>pd.cut(df.temp,[<span class="op">-</span>np.inf,<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">20</span>,<span class="dv">25</span>,<span class="dv">30</span>,np.inf])))<span class="op">\</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="op">+</span>geom_point(aes(x<span class="op">=</span><span class="st">'icecream'</span>,y<span class="op">=</span><span class="st">'disease'</span>,color<span class="op">=</span><span class="st">'temp'</span>))<span class="op">\</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="op">+</span>geom_smooth(aes(x<span class="op">=</span><span class="st">'icecream'</span>,y<span class="op">=</span><span class="st">'disease'</span>,color<span class="op">=</span><span class="st">'temp'</span>))</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/home/cgb2/anaconda3/envs/ag/lib/python3.10/site-packages/plotnine/stats/smoothers.py:330: PlotnineWarning: Confidence intervals are not yet implemented for lowess smoothings.
 /home/cgb2/anaconda3/envs/ag/lib/python3.10/site-packages/plotnine/stats/smoothers.py:330: PlotnineWarning: Confidence intervals are not yet implemented for lowess smoothings.
@@ -2691,7 +3558,7 @@ dtype: object</code></pre>
 /home/cgb2/anaconda3/envs/ag/lib/python3.10/site-packages/plotnine/stats/smoothers.py:330: PlotnineWarning: Confidence intervals are not yet implemented for lowess smoothings.</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-11-15-DV2023-09wk-1-mid.out_files/figure-html/cell-38-output-2.png" class="img-fluid"></p>
+<p><img src="2023-11-15-DV2023-09wk-1-mid.out_files/figure-html/cell-43-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>아래의 그림을 보고 올바르게 해석한 사람을 모두 고르라. (모두 맞출경우만 정답으로 인정)</p>
