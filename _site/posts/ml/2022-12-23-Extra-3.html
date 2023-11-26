@@ -1,0 +1,2051 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.315">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="SEOYEON CHOI">
+<meta name="dcterms.date" content="2022-12-21">
+
+<title>Seoyeon’s Blog for classes - Extra-3: 딥러닝의 기초 (5)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Seoyeon’s Blog for classes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../about.html" aria-current="page"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/seoyeonc/md/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/ml/index.html">Special Topics in Machine Learning</a></li><li class="breadcrumb-item"><a href="../../posts/ml/2022-12-23-Extra-3.html">Extra-3: 딥러닝의 기초 (5)</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/ml/index.html">Special Topics in Machine Learning</a></li><li class="breadcrumb-item"><a href="../../posts/ml/2022-12-23-Extra-3.html">Extra-3: 딥러닝의 기초 (5)</a></li></ol></nav>
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Extra-3: 딥러닝의 기초 (5)</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">딥러닝의 기초</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>SEOYEON CHOI </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 21, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ml_basic/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Machine Learning basic</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-23-Support Vector Machine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support Vector Machine</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-28-Linear Regression, Logistic Regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logistic Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-28-Principal Component Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Principal Component Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-29-Lasso and Ridge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lasso and Ridge</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-03-31-Ridge Regression_note3_0331.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ridge Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-04-02-Ensemble and Random Forest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ensemble and Random Forest</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-04-09-Clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clustering</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-09-EM_algorithm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Expectation Maximization(EM algorithm)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-20-Manifold learning Embedding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manifold learning Embedding</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Attention Mechanism.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Attention Mechanism</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Sequence-to-Sequence, seq2seq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sequence-to-Sequence, seq2seq</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Transformer Chatbot Tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transformer Chatbot Tutorial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-05-28-Transformers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transformers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml_basic/2023-06-15-Laplace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Laplace Distribution</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/rl/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-09-21-rl_CH03, CH04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH03, CH04</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-09-21-rl_HW1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-10-23-rl-HW2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-14-rl_CH06, CH07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH06, CH07</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-21-rl-HW3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-23-rl-CH10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-11-28-rl-CH13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH13</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-05-rl-CH11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 실습 CH11</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-08-rl-HW4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression HW 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2022-12-11-rl-Ch10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">고급회귀분석 CH10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-22-rl-mid_term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis Mid Term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-02-23-rl-final_term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis Final Term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/rl/2023-03-02-graduation_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Regression Analysis GT</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ml/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Special Topics in Machine Learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-07-ml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-07-ml_1w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (1주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-14-ml_2w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (2주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-19-Assignment-1-Copy1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-21-ml_3w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (3주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-09-29-ml_4w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (4주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-05-ml-5w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (5주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-05-ml-HW.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homework</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-12-ml-6w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DNN (6주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-19-ml_7w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNN (7주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-26-ml_8w_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNN (8주차) 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-10-26-ml_8w_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNN (8주차) 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-02-ml_9w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (9주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-02-ml-midterm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Midterm</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-09-ml-10w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (10주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-21-ml-11w.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (11주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-29-13wk-2-final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deep Learning final example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-11-30-12wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (12주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-07-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A1: 깊은복사와 얕은복사 (12주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-08-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RNN (13주차)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-13-final_seoyeon.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Finalterm</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-14-study.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">study</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-21-Extra-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra-1: 추천시스템</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-21-Extra-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra-2: 생성모형(GAN)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ml/2022-12-23-Extra-3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Extra-3: 딥러닝의 기초 (5)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ap/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Probability Theory</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01wk-2: 강의소개</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-07-ap_1wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1주차: 측도론</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-09-2wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02wk-1: 측도론 intro (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-14-2wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02wk-2: 측도론 intro (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-14-ap-02wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02wk: 측도론 intro (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-16-3wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03wk-1: 측도론 intro (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-21-3wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03wk-2: 측도론 intro (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-21-ap-03wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03wk: 측도론 intro (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-23-4wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04wk-1: 측도론 intro (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-28-4wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04wk-2: 측도론 intro (6)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-28-ap-04wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04wk: 측도론 intro (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-29-5wk-2-hw1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05wk-2: HW1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-03-30-5wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05wk-1: 마코프체인 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-05-ap-05wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05wk: 측도론 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06wk-2: 중간고사</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-11-ap-06wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06wk: 측도론 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-13-7wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07wk-1: 마코프체인 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-13-7wk-2.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07wk-2: 마코프체인 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-18-ap-07wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7wk: 측도론 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-20-8wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08wk-1: 마코프체인 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-25-8wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08wk-2: 마코프체인 (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-25-ap-08wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08wk: 측도론 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-04-27-9wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09wk-1: 마코프체인 (6)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-02-ap-09wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09wk: 확률변수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-09-10wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10wk-2: 마코프체인 (7)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-09-ap-10wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10wk: 분포, 분포함수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-11-11wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11wk-1: 마코프체인 (8)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-16-11wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11wk-2: 마코프체인 (9)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-16-ap-11wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11wk: 적분 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-18-12wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12wk-1: 마코프체인 (10)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-23-12wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12wk-2: 마코프체인 (11)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-23-ap-12wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12wk: 적분 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-25-13wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13wk-1: 마코프체인 (12)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-30-13wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13wk-2: MCMC (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-05-30-ap-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13wk: 밀도함수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-01-14wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14wk-1,2: MCMC (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-06-ap-14wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14wk: 이산형과 연속형의 통합</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-08-15wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15wk-1: MCMC (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-13-fin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15wk: 기말고사</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ap/2023-06-20-15wk-2-fin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15wk-2: 기말고사</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/anything/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Anything</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-04-17-Survival_Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survival Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-04-20-hazard_ratio,odds_ratio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hazard ratio, Odds ratio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-04-27-Clinical Trial Data and Survival Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clinical Trial Data and Survival Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-05-04-questions of pytorch geometric temporal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Questions of PyTorch Geometric Temporal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-06-01-Survival_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survival Analysis Tutorial with R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-06-12-post_hoc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Post Hoc Tests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-06-12-Steady State.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Steady State</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-06-15-PK Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pharmacokinetic Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-11-15-DV2023-09wk-1-mid.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">STBDA2023 09wk-1: 중간고사_sy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/A1.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A1: 강화학습 (1) – bandit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/A2.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A2: 강화학습 (2) – 4x4 grid</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/A3.out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A3: 강화학습 (3) – LunarLander</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/as/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Special Topics in Applied Statistics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/as/2023-07-30-multicollinearity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multicollinearity</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ct/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding Test</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-01-Coding_Test_Greedy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 03 Greedy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-15-Coding_Test_Algorithm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Algorithm</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-15-Coding_Test_interfunction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">내장함수</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-21-Coding_Test_Q1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">성격 유형 검사하기(Done)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-23-Coding_Test_Q2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">두 큐 합 같게 만들기(Done)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-01-30-Coding_Test_Q3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">코딩 테스트 공부(Done)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-02-12-Coding_Test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ArrayList &amp; LinkedList</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-03-05-Coding_Test_Stack.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stack</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-03-12-Coding_Test_Queue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Queue</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-03-22-Coding_Test_Tree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tree</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ct/2023-08-26-Coding_Test_pp_hw.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>[Coding Test]</strong>Python Programming HW review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/ts/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2022-12-31-ts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">확률변수와 확률분포</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-05-ts_HW3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-09-ts_HW4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-12-ts_HW5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW5</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-14-ts_HW6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW6</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-14-ts_Mid term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics Mid term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-18-ts_HW7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW7</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-18-ts-HW8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW8</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-21-ts-HW9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics HW9</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-01-25-ts-final term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics Final term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-graduation_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics GT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ts/2023-03-03-ts-final_qanda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theoritical Statistics Final term 6 Explanation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">import</a></li>
+  <li><a href="#벡터미분" id="toc-벡터미분" class="nav-link" data-scroll-target="#벡터미분">벡터미분</a></li>
+  <li><a href="#체인룰" id="toc-체인룰" class="nav-link" data-scroll-target="#체인룰">체인룰</a>
+  <ul class="collapse">
+  <li><a href="#예시-2021-빅데이터분석-중간고사-문제-2-b" id="toc-예시-2021-빅데이터분석-중간고사-문제-2-b" class="nav-link" data-scroll-target="#예시-2021-빅데이터분석-중간고사-문제-2-b">예시: 2021 빅데이터분석 중간고사 문제 2-(b)</a></li>
+  <li><a href="#잠깐-생각해보자.." id="toc-잠깐-생각해보자.." class="nav-link" data-scroll-target="#잠깐-생각해보자..">잠깐 생각해보자..</a>
+  <ul class="collapse">
+  <li><a href="#backprogation-알고리즘-모티브" id="toc-backprogation-알고리즘-모티브" class="nav-link" data-scroll-target="#backprogation-알고리즘-모티브">backprogation 알고리즘 모티브</a></li>
+  <li><a href="#backpropagation" id="toc-backpropagation" class="nav-link" data-scroll-target="#backpropagation">backpropagation</a></li>
+  </ul></li>
+  <li><a href="#some-comments" id="toc-some-comments" class="nav-link" data-scroll-target="#some-comments">some comments</a></li>
+  </ul></li>
+  <li><a href="#기울기소멸" id="toc-기울기소멸" class="nav-link" data-scroll-target="#기울기소멸">기울기소멸</a>
+  <ul class="collapse">
+  <li><a href="#고요속의-외침" id="toc-고요속의-외침" class="nav-link" data-scroll-target="#고요속의-외침">고요속의 외침</a></li>
+  <li><a href="#정의" id="toc-정의" class="nav-link" data-scroll-target="#정의">정의</a></li>
+  <li><a href="#이해" id="toc-이해" class="nav-link" data-scroll-target="#이해">이해</a></li>
+  <li><a href="#해결책-기울기-소멸에-대한-해결책" id="toc-해결책-기울기-소멸에-대한-해결책" class="nav-link" data-scroll-target="#해결책-기울기-소멸에-대한-해결책">해결책 (기울기 소멸에 대한 해결책)</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2022-12-23-Extra-3.out.ipynb" download="2022-12-23-Extra-3.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<blockquote class="blockquote">
+<p>벡터미분, 역전파와 기울기 소멸</p>
+</blockquote>
+<p>기울기 소멸: loss 를 W로 미분했더니 그 값이 거의 0ㅇ이 나오는 현상 <span class="math inline">\(\to\)</span> update가 거의 이루어지지 않음</p>
+<p>이유 - W -&gt; loss인 함수는 W에 어떤한 선형변환 <span class="math inline">\(\to\)</span> 비선형변환 <span class="math inline">\(\to\)</span> 선형변환 <span class="math inline">\(\to\)</span> 비선형변환 <span class="math inline">\(\to \dots\)</span> <span class="math inline">\(\to\)</span> loss 의 과정으로 해석 가능 - 즉 loss는 W의 합성의 합섭ㅇ의… 합성함수로 해석가능 - loss 를 W로 미분한 값은 각 변환단ㅇ계에서 정의되는 함수의 도함수를 모두 곱한 것과 같음(체인룰) - 체인 중에서도 하나라도 0이 나오면 곱한 값은 0 이다. - 체인이 길수록 하나라도 0이 나오는 경우가 많음</p>
+<p>왜 깊은 신경망일수록 기울기 소멸이 빈번한가? - 체인이 길기 때문에.</p>
+<p>왜 순환신경망일수록 기울기 소멸이 빈번할까&gt;? - 체인이 길기 때문에.</p>
+<section id="import" class="level1">
+<h1>import</h1>
+<div id="217616da-3e8c-4391-b402-65b3f42d71bd" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch </span></code></pre></div>
+</div>
+</section>
+<section id="벡터미분" class="level1">
+<h1>벡터미분</h1>
+<p><code>-</code> 벡터미분에 대한 강의노트:</p>
+<ul>
+<li><a href="https://github.com/guebin/STML2022/blob/main/posts/II.%20DNN/supp.pdf" class="uri">https://github.com/guebin/STML2022/blob/main/posts/II.%20DNN/supp.pdf</a></li>
+</ul>
+<p><code>-</code> 요약: 회귀분석에서 손실함수에 대한 미분은 아래와 같은 과정으로 계산할 수 있다.</p>
+<ul>
+<li><p><span class="math inline">\(loss = ({\bf y}-{\bf X}{\bf W})^\top ({\bf y}-{\bf X}{\bf W})={\bf y}^\top {\bf y} - {\bf y}^\top {\bf X}{\bf W} - {\bf W}^\top {\bf X}^\top {\bf y} + {\bf W}^\top {\bf X}^\top {\bf X} {\bf W}\)</span></p></li>
+<li><p><span class="math inline">\(\frac{\partial }{\partial {\bf W}}loss = -2{\bf X}^\top {\bf y} +2 {\bf X}^\top {\bf X} {\bf W}\)</span></p></li>
+</ul>
+<hr>
+<p><code>-</code> 모형의 매트릭스화</p>
+<p>우리의 모형은 아래와 같다.</p>
+<p><span class="math inline">\(y_i = \beta_0 + \beta_1 x_i + \epsilon_i, \quad i=1,2,\dots,10\)</span></p>
+<p>풀어서 쓰면</p>
+<p><span class="math inline">\(\begin{cases} y_1 = \beta_0 +\beta_1 x_1 + \epsilon_1 \\ y_2 = \beta_0 +\beta_1 x_2 + \epsilon_2 \\ \dots \\ y_{10} = \beta_0 +\beta_1 x_{10} + \epsilon_{10} \end{cases}\)</span></p>
+<p>아래와 같이 쓸 수 있다.</p>
+<p><span class="math inline">\(\begin{bmatrix} y_1 \\ y_2 \\ \dots \\ y_{10} \end{bmatrix} = \begin{bmatrix} 1 &amp; x_1 \\ 1 &amp; x_2 \\ \dots &amp; \dots \\ 1 &amp; x_{10} \end{bmatrix}\begin{bmatrix}\beta_0 \\ \beta_1 \end{bmatrix} + \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \dots \\ \epsilon_{10} \end{bmatrix}\)</span></p>
+<p>벡터와 매트릭스 형태로 정리하면</p>
+<p><span class="math inline">\({\bf y} = {\bf X} {\boldsymbol \beta} + \boldsymbol{\epsilon}\)</span></p>
+<p><code>-</code> 손실함수의 매트릭스화: 우리가 최소화 하려던 손실함수는 아래와 같다.</p>
+<p><span class="math inline">\(loss=\sum_{i=1}^{n}(y_i-\beta_0-\beta_1x_i)^2\)</span></p>
+<p>이것을 벡터표현으로 하면 아래와 같다.</p>
+<p><span class="math inline">\(loss=\sum_{i=1}^{n}(y_i-\beta_0-\beta_1x_i)^2=({\bf y}-{\bf X}{\boldsymbol \beta})^\top({\bf y}-{\bf X}{\boldsymbol \beta})\)</span></p>
+<p>풀어보면</p>
+<p><span class="math inline">\(loss=({\bf y}-{\bf X}{\boldsymbol \beta})^\top({\bf y}-{\bf X}{\boldsymbol \beta})={\bf y}^\top {\bf y} - {\bf y}^\top {\bf X}{\boldsymbol\beta} - {\boldsymbol\beta}^\top {\bf X}^\top {\bf y} + {\boldsymbol\beta}^\top {\bf X}^\top {\bf X} {\boldsymbol\beta}\)</span></p>
+<p><code>-</code> 미분하는 과정의 매트릭스화</p>
+<p>loss를 최소화하는 <span class="math inline">\({\boldsymbol \beta}\)</span>를 구해야하므로 loss를 <span class="math inline">\({\boldsymbol \beta}\)</span>로 미분한 식을 0이라고 놓고 풀면 된다.</p>
+<p><span class="math inline">\(\frac{\partial}{\partial \boldsymbol{\beta}} loss = \frac{\partial}{\partial \boldsymbol{\beta}} {\bf y}^\top {\bf y} - \frac{\partial}{\partial \boldsymbol{\beta}} {\bf y}^\top {\bf X}{\boldsymbol\beta} - \frac{\partial}{\partial \boldsymbol{\beta}} {\boldsymbol\beta}^\top {\bf X}^\top {\bf y} + \frac{\partial}{\partial \boldsymbol{\beta}} {\boldsymbol\beta}^\top {\bf X}^\top {\bf X} {\boldsymbol\beta}\)</span></p>
+<p><span class="math inline">\(= 0 - {\bf X}^\top {\bf y}- {\bf X}^\top {\bf y} + 2{\bf X}^\top {\bf X}{\boldsymbol\beta}\)</span></p>
+<p>따라서 <span class="math inline">\(\frac{\partial}{\partial \boldsymbol{\beta}}loss=0\)</span>을 풀면 아래와 같다.</p>
+<p><span class="math inline">\(\boldsymbol{\hat\beta}= ({\bf X}^\top {\bf X})^{-1}{\bf X}^\top {\bf y}\)</span></p>
+<p><code>-</code> 공식도 매트릭스로 표현하면: <span class="math inline">\(\boldsymbol{\hat\beta}= ({\bf X}^\top {\bf X})^{-1}{\bf X}^\top {\bf y}\)</span> &lt;– 외우세요</p>
+<hr>
+<p><strong>벡터미분 / 매트릭스 미분</strong></p>
+<ol type="1">
+<li>정의 1: 벡터로 미분</li>
+</ol>
+<p><span class="math inline">\(\frac{\partial}{\partial y} = \begin{bmatrix} \frac{\partial}{\partial y_1} \\ \vdots \\ \frac{\partial}{\partial y_n} \end{bmatrix}\)</span> , <span class="math inline">\(y = \begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix}\)</span></p>
+<ol start="2" type="1">
+<li>정의 2: 매트릭스로 미분</li>
+</ol>
+<p><span class="math inline">\(\frac{\partial}{\partial \bf{X} } := \begin{bmatrix} \frac{\partial}{\partial x_{11} } &amp; \dots &amp; \frac{\partial}{\partial x_{1p} } \\ \vdots &amp; &amp; \vdots \\ \frac{\partial}{\partial x_{n1} } &amp; \dots &amp; \frac{\partial}{\partial x_{np} } \end{bmatrix}, \bf{X} = \begin{bmatrix} x_{11} &amp; \dots &amp; x_{1p} \\ \vdots &amp; &amp; \vdots \\ x_{n1} &amp; \dots &amp; x_{np} \end{bmatrix}\)</span></p>
+<p><code>1</code></p>
+<p><span class="math inline">\(\frac{\partial}{\partial x}(x^\top y) = y\)</span>, 단 <span class="math inline">\(x = \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}, y = \begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix}\)</span></p>
+<p>pf. <span class="math inline">\(\bf{x}^\top \bf{y} = \begin{bmatrix} x_1 &amp; \dots x_n \end{bmatrix} \begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix} = x_1 y_1 + x_2 y_2 + \dots + x_n y_n\)</span></p>
+<p><span class="math inline">\(\frac{\partial}{\partial x} = \begin{bmatrix} \frac{\partial}{\partial x_1} \\ \vdots \\ \frac{\partial}{\partial x_n} \end{bmatrix}\)</span> 이므로</p>
+<p><span class="math inline">\(\big( \frac{\partial}{\partial x} \big) x^\top y = \begin{bmatrix} \frac{\partial}{\partial x_1} \\ \vdots \\ \frac{\partial}{\partial x_n} \end{bmatrix} (x_1 y_1 + x_2 y_2 + \dots + x_n y_n)\)</span></p>
+<p><span class="math inline">\(= \begin{bmatrix} \frac{\partial}{\partial x_1}(x_1y_1 + \dots + x_n y_n) \\ \vdots \\ \frac{\partial}{\partial x_n}(x_1y_1 + \dots + x_n y_n) \end{bmatrix} = \begin{bmatrix} \frac{\partial}{\partial x_1} x_1 y_1 + \frac{\partial}{\partial x_1}x_2 y_2 + \dots + \frac{\partial}{\partial x_1}x_n y_n \\ \vdots \\ \frac{\partial}{\partial x_n} x_1 y_1 + \frac{\partial}{\partial x_n}x_2 y_2 + \dots + \frac{\partial}{\partial x_n}x_n y_n \end{bmatrix}\)</span></p>
+<p><span class="math inline">\(= \begin{bmatrix} y_1 + 0 + \dots + 0 \\ \vdots \\ 0+0+ \dots + y_n \end{bmatrix} = \begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix} = \bf{y}\)</span></p>
+<p><code>2</code> <span class="math inline">\(\frac{\partial}{\partial x}(\bf{x}^\top \bf{y}) = \bf{y}\)</span> 임을 보이는 다른 풀이</p>
+<p>pf. <span class="math inline">\(\frac{\partial}{\partial x} \big(\bf{x}^\top \bf{y} \big) = \big( \frac{\partial}{\partial x} x^\top \big) y = \bf{I} \bf{y} = \bf{y}\)</span></p>
+<p><span class="math inline">\(\frac{\partial}{\partial x} x^\top = \begin{bmatrix} \frac{\partial}{\partial x_1} \\ \vdots \\ \frac{\partial}{\partial x_n}\end{bmatrix} \begin{bmatrix} x_1 &amp; \dots &amp; x_n \end{bmatrix} = \begin{bmatrix} \frac{\partial}{\partial x_1} x_1 &amp; \dots &amp; \frac{\partial}{\partial x_n} x_n \\ \vdots &amp; &amp; \\ \frac{\partial}{\partial x_n} x_1 &amp; \dots &amp;\frac{\partial}{\partial x_n} x_n \end{bmatrix} = \bf{I}\)</span></p>
+<p><code>2</code> <span class="math inline">\(\frac{\partial}{\partial x}(\bf{y}^\top \bf{x} ) = \bf{y}\)</span></p>
+<p>pf. <span class="math inline">\(\frac{\partial}{\partial x}(\bf{y}^\top\bf{x}) = \frac{\partial}{\partial x}(\bf{x}^\top \bf{y}) = \bf{y}\)</span></p>
+<p><code>3</code> <span class="math inline">\(\frac{\partial}{\partial B}(\bf{y}^\top \bf{X} \bf{B}) = \bf{x}^\top \bf{y}\)</span></p>
+<p>단, <span class="math inline">\(\bf{B} := p \times 1\)</span> vector, <span class="math inline">\(\bf{X} := n \times p\)</span> matrix, <span class="math inline">\(\bf{y} := n \times 1\)</span> vector</p>
+<p>pf. <span class="math inline">\(\bf{y}^\top \bf{X} \bf{B}\)</span>는 스칼라(<span class="math inline">\(1 \times 1\)</span>)이므로 <span class="math inline">\(\bf{y}^\top\bf{X}\bf{B} = (\bf{y}^\top \bf{X} \bf{B})^\top = \bf{B}^\top \bf{X}^\top \bf{y}\)</span></p>
+<p><span class="math inline">\(\frac{\partial}{\partial \bf{B}}(\bf{y}^\top \bf{X} \bf{B}) = \frac{\partial}{\partial \bf{B}}(\bf{B}^\top \bf{X}^\top \bf{y}) = \big( \frac{\partial}{\partial \bf{B}} \bf{B}^\top \big) \bf{X}^\top \bf{y} = \bf{X}^\top \bf{y}\)</span></p>
+<p><code>(다른 풀이)</code> <span class="math inline">\(\frac{\partial}{\partial \bf{B}}(\bf{y}^\top \bf{X} \bf{B}) = \bf{X}^\top \bf{y}\)</span>임을 보이는 다른 풀이</p>
+<p><span class="math inline">\(\bf{XB} = \begin{bmatrix} x_{11} &amp; \dots &amp; x_{1p} \\ \vdots &amp; &amp; \vdots \\ x_{n1} &amp; \dots &amp; x_{np} \end{bmatrix} \begin{bmatrix} \beta_1 \\ \vdots \\ \beta_p \end{bmatrix} = \begin{bmatrix} x_{11}B_1 + \dots + x_{1p} B_p \\ x_{21}B_1 + \dots + x_{2p}B_p \\ \vdots \\ x_{n1} B_1 + \dots + x_{np} B_p \end{bmatrix}\)</span></p>
+<p><span class="math inline">\(\bf{y}^\top \bf{XB} = \begin{bmatrix} y_1 &amp; \dots y_n \end{bmatrix}\begin{bmatrix} x_{11}B_1 + \dots + x_{1p} B_p \\ x_{21}B_1 + \dots + x_{2p}B_p \\ \vdots \\ x_{n1} B_1 + \dots + x_{np} B_p \end{bmatrix}\)</span></p>
+<p><span class="math inline">\(= y_1(x_{11}B_1 + \dots + x_{1p}B_p) + y_2(x_{21}B_1 + \dots + x_{2p}B_p ) + \dots + y_n(x_{n1}B_1 + \dots + x_{np} B_p) = A_1 + A_2 + \dots A_n\)</span></p>
+<ul>
+<li>note: <span class="math inline">\(A_1, A_2, \dots\)</span>은 모두 스칼라(<span class="math inline">\(1 \times 1\)</span>)</li>
+</ul>
+<p><span class="math inline">\(\big( \frac{\partial}{\partial B} \big)(\bf{y}^\top \bf{XB}) = \begin{bmatrix} \frac{\partial}{\partial B_1} \\ \vdots \\\frac{\partial}{\partial B_p} \end{bmatrix}(A_1 + A_2 + \dots A_n)\)</span></p>
+<p><span class="math inline">\(= \begin{bmatrix}\frac{\partial}{\partial B_1} A_1 \\ \vdots \\ \frac{\partial}{\partial B_p} A_1 \end{bmatrix} + \begin{bmatrix} \frac{\partial}{\partial B_1} A_2 \\ \vdots \\ \frac{\partial}{\partial B_p} A_2 \end{bmatrix}+ \dots +\begin{bmatrix} \frac{\partial}{\partial B_1} A_n \\ \vdots \\ \frac{\partial}{\partial B_p} A_n \end{bmatrix}\)</span></p>
+<ul>
+<li><p><span class="math inline">\(\frac{\partial}{\partial B_1}A_1 = \frac{\partial}{\partial B_1}y_1(x_{11}B_1 + \dots + x_{1p}B_p) = y_1 x_{11} + 0 + \dots + 0\)</span></p></li>
+<li><p><span class="math inline">\(\frac{\partial}{\partial B_2}A_2 = \frac{\partial}{\partial B_2}y_1(x_{11}B_1 + \dots + x_{1p}B_p) = 0 + y_1 x_{12} + 0 + \dots + 0\)</span></p></li>
+</ul>
+<p><span class="math inline">\(= \begin{bmatrix} y_1 x_{11} \\ y_1 x_{12} \\ \vdots \\ y_1 x_{1p}\end{bmatrix} + \begin{bmatrix} y_2 x_{21} \\ y_2 x_{22} \\ \vdots \\ y_2 x_{2p} \end{bmatrix} + \dots + \begin{bmatrix} y_n x_{n1} \\ y_n x_{n2} \\ \vdots \\ y_n x_{np} \end{bmatrix}\)</span></p>
+<p><span class="math inline">\(= \begin{bmatrix} y_1 x_{11} + y_2 x_{21} + \dots + y_n x_{n1} \\ y_1 x_{12} + y_2 x_{22} + \dots + y_n x_{n2} \\ \vdots \\ y_1 x_{1p} + y_2 x_{2p} + \dots + y_n x_{np} \end{bmatrix} = \begin{bmatrix} x_{11} &amp; x_{21} &amp; \dots &amp; x_{n1} \\ x_{12} &amp; x_{22} &amp; \dots &amp; x_{n2} \\ \vdots &amp; \vdots &amp; &amp; \vdots \\ x_{1p} &amp; x_{2p} &amp; \dots &amp; x_{np} \end{bmatrix} \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix} = \bf{X}^\top \bf{y}\)</span></p>
+<p><code>4</code> <span class="math inline">\(\frac{\partial}{\partial y} \bf{y}^\top \bf{y} = 2\bf{y}\)</span></p>
+<p>pf. <span class="math inline">\(\bf{y}^\top \bf{y} = \begin{bmatrix} y_1 &amp; \dots &amp; y_n \end{bmatrix} \begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix} = y_{1}^{2} + \dots + y_{n}^{2}\)</span></p>
+<p><span class="math inline">\(\therefore \frac{\partial}{\partial y}(\bf{y}^\top y) = \frac{\partial}{\partial y}(y_{1}^{2} + \dots + y_{n}^{2}) = \begin{bmatrix} \frac{\partial}{\partial y_1} \\ \vdots \\ \frac{\partial}{\partial y_n} \end{bmatrix} (y_{1}^{2} + \dots + y_{n}^{2})\)</span></p>
+<p><span class="math inline">\(= \begin{bmatrix} \frac{\partial}{\partial y_1}(y_{1}^{2} + \dots + y_{n}^{2}) \\ \vdots \\ \frac{\partial}{\partial y_n}(y_{1}^{2} + \dots + y_{n}^{2}) \end{bmatrix} = \begin{bmatrix}2y_1 + 0 + \dots + 0 \\ 0 + 2y_2 + \dots + 0 \\ \vdots \\ 0 + 0 + \dots + 2y_n \end{bmatrix} = 2\begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix} = 2\bf{y}\)</span></p>
+<p>(틀린 풀이) <span class="math inline">\(\frac{\partial}{\partial y}(\bf{y}^\top \bf{y}) {\color{orange}=} \big( \frac{\partial}{\partial y} \bf{y}^\top \big) \bf{y}\)</span> 미분하는 값에 대해 상수일때만 가능</p>
+<p>그런데 <span class="math inline">\(\big(\frac{\partial}{\partial y}\bf{y}^\top \big) = \bf{I}\)</span>이므로, <span class="math inline">\(\frac{\partial}{\partial y} (\bf{y}^\top \bf{y}) = \bf{I} \bf{y} = \bf{y}\)</span></p>
+<p>(틀린 풀이의 스칼라 버전) <span class="math inline">\(\frac{d}{dy} y^2 = \big( \frac{d}{dy} y \big) y = 1 \times y = \bf{y}\)</span></p>
+<p>(올바른 풀이) : <span class="math inline">\(\frac{d}{dy} y^2 = \big( \frac{d}{dy} \big) {\color{red}y} {\color{blue}y} = \big( \frac{d}{dy} {\color{red}y} \big) {\color{blue}y} + {\color{red}y} \big( \frac{d}{dy} {\color{blue}y} \big)\)</span></p>
+<p>Note: 곱의 미분 : 함수 <span class="math inline">\(f(x), g(x)\)</span> 가 <span class="math inline">\(x\)</span>에 대하여 미분 가능하면 <span class="math inline">\(\{ {\color{red}f(x)} \times {\color{blue}g(x)} \}' = {\color{red}f(x)}'g{\color{blue}(x)} + {\color{red}f(x)}{\color{blue}g(x)}'\)</span></p>
+<ul>
+<li>여기서는 <span class="math inline">\({\color{red}y}\)</span>가 <span class="math inline">\(f(x)\)</span>, <span class="math inline">\({\color{blue}y}\)</span>가 <span class="math inline">\(g(x)\)</span></li>
+</ul>
+<p>다시 벡터로 돌아오자</p>
+<p>(올바른 풀이) <span class="math inline">\(\frac{\partial}{\partial y}({\color{red}y}^\top {\color{blue}y}) = A + B = \bf{I}{\color{red}y} + \bf{I}{\color{blue}y} = 2\bf{y}\)</span></p>
+<ul>
+<li><span class="math inline">\(A :=\)</span> 빨간 <span class="math inline">\(y\)</span>만 변수로 보고 미분</li>
+<li><span class="math inline">\(B :=\)</span> 파란 <span class="math inline">\(y\)</span>만 변수로 보고 미분</li>
+</ul>
+<p><span class="math inline">\(A = \big( \frac{\partial}{\partial y} {\color{red}y}^\top \big) {\color{blue}y} = \bf{I} {\color{blue}y}\)</span></p>
+<p><span class="math inline">\(B = \big( \frac{\partial}{\partial y} \big) ( {\color{red}y}^\top {\color{blue}y} )\)</span> 스칼라라 순서 변경 가능<span class="math inline">\(:= \big( \frac{\partial}{\partial y} \big) ({\color{blue}y}^\top {\color{red}y} \big) = ( \frac{\partial}{\partial y} {\color{blue}y}^\top \big) {\color{red}y} = \bf{I} {\color{red}y}\)</span></p>
+<p><code>5</code> <span class="math inline">\(\frac{\partial}{\partial B} \bf{B}^\top \bf{X}^\top \bf{X} \bf{B} = 2\bf{X}^\top \bf{XB}\)</span></p>
+<p>pf. <span class="math inline">\(\frac{\partial}{\partial B}({\color{red}B}^\top{\color{red}X}^\top {\color{blue}X} {\color{blue}B}) = A + B = \bf{I}\bf{X}^\top \bf{XB} + \bf{I}\bf{X}^\top\bf{XB} = 2\bf{X}^\top \bf{XB}\)</span></p>
+<p><span class="math inline">\(A = \big( \frac{\partial}{\partial B} {\color{red}B}^\top\big) \bf{X}^\top \bf{X} {\color{blue}B} = \bf{I} \bf{X}^\top \bf{X} {\color{red}B}\)</span></p>
+<p><span class="math inline">\(B = \big( \frac{\partial}{\partial B} \big) ( {\color{red}B}^\top \bf{X}^\top \bf{X} {\color{blue}B}) = \big(\frac{\partial}{\partial B} \big) ({\color{blue}B}^\top \bf{X}^\top \bf{X}{\color{red}B}) = \bf{I} \bf{X}^\top \bf{X} {\color{red}B}\)</span></p>
+<hr>
+<p><span class="math inline">\(loss = (\bf{y} - \bf{XB})^\top(\bf{y} - \bf{XB}) = \bf{y}\bf{y}^\top - \bf{y}^\top\bf{XB} - \bf{B}^\top\bf{X}^\top \bf{y} + \bf{B}^\top \bf{X}^\top \bf{XB}\)</span></p>
+<p><span class="math inline">\(\frac{\partial}{\partial B} loss = 0 - \frac{\partial}{\partial B} \bf{y}^\top \bf{XB} - \frac{\partial}{\partial B} \bf{B}^\top \bf{X}^\top \bf{y} + \frac{\partial}{\partial B} \bf{B}^\top \bf{X}^\top \bf{XB} = 0 - \bf{X}^\top \bf{y} - \bf{X}^\top \bf{y} + 2\bf{X}^\top \bf{XB} = - 2\bf{X}^\top \bf{y} + 2\bf{X}^\top \bf{XB}\)</span></p>
+<p><span class="math inline">\(\therefore \frac{\partial}{\partial B} loss = 0 \leftrightarrow 2\bf{X}^\top \bf{y} = 2\bf{X}^\top \bf{XB}\)</span></p>
+<p><span class="math inline">\(\therefore \hat{\bf{B}} = (\bf{X}^\top \bf{X})^{-1}\bf{X}^\top \bf{y}\)</span></p>
+<hr>
+</section>
+<section id="체인룰" class="level1">
+<h1>체인룰</h1>
+<p><code>-</code> 체인룰: 어려운 하나의 미분을 손쉬운 여러개의 미분으로 나누는 기법</p>
+<p><code>-</code> 손실함수가 사실 아래와 같은 변환을 거쳐서 계산되었다고 볼 수 있다.</p>
+<ul>
+<li><span class="math inline">\({\bf X} \to {\bf X}{\bf W} \to {\bf y} -{\bf X}{\bf W} \to ({\bf y}-{\bf X}{\bf W})^\top ({\bf y}-{\bf X}{\bf W})\)</span></li>
+</ul>
+<p><code>-</code> 위의 과정을 수식으로 정리해보면 아래와 같다.</p>
+<ul>
+<li><p><span class="math inline">\({\bf u}={\bf X}{\bf W}\)</span>, <span class="math inline">\(\quad {\bf u}: n \times 1\)</span></p></li>
+<li><p><span class="math inline">\({\bf v} = {\bf y}- {\bf u},\)</span> <span class="math inline">\(\quad {\bf v}: n \times 1\)</span></p></li>
+<li><p><span class="math inline">\(loss={\bf v}^\top {\bf v},\)</span> <span class="math inline">\(\quad loss: 1 \times 1\)</span></p></li>
+</ul>
+<p><code>-</code> 손실함수에 대한 미분은 아래와 같다.</p>
+<p><span class="math display">\[\frac{\partial }{\partial {\bf W}} loss = \frac{\partial }{\partial {\bf W}} {\bf v}^\top {\bf v}\]</span></p>
+<p>(그런데 이걸 어떻게 계산함?)</p>
+<p><code>-</code> 계산할 수 있는것들의 모음..</p>
+<ul>
+<li><p><span class="math inline">\(\frac{\partial}{\partial {\bf v}} loss = 2{\bf v}\)</span> <span class="math inline">\(\quad \to\)</span> (n,1) 벡터</p></li>
+<li><p><span class="math inline">\(\frac{\partial }{\partial {\bf u}} {\bf v}^\top = -{\bf I}\)</span> <span class="math inline">\(\quad \to\)</span> (n,n) 매트릭스</p></li>
+<li><p><span class="math inline">\(\frac{\partial }{\partial \bf W}{\bf u}^\top = {\bf X}^\top\)</span> <span class="math inline">\(\quad \to\)</span> (p,n) 매트릭스</p></li>
+</ul>
+<p><code>-</code> 혹시.. 아래와 같이 쓸 수 있을까?</p>
+<p><span class="math display">\[\left(\frac{\partial }{\partial \bf W}{\bf u}^\top \right)
+\left(\frac{\partial }{\partial \bf u}{\bf v}^\top \right)
+\left(\frac{\partial }{\partial \bf v}loss \right) =
+\frac{\partial {\bf u}^\top}{\partial \bf W}
+\frac{\partial {\bf v}^\top}{\partial \bf u}
+\frac{\partial loss}{\partial \bf v}\]</span></p>
+<ul>
+<li>가능할것 같다. 뭐 기호야 정의하기 나름이니까!</li>
+</ul>
+<p><code>-</code> 그렇다면 혹시 아래와 같이 쓸 수 있을까?</p>
+<p><span class="math display">\[\frac{\partial {\bf u}^\top}{\partial \bf W}
+\frac{\partial {\bf v}^\top}{\partial \bf u}
+\frac{\partial loss}{\partial \bf v} = \frac{\partial loss }{\partial\bf W}=\frac{\partial }{\partial \bf W} loss\]</span></p>
+<ul>
+<li>이건 선을 넘는 것임.</li>
+<li>그런데 어떠한 공식에 의해서 가능함. 그 공식 이름이 체인룰이다.</li>
+</ul>
+<p><code>-</code> 결국 정리하면 아래의 꼴이 되었다.</p>
+<p><span class="math display">\[\left(\frac{\partial }{\partial \bf W}{\bf u}^\top \right)
+\left(\frac{\partial }{\partial \bf u}{\bf v}^\top \right)
+\left(\frac{\partial }{\partial \bf v}loss \right)
+=
+\frac{\partial }{\partial \bf W}loss\]</span></p>
+<p><code>-</code> 그렇다면?</p>
+<p><span class="math display">\[\left({\bf X}^\top  \right)
+\left(-{\bf I} \right)
+\left(2{\bf v}\right)
+=
+\frac{\partial }{\partial \bf W}loss\]</span></p>
+<p>그런데, <span class="math inline">\({\bf v}={\bf y}-{\bf u}={\bf y} -{\bf X}{\bf W}\)</span> 이므로</p>
+<p><span class="math display">\[-2{\bf X}^\top\left({\bf y}-{\bf X}{\bf W}\right)
+=
+\frac{\partial }{\partial \bf W}loss\]</span></p>
+<p>정리하면</p>
+<p><span class="math display">\[\frac{\partial }{\partial \bf W}loss = -2{\bf X}^\top{\bf y}+2{\bf X}^\top {\bf X}{\bf W}\]</span></p>
+<section id="예시-2021-빅데이터분석-중간고사-문제-2-b" class="level2">
+<h2 class="anchored" data-anchor-id="예시-2021-빅데이터분석-중간고사-문제-2-b">예시: 2021 빅데이터분석 중간고사 문제 2-(b)</h2>
+<p><code>-</code> 미분계수를 계산하는 문제였음..</p>
+<ul>
+<li><a href="https://guebin.github.io/BDA2021/2021/11/09/mid.html" class="uri">https://guebin.github.io/BDA2021/2021/11/09/mid.html</a></li>
+</ul>
+<p><code>-</code> 체인룰을 이용하여 미분계수를 계산하여 보자.</p>
+<div id="69dc749e-b596-4353-9d1b-4f376cd239e2" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ones<span class="op">=</span> torch.ones(<span class="dv">5</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.tensor([<span class="fl">11.0</span>,<span class="fl">12.0</span>,<span class="fl">13.0</span>,<span class="fl">14.0</span>,<span class="fl">15.0</span>])</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> torch.vstack([ones,x]).T</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor([<span class="fl">17.7</span>,<span class="fl">18.5</span>,<span class="fl">21.2</span>,<span class="fl">23.6</span>,<span class="fl">24.2</span>])</span></code></pre></div>
+</div>
+<div id="73fda8da-e858-47a7-9c19-68ab7e2f0cd8" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>W <span class="op">=</span> torch.tensor([<span class="fl">3.0</span>,<span class="fl">3.0</span>]) </span></code></pre></div>
+</div>
+<div id="97bd4b74-a730-4ec1-a76b-751fe19cd568" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> X<span class="op">@</span>W </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> y<span class="op">-</span>u </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> v.T <span class="op">@</span> v </span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/home/csy/anaconda3/envs/py37/lib/python3.7/site-packages/ipykernel_launcher.py:3: UserWarning: The use of `x.T` on tensors of dimension other than 2 to reverse their shape is deprecated and it will throw an error in a future release. Consider `x.mT` to transpose batches of matrices or `x.permute(*torch.arange(x.ndim - 1, -1, -1))` to reverse the dimensions of a tensor. (Triggered internally at /opt/conda/conda-bld/pytorch_1666642814471/work/aten/src/ATen/native/TensorShape.cpp:3277.)
+  This is separate from the ipykernel package so we can avoid doing imports until</code></pre>
+</div>
+</div>
+<div id="97ff1f54-5059-414e-ac49-68618f3284cd" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>loss</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>tensor(2212.1799)</code></pre>
+</div>
+</div>
+<p><code>-</code> <span class="math inline">\(\frac{\partial}{\partial\bf W}loss\)</span> 의 계산</p>
+<p><span class="math inline">\(\frac{\partial }{\partial \bf W}loss = \left({\bf X}^\top \right) \left(-{\bf I} \right) \left(2{\bf v}\right)\)</span></p>
+<div id="b1700538-b4b0-41f4-909e-e010c4c42fd5" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>X.T <span class="op">@</span> <span class="op">-</span>torch.eye(<span class="dv">5</span>) <span class="op">@</span> (<span class="dv">2</span><span class="op">*</span>v) </span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>tensor([ 209.6000, 2748.6001])</code></pre>
+</div>
+</div>
+<p><code>-</code> 참고로 중간고사 답은</p>
+<div id="e6016230-fa9d-49fe-ab24-52a4bbc183f8" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>X.T <span class="op">@</span> <span class="op">-</span>torch.eye(<span class="dv">5</span>)<span class="op">@</span> (<span class="dv">2</span><span class="op">*</span>v) <span class="op">/</span> <span class="dv">5</span> </span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>tensor([ 41.9200, 549.7200])</code></pre>
+</div>
+</div>
+<p>입니다.</p>
+<p><code>-</code> 확인</p>
+<div id="f6003451-0365-4cb4-8a6d-d05749e2f6f1" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>_W <span class="op">=</span> torch.tensor([<span class="fl">3.0</span>,<span class="fl">3.0</span>],requires_grad<span class="op">=</span><span class="va">True</span>) </span></code></pre></div>
+</div>
+<div id="bfdcdefd-f53c-43cd-a781-3ebe386eff3b" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>_loss <span class="op">=</span> (y<span class="op">-</span>X<span class="op">@</span>_W).T <span class="op">@</span> (y<span class="op">-</span>X<span class="op">@</span>_W)</span></code></pre></div>
+</div>
+<div id="579ab062-5062-4d4c-bc69-3e65be0c3034" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>_loss.backward()</span></code></pre></div>
+</div>
+<div id="3124d0ed-9b38-4521-a286-19e474404013" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>_W.grad.data</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>tensor([ 209.6000, 2748.6001])</code></pre>
+</div>
+</div>
+<p><code>-</code> <span class="math inline">\(\frac{\partial}{\partial \bf v} loss= 2{\bf v}\)</span> 임을 확인하라.</p>
+<div id="f0c99dfc-d8d9-4667-99d8-85f2dd049260" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>v</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>tensor([-18.3000, -20.5000, -20.8000, -21.4000, -23.8000])</code></pre>
+</div>
+</div>
+<div id="36416d0c-642c-4a97-9996-bd43823aed17" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>_v<span class="op">=</span> torch.tensor([<span class="op">-</span><span class="fl">18.3000</span>, <span class="op">-</span><span class="fl">20.5000</span>, <span class="op">-</span><span class="fl">20.8000</span>, <span class="op">-</span><span class="fl">21.4000</span>, <span class="op">-</span><span class="fl">23.8000</span>],requires_grad<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+</div>
+<div id="7463c3b3-6156-40ea-8668-7d57923d084f" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>_loss <span class="op">=</span> _v.T <span class="op">@</span> _v </span></code></pre></div>
+</div>
+<div id="f9af246f-c445-4539-8b81-1cd76f6ef6bb" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>_loss.backward() </span></code></pre></div>
+</div>
+<div id="a89d62dc-d4c7-4cb6-8ed7-ec72f3076446" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>_v.grad.data, v </span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>(tensor([-36.6000, -41.0000, -41.6000, -42.8000, -47.6000]),
+ tensor([-18.3000, -20.5000, -20.8000, -21.4000, -23.8000]))</code></pre>
+</div>
+</div>
+<p><code>-</code> <span class="math inline">\(\frac{\partial }{\partial {\bf u}}{\bf v}^\top\)</span> 의 계산</p>
+<div id="41878d75-2399-4e1e-9884-73fd35b4c988" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>_u <span class="op">=</span> torch.tensor([<span class="fl">36.</span>, <span class="fl">39.</span>, <span class="fl">42.</span>, <span class="fl">45.</span>, <span class="fl">48.</span>],requires_grad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>_u</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>tensor([36., 39., 42., 45., 48.], requires_grad=True)</code></pre>
+</div>
+</div>
+<div id="629d401f-e176-456d-a892-aba0fad18911" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>_v <span class="op">=</span> y <span class="op">-</span> _u <span class="co">### 이전의 _v와 또다른 임시 _v </span></span></code></pre></div>
+</div>
+<div id="fd503f1e-091d-486a-b9b3-b472277fdf91" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(_v.T).backward()</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>RuntimeError: grad can be implicitly created only for scalar outputs</code></pre>
+</div>
+</div>
+<ul>
+<li>사실 토치에서는 스칼라아웃풋에 대해서만 미분을 계산할 수 있음</li>
+</ul>
+<p>그런데 <span class="math inline">\(\frac{\partial}{\partial {\bf u}}{\bf v}^\top=\frac{\partial}{\partial {\bf u}}(v_1,v_2,v_3,v_4,v_5)=\big(\frac{\partial}{\partial {\bf u}}v_1,\frac{\partial}{\partial {\bf u}}v_2,\frac{\partial}{\partial {\bf u}}v_3,\frac{\partial}{\partial {\bf u}}v_4,\frac{\partial}{\partial {\bf u}}v_5\big)\)</span> 이므로</p>
+<p>조금 귀찮은 과정을 거친다면 아래와 같은 알고리즘으로 계산할 수 있다.</p>
+<ol start="0" type="1">
+<li><p><span class="math inline">\(\frac{\partial }{\partial {\bf u}} {\bf v}^\top\)</span>의 결과를 저장할 매트릭스를 만든다. 적당히 <code>A</code>라고 만들자.</p></li>
+<li><p><code>_u</code> 하나를 임시로 만든다. 그리고 <span class="math inline">\(v_1\)</span>을 <code>_u</code>로 미분하고 그 결과를 <code>A</code>의 첫번째 칼럼에 기록한다.</p></li>
+<li><p><code>_u</code>를 또하나 임시로 만들고 <span class="math inline">\(v_2\)</span>를 <code>_u</code>로 미분한뒤 그 결과를 <code>A</code>의 두번째 칼럼에 기록한다.</p></li>
+<li><p>(1)-(2)와 같은 작업을 <span class="math inline">\(v_5\)</span>까지 반복한다.</p></li>
+</ol>
+<p><strong><em>(0)을 수행</em></strong></p>
+<div id="6f3e7f9c-c22d-4a71-b185-64d3bab3318d" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> torch.zeros((<span class="dv">5</span>,<span class="dv">5</span>))</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>A</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>tensor([[0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0.]])</code></pre>
+</div>
+</div>
+<p><strong><em>(1)을 수행</em></strong></p>
+<div id="c4afa843-9af7-4d00-b739-f706934933c7" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>u,v </span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>(tensor([36., 39., 42., 45., 48.]),
+ tensor([-18.3000, -20.5000, -20.8000, -21.4000, -23.8000]))</code></pre>
+</div>
+</div>
+<div id="bc1e08db-3c27-4fbf-b32d-f87ce6f2bd89" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>_u <span class="op">=</span> torch.tensor([<span class="fl">36.</span>, <span class="fl">39.</span>, <span class="fl">42.</span>, <span class="fl">45.</span>, <span class="fl">48.</span>],requires_grad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">=</span> (y<span class="op">-</span>_u)[<span class="dv">0</span>]</span></code></pre></div>
+</div>
+<ul>
+<li>이때 <span class="math inline">\(v_1=g(f({\bf u}))\)</span>와 같이 표현할 수 있다. 여기에서 <span class="math inline">\(f((u_1,\dots,u_5)^\top)=(y_1-u_1,\dots,y_5-u_5)^\top\)</span>, 그리고 <span class="math inline">\(g((v_1,\dots,v_n)^\top)=v_1\)</span> 라고 생각한다. 즉 <span class="math inline">\(f\)</span>는 벡터 뺄셈을 수행하는 함수이고, <span class="math inline">\(g\)</span>는 프로젝션 함수이다. 즉 <span class="math inline">\(f:\mathbb{R}^5 \to \mathbb{R}^5\)</span>인 함수이고, <span class="math inline">\(g:\mathbb{R}^5 \to \mathbb{R}\)</span>인 함수이다.</li>
+</ul>
+<p>여기서 <span class="math inline">\(v_1\)</span>은 꼬리표로서 selection 작성되어 있음</p>
+<div id="181939d0-a5de-453e-a576-d8f25698dc82" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>v1.backward()</span></code></pre></div>
+</div>
+<div id="72319636-170a-4730-bee6-9988284f1117" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>_u.grad.data</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>tensor([-1., -0., -0., -0., -0.])</code></pre>
+</div>
+</div>
+<div id="7237e87d-acea-4dd5-ba2d-29101714c02c" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>A[:,<span class="dv">0</span>]<span class="op">=</span> _u.grad.data</span></code></pre></div>
+</div>
+<p>A의 첫번째 칼럼에 이것을 넣어주세요</p>
+<div id="e5cf043b-2eec-40d2-a2f9-c66a89868c53" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>A</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>tensor([[-1.,  0.,  0.,  0.,  0.],
+        [-0.,  0.,  0.,  0.,  0.],
+        [-0.,  0.,  0.,  0.,  0.],
+        [-0.,  0.,  0.,  0.,  0.],
+        [-0.,  0.,  0.,  0.,  0.]])</code></pre>
+</div>
+</div>
+<p><strong><em>(2)를 수행</em></strong></p>
+<div id="e4ce63e8-ad56-4bb2-943d-94e8585c3e05" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>_u <span class="op">=</span> torch.tensor([<span class="fl">36.</span>, <span class="fl">39.</span>, <span class="fl">42.</span>, <span class="fl">45.</span>, <span class="fl">48.</span>],requires_grad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>v2 <span class="op">=</span> (y<span class="op">-</span>_u)[<span class="dv">1</span>]</span></code></pre></div>
+</div>
+<div id="b69505a2-1fe1-4089-a61c-49da015d75cc" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>v2.backward()</span></code></pre></div>
+</div>
+<div id="68042b18-2a87-4c20-9378-992a3ac0c6b4" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>_u.grad.data</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>tensor([-0., -1., -0., -0., -0.])</code></pre>
+</div>
+</div>
+<div id="06ec45c0-b578-4618-9965-eedc5a833e07" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>A[:,<span class="dv">1</span>]<span class="op">=</span> _u.grad.data</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>A</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>tensor([[-1., -0.,  0.,  0.,  0.],
+        [-0., -1.,  0.,  0.,  0.],
+        [-0., -0.,  0.,  0.,  0.],
+        [-0., -0.,  0.,  0.,  0.],
+        [-0., -0.,  0.,  0.,  0.]])</code></pre>
+</div>
+</div>
+<p><strong><em>(3)을 수행</em></strong> // 그냥 (1)~(2)도 새로 수행하자.</p>
+<div id="6f2b31cf-b516-4778-913d-ae6b844d4091" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>): </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    _u <span class="op">=</span> torch.tensor([<span class="fl">36.</span>, <span class="fl">39.</span>, <span class="fl">42.</span>, <span class="fl">45.</span>, <span class="fl">48.</span>],requires_grad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    _v <span class="op">=</span> (y<span class="op">-</span>_u)[i]</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    _v.backward()</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    A[:,i]<span class="op">=</span> _u.grad.data</span></code></pre></div>
+</div>
+<div id="ddd53a8d-5749-41ce-bd55-14b845372ac7" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>A</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>tensor([[-1., -0., -0., -0., -0.],
+        [-0., -1., -0., -0., -0.],
+        [-0., -0., -1., -0., -0.],
+        [-0., -0., -0., -1., -0.],
+        [-0., -0., -0., -0., -1.]])</code></pre>
+</div>
+</div>
+<ul>
+<li>이론적인 결과인 <span class="math inline">\(-{\bf I}\)</span>와 일치한다.</li>
+</ul>
+<p><code>-</code> <span class="math inline">\(\frac{\partial }{\partial {\bf W}}{\bf u}^\top\)</span>의 계산</p>
+<p><span class="math inline">\(\frac{\partial }{\partial {\bf W}}{\bf u}^\top = \frac{\partial }{\partial {\bf W}}(u_1,\dots,u_5)=\big(\frac{\partial }{\partial {\bf W}}u_1,\dots,\frac{\partial }{\partial {\bf W}}u_5 \big)\)</span></p>
+<div id="00ab6d57-15e5-4795-9e3d-7096a634c35d" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> torch.zeros((<span class="dv">2</span>,<span class="dv">5</span>))</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>B</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>tensor([[0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0.]])</code></pre>
+</div>
+</div>
+<div id="7d41741d-71d4-49ce-88d3-0c822829aa82" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>W</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>tensor([3., 3.])</code></pre>
+</div>
+</div>
+<div id="b514297b-a61e-46cb-a69a-c958fecd60ac" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>_W <span class="op">=</span> torch.tensor([<span class="fl">3.</span>, <span class="fl">3.</span>],requires_grad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>_W</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>tensor([3., 3.], requires_grad=True)</code></pre>
+</div>
+</div>
+<div id="d8ea85c9-2524-4ea3-9c26-4f3474f5482d" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>): </span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    _W <span class="op">=</span> torch.tensor([<span class="fl">3.</span>, <span class="fl">3.</span>],requires_grad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    _u <span class="op">=</span> (X<span class="op">@</span>_W)[i]</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    _u.backward()</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    B[:,i]<span class="op">=</span> _W.grad.data</span></code></pre></div>
+</div>
+<div id="3eb14f57-0152-4079-9581-c712da151855" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>B <span class="co"># X의 트랜스포즈</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>tensor([[ 1.,  1.,  1.,  1.,  1.],
+        [11., 12., 13., 14., 15.]])</code></pre>
+</div>
+</div>
+<div id="84338235-2a97-47bb-a3fb-abfb857d4aba" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>X</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>tensor([[ 1., 11.],
+        [ 1., 12.],
+        [ 1., 13.],
+        [ 1., 14.],
+        [ 1., 15.]])</code></pre>
+</div>
+</div>
+<ul>
+<li>이론적인 결과와 일치</li>
+</ul>
+</section>
+<section id="잠깐-생각해보자.." class="level2">
+<h2 class="anchored" data-anchor-id="잠깐-생각해보자..">잠깐 생각해보자..</h2>
+<p><code>-</code> 결국 위의 예제에 한정하여 임의의 <span class="math inline">\({\bf \hat{W}}\)</span>에 대한 <span class="math inline">\(\frac{\partial}{\partial {\bf \hat W}}loss\)</span>는 아래와 같이 계산할 수 있다.</p>
+<ul>
+<li>(단계1) <span class="math inline">\(2{\bf v}\)</span>를 계산하고</li>
+<li>(단계2) (단계1)의 결과 앞에 <span class="math inline">\(-{\bf I}\)</span>를 곱하고</li>
+<li>(단계3) (단계2)의 결과 앞에 <span class="math inline">\({\bf X}^\top\)</span>를 곱한다.</li>
+</ul>
+<p><code>-</code> step1에서 <span class="math inline">\({\bf v}\)</span>는 어떻게 알지?</p>
+<ul>
+<li><p>X <span class="math inline">\(\to\)</span> u=X@W <span class="math inline">\(\to\)</span> v = y-u</p></li>
+<li><p>그런데 이것은 우리가 loss를 구하기 위해서 이미 계산해야 하는것 아니었나?</p></li>
+<li><p>step1: yhat, step2: loss, step3: derivate, step4: update</p></li>
+</ul>
+<p><code>-</code> <strong>(중요)</strong> step2에서 loss만 구해서 저장할 생각 하지말고 중간과정을 다 저장해라. (그중에 v와 같이 필요한것이 있을테니까) 그리고 그걸 적당한 방법을 통하여 이용하여 보자.</p>
+<section id="backprogation-알고리즘-모티브" class="level3">
+<h3 class="anchored" data-anchor-id="backprogation-알고리즘-모티브">backprogation 알고리즘 모티브</h3>
+<p><code>-</code> 아래와 같이 함수의 변환을 아키텍처로 이해하자. (함수의입력=레이어의입력, 함수의출력=레이어의출력)</p>
+<ul>
+<li><span class="math inline">\({\bf X} \overset{l1}{\to} {\bf X}{\bf W} \overset{l2}{\to} {\bf y} -{\bf X}{\bf W} \overset{l3}{\to} ({\bf y}-{\bf X}{\bf W})^\top ({\bf y}-{\bf X}{\bf W})\)</span></li>
+</ul>
+<p><code>-</code> 그런데 위의 계산과정을 아래와 같이 요약할 수도 있다. (<span class="math inline">\({\bf X} \to {\bf \hat y} \to loss\)</span>가 아니라 <span class="math inline">\({\bf W} \to loss({\bf W})\)</span>로 생각해보세요)</p>
+<ul>
+<li><span class="math inline">\({\bf W} \overset{l1}{\to} {\bf u} \overset{l2}{\to} {\bf v} \overset{l3}{\to} loss\)</span></li>
+</ul>
+<p><code>-</code> 그렇다면 아래와 같은 사실을 관찰할 수 있다.</p>
+<ul>
+<li>(단계1) <span class="math inline">\(2{\bf v}\)</span>는 function of <span class="math inline">\({\bf v}\)</span>이고, <span class="math inline">\({\bf v}\)</span>는 l3의 입력 (혹은 l2의 출력)</li>
+<li>(단계2) <span class="math inline">\(-{\bf I}\)</span>는 function of <span class="math inline">\({\bf u}\)</span>이고, <span class="math inline">\({\bf u}\)</span>는 l2의 입력 (혹은 l1의 출력)</li>
+<li>(단계3) 마찬가지의 논리로 <span class="math inline">\({\bf X}^\top\)</span>는 function of <span class="math inline">\({\bf W}\)</span>로 해석할 수 있다.</li>
+</ul>
+<p><code>-</code> 요약: <span class="math inline">\(2{\bf v},-{\bf I}, {\bf X}^\top\)</span>와 같은 핵심적인 값들이 사실 각 층의 입/출력 값들의 함수꼴로 표현가능하다. <span class="math inline">\(\to\)</span> 각 층의 입/출력 값들을 모두 기록하면 미분계산을 유리하게 할 수 있다.</p>
+<ul>
+<li>문득의문: 각 층의 입출력값 <span class="math inline">\({\bf v}, {\bf u}, {\bf W}\)</span>로 부터 <span class="math inline">\(2{\bf v}, -{\bf I}, {\bf X}^\top\)</span> 를 만들어내는 방법을 모른다면 헛수고 아닌가?</li>
+<li>의문해결: 어차피 우리가 쓰는 층은 선형+(렐루, 시그모이드, …) 정도가 전부임. 따라서 변환규칙은 미리 계산할 수 있음.</li>
+</ul>
+<p><code>-</code> 결국</p>
+<p><code>(1)</code> 순전파를 하면서 입출력값을 모두 저장하고</p>
+<p><code>(2)</code> 그에 대응하는 층별 미분계수값 <span class="math inline">\(2{\bf v}, -{\bf I}, {\bf X}^\top\)</span> 를 구하고</p>
+<p><code>(3)</code> 층별미분계수값을 다시 곱하면 (그러니까 <span class="math inline">\({\bf X}^\top (-{\bf I}) 2{\bf v}\)</span> 를 계산) 된다.</p>
+</section>
+<section id="backpropagation" class="level3">
+<h3 class="anchored" data-anchor-id="backpropagation">backpropagation</h3>
+<p><code>(1)</code> 순전파를 계산하고 각 층별 입출력 값을 기록</p>
+<ul>
+<li>yhat = net(X)</li>
+<li>loss = loss_fn(yhat,y)</li>
+</ul>
+<p><code>(2)</code> 역전파를 수행하여 손실함수의 미분값을 계산</p>
+<ul>
+<li>loss.backward()</li>
+</ul>
+<p><code>-</code> 참고로 (1)에서 층별 입출력값은 GPU의 메모리에 기록된다.. 무려 GPU 메모리..</p>
+<p><code>-</code> 작동원리를 GPU의 관점에서 요약 (슬기로운 GPU 활용)</p>
+<p><strong><em>gpu특징: 큰 차원의 매트릭스 곱셈 전문가 (원리? 어마어마한 코어숫자)</em></strong></p>
+<ul>
+<li>아키텍처 설정: 모형의 파라메터값을 GPU 메모리에 올림 // <code>net.to("cuda:0")</code></li>
+<li>순전파 계산: <strong><em>중간 계산결과를 모두 GPU메모리에 저장</em></strong> (순전파 계산을 위해서라면 굳이 GPU에 있을 필요는 없으나 후에 역전파를 계산하기 위한 대비) // <code>net(X)</code></li>
+<li>오차 및 손실함수 계산: <code>loss = loss_fn(yhat,y)</code></li>
+<li>역전파 계산: <strong><em>순전파단계에서 저장된 계산결과를 활용</em></strong>하여 손실함수의 미분값을 계산 // <code>loss.backward()</code></li>
+<li>다음 순전파 계산: <strong><em>이전값은 삭제하고 새로운 중간계산결과를 GPU메모리에 올림</em></strong></li>
+<li>반복.</li>
+</ul>
+</section>
+</section>
+<section id="some-comments" class="level2">
+<h2 class="anchored" data-anchor-id="some-comments">some comments</h2>
+<p><code>-</code> 역전파기법은 체인룰 + <span class="math inline">\(\alpha\)</span> 이다. - 미분 계산을 하기 위함인데 여기서 파라메터 업데이트 필요하지</p>
+<p><code>-</code> 오차역전파기법이라는 용어를 쓰는 사람도 있다.</p>
+<p><code>-</code> 이미 훈련한 네트워크에 입력 <span class="math inline">\(X\)</span>를 넣어 결과값만 확인하고 싶을 경우 순전파만 사용하면 되고, 이 상황에서는 좋은 GPU가 필요 없다. - 예) 개/고양이 확인 등</p>
+</section>
+</section>
+<section id="기울기소멸" class="level1">
+<h1>기울기소멸</h1>
+<section id="고요속의-외침" class="level2">
+<h2 class="anchored" data-anchor-id="고요속의-외침">고요속의 외침</h2>
+<p><code>-</code> <a href="https://www.youtube.com/watch?v=ouitOnaDtFY" class="uri">https://www.youtube.com/watch?v=ouitOnaDtFY</a></p>
+<p><code>-</code> 중간에 한명이라도 잘못 말한다면..</p>
+</section>
+<section id="정의" class="level2">
+<h2 class="anchored" data-anchor-id="정의">정의</h2>
+<p><code>-</code> In machine learning, the vanishing gradient problem is encountered when training artificial neural networks with gradient-based learning methods and backpropagation.</p>
+</section>
+<section id="이해" class="level2">
+<h2 class="anchored" data-anchor-id="이해">이해</h2>
+<p><code>-</code> 당연한것 아닌가?</p>
+<ul>
+<li>그레디언트 기반의 학습 (그레디언트 기반의 옵티마이저): 손실함수의 기울기를 통하여 업데이트 하는 방식</li>
+<li>역전파: 손실함수의 기울기를 구하는 테크닉 (체인룰 + <span class="math inline">\(\alpha\)</span>). 구체적으로는 (1) 손실함수를 여러단계로 쪼개고 (2) 각 단계의 미분값을 각각 구하고 (3) 그것들을 모두 곱하여 기울기를 계산한다.</li>
+<li>0 근처의 숫자를 계속 곱하면 터지거나 0으로 간다. (사실 안정적인 기울기가 나올 것이라고 생각하는것 자체가 이상함)</li>
+</ul>
+<p>0 전달되면 업데이트 안 되잖아</p>
+<div id="52fbd89c-dc57-41c2-be75-31ff2d98e3c3" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span></code></pre></div>
+</div>
+<div id="95ce5cfc-eed8-4acf-b927-12a929125508" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>grads <span class="op">=</span> np.random.uniform(low<span class="op">=-</span><span class="dv">2</span>,high<span class="op">=</span><span class="dv">2</span>,size<span class="op">=</span><span class="dv">100</span>) </span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>grads</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>array([ 1.27649548, -1.3435985 , -1.98858349,  1.98266931,  0.74704939,
+       -0.4831162 ,  1.41216797, -1.20423568,  0.66637324,  1.18085266,
+        0.23356958, -0.39851281,  0.2357107 , -0.28592461, -0.96001359,
+       -1.6276445 , -0.75687257,  0.48770524,  0.02553662,  0.18478814,
+        1.28850714,  1.41398052, -0.33970936,  0.36829707,  1.85991256,
+        0.02243541, -0.68804507,  0.63659842, -1.13905311,  0.94093391,
+        1.58809026, -0.25106013, -0.14446307,  1.31747003,  1.52190566,
+       -0.44264824, -1.95722305, -0.77865942, -0.3350363 , -0.53638126,
+       -0.77254936, -1.22118632,  0.6137345 ,  0.89975951, -1.70293244,
+        1.42661365, -0.43175558, -1.30904545, -0.53912915,  1.51725173,
+       -1.83965849,  1.00143736, -0.67129779,  0.36061957, -1.68850939,
+       -0.4272909 , -0.34715325,  1.72387253, -0.98340508, -1.60825385,
+        1.64523373, -0.79036932,  1.82578785, -0.53592773, -0.61384056,
+        0.9689625 ,  1.27971335,  0.51555469, -0.53425795,  0.38883373,
+       -0.28595978, -1.93730647, -1.94581503, -0.48984819, -1.21831701,
+       -1.25965989,  1.79542393,  1.2637913 , -0.93178556, -0.61210568,
+        1.23775906, -1.80601708,  1.40265496, -0.59602715,  1.44638486,
+       -1.71721283,  1.58345756, -1.03992841,  1.10167726,  1.13332066,
+       -0.76344022, -0.7246539 ,  0.27256115, -1.95501872, -0.65922909,
+        0.78715854, -0.29077574, -0.45110518, -1.64836114,  1.91692815])</code></pre>
+</div>
+</div>
+<div id="92b87c0d-6c57-4f92-afed-27b622bf5c61" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>grads.prod()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<pre><code>-4.089052412862103e-11</code></pre>
+</div>
+</div>
+<ul>
+<li>기울기가 소멸함</li>
+</ul>
+<div id="b17f42bf-9be7-4b3c-a466-64bf8407bd42" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>grads <span class="op">=</span> np.random.uniform(low<span class="op">=-</span><span class="dv">5</span>,high<span class="op">=</span><span class="dv">5</span>,size<span class="op">=</span><span class="dv">100</span>) </span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>grads.prod()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>-1.6059047739389678e+16</code></pre>
+</div>
+</div>
+<ul>
+<li>기울기가 폭발함.</li>
+</ul>
+<div id="11615aac-a8c2-435d-8c91-ad6b297155de" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>grads <span class="op">=</span> np.random.uniform(low<span class="op">=-</span><span class="dv">1</span>,high<span class="op">=</span><span class="fl">3.5</span>,size<span class="op">=</span><span class="dv">100</span>) </span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>grads.prod()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>13058.879478242436</code></pre>
+</div>
+</div>
+<p><code>-</code> 도깨비: 기울기가 소멸하기도 하고 터지기도 한다.</p>
+</section>
+<section id="해결책-기울기-소멸에-대한-해결책" class="level2">
+<h2 class="anchored" data-anchor-id="해결책-기울기-소멸에-대한-해결책"><a href="https://en.wikipedia.org/wiki/Vanishing_gradient_problem">해결책</a> (기울기 소멸에 대한 해결책)</h2>
+<p><code>-</code> Multi-level hierarchy</p>
+<ul>
+<li>여러층을 쪼개서 학습하자 <span class="math inline">\(\to\)</span> 어떻게? 사전학습, 층벼학습</li>
+<li>기울기소실문제를 해결하여 딥러닝을 유행시킨 태초의(?) 방법임.</li>
+<li>결국 입력자료를 바꾼뒤에 학습하는 형태</li>
+</ul>
+<p><code>-</code> Gradient clipping</p>
+<ul>
+<li>너무 큰 값의 기울기는 사용하지 말자. (기울기 폭발에 대한 대비책)</li>
+</ul>
+<p><code>-</code> Faster hardware</p>
+<ul>
+<li>GPU를 중심으로 한 테크닉</li>
+<li>근본적인 문제해결책은 아니라는 힌튼의 비판</li>
+<li>CPU를 쓸때보다 GPU를 쓰면 약간 더 깊은 모형을 학습할 수 있다 정도?</li>
+</ul>
+<p><code>-</code> Residual Networks, LSTM</p>
+<ul>
+<li>아키텍처를 변경하는 방법</li>
+</ul>
+<p><code>-</code> Other activation functions</p>
+<ul>
+<li><p>렐루의 개발</p></li>
+<li><p>렐루가 음수는 아예 0, 양수는 기울기 확실하니까</p></li>
+</ul>
+<p><code>-</code> 배치정규화</p>
+<ul>
+<li>어쩌다보니 되는것.</li>
+<li>배치정규화는 원래 공변량 쉬프트를 잡기 위한 방법임. 그런데 기울기 소멸에도 효과가 있음. 현재는 기울기소멸문제에 대한 해결책으로 빠짐없이 언급되고 있음. 2015년의 원래 논문에는 기울기소멸에 대한 언급은 없었음. (https://arxiv.org/pdf/1502.03167.pdf)</li>
+<li>심지어 배치정규화는 오버피팅을 잡는효과도 있음 (이것은 논문에 언급했음)</li>
+</ul>
+<p><code>-</code> <strong>기울기를 안구하면 안되나?</strong></p>
+<ul>
+<li>베이지안 최적화기법: (https://arxiv.org/pdf/1807.02811.pdf) <span class="math inline">\(\to\)</span> GPU를 어떻게 쓰지? <span class="math inline">\(\to\)</span> 느리다</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        console.log("RESIZE");
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="seoyeonc/md" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
