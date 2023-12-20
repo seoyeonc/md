@@ -3,11 +3,20 @@ project:
 
 website:
   title: "Seoyeon's Blog for classes"
+  
+  page-footer:
+    border: true
+    
   navbar:
+    left:
+      - text: Main_Blog
+        href: https://seoyeonc.github.io/sy_hub/
+        
     right:
       - about.qmd
       - icon: github
         href: https://github.com/seoyeonc/md/
+        
   sidebar:
     style: "docked"
     search: true
