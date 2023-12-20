@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.527">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -81,12 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -95,17 +96,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -113,8 +142,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
@@ -126,6 +155,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://seoyeonc.github.io/sy_hub/"> 
+<span class="menu-text">Main_Blog</span></a>
+  </li>  
+</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link active" href="../../about.html" aria-current="page"> 
@@ -144,11 +179,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/ml/index.html">Special Topics in Machine Learning</a></li><li class="breadcrumb-item"><a href="../../posts/ml/2022-11-02-ml-midterm.html">Midterm</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -190,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -874,6 +909,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-12-07_any_tip.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">정리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/anything/A1.out.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A1: 강화학습 (1) – bandit</span></a>
   </div>
@@ -1086,7 +1127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -1101,6 +1142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
+
 
 
 
@@ -1200,7 +1242,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="abdb0812-1db2-41ee-8853-c35336e8ecce" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dls.show_batch()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>(3)</code> resnet34를 이용하여 학습하라.</p>
@@ -1533,7 +1579,11 @@ torch.Size([8, 1024])</code></pre>
 <span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>fig.set_figheight(<span class="dv">16</span>)</span>
 <span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1548,7 +1598,11 @@ torch.Size([8, 1024])</code></pre>
 <div id="22a5f437-b442-4f80-910f-3e22e288cf70" class="cell" data-outputid="ef02a5b0-eb98-4e8c-8624-c46df3434932" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>(1)</code> 아래의 모형을 가정하고 <span class="math inline">\(\beta_0,\beta_1\)</span>을 파이토치를 이용하여 추정하라.</p>
@@ -1565,7 +1619,11 @@ torch.Size([8, 1024])</code></pre>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,net(x).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="6d38be1c-1688-420f-90b1-448fa16529d4" class="cell" data-execution_count="9">
@@ -1580,7 +1638,11 @@ torch.Size([8, 1024])</code></pre>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,net(x).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="f0693414-c456-4b4c-b730-4bccd0e438cd" class="cell" data-execution_count="11">
@@ -1606,7 +1668,11 @@ torch.Size([8, 1024])</code></pre>
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,(<span class="dv">0</span><span class="op">*</span>x<span class="op">+</span>W0hat).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-34-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="d99320a5-0a97-476b-926c-82cee0e8bf49" class="cell" data-execution_count="15">
@@ -1621,7 +1687,11 @@ torch.Size([8, 1024])</code></pre>
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,(<span class="dv">0</span><span class="op">*</span>x<span class="op">+</span>W0hat).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-36-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="d1646f90-e9de-4a83-94a5-71f7257292be" class="cell" data-execution_count="17">
@@ -1641,7 +1711,11 @@ torch.Size([8, 1024])</code></pre>
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,net(x).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-39-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-39-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="3e7aa6c1-9ec4-4e59-95fd-badd5da7fb22" class="cell" data-execution_count="20">
@@ -1659,7 +1733,11 @@ torch.Size([8, 1024])</code></pre>
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,net(x).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-42-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-42-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="8798f999-fff2-4f68-8e5a-4f982f8d5315" class="cell" data-execution_count="23">
@@ -1687,7 +1765,11 @@ torch.Size([8, 1024])</code></pre>
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,net(X).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-47-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-47-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="32d0073f-7011-4a2c-af09-ba0152c3bc49" class="cell" data-execution_count="528">
@@ -1702,7 +1784,11 @@ torch.Size([8, 1024])</code></pre>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,net(X).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-49-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-49-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="28bc2447-40e2-4ac3-856c-15c3167e9dd5" class="cell" data-execution_count="530">
@@ -1742,7 +1828,11 @@ torch.Size([8, 1024])</code></pre>
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,net(X).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-56-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-56-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="72248645-67d6-46dd-91d1-483af33a3920" class="cell" data-execution_count="537">
@@ -1757,7 +1847,11 @@ torch.Size([8, 1024])</code></pre>
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'.'</span>)</span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,net(X).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-58-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-58-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="c9e31164-8d5e-4137-8ab3-fbc7e0fce350" class="cell" data-execution_count="539">
@@ -1990,7 +2084,11 @@ torch.Size([8, 1024])</code></pre>
 <span id="cb103-5"><a href="#cb103-5" aria-hidden="true" tabindex="-1"></a>ax.vlines([<span class="fl">3.5</span>,<span class="fl">5.5</span>],ymin<span class="op">=-</span><span class="fl">0.5</span>,ymax<span class="op">=</span><span class="fl">9.5</span>,lw<span class="op">=</span><span class="dv">2</span>,color<span class="op">=</span><span class="st">'red'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
 <span id="cb103-6"><a href="#cb103-6" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="vs">r'First 10 obs of $\bf [X, Z, \hat</span><span class="sc">{X}</span><span class="vs">]$ // before learning'</span>,size<span class="op">=</span><span class="dv">25</span>)<span class="op">;</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-73-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-73-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>(3)</code> 네트워크를 학습시키고 <span class="math inline">\({\bf X}, {\bf Z}, {\bf \hat{X}}\)</span>를 시각화하라.</p>
@@ -2028,7 +2126,11 @@ torch.Size([8, 1024])</code></pre>
 <span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a>ax.vlines([<span class="fl">3.5</span>,<span class="fl">5.5</span>],ymin<span class="op">=-</span><span class="fl">0.5</span>,ymax<span class="op">=</span><span class="fl">9.5</span>,lw<span class="op">=</span><span class="dv">2</span>,color<span class="op">=</span><span class="st">'red'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
 <span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="vs">r'First 10 obs of $\bf [X, Z, \hat</span><span class="sc">{X}</span><span class="vs">]$ // after learning'</span>,size<span class="op">=</span><span class="dv">25</span>)<span class="op">;</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-77-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml-midterm_files/figure-html/cell-77-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>(4)</code> (3)의 결과로 학습된 <span class="math inline">\(Z\)</span>를 입력벡터로 하고 <span class="math inline">\(Z \to y=\text{Species}\)</span> 로 향하는 적당한 네트워크를 설계한 뒤 학습하라.</p>
@@ -2176,15 +2278,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
         return container.innerHTML
       } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -2192,6 +2307,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const anchorLink = note.querySelector('a.anchorjs-link');
       if (anchorLink) {
         anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
       }
       return note.innerHTML;
     }
@@ -2235,6 +2353,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -2310,7 +2451,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);

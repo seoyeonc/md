@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.527">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -81,12 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -95,13 +96,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -111,8 +113,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
@@ -124,6 +126,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://seoyeonc.github.io/sy_hub/"> 
+<span class="menu-text">Main_Blog</span></a>
+  </li>  
+</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link active" href="../../about.html" aria-current="page"> 
@@ -142,11 +150,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/rl/index.html">Advanced Regression Analysis</a></li><li class="breadcrumb-item"><a href="../../posts/rl/2022-11-23-rl-CH10.html">고급회귀분석 실습 CH10</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -188,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -872,6 +880,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-12-07_any_tip.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">정리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/anything/A1.out.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A1: 강화학습 (1) – bandit</span></a>
   </div>
@@ -1084,7 +1098,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -1120,6 +1134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <p>CH10</p>
 <section id="회귀진단" class="level1">
 <h1>회귀진단</h1>
@@ -1140,7 +1155,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="e2f3a3c8-6457-4a0f-9cb5-4916eeb3106d" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y<span class="sc">~</span>x, dt,<span class="at">pch  =</span> <span class="dv">20</span>,<span class="at">cex  =</span> <span class="dv">2</span>,<span class="at">col  =</span> <span class="st">"darkorange"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1176,7 +1195,11 @@ F-statistic:  13.2 on 1 and 19 DF,  p-value: 0.001769</code></pre>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y<span class="sc">~</span>x, dt,<span class="at">pch  =</span> <span class="dv">20</span>,<span class="at">cex  =</span> <span class="dv">2</span>,<span class="at">col  =</span> <span class="st">"darkorange"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(model_reg, <span class="at">col=</span><span class="st">'steelblue'</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1251,7 +1274,11 @@ F-statistic:  13.2 on 1 and 19 DF,  p-value: 0.001769</code></pre>
 <span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>      s_residual_i[<span class="fu">which</span>(<span class="fu">abs</span>(s_residual_i)<span class="sc">&gt;</span><span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="dv">21-2</span>))], </span>
 <span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>      <span class="fu">which</span>(<span class="fu">abs</span>(s_residual_i)<span class="sc">&gt;</span><span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="dv">21-2</span>)),<span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="b4566940-a68b-4002-9eeb-b9903f444057" class="cell" data-execution_count="21">
@@ -1288,7 +1315,11 @@ F-statistic:  13.2 on 1 and 19 DF,  p-value: 0.001769</code></pre>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">"dodgerblue"</span>,</span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">20</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="01fd6666-b970-415e-bb2e-31485cb2a43e" class="cell" data-execution_count="26">
@@ -1298,7 +1329,11 @@ F-statistic:  13.2 on 1 and 19 DF,  p-value: 0.001769</code></pre>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch=</span><span class="dv">16</span>)</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">resid</span>(model_reg), <span class="at">col =</span> <span class="st">"dodgerblue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="036973bf-df00-416d-a987-a6b7397e4c8e" class="cell" data-execution_count="27">
@@ -1326,7 +1361,11 @@ alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y<span class="sc">~</span>x, dt,<span class="at">pch  =</span> <span class="dv">20</span>,<span class="at">cex  =</span> <span class="dv">2</span>,<span class="at">col  =</span> <span class="st">"darkorange"</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(model_reg, <span class="at">col=</span><span class="st">'steelblue'</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="452a35d0-b0cb-4bda-a962-900b744da08d" class="cell" data-execution_count="32">
@@ -1480,7 +1519,11 @@ alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 <span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">'topright'</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">"full"</span>, <span class="st">"del(18,19)"</span>),</span>
 <span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">'steelblue'</span>, <span class="st">'red'</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-33-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1490,7 +1533,11 @@ alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model_reg, <span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-34-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1787,7 +1834,11 @@ F-statistic: 25.37 on 3 and 259 DF,  p-value: 2.013e-14</code></pre>
 <div id="ec1d8288-485a-4778-a6e4-8a4387486a0a" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(hitters[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">19</span>)])</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-42-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-42-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="c8facdcd-b38c-48cf-9f9a-22b5da2551f5" class="cell" data-execution_count="57">
@@ -1831,7 +1882,11 @@ F-statistic: 25.37 on 3 and 259 DF,  p-value: 2.013e-14</code></pre>
 <span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a>      stu.res[<span class="fu">which</span>(<span class="fu">abs</span>(stu.res)<span class="sc">&gt;</span><span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="fu">nrow</span>(hitters)<span class="sc">-</span><span class="dv">4</span>))], </span>
 <span id="cb48-33"><a href="#cb48-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">which</span>(<span class="fu">abs</span>(stu.res)<span class="sc">&gt;</span><span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="fu">nrow</span>(hitters)<span class="sc">-</span><span class="dv">4</span>)),<span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-44-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-44-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="f97c368d-172d-48df-ab62-bc7e409e6b1e" class="cell" data-execution_count="59">
@@ -3028,7 +3083,11 @@ F-statistic:  25.1 on 3 and 259 DF,  p-value: 2.729e-14</code></pre>
 <span id="cb67-32"><a href="#cb67-32" aria-hidden="true" tabindex="-1"></a>      stu.res[<span class="fu">which</span>(<span class="fu">abs</span>(stu.res)<span class="sc">&gt;</span><span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="fu">nrow</span>(hitters)<span class="sc">-</span><span class="dv">4</span>))], </span>
 <span id="cb67-33"><a href="#cb67-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">which</span>(<span class="fu">abs</span>(stu.res)<span class="sc">&gt;</span><span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="fu">nrow</span>(hitters)<span class="sc">-</span><span class="dv">4</span>)),<span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-60-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-60-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="223a0fe6-02fb-4c21-9843-eb0b70de66ba" class="cell" data-execution_count="77">
@@ -4152,31 +4211,63 @@ F-statistic:  25.1 on 3 and 259 DF,  p-value: 2.729e-14</code></pre>
 <div id="88b87f94-0972-4e1a-b7f6-68e3741938e9" class="cell" data-execution_count="83">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg_model, <span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-67-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-67-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-67-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-67-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-67-output-3.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-67-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-67-output-4.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-67-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="848d038c-bc7a-4eab-9dc1-2ff8ac0ef95f" class="cell" data-execution_count="84">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg_model_2, <span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-68-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-68-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-68-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-68-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-68-output-3.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-68-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-68-output-4.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-23-rl-CH10_files/figure-html/cell-68-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -4262,15 +4353,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
         return container.innerHTML
       } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -4278,6 +4382,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const anchorLink = note.querySelector('a.anchorjs-link');
       if (anchorLink) {
         anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
       }
       return note.innerHTML;
     }
@@ -4321,6 +4428,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -4396,7 +4526,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.527">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,12 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -95,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -104,14 +106,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
@@ -123,6 +152,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://seoyeonc.github.io/sy_hub/"> 
+<span class="menu-text">Main_Blog</span></a>
+  </li>  
+</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link active" href="../../about.html" aria-current="page"> 
@@ -141,11 +176,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/ml/index.html">Special Topics in Machine Learning</a></li><li class="breadcrumb-item"><a href="../../posts/ml/2022-11-09-ml-10w.html">RNN (10주차)</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -188,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -872,6 +907,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-12-07_any_tip.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">정리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/anything/A1.out.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A1: 강화학습 (1) – bandit</span></a>
   </div>
@@ -1084,7 +1125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -1130,6 +1171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
+
 
 
 
@@ -1356,7 +1398,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,(w<span class="op">*</span>x<span class="op">+</span>b).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="06ae8f46-9544-471b-9f6f-d0f1603555aa" class="cell" data-execution_count="21">
@@ -1375,7 +1421,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>)</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,(w<span class="op">*</span>x<span class="op">+</span>b).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-33-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 응용예제2</p>
@@ -1400,7 +1450,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>)</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,(X<span class="op">@</span>What).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-37-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-37-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="508b72c5-9ab6-4bcf-b6c7-aa549b108fc2" class="cell" data-execution_count="28">
@@ -1419,7 +1473,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>)</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,(X<span class="op">@</span>What).data,<span class="st">'--'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-39-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-39-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <section id="스스로-학습-중간고사-대체과제" class="level3">
@@ -1432,7 +1490,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <div id="60127e92-6375-428b-9a03-66428c6dc1ef" class="cell" data-outputid="56d28607-5f71-46b6-8df3-18265f94e2f0" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-41-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>아래의 모형을 가정하고 <span class="math inline">\(\alpha_0,\alpha_1,\beta_0,\beta_1\)</span>을 파이토치를 이용하여 추정하고자한다.</p>
@@ -1558,7 +1620,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <div id="c75926cf-5c5c-4584-877f-451bcc5ee226" class="cell" data-outputid="8bd51261-20a0-4cac-948a-9fa03441f14a" data-execution_count="95">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>plt.plot(hidden[:<span class="dv">9</span>],<span class="st">'--o'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-55-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-55-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -1569,13 +1635,21 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <div id="46fdad91-b0a6-4466-b9d6-9caea806acc4" class="cell" data-outputid="bd14e4a6-3b69-4fdf-dd6b-d945644bac15" data-execution_count="96">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>plt.plot(net(x).data[:<span class="dv">9</span>],<span class="st">'--o'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-56-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-56-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="385d5e53-7421-474c-9a55-52b429fa364f" class="cell" data-outputid="66d362fa-d568-46ca-b7ca-b6e4a7b3ea1f" data-execution_count="97">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>plt.plot(yhat[:<span class="dv">9</span>],<span class="st">'--o'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-57-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-57-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -1590,7 +1664,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <span id="cb90-5"><a href="#cb90-5" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="vs">r"Vis1: $h,net(x),\hat</span><span class="sc">{y}</span><span class="vs">$"</span>,size<span class="op">=</span><span class="dv">20</span>)</span>
 <span id="cb90-6"><a href="#cb90-6" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-58-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-58-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -1815,7 +1893,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <span id="cb133-5"><a href="#cb133-5" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="vs">r"Vis1: $h,net(x),\hat</span><span class="sc">{y}</span><span class="vs">$"</span>,size<span class="op">=</span><span class="dv">20</span>)</span>
 <span id="cb133-6"><a href="#cb133-6" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-80-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-80-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="fee3ee95-4697-419b-805c-dc72325886b6" class="cell" data-outputid="850ce545-cfbd-4be1-a1fa-90cf4f3fb629" data-execution_count="132">
@@ -1829,7 +1911,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <pre><code>Text(0.5, 1.0, 'Vis2: $[h | net(x) | \\hat{y}]$')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-81-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-81-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1908,7 +1994,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <span id="cb147-5"><a href="#cb147-5" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="vs">r"Vis1: $h,net(x),\hat</span><span class="sc">{y}</span><span class="vs">$"</span>,size<span class="op">=</span><span class="dv">20</span>)</span>
 <span id="cb147-6"><a href="#cb147-6" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-90-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-90-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 결과시각화2</p>
@@ -1930,7 +2020,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <pre><code>Text(0.5, 1.0, 'Vis2: $[h | net(x) | \\hat{y}]$')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-92-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-92-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>맞춘게 아니야. 0 근처인게 있잖아 hidden에서</p>
@@ -1983,7 +2077,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <span id="cb157-5"><a href="#cb157-5" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="vs">r"Vis1: $h,net(x),\hat</span><span class="sc">{y}</span><span class="vs">$"</span>,size<span class="op">=</span><span class="dv">20</span>)</span>
 <span id="cb157-6"><a href="#cb157-6" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-97-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-97-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 결과시각화2</p>
@@ -2005,7 +2103,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <pre><code>Text(0.5, 1.0, 'Vis2: $[h | net(x) | \\hat{y}]$')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-99-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-99-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -2089,7 +2191,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <span id="cb173-5"><a href="#cb173-5" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="vs">r"Vis1: $h,net(x),\hat</span><span class="sc">{y}</span><span class="vs">$"</span>,size<span class="op">=</span><span class="dv">20</span>)</span>
 <span id="cb173-6"><a href="#cb173-6" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-107-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-107-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 결과시각화2</p>
@@ -2113,7 +2219,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <pre><code>Text(0.5, 1.0, 'Vis2: $[h | net(x) | \\hat{y}]$')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-109-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-109-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -2188,7 +2298,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <span id="cb188-5"><a href="#cb188-5" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="vs">r"Vis1: $h,net(x),\hat</span><span class="sc">{y}</span><span class="vs">$"</span>,size<span class="op">=</span><span class="dv">20</span>)</span>
 <span id="cb188-6"><a href="#cb188-6" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-117-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-117-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 결과시각화2</p>
@@ -2210,7 +2324,11 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <pre><code>Text(0.5, 1.0, 'Vis2: $[h | net(x) | \\hat{y}]$')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-119-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-119-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -2634,11 +2752,12 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 </div>
 <div id="0391b6f6-4693-45ce-b890-bc95a1e0be0c" class="cell" data-outputid="67e459e1-0463-4674-ed8d-b5554295efcc" data-execution_count="214">
 <div class="sourceCode cell-code" id="cb230"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb230-1"><a href="#cb230-1" aria-hidden="true" tabindex="-1"></a>plt.matshow(yhat.data[<span class="op">-</span><span class="dv">15</span>:])</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="214">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7f0f04614dd0&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-144-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-144-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -2652,59 +2771,59 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <p><code>(1)</code> 숙성네트워크</p>
 <p>선언</p>
 <div id="89ed2ec1-4d20-4f45-9fd1-fdbd745ad081" class="cell" data-execution_count="215">
-<div class="sourceCode cell-code" id="cb232"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb232-1"><a href="#cb232-1" aria-hidden="true" tabindex="-1"></a>rnncell <span class="op">=</span> torch.nn.RNNCell(<span class="dv">4</span>,<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb231"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb231-1"><a href="#cb231-1" aria-hidden="true" tabindex="-1"></a>rnncell <span class="op">=</span> torch.nn.RNNCell(<span class="dv">4</span>,<span class="dv">2</span>)</span></code></pre></div>
 </div>
 <p>가중치초기화 (순환신경망 구현1과 동일하도록)</p>
 <div id="26b822bf-1094-4792-809a-f66b7154185c" class="cell" data-execution_count="216">
-<div class="sourceCode cell-code" id="cb233"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb233-1"><a href="#cb233-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">43052</span>)</span>
-<span id="cb233-2"><a href="#cb233-2" aria-hidden="true" tabindex="-1"></a>_rnncell <span class="op">=</span> rNNCell()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb232"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb232-1"><a href="#cb232-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">43052</span>)</span>
+<span id="cb232-2"><a href="#cb232-2" aria-hidden="true" tabindex="-1"></a>_rnncell <span class="op">=</span> rNNCell()</span></code></pre></div>
 </div>
 <div id="379443b9-e1e4-41eb-8e44-649bdb399061" class="cell" data-execution_count="217">
-<div class="sourceCode cell-code" id="cb234"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb234-1"><a href="#cb234-1" aria-hidden="true" tabindex="-1"></a>rnncell.weight_ih.data <span class="op">=</span> _rnncell.i2h.weight.data </span>
-<span id="cb234-2"><a href="#cb234-2" aria-hidden="true" tabindex="-1"></a>rnncell.weight_hh.data <span class="op">=</span> _rnncell.h2h.weight.data </span>
-<span id="cb234-3"><a href="#cb234-3" aria-hidden="true" tabindex="-1"></a>rnncell.bias_hh.data <span class="op">=</span> _rnncell.h2h.bias.data </span>
-<span id="cb234-4"><a href="#cb234-4" aria-hidden="true" tabindex="-1"></a>rnncell.bias_ih.data <span class="op">=</span> _rnncell.i2h.bias.data </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb233"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb233-1"><a href="#cb233-1" aria-hidden="true" tabindex="-1"></a>rnncell.weight_ih.data <span class="op">=</span> _rnncell.i2h.weight.data </span>
+<span id="cb233-2"><a href="#cb233-2" aria-hidden="true" tabindex="-1"></a>rnncell.weight_hh.data <span class="op">=</span> _rnncell.h2h.weight.data </span>
+<span id="cb233-3"><a href="#cb233-3" aria-hidden="true" tabindex="-1"></a>rnncell.bias_hh.data <span class="op">=</span> _rnncell.h2h.bias.data </span>
+<span id="cb233-4"><a href="#cb233-4" aria-hidden="true" tabindex="-1"></a>rnncell.bias_ih.data <span class="op">=</span> _rnncell.i2h.bias.data </span></code></pre></div>
 </div>
 <p><code>(2)</code> 조리담당 네트워크</p>
 <div id="d8a09f03-3d28-42e0-9b41-e084ec6c96bb" class="cell" data-execution_count="218">
-<div class="sourceCode cell-code" id="cb235"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb235-1"><a href="#cb235-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">43052</span>)</span>
-<span id="cb235-2"><a href="#cb235-2" aria-hidden="true" tabindex="-1"></a>cook <span class="op">=</span> torch.nn.Linear(<span class="dv">2</span>,<span class="dv">4</span>) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb234"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb234-1"><a href="#cb234-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">43052</span>)</span>
+<span id="cb234-2"><a href="#cb234-2" aria-hidden="true" tabindex="-1"></a>cook <span class="op">=</span> torch.nn.Linear(<span class="dv">2</span>,<span class="dv">4</span>) </span></code></pre></div>
 </div>
 <p><code>(3)</code> 손실함수, 옵티마이저 설계</p>
 <div id="18c5bf37-de0c-47b1-b4a2-89092fd87256" class="cell" data-execution_count="221">
-<div class="sourceCode cell-code" id="cb236"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb236-1"><a href="#cb236-1" aria-hidden="true" tabindex="-1"></a>loss_fn <span class="op">=</span> torch.nn.CrossEntropyLoss() </span>
-<span id="cb236-2"><a href="#cb236-2" aria-hidden="true" tabindex="-1"></a>optimizr <span class="op">=</span> torch.optim.Adam(<span class="bu">list</span>(rnncell.parameters())<span class="op">+</span><span class="bu">list</span>(cook.parameters()))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb235"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb235-1"><a href="#cb235-1" aria-hidden="true" tabindex="-1"></a>loss_fn <span class="op">=</span> torch.nn.CrossEntropyLoss() </span>
+<span id="cb235-2"><a href="#cb235-2" aria-hidden="true" tabindex="-1"></a>optimizr <span class="op">=</span> torch.optim.Adam(<span class="bu">list</span>(rnncell.parameters())<span class="op">+</span><span class="bu">list</span>(cook.parameters()))</span></code></pre></div>
 </div>
 <p><code>(4)</code> 학습 (6분정도 걸림)</p>
 <div id="a4bdcf7f-dc85-459f-b0c4-a6ed127b6a26" class="cell" data-execution_count="222">
-<div class="sourceCode cell-code" id="cb237"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb237-1"><a href="#cb237-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="bu">len</span>(x) </span>
-<span id="cb237-2"><a href="#cb237-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoc <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5000</span>): </span>
-<span id="cb237-3"><a href="#cb237-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 1~2</span></span>
-<span id="cb237-4"><a href="#cb237-4" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> <span class="dv">0</span> </span>
-<span id="cb237-5"><a href="#cb237-5" aria-hidden="true" tabindex="-1"></a>    ht <span class="op">=</span> torch.zeros(<span class="dv">1</span>,<span class="dv">2</span>) </span>
-<span id="cb237-6"><a href="#cb237-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(T):</span>
-<span id="cb237-7"><a href="#cb237-7" aria-hidden="true" tabindex="-1"></a>        xt,yt <span class="op">=</span> x[[t]], y[[t]]</span>
-<span id="cb237-8"><a href="#cb237-8" aria-hidden="true" tabindex="-1"></a>        ht <span class="op">=</span> rnncell(xt,ht) </span>
-<span id="cb237-9"><a href="#cb237-9" aria-hidden="true" tabindex="-1"></a>        ot <span class="op">=</span> cook(ht) </span>
-<span id="cb237-10"><a href="#cb237-10" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> loss <span class="op">+</span> loss_fn(ot,yt) </span>
-<span id="cb237-11"><a href="#cb237-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 3 </span></span>
-<span id="cb237-12"><a href="#cb237-12" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
-<span id="cb237-13"><a href="#cb237-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 4 </span></span>
-<span id="cb237-14"><a href="#cb237-14" aria-hidden="true" tabindex="-1"></a>    optimizr.step()</span>
-<span id="cb237-15"><a href="#cb237-15" aria-hidden="true" tabindex="-1"></a>    optimizr.zero_grad()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb236"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb236-1"><a href="#cb236-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="bu">len</span>(x) </span>
+<span id="cb236-2"><a href="#cb236-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoc <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5000</span>): </span>
+<span id="cb236-3"><a href="#cb236-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 1~2</span></span>
+<span id="cb236-4"><a href="#cb236-4" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb236-5"><a href="#cb236-5" aria-hidden="true" tabindex="-1"></a>    ht <span class="op">=</span> torch.zeros(<span class="dv">1</span>,<span class="dv">2</span>) </span>
+<span id="cb236-6"><a href="#cb236-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(T):</span>
+<span id="cb236-7"><a href="#cb236-7" aria-hidden="true" tabindex="-1"></a>        xt,yt <span class="op">=</span> x[[t]], y[[t]]</span>
+<span id="cb236-8"><a href="#cb236-8" aria-hidden="true" tabindex="-1"></a>        ht <span class="op">=</span> rnncell(xt,ht) </span>
+<span id="cb236-9"><a href="#cb236-9" aria-hidden="true" tabindex="-1"></a>        ot <span class="op">=</span> cook(ht) </span>
+<span id="cb236-10"><a href="#cb236-10" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> loss <span class="op">+</span> loss_fn(ot,yt) </span>
+<span id="cb236-11"><a href="#cb236-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 3 </span></span>
+<span id="cb236-12"><a href="#cb236-12" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb236-13"><a href="#cb236-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 4 </span></span>
+<span id="cb236-14"><a href="#cb236-14" aria-hidden="true" tabindex="-1"></a>    optimizr.step()</span>
+<span id="cb236-15"><a href="#cb236-15" aria-hidden="true" tabindex="-1"></a>    optimizr.zero_grad()</span></code></pre></div>
 </div>
 <p><code>(5)</code> 시각화</p>
 <div id="04181a67-6e7b-4729-9e5a-85d9eafe5676" class="cell" data-execution_count="223">
-<div class="sourceCode cell-code" id="cb238"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb238-1"><a href="#cb238-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="bu">len</span>(x) </span>
-<span id="cb238-2"><a href="#cb238-2" aria-hidden="true" tabindex="-1"></a>hidden <span class="op">=</span> torch.zeros(T,<span class="dv">2</span>) <span class="co"># 599년치 h를 담을 변수 </span></span>
-<span id="cb238-3"><a href="#cb238-3" aria-hidden="true" tabindex="-1"></a>_water <span class="op">=</span> torch.zeros(<span class="dv">1</span>,<span class="dv">2</span>) <span class="co"># 맹물 </span></span>
-<span id="cb238-4"><a href="#cb238-4" aria-hidden="true" tabindex="-1"></a>hidden[[<span class="dv">0</span>]] <span class="op">=</span> rnncell(x[[<span class="dv">0</span>]],_water) </span>
-<span id="cb238-5"><a href="#cb238-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,T):</span>
-<span id="cb238-6"><a href="#cb238-6" aria-hidden="true" tabindex="-1"></a>    hidden[[t]] <span class="op">=</span> rnncell(x[[t]],hidden[[t<span class="op">-</span><span class="dv">1</span>]]) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb237"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb237-1"><a href="#cb237-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="bu">len</span>(x) </span>
+<span id="cb237-2"><a href="#cb237-2" aria-hidden="true" tabindex="-1"></a>hidden <span class="op">=</span> torch.zeros(T,<span class="dv">2</span>) <span class="co"># 599년치 h를 담을 변수 </span></span>
+<span id="cb237-3"><a href="#cb237-3" aria-hidden="true" tabindex="-1"></a>_water <span class="op">=</span> torch.zeros(<span class="dv">1</span>,<span class="dv">2</span>) <span class="co"># 맹물 </span></span>
+<span id="cb237-4"><a href="#cb237-4" aria-hidden="true" tabindex="-1"></a>hidden[[<span class="dv">0</span>]] <span class="op">=</span> rnncell(x[[<span class="dv">0</span>]],_water) </span>
+<span id="cb237-5"><a href="#cb237-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,T):</span>
+<span id="cb237-6"><a href="#cb237-6" aria-hidden="true" tabindex="-1"></a>    hidden[[t]] <span class="op">=</span> rnncell(x[[t]],hidden[[t<span class="op">-</span><span class="dv">1</span>]]) </span></code></pre></div>
 </div>
 <div id="3e8dfec8-618f-4f7e-9c34-6cf895da7878" class="cell" data-outputid="28f093a5-d9f5-49e6-db9f-afd4c6423c0d" data-execution_count="224">
-<div class="sourceCode cell-code" id="cb239"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb239-1"><a href="#cb239-1" aria-hidden="true" tabindex="-1"></a>yhat <span class="op">=</span> soft(cook(hidden))</span>
-<span id="cb239-2"><a href="#cb239-2" aria-hidden="true" tabindex="-1"></a>yhat</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb238"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb238-1"><a href="#cb238-1" aria-hidden="true" tabindex="-1"></a>yhat <span class="op">=</span> soft(cook(hidden))</span>
+<span id="cb238-2"><a href="#cb238-2" aria-hidden="true" tabindex="-1"></a>yhat</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="224">
 <pre><code>tensor([[1.6522e-02, 6.2036e-01, 1.0433e-01, 2.5879e-01],
         [9.9965e-01, 6.5788e-05, 1.8450e-05, 2.6785e-04],
@@ -2717,12 +2836,13 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 </div>
 </div>
 <div id="83411c75-405f-49d5-b056-37d06cfe92ba" class="cell" data-outputid="eb9fd8ef-091f-406c-f3cd-4d5796c00a4d" data-execution_count="225">
-<div class="sourceCode cell-code" id="cb241"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb241-1"><a href="#cb241-1" aria-hidden="true" tabindex="-1"></a>plt.matshow(yhat.data[<span class="op">-</span><span class="dv">15</span>:])</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="225">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7f0f0cfe77d0&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb240"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb240-1"><a href="#cb240-1" aria-hidden="true" tabindex="-1"></a>plt.matshow(yhat.data[<span class="op">-</span><span class="dv">15</span>:])</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-153-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-153-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -2731,15 +2851,15 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <p>(예비학습)</p>
 <p><code>-</code> 아무리 생각해도 yhat구하려면 좀 귀찮음</p>
 <div id="e5613615-af57-42df-bafe-f12f6e3d6b06" class="cell" data-execution_count="226">
-<div class="sourceCode cell-code" id="cb243"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb243-1"><a href="#cb243-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="bu">len</span>(x) </span>
-<span id="cb243-2"><a href="#cb243-2" aria-hidden="true" tabindex="-1"></a>hidden <span class="op">=</span> torch.zeros(T,<span class="dv">2</span>) <span class="co"># 599년치 h를 담을 변수 </span></span>
-<span id="cb243-3"><a href="#cb243-3" aria-hidden="true" tabindex="-1"></a>_water <span class="op">=</span> torch.zeros(<span class="dv">1</span>,<span class="dv">2</span>) <span class="co"># 맹물 </span></span>
-<span id="cb243-4"><a href="#cb243-4" aria-hidden="true" tabindex="-1"></a>hidden[[<span class="dv">0</span>]] <span class="op">=</span> rnncell(x[[<span class="dv">0</span>]],_water) </span>
-<span id="cb243-5"><a href="#cb243-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,T):</span>
-<span id="cb243-6"><a href="#cb243-6" aria-hidden="true" tabindex="-1"></a>    hidden[[t]] <span class="op">=</span> rnncell(x[[t]],hidden[[t<span class="op">-</span><span class="dv">1</span>]])</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb241"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb241-1"><a href="#cb241-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="bu">len</span>(x) </span>
+<span id="cb241-2"><a href="#cb241-2" aria-hidden="true" tabindex="-1"></a>hidden <span class="op">=</span> torch.zeros(T,<span class="dv">2</span>) <span class="co"># 599년치 h를 담을 변수 </span></span>
+<span id="cb241-3"><a href="#cb241-3" aria-hidden="true" tabindex="-1"></a>_water <span class="op">=</span> torch.zeros(<span class="dv">1</span>,<span class="dv">2</span>) <span class="co"># 맹물 </span></span>
+<span id="cb241-4"><a href="#cb241-4" aria-hidden="true" tabindex="-1"></a>hidden[[<span class="dv">0</span>]] <span class="op">=</span> rnncell(x[[<span class="dv">0</span>]],_water) </span>
+<span id="cb241-5"><a href="#cb241-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,T):</span>
+<span id="cb241-6"><a href="#cb241-6" aria-hidden="true" tabindex="-1"></a>    hidden[[t]] <span class="op">=</span> rnncell(x[[t]],hidden[[t<span class="op">-</span><span class="dv">1</span>]])</span></code></pre></div>
 </div>
 <div id="dda3dc84-9c1d-43ad-a3bc-723046b7a78d" class="cell" data-outputid="e2211a61-2e7a-4f14-f8d4-da38dcc9d1ca" data-execution_count="227">
-<div class="sourceCode cell-code" id="cb244"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb244-1"><a href="#cb244-1" aria-hidden="true" tabindex="-1"></a>soft(cook(hidden))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb242"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb242-1"><a href="#cb242-1" aria-hidden="true" tabindex="-1"></a>soft(cook(hidden))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="227">
 <pre><code>tensor([[1.6522e-02, 6.2036e-01, 1.0433e-01, 2.5879e-01],
         [9.9965e-01, 6.5788e-05, 1.8450e-05, 2.6785e-04],
@@ -2753,22 +2873,22 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 </div>
 <p><code>-</code> 이렇게 하면 쉽게(?) 구할 수 있음</p>
 <div id="d8f0205e-d8ed-4a91-be9d-e01059ed5b70" class="cell" data-execution_count="228">
-<div class="sourceCode cell-code" id="cb246"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb246-1"><a href="#cb246-1" aria-hidden="true" tabindex="-1"></a>rnn <span class="op">=</span> torch.nn.RNN(<span class="dv">4</span>,<span class="dv">2</span>) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb244"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb244-1"><a href="#cb244-1" aria-hidden="true" tabindex="-1"></a>rnn <span class="op">=</span> torch.nn.RNN(<span class="dv">4</span>,<span class="dv">2</span>) </span></code></pre></div>
 </div>
 <div id="e3d4043d-47c6-4103-974a-3d0d7d24e016" class="cell" data-execution_count="229">
-<div class="sourceCode cell-code" id="cb247"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb247-1"><a href="#cb247-1" aria-hidden="true" tabindex="-1"></a>rnn.weight_hh_l0.data <span class="op">=</span> rnncell.weight_hh.data </span>
-<span id="cb247-2"><a href="#cb247-2" aria-hidden="true" tabindex="-1"></a>rnn.bias_hh_l0.data <span class="op">=</span> rnncell.bias_hh.data </span>
-<span id="cb247-3"><a href="#cb247-3" aria-hidden="true" tabindex="-1"></a>rnn.weight_ih_l0.data <span class="op">=</span> rnncell.weight_ih.data </span>
-<span id="cb247-4"><a href="#cb247-4" aria-hidden="true" tabindex="-1"></a>rnn.bias_ih_l0.data <span class="op">=</span> rnncell.bias_ih.data </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb245"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb245-1"><a href="#cb245-1" aria-hidden="true" tabindex="-1"></a>rnn.weight_hh_l0.data <span class="op">=</span> rnncell.weight_hh.data </span>
+<span id="cb245-2"><a href="#cb245-2" aria-hidden="true" tabindex="-1"></a>rnn.bias_hh_l0.data <span class="op">=</span> rnncell.bias_hh.data </span>
+<span id="cb245-3"><a href="#cb245-3" aria-hidden="true" tabindex="-1"></a>rnn.weight_ih_l0.data <span class="op">=</span> rnncell.weight_ih.data </span>
+<span id="cb245-4"><a href="#cb245-4" aria-hidden="true" tabindex="-1"></a>rnn.bias_ih_l0.data <span class="op">=</span> rnncell.bias_ih.data </span></code></pre></div>
 </div>
 <div id="a56f1294-e738-486f-914a-eef3d0d56eee" class="cell" data-outputid="6aff89b9-043e-4294-da92-6fa6864b2495" data-execution_count="230">
-<div class="sourceCode cell-code" id="cb248"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb248-1"><a href="#cb248-1" aria-hidden="true" tabindex="-1"></a>_water</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb246"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb246-1"><a href="#cb246-1" aria-hidden="true" tabindex="-1"></a>_water</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="230">
 <pre><code>tensor([[0., 0.]])</code></pre>
 </div>
 </div>
 <div id="bb9047ee-a66b-4b3f-b17a-e91dab9ba577" class="cell" data-outputid="cf592a20-2953-4281-eec1-917520be9153" data-execution_count="231">
-<div class="sourceCode cell-code" id="cb250"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb250-1"><a href="#cb250-1" aria-hidden="true" tabindex="-1"></a>soft(cook(rnn(x,_water)[<span class="dv">0</span>]))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb248"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb248-1"><a href="#cb248-1" aria-hidden="true" tabindex="-1"></a>soft(cook(rnn(x,_water)[<span class="dv">0</span>]))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="231">
 <pre><code>tensor([[1.6522e-02, 6.2036e-01, 1.0433e-01, 2.5879e-01],
         [9.9965e-01, 6.5788e-05, 1.8450e-05, 2.6785e-04],
@@ -2785,7 +2905,7 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 </ul>
 <p><code>-</code> rnn(x,_water)의 결과는 (1) 599년치 간장 (2) 599번째 간장 이다</p>
 <div id="1090aaee-10ae-4001-a2f2-f2937d813175" class="cell" data-outputid="67d9bee7-aeaa-492f-a9e2-6226197676bc" data-execution_count="232">
-<div class="sourceCode cell-code" id="cb252"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb252-1"><a href="#cb252-1" aria-hidden="true" tabindex="-1"></a>rnn(x,_water)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb250"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb250-1"><a href="#cb250-1" aria-hidden="true" tabindex="-1"></a>rnn(x,_water)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="232">
 <pre><code>(tensor([[-0.2232,  0.9769],
          [-0.9999, -0.9742],
@@ -2803,38 +2923,38 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 <p><code>(1)</code> 숙성네트워크</p>
 <p>선언</p>
 <div id="93f68650-eb4d-4919-a25d-3a0faace2bc3" class="cell" data-execution_count="233">
-<div class="sourceCode cell-code" id="cb254"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb254-1"><a href="#cb254-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">43052</span>)</span>
-<span id="cb254-2"><a href="#cb254-2" aria-hidden="true" tabindex="-1"></a>rnn <span class="op">=</span> torch.nn.RNN(<span class="dv">4</span>,<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb252"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb252-1"><a href="#cb252-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">43052</span>)</span>
+<span id="cb252-2"><a href="#cb252-2" aria-hidden="true" tabindex="-1"></a>rnn <span class="op">=</span> torch.nn.RNN(<span class="dv">4</span>,<span class="dv">2</span>)</span></code></pre></div>
 </div>
 <p><code>(2)</code> 조리네트워크</p>
 <div id="911248d4-ee07-456a-a708-364153eb0276" class="cell" data-execution_count="234">
-<div class="sourceCode cell-code" id="cb255"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb255-1"><a href="#cb255-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">43052</span>)</span>
-<span id="cb255-2"><a href="#cb255-2" aria-hidden="true" tabindex="-1"></a>cook <span class="op">=</span> torch.nn.Linear(<span class="dv">2</span>,<span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb253"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb253-1"><a href="#cb253-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">43052</span>)</span>
+<span id="cb253-2"><a href="#cb253-2" aria-hidden="true" tabindex="-1"></a>cook <span class="op">=</span> torch.nn.Linear(<span class="dv">2</span>,<span class="dv">4</span>)</span></code></pre></div>
 </div>
 <p><code>(3)</code> 손실함수와 옵티마이저</p>
 <div id="8a853453-230e-4dcd-b087-275471ba2392" class="cell" data-execution_count="235">
-<div class="sourceCode cell-code" id="cb256"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb256-1"><a href="#cb256-1" aria-hidden="true" tabindex="-1"></a>loss_fn <span class="op">=</span> torch.nn.CrossEntropyLoss() </span>
-<span id="cb256-2"><a href="#cb256-2" aria-hidden="true" tabindex="-1"></a>optimizr <span class="op">=</span> torch.optim.Adam(<span class="bu">list</span>(rnn.parameters())<span class="op">+</span><span class="bu">list</span>(cook.parameters())) <span class="co"># 우리가 배울것: 숙성하는 방법 + 요리하는 방법 </span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb254"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb254-1"><a href="#cb254-1" aria-hidden="true" tabindex="-1"></a>loss_fn <span class="op">=</span> torch.nn.CrossEntropyLoss() </span>
+<span id="cb254-2"><a href="#cb254-2" aria-hidden="true" tabindex="-1"></a>optimizr <span class="op">=</span> torch.optim.Adam(<span class="bu">list</span>(rnn.parameters())<span class="op">+</span><span class="bu">list</span>(cook.parameters())) <span class="co"># 우리가 배울것: 숙성하는 방법 + 요리하는 방법 </span></span></code></pre></div>
 </div>
 <p><code>(4)</code> 학습</p>
 <div id="e59e243b-0e8c-47ce-883b-83caa0513bda" class="cell" data-execution_count="236">
-<div class="sourceCode cell-code" id="cb257"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb257-1"><a href="#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoc <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5000</span>):</span>
-<span id="cb257-2"><a href="#cb257-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 1</span></span>
-<span id="cb257-3"><a href="#cb257-3" aria-hidden="true" tabindex="-1"></a>    _water <span class="op">=</span> torch.zeros(<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb257-4"><a href="#cb257-4" aria-hidden="true" tabindex="-1"></a>    hidden, _ <span class="op">=</span> rnn(x,_water)</span>
-<span id="cb257-5"><a href="#cb257-5" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> cook(hidden)</span>
-<span id="cb257-6"><a href="#cb257-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 2 </span></span>
-<span id="cb257-7"><a href="#cb257-7" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> loss_fn(output,y) </span>
-<span id="cb257-8"><a href="#cb257-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 3 </span></span>
-<span id="cb257-9"><a href="#cb257-9" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
-<span id="cb257-10"><a href="#cb257-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 4 </span></span>
-<span id="cb257-11"><a href="#cb257-11" aria-hidden="true" tabindex="-1"></a>    optimizr.step()</span>
-<span id="cb257-12"><a href="#cb257-12" aria-hidden="true" tabindex="-1"></a>    optimizr.zero_grad()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb255"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb255-1"><a href="#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoc <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5000</span>):</span>
+<span id="cb255-2"><a href="#cb255-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 1</span></span>
+<span id="cb255-3"><a href="#cb255-3" aria-hidden="true" tabindex="-1"></a>    _water <span class="op">=</span> torch.zeros(<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb255-4"><a href="#cb255-4" aria-hidden="true" tabindex="-1"></a>    hidden, _ <span class="op">=</span> rnn(x,_water)</span>
+<span id="cb255-5"><a href="#cb255-5" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> cook(hidden)</span>
+<span id="cb255-6"><a href="#cb255-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 2 </span></span>
+<span id="cb255-7"><a href="#cb255-7" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> loss_fn(output,y) </span>
+<span id="cb255-8"><a href="#cb255-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 3 </span></span>
+<span id="cb255-9"><a href="#cb255-9" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb255-10"><a href="#cb255-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 4 </span></span>
+<span id="cb255-11"><a href="#cb255-11" aria-hidden="true" tabindex="-1"></a>    optimizr.step()</span>
+<span id="cb255-12"><a href="#cb255-12" aria-hidden="true" tabindex="-1"></a>    optimizr.zero_grad()</span></code></pre></div>
 </div>
 <p><code>(5)</code> 시각화</p>
 <div id="faead8b0-7962-4c29-94db-532748004a0c" class="cell" data-outputid="5d3932c6-62cd-44aa-9fbb-56d80b24654f" data-execution_count="237">
-<div class="sourceCode cell-code" id="cb258"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb258-1"><a href="#cb258-1" aria-hidden="true" tabindex="-1"></a>yhat <span class="op">=</span> soft(cook(rnn(x,_water)[<span class="dv">0</span>]))</span>
-<span id="cb258-2"><a href="#cb258-2" aria-hidden="true" tabindex="-1"></a>yhat</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb256"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb256-1"><a href="#cb256-1" aria-hidden="true" tabindex="-1"></a>yhat <span class="op">=</span> soft(cook(rnn(x,_water)[<span class="dv">0</span>]))</span>
+<span id="cb256-2"><a href="#cb256-2" aria-hidden="true" tabindex="-1"></a>yhat</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="237">
 <pre><code>tensor([[1.9725e-02, 1.5469e-03, 8.2766e-01, 1.5106e-01],
         [9.1875e-01, 1.6513e-04, 6.7703e-02, 1.3384e-02],
@@ -2847,12 +2967,13 @@ tensor([-0.8206], requires_grad=True)</code></pre>
 </div>
 </div>
 <div id="6233c3dc-c29b-4b39-8669-21ca5b1fc8c5" class="cell" data-outputid="d498cbbd-7444-49d8-9880-33c49f39c16a" data-execution_count="238">
-<div class="sourceCode cell-code" id="cb260"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb260-1"><a href="#cb260-1" aria-hidden="true" tabindex="-1"></a>plt.matshow(yhat.data[:<span class="dv">15</span>])</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="238">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7f0f159c0a10&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb258"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb258-1"><a href="#cb258-1" aria-hidden="true" tabindex="-1"></a>plt.matshow(yhat.data[:<span class="dv">15</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-09-ml-10w_files/figure-html/cell-166-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-09-ml-10w_files/figure-html/cell-166-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -2937,15 +3058,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
         return container.innerHTML
       } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -2953,6 +3087,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const anchorLink = note.querySelector('a.anchorjs-link');
       if (anchorLink) {
         anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
       }
       return note.innerHTML;
     }
@@ -2996,6 +3133,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -3071,7 +3231,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);

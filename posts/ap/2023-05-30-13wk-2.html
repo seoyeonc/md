@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.527">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,12 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -95,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -104,6 +106,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
@@ -111,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
@@ -123,6 +152,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://seoyeonc.github.io/sy_hub/"> 
+<span class="menu-text">Main_Blog</span></a>
+  </li>  
+</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link active" href="../../about.html" aria-current="page"> 
@@ -141,11 +176,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/ap/index.html">Advanced Probability Theory</a></li><li class="breadcrumb-item"><a href="../../posts/ap/2023-05-30-13wk-2.html">13wk-2: MCMC (1)</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -156,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -840,6 +875,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-12-07_any_tip.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">정리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/anything/A1.out.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A1: 강화학습 (1) – bandit</span></a>
   </div>
@@ -1052,7 +1093,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -1102,6 +1143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p class="date">2023-05-30</p>
 </header>
 
+
 <section id="강의영상" class="level1">
 <h1>강의영상</h1>
 <blockquote class="blockquote">
@@ -1138,10 +1180,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="균등분포" class="level2">
 <h2 class="anchored" data-anchor-id="균등분포">균등분포</h2>
 <p><code>-</code> 가정: 균등분포에서는 뽑을 수 있다고 가정한다. (제가 사실 여기는 잘 몰라요)</p>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-05-30-13wk-2_files/figure-html/b1f0dea7-0361-4672-8d24-170664e22af0-1-513fecb4-0e25-490f-98a9-2ffde408f7bb.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">그림1: 균등분포를 생성하는 원리에 대하여 chatGPT에게 물어봄</figcaption>
+<figcaption>그림1: 균등분포를 생성하는 원리에 대하여 chatGPT에게 물어봄</figcaption>
 </figure>
 </div>
 <p><code>-</code> 균등분포 이외의 난수는 어떻게?… (어려워요)</p>
@@ -1153,7 +1195,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.rand(<span class="dv">1000</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.hist(x)<span class="op">;</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="07a85dc8-e7fc-4989-9b7a-516eda8391e8" class="cell" data-execution_count="5">
@@ -1161,7 +1207,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist((x <span class="op">&gt;</span> <span class="fl">0.5</span>)<span class="op">*</span><span class="fl">1.0</span>,color<span class="op">=</span><span class="st">'C0'</span>)<span class="op">;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(np.random.binomial(<span class="dv">1</span>,<span class="fl">0.5</span>,size<span class="op">=</span><span class="dv">1000</span>),color<span class="op">=</span><span class="st">'C1'</span>)<span class="op">;</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -1174,7 +1224,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist((x<span class="op">&gt;</span><span class="fl">0.5</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>),bins<span class="op">=</span><span class="dv">9</span>)<span class="op">;</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(np.random.binomial(<span class="dv">10</span>,<span class="fl">0.5</span>,size<span class="op">=</span><span class="dv">100000</span>),color<span class="op">=</span><span class="st">'C1'</span>,bins<span class="op">=</span><span class="dv">9</span>)<span class="op">;</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 포아송: 이항분포의 근사로</p>
@@ -1217,13 +1271,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>gamma2 <span class="op">=</span> np.random.exponential(scale<span class="op">=</span><span class="dv">1</span>,size<span class="op">=</span>(<span class="dv">100000</span>,<span class="dv">2</span>)).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.hist(gamma2,bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="0310ad72-f569-4452-9018-20e583d7a9c9" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.hist(np.random.gamma(shape<span class="op">=</span><span class="dv">2</span>,scale<span class="op">=</span><span class="dv">1</span>,size<span class="op">=</span><span class="dv">100000</span>),bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="4eb1643e-4831-4284-b9a2-ab503007e054" class="cell" data-execution_count="9">
@@ -1235,13 +1297,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="6d060f6a-10ec-4c82-bace-8a6351d883f1" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plt.hist(beta26,bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="a21fa517-25f7-4c35-b335-957bc88ed47b" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plt.hist(np.random.beta(<span class="dv">2</span>,<span class="dv">6</span>,size<span class="op">=</span><span class="dv">100000</span>),bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1271,7 +1341,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>_x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">10000</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.plot(_x,f(_x))</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1313,11 +1387,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(xx[<span class="dv">0</span>],f(xx[<span class="dv">0</span>]),color<span class="op">=</span><span class="st">'C0'</span>)</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(y,<span class="dv">0</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(y,f(y),color<span class="op">=</span><span class="st">'C1'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
-<pre><code>&lt;matplotlib.collections.PathCollection at 0x7ff3eca2eb50&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-18-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1332,19 +1407,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-14-반복-망했음" class="level3">
 <h3 class="anchored" data-anchor-id="step-14-반복-망했음"><strong><em>step 1~4 반복: 망했음</em></strong></h3>
 <div id="3824c9ca-2ee4-4914-825c-d44a222b44ab" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="dv">100000</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>xx <span class="op">=</span> [<span class="fl">0.99</span>]</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(T):</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> np.random.rand()</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> f(xx[t]) <span class="op">&lt;</span> f(y):</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        xx.append(y) </span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        xx.append(xx[t])</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="dv">100000</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>xx <span class="op">=</span> [<span class="fl">0.99</span>]</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(T):</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> np.random.rand()</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> f(xx[t]) <span class="op">&lt;</span> f(y):</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>        xx.append(y) </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>        xx.append(xx[t])</span></code></pre></div>
 </div>
 <div id="b9c9012a-25c8-4539-a3a8-a444712ff44b" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plt.hist(xx,bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plt.hist(xx,bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1356,8 +1435,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>-</code> 베타분포에서 10만개의 샘플을 뽑아보자.</p>
 <p><code>-</code> 일단 <span class="math inline">\({\bf xx}=(x_0,x_1,\dots,x_{T-1})\)</span>를 초기화를 하자.</p>
 <div id="6767b6be-9579-43e7-af3d-b1c93137b2d5" class="cell" data-execution_count="149">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>xx<span class="op">=</span>[<span class="fl">0.99</span>]</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>xx</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>xx<span class="op">=</span>[<span class="fl">0.99</span>]</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>xx</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="149">
 <pre><code>[0.99]</code></pre>
 </div>
@@ -1370,9 +1449,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="step2-후보-샘플링-1"><strong><em>step2: 후보 샘플링</em></strong></h3>
 <p><code>-</code> 하나의 <span class="math inline">\(y\)</span> 을 균등분포에서 샘플링한다.</p>
 <div id="aa3919f9-aa2a-4668-a8d5-17f7ca185830" class="cell" data-execution_count="150">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.random.rand()</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.random.rand()</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="150">
 <pre><code>0.417022004702574</code></pre>
 </div>
@@ -1382,16 +1461,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="step3-비교-1"><strong><em>step3: 비교</em></strong></h3>
 <p><code>-</code> <span class="math inline">\(xx[0]\)</span> vs <span class="math inline">\(y\)</span></p>
 <div id="a9a24821-2b2f-4cae-9924-de45a1980743" class="cell" data-execution_count="151">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plt.plot(_x,f(_x))</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(xx[<span class="dv">0</span>],<span class="dv">0</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(xx[<span class="dv">0</span>],f(xx[<span class="dv">0</span>]),color<span class="op">=</span><span class="st">'C0'</span>)</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(y,<span class="dv">0</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(y,f(y),color<span class="op">=</span><span class="st">'C1'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="151">
-<pre><code>&lt;matplotlib.collections.PathCollection at 0x7ff85ef61b20&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plt.plot(_x,f(_x))</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(xx[<span class="dv">0</span>],<span class="dv">0</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(xx[<span class="dv">0</span>],f(xx[<span class="dv">0</span>]),color<span class="op">=</span><span class="st">'C0'</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(y,<span class="dv">0</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(y,f(y),color<span class="op">=</span><span class="st">'C1'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-23-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1407,27 +1487,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-14-반복-이게-된다고" class="level3">
 <h3 class="anchored" data-anchor-id="step-14-반복-이게-된다고"><strong><em>step 1~4 반복: 이게 된다고?</em></strong></h3>
 <div id="1b79f0c7-3dd3-4f9f-a231-b098afc8adcf" class="cell" data-execution_count="162">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="dv">100000</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>xx <span class="op">=</span> [<span class="fl">0.99</span>]</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(T):</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> np.random.rand()</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    thresh_prob <span class="op">=</span> f(y)<span class="op">/</span>(f(xx[t])<span class="op">+</span>f(y)) <span class="co">## thresh_prob 가 클수록 y가 선택</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    _u <span class="op">=</span> np.random.rand()</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> _u <span class="op">&lt;</span> thresh_prob:</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>        xx.append(y) </span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>        xx.append(xx[t])</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="dv">100000</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>xx <span class="op">=</span> [<span class="fl">0.99</span>]</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(T):</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> np.random.rand()</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    thresh_prob <span class="op">=</span> f(y)<span class="op">/</span>(f(xx[t])<span class="op">+</span>f(y)) <span class="co">## thresh_prob 가 클수록 y가 선택</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    _u <span class="op">=</span> np.random.rand()</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> _u <span class="op">&lt;</span> thresh_prob:</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>        xx.append(y) </span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>        xx.append(xx[t])</span></code></pre></div>
 </div>
 <div id="349659d9-6f2c-414c-865d-1f62ef7baa90" class="cell" data-execution_count="163">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plt.hist(xx,bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plt.hist(xx,bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="2cbe50c3-ed61-4e2f-93e9-f84cfaedb7ee" class="cell" data-execution_count="159">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plt.hist(np.random.beta(<span class="dv">2</span>,<span class="dv">6</span>,size<span class="op">=</span><span class="dv">100000</span>),bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plt.hist(np.random.beta(<span class="dv">2</span>,<span class="dv">6</span>,size<span class="op">=</span><span class="dv">100000</span>),bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -1513,15 +1601,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
         return container.innerHTML
       } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -1529,6 +1630,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const anchorLink = note.querySelector('a.anchorjs-link');
       if (anchorLink) {
         anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
       }
       return note.innerHTML;
     }
@@ -1572,6 +1676,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -1647,7 +1774,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);

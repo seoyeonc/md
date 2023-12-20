@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.527">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -81,12 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -95,17 +96,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -113,8 +142,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
@@ -126,6 +155,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://seoyeonc.github.io/sy_hub/"> 
+<span class="menu-text">Main_Blog</span></a>
+  </li>  
+</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link active" href="../../about.html" aria-current="page"> 
@@ -144,11 +179,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Machine Learning basic</a></li><li class="breadcrumb-item"><a href="../../posts/ml_basic/2023-05-20-Manifold learning Embedding.html">Manifold learning Embedding</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -191,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -875,6 +910,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-12-07_any_tip.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">정리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/anything/A1.out.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A1: 강화학습 (1) – bandit</span></a>
   </div>
@@ -1087,7 +1128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -1108,6 +1149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
+
 
 
 
@@ -1172,7 +1214,11 @@ Note
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>ax.view_init(azim<span class="op">=-</span><span class="dv">66</span>, elev<span class="op">=</span><span class="dv">12</span>)</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> ax.text2D(<span class="fl">0.8</span>, <span class="fl">0.05</span>, s<span class="op">=</span><span class="st">"n_samples=1500"</span>, transform<span class="op">=</span>ax.transAxes)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-20-Manifold learning Embedding_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-20-Manifold learning Embedding_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="19e8bd71-3cd3-4d66-8913-d1e54852565f" class="cell" data-execution_count="62">
@@ -1242,11 +1288,12 @@ Note
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].scatter(lle_50[:, <span class="dv">0</span>], lle_50[:, <span class="dv">1</span>], c<span class="op">=</span>color, label <span class="op">=</span> <span class="st">'neighbors=50'</span>)</span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="77">
-<pre><code>&lt;matplotlib.legend.Legend at 0x7f8953936e20&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-20-Manifold learning Embedding_files/figure-html/cell-19-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-20-Manifold learning Embedding_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -1278,21 +1325,21 @@ Note
 <li><em>따라서 일부분의 정보를 유지하기 어려워 4차원 이상의 공간은 차원 축소가 제대로 되지 않을 수 있다.</em></li>
 </ul>
 <div id="975c5045-14ce-45ef-8f7c-a7025c0bd3d5" class="cell" data-execution_count="144">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn.datasets</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.manifold <span class="im">import</span> TSNE</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn.datasets</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.manifold <span class="im">import</span> TSNE</span></code></pre></div>
 </div>
 <div id="b6ff3e1b-c299-4762-9dad-bf0f352413d7" class="cell" data-execution_count="145">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 필기체 숫자 이미지 데이터세트 불러오기</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> sklearn.datasets.load_digits()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 필기체 숫자 이미지 데이터세트 불러오기</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> sklearn.datasets.load_digits()</span></code></pre></div>
 </div>
 <div id="2410273b-4755-432a-83bf-61bba90dc512" class="cell" data-execution_count="146">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data.keys()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>data.keys()</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="146">
 <pre><code>dict_keys(['data', 'target', 'frame', 'feature_names', 'target_names', 'images', 'DESCR'])</code></pre>
 </div>
 </div>
 <div id="1aac7400-58ed-4c0a-9c53-3e58ff53a3a2" class="cell" data-execution_count="147">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'data'</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'data'</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="147">
 <pre><code>array([[ 0.,  0.,  5., ...,  0.,  0.,  0.],
        [ 0.,  0.,  0., ..., 10.,  0.,  0.],
@@ -1304,22 +1351,22 @@ Note
 </div>
 </div>
 <div id="3bd2a431-1616-4f8b-a63c-a5501201cdf4" class="cell" data-execution_count="148">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>np.array(data[<span class="st">'data'</span>]).shape</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>np.array(data[<span class="st">'data'</span>]).shape</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="148">
 <pre><code>(1797, 64)</code></pre>
 </div>
 </div>
 <div id="a2fb82a9-da28-4ece-9efc-a9f9d9257328" class="cell" data-execution_count="149">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원으로 차원 축소</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>n_components <span class="op">=</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원으로 차원 축소</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>n_components <span class="op">=</span> <span class="dv">2</span></span></code></pre></div>
 </div>
 <div id="0fe6314f-38f0-4608-ab63-c11fdbd1b563" class="cell" data-execution_count="150">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t-분포 확률적 임베딩 모델 생성</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> TSNE(n_components <span class="op">=</span> n_components)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t-분포 확률적 임베딩 모델 생성</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> TSNE(n_components <span class="op">=</span> n_components)</span></code></pre></div>
 </div>
 <div id="0a2e8c48-7df6-49a1-b7a8-53e67d895b25" class="cell" data-execution_count="151">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 특징으로 학습한 2차원 공간 값 출력</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.fit_transform(data.data))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 특징으로 학습한 2차원 공간 값 출력</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.fit_transform(data.data))</span></code></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>AttributeError: 'NoneType' object has no attribute 'split'</code></pre>
 </div>
@@ -1334,21 +1381,25 @@ Note
 </div>
 </div>
 <div id="c255557a-f2f9-4cae-8f4d-5557004e00cd" class="cell" data-execution_count="152">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>tsne <span class="op">=</span> model.fit_transform(data.data)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>tsne <span class="op">=</span> model.fit_transform(data.data)</span></code></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>AttributeError: 'NoneType' object has no attribute 'split'</code></pre>
 </div>
 </div>
 <div id="567fc78e-d2cb-4c11-8052-1922a8daa4f9" class="cell" data-execution_count="153">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">12</span>), nrows<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>ax.scatter(tsne[:, <span class="dv">0</span>], tsne[:, <span class="dv">1</span>],c<span class="op">=</span>data.target,label <span class="op">=</span> <span class="st">'n_components=2'</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"t-SNE Embedding of the UCI ML hand-written digits"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">12</span>), nrows<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>ax.scatter(tsne[:, <span class="dv">0</span>], tsne[:, <span class="dv">1</span>],c<span class="op">=</span>data.target,label <span class="op">=</span> <span class="st">'n_components=2'</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"t-SNE Embedding of the UCI ML hand-written digits"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="153">
 <pre><code>Text(0.5, 1.0, 't-SNE Embedding of the UCI ML hand-written digits')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-20-Manifold learning Embedding_files/figure-html/cell-29-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-20-Manifold learning Embedding_files/figure-html/cell-29-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1356,11 +1407,11 @@ Note
 <section id="comparison-lle-vs-tsne-vs-pca" class="level1">
 <h1>Comparison LLE vs TSNE vs PCA</h1>
 <div id="81c64a6f-aa82-4c6e-9ce7-c28b82ad1996" class="cell" data-execution_count="154">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>model_local <span class="op">=</span> LocallyLinearEmbedding(n_neighbors <span class="op">=</span> <span class="dv">10</span>,</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>                               n_components <span class="op">=</span> n_components)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>model_local <span class="op">=</span> LocallyLinearEmbedding(n_neighbors <span class="op">=</span> <span class="dv">10</span>,</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>                               n_components <span class="op">=</span> n_components)</span></code></pre></div>
 </div>
 <div id="cdf7159b-2695-4756-ad7c-02ccc62cf9bc" class="cell" data-execution_count="155">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>model_local.fit(data[<span class="st">'data'</span>]) <span class="co"># 학습</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>model_local.fit(data[<span class="st">'data'</span>]) <span class="co"># 학습</span></span></code></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>AttributeError: 'NoneType' object has no attribute 'split'</code></pre>
 </div>
@@ -1369,13 +1420,13 @@ Note
 </div>
 </div>
 <div id="6879c583-9aa1-4649-bbfe-7bd56af40e96" class="cell" data-execution_count="156">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>lle_local <span class="op">=</span> model_local.transform(data[<span class="st">'data'</span>])</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>lle_local <span class="op">=</span> model_local.transform(data[<span class="st">'data'</span>])</span></code></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>AttributeError: 'NoneType' object has no attribute 'split'</code></pre>
 </div>
 </div>
 <div id="f37e76e3-6c1b-42a5-a95e-3a955c2179a9" class="cell" data-execution_count="157">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>tsne</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>tsne</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="157">
 <pre><code>array([[ -3.0844698,  55.6635   ],
        [ 10.543986 , -11.4791155],
@@ -1387,33 +1438,37 @@ Note
 </div>
 </div>
 <div id="e4c0fbb2-de0b-4138-9fa2-aa5459273fcb" class="cell" data-execution_count="158">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span></code></pre></div>
 </div>
 <div id="fcd8f177-0b6f-49d9-8c1f-1743aaedc098" class="cell" data-execution_count="159">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>model_pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>model_pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div>
 </div>
 <div id="b360314f-f60c-423b-aa85-c5c7f5223bb6" class="cell" data-execution_count="160">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>model_pca <span class="op">=</span> modle_pca.fit(data.data)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>model_pca <span class="op">=</span> modle_pca.fit(data.data)</span></code></pre></div>
 </div>
 <div id="84547b52-55fd-46fd-abe5-beadbdbccb4f" class="cell" data-execution_count="161">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> model_pca.transform(data.data)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> model_pca.transform(data.data)</span></code></pre></div>
 </div>
 <div id="07d388c7-d2d8-4cbb-80fe-46b7bea1ff03" class="cell" data-execution_count="162">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">30</span>), nrows<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].scatter(lle_local[:, <span class="dv">0</span>], lle_local[:, <span class="dv">1</span>], c<span class="op">=</span>data.target, label <span class="op">=</span> <span class="st">'neighbors=12'</span>)</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">"LLE Embedding of the UCI ML hand-written digits"</span>)</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].scatter(tsne[:, <span class="dv">0</span>], tsne[:, <span class="dv">1</span>],c<span class="op">=</span>data.target,label <span class="op">=</span> <span class="st">'n_components=2'</span>)</span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">"t-SNE Embedding of the UCI ML hand-written digits"</span>)</span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].scatter(pca[:, <span class="dv">0</span>], pca[:, <span class="dv">1</span>],c<span class="op">=</span>data.target,label <span class="op">=</span> <span class="st">'n_components=2'</span>)</span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_title(<span class="st">"PCA Embedding of the UCI ML hand-written digits"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">30</span>), nrows<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].scatter(lle_local[:, <span class="dv">0</span>], lle_local[:, <span class="dv">1</span>], c<span class="op">=</span>data.target, label <span class="op">=</span> <span class="st">'neighbors=12'</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">"LLE Embedding of the UCI ML hand-written digits"</span>)</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].scatter(tsne[:, <span class="dv">0</span>], tsne[:, <span class="dv">1</span>],c<span class="op">=</span>data.target,label <span class="op">=</span> <span class="st">'n_components=2'</span>)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">"t-SNE Embedding of the UCI ML hand-written digits"</span>)</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].scatter(pca[:, <span class="dv">0</span>], pca[:, <span class="dv">1</span>],c<span class="op">=</span>data.target,label <span class="op">=</span> <span class="st">'n_components=2'</span>)</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_title(<span class="st">"PCA Embedding of the UCI ML hand-written digits"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="162">
 <pre><code>Text(0.5, 1.0, 'PCA Embedding of the UCI ML hand-written digits')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-20-Manifold learning Embedding_files/figure-html/cell-38-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-05-20-Manifold learning Embedding_files/figure-html/cell-38-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -1421,12 +1476,12 @@ Note
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>heavy-tailed distribution, 일반적인 정규분포보다 끝단의 값이 두터운 분포<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</aside></div></main> <!-- /main -->
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1503,15 +1558,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
         return container.innerHTML
       } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -1519,6 +1587,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const anchorLink = note.querySelector('a.anchorjs-link');
       if (anchorLink) {
         anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
       }
       return note.innerHTML;
     }
@@ -1562,6 +1633,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -1637,7 +1731,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);

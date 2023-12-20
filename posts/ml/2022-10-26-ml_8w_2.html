@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.527">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -81,12 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -95,17 +96,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -113,8 +142,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
@@ -126,6 +155,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://seoyeonc.github.io/sy_hub/"> 
+<span class="menu-text">Main_Blog</span></a>
+  </li>  
+</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link active" href="../../about.html" aria-current="page"> 
@@ -144,11 +179,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/ml/index.html">Special Topics in Machine Learning</a></li><li class="breadcrumb-item"><a href="../../posts/ml/2022-10-26-ml_8w_2.html">CNN (8주차) 2</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -194,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -878,6 +913,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-12-07_any_tip.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">정리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/anything/A1.out.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A1: 강화학습 (1) – bandit</span></a>
   </div>
@@ -1090,7 +1131,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -1120,6 +1161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
+
 
 
 
@@ -1871,7 +1913,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>ximg <span class="op">=</span> PILImage.create(<span class="st">'/home/csy/.fastai/data/oxford-iiit-pet/images/staffordshire_bull_terrier_106.jpg'</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>ximg</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
-<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="54ccd031-947e-4c8b-a4f3-93e49bb15cd4" class="cell" data-outputid="cc3755eb-2be7-425a-83ed-a0c2f5dd7e09" data-execution_count="31">
@@ -2008,11 +2054,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div id="c06501f0-7f59-4dc7-8a2e-5d2da57c4984" class="cell" data-outputid="f61a5e5b-7b20-4fcb-e19c-2870ab488f4d" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,x.to(<span class="st">"cpu"</span>)))</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="43">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7fe60eea0e50&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-44-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-44-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -2020,11 +2067,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="구현1단계-이미지분류-잘하는-네트워크-선택" class="level3">
 <h3 class="anchored" data-anchor-id="구현1단계-이미지분류-잘하는-네트워크-선택">구현1단계– 이미지분류 잘하는 네트워크 선택</h3>
 <div id="bc72f1cd-c3c4-49f1-8063-4bed923d0611" class="cell" data-outputid="d6ce0073-529e-4f51-8038-b9b7b3ed5e2f" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>lrnr <span class="op">=</span> vision_learner(dls,resnet34,metrics<span class="op">=</span>accuracy) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>lrnr <span class="op">=</span> vision_learner(dls,resnet34,metrics<span class="op">=</span>accuracy) </span></code></pre></div>
 </div>
 <p>lrnr = cnn_learner(dls,resnet34,metrics=accuracy)</p>
 <div id="20e643c4-d77e-40aa-8442-d059898e9977" class="cell" data-outputid="7d07245d-887d-445a-a975-7f3b60bfed00" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>lrnr.fine_tune(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>lrnr.fine_tune(<span class="dv">1</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 
 <style>
@@ -2111,13 +2158,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="구현2단계-네트워크의-끝-부분-수정">구현2단계– 네트워크의 끝 부분 수정</h3>
 <p><code>-</code> 모형의 분해</p>
 <div id="e9932085-282b-4e11-ae41-cd3181cada84" class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>net1<span class="op">=</span> lrnr.model[<span class="dv">0</span>]</span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>net2<span class="op">=</span> lrnr.model[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>net1<span class="op">=</span> lrnr.model[<span class="dv">0</span>]</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>net2<span class="op">=</span> lrnr.model[<span class="dv">1</span>]</span></code></pre></div>
 </div>
 <p>net1이 2d part, net1이 1d part</p>
 <p><code>-</code> net2를 좀더 살펴보자.</p>
 <div id="dad777f5-0576-4bc3-8418-39eb512f4b2e" class="cell" data-outputid="c401952e-22c3-4785-b95d-af571a625d45" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>net2</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>net2</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>Sequential(
   (0): AdaptiveConcatPool2d(
@@ -2136,18 +2183,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="f4d56f87-4107-49f9-852a-fa34a0553493" class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>_X, _y <span class="op">=</span> dls.one_batch() </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>_X, _y <span class="op">=</span> dls.one_batch() </span></code></pre></div>
 </div>
 <div id="10fb17e5-8e94-42aa-bf3c-bf7539a1d14c" class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>net1.to(<span class="st">"cpu"</span>)</span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>net2.to(<span class="st">"cpu"</span>) </span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>_X <span class="op">=</span> _X.to(<span class="st">"cpu"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>net1.to(<span class="st">"cpu"</span>)</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>net2.to(<span class="st">"cpu"</span>) </span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>_X <span class="op">=</span> _X.to(<span class="st">"cpu"</span>)</span></code></pre></div>
 </div>
 <div id="fd193759-10b6-4c22-a0ff-681492a6ac07" class="cell" data-outputid="a6904aa2-206e-4e0c-f6b0-757a88d5b896" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net1(_X).shape)</span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net2[<span class="dv">0</span>](net1(_X)).shape)</span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net2[<span class="dv">1</span>](net2[<span class="dv">0</span>](net1(_X))).shape)</span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net2[<span class="dv">2</span>](net2[<span class="dv">1</span>](net2[<span class="dv">0</span>](net1(_X)))).shape)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net1(_X).shape)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net2[<span class="dv">0</span>](net1(_X)).shape)</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net2[<span class="dv">1</span>](net2[<span class="dv">0</span>](net1(_X))).shape)</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net2[<span class="dv">2</span>](net2[<span class="dv">1</span>](net2[<span class="dv">0</span>](net1(_X)))).shape)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>torch.Size([64, 512, 16, 16])
 torch.Size([64, 1024, 1, 1])
@@ -2157,29 +2204,29 @@ torch.Size([64, 1024])</code></pre>
 </div>
 <p><code>-</code> net2를 아래와 같이 수정하고 재학습하자 (왜?)</p>
 <div id="47b5e4b2-a12b-489b-a578-fd9c802ee753" class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>net2<span class="op">=</span> torch.nn.Sequential(</span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>    torch.nn.AdaptiveAvgPool2d(output_size<span class="op">=</span><span class="dv">1</span>), <span class="co"># (64,512,16,16) -&gt; (64,512,1,1) </span></span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>    torch.nn.Flatten(), <span class="co"># (64,512,1,1) -&gt; (64,512) </span></span>
-<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>    torch.nn.Linear(<span class="dv">512</span>,<span class="dv">2</span>,bias<span class="op">=</span><span class="va">False</span>) <span class="co"># (64,512) -&gt; (64,2) </span></span>
-<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>net2<span class="op">=</span> torch.nn.Sequential(</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>    torch.nn.AdaptiveAvgPool2d(output_size<span class="op">=</span><span class="dv">1</span>), <span class="co"># (64,512,16,16) -&gt; (64,512,1,1) </span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>    torch.nn.Flatten(), <span class="co"># (64,512,1,1) -&gt; (64,512) </span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>    torch.nn.Linear(<span class="dv">512</span>,<span class="dv">2</span>,bias<span class="op">=</span><span class="va">False</span>) <span class="co"># (64,512) -&gt; (64,2) </span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="6a5bcce0-4b62-4db3-b6d0-924f14c91f87" class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>net <span class="op">=</span> torch.nn.Sequential(</span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>    net1,</span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>    net2</span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>net <span class="op">=</span> torch.nn.Sequential(</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>    net1,</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>    net2</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="93198c25-31cd-4287-a02f-4c760f063b19" class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>lrnr2<span class="op">=</span> Learner(dls,net,metrics<span class="op">=</span>accuracy) <span class="co"># loss_fn??</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>lrnr2<span class="op">=</span> Learner(dls,net,metrics<span class="op">=</span>accuracy) <span class="co"># loss_fn??</span></span></code></pre></div>
 </div>
 <div id="ced86f6d-b652-4e0f-810f-0b397d923379" class="cell" data-outputid="f5ee2133-cf8a-4f4b-8d12-06a946b73e72" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>lrnr2.loss_func, lrnr.loss_func <span class="co">## 알아서 기존의 loss function으로 잘 들어가 있음. </span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>lrnr2.loss_func, lrnr.loss_func <span class="co">## 알아서 기존의 loss function으로 잘 들어가 있음. </span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>(FlattenedLoss of CrossEntropyLoss(), FlattenedLoss of CrossEntropyLoss())</code></pre>
 </div>
 </div>
 <div id="8ecc462c-09ae-4624-8f28-8a1fadc73816" class="cell" data-outputid="0db1f7a7-8263-4a48-db39-d63fd8eef2da" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>lrnr2.fine_tune(<span class="dv">5</span>) <span class="co"># net2를 수정해서 accuracy가 안좋아지긴 했는데 그래도 쓸만함 </span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>lrnr2.fine_tune(<span class="dv">5</span>) <span class="co"># net2를 수정해서 accuracy가 안좋아지긴 했는데 그래도 쓸만함 </span></span></code></pre></div>
 <div class="cell-output cell-output-display">
 
 <style>
@@ -2294,11 +2341,11 @@ torch.Size([64, 1024])</code></pre>
 <h3 class="anchored" data-anchor-id="구현3단계-수정된-net2에서-linear와-ap의-순서를-바꿈">구현3단계– 수정된 net2에서 Linear와 AP의 순서를 바꿈</h3>
 <p><code>-</code> 1개의 observation을 고정하였을 경우 출력과정 상상</p>
 <div id="af7cb605-e990-4f95-8e72-8ec69ada9673" class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>ximg <span class="op">=</span> PILImage.create(<span class="st">'/home/csy/.fastai/data/oxford-iiit-pet/images/staffordshire_bull_terrier_106.jpg'</span>)</span>
-<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> first(dls.test_dl([ximg]))[<span class="dv">0</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>ximg <span class="op">=</span> PILImage.create(<span class="st">'/home/csy/.fastai/data/oxford-iiit-pet/images/staffordshire_bull_terrier_106.jpg'</span>)</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> first(dls.test_dl([ximg]))[<span class="dv">0</span>]</span></code></pre></div>
 </div>
 <div id="64af1e7a-0781-4702-83ea-e29c5a2a4124" class="cell" data-outputid="e62279ee-2b99-4768-a541-68b4fdace126" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>net2</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>net2</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>Sequential(
   (0): AdaptiveAvgPool2d(output_size=1)
@@ -2308,10 +2355,10 @@ torch.Size([64, 1024])</code></pre>
 </div>
 </div>
 <div id="33a0565a-8ba0-4f78-94ab-d17c7412bc63" class="cell" data-outputid="e04fa9f2-28ea-4009-aa95-2a5d854df878" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net1(x).shape)</span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net2[<span class="dv">0</span>](net1(x)).shape)</span>
-<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net2[<span class="dv">1</span>](net2[<span class="dv">0</span>](net1(x))).shape)</span>
-<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net2[<span class="dv">2</span>](net2[<span class="dv">1</span>](net2[<span class="dv">0</span>](net1(x)))).shape)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net1(x).shape)</span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net2[<span class="dv">0</span>](net1(x)).shape)</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net2[<span class="dv">1</span>](net2[<span class="dv">0</span>](net1(x))).shape)</span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net2[<span class="dv">2</span>](net2[<span class="dv">1</span>](net2[<span class="dv">0</span>](net1(x)))).shape)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>torch.Size([1, 512, 16, 16])
 torch.Size([1, 512, 1, 1])
@@ -2321,14 +2368,14 @@ torch.Size([1, 2])</code></pre>
 </div>
 <p><code>-</code> 최종결과 확인</p>
 <div id="509a5802-b8ed-467a-9a5c-196256d0891f" class="cell" data-outputid="e8fd99cc-d32f-42a1-c0fe-f67111900c46" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>net(x)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>net(x)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <pre><code>TensorImage([[-6.7946,  8.0881]], device='cuda:0', grad_fn=&lt;AliasBackward0&gt;)</code></pre>
 </div>
 </div>
 <p>아마 모델 달라서 값이 다른 것일까..!</p>
 <div id="bda2c68b-648d-4c78-a9ba-86f666563abb" class="cell" data-outputid="d411b610-64a1-41b8-91bb-90a3b8e1234f" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>dls.vocab</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>dls.vocab</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
 <pre><code>['cat', 'dog']</code></pre>
 </div>
@@ -2345,8 +2392,8 @@ torch.Size([1, 2])</code></pre>
 </ul>
 <p><code>-</code> 통찰: 이 경우 특이하게도 레이어의 순서를 바꿨을때 출력이 동일함 (선형변환하고 평균내거나 평균내고 선형변환하는건 같으니까)</p>
 <div id="e9832fdc-3c29-448b-a337-2703a66b3d1b" class="cell" data-outputid="534227a1-8618-4e37-c8e2-062231de8857" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>_x <span class="op">=</span>torch.tensor([<span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">3.14</span>,<span class="dv">4</span>]).reshape(<span class="dv">4</span>,<span class="dv">1</span>)</span>
-<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>_x </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>_x <span class="op">=</span>torch.tensor([<span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">3.14</span>,<span class="dv">4</span>]).reshape(<span class="dv">4</span>,<span class="dv">1</span>)</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>_x </span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="61">
 <pre><code>tensor([[1.0000],
         [2.0000],
@@ -2355,34 +2402,34 @@ torch.Size([1, 2])</code></pre>
 </div>
 </div>
 <div id="6048fcc0-aa47-4808-9bef-9686b4a0111c" class="cell" data-outputid="a50e0ecd-804f-476e-f51b-2331321d39d0" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>_l1 <span class="op">=</span> torch.nn.Linear(<span class="dv">1</span>,<span class="dv">1</span>,bias<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>_l1(_x).mean() <span class="co"># _x -&gt; 선형변환 -&gt; 평균 </span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>_l1 <span class="op">=</span> torch.nn.Linear(<span class="dv">1</span>,<span class="dv">1</span>,bias<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>_l1(_x).mean() <span class="co"># _x -&gt; 선형변환 -&gt; 평균 </span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="62">
 <pre><code>tensor(-0.2621, grad_fn=&lt;MeanBackward0&gt;)</code></pre>
 </div>
 </div>
 <div id="88609216-fa11-45b3-8aef-c2cbf9ac006f" class="cell" data-outputid="9876d274-a019-420a-82da-2c78dec2e1f3" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>_l1(_x.mean().reshape(<span class="dv">1</span>,<span class="dv">1</span>)) <span class="co"># _x -&gt; 평균 -&gt; 선형변환</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>_l1(_x.mean().reshape(<span class="dv">1</span>,<span class="dv">1</span>)) <span class="co"># _x -&gt; 평균 -&gt; 선형변환</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="63">
 <pre><code>tensor([[-0.2621]], grad_fn=&lt;MmBackward0&gt;)</code></pre>
 </div>
 </div>
 <p><code>-</code> 구현해보자.</p>
 <div id="ad887a1a-f2ee-48d9-b6e8-812116836b1a" class="cell" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>net2[<span class="dv">2</span>].weight.shape,net1(x).shape</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>net2[<span class="dv">2</span>].weight.shape,net1(x).shape</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="64">
 <pre><code>(torch.Size([2, 512]), torch.Size([1, 512, 16, 16]))</code></pre>
 </div>
 </div>
 <div id="faedbc3f-82b8-4f4f-ac92-d8a4e198d7dc" class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>why <span class="op">=</span> torch.einsum(<span class="st">'cb,abij-&gt;acij'</span>,net2[<span class="dv">2</span>].weight,net1(x))</span>
-<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>why.shape</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>why <span class="op">=</span> torch.einsum(<span class="st">'cb,abij-&gt;acij'</span>,net2[<span class="dv">2</span>].weight,net1(x))</span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>why.shape</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>torch.Size([1, 2, 16, 16])</code></pre>
 </div>
 </div>
 <div id="98bd0621-1687-46bf-b28a-85d4138757ca" class="cell" data-outputid="f5259fe3-30ff-43ab-b9ef-2898539d0d9e" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>net2[<span class="dv">0</span>](why)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>net2[<span class="dv">0</span>](why)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="66">
 <pre><code>TensorImage([[[[-6.7946]],
 
@@ -2390,7 +2437,7 @@ torch.Size([1, 2])</code></pre>
 </div>
 </div>
 <div id="2e363089-483f-45d2-ae3b-235ff16d0ea4" class="cell" data-outputid="78880c52-1ed1-4111-97c5-0ebc3cc68bec" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>net(x)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>net(x)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="67">
 <pre><code>TensorImage([[-6.7946,  8.0881]], device='cuda:0', grad_fn=&lt;AliasBackward0&gt;)</code></pre>
 </div>
@@ -2400,14 +2447,18 @@ torch.Size([1, 2])</code></pre>
 <h3 class="anchored" data-anchor-id="잠깐-멈추고-생각">잠깐 멈추고 생각</h3>
 <p><code>-</code> 이미지</p>
 <div id="ecc51f43-2775-4253-89c0-3270ebed5598" class="cell" data-outputid="7de3ebbe-5139-467e-b8f2-05dc00805786" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>ximg</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>ximg</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="68">
-<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-69-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-69-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 네트워크의 결과</p>
 <div id="28354d0e-ac76-4df3-9881-d3dc49e0449d" class="cell" data-outputid="10f4f355-62b7-4f73-f02f-dba7f44dd99b" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>net2(net1(x))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>net2(net1(x))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="69">
 <pre><code>TensorImage([[-6.7946,  8.0881]], device='cuda:0', grad_fn=&lt;AliasBackward0&gt;)</code></pre>
 </div>
@@ -2419,7 +2470,7 @@ torch.Size([1, 2])</code></pre>
 <p><code>-</code> 아래의 네트워크를 관찰</p>
 <p><span class="math display">\[\underset{(1,2,16,16)}{{\bf why}}\overset{ap}{\to} \underset{(1,2,1,1)}{{\boldsymbol \sharp}}\overset{flatten}{\to} \underset{(1,2)}{\hat{\boldsymbol y}} = [-9.0358,9.0926]\]</span></p>
 <div id="400047ee-3460-4800-8b58-762fbb0eda70" class="cell" data-outputid="1377554d-cf69-4148-c388-347a9bbd46e5" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>net2[<span class="dv">0</span>](why)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>net2[<span class="dv">0</span>](why)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
 <pre><code>TensorImage([[[[-6.7946]],
 
@@ -2428,13 +2479,13 @@ torch.Size([1, 2])</code></pre>
 </div>
 <p>더 파고들어서 분석해보자.</p>
 <div id="da086956-0a42-4e29-a06a-08a81d935bb1" class="cell" data-outputid="ed14f0d8-90bf-4a4d-c720-cbed4c3ae060" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>why.shape</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>why.shape</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="71">
 <pre><code>torch.Size([1, 2, 16, 16])</code></pre>
 </div>
 </div>
 <div id="5087e802-6f69-4925-bdbb-f1b4b9655308" class="cell" data-outputid="7829fde5-bf2e-4906-dbe3-3f0777233c27" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>(why[<span class="dv">0</span>,<span class="dv">0</span>,:,:]).mean(), (why[<span class="dv">0</span>,<span class="dv">1</span>,:,:]).mean()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>(why[<span class="dv">0</span>,<span class="dv">0</span>,:,:]).mean(), (why[<span class="dv">0</span>,<span class="dv">1</span>,:,:]).mean()</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="72">
 <pre><code>(TensorImage(-6.7946, device='cuda:0', grad_fn=&lt;AliasBackward0&gt;),
  TensorImage(8.0881, device='cuda:0', grad_fn=&lt;AliasBackward0&gt;))</code></pre>
@@ -2442,8 +2493,8 @@ torch.Size([1, 2])</code></pre>
 </div>
 <p><strong><em><code>why[0,0,:,:]</code></em></strong></p>
 <div id="d3039dfb-3686-4b0e-a92e-3cbc4e4ea444" class="cell" data-outputid="8560177e-c42b-42a0-c3b5-9f039a9acaf3" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co">#collapse_output</span></span>
-<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>(why[<span class="dv">0</span>,<span class="dv">0</span>,:,:]).to(torch.int64)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co">#collapse_output</span></span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>(why[<span class="dv">0</span>,<span class="dv">0</span>,:,:]).to(torch.int64)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="73">
 <pre><code>TensorImage([[   0,    0,    0,    0,    0,    0,    0,   -1,   -1,    0,    0,
                  0,    0,    0,    0,    0],
@@ -2485,8 +2536,8 @@ torch.Size([1, 2])</code></pre>
 </ul>
 <p><strong><em><code>why[0,1,:,:]</code></em></strong></p>
 <div id="0168fec4-fe5e-48ad-bc5c-55f5eba98135" class="cell" data-outputid="74e1fc07-e2d7-4b62-a91f-8078f1879e91" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co">#collapse_output</span></span>
-<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>(why[<span class="dv">0</span>,<span class="dv">1</span>,:,:]).to(torch.int64)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co">#collapse_output</span></span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>(why[<span class="dv">0</span>,<span class="dv">1</span>,:,:]).to(torch.int64)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="74">
 <pre><code>TensorImage([[  0,   0,   0,   0,   0,   0,   0,   2,   2,   1,   0,   0,   0,
                 0,   0,   0],
@@ -2528,19 +2579,20 @@ torch.Size([1, 2])</code></pre>
 </ul>
 <p><code>-</code> 시각화</p>
 <div id="09931d46-db2b-43a0-b82b-453bb95b256a" class="cell" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>why_cat <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">0</span>,:,:]</span>
-<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>why_dog <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">1</span>,:,:]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>why_cat <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">0</span>,:,:]</span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>why_dog <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">1</span>,:,:]</span></code></pre></div>
 </div>
 <div id="d9945fa8-7556-4c4f-b46f-d6f038154c4d" class="cell" data-outputid="f80d34e6-bf82-47c4-df43-fb547438aa7d" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">3</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
-<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
-<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="76">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7fe61ad76350&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">3</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
+<span id="cb116-4"><a href="#cb116-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-77-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-77-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -2549,34 +2601,36 @@ torch.Size([1, 2])</code></pre>
 </ul>
 <p><code>-</code> why_cat, why_dog를 (16,16) <span class="math inline">\(\to\)</span> (512,512) 로 resize</p>
 <div id="6e124549-a5a4-400b-abe6-94944bce1425" class="cell" data-outputid="7b94f23a-e94a-481f-b518-8c2338bc11f6" data-execution_count="77">
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">3</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
-<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>)</span>
-<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="77">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7fe616821f10&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">3</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>)</span>
+<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-78-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-78-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 겹쳐그리기</p>
 <div id="a6aee3a9-b10a-4f48-a7b9-c885648af531" class="cell" data-outputid="476ab61a-697c-41bd-94cb-12c70f17c633" data-execution_count="78">
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
-<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
-<span id="cb121-5"><a href="#cb121-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="78">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7fe5eac7af10&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
+<span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-79-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-79-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 하니이미지 시각화</p>
 <div id="4c83b5f8-9326-4e06-aba0-1c81a140469e" class="cell" data-execution_count="79">
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>wget https:<span class="op">//</span>github.com<span class="op">/</span>guebin<span class="op">/</span>DL2022<span class="op">/</span>blob<span class="op">/</span>master<span class="op">/</span>_notebooks<span class="op">/</span><span class="dv">2022</span><span class="op">-</span><span class="dv">0</span><span class="er">9</span><span class="op">-</span><span class="dv">0</span><span class="er">6</span><span class="op">-</span>hani01.jpeg</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>wget https:<span class="op">//</span>github.com<span class="op">/</span>guebin<span class="op">/</span>DL2022<span class="op">/</span>blob<span class="op">/</span>master<span class="op">/</span>_notebooks<span class="op">/</span><span class="dv">2022</span><span class="op">-</span><span class="dv">0</span><span class="er">9</span><span class="op">-</span><span class="dv">0</span><span class="er">6</span><span class="op">-</span>hani01.jpeg</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>--2022-11-02 23:41:24--  https://github.com/guebin/DL2022/blob/master/_notebooks/2022-09-06-hani01.jpeg
 Resolving github.com (github.com)... 20.200.245.247
@@ -2592,166 +2646,187 @@ Saving to: ‘2022-09-06-hani01.jpeg’
 </div>
 </div>
 <div id="cc685428-f5e8-4038-89a8-a78451cff2cb" class="cell" data-execution_count="80">
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!wget https://github.com/guebin/DL2022/blob/master/_notebooks/2022-09-06-hani01.jpeg?raw=true</span></span>
-<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>ximg<span class="op">=</span> PILImage.create(<span class="st">'2022-09-07-dogs.jpeg'</span>)</span>
-<span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span> first(dls.test_dl([ximg]))[<span class="dv">0</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!wget https://github.com/guebin/DL2022/blob/master/_notebooks/2022-09-06-hani01.jpeg?raw=true</span></span>
+<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>ximg<span class="op">=</span> PILImage.create(<span class="st">'2022-09-07-dogs.jpeg'</span>)</span>
+<span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span> first(dls.test_dl([ximg]))[<span class="dv">0</span>]</span></code></pre></div>
 </div>
 <div id="8f8fea75-e9c6-41e3-a112-33cda8884256" class="cell" data-execution_count="81">
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>why <span class="op">=</span> torch.einsum(<span class="st">'cb,abij-&gt;acij'</span>,net2[<span class="dv">2</span>].weight,net1(x))</span>
-<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>why_cat <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">0</span>,:,:]</span>
-<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a>why_dog <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">1</span>,:,:]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>why <span class="op">=</span> torch.einsum(<span class="st">'cb,abij-&gt;acij'</span>,net2[<span class="dv">2</span>].weight,net1(x))</span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>why_cat <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">0</span>,:,:]</span>
+<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>why_dog <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">1</span>,:,:]</span></code></pre></div>
 </div>
 <div id="2a20bfb6-7e1e-44ff-871b-c7dd507abadc" class="cell" data-outputid="00d46041-ea0a-4085-b4d2-68aea8a7677f" data-execution_count="82">
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
-<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
-<span id="cb127-5"><a href="#cb127-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="82">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7fe61ae94190&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
+<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
+<span id="cb123-5"><a href="#cb123-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-83-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-83-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 하니이미지 시각화 with prob</p>
 <div id="54ed46b1-042b-4ae6-954f-6621f8420816" class="cell" data-execution_count="83">
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>sftmax<span class="op">=</span>torch.nn.Softmax(dim<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>sftmax<span class="op">=</span>torch.nn.Softmax(dim<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
 </div>
 <div id="131199a3-f238-4443-9510-e600a77c4b3c" class="cell" data-outputid="129b2edd-ce38-4c15-e6c6-8ebef7cfd8ee" data-execution_count="84">
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>sftmax(net(x))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>sftmax(net(x))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="84">
 <pre><code>TensorImage([[1.1767e-09, 1.0000e+00]], device='cuda:0',
             grad_fn=&lt;AliasBackward0&gt;)</code></pre>
 </div>
 </div>
 <div id="4aae16af-6a5a-410d-9b0f-8b27717d9cf0" class="cell" data-execution_count="85">
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>catprob, dogprob <span class="op">=</span> sftmax(net(x))[<span class="dv">0</span>,<span class="dv">0</span>].item(), sftmax(net(x))[<span class="dv">0</span>,<span class="dv">1</span>].item()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>catprob, dogprob <span class="op">=</span> sftmax(net(x))[<span class="dv">0</span>,<span class="dv">0</span>].item(), sftmax(net(x))[<span class="dv">0</span>,<span class="dv">1</span>].item()</span></code></pre></div>
 </div>
 <div id="2c1b21a9-7be1-471d-bf5c-758252c58056" class="cell" data-outputid="e3123bcb-2df2-4c5a-f375-9cb161c334aa" data-execution_count="86">
-<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
-<span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb133-4"><a href="#cb133-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'catprob= </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> catprob) </span>
-<span id="cb133-5"><a href="#cb133-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
-<span id="cb133-6"><a href="#cb133-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb133-7"><a href="#cb133-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'dogprob=</span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> dogprob)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
+<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'catprob= </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> catprob) </span>
+<span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(torch.einsum(<span class="st">'ocij -&gt; ijc'</span>,dls.decode((x,))[<span class="dv">0</span>]).to(<span class="st">"cpu"</span>))</span>
+<span id="cb128-6"><a href="#cb128-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),cmap<span class="op">=</span><span class="st">'magma'</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb128-7"><a href="#cb128-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'dogprob=</span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> dogprob)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="86">
 <pre><code>Text(0.5, 1.0, 'dogprob=1.000000')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-87-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-87-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="구현4단계-cam-시각화" class="level3">
 <h3 class="anchored" data-anchor-id="구현4단계-cam-시각화">구현4단계– CAM 시각화</h3>
 <div id="f63dbd2c-ae8c-42e5-a9c1-19949587e840" class="cell" data-execution_count="87">
-<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>sftmax <span class="op">=</span> torch.nn.Softmax(dim<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>sftmax <span class="op">=</span> torch.nn.Softmax(dim<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
 </div>
 <div id="96bd0518-5442-4e0f-b4e7-cec283def76e" class="cell" data-outputid="63a4d22b-8422-4c66-c5f2-b722121bc91a" data-execution_count="88">
-<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">5</span>,<span class="dv">5</span>) </span>
-<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a>k<span class="op">=</span><span class="dv">0</span> </span>
-<span id="cb136-3"><a href="#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
-<span id="cb136-4"><a href="#cb136-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>): </span>
-<span id="cb136-5"><a href="#cb136-5" aria-hidden="true" tabindex="-1"></a>        x, <span class="op">=</span> first(dls.test_dl([PILImage.create(get_image_files(path)[k])]))</span>
-<span id="cb136-6"><a href="#cb136-6" aria-hidden="true" tabindex="-1"></a>        why <span class="op">=</span> torch.einsum(<span class="st">'cb,abij -&gt; acij'</span>, net2[<span class="dv">2</span>].weight, net1(x))</span>
-<span id="cb136-7"><a href="#cb136-7" aria-hidden="true" tabindex="-1"></a>        why_cat <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">0</span>,:,:] </span>
-<span id="cb136-8"><a href="#cb136-8" aria-hidden="true" tabindex="-1"></a>        why_dog <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">1</span>,:,:] </span>
-<span id="cb136-9"><a href="#cb136-9" aria-hidden="true" tabindex="-1"></a>        catprob, dogprob <span class="op">=</span> sftmax(net(x))[<span class="dv">0</span>][<span class="dv">0</span>].item(), sftmax(net(x))[<span class="dv">0</span>][<span class="dv">1</span>].item()</span>
-<span id="cb136-10"><a href="#cb136-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> catprob<span class="op">&gt;</span>dogprob: </span>
-<span id="cb136-11"><a href="#cb136-11" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
-<span id="cb136-12"><a href="#cb136-12" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
-<span id="cb136-13"><a href="#cb136-13" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"cat(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> catprob)</span>
-<span id="cb136-14"><a href="#cb136-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: </span>
-<span id="cb136-15"><a href="#cb136-15" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
-<span id="cb136-16"><a href="#cb136-16" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
-<span id="cb136-17"><a href="#cb136-17" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"dog(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> dogprob)</span>
-<span id="cb136-18"><a href="#cb136-18" aria-hidden="true" tabindex="-1"></a>        k<span class="op">=</span>k<span class="op">+</span><span class="dv">1</span> </span>
-<span id="cb136-19"><a href="#cb136-19" aria-hidden="true" tabindex="-1"></a>fig.set_figwidth(<span class="dv">16</span>)            </span>
-<span id="cb136-20"><a href="#cb136-20" aria-hidden="true" tabindex="-1"></a>fig.set_figheight(<span class="dv">16</span>)</span>
-<span id="cb136-21"><a href="#cb136-21" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">5</span>,<span class="dv">5</span>) </span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>k<span class="op">=</span><span class="dv">0</span> </span>
+<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb131-4"><a href="#cb131-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>): </span>
+<span id="cb131-5"><a href="#cb131-5" aria-hidden="true" tabindex="-1"></a>        x, <span class="op">=</span> first(dls.test_dl([PILImage.create(get_image_files(path)[k])]))</span>
+<span id="cb131-6"><a href="#cb131-6" aria-hidden="true" tabindex="-1"></a>        why <span class="op">=</span> torch.einsum(<span class="st">'cb,abij -&gt; acij'</span>, net2[<span class="dv">2</span>].weight, net1(x))</span>
+<span id="cb131-7"><a href="#cb131-7" aria-hidden="true" tabindex="-1"></a>        why_cat <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">0</span>,:,:] </span>
+<span id="cb131-8"><a href="#cb131-8" aria-hidden="true" tabindex="-1"></a>        why_dog <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">1</span>,:,:] </span>
+<span id="cb131-9"><a href="#cb131-9" aria-hidden="true" tabindex="-1"></a>        catprob, dogprob <span class="op">=</span> sftmax(net(x))[<span class="dv">0</span>][<span class="dv">0</span>].item(), sftmax(net(x))[<span class="dv">0</span>][<span class="dv">1</span>].item()</span>
+<span id="cb131-10"><a href="#cb131-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> catprob<span class="op">&gt;</span>dogprob: </span>
+<span id="cb131-11"><a href="#cb131-11" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
+<span id="cb131-12"><a href="#cb131-12" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
+<span id="cb131-13"><a href="#cb131-13" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"cat(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> catprob)</span>
+<span id="cb131-14"><a href="#cb131-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: </span>
+<span id="cb131-15"><a href="#cb131-15" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
+<span id="cb131-16"><a href="#cb131-16" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
+<span id="cb131-17"><a href="#cb131-17" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"dog(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> dogprob)</span>
+<span id="cb131-18"><a href="#cb131-18" aria-hidden="true" tabindex="-1"></a>        k<span class="op">=</span>k<span class="op">+</span><span class="dv">1</span> </span>
+<span id="cb131-19"><a href="#cb131-19" aria-hidden="true" tabindex="-1"></a>fig.set_figwidth(<span class="dv">16</span>)            </span>
+<span id="cb131-20"><a href="#cb131-20" aria-hidden="true" tabindex="-1"></a>fig.set_figheight(<span class="dv">16</span>)</span>
+<span id="cb131-21"><a href="#cb131-21" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-89-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-89-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="caffe265-60f6-4e14-a619-1f452db12485" class="cell" data-outputid="4a25a8c7-c637-4e83-8a29-aba84dcfb182" data-execution_count="89">
-<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">5</span>,<span class="dv">5</span>) </span>
-<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a>k<span class="op">=</span><span class="dv">25</span></span>
-<span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
-<span id="cb137-4"><a href="#cb137-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>): </span>
-<span id="cb137-5"><a href="#cb137-5" aria-hidden="true" tabindex="-1"></a>        x, <span class="op">=</span> first(dls.test_dl([PILImage.create(get_image_files(path)[k])]))</span>
-<span id="cb137-6"><a href="#cb137-6" aria-hidden="true" tabindex="-1"></a>        why <span class="op">=</span> torch.einsum(<span class="st">'cb,abij -&gt; acij'</span>, net2[<span class="dv">2</span>].weight, net1(x))</span>
-<span id="cb137-7"><a href="#cb137-7" aria-hidden="true" tabindex="-1"></a>        why_cat <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">0</span>,:,:] </span>
-<span id="cb137-8"><a href="#cb137-8" aria-hidden="true" tabindex="-1"></a>        why_dog <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">1</span>,:,:] </span>
-<span id="cb137-9"><a href="#cb137-9" aria-hidden="true" tabindex="-1"></a>        catprob, dogprob <span class="op">=</span> sftmax(net(x))[<span class="dv">0</span>][<span class="dv">0</span>].item(), sftmax(net(x))[<span class="dv">0</span>][<span class="dv">1</span>].item()</span>
-<span id="cb137-10"><a href="#cb137-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> catprob<span class="op">&gt;</span>dogprob: </span>
-<span id="cb137-11"><a href="#cb137-11" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
-<span id="cb137-12"><a href="#cb137-12" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
-<span id="cb137-13"><a href="#cb137-13" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"cat(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> catprob)</span>
-<span id="cb137-14"><a href="#cb137-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: </span>
-<span id="cb137-15"><a href="#cb137-15" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
-<span id="cb137-16"><a href="#cb137-16" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
-<span id="cb137-17"><a href="#cb137-17" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"dog(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> dogprob)</span>
-<span id="cb137-18"><a href="#cb137-18" aria-hidden="true" tabindex="-1"></a>        k<span class="op">=</span>k<span class="op">+</span><span class="dv">1</span> </span>
-<span id="cb137-19"><a href="#cb137-19" aria-hidden="true" tabindex="-1"></a>fig.set_figwidth(<span class="dv">16</span>)            </span>
-<span id="cb137-20"><a href="#cb137-20" aria-hidden="true" tabindex="-1"></a>fig.set_figheight(<span class="dv">16</span>)</span>
-<span id="cb137-21"><a href="#cb137-21" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">5</span>,<span class="dv">5</span>) </span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>k<span class="op">=</span><span class="dv">25</span></span>
+<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>): </span>
+<span id="cb132-5"><a href="#cb132-5" aria-hidden="true" tabindex="-1"></a>        x, <span class="op">=</span> first(dls.test_dl([PILImage.create(get_image_files(path)[k])]))</span>
+<span id="cb132-6"><a href="#cb132-6" aria-hidden="true" tabindex="-1"></a>        why <span class="op">=</span> torch.einsum(<span class="st">'cb,abij -&gt; acij'</span>, net2[<span class="dv">2</span>].weight, net1(x))</span>
+<span id="cb132-7"><a href="#cb132-7" aria-hidden="true" tabindex="-1"></a>        why_cat <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">0</span>,:,:] </span>
+<span id="cb132-8"><a href="#cb132-8" aria-hidden="true" tabindex="-1"></a>        why_dog <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">1</span>,:,:] </span>
+<span id="cb132-9"><a href="#cb132-9" aria-hidden="true" tabindex="-1"></a>        catprob, dogprob <span class="op">=</span> sftmax(net(x))[<span class="dv">0</span>][<span class="dv">0</span>].item(), sftmax(net(x))[<span class="dv">0</span>][<span class="dv">1</span>].item()</span>
+<span id="cb132-10"><a href="#cb132-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> catprob<span class="op">&gt;</span>dogprob: </span>
+<span id="cb132-11"><a href="#cb132-11" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
+<span id="cb132-12"><a href="#cb132-12" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
+<span id="cb132-13"><a href="#cb132-13" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"cat(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> catprob)</span>
+<span id="cb132-14"><a href="#cb132-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: </span>
+<span id="cb132-15"><a href="#cb132-15" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
+<span id="cb132-16"><a href="#cb132-16" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
+<span id="cb132-17"><a href="#cb132-17" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"dog(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> dogprob)</span>
+<span id="cb132-18"><a href="#cb132-18" aria-hidden="true" tabindex="-1"></a>        k<span class="op">=</span>k<span class="op">+</span><span class="dv">1</span> </span>
+<span id="cb132-19"><a href="#cb132-19" aria-hidden="true" tabindex="-1"></a>fig.set_figwidth(<span class="dv">16</span>)            </span>
+<span id="cb132-20"><a href="#cb132-20" aria-hidden="true" tabindex="-1"></a>fig.set_figheight(<span class="dv">16</span>)</span>
+<span id="cb132-21"><a href="#cb132-21" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-90-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-90-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="6b82e38b-622e-4b8e-810e-7cd6c3eae6b0" class="cell" data-outputid="2bb73b69-3e6b-4d15-c74a-7e8625aa694f" data-execution_count="90">
-<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">5</span>,<span class="dv">5</span>) </span>
-<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a>k<span class="op">=</span><span class="dv">50</span></span>
-<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
-<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>): </span>
-<span id="cb138-5"><a href="#cb138-5" aria-hidden="true" tabindex="-1"></a>        x, <span class="op">=</span> first(dls.test_dl([PILImage.create(get_image_files(path)[k])]))</span>
-<span id="cb138-6"><a href="#cb138-6" aria-hidden="true" tabindex="-1"></a>        why <span class="op">=</span> torch.einsum(<span class="st">'cb,abij -&gt; acij'</span>, net2[<span class="dv">2</span>].weight, net1(x))</span>
-<span id="cb138-7"><a href="#cb138-7" aria-hidden="true" tabindex="-1"></a>        why_cat <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">0</span>,:,:] </span>
-<span id="cb138-8"><a href="#cb138-8" aria-hidden="true" tabindex="-1"></a>        why_dog <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">1</span>,:,:] </span>
-<span id="cb138-9"><a href="#cb138-9" aria-hidden="true" tabindex="-1"></a>        catprob, dogprob <span class="op">=</span> sftmax(net(x))[<span class="dv">0</span>][<span class="dv">0</span>].item(), sftmax(net(x))[<span class="dv">0</span>][<span class="dv">1</span>].item()</span>
-<span id="cb138-10"><a href="#cb138-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> catprob<span class="op">&gt;</span>dogprob: </span>
-<span id="cb138-11"><a href="#cb138-11" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
-<span id="cb138-12"><a href="#cb138-12" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
-<span id="cb138-13"><a href="#cb138-13" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"cat(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> catprob)</span>
-<span id="cb138-14"><a href="#cb138-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: </span>
-<span id="cb138-15"><a href="#cb138-15" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
-<span id="cb138-16"><a href="#cb138-16" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
-<span id="cb138-17"><a href="#cb138-17" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"dog(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> dogprob)</span>
-<span id="cb138-18"><a href="#cb138-18" aria-hidden="true" tabindex="-1"></a>        k<span class="op">=</span>k<span class="op">+</span><span class="dv">1</span> </span>
-<span id="cb138-19"><a href="#cb138-19" aria-hidden="true" tabindex="-1"></a>fig.set_figwidth(<span class="dv">16</span>)            </span>
-<span id="cb138-20"><a href="#cb138-20" aria-hidden="true" tabindex="-1"></a>fig.set_figheight(<span class="dv">16</span>)</span>
-<span id="cb138-21"><a href="#cb138-21" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">5</span>,<span class="dv">5</span>) </span>
+<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a>k<span class="op">=</span><span class="dv">50</span></span>
+<span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb133-4"><a href="#cb133-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>): </span>
+<span id="cb133-5"><a href="#cb133-5" aria-hidden="true" tabindex="-1"></a>        x, <span class="op">=</span> first(dls.test_dl([PILImage.create(get_image_files(path)[k])]))</span>
+<span id="cb133-6"><a href="#cb133-6" aria-hidden="true" tabindex="-1"></a>        why <span class="op">=</span> torch.einsum(<span class="st">'cb,abij -&gt; acij'</span>, net2[<span class="dv">2</span>].weight, net1(x))</span>
+<span id="cb133-7"><a href="#cb133-7" aria-hidden="true" tabindex="-1"></a>        why_cat <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">0</span>,:,:] </span>
+<span id="cb133-8"><a href="#cb133-8" aria-hidden="true" tabindex="-1"></a>        why_dog <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">1</span>,:,:] </span>
+<span id="cb133-9"><a href="#cb133-9" aria-hidden="true" tabindex="-1"></a>        catprob, dogprob <span class="op">=</span> sftmax(net(x))[<span class="dv">0</span>][<span class="dv">0</span>].item(), sftmax(net(x))[<span class="dv">0</span>][<span class="dv">1</span>].item()</span>
+<span id="cb133-10"><a href="#cb133-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> catprob<span class="op">&gt;</span>dogprob: </span>
+<span id="cb133-11"><a href="#cb133-11" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
+<span id="cb133-12"><a href="#cb133-12" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
+<span id="cb133-13"><a href="#cb133-13" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"cat(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> catprob)</span>
+<span id="cb133-14"><a href="#cb133-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: </span>
+<span id="cb133-15"><a href="#cb133-15" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
+<span id="cb133-16"><a href="#cb133-16" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
+<span id="cb133-17"><a href="#cb133-17" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"dog(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> dogprob)</span>
+<span id="cb133-18"><a href="#cb133-18" aria-hidden="true" tabindex="-1"></a>        k<span class="op">=</span>k<span class="op">+</span><span class="dv">1</span> </span>
+<span id="cb133-19"><a href="#cb133-19" aria-hidden="true" tabindex="-1"></a>fig.set_figwidth(<span class="dv">16</span>)            </span>
+<span id="cb133-20"><a href="#cb133-20" aria-hidden="true" tabindex="-1"></a>fig.set_figheight(<span class="dv">16</span>)</span>
+<span id="cb133-21"><a href="#cb133-21" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-91-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-91-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="ee48eecb-1fdc-40db-a202-c2e557b5ef6e" class="cell" data-outputid="39932f9f-239e-4334-eda6-cfe1cb17fa8c" data-execution_count="91">
-<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">5</span>,<span class="dv">5</span>) </span>
-<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a>k<span class="op">=</span><span class="dv">75</span></span>
-<span id="cb139-3"><a href="#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
-<span id="cb139-4"><a href="#cb139-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>): </span>
-<span id="cb139-5"><a href="#cb139-5" aria-hidden="true" tabindex="-1"></a>        x, <span class="op">=</span> first(dls.test_dl([PILImage.create(get_image_files(path)[k])]))</span>
-<span id="cb139-6"><a href="#cb139-6" aria-hidden="true" tabindex="-1"></a>        why <span class="op">=</span> torch.einsum(<span class="st">'cb,abij -&gt; acij'</span>, net2[<span class="dv">2</span>].weight, net1(x))</span>
-<span id="cb139-7"><a href="#cb139-7" aria-hidden="true" tabindex="-1"></a>        why_cat <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">0</span>,:,:] </span>
-<span id="cb139-8"><a href="#cb139-8" aria-hidden="true" tabindex="-1"></a>        why_dog <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">1</span>,:,:] </span>
-<span id="cb139-9"><a href="#cb139-9" aria-hidden="true" tabindex="-1"></a>        catprob, dogprob <span class="op">=</span> sftmax(net(x))[<span class="dv">0</span>][<span class="dv">0</span>].item(), sftmax(net(x))[<span class="dv">0</span>][<span class="dv">1</span>].item()</span>
-<span id="cb139-10"><a href="#cb139-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> catprob<span class="op">&gt;</span>dogprob: </span>
-<span id="cb139-11"><a href="#cb139-11" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
-<span id="cb139-12"><a href="#cb139-12" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
-<span id="cb139-13"><a href="#cb139-13" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"cat(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> catprob)</span>
-<span id="cb139-14"><a href="#cb139-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: </span>
-<span id="cb139-15"><a href="#cb139-15" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
-<span id="cb139-16"><a href="#cb139-16" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
-<span id="cb139-17"><a href="#cb139-17" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"dog(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> dogprob)</span>
-<span id="cb139-18"><a href="#cb139-18" aria-hidden="true" tabindex="-1"></a>        k<span class="op">=</span>k<span class="op">+</span><span class="dv">1</span> </span>
-<span id="cb139-19"><a href="#cb139-19" aria-hidden="true" tabindex="-1"></a>fig.set_figwidth(<span class="dv">16</span>)            </span>
-<span id="cb139-20"><a href="#cb139-20" aria-hidden="true" tabindex="-1"></a>fig.set_figheight(<span class="dv">16</span>)</span>
-<span id="cb139-21"><a href="#cb139-21" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">5</span>,<span class="dv">5</span>) </span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>k<span class="op">=</span><span class="dv">75</span></span>
+<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb134-4"><a href="#cb134-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>): </span>
+<span id="cb134-5"><a href="#cb134-5" aria-hidden="true" tabindex="-1"></a>        x, <span class="op">=</span> first(dls.test_dl([PILImage.create(get_image_files(path)[k])]))</span>
+<span id="cb134-6"><a href="#cb134-6" aria-hidden="true" tabindex="-1"></a>        why <span class="op">=</span> torch.einsum(<span class="st">'cb,abij -&gt; acij'</span>, net2[<span class="dv">2</span>].weight, net1(x))</span>
+<span id="cb134-7"><a href="#cb134-7" aria-hidden="true" tabindex="-1"></a>        why_cat <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">0</span>,:,:] </span>
+<span id="cb134-8"><a href="#cb134-8" aria-hidden="true" tabindex="-1"></a>        why_dog <span class="op">=</span> why[<span class="dv">0</span>,<span class="dv">1</span>,:,:] </span>
+<span id="cb134-9"><a href="#cb134-9" aria-hidden="true" tabindex="-1"></a>        catprob, dogprob <span class="op">=</span> sftmax(net(x))[<span class="dv">0</span>][<span class="dv">0</span>].item(), sftmax(net(x))[<span class="dv">0</span>][<span class="dv">1</span>].item()</span>
+<span id="cb134-10"><a href="#cb134-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> catprob<span class="op">&gt;</span>dogprob: </span>
+<span id="cb134-11"><a href="#cb134-11" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
+<span id="cb134-12"><a href="#cb134-12" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_cat.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
+<span id="cb134-13"><a href="#cb134-13" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"cat(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> catprob)</span>
+<span id="cb134-14"><a href="#cb134-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: </span>
+<span id="cb134-15"><a href="#cb134-15" aria-hidden="true" tabindex="-1"></a>            dls.train.decode((x,))[<span class="dv">0</span>].squeeze().show(ax<span class="op">=</span>ax[i][j])</span>
+<span id="cb134-16"><a href="#cb134-16" aria-hidden="true" tabindex="-1"></a>            ax[i][j].imshow(why_dog.to(<span class="st">"cpu"</span>).detach(),alpha<span class="op">=</span><span class="fl">0.5</span>,extent<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">511</span>,<span class="dv">511</span>,<span class="dv">0</span>),interpolation<span class="op">=</span><span class="st">'bilinear'</span>,cmap<span class="op">=</span><span class="st">'magma'</span>)</span>
+<span id="cb134-17"><a href="#cb134-17" aria-hidden="true" tabindex="-1"></a>            ax[i][j].set_title(<span class="st">"dog(</span><span class="sc">%2f</span><span class="st">)"</span> <span class="op">%</span> dogprob)</span>
+<span id="cb134-18"><a href="#cb134-18" aria-hidden="true" tabindex="-1"></a>        k<span class="op">=</span>k<span class="op">+</span><span class="dv">1</span> </span>
+<span id="cb134-19"><a href="#cb134-19" aria-hidden="true" tabindex="-1"></a>fig.set_figwidth(<span class="dv">16</span>)            </span>
+<span id="cb134-20"><a href="#cb134-20" aria-hidden="true" tabindex="-1"></a>fig.set_figheight(<span class="dv">16</span>)</span>
+<span id="cb134-21"><a href="#cb134-21" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-92-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-10-26-ml_8w_2_files/figure-html/cell-92-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -2836,15 +2911,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
         return container.innerHTML
       } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -2852,6 +2940,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const anchorLink = note.querySelector('a.anchorjs-link');
       if (anchorLink) {
         anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
       }
       return note.innerHTML;
     }
@@ -2895,6 +2986,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -2970,7 +3084,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);

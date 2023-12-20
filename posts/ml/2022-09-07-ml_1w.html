@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.527">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -81,12 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -95,13 +96,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -111,8 +113,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
@@ -124,6 +126,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://seoyeonc.github.io/sy_hub/"> 
+<span class="menu-text">Main_Blog</span></a>
+  </li>  
+</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link active" href="../../about.html" aria-current="page"> 
@@ -142,11 +150,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/ml/index.html">Special Topics in Machine Learning</a></li><li class="breadcrumb-item"><a href="../../posts/ml/2022-09-07-ml_1w.html">DNN (1주차)</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -189,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -873,6 +881,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-12-07_any_tip.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">정리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/anything/A1.out.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A1: 강화학습 (1) – bandit</span></a>
   </div>
@@ -1085,7 +1099,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -1103,6 +1117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
+
 
 
 
@@ -1140,7 +1155,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="96e01f16-8140-4868-b6df-3bc8ffa3e504" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>PILImage.create(<span class="st">'/home/csy/.fastai/data/oxford-iiit-pet/images/Abyssinian_1.jpg'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="dd6f191c-e082-471c-b3d1-9d1661fdae2b" class="cell" data-execution_count="7">
@@ -1160,7 +1179,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="49515474-65b0-499e-be27-7b8e05c218f0" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>PILImage.create(_lst[<span class="dv">1</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="221264b2-bca1-4065-88a1-8d7b69a62a94" class="cell" data-execution_count="10">
@@ -1183,7 +1206,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>/home/csy/.fastai/data/oxford-iiit-pet/images/Bombay_13.jpg</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="12">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-13-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-13-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="ff45d453-5cab-4ecc-9d99-5b862b00fcb9" class="cell" data-execution_count="13">
@@ -1193,7 +1220,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>/home/csy/.fastai/data/oxford-iiit-pet/images/beagle_193.jpg</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="13">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-14-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-14-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="32291847-da34-46a3-b6f0-2fbc056a73c5" class="cell" data-execution_count="14">
@@ -1203,7 +1234,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>/home/csy/.fastai/data/oxford-iiit-pet/images/Ragdoll_8.jpg</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="14">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-15-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-15-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="c9f2febc-379e-4718-8630-45966d75d20c" class="cell" data-execution_count="15">
@@ -1213,7 +1248,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>/home/csy/.fastai/data/oxford-iiit-pet/images/boxer_106.jpg</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="15">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-16-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-16-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="05501170-0869-4f50-adfa-7e3f60e92fee" class="cell" data-execution_count="16">
@@ -1223,7 +1262,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>/home/csy/.fastai/data/oxford-iiit-pet/images/keeshond_56.jpg</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="16">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-17-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-17-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="3ecb71f4-fd16-454f-87a3-e78908d3fc2d" class="cell" data-execution_count="17">
@@ -1233,7 +1276,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>/home/csy/.fastai/data/oxford-iiit-pet/images/american_pit_bull_terrier_162.jpg</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="17">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-18-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-18-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="57b7a5d0-88af-45a4-ad0c-ec745442e3e1" class="cell" data-execution_count="18">
@@ -1243,7 +1290,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>/home/csy/.fastai/data/oxford-iiit-pet/images/saint_bernard_136.jpg</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="18">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-19-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-19-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="9789af0a-ce3f-4ca9-94f0-f7685bebb002" class="cell" data-execution_count="19">
@@ -1253,7 +1304,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>/home/csy/.fastai/data/oxford-iiit-pet/images/staffordshire_bull_terrier_76.jpg</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="19">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-20-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-20-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="a2f8bdba-c391-4299-866a-34aecdc7094e" class="cell" data-execution_count="20">
@@ -1263,7 +1318,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>/home/csy/.fastai/data/oxford-iiit-pet/images/pug_173.jpg</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="20">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-21-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="a0430bcc-deae-4f2a-ae93-bc819de2a99f" class="cell" data-execution_count="21">
@@ -1273,7 +1332,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>/home/csy/.fastai/data/oxford-iiit-pet/images/american_pit_bull_terrier_117.jpg</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="21">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-22-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-22-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="cdca013e-d84b-49d3-bd15-038e8191e7ab" class="cell" data-execution_count="22">
@@ -1283,7 +1346,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>/home/csy/.fastai/data/oxford-iiit-pet/images/Maine_Coon_266.jpg</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="22">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-23-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-23-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>vector로 되어 있는 tensor</p>
@@ -1362,7 +1429,11 @@ ImageDataLoaders<span class="ansi-blue-fg">.</span>from_name_func<span class="an
 <div id="9dc30266-d719-4122-9a3f-1e86efb707e5" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>dls.show_batch(max_n<span class="op">=</span><span class="dv">16</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1484,7 +1555,11 @@ ImageDataLoaders<span class="ansi-blue-fg">.</span>from_name_func<span class="an
 
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-39-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-39-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1499,7 +1574,11 @@ ImageDataLoaders<span class="ansi-blue-fg">.</span>from_name_func<span class="an
 <div id="b61f7630-4b8b-433d-846f-1ca3cd52edad" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>checker.plot_top_losses(k<span class="op">=</span><span class="dv">16</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-41-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1508,7 +1587,11 @@ ImageDataLoaders<span class="ansi-blue-fg">.</span>from_name_func<span class="an
 <div id="2b398f2b-f0ea-4bb0-b7d5-e2300eb5748d" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>PILImage.create(<span class="st">'2022-01-13-cat.jpg'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-42-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-42-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="ce3e1199-870d-4b72-8233-d0fff7983835" class="cell" data-execution_count="42">
@@ -1523,7 +1606,11 @@ ImageDataLoaders<span class="ansi-blue-fg">.</span>from_name_func<span class="an
 <div id="76dff1e0-df01-4989-a2e8-959a47be79ca" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>PILImage.create(requests.get(<span class="st">'https://dimg.donga.com/ugc/CDB/SHINDONGA/Article/5e/0d/9f/01/5e0d9f011a9ad2738de6.jpg'</span>).content)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-44-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-44-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="a20d05b1-ff22-4842-add6-8ccac1fc6be6" class="cell" data-execution_count="44">
@@ -1596,7 +1683,11 @@ ImageDataLoaders<span class="ansi-blue-fg">.</span>from_name_func<span class="an
 <div id="7ce093df-5b6e-42d2-9f68-ccef1ffa499a" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>PILImage.create(<span class="st">'2022-09-07-dogs.jpeg'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-51-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-51-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="c4b9f7b7-0307-4352-9615-3db0db99cc2f" class="cell" data-execution_count="51">
@@ -1621,7 +1712,11 @@ ImageDataLoaders<span class="ansi-blue-fg">.</span>from_name_func<span class="an
 <div id="a0758c78-bd49-4323-a1f5-264ec2015030" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>PILImage.create(requests.get(<span class="st">'https://media.npr.org/assets/img/2021/08/11/gettyimages-1279899488_wide-f3860ceb0ef19643c335cb34df3fa1de166e2761-s900-c85.webp'</span>).content)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
-<p><img src="2022-09-07-ml_1w_files/figure-html/cell-54-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-09-07-ml_1w_files/figure-html/cell-54-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="79aa8ff4-8265-40be-af7e-a8dd5f6acb26" class="cell" data-execution_count="54">
@@ -1715,15 +1810,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
         return container.innerHTML
       } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -1731,6 +1839,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const anchorLink = note.querySelector('a.anchorjs-link');
       if (anchorLink) {
         anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
       }
       return note.innerHTML;
     }
@@ -1774,6 +1885,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -1849,7 +1983,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.315">
+<meta name="generator" content="quarto-1.4.527">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -81,12 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -95,17 +96,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -113,8 +142,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
@@ -126,6 +155,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://seoyeonc.github.io/sy_hub/"> 
+<span class="menu-text">Main_Blog</span></a>
+  </li>  
+</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link active" href="../../about.html" aria-current="page"> 
@@ -144,11 +179,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/ml/index.html">Special Topics in Machine Learning</a></li><li class="breadcrumb-item"><a href="../../posts/ml/2022-11-02-ml_9w.html">RNN (9주차)</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -192,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -876,6 +911,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/anything/2023-12-07_any_tip.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">정리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/anything/A1.out.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A1: 강화학습 (1) – bandit</span></a>
   </div>
@@ -1088,7 +1129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -1118,6 +1159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <p>기계학습 특강 (9주차) 11월02일 [순환신경망– ab예제, embedding layer]</p>
 <section id="import" class="level2">
 <h2 class="anchored" data-anchor-id="import">import</h2>
@@ -1143,7 +1185,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Text(0.5, 1.0, 'tanh(x)')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-4-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-4-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>hyperblic tangent(https://en.wikipedia.org/wiki/Hyperbolic_functions) - sigmoid(범위가0 ~ 1)와 차이점(범위가 -1 ~ 1)</p>
@@ -1243,7 +1289,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y[:<span class="dv">5</span>],<span class="st">'o'</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>plt.plot(net(x).data[:<span class="dv">5</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -1345,7 +1395,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y[:<span class="dv">5</span>],<span class="st">'o'</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>plt.plot(net(x).data[:<span class="dv">5</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -1402,7 +1456,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y[:<span class="dv">10</span>],<span class="st">'o'</span>)</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>plt.plot(sig(net(x)).data[:<span class="dv">10</span>],<span class="st">'--o'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 결과해석: 예상되었던 실패임 - 아키텍처는 <span class="math inline">\(\hat{y}_i = \text{sig}(\hat{w}x_i)\)</span> 꼴이다. - <span class="math inline">\((x_i,y_i)=(0,1)\)</span> 이라면 어떠한 <span class="math inline">\(\hat{w}\)</span>을 선택해도 <span class="math inline">\(\hat{w}x_i=0\)</span> 이다. 이경우 <span class="math inline">\(\hat{y}_i = \text{sig}(0) = 0.5\)</span> 가 된다. - <span class="math inline">\((x_i,y_i)=(1,0)\)</span> 이라면 <span class="math inline">\(\hat{w}=-5\)</span>와 같은 값으로 선택하면 <span class="math inline">\(\text{sig}(-5) \approx 0 = y_i\)</span> 와 같이 만들 수 있다. - 상황을 종합하면 net의 weight는 <span class="math inline">\(\text{sig}(\hat{w}x_i) \approx 0\)</span> 이 되도록 적당한 음수로 학습되는 것이 최선임을 알 수 있다.</p>
@@ -1468,7 +1526,11 @@ tensor([[-2.8288]], requires_grad=True)</code></pre>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y[:<span class="dv">10</span>],<span class="st">'o'</span>)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>plt.plot(sig(net(x)).data[:<span class="dv">10</span>],<span class="st">'--o'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-33-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>bias 쓰게 되면서 한쪽을 뭉개주는 효과?</p>
@@ -1489,7 +1551,11 @@ tensor([[-2.8288]], requires_grad=True)</code></pre>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y[:<span class="dv">10</span>],<span class="st">'o'</span>)</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>plt.plot(sig(net(x)).data[:<span class="dv">10</span>],<span class="st">'--o'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1547,7 +1613,11 @@ tensor([[-2.8288]], requires_grad=True)</code></pre>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y[:<span class="dv">10</span>],<span class="st">'o'</span>)</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>plt.plot(sig(net(x)).data[:<span class="dv">10</span>],<span class="st">'--o'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-41-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 학습</p>
@@ -1567,7 +1637,11 @@ tensor([[-2.8288]], requires_grad=True)</code></pre>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y[:<span class="dv">10</span>],<span class="st">'o'</span>)</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>plt.plot(sig(net(x)).data[:<span class="dv">10</span>],<span class="st">'--o'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-43-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-43-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -1780,7 +1854,11 @@ tensor([[-2.8288]], requires_grad=True)</code></pre>
 <span id="cb80-19"><a href="#cb80-19" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="vs">r"$a_1(x):=Sigmoid(x)$"</span>,size<span class="op">=</span><span class="dv">20</span>)</span>
 <span id="cb80-20"><a href="#cb80-20" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-53-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-53-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>큰 폭 -&gt; 학습 속도가 빠르다</p>
@@ -1807,7 +1885,11 @@ tensor([[-2.8288]], requires_grad=True)</code></pre>
 <span id="cb81-19"><a href="#cb81-19" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="vs">r"$a_2(x):=ReLU(x)$"</span>,size<span class="op">=</span><span class="dv">20</span>)</span>
 <span id="cb81-20"><a href="#cb81-20" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-54-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-54-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 실험결과3(Tanh): Tanh activation을 포함한 아키텍처로 학습시킨 25개의 적합결과</p>
@@ -1833,7 +1915,11 @@ tensor([[-2.8288]], requires_grad=True)</code></pre>
 <span id="cb82-19"><a href="#cb82-19" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="vs">r"$a_2(x):=Tanh(x)$"</span>,size<span class="op">=</span><span class="dv">20</span>)        </span>
 <span id="cb82-20"><a href="#cb82-20" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-55-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-55-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 실험해석 - sig: 주황색선의 변동폭이 작음 + 항상 0.5근처로 머무는 적합값이 존재 - relu: 주황색선의 변동폭이 큼 + 항상 0.5근처로 머무는 적합값이 존재 - tanh: 주황색선의 변동폭이 큼 + 0.5근처로 머무는 적합값이 존재X</p>
@@ -1902,7 +1988,11 @@ tensor([[-2.8288]], requires_grad=True)</code></pre>
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y[:<span class="dv">5</span>][:,<span class="dv">1</span>],<span class="st">'o'</span>)</span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>plt.plot(soft(net(x[:<span class="dv">5</span>]))[:,<span class="dv">1</span>].data,<span class="st">'--r'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-61-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-61-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>b,a,b,a,,,…</p>
@@ -1910,11 +2000,12 @@ tensor([[-2.8288]], requires_grad=True)</code></pre>
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>)</span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(y[:<span class="dv">5</span>])</span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(soft(net(x[:<span class="dv">5</span>])).data)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="67">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7fe521441490&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-62-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-62-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>비슷하게 나왔다, 학습이 잘 되었다(중간 대체과제 참고)</p>
@@ -1927,25 +2018,25 @@ tensor([[-2.8288]], requires_grad=True)</code></pre>
 <h3 class="anchored" data-anchor-id="motive">motive</h3>
 <p><code>-</code> 결국 최종적으로는 아래와 같은 맵핑방식이 확장성이 있어보인다.</p>
 <div id="90fce7cb-9e81-4874-b68c-a1ca3982e2bd" class="cell" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {<span class="st">'a'</span>:[<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],<span class="st">'b'</span>:[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>],<span class="st">'c'</span>:[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>]} <span class="co"># 원핫인코딩 방식 </span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {<span class="st">'a'</span>:[<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],<span class="st">'b'</span>:[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>],<span class="st">'c'</span>:[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>]} <span class="co"># 원핫인코딩 방식 </span></span></code></pre></div>
 </div>
 <p><code>-</code> 그런데 매번 <span class="math inline">\(X\)</span>를 원핫인코딩하고 Linear 변환하는것이 번거로운데 이를 한번에 구현하는 함수가 있으면 좋겠다. <span class="math inline">\(\to\)</span> torch.nn.Embedding Layer가 그 역할을 한다.</p>
 <p>x dimension은 3(원핫인코딩)</p>
 <div id="12689036-7678-4040-bace-6292a003c267" class="cell" data-outputid="6e4b2af1-d58e-4d94-b16a-ed36de552fa0" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {<span class="st">'a'</span>:<span class="dv">0</span>,<span class="st">'b'</span>:<span class="dv">1</span>,<span class="st">'c'</span>:<span class="dv">2</span>}</span>
-<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.tensor(f(<span class="bu">list</span>(<span class="st">'abc'</span>)<span class="op">*</span><span class="dv">100</span>,mapping))</span>
-<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor(f(<span class="bu">list</span>(<span class="st">'bca'</span>)<span class="op">*</span><span class="dv">100</span>,mapping))</span>
-<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a>x[:<span class="dv">5</span>],y[:<span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {<span class="st">'a'</span>:<span class="dv">0</span>,<span class="st">'b'</span>:<span class="dv">1</span>,<span class="st">'c'</span>:<span class="dv">2</span>}</span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.tensor(f(<span class="bu">list</span>(<span class="st">'abc'</span>)<span class="op">*</span><span class="dv">100</span>,mapping))</span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor(f(<span class="bu">list</span>(<span class="st">'bca'</span>)<span class="op">*</span><span class="dv">100</span>,mapping))</span>
+<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>x[:<span class="dv">5</span>],y[:<span class="dv">5</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="69">
 <pre><code>(tensor([0, 1, 2, 0, 1]), tensor([1, 2, 0, 1, 2]))</code></pre>
 </div>
 </div>
 <div id="6bad88a6-6773-46e9-9eca-07895a22edee" class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">43052</span>)</span>
-<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>ebdd <span class="op">=</span> torch.nn.Embedding(num_embeddings<span class="op">=</span><span class="dv">3</span>,embedding_dim<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">43052</span>)</span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>ebdd <span class="op">=</span> torch.nn.Embedding(num_embeddings<span class="op">=</span><span class="dv">3</span>,embedding_dim<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
 </div>
 <div id="33875fb4-1bdd-4f09-ba46-6bafb812652c" class="cell" data-outputid="6acd0dc0-ef11-4476-e61c-099d83908407" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>ebdd(x)[:<span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>ebdd(x)[:<span class="dv">5</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="71">
 <pre><code>tensor([[-0.8178],
         [-0.7052],
@@ -1956,11 +2047,11 @@ tensor([[-2.8288]], requires_grad=True)</code></pre>
 </div>
 <p><code>-</code> 그런데 사실 언뜻보면 아래의 linr 함수와 역할의 차이가 없어보인다.</p>
 <div id="f14f4e58-8dfa-4cd1-bde8-a1f7251990e6" class="cell" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">43052</span>)</span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>linr <span class="op">=</span> torch.nn.Linear(in_features<span class="op">=</span><span class="dv">1</span>,out_features<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">43052</span>)</span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>linr <span class="op">=</span> torch.nn.Linear(in_features<span class="op">=</span><span class="dv">1</span>,out_features<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
 </div>
 <div id="dacb6b59-aa56-4c67-b173-d3928c5f02a6" class="cell" data-outputid="5fea84bf-f5cf-4e2a-f6aa-182693a82010" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>linr(x.<span class="bu">float</span>().reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>))[:<span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>linr(x.<span class="bu">float</span>().reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>))[:<span class="dv">5</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="73">
 <pre><code>tensor([[-0.8470],
         [-1.1937],
@@ -1972,7 +2063,7 @@ tensor([[-2.8288]], requires_grad=True)</code></pre>
 <p><code>-</code> 차이점: 파라메터수에 차이가 있다.</p>
 <p>파라메터 적게 쓰는게 비용측면에서 좋으니까</p>
 <div id="ad9eddb1-b295-4e1a-aaab-6bbef5c35b69" class="cell" data-outputid="d5891bcf-7e52-490d-c3a3-11538b2dcedd" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>ebdd.weight</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>ebdd.weight</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="74">
 <pre><code>Parameter containing:
 tensor([[-0.8178],
@@ -1981,7 +2072,7 @@ tensor([[-0.8178],
 </div>
 </div>
 <div id="0a781909-feb8-4945-95da-de132de1afc5" class="cell" data-outputid="edcf426a-5b8a-4ed7-f371-7df35b0ca15d" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>linr.weight, linr.bias</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>linr.weight, linr.bias</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="75">
 <pre><code>(Parameter containing:
  tensor([[-0.3467]], requires_grad=True),
@@ -2010,10 +2101,10 @@ $</li>
 <h3 class="anchored" data-anchor-id="연습-ab문제-소프트맥스로-확장한-것-다시-풀이">연습 (ab문제 소프트맥스로 확장한 것 다시 풀이)</h3>
 <p><code>-</code> 맵핑</p>
 <div id="a1c63d9c-28bf-488d-a52d-468ef1a7ac21" class="cell" data-outputid="35cffdb9-dfb5-4df9-de2f-af4ecd6f23fb" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {<span class="st">'a'</span>:<span class="dv">0</span>,<span class="st">'b'</span>:<span class="dv">1</span>}</span>
-<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.tensor(f(txt_x,mapping))</span>
-<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor(f(txt_y,mapping))</span>
-<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a>x[:<span class="dv">5</span>],y[:<span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {<span class="st">'a'</span>:<span class="dv">0</span>,<span class="st">'b'</span>:<span class="dv">1</span>}</span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.tensor(f(txt_x,mapping))</span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor(f(txt_y,mapping))</span>
+<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a>x[:<span class="dv">5</span>],y[:<span class="dv">5</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>(tensor([0, 1, 0, 1, 0]), tensor([1, 0, 1, 0, 1]))</code></pre>
 </div>
@@ -2021,36 +2112,40 @@ $</li>
 <p><code>-</code> torch.nn.Embedding 을 넣은 네트워크</p>
 <p>num_embedding이 2인 이유 a,b만 있어서</p>
 <div id="dbd064c4-5700-475a-8269-4b4a5853468f" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>net <span class="op">=</span> torch.nn.Sequential(</span>
-<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>    torch.nn.Embedding(num_embeddings<span class="op">=</span><span class="dv">2</span>,embedding_dim<span class="op">=</span><span class="dv">1</span>),</span>
-<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>    torch.nn.Tanh(),</span>
-<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>    torch.nn.Linear(in_features<span class="op">=</span><span class="dv">1</span>,out_features<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a>loss_fn <span class="op">=</span> torch.nn.CrossEntropyLoss()</span>
-<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a>optimizr <span class="op">=</span> torch.optim.Adam(net.parameters())</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>net <span class="op">=</span> torch.nn.Sequential(</span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>    torch.nn.Embedding(num_embeddings<span class="op">=</span><span class="dv">2</span>,embedding_dim<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>    torch.nn.Tanh(),</span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a>    torch.nn.Linear(in_features<span class="op">=</span><span class="dv">1</span>,out_features<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a>loss_fn <span class="op">=</span> torch.nn.CrossEntropyLoss()</span>
+<span id="cb108-7"><a href="#cb108-7" aria-hidden="true" tabindex="-1"></a>optimizr <span class="op">=</span> torch.optim.Adam(net.parameters())</span></code></pre></div>
 </div>
 <p><code>-</code> 학습</p>
 <div id="257e9836-e4ab-46d7-adfc-334ba69f07c7" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoc <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5000</span>):</span>
-<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 1</span></span>
-<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>    yhat <span class="op">=</span> net(x)</span>
-<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 2 </span></span>
-<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> loss_fn(yhat,y)</span>
-<span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 3 </span></span>
-<span id="cb110-7"><a href="#cb110-7" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
-<span id="cb110-8"><a href="#cb110-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 4 </span></span>
-<span id="cb110-9"><a href="#cb110-9" aria-hidden="true" tabindex="-1"></a>    optimizr.step()</span>
-<span id="cb110-10"><a href="#cb110-10" aria-hidden="true" tabindex="-1"></a>    optimizr.zero_grad()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoc <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5000</span>):</span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 1</span></span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>    yhat <span class="op">=</span> net(x)</span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 2 </span></span>
+<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> loss_fn(yhat,y)</span>
+<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 3 </span></span>
+<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb109-8"><a href="#cb109-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 4 </span></span>
+<span id="cb109-9"><a href="#cb109-9" aria-hidden="true" tabindex="-1"></a>    optimizr.step()</span>
+<span id="cb109-10"><a href="#cb109-10" aria-hidden="true" tabindex="-1"></a>    optimizr.zero_grad()</span></code></pre></div>
 </div>
 <div id="8e78e767-5ff6-4059-b064-72b7ea87f4b4" class="cell" data-outputid="9f46661b-7d66-419b-dedd-b6972e7136b1" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y[:<span class="dv">5</span>],<span class="st">'o'</span>)</span>
-<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>plt.plot(soft(net(x[:<span class="dv">5</span>]))[:,<span class="dv">1</span>].data,<span class="st">'--r'</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y[:<span class="dv">5</span>],<span class="st">'o'</span>)</span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>plt.plot(soft(net(x[:<span class="dv">5</span>]))[:,<span class="dv">1</span>].data,<span class="st">'--r'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-74-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-74-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="fc92020f-34b5-403f-beee-619fe1a303c8" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>soft(net(x[:<span class="dv">5</span>]))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>soft(net(x[:<span class="dv">5</span>]))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>tensor([[0.0040, 0.9960],
         [0.9960, 0.0040],
@@ -2060,12 +2155,13 @@ $</li>
 </div>
 </div>
 <div id="60c25b5a-8932-404f-af26-ccb221b76014" class="cell" data-outputid="b0bf590c-9b00-4305-a01b-0ae12a632bb1" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(soft(net(x[:<span class="dv">5</span>])).data)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7f1d7067ac50&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(soft(net(x[:<span class="dv">5</span>])).data)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-11-02-ml_9w_files/figure-html/cell-76-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-11-02-ml_9w_files/figure-html/cell-76-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -2150,15 +2246,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
         return container.innerHTML
       } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -2166,6 +2275,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const anchorLink = note.querySelector('a.anchorjs-link');
       if (anchorLink) {
         anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
       }
       return note.innerHTML;
     }
@@ -2209,6 +2321,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -2284,7 +2419,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);
