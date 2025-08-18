@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/python/2025-08-18-supervised_learning.html",
       "/posts/anything/2023-12-07_any_tip.html",
       "/posts/anything/2023-11-15-DV2023-09wk-1-mid.out.html",
       "/posts/anything/A3.out.html",
@@ -111,7 +112,6 @@
       "/posts/rl/2022-12-08-rl-HW4.html",
       "/posts/ml/2022-12-08-13wk.html",
       "/posts/ml/2022-12-14-study.html",
-      "/posts/ml/2022-12-07-13wk.html",
       "/posts/rl/2022-12-05-rl-CH11.html",
       "/posts/ml/2022-11-30-12wk.html",
       "/posts/ml/2022-11-29-13wk-2-final.html",
