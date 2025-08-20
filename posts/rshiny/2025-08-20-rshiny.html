@@ -1146,7 +1146,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#만들어본-r-shiny" id="toc-만들어본-r-shiny" class="nav-link active" data-scroll-target="#만들어본-r-shiny">만들어본 R shiny</a>
   <ul class="collapse">
-  <li><a href="#india-pharmaceutical-product" id="toc-india-pharmaceutical-product" class="nav-link" data-scroll-target="#india-pharmaceutical-product">1. India Pharmaceutical Product</a></li>
+  <li><a href="#india-pharmaceutical-product" id="toc-india-pharmaceutical-product" class="nav-link" data-scroll-target="#india-pharmaceutical-product">India Pharmaceutical Product</a></li>
   </ul></li>
   <li><a href="#basic-concept" id="toc-basic-concept" class="nav-link" data-scroll-target="#basic-concept">Basic concept</a></li>
   <li><a href="#process" id="toc-process" class="nav-link" data-scroll-target="#process">Process</a></li>
@@ -1154,6 +1154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#keywords" id="toc-keywords" class="nav-link" data-scroll-target="#keywords">keywords</a></li>
   </ul></li>
+  <li><a href="#shiny-app-account" id="toc-shiny-app-account" class="nav-link" data-scroll-target="#shiny-app-account">Shiny App Account</a></li>
   <li><a href="#difference-between-reactive-vs-observe" id="toc-difference-between-reactive-vs-observe" class="nav-link" data-scroll-target="#difference-between-reactive-vs-observe">difference between reactive vs observe</a></li>
   <li><a href="#the-code-that-i-use-to-show-r-shiny-results" id="toc-the-code-that-i-use-to-show-r-shiny-results" class="nav-link" data-scroll-target="#the-code-that-i-use-to-show-r-shiny-results">The code that I use to show R shiny results</a></li>
   </ul>
@@ -1166,20 +1167,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<p><a href="https://mastering-shiny.org/index.html">Mastering Shiny</a></p>
 <section id="만들어본-r-shiny" class="level1">
 <h1>만들어본 R shiny</h1>
 <section id="india-pharmaceutical-product" class="level2">
-<h2 class="anchored" data-anchor-id="india-pharmaceutical-product">1. India Pharmaceutical Product</h2>
-<p>https://seoyeonchoi.shinyapps.io/project/</p>
+<h2 class="anchored" data-anchor-id="india-pharmaceutical-product">India Pharmaceutical Product</h2>
 <ul>
-<li>data
-<ul>
-<li>https://www.kaggle.com/datasets/rishgeeky/indian-pharmaceutical-products</li>
-</ul></li>
-<li>refer
-<ul>
-<li>https://www.kaggle.com/code/mpwolke/india-pharmacy-of-the-world</li>
-</ul></li>
+<li><a href="https://seoyeonchoi.shinyapps.io/project/">link</a></li>
+<li><a href="https://www.kaggle.com/datasets/rishgeeky/indian-pharmaceutical-products">data</a></li>
+<li><a href="https://www.kaggle.com/code/mpwolke/india-pharmacy-of-the-world">refer</a></li>
 </ul>
 </section>
 </section>
@@ -1252,6 +1248,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Process → Design UI → Implement Server → Execute</li>
 </ul>
 </section>
+</section>
+<section id="shiny-app-account" class="level1">
+<h1>Shiny App Account</h1>
+<ul>
+<li>Local Run → no account needed, <code>runApp()</code>, Run App button</li>
+<li>Visibility → runs only on your computer</li>
+<li>Online Sharing → account required</li>
+<li>Hosting Options → <code>shinyapps.io</code>, RStudio Connect, Shiny Server</li>
+<li>Deployment → <code>rsconnect::setAccountInfo()</code>, <code>deployApp()</code></li>
+<li>Process → Develop locally → Connect account → Deploy to server</li>
+</ul>
+<p>내 컴퓨터에서 실행 (계정 불필요) - app.R만 있으면 RStudio에서 바로 Run App 버튼이나 runApp()으로 실행 가능. - 이 경우 앱은 내 컴퓨터에서만 보임 (즉, 본인 PC에서만 확인 가능). - 계정 연결 필요 없음.</p>
+<p>온라인 배포 (계정 필요) - 다른 사람이 인터넷으로 접속하게 하려면 계정이 필요. 대표적으로: shinyapps.io(RStudio에서 제공, 무료/유료 플랜 있음) - rsconnect::setAccountInfo()로 계정 연결 필요 - rsconnect::deployApp()으로 앱 업로드 - RStudio Connect (회사/기관용 서버) - 자체 Shiny Server (리눅스 서버에 직접 설치)</p>
 </section>
 <section id="difference-between-reactive-vs-observe" class="level1">
 <h1>difference between reactive vs observe</h1>
