@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -1135,10 +1101,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#macro" id="toc-macro" class="nav-link" data-scroll-target="#macro">Macro</a>
   <ul class="collapse">
+  <li><a href="#매크로-지우는-코드" id="toc-매크로-지우는-코드" class="nav-link" data-scroll-target="#매크로-지우는-코드">매크로 지우는 코드</a></li>
   <li><a href="#put" id="toc-put" class="nav-link" data-scroll-target="#put">%put</a></li>
+  <li><a href="#minoperator" id="toc-minoperator" class="nav-link" data-scroll-target="#minoperator">minoperator</a></li>
   </ul></li>
   <li><a href="#array" id="toc-array" class="nav-link" data-scroll-target="#array">Array</a></li>
   <li><a href="#hash-object" id="toc-hash-object" class="nav-link" data-scroll-target="#hash-object">Hash object</a></li>
+  <li><a href="#proc-fcmp" id="toc-proc-fcmp" class="nav-link" data-scroll-target="#proc-fcmp">PROC FCMP</a></li>
+  <li><a href="#lag" id="toc-lag" class="nav-link" data-scroll-target="#lag">lag</a>
+  <ul class="collapse">
+  <li><a href="#mprint-mlogic-symbolgen" id="toc-mprint-mlogic-symbolgen" class="nav-link" data-scroll-target="#mprint-mlogic-symbolgen">mprint mlogic symbolgen;</a></li>
+  </ul></li>
+  <li><a href="#정규표현식" id="toc-정규표현식" class="nav-link" data-scroll-target="#정규표현식">정규표현식</a></li>
+  <li><a href="#put-vs-putlog" id="toc-put-vs-putlog" class="nav-link" data-scroll-target="#put-vs-putlog">put vs putlog</a></li>
+  <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">Format</a></li>
+  <li><a href="#count-find" id="toc-count-find" class="nav-link" data-scroll-target="#count-find">Count, Find</a></li>
+  <li><a href="#group-by-사용-하고-안-하고의-차이" id="toc-group-by-사용-하고-안-하고의-차이" class="nav-link" data-scroll-target="#group-by-사용-하고-안-하고의-차이">group by 사용 하고 안 하고의 차이</a></li>
+  <li><a href="#subquery" id="toc-subquery" class="nav-link" data-scroll-target="#subquery">subquery</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-08-19-SAS1.out.ipynb" download="2025-08-19-SAS1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -1239,6 +1218,10 @@ quit;
 %loopx
 
 </code></pre>
+<section id="매크로-지우는-코드" class="level2">
+<h2 class="anchored" data-anchor-id="매크로-지우는-코드">매크로 지우는 코드</h2>
+<pre class="sas"><code>%symdel &amp;vars;</code></pre>
+</section>
 <section id="put" class="level2">
 <h2 class="anchored" data-anchor-id="put">%put</h2>
 <ul>
@@ -1291,6 +1274,14 @@ GLOBAL GLOBAL2 CCC</code></pre>
     where sex='F';
 quit;</code></pre>
 </section>
+<section id="minoperator" class="level2">
+<h2 class="anchored" data-anchor-id="minoperator">minoperator</h2>
+<ul>
+<li>minoperator는 in을 쓸 수 있게 해줌</li>
+</ul>
+<pre class="sas"><code>%macro avgfuel(loc) / minoperator;
+%else %if &amp;loc in ASIA EUROPE %then %do;</code></pre>
+</section>
 </section>
 <section id="array" class="level1">
 <h1>Array</h1>
@@ -1331,6 +1322,13 @@ run;</code></pre>
 </section>
 <section id="hash-object" class="level1">
 <h1>Hash object</h1>
+<pre class="sas"><code>object-name.definekey ()
+object-name.definedata ()
+object-name.definedone ()
+
+object-name.find() 찾으면 &gt; 0
+object-name.add ()
+object-name.output ()</code></pre>
 <p>hash 데이터셋 output하는 법</p>
 <pre class="sas"><code>data example1;
     if _n_=1 then do;
@@ -1344,145 +1342,454 @@ run;</code></pre>
     if rc=0 then output;                 /* 매칭된 경우 출력 */
     drop rc;
 run;</code></pre>
-<div id="7e9cc17d-8bed-4c9c-90b4-a2a10f1fbef3" class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Array, Hash Object, PROC FCMP</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">hash</span> a에서  dataset하고 output 두 가지 방법</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>join하면서 열 추가하는법</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>do <span class="cf">while</span> do until</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>mprint mlogic</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>join</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>do </span></code></pre></div>
-</div>
-<div id="2edf8111-cdca-4898-8815-6a375a88ca6e" class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>패턴  설명</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>.   아무 문자 하나</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>\d  숫자 (digit)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>\w  알파벳<span class="op">/</span>숫자<span class="op">/</span>언더스코어</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>\s  공백 문자</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="op">^</span>   문자열의 시작</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>$   문자열의 끝</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="op">+</span>   <span class="dv">1</span><span class="er">개</span> 이상 반복</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="op">*</span>   <span class="dv">0</span><span class="er">개</span> 이상 반복</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>?   <span class="dv">0</span><span class="er">개</span> 또는 <span class="dv">1</span><span class="er">개</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>[abc]   a, b, 또는 c 중 하나</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>[<span class="op">^</span>abc]  a, b, c 이외의 문자</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>(abc)   그룹</span></code></pre></div>
-</div>
-<p>prsparse prxmatch prxchange prxsubstr prxnext callprxdebug(1)-&gt; 로그에 표현할것인지</p>
-<div id="554f04b7-0870-4bd7-ab45-d0e15faeeaee" class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>subquery 사용법</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>group by 사용 하고 안 하고의 차이</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>macro avgfuel(loc) <span class="op">/</span> minoperator<span class="op">;</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="op">%</span><span class="cf">else</span> <span class="op">%</span><span class="cf">if</span> <span class="op">&amp;</span>loc <span class="kw">in</span> ASIA EUROPE <span class="op">%</span>then <span class="op">%</span>do<span class="op">;</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>minoperator는 in을 쓸 수 있게 해줌</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>매크로 지우는 코드</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>symdel <span class="op">&amp;</span><span class="bu">vars</span><span class="op">;</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>put vs putlog</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>￼</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>lag1, lag2 있는 데이터 두 번 돌리면 아래처럼 이상하게 나타남(원래 데이터 <span class="dv">10</span> <span class="dv">20</span> <span class="dv">30</span> <span class="dv">40</span>)</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>큐를 초기화하거나 lag 대신 retain<span class="op">+</span>by 등으로 대체 고려<span class="op">\</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>￼</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>count(txt, <span class="st">'apple'</span>)<span class="op">;</span> <span class="op">-&gt;</span> cnt <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> <span class="st">'apple pie and pineapple'</span><span class="op">;</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  cnt <span class="op">=</span> countw(txt)<span class="op">;</span> <span class="op">-&gt;</span> cnt <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a> <span class="bu">str</span> <span class="op">=</span> <span class="st">"catalog"</span><span class="op">;</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  pos <span class="op">=</span> find(<span class="bu">str</span>, <span class="st">"cat"</span>)<span class="op">;</span>  <span class="op">/*</span> 결과: <span class="dv">1</span> <span class="op">*/</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>pos <span class="op">=</span> findw(<span class="bu">str</span>, <span class="st">"cat"</span>)<span class="op">;</span>  <span class="op">/*</span> 결과: <span class="dv">0</span> <span class="op">*/</span></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="bu">object</span><span class="op">-</span>name.definekey ()</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="bu">object</span><span class="op">-</span>name.definedata ()</span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="bu">object</span><span class="op">-</span>name.definedone ()</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a><span class="bu">object</span><span class="op">-</span>name.find() 찾으면 <span class="op">&gt;</span> <span class="dv">0</span></span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a><span class="bu">object</span><span class="op">-</span>name.add ()</span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a><span class="bu">object</span><span class="op">-</span>name.output ()</span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>기본</span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>length StateName $ <span class="dv">20</span> Capital $ <span class="dv">14</span> StatePop2017 <span class="dv">8</span><span class="op">;</span></span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> _N_ <span class="op">=</span> <span class="dv">1</span> then do<span class="op">;</span></span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>declare <span class="bu">hash</span> States (dataset: <span class="st">'pg3.population_usstates'</span>) population_usstates<span class="st">');</span></span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a><span class="er">States .definekey </span>(<span class="st">'StateName'</span>)<span class="op">;</span></span>
-<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>States definedata (<span class="st">'Capital'</span>, <span class="st">'StatePop2017'</span>) <span class="op">;</span></span>
-<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>States. definedone () <span class="op">;</span></span>
-<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>call missing (StateName, Capital, StatePop2017) <span class="op">;</span>(이전 데이터나 값이 변수에 남아있지 않게 되고 해시 조회 실패 시에도 오염된 값이 남지 않으며 예측 가능한 결과를 보장합니다.)</span>
-<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>end<span class="op">;</span></span>
-<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>data work.StateCityPopulation<span class="op">;</span> </span>
-<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> _N_<span class="op">=</span><span class="dv">1</span> then do<span class="op">;</span> </span>
-<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="dv">0</span> then <span class="bu">set</span> pg3.population.usstates<span class="op">;</span> </span>
-<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>declare <span class="bu">hash</span> States(dataset:<span class="st">'pg3.population_usstates'</span>)<span class="op">;</span> </span>
-<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>States.definekey(<span class="st">'StateName'</span>)<span class="op">;</span> </span>
-<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>States.definedata(<span class="st">'Capital'</span>, <span class="st">'StatePop2017'</span>)<span class="op">;</span> </span>
-<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>States.definedone()<span class="op">;</span> </span>
-<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>end<span class="op">;</span> </span>
-<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> pg3.population uscities<span class="op">;</span> </span>
-<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>StateName<span class="op">=</span>stnamel(StateCode): </span>
-<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>RC<span class="op">=</span>States. find(key:StateName)<span class="op">;</span> (해시 객체 States에서 주 이름(StateName)을 키로 검색해서 해당 Capital과 StatePop2017 값을 찾아서 자동으로 변수에 바인딩합니다 성공 시 RC <span class="op">=</span> <span class="dv">0</span>)</span>
-<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> RC ne <span class="dv">0</span> then call missing(Capital, StatePop2017)<span class="op">;</span>(해시에서 값을 찾지 못했을 경우, Capital과 StatePop2017 값을 명시적으로 결측 처리합니다.)</span>
-<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>PctPop«CityPop2017<span class="op">/</span>StatePop2017<span class="op">;</span> </span>
-<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a><span class="bu">format</span> StatePop2017 comma14. PctPop percent8<span class="fl">.1</span><span class="op">;</span> </span>
-<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a>(해당하는 거만 데이터셋 만들어지게 하려면) if RC <span class="op">=</span> <span class="dv">0</span> then do<span class="op">;</span>  <span class="op">/*</span> 🔍 lookup 성공한 경우에만 <span class="op">*/</span></span>
-<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a>    PctPop <span class="op">=</span> CityPop2017 <span class="op">/</span> StatePop2017<span class="op">;</span></span>
-<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a>    <span class="bu">format</span> StatePop2017 comma14. PctPop percent8<span class="fl">.1</span><span class="op">;</span></span>
-<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a>    output<span class="op">;</span>           <span class="op">/*</span> ✅ 해당 행만 데이터셋에 저장 <span class="op">*/</span></span>
-<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a>  end<span class="op">;</span></span>
-<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a>()</span>
-<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a>run<span class="op">;</span></span>
-<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>A  Weekday name (full) Wednesday</span>
-<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>a  Weekday name (first three letters)  Wed</span>
-<span id="cb16-70"><a href="#cb16-70" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>d  Day of month (one <span class="kw">or</span> two digits)    <span class="dv">2</span></span>
-<span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a><span class="op">%</span><span class="dv">0</span><span class="er">d</span> Day of month (two digits)   <span class="dv">0</span><span class="er">2</span></span>
-<span id="cb16-72"><a href="#cb16-72" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>B  Month name (full)   January</span>
-<span id="cb16-73"><a href="#cb16-73" aria-hidden="true" tabindex="-1"></a><span class="op">%</span><span class="dv">3</span><span class="er">B</span> Month name (first three letters)    Jan</span>
-<span id="cb16-74"><a href="#cb16-74" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>m  Month number (one <span class="kw">or</span> two digits)    <span class="dv">1</span></span>
-<span id="cb16-75"><a href="#cb16-75" aria-hidden="true" tabindex="-1"></a><span class="op">%</span><span class="dv">0</span><span class="er">m</span> Month number (two digits)   <span class="dv">0</span><span class="er">1</span></span>
-<span id="cb16-76"><a href="#cb16-76" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>Y  Year (four digits)  <span class="dv">2019</span></span>
-<span id="cb16-77"><a href="#cb16-77" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>Oy Year (two digits)   <span class="dv">19</span></span>
-<span id="cb16-78"><a href="#cb16-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-79"><a href="#cb16-79" aria-hidden="true" tabindex="-1"></a>응H <span class="kw">or</span> 응OH   Hour, <span class="dv">24</span><span class="op">-</span>hour clock (one <span class="kw">or</span> two digits) <span class="dv">21</span></span>
-<span id="cb16-80"><a href="#cb16-80" aria-hidden="true" tabindex="-1"></a>응I <span class="kw">or</span> 응OI   Hour, <span class="dv">12</span><span class="op">-</span>hour clock (one <span class="kw">or</span> two digits) <span class="dv">9</span> <span class="kw">or</span> <span class="dv">0</span><span class="er">9</span></span>
-<span id="cb16-81"><a href="#cb16-81" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>M <span class="kw">or</span> <span class="op">%</span> OM  Minute (one <span class="kw">or</span> two digits)  <span class="dv">13</span></span>
-<span id="cb16-82"><a href="#cb16-82" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>S <span class="kw">or</span> <span class="op">%</span>OS   Second (one <span class="kw">or</span> two digits)  <span class="dv">5</span> <span class="kw">or</span> <span class="dv">0</span><span class="er">5</span></span>
-<span id="cb16-83"><a href="#cb16-83" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>p  AM <span class="kw">or</span> PM    PM</span>
-<span id="cb16-84"><a href="#cb16-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-85"><a href="#cb16-85" aria-hidden="true" tabindex="-1"></a><span class="bu">format</span> 기본</span>
-<span id="cb16-86"><a href="#cb16-86" aria-hidden="true" tabindex="-1"></a>proc <span class="bu">format</span><span class="op">;</span></span>
-<span id="cb16-87"><a href="#cb16-87" aria-hidden="true" tabindex="-1"></a>picture MyDate (default<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb16-88"><a href="#cb16-88" aria-hidden="true" tabindex="-1"></a>low<span class="op">-</span>high <span class="op">=</span> <span class="st">'%a-</span><span class="sc">%d</span><span class="st">-%3B-¿y'</span></span>
-<span id="cb16-89"><a href="#cb16-89" aria-hidden="true" tabindex="-1"></a>(datatype<span class="op">=</span>date) <span class="op">;</span></span>
-<span id="cb16-90"><a href="#cb16-90" aria-hidden="true" tabindex="-1"></a>picture MyTime (default<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb16-91"><a href="#cb16-91" aria-hidden="true" tabindex="-1"></a>low<span class="op">-</span>high</span>
-<span id="cb16-92"><a href="#cb16-92" aria-hidden="true" tabindex="-1"></a><span class="co">'H:%OH M:%OM S:%OS'</span></span>
-<span id="cb16-93"><a href="#cb16-93" aria-hidden="true" tabindex="-1"></a>(datatype<span class="op">=</span>time) <span class="op">;</span></span>
-<span id="cb16-94"><a href="#cb16-94" aria-hidden="true" tabindex="-1"></a>run<span class="op">;</span></span>
-<span id="cb16-95"><a href="#cb16-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-96"><a href="#cb16-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-97"><a href="#cb16-97" aria-hidden="true" tabindex="-1"></a>PROC FCMP OUTLIB<span class="op">=</span>libref.table.package<span class="op">;</span></span>
-<span id="cb16-98"><a href="#cb16-98" aria-hidden="true" tabindex="-1"></a>FUNCTION function<span class="op">-</span>name(arguments) <span class="op">&lt;</span>$<span class="op">&gt;</span> <span class="op">&lt;</span>length<span class="op">&gt;;</span></span>
-<span id="cb16-99"><a href="#cb16-99" aria-hidden="true" tabindex="-1"></a>...programming statements...</span>
-<span id="cb16-100"><a href="#cb16-100" aria-hidden="true" tabindex="-1"></a>RETURN(expression)<span class="op">;</span></span>
-<span id="cb16-101"><a href="#cb16-101" aria-hidden="true" tabindex="-1"></a>ENDSUB<span class="op">;</span></span>
-<span id="cb16-102"><a href="#cb16-102" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span>
-<span id="cb16-103"><a href="#cb16-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-104"><a href="#cb16-104" aria-hidden="true" tabindex="-1"></a>proc fcmp outlib<span class="op">-</span>pg3. funcs.weather<span class="op">;</span></span>
-<span id="cb16-105"><a href="#cb16-105" aria-hidden="true" tabindex="-1"></a>function FtoC (TempF) <span class="op">;</span></span>
-<span id="cb16-106"><a href="#cb16-106" aria-hidden="true" tabindex="-1"></a>TempC<span class="op">=</span><span class="bu">round</span> ( (TempF<span class="op">-</span><span class="dv">32</span>) <span class="op">*</span><span class="dv">5</span><span class="op">/</span><span class="dv">9</span>,<span class="fl">.01</span>) <span class="op">;</span></span>
-<span id="cb16-107"><a href="#cb16-107" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> (TempC) <span class="op">;</span></span>
-<span id="cb16-108"><a href="#cb16-108" aria-hidden="true" tabindex="-1"></a>endsub<span class="op">;</span></span>
-<span id="cb16-109"><a href="#cb16-109" aria-hidden="true" tabindex="-1"></a>run<span class="op">;</span></span>
-<span id="cb16-110"><a href="#cb16-110" aria-hidden="true" tabindex="-1"></a>function불러와야 쓸 수 있음</span>
-<span id="cb16-111"><a href="#cb16-111" aria-hidden="true" tabindex="-1"></a>options cmplib<span class="op">=</span>pg3.funcs<span class="op">;</span></span></code></pre></div>
-</div>
+<pre class="sas"><code>data work.StateCityPopulation; 
+    if _N_=1 then do; 
+        if 0 then set pg3.population.usstates; 
+        declare hash States(dataset:'pg3.population_usstates'); 
+        States.definekey('StateName'); 
+        States.definedata('Capital', 'StatePop2017'); 
+        States.definedone(); 
+        end; 
+    set pg3.population uscities; 
+    StateName=stnamel(StateCode): 
+    RC=States. find(key:StateName); (해시 객체 States에서 주 이름(StateName)을 키로 검색해서 해당 Capital과 StatePop2017 값을 찾아서 자동으로 변수에 바인딩합니다 성공 시 RC = 0)
+        if RC ne 0 then call missing(Capital, StatePop2017);(해시에서 값을 찾지 못했을 경우, Capital과 StatePop2017 값을 명시적으로 결측 처리합니다.)
+        PctPop«CityPop2017/StatePop2017; 
+        format StatePop2017 comma14. PctPop percent8.1; 
+        (해당하는 거만 데이터셋 만들어지게 하려면)
+            if RC = 0 then do;  /* 🔍 lookup 성공한 경우에만 */
+                PctPop = CityPop2017 / StatePop2017;
+                format StatePop2017 comma14. PctPop percent8.1;
+                output;           /* ✅ 해당 행만 데이터셋에 저장 */
+        end;
+    ()
+run;</code></pre>
+</section>
+<section id="proc-fcmp" class="level1">
+<h1>PROC FCMP</h1>
+<pre class="sas"><code>
+
+PROC FCMP OUTLIB=libref.table.package;
+FUNCTION function-name(arguments) &lt;$&gt; &lt;length&gt;;
+...programming statements...
+RETURN(expression);
+ENDSUB;
+RUN;</code></pre>
+<pre class="sas"><code>proc fcmp outlib-pg3. funcs.weather;
+function FtoC (TempF) ;
+TempC=round ( (TempF-32) *5/9,.01) ;
+return (TempC) ;
+endsub;
+run;
+*function불러와야 쓸 수 있음;
+options cmplib=pg3.funcs;
+</code></pre>
+</section>
+<section id="lag" class="level1">
+<h1>lag</h1>
+<p>lag1, lag2 있는 데이터 두 번 돌리면 아래처럼 이상하게 나타남(원래 데이터 10 20 30 40)</p>
+<p>큐를 초기화하거나 lag 대신 retain+by 등으로 대체 고려</p>
+<ul>
+<li>첫 번째 DATA step(정상 동작):</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>x</th>
+<th>l1</th>
+<th>l2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>10</td>
+<td>.</td>
+</tr>
+<tr class="odd">
+<td>30</td>
+<td>20</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>40</td>
+<td>30</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>두 번째 DATA step:</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>x</th>
+<th>l1</th>
+<th>l2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10</td>
+<td>40❗</td>
+<td>30❗</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>10</td>
+<td>40</td>
+</tr>
+<tr class="odd">
+<td>30</td>
+<td>20</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>40</td>
+<td>30</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<section id="mprint-mlogic-symbolgen" class="level2">
+<h2 class="anchored" data-anchor-id="mprint-mlogic-symbolgen">mprint mlogic symbolgen;</h2>
+<p>MPRINT → 매크로가 실제로 실행할 SAS 코드(매크로 해석 후의 코드)를 로그에 보여줌</p>
+<p>MLOGIC → 매크로 실행 과정(분기, 반복, 호출/종료 등)을 단계별로 로그에 보여줌</p>
+<p>SYMBOLGEN → 매크로 변수 치환 과정(&amp;변수)을 로그에 보여줌</p>
+<pre class="sas"><code>options mprint mlogic symbolgen;</code></pre>
+</section>
+</section>
+<section id="정규표현식" class="level1">
+<h1>정규표현식</h1>
+<table class="table">
+<thead>
+<tr class="header">
+<th>패턴</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.</td>
+<td>아무 문자 하나 (줄바꿈 제외)</td>
+</tr>
+<tr class="even">
+<td> 숫자 (digit, 0-9)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>알파벳/숫자/언더스코어</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>공백 문자 (space, tab 등)</td>
+</tr>
+<tr class="odd">
+<td>^</td>
+<td>문자열의 시작</td>
+</tr>
+<tr class="even">
+<td>$</td>
+<td>문자열의 끝</td>
+</tr>
+<tr class="odd">
+<td>+</td>
+<td>1개 이상 반복</td>
+</tr>
+<tr class="even">
+<td>*</td>
+<td>0개 이상 반복</td>
+</tr>
+<tr class="odd">
+<td>?</td>
+<td>0개 또는 1개</td>
+</tr>
+<tr class="even">
+<td>[abc]</td>
+<td>a, b, 또는 c 중 하나</td>
+</tr>
+<tr class="odd">
+<td>[^abc]</td>
+<td>a, b, c 이외의 문자</td>
+</tr>
+<tr class="even">
+<td>(abc)</td>
+<td>그룹</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>prxparse → 정규식 패턴 컴파일</li>
+</ol>
+<ul>
+<li>prxparse(‘//’) → “숫자 1개 이상” 정규식 생성</li>
+<li>“abc123xyz”에서 숫자는 4번째 위치 → pos=4</li>
+</ul>
+<pre class="sas"><code>data _null_;
+   retain regex;
+   if _n_ = 1 then regex = prxparse('/\d+/');  /* 숫자 찾기 */
+   str = "abc123xyz";
+   pos = prxmatch(regex, str);
+   put pos=;
+run;</code></pre>
+<ol start="2" type="1">
+<li>prxmatch → 문자열에 패턴 매칭 (첫 번째 위치)</li>
+</ol>
+<ul>
+<li>“cat”은 “my cat is here”에서 4번째 → pos1=4</li>
+<li>“dog only”에는 없음 → pos2=0</li>
+</ul>
+<pre class="sas"><code>data _null_;
+   regex = prxparse('/cat/');
+   str1 = "my cat is here";
+   str2 = "dog only";
+   pos1 = prxmatch(regex, str1);
+   pos2 = prxmatch(regex, str2);
+   put pos1= pos2=;
+run;</code></pre>
+<ol start="3" type="1">
+<li>prxchange → 정규식 치환</li>
+</ol>
+<ul>
+<li>정규식 ()-()-() → 연도-월-일 캡처</li>
+<li>$3/$2/$1 → 일/월/연도로 재배치</li>
+<li>결과: 17/08/2025</li>
+</ul>
+<pre class="sas"><code>data _null_;
+   str = "2025-08-17";
+   /* yyyy-mm-dd → dd/mm/yyyy 변환 */
+   new = prxchange('s/(\d{4})-(\d{2})-(\d{2})/$3\/$2\/$1/', -1, str);
+   put new=;
+run;</code></pre>
+<ol start="4" type="1">
+<li>prxsubstr → 매치 위치와 길이 반환</li>
+</ol>
+<ul>
+<li>첫 숫자 시작 = 14번째 (pos=14)</li>
+<li>길이 = 5 (len=5)</li>
+<li>matched=12345</li>
+</ul>
+<pre class="sas"><code>data _null_;
+   regex = prxparse('/\d+/');  /* 숫자 찾기 */
+   str = "Order number 12345 confirmed";
+   call prxsubstr(regex, str, pos, len);
+   matched = substr(str, pos, len);
+   put pos= len= matched=;
+run;</code></pre>
+<ol start="5" type="1">
+<li>prxnext → 여러 매치 순회</li>
+</ol>
+<ul>
+<li>prxnext는 여러 개의 매치를 순차적으로 반환할 때 사용.</li>
+</ul>
+<pre class="sas"><code>data _null_;
+   regex = prxparse('/\d+/');  /* 숫자 찾기 */
+   str = "a1 b22 c333";
+   start = 1;
+   stop = length(str);
+
+   do while (prxnext(regex, start, stop, str, pos, len) &gt; 0);
+      match = substr(str, pos, len);
+      put match=;
+   end;
+run;</code></pre>
+</section>
+<section id="put-vs-putlog" class="level1">
+<h1>put vs putlog</h1>
+<pre class="sas"><code>%let name=Seoyeon;
+%put Hello, &amp;name.;</code></pre>
+<pre class="sas"><code>data _null_;
+   x = 10;
+   y = 20;
+   putlog "현재 값은 " x= y=;
+run;</code></pre>
+</section>
+<section id="format" class="level1">
+<h1>Format</h1>
+<table class="table">
+<thead>
+<tr class="header">
+<th>코드</th>
+<th>설명</th>
+<th>예시 값</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>%A</td>
+<td>요일 이름 (전체)</td>
+<td>Wednesday</td>
+</tr>
+<tr class="even">
+<td>%a</td>
+<td>요일 이름 (앞 3글자)</td>
+<td>Wed</td>
+</tr>
+<tr class="odd">
+<td>%d</td>
+<td>월 중 일자 (1~31, 한 자리 가능)</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>%0d</td>
+<td>월 중 일자 (2자리, 0 채움)</td>
+<td>02</td>
+</tr>
+<tr class="odd">
+<td>%B</td>
+<td>월 이름 (전체)</td>
+<td>January</td>
+</tr>
+<tr class="even">
+<td>%3B</td>
+<td>월 이름 (앞 3글자)</td>
+<td>Jan</td>
+</tr>
+<tr class="odd">
+<td>%m</td>
+<td>월 번호 (1~12, 한 자리 가능)</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>%0m</td>
+<td>월 번호 (2자리, 0 채움)</td>
+<td>01</td>
+</tr>
+<tr class="odd">
+<td>%Y</td>
+<td>연도 (4자리)</td>
+<td>2019</td>
+</tr>
+<tr class="even">
+<td>%Oy</td>
+<td>연도 (2자리)</td>
+<td>19</td>
+</tr>
+<tr class="odd">
+<td>%H/%OH</td>
+<td>시 (24시간제, 한 자리 또는 두 자리)</td>
+<td>21</td>
+</tr>
+<tr class="even">
+<td>%I/%OI</td>
+<td>시 (12시간제, 한 자리 또는 두 자리)</td>
+<td>9 또는 09</td>
+</tr>
+<tr class="odd">
+<td>%M/%OM</td>
+<td>분 (한 자리 또는 두 자리)</td>
+<td>13</td>
+</tr>
+<tr class="even">
+<td>%S/%OS</td>
+<td>초 (한 자리 또는 두 자리)</td>
+<td>5 또는 05</td>
+</tr>
+<tr class="odd">
+<td>%p</td>
+<td>오전/오후 표시 (AM/PM)</td>
+<td>PM</td>
+</tr>
+</tbody>
+</table>
+<pre class="sas"><code>proc format;
+    picture MyDate (default=15)
+    low-high = '%a-%d-%3B-¿y'
+    (datatype=date) ;
+    picture MyTime (default=14)
+    low-high
+    'H:%OH M:%OM S:%OS'
+    (datatype=time) ;
+run;</code></pre>
+</section>
+<section id="count-find" class="level1">
+<h1>Count, Find</h1>
+<pre class="sas"><code>count(txt, 'apple'); -&gt; cnt = 2
+txt = 'apple pie and pineapple';
+  cnt = countw(txt); -&gt; cnt = 4</code></pre>
+<pre class="sas"><code> str = "catalog";
+  pos = find(str, "cat");  /* 결과: 1 */
+pos = findw(str, "cat");  /* 결과: 0 */</code></pre>
+</section>
+<section id="group-by-사용-하고-안-하고의-차이" class="level1">
+<h1>group by 사용 하고 안 하고의 차이</h1>
+<ul>
+<li><strong>GROUP BY 없음</strong> → 각 행(row) 그대로 출력<br>
+</li>
+<li><strong>GROUP BY 있음</strong> → 지정한 그룹별로 요약(평균, 합계 등 집계 함수 결과)만 출력</li>
+</ul>
+<ol type="1">
+<li>GROUP BY 사용하지 않은 경우 (원본 그대로)</li>
+</ol>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Make</th>
+<th>MPG_City</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Toyota</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>Toyota</td>
+<td>22</td>
+</tr>
+<tr class="odd">
+<td>Toyota</td>
+<td>25</td>
+</tr>
+<tr class="even">
+<td>Ford</td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<td>Ford</td>
+<td>18</td>
+</tr>
+<tr class="even">
+<td>Honda</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>GROUP BY 사용한 경우 (Make별 평균)</li>
+</ol>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Make</th>
+<th>AvgCityMPG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ford</td>
+<td>16.5</td>
+</tr>
+<tr class="even">
+<td>Honda</td>
+<td>30.0</td>
+</tr>
+<tr class="odd">
+<td>Toyota</td>
+<td>22.3</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="subquery" class="level1">
+<h1>subquery</h1>
 
 
 </section>

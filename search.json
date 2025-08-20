@@ -7658,11 +7658,50 @@
     ]
   },
   {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#매크로-지우는-코드",
+    "href": "posts/sas/2025-08-19-SAS1.html#매크로-지우는-코드",
+    "title": "SAS Advanced Certificate",
+    "section": "매크로 지우는 코드",
+    "text": "매크로 지우는 코드\n%symdel &vars;",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
     "objectID": "posts/sas/2025-08-19-SAS1.html#put",
     "href": "posts/sas/2025-08-19-SAS1.html#put",
     "title": "SAS Advanced Certificate",
     "section": "%put",
     "text": "%put\n\n% put error:쓰고 log에 print 안 되게 한느 법\n\n%macro name;\n    options nonotes;\n    %put error: this is error.\n%name;\n\nUSER 키워드는 사용자가 만든 모든 매크로 변수(전역 + 지역)를 로그에 보여줍니다.\n\n%let global1=AAA;\n\n%macro demo;\n   %let local1=BBB;\n   %global global2;\n   %let global2=CCC;\n\n   %put ---- Inside macro ----;\n   %put _USER_;\n%mend;\n\n%demo\n\n%put ---- After macro ----;\n%put _USER_;\n\nlog 결과\n\nGLOBAL GLOBAL1 AAA\nGLOBAL GLOBAL2 CCC\nLOCAL  LOCAL1 BBB\n\n---- After macro ----\nGLOBAL GLOBAL1 AAA\nGLOBAL GLOBAL2 CCC\n\n%put _ALL_; → 자동변수 + 사용자 변수 + 시스템 변수 전부 다\n%put _AUTOMATIC_; → 자동으로 제공되는 시스템 매크로 변수만\n%put _GLOBAL_; → 글로벌 변수만\n%put _LOCAL_; → 매크로 실행 중일 때만 로컬 변수만\n\nproc sql noprint;\n    select name\n    into :namelist separated by ','\n    into :n1 - :n5\n    into :avg_h, :avg_w\n    from sashelp.class\n    where sex='F';\nquit;",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#minoperator",
+    "href": "posts/sas/2025-08-19-SAS1.html#minoperator",
+    "title": "SAS Advanced Certificate",
+    "section": "minoperator",
+    "text": "minoperator\n\nminoperator는 in을 쓸 수 있게 해줌\n\n%macro avgfuel(loc) / minoperator;\n%else %if &loc in ASIA EUROPE %then %do;",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#mprint-mlogic-symbolgen",
+    "href": "posts/sas/2025-08-19-SAS1.html#mprint-mlogic-symbolgen",
+    "title": "SAS Advanced Certificate",
+    "section": "mprint mlogic symbolgen;",
+    "text": "mprint mlogic symbolgen;\nMPRINT → 매크로가 실제로 실행할 SAS 코드(매크로 해석 후의 코드)를 로그에 보여줌\nMLOGIC → 매크로 실행 과정(분기, 반복, 호출/종료 등)을 단계별로 로그에 보여줌\nSYMBOLGEN → 매크로 변수 치환 과정(&변수)을 로그에 보여줌\noptions mprint mlogic symbolgen;",
     "crumbs": [
       "Main_Blog",
       "Posts",
