@@ -1142,19 +1142,18 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
   <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
   </ul></li>
+  <li><a href="#proc-sql" id="toc-proc-sql" class="nav-link" data-scroll-target="#proc-sql">Proc sql</a></li>
   <li><a href="#macro" id="toc-macro" class="nav-link" data-scroll-target="#macro">Macro</a>
   <ul class="collapse">
   <li><a href="#매크로-지우는-코드" id="toc-매크로-지우는-코드" class="nav-link" data-scroll-target="#매크로-지우는-코드">매크로 지우는 코드</a></li>
   <li><a href="#put" id="toc-put" class="nav-link" data-scroll-target="#put">%put</a></li>
   <li><a href="#minoperator" id="toc-minoperator" class="nav-link" data-scroll-target="#minoperator">minoperator</a></li>
+  <li><a href="#mprint-mlogic-symbolgen" id="toc-mprint-mlogic-symbolgen" class="nav-link" data-scroll-target="#mprint-mlogic-symbolgen">mprint mlogic symbolgen;</a></li>
   </ul></li>
   <li><a href="#array" id="toc-array" class="nav-link" data-scroll-target="#array">Array</a></li>
   <li><a href="#hash-object" id="toc-hash-object" class="nav-link" data-scroll-target="#hash-object">Hash object</a></li>
   <li><a href="#proc-fcmp" id="toc-proc-fcmp" class="nav-link" data-scroll-target="#proc-fcmp">PROC FCMP</a></li>
-  <li><a href="#lag" id="toc-lag" class="nav-link" data-scroll-target="#lag">lag</a>
-  <ul class="collapse">
-  <li><a href="#mprint-mlogic-symbolgen" id="toc-mprint-mlogic-symbolgen" class="nav-link" data-scroll-target="#mprint-mlogic-symbolgen">mprint mlogic symbolgen;</a></li>
-  </ul></li>
+  <li><a href="#lag" id="toc-lag" class="nav-link" data-scroll-target="#lag">lag</a></li>
   <li><a href="#정규표현식" id="toc-정규표현식" class="nav-link" data-scroll-target="#정규표현식">정규표현식</a></li>
   <li><a href="#put-vs-putlog" id="toc-put-vs-putlog" class="nav-link" data-scroll-target="#put-vs-putlog">put vs putlog</a></li>
   <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">Format</a></li>
@@ -1285,6 +1284,21 @@ quit;
 </code></pre>
 </section>
 </section>
+<section id="proc-sql" class="level1">
+<h1>Proc sql</h1>
+<p>case 조건 사용법</p>
+<pre class="sas"><code>proc sql;
+   select FirstName, LastName, State, CreditScore,
+          case Married
+             when "M" then "Married"
+             when "D" then "Divorced"
+             when "S" then "Single"
+             when "W" then "Widowed"
+             else "Unknown"
+          end as Category
+   from sq.customer (obs=1000);
+quit;</code></pre>
+</section>
 <section id="macro" class="level1">
 <h1>Macro</h1>
 <ul>
@@ -1368,6 +1382,13 @@ quit;</code></pre>
 </ul>
 <pre class="sas"><code>%macro avgfuel(loc) / minoperator;
 %else %if &amp;loc in ASIA EUROPE %then %do;</code></pre>
+</section>
+<section id="mprint-mlogic-symbolgen" class="level2">
+<h2 class="anchored" data-anchor-id="mprint-mlogic-symbolgen">mprint mlogic symbolgen;</h2>
+<p>MPRINT → 매크로가 실제로 실행할 SAS 코드(매크로 해석 후의 코드)를 로그에 보여줌</p>
+<p>MLOGIC → 매크로 실행 과정(분기, 반복, 호출/종료 등)을 단계별로 로그에 보여줌</p>
+<p>SYMBOLGEN → 매크로 변수 치환 과정(&amp;변수)을 로그에 보여줌</p>
+<pre class="sas"><code>options mprint mlogic symbolgen;</code></pre>
 </section>
 </section>
 <section id="array" class="level1">
@@ -1476,6 +1497,19 @@ options cmplib=pg3.funcs;
 <h1>lag</h1>
 <p>lag1, lag2 있는 데이터 두 번 돌리면 아래처럼 이상하게 나타남(원래 데이터 10 20 30 40)</p>
 <p>큐를 초기화하거나 lag 대신 retain+by 등으로 대체 고려</p>
+<pre class="sas"><code>data test;
+   input x;
+   lag1_x = lag1(x);
+   lag2_x = lag2(x);
+   datalines;
+10
+20
+30
+40
+;
+run;
+
+proc print data=test; run;</code></pre>
 <ul>
 <li>첫 번째 DATA step(정상 동작):</li>
 </ul>
@@ -1544,13 +1578,6 @@ options cmplib=pg3.funcs;
 </tr>
 </tbody>
 </table>
-<section id="mprint-mlogic-symbolgen" class="level2">
-<h2 class="anchored" data-anchor-id="mprint-mlogic-symbolgen">mprint mlogic symbolgen;</h2>
-<p>MPRINT → 매크로가 실제로 실행할 SAS 코드(매크로 해석 후의 코드)를 로그에 보여줌</p>
-<p>MLOGIC → 매크로 실행 과정(분기, 반복, 호출/종료 등)을 단계별로 로그에 보여줌</p>
-<p>SYMBOLGEN → 매크로 변수 치환 과정(&amp;변수)을 로그에 보여줌</p>
-<pre class="sas"><code>options mprint mlogic symbolgen;</code></pre>
-</section>
 </section>
 <section id="정규표현식" class="level1">
 <h1>정규표현식</h1>
