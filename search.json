@@ -7749,11 +7749,102 @@
     ]
   },
   {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#group-by-사용-하고-안-하고의-차이",
+    "href": "posts/sas/2025-08-19-SAS1.html#group-by-사용-하고-안-하고의-차이",
+    "title": "SAS Advanced Certificate",
+    "section": "group by 사용 하고 안 하고의 차이",
+    "text": "group by 사용 하고 안 하고의 차이\n\nGROUP BY 없음 → 각 행(row) 그대로 출력\n\nGROUP BY 있음 → 지정한 그룹별로 요약(평균, 합계 등 집계 함수 결과)만 출력\n\n\nGROUP BY 사용하지 않은 경우 (원본 그대로)\n\n\n\n\nMake\nMPG_City\n\n\n\n\nToyota\n20\n\n\nToyota\n22\n\n\nToyota\n25\n\n\nFord\n15\n\n\nFord\n18\n\n\nHonda\n30\n\n\n\n\nGROUP BY 사용한 경우 (Make별 평균)\n\n\n\n\nMake\nAvgCityMPG\n\n\n\n\nFord\n16.5\n\n\nHonda\n30.0\n\n\nToyota\n22.3",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#subquery",
+    "href": "posts/sas/2025-08-19-SAS1.html#subquery",
+    "title": "SAS Advanced Certificate",
+    "section": "subquery",
+    "text": "subquery\n\nin사용\n\nsashelp.class에서 나이가 sashelp.class에서 가장 많은 나이들 중 하나인 학생을 출력하시오.\n\n\nproc sql;\n   select Name, Age\n   from sashelp.class\n   where Age in (select max(Age) from sashelp.class);\nquit;\n\n인라인 뷰\n\nsashelp.class에서 나이별 평균 몸무게를 계산한 후, 평균이 100 이상인 나이 그룹만 출력하시오.\n\n\nproc sql;\n   select *\n   from (\n      select Age, avg(Weight) as AvgWeight\n      from sashelp.class\n      group by Age\n   ) as sub\n   where AvgWeight &gt;= 100;\nquit;",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#do-while",
+    "href": "posts/sas/2025-08-19-SAS1.html#do-while",
+    "title": "SAS Advanced Certificate",
+    "section": "do while",
+    "text": "do while\n\n모두 매크로 코드로 x초기값1.25로 지정하고 do until이나 do while로 2보다 작은 값에 댜해서만 x log기록 후 0.25씩 늘려가는 매크로\n\n%sysevalf 입력!\n\n\n\n%macro loopx;\n   %let x=1.25;   /* 초기값 */\n\n   %do %while(&x &lt; 2);\n      %put NOTE: x=&x;\n\n      /* x = x + 0.25 */\n      %let x = %sysevalf(&x + 0.25);\n   %end;\n%mend;\n\n%loopx",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#macro-변수-저장",
+    "href": "posts/sas/2025-08-19-SAS1.html#macro-변수-저장",
+    "title": "SAS Advanced Certificate",
+    "section": "macro 변수 저장",
+    "text": "macro 변수 저장\n\nsashelp.class에서 나이가 16인 학생들의 이름을 매크로 변수 student_list에 공백으로 구분해 저장하시오.\n\nproc sql noprint;\n   select Name into :student_list separated by ' '\n   from sashelp.class\n   where Age=16;\nquit;\n\n%put &=student_list;",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#symputx",
+    "href": "posts/sas/2025-08-19-SAS1.html#symputx",
+    "title": "SAS Advanced Certificate",
+    "section": "symputx",
+    "text": "symputx\n\n다음 코드에서 maxage라는 매크로 변수를 생성하시오.\n\ndata _null_;\n   set sashelp.class end=last;\n   retain maxage 0;\n   if Age &gt; maxage then maxage=Age;\n   if last then call symputx('maxage', maxage);\nrun;\n\n%put &=maxage;",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#간접참조",
+    "href": "posts/sas/2025-08-19-SAS1.html#간접참조",
+    "title": "SAS Advanced Certificate",
+    "section": "간접참조&&",
+    "text": "간접참조&&\n\n아래와 같은 매크로 변수들이 있을 때, var1=Height, var2=Weight, var3=Age. 루프를 이용해 차례대로 변수명을 출력하시오.\n\n&&var&i → &var1 → Height, 두 번 풀려서 최종적으로 변수명이 나옴\n\n\n%let var1=Height;\n%let var2=Weight;\n%let var3=Age;\n\n%macro show;\n   %do i=1 %to 3;\n      %put &&var&i;\n   %end;\n%mend;\n\n%show",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
     "objectID": "posts/sas/2025-08-19-SAS1.html#매크로-지우는-코드",
     "href": "posts/sas/2025-08-19-SAS1.html#매크로-지우는-코드",
     "title": "SAS Advanced Certificate",
     "section": "매크로 지우는 코드",
     "text": "매크로 지우는 코드\n%symdel &vars;",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#substr",
+    "href": "posts/sas/2025-08-19-SAS1.html#substr",
+    "title": "SAS Advanced Certificate",
+    "section": "%SUBSTR",
+    "text": "%SUBSTR\n\n매크로 변수 name=Alexander에서 앞 4글자만 추출하여 매크로 변수 shortname을 만드시오.\n\n%SUBSTR(string, position, length)\n결과: Alex\n\n\n%let name=Alexander;\n%let shortname=%substr(&name,1,4);\n%put &=shortname;",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -7793,6 +7884,123 @@
     "title": "SAS Advanced Certificate",
     "section": "mprint mlogic symbolgen;",
     "text": "mprint mlogic symbolgen;\nMPRINT → 매크로가 실제로 실행할 SAS 코드(매크로 해석 후의 코드)를 로그에 보여줌\nMLOGIC → 매크로 실행 과정(분기, 반복, 호출/종료 등)을 단계별로 로그에 보여줌\nSYMBOLGEN → 매크로 변수 치환 과정(&변수)을 로그에 보여줌\noptions mprint mlogic symbolgen;",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#put-vs-putlog",
+    "href": "posts/sas/2025-08-19-SAS1.html#put-vs-putlog",
+    "title": "SAS Advanced Certificate",
+    "section": "put vs putlog",
+    "text": "put vs putlog\n\nput\n\n%LET → 매크로 변수 name 생성 (Seoyeon)\n%PUT → 매크로 실행 시점에 로그에 문자열 출력\n결과 (로그):\n\n\n%let name=Mike;\n%put Hello, &name.;\n결과: Hellp, Mike\n\nput log\n\nDATA step 실행 중, putlog 문이 SAS 로그에 메시지 기록\n“현재 값은” → 문자열 그대로 출력\nx= y= → 변수 이름과 값 함께 출력\n결과 (로그):\n\n\ndata _null_;\n   x = 10;\n   y = 20;\n   putlog \"현재 값은 \" x= y=;\nrun;\n결과: 현재 값은 x=10 y=20",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#오늘-날짜-표현-방법",
+    "href": "posts/sas/2025-08-19-SAS1.html#오늘-날짜-표현-방법",
+    "title": "SAS Advanced Certificate",
+    "section": "오늘 날짜 표현 방법",
+    "text": "오늘 날짜 표현 방법\n\n방법 1: %SYSFUNC + date()\n\ndate() 함수 → 현재 날짜 (SAS 일련번호, 1960/01/01 기준)\ndate9. 포맷 → 26AUG2025 형태\n\n\n%let today=%sysfunc(date(), date9.);\n%put &=today;\n\n방법 2: %SYSFUNC + today()\n\ntoday() 함수도 현재 날짜 반환 (date()와 동일)\n다른 포맷 사용 가능 (yymmdd10. → 2025-08-26)\n\n\n%let today=%sysfunc(today(), yymmdd10.);\n%put &=today;\n\n방법 3: datetime()\n\n현재 날짜+시간 출력 (26AUG2025:15:30:45)\n\n\n%let now=%sysfunc(datetime(), datetime20.);\n%put &=now;\n\n방법 4: %sysfunc(today(), worddate.)\n\n결과: 26 August 2025 (가독성 좋은 문자열)\n\n\n%let today=%sysfunc(today(), worddate.);\n%put &=today;\n\n방법 5: %sysfunc(today(), weekdate.)\n\n결과: Tuesday, August 26, 2025\n\n\n%let today=%sysfunc(today(), weekdate.);\n%put &=today;\n\n방법 6: 시스템 매크로 변수 활용 (&sysdate9, &sysdatetime)\n\nSAS 자동 제공 시스템 매크로 변수 사용\n형식은 고정되어 있음\n\n\n%put &=sysdate9;      /* 26AUG2025 */\n%put &=sysdate;       /* 26AUG25   */\n%put &=sysdatetime;   /* 26AUG25:15:30:45 */",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#array",
+    "href": "posts/sas/2025-08-19-SAS1.html#array",
+    "title": "SAS Advanced Certificate",
+    "section": "Array",
+    "text": "Array\n\n이렇게 하면 7,8,9 이렇게 3개 가져옴\n\narray Farenht [7:9] Temp7-Temp9;\narray Celsius [7:9] TempC7-TempC9;\n\n또는 이렇게 해서 한 번에 4개 나열\n\narray Status[4] $ 5 StatusQ1-StatusQ4;\n\n2행 3열로 나타남\n\narray Avg [2013:2014,3] (40.9, 40.7, 38.6, 42.5, 42.6, 45.4): \n\nN = 1일 때만 작동 → 즉, 한 번의 데이터 스텝 실행 중에 array_data의 두 줄 모두 처리함.\nset array_data는 두 번 호출되며 각 줄을 Row=1, Row=2로 저장\n배열의 메모리 배치 순서: TwoD[1,1] → TwoD[1,2] → TwoD[1,3] → TwoD[2,1] → TwoD[2,2] → TwoD[2,3]\n\nRow=1 → OneD = Jack, Mary, Sally - TwoD[1,1] = Jack - TwoD[1,2] = Mary - TwoD[1,3] = Sally\nRow=2 → OneD = Christy, John, Marty - TwoD[2,1] = Christy - TwoD[2,2] = John - TwoD[2,3] = Marty\ndata new_data(drop=Row Column);\n  array TwoD[2,3] $;           /* 2행 3열 문자형 배열 선언 */\n  retain TwoD1-TwoD6;          /* 배열 값을 유지 */\n  \n  if _N_ = 1 then do Row = 1 to 2;   /* 최초 실행 시 2개의 행 처리 */\n    set array_data;                 /* 한 줄씩 읽음 */\n    \n    array OneD[3] Name1-Name3;      /* Name1~Name3을 1차원 배열로 묶음 */\n    \n    do Column = 1 to 3;\n      TwoD[Row, Column] = OneD[Column];   /* 값을 2차원 배열에 저장 */\n    end;\n  end;\nrun;",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#hash-object",
+    "href": "posts/sas/2025-08-19-SAS1.html#hash-object",
+    "title": "SAS Advanced Certificate",
+    "section": "Hash object",
+    "text": "Hash object\nobject-name.definekey ()\nobject-name.definedata ()\nobject-name.definedone ()\n\nobject-name.find() 찾으면 &gt; 0\nobject-name.add ()\nobject-name.output ()\nhash 데이터셋 output하는 법\ndata example1;\n    if _n_=1 then do;\n        declare hash h(dataset:\"sashelp.class\");\n        h.defineKey(\"name\");             /* 키 */\n        h.defineData(\"age\",\"height\",\"weight\"); /* 데이터 */\n        h.defineDone();\n    end;\n    set sashelp.class(keep=name);        /* 왼쪽 데이터 */\n    rc = h.find();                       /* 키로 찾기 */\n    if rc=0 then output;                 /* 매칭된 경우 출력 */\n    drop rc;\nrun;\ndata work.StateCityPopulation; \n    if _N_=1 then do; \n        if 0 then set pg3.population.usstates; \n        declare hash States(dataset:'pg3.population_usstates'); \n        States.definekey('StateName'); \n        States.definedata('Capital', 'StatePop2017'); \n        States.definedone(); \n        end; \n    set pg3.population uscities; \n    StateName=stnamel(StateCode): \n    RC=States. find(key:StateName); \n    *(해시 객체 States에서 주 이름(StateName)을 키로 검색해서 해당 Capital과 StatePop2017 값을 찾아서 자동으로 변수에 바인딩합니다 성공 시 RC = 0);\n        if RC ne 0 then call missing(Capital, StatePop2017);\n        *(해시에서 값을 찾지 못했을 경우, Capital과 StatePop2017 값을 명시적으로 결측 처리합니다.)\n        PctPop«CityPop2017/StatePop2017; \n        format StatePop2017 comma14. PctPop percent8.1; \n        (해당하는 거만 데이터셋 만들어지게 하려면)\n            if RC = 0 then do;  /* 🔍 lookup 성공한 경우에만 */\n                PctPop = CityPop2017 / StatePop2017;\n                format StatePop2017 comma14. PctPop percent8.1;\n                output;           /* ✅ 해당 행만 데이터셋에 저장 */\n        end;\n    ()\nrun;",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#proc-fcmp",
+    "href": "posts/sas/2025-08-19-SAS1.html#proc-fcmp",
+    "title": "SAS Advanced Certificate",
+    "section": "PROC FCMP",
+    "text": "PROC FCMP\n\n\nPROC FCMP OUTLIB=libref.table.package;\nFUNCTION function-name(arguments) &lt;$&gt; &lt;length&gt;;\n...programming statements...\nRETURN(expression);\nENDSUB;\nRUN;\nproc fcmp outlib-pg3. funcs.weather;\nfunction FtoC (TempF) ;\nTempC=round ( (TempF-32) *5/9,.01) ;\nreturn (TempC) ;\nendsub;\nrun;\n*function불러와야 쓸 수 있음;\noptions cmplib=pg3.funcs;\n\n\n에시\n\n두 수 중 큰 값을 반환하는 함수 mymax를 정의하고 호출하시오.\n\n\nproc fcmp outlib=work.funcs.math;\n   function mymax(x,y);\n      if x&gt;y then return(x);\n      else return(y);\n   endsub;\nrun;\n\noptions cmplib=work.funcs;\ndata ex8;\n   result=mymax(10,20);\n   put result=;\nrun;",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#lag",
+    "href": "posts/sas/2025-08-19-SAS1.html#lag",
+    "title": "SAS Advanced Certificate",
+    "section": "lag",
+    "text": "lag\nlag1, lag2 있는 데이터 두 번 돌리면 아래처럼 이상하게 나타남(원래 데이터 10 20 30 40)\n큐를 초기화하거나 lag 대신 retain+by 등으로 대체 고려\ndata test;\n   input x;\n   lag1_x = lag1(x);\n   lag2_x = lag2(x);\n   datalines;\n10\n20\n30\n40\n;\nrun;\n\nproc print data=test; run;\n\n첫 번째 DATA step(정상 동작):\n\n\n\n\nx\nl1\nl2\n\n\n\n\n10\n.\n.\n\n\n20\n10\n.\n\n\n30\n20\n10\n\n\n40\n30\n20\n\n\n\n\n두 번째 DATA step:\n\n\n\n\nx\nl1\nl2\n\n\n\n\n10\n40❗\n30❗\n\n\n20\n10\n40\n\n\n30\n20\n10\n\n\n40\n30\n20",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#정규표현식",
+    "href": "posts/sas/2025-08-19-SAS1.html#정규표현식",
+    "title": "SAS Advanced Certificate",
+    "section": "정규표현식",
+    "text": "정규표현식\n\n\n\n패턴\n설명\n\n\n\n\n.\n아무 문자 하나 (줄바꿈 제외)\n\n\n 숫자 (digit, 0-9)\n\n\n\n\n알파벳/숫자/언더스코어\n\n\n\n공백 문자 (space, tab 등)\n\n\n^\n문자열의 시작\n\n\n$\n문자열의 끝\n\n\n+\n1개 이상 반복\n\n\n*\n0개 이상 반복\n\n\n?\n0개 또는 1개\n\n\n[abc]\na, b, 또는 c 중 하나\n\n\n[^abc]\na, b, c 이외의 문자\n\n\n(abc)\n그룹\n\n\n\n\nprxparse → 정규식 패턴 컴파일\n\n\nprxparse(‘//’) → “숫자 1개 이상” 정규식 생성\n“abc123xyz”에서 숫자는 4번째 위치 → pos=4\n\ndata _null_;\n   retain regex;\n   if _n_ = 1 then regex = prxparse('/\\d+/');  /* 숫자 찾기 */\n   str = \"abc123xyz\";\n   pos = prxmatch(regex, str);\n   put pos=;\nrun;\n\nprxmatch → 문자열에 패턴 매칭 (첫 번째 위치)\n\n\n“cat”은 “my cat is here”에서 4번째 → pos1=4\n“dog only”에는 없음 → pos2=0\n\ndata _null_;\n   regex = prxparse('/cat/');\n   str1 = \"my cat is here\";\n   str2 = \"dog only\";\n   pos1 = prxmatch(regex, str1);\n   pos2 = prxmatch(regex, str2);\n   put pos1= pos2=;\nrun;\n\nprxchange → 정규식 치환\n\n\n정규식 ()-()-() → 연도-월-일 캡처\n$3/$2/$1 → 일/월/연도로 재배치\n결과: 17/08/2025\n\ndata _null_;\n   str = \"2025-08-17\";\n   /* yyyy-mm-dd → dd/mm/yyyy 변환 */\n   new = prxchange('s/(\\d{4})-(\\d{2})-(\\d{2})/$3\\/$2\\/$1/', -1, str);\n   put new=;\nrun;\n\nprxsubstr → 매치 위치와 길이 반환\n\n\n첫 숫자 시작 = 14번째 (pos=14)\n길이 = 5 (len=5)\nmatched=12345\n\ndata _null_;\n   regex = prxparse('/\\d+/');  /* 숫자 찾기 */\n   str = \"Order number 12345 confirmed\";\n   call prxsubstr(regex, str, pos, len);\n   matched = substr(str, pos, len);\n   put pos= len= matched=;\nrun;\n\nprxnext → 여러 매치 순회\n\n\nprxnext는 여러 개의 매치를 순차적으로 반환할 때 사용.\n\ndata _null_;\n   regex = prxparse('/\\d+/');  /* 숫자 찾기 */\n   str = \"a1 b22 c333\";\n   start = 1;\n   stop = length(str);\n\n   do while (prxnext(regex, start, stop, str, pos, len) &gt; 0);\n      match = substr(str, pos, len);\n      put match=;\n   end;\nrun;",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#format",
+    "href": "posts/sas/2025-08-19-SAS1.html#format",
+    "title": "SAS Advanced Certificate",
+    "section": "Format",
+    "text": "Format\n\n\n\n코드\n설명\n예시 값\n\n\n\n\n%A\n요일 이름 (전체)\nWednesday\n\n\n%a\n요일 이름 (앞 3글자)\nWed\n\n\n%d\n월 중 일자 (1~31, 한 자리 가능)\n2\n\n\n%0d\n월 중 일자 (2자리, 0 채움)\n02\n\n\n%B\n월 이름 (전체)\nJanuary\n\n\n%3B\n월 이름 (앞 3글자)\nJan\n\n\n%m\n월 번호 (1~12, 한 자리 가능)\n1\n\n\n%0m\n월 번호 (2자리, 0 채움)\n01\n\n\n%Y\n연도 (4자리)\n2019\n\n\n%Oy\n연도 (2자리)\n19\n\n\n%H/%OH\n시 (24시간제, 한 자리 또는 두 자리)\n21\n\n\n%I/%OI\n시 (12시간제, 한 자리 또는 두 자리)\n9 또는 09\n\n\n%M/%OM\n분 (한 자리 또는 두 자리)\n13\n\n\n%S/%OS\n초 (한 자리 또는 두 자리)\n5 또는 05\n\n\n%p\n오전/오후 표시 (AM/PM)\nPM\n\n\n\nproc format;\n    picture MyDate (default=15)\n    low-high = '%a-%d-%3B-¿y'\n    (datatype=date) ;\n    picture MyTime (default=14)\n    low-high\n    'H:%OH M:%OM S:%OS'\n    (datatype=time) ;\nrun;",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#count-find",
+    "href": "posts/sas/2025-08-19-SAS1.html#count-find",
+    "title": "SAS Advanced Certificate",
+    "section": "Count, Find",
+    "text": "Count, Find\ncount(txt, 'apple'); -&gt; cnt = 2\ntxt = 'apple pie and pineapple';\n  cnt = countw(txt); -&gt; cnt = 4\n str = \"catalog\";\n  pos = find(str, \"cat\");  /* 결과: 1 */\npos = findw(str, \"cat\");  /* 결과: 0 */",
     "crumbs": [
       "Main_Blog",
       "Posts",

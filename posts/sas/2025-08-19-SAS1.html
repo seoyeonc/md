@@ -1146,24 +1146,33 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#case-조건-사용법" id="toc-case-조건-사용법" class="nav-link" data-scroll-target="#case-조건-사용법">case 조건 사용법</a></li>
   <li><a href="#operators-연산자" id="toc-operators-연산자" class="nav-link" data-scroll-target="#operators-연산자">Operators 연산자</a></li>
+  <li><a href="#group-by-사용-하고-안-하고의-차이" id="toc-group-by-사용-하고-안-하고의-차이" class="nav-link" data-scroll-target="#group-by-사용-하고-안-하고의-차이">group by 사용 하고 안 하고의 차이</a></li>
+  <li><a href="#subquery" id="toc-subquery" class="nav-link" data-scroll-target="#subquery">subquery</a></li>
   </ul></li>
   <li><a href="#macro" id="toc-macro" class="nav-link" data-scroll-target="#macro">Macro</a>
   <ul class="collapse">
+  <li><a href="#do-while" id="toc-do-while" class="nav-link" data-scroll-target="#do-while">do while</a></li>
+  <li><a href="#macro-변수-저장" id="toc-macro-변수-저장" class="nav-link" data-scroll-target="#macro-변수-저장">macro 변수 저장</a></li>
+  <li><a href="#symputx" id="toc-symputx" class="nav-link" data-scroll-target="#symputx">symputx</a></li>
+  <li><a href="#간접참조" id="toc-간접참조" class="nav-link" data-scroll-target="#간접참조">간접참조&amp;&amp;</a></li>
   <li><a href="#매크로-지우는-코드" id="toc-매크로-지우는-코드" class="nav-link" data-scroll-target="#매크로-지우는-코드">매크로 지우는 코드</a></li>
+  <li><a href="#substr" id="toc-substr" class="nav-link" data-scroll-target="#substr">%SUBSTR</a></li>
   <li><a href="#put" id="toc-put" class="nav-link" data-scroll-target="#put">%put</a></li>
   <li><a href="#minoperator" id="toc-minoperator" class="nav-link" data-scroll-target="#minoperator">minoperator</a></li>
   <li><a href="#mprint-mlogic-symbolgen" id="toc-mprint-mlogic-symbolgen" class="nav-link" data-scroll-target="#mprint-mlogic-symbolgen">mprint mlogic symbolgen;</a></li>
+  <li><a href="#put-vs-putlog" id="toc-put-vs-putlog" class="nav-link" data-scroll-target="#put-vs-putlog">put vs putlog</a></li>
+  <li><a href="#오늘-날짜-표현-방법" id="toc-오늘-날짜-표현-방법" class="nav-link" data-scroll-target="#오늘-날짜-표현-방법">오늘 날짜 표현 방법</a></li>
   </ul></li>
+  <li><a href="#advanced-tech" id="toc-advanced-tech" class="nav-link" data-scroll-target="#advanced-tech">Advanced Tech</a>
+  <ul class="collapse">
   <li><a href="#array" id="toc-array" class="nav-link" data-scroll-target="#array">Array</a></li>
   <li><a href="#hash-object" id="toc-hash-object" class="nav-link" data-scroll-target="#hash-object">Hash object</a></li>
   <li><a href="#proc-fcmp" id="toc-proc-fcmp" class="nav-link" data-scroll-target="#proc-fcmp">PROC FCMP</a></li>
   <li><a href="#lag" id="toc-lag" class="nav-link" data-scroll-target="#lag">lag</a></li>
   <li><a href="#정규표현식" id="toc-정규표현식" class="nav-link" data-scroll-target="#정규표현식">정규표현식</a></li>
-  <li><a href="#put-vs-putlog" id="toc-put-vs-putlog" class="nav-link" data-scroll-target="#put-vs-putlog">put vs putlog</a></li>
   <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">Format</a></li>
   <li><a href="#count-find" id="toc-count-find" class="nav-link" data-scroll-target="#count-find">Count, Find</a></li>
-  <li><a href="#group-by-사용-하고-안-하고의-차이" id="toc-group-by-사용-하고-안-하고의-차이" class="nav-link" data-scroll-target="#group-by-사용-하고-안-하고의-차이">group by 사용 하고 안 하고의 차이</a></li>
-  <li><a href="#subquery" id="toc-subquery" class="nav-link" data-scroll-target="#subquery">subquery</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-08-19-SAS1.out.ipynb" download="2025-08-19-SAS1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -1361,11 +1370,115 @@ quit;</code></pre>
 </tbody>
 </table>
 </section>
+<section id="group-by-사용-하고-안-하고의-차이" class="level2">
+<h2 class="anchored" data-anchor-id="group-by-사용-하고-안-하고의-차이">group by 사용 하고 안 하고의 차이</h2>
+<ul>
+<li><strong>GROUP BY 없음</strong> → 각 행(row) 그대로 출력<br>
+</li>
+<li><strong>GROUP BY 있음</strong> → 지정한 그룹별로 요약(평균, 합계 등 집계 함수 결과)만 출력</li>
+</ul>
+<ol type="1">
+<li>GROUP BY 사용하지 않은 경우 (원본 그대로)</li>
+</ol>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Make</th>
+<th>MPG_City</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Toyota</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>Toyota</td>
+<td>22</td>
+</tr>
+<tr class="odd">
+<td>Toyota</td>
+<td>25</td>
+</tr>
+<tr class="even">
+<td>Ford</td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<td>Ford</td>
+<td>18</td>
+</tr>
+<tr class="even">
+<td>Honda</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>GROUP BY 사용한 경우 (Make별 평균)</li>
+</ol>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Make</th>
+<th>AvgCityMPG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ford</td>
+<td>16.5</td>
+</tr>
+<tr class="even">
+<td>Honda</td>
+<td>30.0</td>
+</tr>
+<tr class="odd">
+<td>Toyota</td>
+<td>22.3</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="subquery" class="level2">
+<h2 class="anchored" data-anchor-id="subquery">subquery</h2>
+<ul>
+<li><code>in</code>사용
+<ul>
+<li>sashelp.class에서 나이가 sashelp.class에서 가장 많은 나이들 중 하나인 학생을 출력하시오.</li>
+</ul></li>
+</ul>
+<pre class="sas"><code>proc sql;
+   select Name, Age
+   from sashelp.class
+   where Age in (select max(Age) from sashelp.class);
+quit;</code></pre>
+<ul>
+<li>인라인 뷰
+<ul>
+<li>sashelp.class에서 나이별 평균 몸무게를 계산한 후, 평균이 100 이상인 나이 그룹만 출력하시오.</li>
+</ul></li>
+</ul>
+<pre class="sas"><code>proc sql;
+   select *
+   from (
+      select Age, avg(Weight) as AvgWeight
+      from sashelp.class
+      group by Age
+   ) as sub
+   where AvgWeight &gt;= 100;
+quit;</code></pre>
+</section>
 </section>
 <section id="macro" class="level1">
 <h1>Macro</h1>
+<section id="do-while" class="level2">
+<h2 class="anchored" data-anchor-id="do-while">do while</h2>
 <ul>
-<li>모두 매크로 코드로 x초기값1.25로 지정하고 do until이나 do while로 2보다 작은 값에 댜해서만 x log기록 후 0.25씩 늘려가는 매크로</li>
+<li>모두 매크로 코드로 x초기값1.25로 지정하고 do until이나 do while로 2보다 작은 값에 댜해서만 x log기록 후 0.25씩 늘려가는 매크로
+<ul>
+<li><code>%sysevalf</code> 입력!</li>
+</ul></li>
 </ul>
 <pre class="sas"><code>
 %macro loopx;
@@ -1382,9 +1495,70 @@ quit;</code></pre>
 %loopx
 
 </code></pre>
+</section>
+<section id="macro-변수-저장" class="level2">
+<h2 class="anchored" data-anchor-id="macro-변수-저장">macro 변수 저장</h2>
+<ul>
+<li>sashelp.class에서 나이가 16인 학생들의 이름을 매크로 변수 student_list에 공백으로 구분해 저장하시오.</li>
+</ul>
+<pre class="sas"><code>proc sql noprint;
+   select Name into :student_list separated by ' '
+   from sashelp.class
+   where Age=16;
+quit;
+
+%put &amp;=student_list;</code></pre>
+</section>
+<section id="symputx" class="level2">
+<h2 class="anchored" data-anchor-id="symputx">symputx</h2>
+<ul>
+<li>다음 코드에서 maxage라는 매크로 변수를 생성하시오.</li>
+</ul>
+<pre class="sas"><code>data _null_;
+   set sashelp.class end=last;
+   retain maxage 0;
+   if Age &gt; maxage then maxage=Age;
+   if last then call symputx('maxage', maxage);
+run;
+
+%put &amp;=maxage;</code></pre>
+</section>
+<section id="간접참조" class="level2">
+<h2 class="anchored" data-anchor-id="간접참조">간접참조&amp;&amp;</h2>
+<ul>
+<li>아래와 같은 매크로 변수들이 있을 때, <code>var1=Height, var2=Weight, var3=Age</code>. 루프를 이용해 차례대로 변수명을 출력하시오.
+<ul>
+<li><code>&amp;&amp;var&amp;i → &amp;var1 → Height</code>, 두 번 풀려서 최종적으로 변수명이 나옴</li>
+</ul></li>
+</ul>
+<pre class="sas"><code>%let var1=Height;
+%let var2=Weight;
+%let var3=Age;
+
+%macro show;
+   %do i=1 %to 3;
+      %put &amp;&amp;var&amp;i;
+   %end;
+%mend;
+
+%show</code></pre>
+</section>
 <section id="매크로-지우는-코드" class="level2">
 <h2 class="anchored" data-anchor-id="매크로-지우는-코드">매크로 지우는 코드</h2>
 <pre class="sas"><code>%symdel &amp;vars;</code></pre>
+</section>
+<section id="substr" class="level2">
+<h2 class="anchored" data-anchor-id="substr">%SUBSTR</h2>
+<ul>
+<li>매크로 변수 name=Alexander에서 앞 4글자만 추출하여 매크로 변수 shortname을 만드시오.
+<ul>
+<li><code>%SUBSTR(string, position, length)</code></li>
+<li>결과: Alex</li>
+</ul></li>
+</ul>
+<pre class="sas"><code>%let name=Alexander;
+%let shortname=%substr(&amp;name,1,4);
+%put &amp;=shortname;</code></pre>
 </section>
 <section id="put" class="level2">
 <h2 class="anchored" data-anchor-id="put">%put</h2>
@@ -1453,9 +1627,95 @@ quit;</code></pre>
 <p>SYMBOLGEN → 매크로 변수 치환 과정(&amp;변수)을 로그에 보여줌</p>
 <pre class="sas"><code>options mprint mlogic symbolgen;</code></pre>
 </section>
+<section id="put-vs-putlog" class="level2">
+<h2 class="anchored" data-anchor-id="put-vs-putlog">put vs putlog</h2>
+<ul>
+<li>put
+<ul>
+<li>%LET → 매크로 변수 name 생성 (Seoyeon)</li>
+<li>%PUT → 매크로 실행 시점에 로그에 문자열 출력</li>
+<li>결과 (로그):</li>
+</ul></li>
+</ul>
+<pre class="sas"><code>%let name=Mike;
+%put Hello, &amp;name.;</code></pre>
+<p>결과: Hellp, Mike</p>
+<ul>
+<li>put log
+<ul>
+<li>DATA step 실행 중, putlog 문이 SAS 로그에 메시지 기록</li>
+<li>“현재 값은” → 문자열 그대로 출력</li>
+<li>x= y= → 변수 이름과 값 함께 출력</li>
+<li>결과 (로그):</li>
+</ul></li>
+</ul>
+<pre class="sas"><code>data _null_;
+   x = 10;
+   y = 20;
+   putlog "현재 값은 " x= y=;
+run;</code></pre>
+<p>결과: 현재 값은 x=10 y=20</p>
 </section>
-<section id="array" class="level1">
-<h1>Array</h1>
+<section id="오늘-날짜-표현-방법" class="level2">
+<h2 class="anchored" data-anchor-id="오늘-날짜-표현-방법">오늘 날짜 표현 방법</h2>
+<ul>
+<li>방법 1: <code>%SYSFUNC + date()</code>
+<ul>
+<li>date() 함수 → 현재 날짜 (SAS 일련번호, 1960/01/01 기준)</li>
+<li>date9. 포맷 → 26AUG2025 형태</li>
+</ul></li>
+</ul>
+<pre class="sas"><code>%let today=%sysfunc(date(), date9.);
+%put &amp;=today;</code></pre>
+<ul>
+<li>방법 2: <code>%SYSFUNC + today()</code>
+<ul>
+<li>today() 함수도 현재 날짜 반환 (date()와 동일)</li>
+<li>다른 포맷 사용 가능 (yymmdd10. → 2025-08-26)</li>
+</ul></li>
+</ul>
+<pre class="sas"><code>%let today=%sysfunc(today(), yymmdd10.);
+%put &amp;=today;</code></pre>
+<ul>
+<li>방법 3: <code>datetime()</code>
+<ul>
+<li>현재 날짜+시간 출력 (26AUG2025:15:30:45)</li>
+</ul></li>
+</ul>
+<pre class="sas"><code>%let now=%sysfunc(datetime(), datetime20.);
+%put &amp;=now;</code></pre>
+<ul>
+<li>방법 4: <code>%sysfunc(today(), worddate.)</code>
+<ul>
+<li>결과: 26 August 2025 (가독성 좋은 문자열)</li>
+</ul></li>
+</ul>
+<pre class="sas"><code>%let today=%sysfunc(today(), worddate.);
+%put &amp;=today;</code></pre>
+<ul>
+<li>방법 5: <code>%sysfunc(today(), weekdate.)</code>
+<ul>
+<li>결과: Tuesday, August 26, 2025</li>
+</ul></li>
+</ul>
+<pre class="sas"><code>%let today=%sysfunc(today(), weekdate.);
+%put &amp;=today;</code></pre>
+<ul>
+<li>방법 6: 시스템 매크로 변수 활용 <code>(&amp;sysdate9, &amp;sysdatetime)</code>
+<ul>
+<li>SAS 자동 제공 시스템 매크로 변수 사용</li>
+<li>형식은 고정되어 있음</li>
+</ul></li>
+</ul>
+<pre class="sas"><code>%put &amp;=sysdate9;      /* 26AUG2025 */
+%put &amp;=sysdate;       /* 26AUG25   */
+%put &amp;=sysdatetime;   /* 26AUG25:15:30:45 */</code></pre>
+</section>
+</section>
+<section id="advanced-tech" class="level1">
+<h1>Advanced Tech</h1>
+<section id="array" class="level2">
+<h2 class="anchored" data-anchor-id="array">Array</h2>
 <ul>
 <li>이렇게 하면 7,8,9 이렇게 3개 가져옴</li>
 </ul>
@@ -1491,8 +1751,8 @@ array Celsius [7:9] TempC7-TempC9;</code></pre>
   end;
 run;</code></pre>
 </section>
-<section id="hash-object" class="level1">
-<h1>Hash object</h1>
+<section id="hash-object" class="level2">
+<h2 class="anchored" data-anchor-id="hash-object">Hash object</h2>
 <pre class="sas"><code>object-name.definekey ()
 object-name.definedata ()
 object-name.definedone ()
@@ -1523,8 +1783,10 @@ run;</code></pre>
         end; 
     set pg3.population uscities; 
     StateName=stnamel(StateCode): 
-    RC=States. find(key:StateName); (해시 객체 States에서 주 이름(StateName)을 키로 검색해서 해당 Capital과 StatePop2017 값을 찾아서 자동으로 변수에 바인딩합니다 성공 시 RC = 0)
-        if RC ne 0 then call missing(Capital, StatePop2017);(해시에서 값을 찾지 못했을 경우, Capital과 StatePop2017 값을 명시적으로 결측 처리합니다.)
+    RC=States. find(key:StateName); 
+    *(해시 객체 States에서 주 이름(StateName)을 키로 검색해서 해당 Capital과 StatePop2017 값을 찾아서 자동으로 변수에 바인딩합니다 성공 시 RC = 0);
+        if RC ne 0 then call missing(Capital, StatePop2017);
+        *(해시에서 값을 찾지 못했을 경우, Capital과 StatePop2017 값을 명시적으로 결측 처리합니다.)
         PctPop«CityPop2017/StatePop2017; 
         format StatePop2017 comma14. PctPop percent8.1; 
         (해당하는 거만 데이터셋 만들어지게 하려면)
@@ -1536,8 +1798,8 @@ run;</code></pre>
     ()
 run;</code></pre>
 </section>
-<section id="proc-fcmp" class="level1">
-<h1>PROC FCMP</h1>
+<section id="proc-fcmp" class="level2">
+<h2 class="anchored" data-anchor-id="proc-fcmp">PROC FCMP</h2>
 <pre class="sas"><code>
 
 PROC FCMP OUTLIB=libref.table.package;
@@ -1555,9 +1817,27 @@ run;
 *function불러와야 쓸 수 있음;
 options cmplib=pg3.funcs;
 </code></pre>
+<ul>
+<li>에시
+<ul>
+<li>두 수 중 큰 값을 반환하는 함수 mymax를 정의하고 호출하시오.</li>
+</ul></li>
+</ul>
+<pre class="sas"><code>proc fcmp outlib=work.funcs.math;
+   function mymax(x,y);
+      if x&gt;y then return(x);
+      else return(y);
+   endsub;
+run;
+
+options cmplib=work.funcs;
+data ex8;
+   result=mymax(10,20);
+   put result=;
+run;</code></pre>
 </section>
-<section id="lag" class="level1">
-<h1>lag</h1>
+<section id="lag" class="level2">
+<h2 class="anchored" data-anchor-id="lag">lag</h2>
 <p>lag1, lag2 있는 데이터 두 번 돌리면 아래처럼 이상하게 나타남(원래 데이터 10 20 30 40)</p>
 <p>큐를 초기화하거나 lag 대신 retain+by 등으로 대체 고려</p>
 <pre class="sas"><code>data test;
@@ -1642,8 +1922,8 @@ proc print data=test; run;</code></pre>
 </tbody>
 </table>
 </section>
-<section id="정규표현식" class="level1">
-<h1>정규표현식</h1>
+<section id="정규표현식" class="level2">
+<h2 class="anchored" data-anchor-id="정규표현식">정규표현식</h2>
 <table class="table">
 <thead>
 <tr class="header">
@@ -1703,7 +1983,7 @@ proc print data=test; run;</code></pre>
 </tbody>
 </table>
 <ol type="1">
-<li>prxparse → 정규식 패턴 컴파일</li>
+<li><code>prxparse</code> → 정규식 패턴 컴파일</li>
 </ol>
 <ul>
 <li>prxparse(‘//’) → “숫자 1개 이상” 정규식 생성</li>
@@ -1717,7 +1997,7 @@ proc print data=test; run;</code></pre>
    put pos=;
 run;</code></pre>
 <ol start="2" type="1">
-<li>prxmatch → 문자열에 패턴 매칭 (첫 번째 위치)</li>
+<li><code>prxmatch</code> → 문자열에 패턴 매칭 (첫 번째 위치)</li>
 </ol>
 <ul>
 <li>“cat”은 “my cat is here”에서 4번째 → pos1=4</li>
@@ -1732,7 +2012,7 @@ run;</code></pre>
    put pos1= pos2=;
 run;</code></pre>
 <ol start="3" type="1">
-<li>prxchange → 정규식 치환</li>
+<li><code>prxchange</code> → 정규식 치환</li>
 </ol>
 <ul>
 <li>정규식 ()-()-() → 연도-월-일 캡처</li>
@@ -1746,7 +2026,7 @@ run;</code></pre>
    put new=;
 run;</code></pre>
 <ol start="4" type="1">
-<li>prxsubstr → 매치 위치와 길이 반환</li>
+<li><code>prxsubstr</code> → 매치 위치와 길이 반환</li>
 </ol>
 <ul>
 <li>첫 숫자 시작 = 14번째 (pos=14)</li>
@@ -1761,7 +2041,7 @@ run;</code></pre>
    put pos= len= matched=;
 run;</code></pre>
 <ol start="5" type="1">
-<li>prxnext → 여러 매치 순회</li>
+<li><code>prxnext</code> → 여러 매치 순회</li>
 </ol>
 <ul>
 <li>prxnext는 여러 개의 매치를 순차적으로 반환할 때 사용.</li>
@@ -1778,18 +2058,8 @@ run;</code></pre>
    end;
 run;</code></pre>
 </section>
-<section id="put-vs-putlog" class="level1">
-<h1>put vs putlog</h1>
-<pre class="sas"><code>%let name=Seoyeon;
-%put Hello, &amp;name.;</code></pre>
-<pre class="sas"><code>data _null_;
-   x = 10;
-   y = 20;
-   putlog "현재 값은 " x= y=;
-run;</code></pre>
-</section>
-<section id="format" class="level1">
-<h1>Format</h1>
+<section id="format" class="level2">
+<h2 class="anchored" data-anchor-id="format">Format</h2>
 <table class="table">
 <thead>
 <tr class="header">
@@ -1886,89 +2156,17 @@ run;</code></pre>
     (datatype=time) ;
 run;</code></pre>
 </section>
-<section id="count-find" class="level1">
-<h1>Count, Find</h1>
+<section id="count-find" class="level2">
+<h2 class="anchored" data-anchor-id="count-find">Count, Find</h2>
 <pre class="sas"><code>count(txt, 'apple'); -&gt; cnt = 2
 txt = 'apple pie and pineapple';
   cnt = countw(txt); -&gt; cnt = 4</code></pre>
 <pre class="sas"><code> str = "catalog";
   pos = find(str, "cat");  /* 결과: 1 */
 pos = findw(str, "cat");  /* 결과: 0 */</code></pre>
-</section>
-<section id="group-by-사용-하고-안-하고의-차이" class="level1">
-<h1>group by 사용 하고 안 하고의 차이</h1>
-<ul>
-<li><strong>GROUP BY 없음</strong> → 각 행(row) 그대로 출력<br>
-</li>
-<li><strong>GROUP BY 있음</strong> → 지정한 그룹별로 요약(평균, 합계 등 집계 함수 결과)만 출력</li>
-</ul>
-<ol type="1">
-<li>GROUP BY 사용하지 않은 경우 (원본 그대로)</li>
-</ol>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Make</th>
-<th>MPG_City</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Toyota</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td>Toyota</td>
-<td>22</td>
-</tr>
-<tr class="odd">
-<td>Toyota</td>
-<td>25</td>
-</tr>
-<tr class="even">
-<td>Ford</td>
-<td>15</td>
-</tr>
-<tr class="odd">
-<td>Ford</td>
-<td>18</td>
-</tr>
-<tr class="even">
-<td>Honda</td>
-<td>30</td>
-</tr>
-</tbody>
-</table>
-<ol start="2" type="1">
-<li>GROUP BY 사용한 경우 (Make별 평균)</li>
-</ol>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Make</th>
-<th>AvgCityMPG</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Ford</td>
-<td>16.5</td>
-</tr>
-<tr class="even">
-<td>Honda</td>
-<td>30.0</td>
-</tr>
-<tr class="odd">
-<td>Toyota</td>
-<td>22.3</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="subquery" class="level1">
-<h1>subquery</h1>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
