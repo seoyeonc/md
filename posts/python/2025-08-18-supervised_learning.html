@@ -2268,7 +2268,7 @@ Non-trainable params: 0
 _________________________________________________________________</code></pre>
 </div>
 </div>
-<div id="22af2995-6cf0-4ec5-8e04-637555794f5e" class="cell">
+<div id="22af2995-6cf0-4ec5-8e04-637555794f5e" class="cell" data-scrolled="true" data-tags="[]">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>cbs <span class="op">=</span> [</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    tf.keras.callbacks.ReduceLROnPlateau(monitor<span class="op">=</span><span class="st">'val_loss'</span>, factor<span class="op">=</span><span class="fl">0.5</span>, patience<span class="op">=</span><span class="dv">3</span>),</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    tf.keras.callbacks.EarlyStopping(monitor<span class="op">=</span><span class="st">'val_loss'</span>, patience<span class="op">=</span><span class="dv">8</span>, restore_best_weights<span class="op">=</span><span class="va">True</span>)</span>
@@ -2347,7 +2347,45 @@ Epoch 29/50
 Epoch 30/50
 55/55 [==============================] - 59s 1s/step - loss: 0.4263 - accuracy: 0.8286 - val_loss: 0.5395 - val_accuracy: 0.8578 - lr: 6.2500e-05
 Epoch 31/50
-49/55 [=========================&gt;....] - ETA: 4s - loss: 0.4291 - accuracy: 0.8134</code></pre>
+55/55 [==============================] - 44s 812ms/step - loss: 0.4313 - accuracy: 0.8131 - val_loss: 0.5670 - val_accuracy: 0.8470 - lr: 6.2500e-05
+Epoch 32/50
+55/55 [==============================] - 54s 996ms/step - loss: 0.4285 - accuracy: 0.8227 - val_loss: 0.5752 - val_accuracy: 0.8484 - lr: 6.2500e-05
+Epoch 33/50
+55/55 [==============================] - 48s 853ms/step - loss: 0.4234 - accuracy: 0.8249 - val_loss: 0.5688 - val_accuracy: 0.8501 - lr: 6.2500e-05
+Epoch 34/50
+55/55 [==============================] - 49s 891ms/step - loss: 0.4210 - accuracy: 0.8283 - val_loss: 0.5749 - val_accuracy: 0.8470 - lr: 3.1250e-05
+Epoch 35/50
+55/55 [==============================] - 56s 1s/step - loss: 0.4159 - accuracy: 0.8269 - val_loss: 0.5576 - val_accuracy: 0.8530 - lr: 3.1250e-05
+Epoch 36/50
+55/55 [==============================] - 45s 826ms/step - loss: 0.4144 - accuracy: 0.8286 - val_loss: 0.5677 - val_accuracy: 0.8490 - lr: 3.1250e-05
+Epoch 37/50
+55/55 [==============================] - 59s 1s/step - loss: 0.4163 - accuracy: 0.8278 - val_loss: 0.5573 - val_accuracy: 0.8507 - lr: 1.5625e-05
+Epoch 38/50
+55/55 [==============================] - 56s 1s/step - loss: 0.4125 - accuracy: 0.8261 - val_loss: 0.5558 - val_accuracy: 0.8533 - lr: 1.5625e-05
+Epoch 1/50
+55/55 [==============================] - 38s 601ms/step - loss: 1.4778 - accuracy: 0.2935 - val_loss: 1.3737 - val_accuracy: 0.3097 - lr: 0.0010
+Epoch 2/50
+55/55 [==============================] - 33s 608ms/step - loss: 1.2010 - accuracy: 0.3377 - val_loss: 1.3370 - val_accuracy: 0.2412 - lr: 0.0010
+Epoch 3/50
+55/55 [==============================] - 33s 607ms/step - loss: 1.0183 - accuracy: 0.3458 - val_loss: 1.2278 - val_accuracy: 0.4171 - lr: 0.0010
+Epoch 4/50
+55/55 [==============================] - 31s 572ms/step - loss: 0.9265 - accuracy: 0.3909 - val_loss: 1.1295 - val_accuracy: 0.4256 - lr: 0.0010
+Epoch 5/50
+55/55 [==============================] - 34s 620ms/step - loss: 0.8314 - accuracy: 0.4499 - val_loss: 0.9094 - val_accuracy: 0.5678 - lr: 0.0010
+Epoch 6/50
+55/55 [==============================] - 33s 605ms/step - loss: 0.7969 - accuracy: 0.5272 - val_loss: 1.1571 - val_accuracy: 0.3825 - lr: 0.0010
+Epoch 7/50
+55/55 [==============================] - 33s 597ms/step - loss: 0.7091 - accuracy: 0.5333 - val_loss: 1.0658 - val_accuracy: 0.5133 - lr: 0.0010
+Epoch 8/50
+55/55 [==============================] - 33s 595ms/step - loss: 0.6783 - accuracy: 0.5704 - val_loss: 0.9522 - val_accuracy: 0.6472 - lr: 0.0010
+Epoch 9/50
+55/55 [==============================] - 31s 575ms/step - loss: 0.6493 - accuracy: 0.6109 - val_loss: 0.7449 - val_accuracy: 0.7268 - lr: 5.0000e-04
+Epoch 10/50
+55/55 [==============================] - 33s 597ms/step - loss: 0.6403 - accuracy: 0.6452 - val_loss: 0.8811 - val_accuracy: 0.6594 - lr: 5.0000e-04
+Epoch 11/50
+55/55 [==============================] - 34s 624ms/step - loss: 0.6106 - accuracy: 0.6439 - val_loss: 0.7216 - val_accuracy: 0.7608 - lr: 5.0000e-04
+Epoch 12/50
+15/55 [=======&gt;......................] - ETA: 25s - loss: 0.5640 - accuracy: 0.6893</code></pre>
 </div>
 </div>
 <div id="0bc519c7-cfcd-4489-a34a-24465dac1a41" class="cell">

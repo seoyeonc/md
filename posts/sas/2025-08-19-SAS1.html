@@ -1142,7 +1142,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
   <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
   </ul></li>
-  <li><a href="#proc-sql" id="toc-proc-sql" class="nav-link" data-scroll-target="#proc-sql">Proc sql</a></li>
+  <li><a href="#proc-sql" id="toc-proc-sql" class="nav-link" data-scroll-target="#proc-sql">Proc sql</a>
+  <ul class="collapse">
+  <li><a href="#case-조건-사용법" id="toc-case-조건-사용법" class="nav-link" data-scroll-target="#case-조건-사용법">case 조건 사용법</a></li>
+  <li><a href="#operators-연산자" id="toc-operators-연산자" class="nav-link" data-scroll-target="#operators-연산자">Operators 연산자</a></li>
+  </ul></li>
   <li><a href="#macro" id="toc-macro" class="nav-link" data-scroll-target="#macro">Macro</a>
   <ul class="collapse">
   <li><a href="#매크로-지우는-코드" id="toc-매크로-지우는-코드" class="nav-link" data-scroll-target="#매크로-지우는-코드">매크로 지우는 코드</a></li>
@@ -1286,7 +1290,8 @@ quit;
 </section>
 <section id="proc-sql" class="level1">
 <h1>Proc sql</h1>
-<p>case 조건 사용법</p>
+<section id="case-조건-사용법" class="level2">
+<h2 class="anchored" data-anchor-id="case-조건-사용법">case 조건 사용법</h2>
 <pre class="sas"><code>proc sql;
    select FirstName, LastName, State, CreditScore,
           case Married
@@ -1298,6 +1303,64 @@ quit;
           end as Category
    from sq.customer (obs=1000);
 quit;</code></pre>
+</section>
+<section id="operators-연산자" class="level2">
+<h2 class="anchored" data-anchor-id="operators-연산자">Operators 연산자</h2>
+<table class="table">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>연산자</th>
+<th>중복 처리</th>
+<th>컬럼 매칭</th>
+<th>특징</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>UNION</strong></td>
+<td>중복 제거</td>
+<td>위치 기반</td>
+<td>두 SELECT 결과 합침 (DISTINCT 효과, 자동 정렬)</td>
+</tr>
+<tr class="even">
+<td><strong>UNION ALL</strong></td>
+<td>중복 유지</td>
+<td>위치 기반</td>
+<td>두 SELECT 결과 합침 (중복 포함, 빠름)</td>
+</tr>
+<tr class="odd">
+<td><strong>OUTER UNION</strong></td>
+<td>중복 유지</td>
+<td>위치 기반</td>
+<td>컬럼 개수가 달라도 합칠 수 있음, 없는 값은 NULL/결측</td>
+</tr>
+<tr class="even">
+<td><strong>OUTER UNION CORR</strong></td>
+<td>중복 유지</td>
+<td>이름 기반</td>
+<td>컬럼 이름 기준으로 매칭, 없는 값은 NULL/결측</td>
+</tr>
+<tr class="odd">
+<td><strong>EXCEPT</strong></td>
+<td>중복 제거</td>
+<td>위치 기반</td>
+<td>첫 번째 SELECT 결과에서 두 번째 SELECT 결과를 제외</td>
+</tr>
+<tr class="even">
+<td><strong>INTERSECT</strong></td>
+<td>중복 제거</td>
+<td>위치 기반</td>
+<td>두 SELECT 결과의 공통 행만 반환</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="macro" class="level1">
 <h1>Macro</h1>
