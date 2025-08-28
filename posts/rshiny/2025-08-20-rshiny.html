@@ -1166,14 +1166,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#india-pharmaceutical-product" id="toc-india-pharmaceutical-product" class="nav-link" data-scroll-target="#india-pharmaceutical-product">India Pharmaceutical Product</a></li>
   </ul></li>
   <li><a href="#basic-concept" id="toc-basic-concept" class="nav-link" data-scroll-target="#basic-concept">Basic concept</a></li>
-  <li><a href="#process" id="toc-process" class="nav-link" data-scroll-target="#process">Process</a></li>
-  <li><a href="#answer" id="toc-answer" class="nav-link" data-scroll-target="#answer">answer</a>
+  <li><a href="#process" id="toc-process" class="nav-link" data-scroll-target="#process">Process</a>
   <ul class="collapse">
   <li><a href="#keywords" id="toc-keywords" class="nav-link" data-scroll-target="#keywords">keywords</a></li>
   </ul></li>
+  <li><a href="#file-structure" id="toc-file-structure" class="nav-link" data-scroll-target="#file-structure">file structure</a></li>
   <li><a href="#shiny-app-account" id="toc-shiny-app-account" class="nav-link" data-scroll-target="#shiny-app-account">Shiny App Account</a></li>
   <li><a href="#difference-between-reactive-vs-observe" id="toc-difference-between-reactive-vs-observe" class="nav-link" data-scroll-target="#difference-between-reactive-vs-observe">difference between reactive vs observe</a></li>
   <li><a href="#the-code-that-i-use-to-show-r-shiny-results" id="toc-the-code-that-i-use-to-show-r-shiny-results" class="nav-link" data-scroll-target="#the-code-that-i-use-to-show-r-shiny-results">The code that I use to show R shiny results</a></li>
+  <li><a href="#반응이-너무-느리다면-생성이-너무-느리다면" id="toc-반응이-너무-느리다면-생성이-너무-느리다면" class="nav-link" data-scroll-target="#반응이-너무-느리다면-생성이-너무-느리다면">반응이 너무 느리다면? 생성이 너무 느리다면?</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-08-20-rshiny.out.ipynb" download="2025-08-20-rshiny.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -1251,11 +1252,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="process" class="level1">
 <h1>Process</h1>
-</section>
-<section id="answer" class="level1">
-<h1>answer</h1>
 <p>Kor - R Shiny 앱은 UI와 Server 두 부분으로 구성됩니다. - 먼저 UI에서 화면의 입력과 출력 요소를 정의하고, - Server에서는 입력값을 받아 처리하고 출력값을 생성합니다. - 마지막으로 shinyApp(ui, server)를 통해 앱을 실행합니다.</p>
 <p>Eng - A Shiny app has two main parts: the UI and the Server. - The UI defines the inputs and outputs that the user sees, - and the Server processes the inputs and generates the outputs. - Finally, we connect them with shinyApp(ui, server) to run the application. - For example, I can put a slider in the UI and then display the selected value as text through the Server.”</p>
+<blockquote class="blockquote">
+<p><code>ui</code>,<code>server</code>두 파일만 생성하고 r 콘솔에 <code>runapp('name')</code>이렇게 작성해서 실행하는 방법과 <code>app</code>에 <code>ui</code>,<code>server</code> 내용 다 작성해서 파일 하나로 실행하는 방법과 <code>ui</code>,<code>server</code>,<code>app</code> 세 파일 다 만들어서 <code>app</code>에서 실행하는 방법이 있다.</p>
+</blockquote>
 <section id="keywords" class="level2">
 <h2 class="anchored" data-anchor-id="keywords">keywords</h2>
 <ul>
@@ -1265,6 +1266,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Process → Design UI → Implement Server → Execute</li>
 </ul>
 </section>
+</section>
+<section id="file-structure" class="level1">
+<h1>file structure</h1>
+<p><strong>1) 단일 파일 방식 (app.R만 있음)</strong></p>
+<ul>
+<li>app.R 안에 ui, server 코드를 전부 작성</li>
+<li>마지막에 shinyApp(ui, server) 호출</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">"Hello Shiny"</span>),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textOutput</span>(<span class="st">"txt"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>txt <span class="ot">&lt;-</span> <span class="fu">renderText</span>(<span class="st">"Hi, this is Shiny!"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<p><strong>2) 분리 방식 (ui.R + server.R)</strong></p>
+<ul>
+<li>같은 폴더 안에 두면 Shiny가 자동으로 둘을 읽어서 실행</li>
+</ul>
+<p>→ 실행: runApp(“myapp”)</p>
+<p><em>R console에 실행</em></p>
+<p><code>ui.R</code>: 화면 정의</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ui.R</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">"Hello Shiny"</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textOutput</span>(<span class="st">"txt"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><code>server.R</code>: 로직 정의</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># server.R</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>txt <span class="ot">&lt;-</span> <span class="fu">renderText</span>(<span class="st">"Hi, this is Shiny!"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>3) 세 개 다 있는 경우 (app.R + ui.R + server.R)</strong></p>
+<ul>
+<li>Shiny는 app.R이 있으면 무조건 app.R을 실행</li>
+<li>따라서 이 경우 ui.R/server.R은 자동으로 쓰이지 않음.</li>
+<li>다만 app.R 안에서 source(“ui.R”), source(“server.R”)로 불러와서 실행할 수 있음.</li>
+</ul>
 </section>
 <section id="shiny-app-account" class="level1">
 <h1>Shiny App Account</h1>
@@ -1281,7 +1325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="difference-between-reactive-vs-observe" class="level1">
 <h1>difference between reactive vs observe</h1>
-<p>Kor - Reactive는 값을 반환하는 함수이고, Observe는 단순히 동작을 실행합니다. - Reactive는 입력값을 받아 새로운 출력값을 만들 때 쓰이고, 그 결과를 다른 표현식이나 출력에서 다시 활용할 수 있습니다. - 반면, Observe는 값 자체를 반환하지 않고, 예를 들어 로그 출력이나 알림 같은 <strong>부수 효과(side effect)</strong>를 처리할 때 주로 사용됩니다.</p>
+<p>Kor - Reactive는 값을 반환하는 함수이고, Observe는 단순히 동작을 실행합니다. - Reactive는 입력값을 받아 새로운 출력값을 만들 때 쓰이고, 그 결과를 다른 표현식이나 출력에서 다시 활용할 수 있습니다. - 반면, Observe는 값 자체를 반환하지 않고, 예를 들어 로그 출력이나 알림 같은 부수 효과(side effect)를 처리할 때 주로 사용됩니다.</p>
 <p>Eng - Reactive returns a value, while Observe does not. - Reactive expressions are used to create values that can be reused by other parts of the app, for example, calculations or transformations based on user input. - On the other hand, Observe is mainly used for side effects, such as printing logs, sending a notification, or updating something without returning a value.</p>
 <p>Kewords - Reactive → returns value, reusable, dependency tracking, computations - Observe → no return value, side effects, triggers, monitoring - Key difference → Reactive = “create value” / Observe = “perform action”</p>
 </section>
@@ -1290,6 +1334,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Kor - Shiny에서 결과를 보여주려면, 먼저 UI에 출력 자리(output placeholder)를 만듭니다. 예를 들어 plotOutput, tableOutput, textOutput 같은 함수를 씁니다. - 그리고 Server에서는 대응되는 render 함수(renderPlot, renderTable, renderText)를 사용해서 실제 출력을 생성합니다.</p>
 <p>Eng - In Shiny, to display results on the UI, I first create an output placeholder in the UI using functions like plotOutput, tableOutput, or textOutput. - Then, in the Server, I use the corresponding render functions such as renderPlot, renderTable, or renderText to generate and connect the actual output.</p>
 <p>Keyeords - UI → output placeholder (plotOutput, tableOutput, textOutput) - Server → render functions (renderPlot, renderTable, renderText) - Process → Placeholder in UI → Render in Server → Display in App</p>
+</section>
+<section id="반응이-너무-느리다면-생성이-너무-느리다면" class="level1">
+<h1>반응이 너무 느리다면? 생성이 너무 느리다면?</h1>
+<ol type="1">
+<li>log로 병목 현상이 생긴 구간 찾기</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">reactlog_enable</span>(); </span></code></pre></div>
+<ol start="2" type="1">
+<li>반응 최소화</li>
+</ol>
+<ul>
+<li>중복 계산 없애기</li>
+<li>매 입력마다 계산되는 것이 아닌 이벤트로 트리거되도록</li>
+<li>가장 큰 원인은 매번 데이터를 불러오면 발생할 것. <code>global</code>에 옮겨서 데이터는 한 번만 불러오도록</li>
+</ul>
 
 
 </section>
