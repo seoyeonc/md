@@ -28,7 +28,20 @@
     "href": "posts/R/2025-08-21-rpackage.html#패키지-버전-vs-수정-버전",
     "title": "R packages",
     "section": "패키지 버전 vs 수정 버전",
-    "text": "패키지 버전 vs 수정 버전\nmajor, minor에 따라 버전 수정\n\ngit 관리가 편한 이유 수정할때마다 업로드 해서 관리가 편해짐\ngit commit -m ‘수정한 내용이나 이름’ 이런식으로 커밋 하면 깃 자체에서 관리하면 되니까 편해짐.",
+    "text": "패키지 버전 vs 수정 버전\nmajor, minor에 따라 버전 수정\n\ngit 관리가 편한 이유 수정할때마다 업로드 해서 관리가 편해짐\ngit commit -m ‘수정한 내용이나 이름’ 이런식으로 커밋 하면 깃 자체에서 관리하면 되니까 편해짐.\nMAJOR.MINOR.PATCH\n\nMAJOR: 호환성 깨뜨리는 변경 (backward incompatible changes)\nMINOR: 새로운 기능 추가 (호환성 유지)\nPATCH: 버그 수정, 작은 개선 (호환성 유지)\n\n예:\n\n1.0.0 → 첫 정식 릴리스\n1.1.0 → 새로운 함수 추가\n1.1.1 → 작은 버그 수정",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "R",
+      "R packages"
+    ]
+  },
+  {
+    "objectID": "posts/R/2025-08-21-rpackage.html#git-vs-github",
+    "href": "posts/R/2025-08-21-rpackage.html#git-vs-github",
+    "title": "R packages",
+    "section": "Git vs GitHub",
+    "text": "Git vs GitHub\n\nGit = 버전 관리 도구 (무료, 로컬/내부망에서 사용 가능)\nGitHub = Git 저장소를 인터넷에 공개/호스팅해주는 서비스\n회사 기밀이라면 GitHub.com에는 절대 올리지 않음\nGit 자체는 업로드 없이도 로컬에서만 사용 가능\n\n\npush의 개념\n\npush = 로컬 저장소의 변경 이력 → 원격 저장소에 반영\nGit은 전체 파일을 매번 저장하는 게 아니라, 바뀐 부분(diff)만 기록\n기록은 .git/ 폴더 안에 모두 들어있음\n\n\n\n기록/파일 확인 방법\ngit log\n\n변경된 부분 확인\n\ngit diff HEAD~1 HEAD\n\n과거 버전 파일 확인\n\ngit checkout &lt;commit-id&gt; -- file.R\n\n전체 되돌리기\n\ngit reset --hard &lt;commit-id&gt;",
     "crumbs": [
       "Main_Blog",
       "Posts",
