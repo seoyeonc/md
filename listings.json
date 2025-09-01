@@ -2,6 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/medical knowledge/2025-08-29-medicalknowledge.html",
+      "/posts/R/2025-08-29-rggplot.html",
       "/posts/R/2025-08-21-rpackage.html",
       "/posts/rshiny/2025-08-20-rshiny.html",
       "/posts/sas/2025-08-19-SAS1.html",
