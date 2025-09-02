@@ -79,8 +79,7 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      page: 30,
-    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      
       searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
@@ -187,13 +186,13 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
+    <div class="quarto-title column-page-right">
       <h1 class="title">;)</h1>
                       </div>
   </div>
     
   
-  <div class="quarto-title-meta column-body">
+  <div class="quarto-title-meta column-page-right">
 
       
     
@@ -1192,32 +1191,70 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(144)</span></div><div class="category" data-category="Advanced Probability Theory">Advanced Probability Theory <span class="quarto-category-count">(16)</span></div><div class="category" data-category="Advanced Regression Analysis">Advanced Regression Analysis <span class="quarto-category-count">(14)</span></div><div class="category" data-category="Anything">Anything <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Attention Mechanism">Attention Mechanism <span class="quarto-category-count">(1)</span></div><div class="category" data-category="CAM">CAM <span class="quarto-category-count">(1)</span></div><div class="category" data-category="CNN 다중클래스 분류">CNN 다중클래스 분류 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Coding Test">Coding Test <span class="quarto-category-count">(11)</span></div><div class="category" data-category="Cox Regression">Cox Regression <span class="quarto-category-count">(1)</span></div><div class="category" data-category="EM algorithm">EM algorithm <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Fisher's Least Significant Difference">Fisher's Least Significant Difference <span class="quarto-category-count">(1)</span></div><div class="category" data-category="GAN">GAN <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Hazard Ratio">Hazard Ratio <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Laplace">Laplace <span class="quarto-category-count">(1)</span></div><div class="category" data-category="LocallyLinearEmbedding">LocallyLinearEmbedding <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Machine learning basic">Machine learning basic <span class="quarto-category-count">(8)</span></div><div class="category" data-category="Odds Ratio">Odds Ratio <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Pharmacokinetic Analysis">Pharmacokinetic Analysis <span class="quarto-category-count">(2)</span></div><div class="category" data-category="PyTorch Geometric Temporal">PyTorch Geometric Temporal <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Scheffe's method">Scheffe's method <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Special Topics in Applied Statistics">Special Topics in Applied Statistics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Special Topics in Machine Learning">Special Topics in Machine Learning <span class="quarto-category-count">(21)</span></div><div class="category" data-category="Survival Analysis">Survival Analysis <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Suvival">Suvival <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TSNE">TSNE <span class="quarto-category-count">(1)</span></div><div class="category" data-category="The Bonferroni correction">The Bonferroni correction <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Theoritical Statistics">Theoritical Statistics <span class="quarto-category-count">(15)</span></div><div class="category" data-category="Transfer Learning">Transfer Learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Transformer">Transformer <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Transformers">Transformers <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Tuckey's Honestly Significant Difference">Tuckey's Honestly Significant Difference <span class="quarto-category-count">(1)</span></div><div class="category" data-category="XAI">XAI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="embedding layer">embedding layer <span class="quarto-category-count">(1)</span></div><div class="category" data-category="fastai metric">fastai metric <span class="quarto-category-count">(1)</span></div><div class="category" data-category="pytorch">pytorch <span class="quarto-category-count">(1)</span></div><div class="category" data-category="seq2seq">seq2seq <span class="quarto-category-count">(1)</span></div><div class="category" data-category="teacher forcing 교사 강요">teacher forcing 교사 강요 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="경사하강법">경사하강법 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="깊은신경망">깊은신경망 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="능형회귀">능형회귀 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="드랍아웃">드랍아웃 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="딥러닝의 기초">딥러닝의 기초 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="로지스틱">로지스틱 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="박스뮬러변환">박스뮬러변환 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="벌점화모형">벌점화모형 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="비지도학습">비지도학습 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="생성모형(GAN)">생성모형(GAN) <span class="quarto-category-count">(1)</span></div><div class="category" data-category="선형모형">선형모형 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="손실함수">손실함수 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="순환신경망">순환신경망 <span class="quarto-category-count">(5)</span></div><div class="category" data-category="시벤코정리">시벤코정리 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="신경망의표현">신경망의표현 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="오버피팅">오버피팅 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="이미지자료분석">이미지자료분석 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="지도학습">지도학습 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="지수분포와 카이제곱">지수분포와 카이제곱 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="추천시스템">추천시스템 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="텍스트분석">텍스트분석 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="확률적경사하강법">확률적경사하강법 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="회귀분석">회귀분석 <span class="quarto-category-count">(2)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-body" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page-right" id="quarto-document-content">
 
 
 
 
 
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Current goals</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<ul>
+<li>SAS</li>
+<li>R Packages</li>
+<li>R Shiny</li>
+<li>Python</li>
+</ul>
+</div>
+</div>
+</div>
 
 
 
 
 <div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-title-sort" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
 <table class="quarto-listing-table table">
 <thead>
 <tr>
 <th>
-Date
+<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
 </th>
 <th>
-Title
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
 </th>
 <th>
-Author
+<a class="sort" data-sort="listing-author" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Author</a>
 </th>
 </tr>
 </thead>
@@ -1266,7 +1303,7 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="4" data-listing-date-sort="1755529200000" data-listing-file-modified-sort="1756310367379" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1110" data-listing-title-sort="SAS Advanced Certificate" data-listing-filename-sort="2025-08-19-SAS1.ipynb">
+<tr data-index="4" data-listing-date-sort="1755529200000" data-listing-file-modified-sort="1756819621111" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1110" data-listing-title-sort="SAS Advanced Certificate" data-listing-filename-sort="2025-08-19-SAS1.ipynb">
 <td>
 <span class="listing-date">Aug 19, 2025</span>
 </td>
@@ -1321,23 +1358,23 @@ Author
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="9" data-listing-date-sort="1693234800000" data-listing-file-modified-sort="1700975341199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="535" data-listing-title-sort="A2: 강화학습 (2) – 4x4 grid" data-listing-filename-sort="A2.out.ipynb">
-<td>
-<span class="listing-date">Aug 29, 2023</span>
-</td>
-<td>
-<a href="./posts/anything/A2.out.html" class="title listing-title">A2: 강화학습 (2) – 4x4 grid</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="10" data-listing-date-sort="1693234800000" data-listing-file-modified-sort="1700975341195" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="584" data-listing-title-sort="A1: 강화학습 (1) – bandit" data-listing-filename-sort="A1.out.ipynb">
+<tr data-index="9" data-listing-date-sort="1693234800000" data-listing-file-modified-sort="1700975341195" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="584" data-listing-title-sort="A1: 강화학습 (1) – bandit" data-listing-filename-sort="A1.out.ipynb">
 <td>
 <span class="listing-date">Aug 29, 2023</span>
 </td>
 <td>
 <a href="./posts/anything/A1.out.html" class="title listing-title">A1: 강화학습 (1) – bandit</a>
+</td>
+<td>
+<span class="listing-author">최규빈 </span>
+</td>
+</tr>
+<tr data-index="10" data-listing-date-sort="1693234800000" data-listing-file-modified-sort="1700975341199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="535" data-listing-title-sort="A2: 강화학습 (2) – 4x4 grid" data-listing-filename-sort="A2.out.ipynb">
+<td>
+<span class="listing-date">Aug 29, 2023</span>
+</td>
+<td>
+<a href="./posts/anything/A2.out.html" class="title listing-title">A2: 강화학습 (2) – 4x4 grid</a>
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
@@ -1354,23 +1391,23 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="12" data-categories="Special Topics in Applied Statistics" data-listing-date-sort="1690642800000" data-listing-file-modified-sort="1700975341263" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="Special Topics in Applied Statistics" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jul 30, 2023</span>
-</td>
-<td>
-<a href="./posts/as/index.html" class="title listing-title">Special Topics in Applied Statistics</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="13" data-categories="Special Topics in Applied Statistics" data-listing-date-sort="1690642800000" data-listing-file-modified-sort="1700975341263" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="252" data-listing-title-sort="Multicollinearity" data-listing-filename-sort="2023-07-30-multicollinearity.ipynb">
+<tr data-index="12" data-categories="Special Topics in Applied Statistics" data-listing-date-sort="1690642800000" data-listing-file-modified-sort="1700975341263" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="252" data-listing-title-sort="Multicollinearity" data-listing-filename-sort="2023-07-30-multicollinearity.ipynb">
 <td>
 <span class="listing-date">Jul 30, 2023</span>
 </td>
 <td>
 <a href="./posts/as/2023-07-30-multicollinearity.html" class="title listing-title">Multicollinearity</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
+</td>
+</tr>
+<tr data-index="13" data-categories="Special Topics in Applied Statistics" data-listing-date-sort="1690642800000" data-listing-file-modified-sort="1700975341263" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="Special Topics in Applied Statistics" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jul 30, 2023</span>
+</td>
+<td>
+<a href="./posts/as/index.html" class="title listing-title">Special Topics in Applied Statistics</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
@@ -1490,18 +1527,7 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="24" data-categories="Advanced Probability Theory" data-listing-date-sort="1685372400000" data-listing-file-modified-sort="1703115627521" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="20" data-listing-word-count-sort="3857" data-listing-title-sort="13wk: 밀도함수" data-listing-filename-sort="2023-05-30-ap-13wk.ipynb">
-<td>
-<span class="listing-date">May 30, 2023</span>
-</td>
-<td>
-<a href="./posts/ap/2023-05-30-ap-13wk.html" class="title listing-title">13wk: 밀도함수</a>
-</td>
-<td>
-<span class="listing-author">GUEBIN CHOI</span>
-</td>
-</tr>
-<tr data-index="25" data-listing-date-sort="1685372400000" data-listing-file-modified-sort="1700975341255" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="399" data-listing-title-sort="13wk-2: MCMC (1)" data-listing-filename-sort="2023-05-30-13wk-2.ipynb">
+<tr data-index="24" data-listing-date-sort="1685372400000" data-listing-file-modified-sort="1700975341255" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="399" data-listing-title-sort="13wk-2: MCMC (1)" data-listing-filename-sort="2023-05-30-13wk-2.ipynb">
 <td>
 <span class="listing-date">May 30, 2023</span>
 </td>
@@ -1512,29 +1538,29 @@ Author
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="26" data-categories="Transformer" data-listing-date-sort="1685199600000" data-listing-file-modified-sort="1700975341767" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="63" data-listing-title-sort="Transformer Chatbot Tutorial" data-listing-filename-sort="2023-05-28-Transformer Chatbot Tutorial.ipynb">
+<tr data-index="25" data-categories="Advanced Probability Theory" data-listing-date-sort="1685372400000" data-listing-file-modified-sort="1703115627521" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="20" data-listing-word-count-sort="3857" data-listing-title-sort="13wk: 밀도함수" data-listing-filename-sort="2023-05-30-ap-13wk.ipynb">
+<td>
+<span class="listing-date">May 30, 2023</span>
+</td>
+<td>
+<a href="./posts/ap/2023-05-30-ap-13wk.html" class="title listing-title">13wk: 밀도함수</a>
+</td>
+<td>
+<span class="listing-author">GUEBIN CHOI</span>
+</td>
+</tr>
+<tr data-index="26" data-categories="Attention Mechanism" data-listing-date-sort="1685199600000" data-listing-file-modified-sort="1700975341767" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="845" data-listing-title-sort="Attention Mechanism" data-listing-filename-sort="2023-05-28-Attention Mechanism.ipynb">
 <td>
 <span class="listing-date">May 28, 2023</span>
 </td>
 <td>
-<a href="./posts/ml_basic/2023-05-28-Transformer Chatbot Tutorial.html" class="title listing-title">Transformer Chatbot Tutorial</a>
+<a href="./posts/ml_basic/2023-05-28-Attention Mechanism.html" class="title listing-title">Attention Mechanism</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="27" data-categories="Transformers" data-listing-date-sort="1685199600000" data-listing-file-modified-sort="1700975341767" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2330" data-listing-title-sort="Transformers" data-listing-filename-sort="2023-05-28-Transformers.ipynb">
-<td>
-<span class="listing-date">May 28, 2023</span>
-</td>
-<td>
-<a href="./posts/ml_basic/2023-05-28-Transformers.html" class="title listing-title">Transformers</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="28" data-categories="seq2seq,teacher forcing 교사 강요" data-listing-date-sort="1685199600000" data-listing-file-modified-sort="1700975341767" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="774" data-listing-title-sort="Sequence-to-Sequence, seq2seq" data-listing-filename-sort="2023-05-28-Sequence-to-Sequence, seq2seq.ipynb">
+<tr data-index="27" data-categories="seq2seq,teacher forcing 교사 강요" data-listing-date-sort="1685199600000" data-listing-file-modified-sort="1700975341767" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="774" data-listing-title-sort="Sequence-to-Sequence, seq2seq" data-listing-filename-sort="2023-05-28-Sequence-to-Sequence, seq2seq.ipynb">
 <td>
 <span class="listing-date">May 28, 2023</span>
 </td>
@@ -1545,12 +1571,23 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="29" data-categories="Attention Mechanism" data-listing-date-sort="1685199600000" data-listing-file-modified-sort="1700975341767" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="845" data-listing-title-sort="Attention Mechanism" data-listing-filename-sort="2023-05-28-Attention Mechanism.ipynb">
+<tr data-index="28" data-categories="Transformer" data-listing-date-sort="1685199600000" data-listing-file-modified-sort="1700975341767" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="63" data-listing-title-sort="Transformer Chatbot Tutorial" data-listing-filename-sort="2023-05-28-Transformer Chatbot Tutorial.ipynb">
 <td>
 <span class="listing-date">May 28, 2023</span>
 </td>
 <td>
-<a href="./posts/ml_basic/2023-05-28-Attention Mechanism.html" class="title listing-title">Attention Mechanism</a>
+<a href="./posts/ml_basic/2023-05-28-Transformer Chatbot Tutorial.html" class="title listing-title">Transformer Chatbot Tutorial</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
+</td>
+</tr>
+<tr data-index="29" data-categories="Transformers" data-listing-date-sort="1685199600000" data-listing-file-modified-sort="1700975341767" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2330" data-listing-title-sort="Transformers" data-listing-filename-sort="2023-05-28-Transformers.ipynb">
+<td>
+<span class="listing-date">May 28, 2023</span>
+</td>
+<td>
+<a href="./posts/ml_basic/2023-05-28-Transformers.html" class="title listing-title">Transformers</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
@@ -1644,15 +1681,15 @@ Author
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="38" data-categories="EM algorithm" data-listing-date-sort="1683558000000" data-listing-file-modified-sort="1700975341763" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="122" data-listing-title-sort="Expectation Maximization(EM algorithm)" data-listing-filename-sort="2023-05-09-EM_algorithm.ipynb">
+<tr data-index="38" data-listing-date-sort="1683558000000" data-listing-file-modified-sort="1700975341251" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="318" data-listing-title-sort="10wk-2: 마코프체인 (7)" data-listing-filename-sort="2023-05-09-10wk-2.ipynb">
 <td>
 <span class="listing-date">May 9, 2023</span>
 </td>
 <td>
-<a href="./posts/ml_basic/2023-05-09-EM_algorithm.html" class="title listing-title">Expectation Maximization(EM algorithm)</a>
+<a href="./posts/ap/2023-05-09-10wk-2.html" class="title listing-title">10wk-2: 마코프체인 (7)</a>
 </td>
 <td>
-<span class="listing-author">SEOYEON CHOI</span>
+<span class="listing-author">최규빈 </span>
 </td>
 </tr>
 <tr data-index="39" data-categories="Advanced Probability Theory" data-listing-date-sort="1683558000000" data-listing-file-modified-sort="1700975341251" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1422" data-listing-title-sort="10wk: 분포, 분포함수" data-listing-filename-sort="2023-05-09-ap-10wk.ipynb">
@@ -1666,15 +1703,15 @@ Author
 <span class="listing-author">GUEBIN CHOI</span>
 </td>
 </tr>
-<tr data-index="40" data-listing-date-sort="1683558000000" data-listing-file-modified-sort="1700975341251" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="318" data-listing-title-sort="10wk-2: 마코프체인 (7)" data-listing-filename-sort="2023-05-09-10wk-2.ipynb">
+<tr data-index="40" data-categories="EM algorithm" data-listing-date-sort="1683558000000" data-listing-file-modified-sort="1700975341763" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="122" data-listing-title-sort="Expectation Maximization(EM algorithm)" data-listing-filename-sort="2023-05-09-EM_algorithm.ipynb">
 <td>
 <span class="listing-date">May 9, 2023</span>
 </td>
 <td>
-<a href="./posts/ap/2023-05-09-10wk-2.html" class="title listing-title">10wk-2: 마코프체인 (7)</a>
+<a href="./posts/ml_basic/2023-05-09-EM_algorithm.html" class="title listing-title">Expectation Maximization(EM algorithm)</a>
 </td>
 <td>
-<span class="listing-author">최규빈 </span>
+<span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
 <tr data-index="41" data-categories="PyTorch Geometric Temporal" data-listing-date-sort="1683126000000" data-listing-file-modified-sort="1700975341163" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="208" data-listing-title-sort="Questions of PyTorch Geometric Temporal" data-listing-filename-sort="2023-05-04-questions of pytorch geometric temporal.ipynb">
@@ -1897,18 +1934,7 @@ Author
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="61" data-categories="Machine learning basic,벌점화모형,능형회귀" data-listing-date-sort="1680015600000" data-listing-file-modified-sort="1700975341763" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="745" data-listing-title-sort="Lasso and Ridge" data-listing-filename-sort="2023-03-29-Lasso and Ridge.ipynb">
-<td>
-<span class="listing-date">Mar 29, 2023</span>
-</td>
-<td>
-<a href="./posts/ml_basic/2023-03-29-Lasso and Ridge.html" class="title listing-title">Lasso and Ridge</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="62" data-listing-date-sort="1680015600000" data-listing-file-modified-sort="1700975341243" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="692" data-listing-title-sort="05wk-2: HW1" data-listing-filename-sort="2023-03-29-5wk-2-hw1.ipynb">
+<tr data-index="61" data-listing-date-sort="1680015600000" data-listing-file-modified-sort="1700975341243" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="692" data-listing-title-sort="05wk-2: HW1" data-listing-filename-sort="2023-03-29-5wk-2-hw1.ipynb">
 <td>
 <span class="listing-date">Mar 29, 2023</span>
 </td>
@@ -1919,15 +1945,26 @@ Author
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="63" data-categories="Machine learning basic,비지도학습" data-listing-date-sort="1679929200000" data-listing-file-modified-sort="1700975341763" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="513" data-listing-title-sort="Principal Component Analysis" data-listing-filename-sort="2023-03-28-Principal Component Analysis.ipynb">
+<tr data-index="62" data-categories="Machine learning basic,벌점화모형,능형회귀" data-listing-date-sort="1680015600000" data-listing-file-modified-sort="1700975341763" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="745" data-listing-title-sort="Lasso and Ridge" data-listing-filename-sort="2023-03-29-Lasso and Ridge.ipynb">
+<td>
+<span class="listing-date">Mar 29, 2023</span>
+</td>
+<td>
+<a href="./posts/ml_basic/2023-03-29-Lasso and Ridge.html" class="title listing-title">Lasso and Ridge</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
+</td>
+</tr>
+<tr data-index="63" data-listing-date-sort="1679929200000" data-listing-file-modified-sort="1700975341243" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="770" data-listing-title-sort="04wk-2: 측도론 intro (6)" data-listing-filename-sort="2023-03-28-4wk-2.ipynb">
 <td>
 <span class="listing-date">Mar 28, 2023</span>
 </td>
 <td>
-<a href="./posts/ml_basic/2023-03-28-Principal Component Analysis.html" class="title listing-title">Principal Component Analysis</a>
+<a href="./posts/ap/2023-03-28-4wk-2.html" class="title listing-title">04wk-2: 측도론 intro (6)</a>
 </td>
 <td>
-<span class="listing-author">SEOYEON CHOI</span>
+<span class="listing-author">최규빈 </span>
 </td>
 </tr>
 <tr data-index="64" data-categories="Advanced Probability Theory" data-listing-date-sort="1679929200000" data-listing-file-modified-sort="1700975341243" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1777" data-listing-title-sort="04wk: 측도론 intro (4)" data-listing-filename-sort="2023-03-28-ap-04wk.ipynb">
@@ -1941,15 +1978,15 @@ Author
 <span class="listing-author">GUEBIN CHOI</span>
 </td>
 </tr>
-<tr data-index="65" data-listing-date-sort="1679929200000" data-listing-file-modified-sort="1700975341243" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="770" data-listing-title-sort="04wk-2: 측도론 intro (6)" data-listing-filename-sort="2023-03-28-4wk-2.ipynb">
+<tr data-index="65" data-categories="Machine learning basic,비지도학습" data-listing-date-sort="1679929200000" data-listing-file-modified-sort="1700975341763" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="513" data-listing-title-sort="Principal Component Analysis" data-listing-filename-sort="2023-03-28-Principal Component Analysis.ipynb">
 <td>
 <span class="listing-date">Mar 28, 2023</span>
 </td>
 <td>
-<a href="./posts/ap/2023-03-28-4wk-2.html" class="title listing-title">04wk-2: 측도론 intro (6)</a>
+<a href="./posts/ml_basic/2023-03-28-Principal Component Analysis.html" class="title listing-title">Principal Component Analysis</a>
 </td>
 <td>
-<span class="listing-author">최규빈 </span>
+<span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
 <tr data-index="66" data-categories="Machine learning basic,지도학습" data-listing-date-sort="1679670000000" data-listing-file-modified-sort="1700975341763" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="830" data-listing-title-sort="Support Vector Machine" data-listing-filename-sort="2023-03-23-Support Vector Machine.ipynb">
@@ -1963,18 +2000,7 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="67" data-categories="Machine learning basic" data-listing-date-sort="1679497200000" data-listing-file-modified-sort="1700975341871" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="Machine Learning basic" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 23, 2023</span>
-</td>
-<td>
-<a href="./posts/ml_basic/index.html" class="title listing-title">Machine Learning basic</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="68" data-listing-date-sort="1679497200000" data-listing-file-modified-sort="1700975341243" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2015" data-listing-title-sort="04wk-1: 측도론 intro (5)" data-listing-filename-sort="2023-03-23-4wk-1.ipynb">
+<tr data-index="67" data-listing-date-sort="1679497200000" data-listing-file-modified-sort="1700975341243" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2015" data-listing-title-sort="04wk-1: 측도론 intro (5)" data-listing-filename-sort="2023-03-23-4wk-1.ipynb">
 <td>
 <span class="listing-date">Mar 23, 2023</span>
 </td>
@@ -1983,6 +2009,17 @@ Author
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
+</td>
+</tr>
+<tr data-index="68" data-categories="Machine learning basic" data-listing-date-sort="1679497200000" data-listing-file-modified-sort="1700975341871" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="Machine Learning basic" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Mar 23, 2023</span>
+</td>
+<td>
+<a href="./posts/ml_basic/index.html" class="title listing-title">Machine Learning basic</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
 <tr data-index="69" data-categories="Coding Test" data-listing-date-sort="1679497200000" data-listing-file-modified-sort="1700975341267" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="243" data-listing-title-sort="Tree" data-listing-filename-sort="2023-03-22-Coding_Test_Tree.ipynb">
@@ -2040,18 +2077,7 @@ Author
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="74" data-categories="Advanced Probability Theory" data-listing-date-sort="1678719600000" data-listing-file-modified-sort="1700975341231" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="968" data-listing-title-sort="02wk: 측도론 intro (2)" data-listing-filename-sort="2023-03-14-ap-02wk.ipynb">
-<td>
-<span class="listing-date">Mar 14, 2023</span>
-</td>
-<td>
-<a href="./posts/ap/2023-03-14-ap-02wk.html" class="title listing-title">02wk: 측도론 intro (2)</a>
-</td>
-<td>
-<span class="listing-author">GUEBIN CHOI</span>
-</td>
-</tr>
-<tr data-index="75" data-listing-date-sort="1678719600000" data-listing-file-modified-sort="1700975341231" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="683" data-listing-title-sort="02wk-2: 측도론 intro (2)" data-listing-filename-sort="2023-03-14-2wk-2.ipynb">
+<tr data-index="74" data-listing-date-sort="1678719600000" data-listing-file-modified-sort="1700975341231" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="683" data-listing-title-sort="02wk-2: 측도론 intro (2)" data-listing-filename-sort="2023-03-14-2wk-2.ipynb">
 <td>
 <span class="listing-date">Mar 14, 2023</span>
 </td>
@@ -2060,6 +2086,17 @@ Author
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
+</td>
+</tr>
+<tr data-index="75" data-categories="Advanced Probability Theory" data-listing-date-sort="1678719600000" data-listing-file-modified-sort="1700975341231" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="968" data-listing-title-sort="02wk: 측도론 intro (2)" data-listing-filename-sort="2023-03-14-ap-02wk.ipynb">
+<td>
+<span class="listing-date">Mar 14, 2023</span>
+</td>
+<td>
+<a href="./posts/ap/2023-03-14-ap-02wk.html" class="title listing-title">02wk: 측도론 intro (2)</a>
+</td>
+<td>
+<span class="listing-author">GUEBIN CHOI</span>
 </td>
 </tr>
 <tr data-index="76" data-listing-date-sort="1678287600000" data-listing-file-modified-sort="1700975341231" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="994" data-listing-title-sort="02wk-1: 측도론 intro (1)" data-listing-filename-sort="2023-03-09-2wk-1.ipynb">
@@ -2073,23 +2110,23 @@ Author
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="77" data-categories="Advanced Probability Theory" data-listing-date-sort="1678114800000" data-listing-file-modified-sort="1700975341259" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11" data-listing-title-sort="Advanced Probability Theory" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 7, 2023</span>
-</td>
-<td>
-<a href="./posts/ap/index.html" class="title listing-title">Advanced Probability Theory</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="78" data-categories="Advanced Probability Theory" data-listing-date-sort="1678114800000" data-listing-file-modified-sort="1700975341231" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1079" data-listing-title-sort="1주차: 측도론" data-listing-filename-sort="2023-03-07-ap_1wk.ipynb">
+<tr data-index="77" data-categories="Advanced Probability Theory" data-listing-date-sort="1678114800000" data-listing-file-modified-sort="1700975341231" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1079" data-listing-title-sort="1주차: 측도론" data-listing-filename-sort="2023-03-07-ap_1wk.ipynb">
 <td>
 <span class="listing-date">Mar 7, 2023</span>
 </td>
 <td>
 <a href="./posts/ap/2023-03-07-ap_1wk.html" class="title listing-title">1주차: 측도론</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
+</td>
+</tr>
+<tr data-index="78" data-categories="Advanced Probability Theory" data-listing-date-sort="1678114800000" data-listing-file-modified-sort="1700975341259" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11" data-listing-title-sort="Advanced Probability Theory" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Mar 7, 2023</span>
+</td>
+<td>
+<a href="./posts/ap/index.html" class="title listing-title">Advanced Probability Theory</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
@@ -2128,18 +2165,7 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="82" data-categories="Theoritical Statistics" data-listing-date-sort="1677769200000" data-listing-file-modified-sort="1700975341911" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="75" data-listing-title-sort="Theoritical Statistics GT" data-listing-filename-sort="2023-03-03-graduation_test.ipynb">
-<td>
-<span class="listing-date">Mar 3, 2023</span>
-</td>
-<td>
-<a href="./posts/ts/2023-03-03-graduation_test.html" class="title listing-title">Theoritical Statistics GT</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="83" data-categories="Theoritical Statistics,박스뮬러변환,지수분포와 카이제곱" data-listing-date-sort="1677769200000" data-listing-file-modified-sort="1700975341911" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="243" data-listing-title-sort="Theoritical Statistics Final term 6 Explanation" data-listing-filename-sort="2023-03-03-ts-final_qanda.ipynb">
+<tr data-index="82" data-categories="Theoritical Statistics,박스뮬러변환,지수분포와 카이제곱" data-listing-date-sort="1677769200000" data-listing-file-modified-sort="1700975341911" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="243" data-listing-title-sort="Theoritical Statistics Final term 6 Explanation" data-listing-filename-sort="2023-03-03-ts-final_qanda.ipynb">
 <td>
 <span class="listing-date">Mar 3, 2023</span>
 </td>
@@ -2148,6 +2174,17 @@ Author
 </td>
 <td>
 <span class="listing-author">GUEBIN CHOI</span>
+</td>
+</tr>
+<tr data-index="83" data-categories="Theoritical Statistics" data-listing-date-sort="1677769200000" data-listing-file-modified-sort="1700975341911" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="75" data-listing-title-sort="Theoritical Statistics GT" data-listing-filename-sort="2023-03-03-graduation_test.ipynb">
+<td>
+<span class="listing-date">Mar 3, 2023</span>
+</td>
+<td>
+<a href="./posts/ts/2023-03-03-graduation_test.html" class="title listing-title">Theoritical Statistics GT</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
 <tr data-index="84" data-categories="Advanced Regression Analysis" data-listing-date-sort="1677078000000" data-listing-file-modified-sort="1700975341903" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1370" data-listing-title-sort="Advanced Regression Analysis Final Term" data-listing-filename-sort="2023-02-23-rl-final_term.ipynb">
@@ -2238,23 +2275,23 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="92" data-categories="Theoritical Statistics" data-listing-date-sort="1673967600000" data-listing-file-modified-sort="1700975341911" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="467" data-listing-title-sort="Theoritical Statistics HW8" data-listing-filename-sort="2023-01-18-ts-HW8.ipynb">
-<td>
-<span class="listing-date">Jan 18, 2023</span>
-</td>
-<td>
-<a href="./posts/ts/2023-01-18-ts-HW8.html" class="title listing-title">Theoritical Statistics HW8</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="93" data-categories="Theoritical Statistics" data-listing-date-sort="1673967600000" data-listing-file-modified-sort="1700975341911" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="220" data-listing-title-sort="Theoritical Statistics HW7" data-listing-filename-sort="2023-01-18-ts_HW7.ipynb">
+<tr data-index="92" data-categories="Theoritical Statistics" data-listing-date-sort="1673967600000" data-listing-file-modified-sort="1700975341911" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="220" data-listing-title-sort="Theoritical Statistics HW7" data-listing-filename-sort="2023-01-18-ts_HW7.ipynb">
 <td>
 <span class="listing-date">Jan 18, 2023</span>
 </td>
 <td>
 <a href="./posts/ts/2023-01-18-ts_HW7.html" class="title listing-title">Theoritical Statistics HW7</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
+</td>
+</tr>
+<tr data-index="93" data-categories="Theoritical Statistics" data-listing-date-sort="1673967600000" data-listing-file-modified-sort="1700975341911" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="467" data-listing-title-sort="Theoritical Statistics HW8" data-listing-filename-sort="2023-01-18-ts-HW8.ipynb">
+<td>
+<span class="listing-date">Jan 18, 2023</span>
+</td>
+<td>
+<a href="./posts/ts/2023-01-18-ts-HW8.html" class="title listing-title">Theoritical Statistics HW8</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
@@ -2271,23 +2308,23 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="95" data-categories="Coding Test" data-listing-date-sort="1673708400000" data-listing-file-modified-sort="1700975341267" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="100" data-listing-title-sort="내장함수" data-listing-filename-sort="2023-01-15-Coding_Test_interfunction.ipynb">
-<td>
-<span class="listing-date">Jan 15, 2023</span>
-</td>
-<td>
-<a href="./posts/ct/2023-01-15-Coding_Test_interfunction.html" class="title listing-title">내장함수</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="96" data-categories="Theoritical Statistics" data-listing-date-sort="1673708400000" data-listing-file-modified-sort="1700975341911" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="442" data-listing-title-sort="Theoritical Statistics Mid term" data-listing-filename-sort="2023-01-14-ts_Mid term.ipynb">
+<tr data-index="95" data-categories="Theoritical Statistics" data-listing-date-sort="1673708400000" data-listing-file-modified-sort="1700975341911" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="442" data-listing-title-sort="Theoritical Statistics Mid term" data-listing-filename-sort="2023-01-14-ts_Mid term.ipynb">
 <td>
 <span class="listing-date">Jan 15, 2023</span>
 </td>
 <td>
 <a href="./posts/ts/2023-01-14-ts_Mid term.html" class="title listing-title">Theoritical Statistics Mid term</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
+</td>
+</tr>
+<tr data-index="96" data-categories="Coding Test" data-listing-date-sort="1673708400000" data-listing-file-modified-sort="1700975341267" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="100" data-listing-title-sort="내장함수" data-listing-filename-sort="2023-01-15-Coding_Test_interfunction.ipynb">
+<td>
+<span class="listing-date">Jan 15, 2023</span>
+</td>
+<td>
+<a href="./posts/ct/2023-01-15-Coding_Test_interfunction.html" class="title listing-title">내장함수</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
@@ -2403,23 +2440,23 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="107" data-categories="생성모형(GAN)" data-listing-date-sort="1671548400000" data-listing-file-modified-sort="1700975341635" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="651" data-listing-title-sort="Extra-2: 생성모형(GAN)" data-listing-filename-sort="2022-12-21-Extra-2.ipynb">
-<td>
-<span class="listing-date">Dec 21, 2022</span>
-</td>
-<td>
-<a href="./posts/ml/2022-12-21-Extra-2.html" class="title listing-title">Extra-2: 생성모형(GAN)</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="108" data-categories="추천시스템" data-listing-date-sort="1671548400000" data-listing-file-modified-sort="1700975341635" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="336" data-listing-title-sort="Extra-1: 추천시스템" data-listing-filename-sort="2022-12-21-Extra-1.ipynb">
+<tr data-index="107" data-categories="추천시스템" data-listing-date-sort="1671548400000" data-listing-file-modified-sort="1700975341635" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="336" data-listing-title-sort="Extra-1: 추천시스템" data-listing-filename-sort="2022-12-21-Extra-1.ipynb">
 <td>
 <span class="listing-date">Dec 21, 2022</span>
 </td>
 <td>
 <a href="./posts/ml/2022-12-21-Extra-1.html" class="title listing-title">Extra-1: 추천시스템</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
+</td>
+</tr>
+<tr data-index="108" data-categories="생성모형(GAN)" data-listing-date-sort="1671548400000" data-listing-file-modified-sort="1700975341635" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="651" data-listing-title-sort="Extra-2: 생성모형(GAN)" data-listing-filename-sort="2022-12-21-Extra-2.ipynb">
+<td>
+<span class="listing-date">Dec 21, 2022</span>
+</td>
+<td>
+<a href="./posts/ml/2022-12-21-Extra-2.html" class="title listing-title">Extra-2: 생성모형(GAN)</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
@@ -2458,23 +2495,23 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="112" data-categories="Advanced Regression Analysis" data-listing-date-sort="1670425200000" data-listing-file-modified-sort="1700975341903" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="925" data-listing-title-sort="Regression HW 4" data-listing-filename-sort="2022-12-08-rl-HW4.ipynb">
-<td>
-<span class="listing-date">Dec 8, 2022</span>
-</td>
-<td>
-<a href="./posts/rl/2022-12-08-rl-HW4.html" class="title listing-title">Regression HW 4</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="113" data-categories="Special Topics in Machine Learning,순환신경망" data-listing-date-sort="1670425200000" data-listing-file-modified-sort="1700975341635" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="453" data-listing-title-sort="RNN (13주차)" data-listing-filename-sort="2022-12-08-13wk.ipynb">
+<tr data-index="112" data-categories="Special Topics in Machine Learning,순환신경망" data-listing-date-sort="1670425200000" data-listing-file-modified-sort="1700975341635" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="453" data-listing-title-sort="RNN (13주차)" data-listing-filename-sort="2022-12-08-13wk.ipynb">
 <td>
 <span class="listing-date">Dec 8, 2022</span>
 </td>
 <td>
 <a href="./posts/ml/2022-12-08-13wk.html" class="title listing-title">RNN (13주차)</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
+</td>
+</tr>
+<tr data-index="113" data-categories="Advanced Regression Analysis" data-listing-date-sort="1670425200000" data-listing-file-modified-sort="1700975341903" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="925" data-listing-title-sort="Regression HW 4" data-listing-filename-sort="2022-12-08-rl-HW4.ipynb">
+<td>
+<span class="listing-date">Dec 8, 2022</span>
+</td>
+<td>
+<a href="./posts/rl/2022-12-08-rl-HW4.html" class="title listing-title">Regression HW 4</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
@@ -2535,7 +2572,18 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="119" data-categories="Advanced Regression Analysis" data-listing-date-sort="1668956400000" data-listing-file-modified-sort="1700975341895" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1321" data-listing-title-sort="Regression HW 3" data-listing-filename-sort="2022-11-21-rl-HW3.ipynb">
+<tr data-index="119" data-categories="Special Topics in Machine Learning,순환신경망" data-listing-date-sort="1668956400000" data-listing-file-modified-sort="1700975341635" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2088" data-listing-title-sort="RNN (11주차)" data-listing-filename-sort="2022-11-21-ml-11w.ipynb">
+<td>
+<span class="listing-date">Nov 21, 2022</span>
+</td>
+<td>
+<a href="./posts/ml/2022-11-21-ml-11w.html" class="title listing-title">RNN (11주차)</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
+</td>
+</tr>
+<tr data-index="120" data-categories="Advanced Regression Analysis" data-listing-date-sort="1668956400000" data-listing-file-modified-sort="1700975341895" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1321" data-listing-title-sort="Regression HW 3" data-listing-filename-sort="2022-11-21-rl-HW3.ipynb">
 <td>
 <span class="listing-date">Nov 21, 2022</span>
 </td>
@@ -2546,23 +2594,12 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="120" data-categories="Advanced Regression Analysis" data-listing-date-sort="1668956400000" data-listing-file-modified-sort="1700975341903" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="30" data-listing-title-sort="고급회귀분석 실습 CH10" data-listing-filename-sort="2022-11-23-rl-CH10.ipynb">
+<tr data-index="121" data-categories="Advanced Regression Analysis" data-listing-date-sort="1668956400000" data-listing-file-modified-sort="1700975341903" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="30" data-listing-title-sort="고급회귀분석 실습 CH10" data-listing-filename-sort="2022-11-23-rl-CH10.ipynb">
 <td>
 <span class="listing-date">Nov 21, 2022</span>
 </td>
 <td>
 <a href="./posts/rl/2022-11-23-rl-CH10.html" class="title listing-title">고급회귀분석 실습 CH10</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="121" data-categories="Special Topics in Machine Learning,순환신경망" data-listing-date-sort="1668956400000" data-listing-file-modified-sort="1700975341635" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2088" data-listing-title-sort="RNN (11주차)" data-listing-filename-sort="2022-11-21-ml-11w.ipynb">
-<td>
-<span class="listing-date">Nov 21, 2022</span>
-</td>
-<td>
-<a href="./posts/ml/2022-11-21-ml-11w.html" class="title listing-title">RNN (11주차)</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
@@ -2612,23 +2649,23 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="126" data-categories="Special Topics in Machine Learning,이미지자료분석,Transfer Learning,CAM,XAI" data-listing-date-sort="1666710000000" data-listing-file-modified-sort="1700975341631" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="488" data-listing-title-sort="CNN (8주차) 2" data-listing-filename-sort="2022-10-26-ml_8w_2.ipynb">
-<td>
-<span class="listing-date">Oct 26, 2022</span>
-</td>
-<td>
-<a href="./posts/ml/2022-10-26-ml_8w_2.html" class="title listing-title">CNN (8주차) 2</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="127" data-categories="Special Topics in Machine Learning,이미지자료분석,CNN 다중클래스 분류,fastai metric" data-listing-date-sort="1666710000000" data-listing-file-modified-sort="1700975341627" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="637" data-listing-title-sort="CNN (8주차) 1" data-listing-filename-sort="2022-10-26-ml_8w_1.ipynb">
+<tr data-index="126" data-categories="Special Topics in Machine Learning,이미지자료분석,CNN 다중클래스 분류,fastai metric" data-listing-date-sort="1666710000000" data-listing-file-modified-sort="1700975341627" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="637" data-listing-title-sort="CNN (8주차) 1" data-listing-filename-sort="2022-10-26-ml_8w_1.ipynb">
 <td>
 <span class="listing-date">Oct 26, 2022</span>
 </td>
 <td>
 <a href="./posts/ml/2022-10-26-ml_8w_1.html" class="title listing-title">CNN (8주차) 1</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
+</td>
+</tr>
+<tr data-index="127" data-categories="Special Topics in Machine Learning,이미지자료분석,Transfer Learning,CAM,XAI" data-listing-date-sort="1666710000000" data-listing-file-modified-sort="1700975341631" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="488" data-listing-title-sort="CNN (8주차) 2" data-listing-filename-sort="2022-10-26-ml_8w_2.ipynb">
+<td>
+<span class="listing-date">Oct 26, 2022</span>
+</td>
+<td>
+<a href="./posts/ml/2022-10-26-ml_8w_2.html" class="title listing-title">CNN (8주차) 2</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
@@ -2667,23 +2704,23 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="131" data-categories="Special Topics in Machine Learning" data-listing-date-sort="1664895600000" data-listing-file-modified-sort="1700975341623" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="194" data-listing-title-sort="Homework" data-listing-filename-sort="2022-10-05-ml-HW.ipynb">
-<td>
-<span class="listing-date">Oct 5, 2022</span>
-</td>
-<td>
-<a href="./posts/ml/2022-10-05-ml-HW.html" class="title listing-title">Homework</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="132" data-categories="Special Topics in Machine Learning,로지스틱,깊은신경망" data-listing-date-sort="1664895600000" data-listing-file-modified-sort="1700975341623" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="773" data-listing-title-sort="DNN (5주차)" data-listing-filename-sort="2022-10-05-ml-5w.ipynb">
+<tr data-index="131" data-categories="Special Topics in Machine Learning,로지스틱,깊은신경망" data-listing-date-sort="1664895600000" data-listing-file-modified-sort="1700975341623" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="773" data-listing-title-sort="DNN (5주차)" data-listing-filename-sort="2022-10-05-ml-5w.ipynb">
 <td>
 <span class="listing-date">Oct 5, 2022</span>
 </td>
 <td>
 <a href="./posts/ml/2022-10-05-ml-5w.html" class="title listing-title">DNN (5주차)</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
+</td>
+</tr>
+<tr data-index="132" data-categories="Special Topics in Machine Learning" data-listing-date-sort="1664895600000" data-listing-file-modified-sort="1700975341623" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="194" data-listing-title-sort="Homework" data-listing-filename-sort="2022-10-05-ml-HW.ipynb">
+<td>
+<span class="listing-date">Oct 5, 2022</span>
+</td>
+<td>
+<a href="./posts/ml/2022-10-05-ml-HW.html" class="title listing-title">Homework</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
@@ -2700,7 +2737,18 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="134" data-categories="Advanced Regression Analysis" data-listing-date-sort="1663686000000" data-listing-file-modified-sort="1700975341895" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="716" data-listing-title-sort="Regression HW 1" data-listing-filename-sort="2022-09-21-rl_HW1.ipynb">
+<tr data-index="134" data-categories="Special Topics in Machine Learning,회귀분석,선형모형,손실함수,경사하강법" data-listing-date-sort="1663686000000" data-listing-file-modified-sort="1700975341611" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1044" data-listing-title-sort="DNN (3주차)" data-listing-filename-sort="2022-09-21-ml_3w.ipynb">
+<td>
+<span class="listing-date">Sep 21, 2022</span>
+</td>
+<td>
+<a href="./posts/ml/2022-09-21-ml_3w.html" class="title listing-title">DNN (3주차)</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
+</td>
+</tr>
+<tr data-index="135" data-categories="Advanced Regression Analysis" data-listing-date-sort="1663686000000" data-listing-file-modified-sort="1700975341895" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="716" data-listing-title-sort="Regression HW 1" data-listing-filename-sort="2022-09-21-rl_HW1.ipynb">
 <td>
 <span class="listing-date">Sep 21, 2022</span>
 </td>
@@ -2711,23 +2759,12 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="135" data-categories="Advanced Regression Analysis" data-listing-date-sort="1663686000000" data-listing-file-modified-sort="1700975341895" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="228" data-listing-title-sort="고급회귀분석 실습 CH03, CH04" data-listing-filename-sort="2022-09-21-rl_CH03, CH04.ipynb">
+<tr data-index="136" data-categories="Advanced Regression Analysis" data-listing-date-sort="1663686000000" data-listing-file-modified-sort="1700975341895" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="228" data-listing-title-sort="고급회귀분석 실습 CH03, CH04" data-listing-filename-sort="2022-09-21-rl_CH03, CH04.ipynb">
 <td>
 <span class="listing-date">Sep 21, 2022</span>
 </td>
 <td>
 <a href="./posts/rl/2022-09-21-rl_CH03, CH04.html" class="title listing-title">고급회귀분석 실습 CH03, CH04</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="136" data-categories="Special Topics in Machine Learning,회귀분석,선형모형,손실함수,경사하강법" data-listing-date-sort="1663686000000" data-listing-file-modified-sort="1700975341611" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1044" data-listing-title-sort="DNN (3주차)" data-listing-filename-sort="2022-09-21-ml_3w.ipynb">
-<td>
-<span class="listing-date">Sep 21, 2022</span>
-</td>
-<td>
-<a href="./posts/ml/2022-09-21-ml_3w.html" class="title listing-title">DNN (3주차)</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
@@ -2755,23 +2792,23 @@ Author
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="139" data-categories="Special Topics in Machine Learning" data-listing-date-sort="1662476400000" data-listing-file-modified-sort="1700975341595" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="133" data-listing-title-sort="Intro" data-listing-filename-sort="2022-09-07-ml.ipynb">
-<td>
-<span class="listing-date">Sep 7, 2022</span>
-</td>
-<td>
-<a href="./posts/ml/2022-09-07-ml.html" class="title listing-title">Intro</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="140" data-categories="Special Topics in Machine Learning,pytorch" data-listing-date-sort="1662476400000" data-listing-file-modified-sort="1700975341603" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="85" data-listing-title-sort="DNN (1주차)" data-listing-filename-sort="2022-09-07-ml_1w.ipynb">
+<tr data-index="139" data-categories="Special Topics in Machine Learning,pytorch" data-listing-date-sort="1662476400000" data-listing-file-modified-sort="1700975341603" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="85" data-listing-title-sort="DNN (1주차)" data-listing-filename-sort="2022-09-07-ml_1w.ipynb">
 <td>
 <span class="listing-date">Sep 7, 2022</span>
 </td>
 <td>
 <a href="./posts/ml/2022-09-07-ml_1w.html" class="title listing-title">DNN (1주차)</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
+</td>
+</tr>
+<tr data-index="140" data-categories="Special Topics in Machine Learning" data-listing-date-sort="1662476400000" data-listing-file-modified-sort="1700975341595" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="133" data-listing-title-sort="Intro" data-listing-filename-sort="2022-09-07-ml.ipynb">
+<td>
+<span class="listing-date">Sep 7, 2022</span>
+</td>
+<td>
+<a href="./posts/ml/2022-09-07-ml.html" class="title listing-title">Intro</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
@@ -2815,9 +2852,6 @@ Author
 <div class="listing-no-matching d-none">
 No matching items
 </div>
-<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
-  <ul class="pagination"></ul>
-</nav>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
