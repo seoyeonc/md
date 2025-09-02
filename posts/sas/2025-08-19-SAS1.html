@@ -1180,6 +1180,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#symputx" id="toc-symputx" class="nav-link" data-scroll-target="#symputx">symputx</a></li>
   <li><a href="#간접참조" id="toc-간접참조" class="nav-link" data-scroll-target="#간접참조">간접참조&amp;&amp;</a></li>
   <li><a href="#매크로-지우는-코드" id="toc-매크로-지우는-코드" class="nav-link" data-scroll-target="#매크로-지우는-코드">매크로 지우는 코드</a></li>
+  <li><a href="#autocall-facility" id="toc-autocall-facility" class="nav-link" data-scroll-target="#autocall-facility">Autocall facility</a></li>
   <li><a href="#substr" id="toc-substr" class="nav-link" data-scroll-target="#substr">%SUBSTR</a></li>
   <li><a href="#put" id="toc-put" class="nav-link" data-scroll-target="#put">%put</a></li>
   <li><a href="#minoperator" id="toc-minoperator" class="nav-link" data-scroll-target="#minoperator">minoperator</a></li>
@@ -1190,10 +1191,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#advanced-tech" id="toc-advanced-tech" class="nav-link" data-scroll-target="#advanced-tech">Advanced Tech</a>
   <ul class="collapse">
   <li><a href="#array" id="toc-array" class="nav-link" data-scroll-target="#array">Array</a></li>
-  <li><a href="#hash-object" id="toc-hash-object" class="nav-link" data-scroll-target="#hash-object">Hash object</a></li>
+  <li><a href="#hash-object" id="toc-hash-object" class="nav-link" data-scroll-target="#hash-object">Hash object</a>
+  <ul class="collapse">
+  <li><a href="#hash-데이터셋-output하는-법" id="toc-hash-데이터셋-output하는-법" class="nav-link" data-scroll-target="#hash-데이터셋-output하는-법">hash 데이터셋 output하는 법</a></li>
+  <li><a href="#hiter" id="toc-hiter" class="nav-link" data-scroll-target="#hiter">hiter</a></li>
+  </ul></li>
   <li><a href="#proc-fcmp" id="toc-proc-fcmp" class="nav-link" data-scroll-target="#proc-fcmp">PROC FCMP</a></li>
   <li><a href="#lag" id="toc-lag" class="nav-link" data-scroll-target="#lag">lag</a></li>
-  <li><a href="#정규표현식" id="toc-정규표현식" class="nav-link" data-scroll-target="#정규표현식">정규표현식</a></li>
+  <li><a href="#prx-정규표현식" id="toc-prx-정규표현식" class="nav-link" data-scroll-target="#prx-정규표현식">PRX 정규표현식</a></li>
   <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">Format</a></li>
   <li><a href="#count-find" id="toc-count-find" class="nav-link" data-scroll-target="#count-find">Count, Find</a></li>
   </ul></li>
@@ -1580,6 +1585,24 @@ run;
 <h2 class="anchored" data-anchor-id="매크로-지우는-코드">매크로 지우는 코드</h2>
 <pre class="sas"><code>%symdel &amp;vars;</code></pre>
 </section>
+<section id="autocall-facility" class="level2">
+<h2 class="anchored" data-anchor-id="autocall-facility">Autocall facility</h2>
+<pre class="sas"><code>/* AUTOCALL 세팅 */
+options mautosource
+        sasautos = ("c:\cert\programs" "!sasroot\core\sasmacro");
+
+/* c:\cert\programs\greet.sas 파일 내용:
+   %macro greet(name);
+      %put Hello, &amp;name!;
+   %mend;
+*/
+
+/* 호출 */
+%greet(Max);</code></pre>
+<ul>
+<li><code>Hello, Max!</code></li>
+</ul>
+</section>
 <section id="substr" class="level2">
 <h2 class="anchored" data-anchor-id="substr">%SUBSTR</h2>
 <ul>
@@ -1793,7 +1816,9 @@ object-name.definedone ()
 object-name.find() 찾으면 &gt; 0
 object-name.add ()
 object-name.output ()</code></pre>
-<p>hash 데이터셋 output하는 법</p>
+<section id="hash-데이터셋-output하는-법" class="level3">
+<h3 class="anchored" data-anchor-id="hash-데이터셋-output하는-법">hash 데이터셋 output하는 법</h3>
+<p><code>-</code></p>
 <pre class="sas"><code>data example1;
     if _n_=1 then do;
         declare hash h(dataset:"sashelp.class");
@@ -1806,6 +1831,7 @@ object-name.output ()</code></pre>
     if rc=0 then output;                 /* 매칭된 경우 출력 */
     drop rc;
 run;</code></pre>
+<p><code>-</code></p>
 <pre class="sas"><code>data work.StateCityPopulation; 
     if _N_=1 then do; 
         if 0 then set pg3.population.usstates; 
@@ -1830,6 +1856,77 @@ run;</code></pre>
         end;
     ()
 run;</code></pre>
+</section>
+<section id="hiter" class="level3">
+<h3 class="anchored" data-anchor-id="hiter">hiter</h3>
+<pre class="sas"><code>data test;
+   input id name $ age;
+   datalines;
+1 Alice 14
+2 Bob 15
+3 Carol 13
+;
+run;
+
+data _null_;
+   if _N_ = 1 then do;
+      declare hash h(dataset:"test");
+      h.definekey("id");
+      h.definedata("id","name","age");
+      h.definedone();
+
+      declare hiter hi("h");
+   end;
+
+   rc = hi.first();
+   do while (rc = 0);
+      putlog id= name= age=;
+      rc = hi.next();
+   end;
+run;
+</code></pre>
+<ul>
+<li><code>hiter</code>는 iterator로, 순회하면서 데이터 검색한다.</li>
+<li><code>hi.first()</code>로 첫번째 정해놓고,</li>
+<li><code>do while</code>로 rc가 0이 나올때까지 rc 검색</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 42%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>구분</th>
+<th><code>find</code></th>
+<th><code>hiter</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>방식</td>
+<td>key 값 직접 지정</td>
+<td>모든 key 순회</td>
+</tr>
+<tr class="even">
+<td>반환 범위</td>
+<td>단일 key</td>
+<td>전체 key</td>
+</tr>
+<tr class="odd">
+<td>사용 목적</td>
+<td>lookup / join</td>
+<td>전체 탐색 / 조건 필터링</td>
+</tr>
+<tr class="even">
+<td>output 가능?</td>
+<td>가능 (<code>if rc=0 then output;</code>)</td>
+<td>가능 (<code>output;</code> inside loop)</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="proc-fcmp" class="level2">
 <h2 class="anchored" data-anchor-id="proc-fcmp">PROC FCMP</h2>
@@ -1955,8 +2052,8 @@ proc print data=test; run;</code></pre>
 </tbody>
 </table>
 </section>
-<section id="정규표현식" class="level2">
-<h2 class="anchored" data-anchor-id="정규표현식">정규표현식</h2>
+<section id="prx-정규표현식" class="level2">
+<h2 class="anchored" data-anchor-id="prx-정규표현식">PRX 정규표현식</h2>
 <table class="table">
 <thead>
 <tr class="header">
