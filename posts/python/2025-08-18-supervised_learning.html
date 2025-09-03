@@ -2411,7 +2411,7 @@ Epoch 12/50
 15/55 [=======&gt;......................] - ETA: 25s - loss: 0.5640 - accuracy: 0.6893</code></pre>
 </div>
 </div>
-<div id="0bc519c7-cfcd-4489-a34a-24465dac1a41" class="cell">
+<div id="0bc519c7-cfcd-4489-a34a-24465dac1a41" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># from sklearn.metrics import accuracy_score, roc_auc_score, classification_report, confusion_matrix</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># from sklearn.preprocessing import label_binarize</span></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2432,22 +2432,52 @@ Epoch 12/50
 <span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">=== GRU ==="</span>)</span>
 <span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>acc_gru, auc_gru <span class="op">=</span> evaluate(gru_model, X_te, y_te, n_classes)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>=== LSTM ===
+137/137 [==============================] - 9s 62ms/step
+Accuracy: 0.8597853391185202
+ROC-AUC (macro OvR): 0.9577867423130026
+              precision    recall  f1-score   support
+
+           0      0.980     0.858     0.915      3624
+           1      0.280     0.748     0.408       111
+           2      0.743     0.817     0.778       290
+           3      0.154     0.906     0.264        32
+           4      0.763     0.950     0.846       322
+
+    accuracy                          0.860      4379
+   macro avg      0.584     0.856     0.642      4379
+weighted avg      0.924     0.860     0.883      4379
+
+[[3110  199   78  148   89]
+ [  24   83    2    1    1]
+ [  27   12  237    9    5]
+ [   1    1    1   29    0]
+ [  13    1    1    1  306]]
+
+=== GRU ===
+137/137 [==============================] - 7s 54ms/step
+Accuracy: 0.798812514272665
+ROC-AUC (macro OvR): 0.9510862539659783
+              precision    recall  f1-score   support
+
+           0      0.975     0.787     0.871      3624
+           1      0.194     0.721     0.305       111
+           2      0.581     0.841     0.687       290
+           3      0.101     0.875     0.182        32
+           4      0.849     0.910     0.879       322
+
+    accuracy                          0.799      4379
+   macro avg      0.540     0.827     0.585      4379
+weighted avg      0.914     0.799     0.840      4379
+
+[[2853  327  170  229   45]
+ [  26   80    2    3    0]
+ [  18    6  244   15    7]
+ [   2    0    2   28    0]
+ [  26    0    2    1  293]]</code></pre>
 </div>
-<p>CNN+LSTM 하이브리드</p>
-<p>CNN → local features 추출 → LSTM → temporal dependency 반영.</p>
-<p>Output: Binary classification (Normal=0, MI=1).</p>
-<p>Transfer Learning (핵심 부분)</p>
-<p>Step 1: MIT-BIH arrhythmia dataset으로 CNN 모델 사전학습 (heartbeat classification).</p>
-<p>Step 2: Feature extractor 부분을 PTB 데이터로 fine-tuning → 심근경색 탐지.</p>
-<p>Expected Outcome: 작은 PTB 데이터셋에서도 높은 accuracy 달성 가능.</p>
-<p>모델 평가</p>
-<p>Metrics: Accuracy, Precision, Recall, F1, ROC-AUC</p>
-<p>임상적 중요성: Sensitivity (Recall, true positive rate) 특히 중요 → MI 놓치면 위험.</p>
-<p>Cross-validation: 환자 단위 cross-validation으로 generalization 검증.</p>
-<p>Explainability &amp; Interpretability</p>
-<p>Grad-CAM / Saliency maps: 모델이 ECG 파형 중 어느 부분(QRS, ST elevation)에 주목하는지 확인.</p>
-<p>SHAP / LIME: 특징 기반 모델에서 MI 판별에 기여한 변수 확인.</p>
-<p>의학적 해석 연결: ST segment elevation → MI의 전형적 패턴임을 보여주면 신뢰성 강화.</p>
+</div>
 
 
 </section>
