@@ -3036,11 +3036,11 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#case-조건-사용법",
-    "href": "posts/sas/2025-08-19-SAS1.html#case-조건-사용법",
+    "objectID": "posts/sas/2025-08-19-SAS1.html#기본-select-select-from-where-order-by",
+    "href": "posts/sas/2025-08-19-SAS1.html#기본-select-select-from-where-order-by",
     "title": "SAS Advanced Certificate",
-    "section": "case 조건 사용법",
-    "text": "case 조건 사용법\nproc sql;\n   select FirstName, LastName, State, CreditScore,\n          case Married\n             when \"M\" then \"Married\"\n             when \"D\" then \"Divorced\"\n             when \"S\" then \"Single\"\n             when \"W\" then \"Widowed\"\n             else \"Unknown\"\n          end as Category\n   from sq.customer (obs=1000);\nquit;",
+    "section": "기본 SELECT: SELECT, FROM, WHERE, ORDER BY",
+    "text": "기본 SELECT: SELECT, FROM, WHERE, ORDER BY\nproc sql;\n   select id, \n          name, \n          salary * 12 as Annual_Salary\n   from employees\n   where department = 'HR' and salary &gt; 40000\n   order by Annual_Salary desc;\nquit;\n-&gt; id, name, Annual_Salary만 출력, employees 테이블에서 HR 부서 & 급여 &gt; 40000인 직원만 뽑음, 연봉 높은 사람 순으로 정렬,\n\nFROM employees→ employees 테이블에서 데이터를 불러옴.\nSELECT id, name salary * 12 as Annual_Salary→ 계산 열(연봉) 생성, AS로 새 이름 부여\nWHERE department = 'HR' and salary &gt; 40000→ 부서가 HR이고, 월급이 40,000 초과인 직원만 필터링.\nORDER BY Annual_Salary desc → 연봉(Annual_Salary) 기준 내림차순 정렬.",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -3049,11 +3049,11 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#operators-연산자",
-    "href": "posts/sas/2025-08-19-SAS1.html#operators-연산자",
+    "objectID": "posts/sas/2025-08-19-SAS1.html#새-변수-생성-as-계산열-case-when",
+    "href": "posts/sas/2025-08-19-SAS1.html#새-변수-생성-as-계산열-case-when",
     "title": "SAS Advanced Certificate",
-    "section": "Operators 연산자",
-    "text": "Operators 연산자\n\n\n\n\n\n\n\n\n\n연산자\n중복 처리\n컬럼 매칭\n특징\n\n\n\n\nUNION\n중복 제거\n위치 기반\n두 SELECT 결과 합침 (DISTINCT 효과, 자동 정렬)\n\n\nUNION ALL\n중복 유지\n위치 기반\n두 SELECT 결과 합침 (중복 포함, 빠름)\n\n\nOUTER UNION\n중복 유지\n위치 기반\n컬럼 개수가 달라도 합칠 수 있음, 없는 값은 NULL/결측\n\n\nOUTER UNION CORR\n중복 유지\n이름 기반\n컬럼 이름 기준으로 매칭, 없는 값은 NULL/결측\n\n\nEXCEPT\n중복 제거\n위치 기반\n첫 번째 SELECT 결과에서 두 번째 SELECT 결과를 제외\n\n\nINTERSECT\n중복 제거\n위치 기반\n두 SELECT 결과의 공통 행만 반환",
+    "section": "새 변수 생성: AS, 계산열, CASE WHEN",
+    "text": "새 변수 생성: AS, 계산열, CASE WHEN\n\nAS (Alias, 별칭); 새 변수를 만들거나, 기존 변수에 별칭(alias)을 부여할 때 사용.\n\n\nAS 키워드는 출력 시 컬럼명 변경 + 새 변수 생성 역할.\n\nproc sql;\n   select id,\n          salary * 12 as Annual_Salary\n   from employees;\nquit;\n-&gt; salary * 12 계산 열을 만들고, 새 변수 이름은 Annual_Salary.\n\n계산 열 (Computed Column); 기존 컬럼을 이용해 계산된 새로운 컬럼을 만듦.\n\n\nAS와 함께 쓰임.\n\nproc sql;\n   select id,\n          weight / (height*height) as BMI\n   from health;\nquit;\n-&gt; weight와 height를 활용해서 BMI라는 계산 열 생성.\n- 특징 - SELECT 문에서만 존재 (원본 데이터셋에는 추가되지 않음). - 다른 계산열에 재사용 가능 (단, 순서상 앞에서 정의한 계산 열은 뒤에서 사용 가능).\nproc sql;\n   select id,\n          salary * 12 as Annual_Salary,\n          calculated Annual_Salary * 0.1 as Tax\n   from employees;\nquit;\n-&gt; CALCULATED 키워드: 이미 SELECT 안에서 만든 계산 열 재사용.\n\nCASE WHEN; 조건문을 사용하여 새로운 변수를 생성.\n\n\nIF THEN ELSE와 비슷한 역할을 SQL에서 수행.\n\nproc sql;\n   select id,\n          case \n             when score &gt;= 90 then 'A'\n             when score &gt;= 80 then 'B'\n             when score &gt;= 70 then 'C'\n             else 'F'\n          end as Grade\n   from exam;\nquit;\n-&gt; 점수를 등급으로 변환하여 새 변수 Grade 생성.\n- 특징: - END로 닫아야 함. - 반드시 AS 새변수명으로 이름 부여. - 문자형/숫자형 혼합 불가 (모두 같은 타입이어야 함).",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -3062,11 +3062,11 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#group-by-사용-하고-안-하고의-차이",
-    "href": "posts/sas/2025-08-19-SAS1.html#group-by-사용-하고-안-하고의-차이",
+    "objectID": "posts/sas/2025-08-19-SAS1.html#조인-inner-left-right-full-coalesce-함수-포함",
+    "href": "posts/sas/2025-08-19-SAS1.html#조인-inner-left-right-full-coalesce-함수-포함",
     "title": "SAS Advanced Certificate",
-    "section": "group by 사용 하고 안 하고의 차이",
-    "text": "group by 사용 하고 안 하고의 차이\n\nGROUP BY 없음 → 각 행(row) 그대로 출력\n\nGROUP BY 있음 → 지정한 그룹별로 요약(평균, 합계 등 집계 함수 결과)만 출력\n\n\nGROUP BY 사용하지 않은 경우 (원본 그대로)\n\n\n\n\nMake\nMPG_City\n\n\n\n\nToyota\n20\n\n\nToyota\n22\n\n\nToyota\n25\n\n\nFord\n15\n\n\nFord\n18\n\n\nHonda\n30\n\n\n\n\nGROUP BY 사용한 경우 (Make별 평균)\n\n\n\n\nMake\nAvgCityMPG\n\n\n\n\nFord\n16.5\n\n\nHonda\n30.0\n\n\nToyota\n22.3",
+    "section": "조인: INNER, LEFT, RIGHT, FULL (COALESCE 함수 포함)",
+    "text": "조인: INNER, LEFT, RIGHT, FULL (COALESCE 함수 포함)\n\nINNER JOIN; 두 테이블에 모두 존재하는 공통 키 값만 결과에 포함.\n\n\n매칭되지 않는 행은 제외됨.\n\nproc sql;\n   select a.id, a.name, b.score\n   from tableA as a\n        inner join tableB as b\n        on a.id = b.id;\nquit;\n-&gt; tableA와 tableB에 동시에 존재하는 id 값만 결과에 출력됨.\n\nLEFT JOIN; 왼쪽 테이블(A)의 모든 행을 결과에 포함.\n\n\n오른쪽 테이블(B)에 매칭되는 값이 없으면 NULL로 표시.\n\nproc sql;\n   select a.id, a.name, b.score\n   from tableA as a\n        left join tableB as b\n        on a.id = b.id;\nquit;\n-&gt; tableA의 모든 id가 나오고, 매칭 안 되는 경우 score는 NULL.\n\nRIGHT JOIN; 오른쪽 테이블(B)의 모든 행을 결과에 포함.\n\n\n왼쪽(A)에 매칭되는 값이 없으면 NULL.\n\nproc sql;\n   select a.id, a.name, b.score\n   from tableA as a\n        right join tableB as b\n        on a.id = b.id;\nquit;\n-&gt; tableB의 모든 id가 나오고, 매칭 안 되는 경우 name은 NULL.\n\nFULL JOIN; 두 테이블(A, B) 모두의 모든 행을 결과에 포함.\n\n\n매칭이 없는 경우 NULL 값 채워짐.\n\nproc sql;\n   select a.id, a.name, b.score\n   from tableA as a\n        full join tableB as b\n        on a.id = b.id;\nquit;\n-&gt; tableA와 tableB의 전체 id가 포함되며, 없는 부분은 NULL.\n\nCOALESCE 함수; NULL 값을 처리하기 위해 사용. 여러 인수 중 처음으로 NULL이 아닌 값을 반환.\n\n\nFULL JOIN 시 특히 자주 사용됨.\n\nproc sql;\n   select coalesce(a.id, b.id) as id,\n          a.name,\n          b.score\n   from tableA as a\n        full join tableB as b\n        on a.id = b.id;\nquit;\n-&gt; a.id가 없으면 b.id를 대신 사용. 즉, 두 테이블을 FULL JOIN 할 때 키를 깔끔하게 하나로 합칠 수 있음.",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -3075,11 +3075,11 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#subquery",
-    "href": "posts/sas/2025-08-19-SAS1.html#subquery",
+    "objectID": "posts/sas/2025-08-19-SAS1.html#set-operators-union-outer-union-except-intersect",
+    "href": "posts/sas/2025-08-19-SAS1.html#set-operators-union-outer-union-except-intersect",
     "title": "SAS Advanced Certificate",
-    "section": "subquery",
-    "text": "subquery\n\nin사용\n\nsashelp.class에서 나이가 sashelp.class에서 가장 많은 나이들 중 하나인 학생을 출력하시오.\n\n\nproc sql;\n   select Name, Age\n   from sashelp.class\n   where Age in (select max(Age) from sashelp.class);\nquit;\n\n인라인 뷰\n\nsashelp.class에서 나이별 평균 몸무게를 계산한 후, 평균이 100 이상인 나이 그룹만 출력하시오.\n\n\nproc sql;\n   select *\n   from (\n      select Age, avg(Weight) as AvgWeight\n      from sashelp.class\n      group by Age\n   ) as sub\n   where AvgWeight &gt;= 100;\nquit;",
+    "section": "Set operators: UNION, OUTER UNION, EXCEPT, INTERSECT",
+    "text": "Set operators: UNION, OUTER UNION, EXCEPT, INTERSECT\n\n\n\n\n\n\n\n\n\n연산자\n중복 처리\n컬럼 매칭\n특징\n\n\n\n\nUNION\n중복 제거\n위치 기반\n두 SELECT 결과 합침 (DISTINCT 효과, 자동 정렬)\n\n\nUNION ALL\n중복 유지\n위치 기반\n두 SELECT 결과 합침 (중복 포함, 빠름)\n\n\nOUTER UNION\n중복 유지\n위치 기반\n컬럼 개수가 달라도 합칠 수 있음, 없는 값은 NULL/결측\n\n\nOUTER UNION CORR\n중복 유지\n이름 기반\n컬럼 이름 기준으로 매칭, 없는 값은 NULL/결측\n\n\nEXCEPT\n중복 제거\n위치 기반\n첫 번째 SELECT 결과에서 두 번째 SELECT 결과를 제외\n\n\nINTERSECT\n중복 제거\n위치 기반\n두 SELECT 결과의 공통 행만 반환\n\n\n\n\nUNION; 두 쿼리 결과를 합침. (중복은 자동 제거)\n\n\nUNION ALL을 쓰면 중복까지 포함.\n각 SELECT 절의 컬럼 개수, 타입, 순서가 같아야 함.\n\nproc sql;\n   select id, name from tableA\n   union\n   select id, name from tableB;\nquit;\n-&gt; tableA와 tableB의 행을 합치되, 중복은 제거.\n\nOUTER UNION; 두 테이블을 세로 + 가로 방향으로 합치는 개념.\n\n\n공통 변수가 있으면 맞춰서 붙이고, 없는 변수는 NULL로 채움.\n즉, 변수 구조가 달라도 가능.\n\nproc sql;\n   select id, name from tableA\n   outer union corr\n   select id, score from tableB;\nquit;\n-&gt; CORR 옵션: 같은 이름의 컬럼만 정렬해서 붙이고, 없는 값은 NULL.\n\nEXCEPT; 첫 번째 SELECT 결과에서 두 번째 SELECT 결과를 뺀 것.\n\n\n중복은 제거됨.\n\nproc sql;\n   select id from tableA\n   except\n   select id from tableB;\nquit;\n-&gt; tableA에는 있지만 tableB에는 없는 id만 출력.\n\nINTERSECT; 두 SELECT 결과에서 공통으로 존재하는 행만 반환.\n\n\n중복은 제거됨.\n\nproc sql;\n   select id from tableA\n   intersect\n   select id from tableB;\nquit;\n-&gt; 두 테이블에 모두 존재하는 id만 출력.",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -3088,11 +3088,11 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#do-while",
-    "href": "posts/sas/2025-08-19-SAS1.html#do-while",
+    "objectID": "posts/sas/2025-08-19-SAS1.html#집계-avg-count-max-min-sum-group-by-having",
+    "href": "posts/sas/2025-08-19-SAS1.html#집계-avg-count-max-min-sum-group-by-having",
     "title": "SAS Advanced Certificate",
-    "section": "do while",
-    "text": "do while\n\n모두 매크로 코드로 x초기값1.25로 지정하고 do until이나 do while로 2보다 작은 값에 댜해서만 x log기록 후 0.25씩 늘려가는 매크로\n\n%sysevalf 입력!\n\n\n\n%macro loopx;\n   %let x=1.25;   /* 초기값 */\n\n   %do %while(&x &lt; 2);\n      %put NOTE: x=&x;\n\n      /* x = x + 0.25 */\n      %let x = %sysevalf(&x + 0.25);\n   %end;\n%mend;\n\n%loopx",
+    "section": "집계: AVG, COUNT, MAX, MIN, SUM, GROUP BY, HAVING",
+    "text": "집계: AVG, COUNT, MAX, MIN, SUM, GROUP BY, HAVING\n\n집계 함수 (Aggregate Functions)\n\n\n\n\n\n\n\n\n\n함수\n설명\n예시\n\n\n\n\nAVG( )\n평균\navg(salary)\n\n\nCOUNT( )\n개수 (NULL 제외)\ncount(*) → 전체 행 개수count(var) → var이 NULL 아닌 행 개수\n\n\nMAX( )\n최댓값\nmax(salary)\n\n\nMIN( )\n최솟값\nmin(salary)\n\n\nSUM( )\n합계\nsum(salary)\n\n\n\n\nGROUP BY\n\n\n특정 컬럼을 기준으로 데이터를 그룹화해서 집계 수행.\nSELECT 절에는 그룹 변수 + 집계 함수만 올 수 있음.\n\nproc sql;\n   select department, avg(salary) as Avg_Salary\n   from employees\n   group by department;\nquit;\n-&gt; 부서별 평균 급여 계산.\n\nHAVING\n\n\nWHERE와 비슷하지만 집계된 결과에 조건을 걸 때 사용.\nWHERE은 개별 행(row)에 조건, HAVING은 그룹화된 결과에 조건.\n\nproc sql;\n   select department, avg(salary) as Avg_Salary\n   from employees\n   group by department\n   having avg(salary) &gt; 50000;\nquit;\n-&gt; 평균 급여가 50,000 초과인 부서만 출력.\n\nWHERE vs HAVING 차이\n\n\nWHERE: 집계하기 전에 데이터 필터링\nHAVING: 집계한 후 그룹 결과 필터링\n\nproc sql;\n   /* WHERE 사용 */\n   select department, avg(salary) as Avg_Salary\n   from employees\n   where salary &gt; 30000\n   group by department;\n\n   /* HAVING 사용 */\n   select department, avg(salary) as Avg_Salary\n   from employees\n   group by department\n   having avg(salary) &gt; 50000;\nquit;\n\ngroup by 사용 하고 안 하고의 차이\n\nGROUP BY 없음 → 각 행(row) 그대로 출력\n\nGROUP BY 있음 → 지정한 그룹별로 요약(평균, 합계 등 집계 함수 결과)만 출력\n\n\nGROUP BY 사용하지 않은 경우 (원본 그대로)\n\n\n\n\nMake\nMPG_City\n\n\n\n\nToyota\n20\n\n\nToyota\n22\n\n\nToyota\n25\n\n\nFord\n15\n\n\nFord\n18\n\n\nHonda\n30\n\n\n\n\nGROUP BY 사용한 경우 (Make별 평균)\n\n\n\n\nMake\nAvgCityMPG\n\n\n\n\nFord\n16.5\n\n\nHonda\n30.0\n\n\nToyota\n22.3",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -3101,11 +3101,11 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#macro-변수-저장",
-    "href": "posts/sas/2025-08-19-SAS1.html#macro-변수-저장",
+    "objectID": "posts/sas/2025-08-19-SAS1.html#중복-제거-distinct",
+    "href": "posts/sas/2025-08-19-SAS1.html#중복-제거-distinct",
     "title": "SAS Advanced Certificate",
-    "section": "macro 변수 저장",
-    "text": "macro 변수 저장\n\nsashelp.class에서 나이가 16인 학생들의 이름을 매크로 변수 student_list에 공백으로 구분해 저장하시오.\n\nproc sql noprint;\n   select Name into :student_list separated by ' '\n   from sashelp.class\n   where Age=16;\nquit;\n\n%put &=student_list;",
+    "section": "중복 제거: DISTINCT",
+    "text": "중복 제거: DISTINCT\n\nDISTINCT 기본\n\n\nSELECT 절에서 사용.\n결과에서 중복된 행(row)을 제거.\n모든 컬럼 조합이 동일하면 한 번만 남음.\n\nproc sql;\n   select distinct department\n   from employees;\nquit;\n-&gt; 부서 이름(department)이 중복 없이 한 번씩만 출력.\n\n여러 컬럼과 함께 사용\n\n\n여러 변수 조합이 동일하면 중복 제거.\n\nproc sql;\n   select distinct department, job_title\n   from employees;\nquit;\n-&gt; (department, job_title) 조합이 같은 경우 한 줄만 출력.\n\nCOUNT(DISTINCT …)\n\n\n특정 변수의 고유값 개수 세기.\nSAS PROC SQL은 COUNT(DISTINCT col) 지원.\n\nproc sql;\n   select count(distinct department) as Dept_N\n   from employees;\nquit;\n-&gt; department의 고유 개수 출력.\n\nDISTINCT와 GROUP BY 차이\n\n\nDISTINCT: 단순히 중복 제거 → 전체 결과를 unique set으로 만듦.\nGROUP BY: 그룹별 집계 수행 → 집계함수와 함께 사용.\n\n/* DISTINCT */\nproc sql;\n   select distinct department\n   from employees;\nquit;\n\n/* GROUP BY */\nproc sql;\n   select department, avg(salary) as Avg_Sal\n   from employees\n   group by department;\nquit;\n-&gt; DISTINCT: 그냥 고유 부서 목록, GROUP BY: 부서별 평균 급여",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -3114,11 +3114,11 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#symputx",
-    "href": "posts/sas/2025-08-19-SAS1.html#symputx",
+    "objectID": "posts/sas/2025-08-19-SAS1.html#서브쿼리-인라인-뷰-활용",
+    "href": "posts/sas/2025-08-19-SAS1.html#서브쿼리-인라인-뷰-활용",
     "title": "SAS Advanced Certificate",
-    "section": "symputx",
-    "text": "symputx\n\n다음 코드에서 maxage라는 매크로 변수를 생성하시오.\n\ndata _null_;\n   set sashelp.class end=last;\n   retain maxage 0;\n   if Age &gt; maxage then maxage=Age;\n   if last then call symputx('maxage', maxage);\nrun;\n\n%put &=maxage;",
+    "section": "서브쿼리, 인라인 뷰 활용",
+    "text": "서브쿼리, 인라인 뷰 활용\n\n서브쿼리 (Subquery)\n\n\n다른 SQL문 안에 포함된 하위 SELECT문. 보통 WHERE, HAVING, SELECT 절에서 많이 사용됨.\n\n\n단일 값 서브쿼리; 서브쿼리가 하나의 값을 반환.\n\nproc sql;\n   select id, name, salary\n   from employees\n   where salary &gt; (select avg(salary) from employees);\nquit;\n-&gt; 직원 급여가 전체 평균 급여보다 큰 행만 선택.\n\n다중 값 서브쿼리 (IN, EXISTS); 서브쿼리가 여러 행을 반환.\n\nproc sql;\n   select id, name\n   from employees\n   where department in (select department from departments where region = 'EU');\nquit;\n-&gt; 유럽(EU) 지역 부서에 속한 직원만 선택.\n\n상관 서브쿼리 (Correlated Subquery); 서브쿼리가 바깥 쿼리의 컬럼과 연결됨.\n\nproc sql;\n   select e1.id, e1.salary\n   from employees e1\n   where salary &gt; (select avg(e2.salary) \n                   from employees e2\n                   where e1.department = e2.department);\nquit;\n-&gt; 각 부서 평균 급여보다 급여가 높은 직원 선택.\n\n인라인 뷰 (Inline View); FROM 절 안에 들어가는 서브쿼리 (일시적 테이블처럼 사용).\n\nproc sql;\n   select department, Avg_Sal\n   from (select department, avg(salary) as Avg_Sal\n         from employees\n         group by department) as dept_avg\n   where Avg_Sal &gt; 50000;\nquit;\n-&gt; 먼저 부서별 평균 급여(dept_avg)를 만든 후, 평균이 50,000 초과인 부서만 선택.",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -3127,11 +3127,11 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#간접참조",
-    "href": "posts/sas/2025-08-19-SAS1.html#간접참조",
+    "objectID": "posts/sas/2025-08-19-SAS1.html#sas-확장-기능",
+    "href": "posts/sas/2025-08-19-SAS1.html#sas-확장-기능",
     "title": "SAS Advanced Certificate",
-    "section": "간접참조&&",
-    "text": "간접참조&&\n\n아래와 같은 매크로 변수들이 있을 때, var1=Height, var2=Weight, var3=Age. 루프를 이용해 차례대로 변수명을 출력하시오.\n\n&&var&i → &var1 → Height, 두 번 풀려서 최종적으로 변수명이 나옴\n\n\n%let var1=Height;\n%let var2=Weight;\n%let var3=Age;\n\n%macro show;\n   %do i=1 %to 3;\n      %put &&var&i;\n   %end;\n%mend;\n\n%show",
+    "section": "SAS 확장 기능:",
+    "text": "SAS 확장 기능:\n\nDataset options (KEEP=, DROP=, RENAME=, OBS=)\n\n\n\n\n\n\n\n\n옵션\n역할\n예시\n\n\n\n\nKEEP=\n지정한 변수만 불러오기/저장\n(keep=id name salary)\n\n\nDROP=\n지정한 변수 제외\n(drop=phone)\n\n\nRENAME=\n변수명 변경\n(rename=(dept=Department))\n\n\nOBS=\n행 개수 제한\n(obs=10)\n\n\n\n\nKEEP=; 데이터셋에서 필요한 변수만 선택\n\n\n입력 시: 읽을 때 해당 변수만 불러옴\n출력 시: 결과 데이터셋에 해당 변수만 남김\n\ndata emp_keep;\n   set employees(keep=id name salary);\nrun;\n-&gt; employees에서 id, name, salary만 가져와서 새 데이터셋 생성\n\nDROP=; 데이터셋에서 제외할 변수 지정\n\n\n입력 시: 불필요한 변수는 불러오지 않음\n출력 시: 결과 데이터셋에서 제외됨\n\ndata emp_drop;\n   set employees(drop=address phone);\nrun;\n-&gt; employees에서 address, phone 제외하고 나머지 변수 저장\n\nRENAME=; 변수 이름 변경\n\ndata emp_rename;\n   set employees(rename=(salary=Monthly_Salary dept=Department));\nrun;\n-&gt; salary → Monthly_Salary, dept → Department로 변경\n\nOBS=; 읽어올 관측치 개수 제한\n\n\n보통 테스트나 샘플링할 때 사용\n\ndata emp_obs;\n   set employees(obs=10);\nrun;\n-&gt; employees에서 앞의 10개 행만 불러옴\n\n함께 사용 예시\n\ndata emp_final;\n   set employees(keep=id name salary dept \n                 drop=phone \n                 rename=(dept=Department) \n                 obs=5);\nrun;\n\nobs=5 → 처음 5개 행만 읽음\nkeep=id name salary dept → 필요한 변수만 선택\ndrop=phone → phone 제외 (이미 keep에 없으므로 영향 없음)\nrename=dept→Department 적용\n\n\n\nInvocation options (INOBS=, OUTOBS=, NOPRINT, NUMBER)\n\n\n\n\n\n\n\n\n\n옵션\n역할\n예시\n특징\n\n\n\n\nINOBS=\n입력 데이터 행 개수 제한\nproc sql inobs=10;\n데이터 읽을 때 앞에서 10행만 사용\n\n\nOUTOBS=\n출력 행 개수 제한\nproc sql outobs=5;\n실행은 전체 대상으로 하지만 결과는 5행만 표시\n\n\nNOPRINT\n결과 출력 생략\nproc sql noprint;\n로그/결과창에 출력 안 됨, 테이블 생성용에 자주 사용\n\n\nNUMBER\n결과에 행 번호 표시\nproc sql number;\n결과창에서 행 번호 확인 가능\n\n\n\n\nINOBS=; 입력 행 제한 (읽을 때 앞에서부터 지정한 행 개수만 사용)\n\nproc sql inobs=10;\n   select * from employees;\nquit;\n-&gt; employees에서 앞의 10개 행만 읽어서 SQL 실행.\n\nOUTOBS=; 출력 행 제한 (결과로 보여주는 행 개수 제한)\n\nproc sql outobs=5;\n   select * from employees;\nquit;\n-&gt; employees 전체를 읽지만, 결과는 앞의 5개 행만 출력.\n\nNOPRINT; SQL 실행은 하지만 결과 테이블은 출력하지 않음.\n\n\n보통 CREATE TABLE이나 INSERT INTO 같은 결과 저장용 쿼리에서 사용.\n\nproc sql noprint;\n   create table emp_summary as\n   select department, avg(salary) as Avg_Sal\n   from employees\n   group by department;\nquit;\n-&gt; 테이블은 생성되지만 로그/출력 창에는 결과 안 뜸.\n\nNUMBER; 결과 출력 시, 각 행 왼쪽에 행 번호를 붙여줌.\n\nproc sql number;\n   select id, name, salary\n   from employees;\nquit;\n-&gt; 결과창에 1, 2, 3… 번호가 붙어서 출력됨.\n\n\nFunctions (SCAN, SUBSTR, LENGTH)\n\n\n\n\n\n\n\n\n\n함수\n역할\n예시\n결과\n\n\n\n\nSCAN\n구분자로 나눈 n번째 단어 추출\nscan(\"a,b,c\",2,\",\")\n\"b\"\n\n\nSUBSTR\n문자열에서 특정 위치 부분 추출/수정\nsubstr(\"ABCDEF\",2,3)\n\"BCD\"\n\n\nLENGTH\n문자열 길이 반환\nlength(\"Hello\")\n5\n\n\n\n\nSCAN; 문자열에서 단어 단위로 추출\n\nscan(string, n &lt;, delimiters&gt;)\n\nstring: 문자 변수\nn: 몇 번째 단어를 추출할지\ndelimiters: 구분자 (기본은 공백, , 등 지정 가능)\n\ndata _null_;\n   x = \"SAS Advanced Certification\";\n   word1 = scan(x,1);   /* SAS */\n   word2 = scan(x,2);   /* Advanced */\n   word3 = scan(x,3);   /* Certification */\n   put word1= word2= word3=;\nrun;\n-&gt; 시험에서는 이메일 주소에서 @ 앞부분 추출 같은 문제가 자주 나옴.\n\nscan(\"user@test.com\", 1, \"@\") → “user”\nscan(\"user@test.com\", 2, \"@\") → “test.com”\n\n\nSUBSTR; 문자열에서 일정 위치부터 지정 길이만큼 잘라내기\n\nsubstr(string, start &lt;, length&gt;)\n\nstart: 시작 위치 (1부터 시작)\nlength: 잘라낼 문자 수 (생략하면 끝까지)\n\ndata _null_;\n   x = \"ABCDEFG\";\n   y1 = substr(x,2,3);  /* BCD */\n   y2 = substr(x,5);    /* EFG */\n   put y1= y2=;\nrun;\n\n주의: SUBSTR 함수는 할당문 좌변에 올 수 있음 → 문자열 일부 수정 가능!\n\ndata _null_;\n   x = \"12345\";\n   substr(x,2,2) = \"AB\";   /* x = 1AB45 */\n   put x=;\nrun;\n\nLENGTH; 문자열의 길이(문자 개수) 반환\n\nlength(string)\ndata _null_;\n   x = \"Hello\";\n   len = length(x);   /* 5 */\n   put len=;\nrun;\n\nLENGTH는 공백도 포함\nLENGTHN = 문자열 길이, NULL → 0\nLENGTHC = 문자 변수의 메모리 길이 반환 (실제 저장 공간)\n\n\n\nDictionary tables (DICTIONARY.COLUMNS 등)\n\n\n\nDictionary Table\nSASHELP 뷰\n주요 정보\n\n\n\n\nCOLUMNS\nVCOLUMN\n변수명, 타입, 길이 등\n\n\nTABLES\nVTABLE\n데이터셋 행 수, 생성·수정일\n\n\nLIBNAMES\nVLIBNAM\n라이브러리 경로, 엔진\n\n\nMEMBERS\nVMEMBER\n라이브러리 내 멤버\n\n\nOPTIONS\nVOPTION\n시스템 옵션\n\n\nMACROS\nVMACRO\n매크로 변수\n\n\nINDEXES\nVINDEX\n인덱스 정보\n\n\n\n\nDictionary Tables란?\n\n\nSAS 세션에서 사용할 수 있는 메타데이터 테이블\n라이브러리, 데이터셋, 변수, 인덱스, 포맷, 옵션 등에 대한 정보를 담고 있음\n조회할 때는 PROC SQL 사용\n특징\n\nDICTIONARY. 라이브러리로 직접 접근 가능\n같은 내용을 SASHELP. 뷰로도 조회 가능 (SASHELP.VCOLUMN 등)\n\n\n\n주요 Dictionary Tables\n\n\n\n\n\n\n\n\n테이블 이름\n내용\n\n\n\n\nDICTIONARY.COLUMNS\n데이터셋의 변수 정보 (이름, 타입, 길이 등)\n\n\nDICTIONARY.TABLES\n라이브러리 내 테이블 정보 (행 수, 수정일 등)\n\n\nDICTIONARY.LIBNAMES\n현재 할당된 라이브러리 정보\n\n\nDICTIONARY.MEMBERS\n모든 SAS 라이브러리의 멤버(데이터셋, 뷰 등)\n\n\nDICTIONARY.INDEXES\n인덱스 정보\n\n\nDICTIONARY.OPTIONS\n현재 세션의 시스템 옵션 값\n\n\nDICTIONARY.MACROS\n매크로 변수 정보\n\n\nDICTIONARY.ENGINES\n라이브러리 엔진 정보\n\n\n\n\n활용 예시\n\n\n컬럼(변수) 정보 조회\n\nproc sql;\n   select libname, memname, name, type, length\n   from dictionary.columns\n   where libname='WORK' and memname='EMPLOYEES';\nquit;\n-&gt; WORK 라이브러리의 EMPLOYEES 데이터셋 변수 정보 조회\n\n데이터셋(테이블) 정보 조회\n\nproc sql;\n   select libname, memname, nobs, crdate, modate\n   from dictionary.tables\n   where libname='WORK';\nquit;\n-&gt; WORK 라이브러리에 있는 모든 데이터셋의 행 수, 생성일, 수정일 확인\n\n라이브러리 정보 확인\n\nproc sql;\n   select libname, path, engine\n   from dictionary.libnames;\nquit;\n-&gt; 라이브러리 위치 및 엔진 확인\n\n\nCALCULATED 키워드\n\n같은 SELECT 절 안에서 이미 생성한 계산 열(computed column)을 재사용할 때 사용.\n없으면 SAS는 “변수가 없다”는 에러를 냄.\n\nproc sql;\n   select salary * 12 as Annual_Salary,\n          calculated Annual_Salary * 0.1 as Tax\n   from employees;\nquit;\n\nAnnual_Salary는 salary * 12로 계산된 열.\nTax 계산할 때 CALCULATED Annual_Salary를 불러와야 함.\n그냥 Annual_Salary * 0.1 쓰면 에러 발생.\n* 순서 중요\n* CALCULATED는 앞에서 정의한 계산 열만 사용 가능\n* 뒤에 정의한 건 사용할 수 없음",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -3140,11 +3140,11 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#매크로-지우는-코드",
-    "href": "posts/sas/2025-08-19-SAS1.html#매크로-지우는-코드",
+    "objectID": "posts/sas/2025-08-19-SAS1.html#생성-let-into-call-symputx",
+    "href": "posts/sas/2025-08-19-SAS1.html#생성-let-into-call-symputx",
     "title": "SAS Advanced Certificate",
-    "section": "매크로 지우는 코드",
-    "text": "매크로 지우는 코드\n%symdel &vars;",
+    "section": "생성: %LET, INTO:, CALL SYMPUTX",
+    "text": "생성: %LET, INTO:, CALL SYMPUTX\n\n\n\n\n\n\n\n\n\n방법\n사용 위치\n생성 범위\n용도\n\n\n\n\n%LET\n매크로 언어 직접\n전역\n고정 상수/문자 할당\n\n\nINTO:\nPROC SQL\n전역\nSQL 결과 → 매크로 변수\n\n\nCALL SYMPUTX\nDATA step\n기본 전역 (지역도 가능)\n데이터 값 → 매크로 변수\n\n\n\n\n%LET; 전역 매크로 변수를 생성\n\n\n간단히 상수 값이나 문자열을 할당할 때 사용\n\n%let today = 2025-09-06;\n%put &=today;\n\n항상 전역 변수(global)\n문자/숫자 상관없이 문자열처럼 저장\n공백 포함 시 따옴표 사용 필요 (%let name=“My Name”;)\n\n\nINTO:; PROC SQL 안에서 결과를 매크로 변수로 저장\n\n\n단일 값 저장\n\nproc sql noprint;\n   select avg(salary)\n   into :avg_sal\n   from employees;\nquit;\n\n%put &=avg_sal;\n-&gt; 평균 급여를 &avg_sal 매크로 변수에 저장\n\n여러 값 저장\n\n공백 구분:\nproc sql noprint;\n   select name\n   into :namelist separated by ' '\n   from employees;\nquit;\n\n%put &=namelist;\n-&gt; Alice Bob Carol 이런 식으로 저장\n\n여러 개 매크로 변수에 순서대로 할당:\n\nproc sql noprint;\n   select name\n   into :name1-:name3\n   from employees;\nquit;\n\n%put &name1 &name2 &name3;\n\nCALL SYMPUTX; DATA step에서 매크로 변수 생성\n\ndata _null_;\n   set employees;\n   call symputx('empname', name);\nrun;\n\n%put &=empname;\n-&gt; 마지막 관측치의 name 값이 &empname에 저장\n\n행 단위 반복 가능 → 관측치별 매크로 변수 만들 수 있음\nSYMPUTX는 공백 제거하고, 자동으로 문자/숫자 처리\nSYMPUT보다 SYMPUTX를 쓰는 게 권장됨\n다음 코드에서 maxage라는 매크로 변수를 생성하시오.\n\ndata _null_;\n   set sashelp.class end=last;\n   retain maxage 0;\n   if Age &gt; maxage then maxage=Age;\n   if last then call symputx('maxage', maxage);\nrun;\n\n%put &=maxage;",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -3153,11 +3153,11 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#autocall-facility",
-    "href": "posts/sas/2025-08-19-SAS1.html#autocall-facility",
+    "objectID": "posts/sas/2025-08-19-SAS1.html#scope-제어-global-local-symputx-옵션",
+    "href": "posts/sas/2025-08-19-SAS1.html#scope-제어-global-local-symputx-옵션",
     "title": "SAS Advanced Certificate",
-    "section": "Autocall facility",
-    "text": "Autocall facility\n/* AUTOCALL 세팅 */\noptions mautosource\n        sasautos = (\"c:\\cert\\programs\" \"!sasroot\\core\\sasmacro\");\n\n/* c:\\cert\\programs\\greet.sas 파일 내용:\n   %macro greet(name);\n      %put Hello, &name!;\n   %mend;\n*/\n\n/* 호출 */\n%greet(Max);\n\nHello, Max!",
+    "section": "Scope 제어: %GLOBAL, %LOCAL, SYMPUTX 옵션",
+    "text": "Scope 제어: %GLOBAL, %LOCAL, SYMPUTX 옵션\n\n\n\n\n\n\n\n\n방법\n생성 범위\n특징\n\n\n\n\n%GLOBAL\n전역\n항상 전역 매크로 변수 생성 (세션 전체에서 유효)\n\n\n%LOCAL\n지역\n매크로 안에서만 사용, 매크로 종료 시 삭제\n\n\nCALL SYMPUTX\n기본 전역, 옵션으로 제어\n'G' 전역, 'L' 지역 / 기본은 실행 환경 따라 자동 결정\n\n\n\n\n매크로 변수 스코프 개념\n\n\n전역(Global): SAS 세션 내내 유지, 모든 매크로에서 접근 가능\n지역(Local): 특정 매크로 실행 중에만 존재, 매크로 종료 시 자동 삭제\n\n\n%GLOBAL\n\n\n전역 매크로 변수를 명시적으로 선언\n매크로 외부·내부 어디서든 사용 가능\n\n%global gvar;\n%let gvar = 100;\n%put &=gvar;   /* 100 */\n-&gt; 이미 존재하는 전역 변수면 값은 유지, 없으면 새로 생성\n\n%LOCAL\n\n\n지역 매크로 변수 선언 (해당 매크로 안에서만 유효)\n\n%macro test;\n   %local lvar;\n   %let lvar = 200;\n   %put &=lvar;   /* 200 */\n%mend;\n%test;\n%put &=lvar;   /* WARNING: macro variable not resolved */\n-&gt; 매크로 종료 시 자동 소멸\n\nCALL SYMPUTX 옵션\n\n\nDATA step에서 매크로 변수 생성 시 스코프 제어 가능\n\n%macro demo;\n   data _null_;\n      x = 300;\n      call symputx('mvar', x, 'L'); /* Local */\n   run;\n   %put Local var = &mvar;\n%mend;\n%demo;\n\n세 번째 인수(스코프 지정):\n\n‘G’ → 전역(Global) 매크로 변수 생성\n‘L’ → 지역(Local) 매크로 변수 생성\n\n생략 시:\n\n매크로 실행 중이면 지역(local)\n아니면 전역(global)",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -3166,11 +3166,11 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#substr",
-    "href": "posts/sas/2025-08-19-SAS1.html#substr",
+    "objectID": "posts/sas/2025-08-19-SAS1.html#이름-구분자.-활용",
+    "href": "posts/sas/2025-08-19-SAS1.html#이름-구분자.-활용",
     "title": "SAS Advanced Certificate",
-    "section": "%SUBSTR",
-    "text": "%SUBSTR\n\n매크로 변수 name=Alexander에서 앞 4글자만 추출하여 매크로 변수 shortname을 만드시오.\n\n%SUBSTR(string, position, length)\n결과: Alex\n\n\n%let name=Alexander;\n%let shortname=%substr(&name,1,4);\n%put &=shortname;",
+    "section": "이름 구분자(.) 활용",
+    "text": "이름 구분자(.) 활용\n\n기본 예시\n\n%let var = name;\n\n%put &var1;    /* 매크로 변수 var1 찾음 → 정의 안 되어 있으면 경고 */\n%put &var.1;   /* 매크로 변수 var 찾고, 뒤에 \"1\" 붙임 → name1 */\n\n&var1 은 var1이라는 매크로 변수를 찾음.\n&var.1 은 var 매크로 변수의 값(name) + 1 = name1\n\n\n문자열 연결할 때\n\n%let month = Jan;\n\n%put &month.Sales;   /* 매크로 변수 monthSalses 찾으려 함 → 에러 */\n%put &month.Sales;   /* month → Jan + Sales → JanSales */\n-&gt; &month.Sales 처럼 구분자 붙여야 원하는 결과 나옴.\n\n루프에서 자주 쓰임\n\n%macro loop;\n   %do i=1 %to 3;\n      %let var&i = value&i;\n      %put &&var&i;    /* && → &var1, &var2 ... */\n   %end;\n%mend;\n%loop;\n\n이때도 &var.&i 혹은 &var&i 로 처리해야 함.\n.을 붙이면 매크로 변수명과 루프 인덱스 구분이 확실해짐.",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -3179,11 +3179,63 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#put",
-    "href": "posts/sas/2025-08-19-SAS1.html#put",
+    "objectID": "posts/sas/2025-08-19-SAS1.html#매크로-프로그램",
+    "href": "posts/sas/2025-08-19-SAS1.html#매크로-프로그램",
     "title": "SAS Advanced Certificate",
-    "section": "%put",
-    "text": "%put\n\n% put error:쓰고 log에 print 안 되게 한느 법\n\n%macro name;\n    options nonotes;\n    %put error: this is error.\n%name;\n\nUSER 키워드는 사용자가 만든 모든 매크로 변수(전역 + 지역)를 로그에 보여줍니다.\n\n%let global1=AAA;\n\n%macro demo;\n   %let local1=BBB;\n   %global global2;\n   %let global2=CCC;\n\n   %put ---- Inside macro ----;\n   %put _USER_;\n%mend;\n\n%demo\n\n%put ---- After macro ----;\n%put _USER_;\n\nlog 결과\n\nGLOBAL GLOBAL1 AAA\nGLOBAL GLOBAL2 CCC\nLOCAL  LOCAL1 BBB\n\n---- After macro ----\nGLOBAL GLOBAL1 AAA\nGLOBAL GLOBAL2 CCC\n\n%put _ALL_; → 자동변수 + 사용자 변수 + 시스템 변수 전부 다\n%put _AUTOMATIC_; → 자동으로 제공되는 시스템 매크로 변수만\n%put _GLOBAL_; → 글로벌 변수만\n%put _LOCAL_; → 매크로 실행 중일 때만 로컬 변수만\n\nproc sql noprint;\n    select name\n    into :namelist separated by ','\n    into :n1 - :n5\n    into :avg_h, :avg_w\n    from sashelp.class\n    where sex='F';\nquit;",
+    "section": "매크로 프로그램",
+    "text": "매크로 프로그램\n\n정의/호출: %MACRO … %MEND\n%macro 매크로이름(매개변수);\n   /* 매크로 코드 */\n%mend 매크로이름;\n\n%macro ~ %mend 사이에 매크로 프로그램 코드 작성\n호출할 때는 %매크로이름(인수) 형태로 실행\n\n\n매크로 프로그램 생성과 호출\n\n\n매개변수 없는 매크로\n\n%macro hello;\n   %put Hello, SAS Macro!;\n%mend hello;\n\n%hello;\n\n%hello; 실행 시 로그에 Hello, SAS Macro! 출력\n\n\n매개변수 있는 매크로\n\n%macro greet(name);\n   %put Hello, &name!;\n%mend greet;\n\n%greet(Name);\n%greet(Name); 실행 시 Hello, Name! 출력\n\n\n파라미터 유무 호출\n\n매개변수의 종류\n\n\n위치 매개변수(Positional parameter)\n\n%macro report(dept, year);\n   %put Department=&dept, Year=&year;\n%mend;\n%report(HR, 2025);\n\n키워드 매개변수(Keyword parameter); 기본값 지정 가능\n\n%macro report(dept=Sales, year=2025);\n   %put Department=&dept, Year=&year;\n%mend;\n%report();                /* Sales, 2025 */\n%report(dept=HR, year=2024); /* HR, 2024 */\n\n조건문과 반복문\n\n\n\n조건문: %IF-%THEN-%ELSE\n\n조건문 %IF … %THEN … %ELSE\n\n%macro check(num);\n   %if &num &gt; 0 %then %put Positive;\n   %else %put Non-positive;\n%mend;\n%check(10);\n\n\n반복문: %DO-%END\n\n반복문 %DO ~ %END\n\n%macro loop(n);\n   %do i=1 %to &n;\n      %put Iteration &i;\n   %end;\n%mend;\n%loop(3);\n\n매크로 프로그램 활용 예시\n\n%macro summary(dataset, var);\n   proc sql;\n      select mean(&var), max(&var), min(&var)\n      from &dataset;\n   quit;\n%mend;\n\n%summary(sashelp.class, height);\n\nsashelp.class 데이터에서 height 변수의 평균, 최댓값, 최솟값 출력\n\n\n\nAUTOCALL facility (재사용 가능한 매크로 저장/호출)\n/* AUTOCALL 세팅 */\noptions mautosource\n        sasautos = (\"c:\\cert\\programs\" \"!sasroot\\core\\sasmacro\");\n\n/* c:\\cert\\programs\\greet.sas 파일 내용:\n   %macro greet(name);\n      %put Hello, &name!;\n   %mend;\n*/\n\n/* 호출 */\n%greet(Max);\n\nHello, Max!",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#매크로-함수",
+    "href": "posts/sas/2025-08-19-SAS1.html#매크로-함수",
+    "title": "SAS Advanced Certificate",
+    "section": "매크로 함수",
+    "text": "매크로 함수\n\n기본: %SCAN, %SUBSTR, %UPCASE\n\n\n\n\n\n\n\n\n\n함수\n역할\n예시\n결과\n\n\n\n\n%SCAN\n구분자로 n번째 단어 추출\n%scan(red,blue,green,2,%str(,))\nblue\n\n\n%SUBSTR\n문자열 부분 추출\n%substr(Advanced,1,3)\nAdv\n\n\n%UPCASE\n대문자 변환\n%upcase(London)\nLONDON\n\n\n\n\n%SCAN; 문자열에서 단어 단위 추출 (매크로 함수 버전)\n\n%let str = red,blue,green;\n\n%put %scan(&str,1,%str(,));   /* red   */\n%put %scan(&str,2,%str(,));   /* blue  */\n%put %scan(&str,3,%str(,));   /* green */\n\n데이터 함수 SCAN과 유사하지만 매크로 처리 단계에서 실행\n구분자(delimiters) 지정 가능 (%str(,) 처럼 특수문자 처리 필요)\n\n\n%SUBSTR; 문자열의 특정 위치 부분 추출\n\n%let word = Advanced;\n\n%put %substr(&word,1,3);   /* Adv */\n%put %substr(&word,5);     /* nced (길이 생략 시 끝까지) */\n\n데이터 함수 SUBSTR와 달리 매크로 함수는 수정 불가, 추출 전용\n시작 위치는 1부터 시작\n매크로 변수 name=Alexander에서 앞 4글자만 추출하여 매크로 변수 shortname을 만드시오.\n\n%SUBSTR(string, position, length)\n결과: Alex\n\n\n%let name=Alexander;\n%let shortname=%substr(&name,1,4);\n%put &=shortname;\n\n%UPCASE; 문자열을 모두 대문자로 변환\n\n%let city = London;\n\n%put %upcase(&city);   /* LONDON */\n\n데이터 함수 UPCASE와 동일한 기능을 매크로 환경에서 수행\n시험에서는 주로 비교 시 대소문자 무시 처리 용도로 등장\n\n\n\nQuoting: %STR, %NRSTR\n\n매크로 언어에서 특수문자, 공백, 예약어를 “그대로 문자로 취급”하게 해줌.\nSAS는 기본적으로 , ; ’ ” ( ) 같은 문자를 코드 구분자로 해석하려고 하는데, quoting을 쓰면 문자 그대로 저장 가능.\n\n\n\n\n\n\n\n\n\n\n\n함수\n역할\n처리 가능한 문자\n예시\n결과\n\n\n\n\n%STR\n특수문자/공백을 문자열로 저장\n공백, , ; ( )\n%str(New York)\nNew York\n\n\n%NRSTR\n%, & 같은 매크로 trigger까지 문자로 저장\n위 + %, &\n%nrstr(%put Hello;)\n%put Hello; (실행 안 됨)\n\n\n\n\n%STR; 특수문자나 공백을 매크로 상수로 저장할 때 사용.\n\n%let city = %str(New York);\n%put &=city;   /* New York */\n\n공백, 세미콜론(;), 괄호, 쉼표(,) 같은 구분 문자를 문자 그대로 저장\n) & % 같은 매크로 trigger 문자는 처리 못함\n\n\n%NRSTR; %STR과 동일하지만, 매크로 trigger 문자(&, %)도 문자 그대로 저장\n\n%let code = %nrstr(%put Hello;);\n%put &=code;   /* %put Hello; */\n\n% %put, &macrovar 같은 것까지 문자 그대로 저장 → 실행 안 됨\n보통 매크로 디버깅, 코드 조각 저장 등에 쓰임\n\n/* %STR */\n%let msg1 = %str(Hello; World);\n%put &=msg1;     /* Hello; World */\n\n/* %NRSTR */\n%let msg2 = %nrstr(%put Hello;);\n%put &=msg2;     /* %put Hello;  (실행 안 됨, 문자열로 저장됨) */\n\n\nEvaluation: %SYSEVALF\n\n매크로 환경에서 산술 계산을 할 때 사용\n특히 소수점(부동소수점) 계산이 필요할 때 반드시 필요\n\n\n\n\n\n\n\n\n\n\n함수\n특징\n예시\n결과\n\n\n\n\n%EVAL\n정수 계산만 가능\n%eval(5/2)\n2\n\n\n%SYSEVALF\n실수 계산 가능\n%sysevalf(5/2)\n2.5\n\n\n%SYSEVALF(...,BOOLEAN)\n조건식 판정\n%sysevalf(5&gt;3,boolean)\n1\n\n\n\n%put %sysevalf(3.2 + 4.8);   /* 8.0 */\n%put %sysevalf(10/3);        /* 3.33333 */\n\n매크로 변수 계산도 가능\n\n%let a = 5;\n%let b = 2;\n\n%let result = %sysevalf(&a / &b);\n%put &=result;   /* 2.5 */\n\n옵션\n\n%SYSEVALF(expression &lt;,conversion-type&gt;) - conversion-type: 계산 결과를 어떻게 반환할지 결정\n\n\n\n옵션\n설명\n예시\n\n\n\n\nBOOLEAN\n0/1 반환 (조건식 판정)\n%sysevalf(5&gt;3,boolean) → 1\n\n\nCEIL\n올림\n%sysevalf(3.2,ceil) → 4\n\n\nFLOOR\n내림\n%sysevalf(3.8,floor) → 3\n\n\nINTEGER\n정수 변환 (소수 버림)\n%sysevalf(3.8,integer) → 3\n\n\n\n\n%EVAL → 정수 연산만 가능 (소수점 불가)\n%SYSEVALF → 부동소수점 연산 가능\n\n%put %eval(5/2);        /* 2 */\n%put %sysevalf(5/2);    /* 2.5 */\n\n관련 문제\n\n모두 매크로 코드로 x초기값1.25로 지정하고 do until이나 do while로 2보다 작은 값에 댜해서만 x log기록 후 0.25씩 늘려가는 매크로\n\n%sysevalf 입력!\n\n\n\n%macro loopx;\n   %let x=1.25;   /* 초기값 */\n\n   %do %while(&x &lt; 2);\n      %put NOTE: x=&x;\n\n      /* x = x + 0.25 */\n      %let x = %sysevalf(&x + 0.25);\n   %end;\n%mend;\n\n%loopx\n\n\n\n\n\n%SYSFUNC → DATA step 함수 호출\n\n매크로 환경에서 DATA step 함수를 호출할 수 있게 해줌\n즉, 매크로 코드에서도 숫자, 문자 처리 함수를 직접 활용 가능\n\n\n\n\n\n\n\n\n\n구분\n예시\n결과\n\n\n\n\n숫자 함수\n%sysfunc(mean(5,10,15))\n10\n\n\n날짜 함수\n%sysfunc(today(),date9.)\n06SEP2025\n\n\n문자 함수\n%sysfunc(upcase(seoyeon))\nSEOYEON\n\n\n중첩 사용\n%sysfunc(upcase(%sysfunc(reverse(abc))))\nCBA\n\n\n\n%sysfunc(function-name &lt;(arguments)&gt; &lt;,format&gt;)\n\nfunction-name : DATA step 함수 이름\narguments : 함수 인자\nformat : 결과를 출력할 때 적용할 SAS 포맷(선택 사항)\n\n\n숫자 함수 호출\n\n%put %sysfunc(mean(5,10,15));     /* 10 */\n%put %sysfunc(round(3.14159,0.01)); /* 3.14 */\n\n날짜 함수 호출\n\n%put %sysfunc(today(),date9.);   /* 06SEP2025 */\n%put %sysfunc(time(),time8.);    /* 14:35:12 같은 형식 */\n\n포맷을 뒤에 붙이면 사람이 읽기 쉽게 출력 가능\n\n\n문자 함수 호출\n\n%let text = seoyeon;\n%put %sysfunc(upcase(&text));   /* SEOYEON */\n%put %sysfunc(reverse(&text));  /* noeyoes */\n\n고급 사용 – 매크로 변수에 저장\n\n%let curdate = %sysfunc(today(),yymmddn8.);\n%put &=curdate;   /* 20250906 */\n-&gt; 오늘 날짜를 YYYYMMDD 형태로 매크로 변수에 저장\n\nmacro 변수 저장\n\nsashelp.class에서 나이가 16인 학생들의 이름을 매크로 변수 student_list에 공백으로 구분해 저장하시오.\n\nproc sql noprint;\n   select Name into :student_list separated by ' '\n   from sashelp.class\n   where Age=16;\nquit;\n\n%put &=student_list;\n\n\n매크로 지우는 코드\n%symdel &vars;",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#디버깅",
+    "href": "posts/sas/2025-08-19-SAS1.html#디버깅",
+    "title": "SAS Advanced Certificate",
+    "section": "디버깅",
+    "text": "디버깅\n\nMLOGIC, MPRINT, SYMBOLGEN\n\n\n\n\n\n\n\n\n\n옵션\n역할\n로그에 출력되는 내용\n예시\n\n\n\n\nMLOGIC\n매크로 실행 흐름 표시\n매크로 시작/끝, %IF 조건 평가\n%if가 TRUE/FALSE로 나오는지 확인\n\n\nMPRINT\n매크로가 생성한 SAS 코드 표시\n실제 실행된 DATA/PROC 구문\n확장된 코드 확인\n\n\nSYMBOLGEN\n매크로 변수 치환 과정 표시\n&var → 값\n매크로 변수 값 확인\n\n\n\n\nMLOGIC\n\n\n매크로 실행 시, 매크로의 논리 흐름(logic)을 로그에 출력\n어떤 매크로가 호출됐는지, %IF 조건이 어떻게 평가됐는지 보여줌\n\noptions mlogic;\n\n%macro test(x);\n   %if &x &gt; 10 %then %put Greater than 10;\n   %else %put 10 or less;\n%mend;\n\n%test(5);\n\nlog\n\nMLOGIC(TEST):  Beginning execution.\nMLOGIC(TEST):  %IF condition &x &gt; 10 is FALSE\nMLOGIC(TEST):  Ending execution.\n\nMPRINT\n\n\n매크로 실행 시, 실제로 실행된 SAS 코드를 로그에 출력\n매크로가 어떤 DATA/PROC 구문으로 확장(expand)되는지 확인 가능\n\noptions mprint;\n\n%macro step;\n   proc print data=sashelp.class(obs=5);\n   run;\n%mend;\n\n%step;\n\nlog\n\nMPRINT(STEP):   proc print data=sashelp.class(obs=5);\nMPRINT(STEP):   run;\n\nSYMBOLGEN\n\n\n매크로 변수 치환 과정을 로그에 출력\n어떤 값으로 변환되는지 확인 가능\n\noptions symbolgen;\n\n%let name = Name;\n%put Hello, &name;\n\nlog\n\nSYMBOLGEN:  Macro variable NAME resolves to Name\n\n\n%PUT 로그 확인\n\n매크로 코드에서 메시지를 SAS 로그에 출력\n주로 디버깅, 매크로 변수 값 확인에 사용\n\n\n\n\n\n\n\n\n\n\n사용법\n설명\n예시\n결과\n\n\n\n\n%put &var;\n매크로 변수 값 출력\n%put &city;\nLondon\n\n\n%put &=var;\n변수명=값 출력\n%put &=city;\nCITY=London\n\n\n%put NOTE: 등\n로그 메시지 레벨 지정\n%put NOTE: Hello;\nNOTE: Hello\n\n\n%put _all_;\n모든 매크로 변수 표시\n%put _all_;\n전역/자동 변수 목록\n\n\n\n%let name = Name;\n%put Hello, &name;\n\nlog\n\nHello, Name\n\n매크로 변수 값 확인\n\n%let city = London;\n%put &=city;\n\nlog\n\nCITY=London\n-&gt; &=변수명 형태로 쓰면 변수명=값 형태로 깔끔하게 출력됨\n\n사용자 정의 메시지\n\n%put NOTE: Macro started!;\n%put WARNING: Check input dataset;\n%put ERROR: Something went wrong;\n\nlog\n\nNOTE: Macro started!\nWARNING: Check input dataset\nERROR: Something went wrong\n-&gt; 실제 SAS 로그의 NOTE / WARNING / ERROR 스타일로 표시됨\n\n시스템 매크로 변수 출력\n\n%put _automatic_;   /* 자동 생성된 매크로 변수 */\n%put _user_;        /* 사용자가 만든 매크로 변수 */\n%put _all_;         /* 모든 매크로 변수 */\nGLOBAL CITY London\nAUTOMATIC SYSDATE9 06SEP2025\n\n디버깅 활용\n\n\n보통 MLOGIC, MPRINT, SYMBOLGEN 옵션과 같이 %PUT을 넣어 매크로 변수 값이 제대로 넘어오는지 확인\n\n%macro demo(x);\n   %put NOTE: Parameter X = &x;\n%mend;\n\n%demo(100);\n\nlog\n\nNOTE: Parameter X = 100\n\nput vs putlog\n\nput\n\n%LET → 매크로 변수 name 생성 (Seoyeon)\n%PUT → 매크로 실행 시점에 로그에 문자열 출력\n결과 (로그):\n\n\n%let name=Mike;\n%put Hello, &name.;\n결과: Hellp, Mike\n\nput log\n\nDATA step 실행 중, putlog 문이 SAS 로그에 메시지 기록\n“현재 값은” → 문자열 그대로 출력\nx= y= → 변수 이름과 값 함께 출력\n결과 (로그):\n\n\ndata _null_;\n   x = 10;\n   y = 20;\n   putlog \"현재 값은 \" x= y=;\nrun;\n결과: 현재 값은 x=10 y=20\n\n\n%put\n\n% put error:쓰고 log에 print 안 되게 한느 법\n\n%macro name;\n    options nonotes;\n    %put error: this is error.\n%name;\n\nUSER 키워드는 사용자가 만든 모든 매크로 변수(전역 + 지역)를 로그에 보여줍니다.\n\n%let global1=AAA;\n\n%macro demo;\n   %let local1=BBB;\n   %global global2;\n   %let global2=CCC;\n\n   %put ---- Inside macro ----;\n   %put _USER_;\n%mend;\n\n%demo\n\n%put ---- After macro ----;\n%put _USER_;\n\nlog 결과\n\nGLOBAL GLOBAL1 AAA\nGLOBAL GLOBAL2 CCC\nLOCAL  LOCAL1 BBB\n\n---- After macro ----\nGLOBAL GLOBAL1 AAA\nGLOBAL GLOBAL2 CCC\n\n%put _ALL_; → 자동변수 + 사용자 변수 + 시스템 변수 전부 다\n%put _AUTOMATIC_; → 자동으로 제공되는 시스템 매크로 변수만\n%put _GLOBAL_; → 글로벌 변수만\n%put _LOCAL_; → 매크로 실행 중일 때만 로컬 변수만\n\nproc sql noprint;\n    select name\n    into :namelist separated by ','\n    into :n1 - :n5\n    into :avg_h, :avg_w\n    from sashelp.class\n    where sex='F';\nquit;",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#데이터-기반-매크로",
+    "href": "posts/sas/2025-08-19-SAS1.html#데이터-기반-매크로",
+    "title": "SAS Advanced Certificate",
+    "section": "데이터 기반 매크로",
+    "text": "데이터 기반 매크로\n\n간접참조&&\n\n매크로 변수 이름을 다른 매크로 변수 값으로부터 동적으로 만들어서 참조하는 것.\n&& 조합은 치환 과정에서 단계적으로 풀리면서 최종 매크로 변수로 변환됨.\n아래와 같은 매크로 변수들이 있을 때, var1=Height, var2=Weight, var3=Age. 루프를 이용해 차례대로 변수명을 출력하시오.\n\n&&var&i → &var1 → Height, 두 번 풀려서 최종적으로 변수명이 나옴\n\n\n%let var1=Height;\n%let var2=Weight;\n%let var3=Age;\n\n%macro show;\n   %do i=1 %to 3;\n      %put &&var&i;\n   %end;\n%mend;\n\n%show",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "SAS Advanced Certificate"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-08-19-SAS1.html#dictionary-table-기반-매크로",
+    "href": "posts/sas/2025-08-19-SAS1.html#dictionary-table-기반-매크로",
+    "title": "SAS Advanced Certificate",
+    "section": "Dictionary table 기반 매크로",
+    "text": "Dictionary table 기반 매크로\n\n반복적 매크로 호출 생성\n\n간단한 반복문으로 매크로 호출\n\n%macro call_loop;\n   %do i=1 %to 3;\n      %put This is loop number &i;\n   %end;\n%mend;\n\n%call_loop;\n\nlog\n\nThis is loop number 1\nThis is loop number 2\nThis is loop number 3\n\n매크로 변수 리스트 기반 반복 호출\n\n%let city1=Seoul;\n%let city2=London;\n%let city3=Paris;\n\n%macro city_loop;\n   %do i=1 %to 3;\n      %put City: &&city&i;\n   %end;\n%mend;\n\n%city_loop;\nCity: Seoul\nCity: London\nCity: Paris\n-&gt; 여기서 간접참조(&&) 활용됨 → &&city&i → &city1, &city2, &city3\n\nSQL INTO: 이용해서 매크로 호출 생성\n\n\n데이터셋 값으로 반복 호출할 수도 있음.\n\nproc sql noprint;\n   select name\n   into :namelist separated by ' '\n   from sashelp.class(obs=3);\nquit;\n\n%macro run_names;\n   %let n=%sysfunc(countw(&namelist));\n   %do i=1 %to &n;\n      %let one=%scan(&namelist,&i);\n      %put Student: &one;\n   %end;\n%mend;\n\n%run_names;\nStudent: Alfred\nStudent: Alice\nStudent: Barbara\n\n매크로 호출 자체를 반복적으로 생성\n\n\n예를 들어 proc print를 여러 데이터셋에 대해 자동 실행:\n\n%macro print_multi(dsnlist);\n   %let n=%sysfunc(countw(&dsnlist));\n   %do i=1 %to &n;\n      %let one=%scan(&dsnlist,&i);\n      proc print data=&one(obs=3);\n      run;\n   %end;\n%mend;\n\n%print_multi(sashelp.class sashelp.cars sashelp.iris);\n-&gt; 3개 데이터셋 각각에 대해 proc print 실행",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -3205,32 +3257,6 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#mprint-mlogic-symbolgen",
-    "href": "posts/sas/2025-08-19-SAS1.html#mprint-mlogic-symbolgen",
-    "title": "SAS Advanced Certificate",
-    "section": "mprint mlogic symbolgen;",
-    "text": "mprint mlogic symbolgen;\nMPRINT → 매크로가 실제로 실행할 SAS 코드(매크로 해석 후의 코드)를 로그에 보여줌\nMLOGIC → 매크로 실행 과정(분기, 반복, 호출/종료 등)을 단계별로 로그에 보여줌\nSYMBOLGEN → 매크로 변수 치환 과정(&변수)을 로그에 보여줌\noptions mprint mlogic symbolgen;",
-    "crumbs": [
-      "Main_Blog",
-      "Posts",
-      "Sas",
-      "SAS Advanced Certificate"
-    ]
-  },
-  {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#put-vs-putlog",
-    "href": "posts/sas/2025-08-19-SAS1.html#put-vs-putlog",
-    "title": "SAS Advanced Certificate",
-    "section": "put vs putlog",
-    "text": "put vs putlog\n\nput\n\n%LET → 매크로 변수 name 생성 (Seoyeon)\n%PUT → 매크로 실행 시점에 로그에 문자열 출력\n결과 (로그):\n\n\n%let name=Mike;\n%put Hello, &name.;\n결과: Hellp, Mike\n\nput log\n\nDATA step 실행 중, putlog 문이 SAS 로그에 메시지 기록\n“현재 값은” → 문자열 그대로 출력\nx= y= → 변수 이름과 값 함께 출력\n결과 (로그):\n\n\ndata _null_;\n   x = 10;\n   y = 20;\n   putlog \"현재 값은 \" x= y=;\nrun;\n결과: 현재 값은 x=10 y=20",
-    "crumbs": [
-      "Main_Blog",
-      "Posts",
-      "Sas",
-      "SAS Advanced Certificate"
-    ]
-  },
-  {
     "objectID": "posts/sas/2025-08-19-SAS1.html#오늘-날짜-표현-방법",
     "href": "posts/sas/2025-08-19-SAS1.html#오늘-날짜-표현-방법",
     "title": "SAS Advanced Certificate",
@@ -3244,11 +3270,11 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#array",
-    "href": "posts/sas/2025-08-19-SAS1.html#array",
+    "objectID": "posts/sas/2025-08-19-SAS1.html#배열-array",
+    "href": "posts/sas/2025-08-19-SAS1.html#배열-array",
     "title": "SAS Advanced Certificate",
-    "section": "Array",
-    "text": "Array\n\n이렇게 하면 7,8,9 이렇게 3개 가져옴\n\narray Farenht [7:9] Temp7-Temp9;\narray Celsius [7:9] TempC7-TempC9;\n\n또는 이렇게 해서 한 번에 4개 나열\n\narray Status[4] $ 5 StatusQ1-StatusQ4;\n\n2행 3열로 나타남\n\narray Avg [2013:2014,3] (40.9, 40.7, 38.6, 42.5, 42.6, 45.4): \n\nN = 1일 때만 작동 → 즉, 한 번의 데이터 스텝 실행 중에 array_data의 두 줄 모두 처리함.\nset array_data는 두 번 호출되며 각 줄을 Row=1, Row=2로 저장\n배열의 메모리 배치 순서: TwoD[1,1] → TwoD[1,2] → TwoD[1,3] → TwoD[2,1] → TwoD[2,2] → TwoD[2,3]\n\nRow=1 → OneD = Jack, Mary, Sally - TwoD[1,1] = Jack - TwoD[1,2] = Mary - TwoD[1,3] = Sally\nRow=2 → OneD = Christy, John, Marty - TwoD[2,1] = Christy - TwoD[2,2] = John - TwoD[2,3] = Marty\ndata new_data(drop=Row Column);\n  array TwoD[2,3] $;           /* 2행 3열 문자형 배열 선언 */\n  retain TwoD1-TwoD6;          /* 배열 값을 유지 */\n  \n  if _N_ = 1 then do Row = 1 to 2;   /* 최초 실행 시 2개의 행 처리 */\n    set array_data;                 /* 한 줄씩 읽음 */\n    \n    array OneD[3] Name1-Name3;      /* Name1~Name3을 1차원 배열로 묶음 */\n    \n    do Column = 1 to 3;\n      TwoD[Row, Column] = OneD[Column];   /* 값을 2차원 배열에 저장 */\n    end;\n  end;\nrun;",
+    "section": "배열 (Array)",
+    "text": "배열 (Array)\n\n\n\n\n\n\n\n\n항목\n설명\n예시\n\n\n\n\n문자형/숫자형 배열\n$ 기호 여부로 문자/숫자형 구분\narray names[3] $ name1-name3;\n\n\nDIM 함수\n배열 길이 반환\ndim(scores)\n\n\nTemporary array\n변수와 연결 안 됨, 메모리에만 존재\narray temp[3] _temporary_;\n\n\nDataset 값 초기화\n데이터셋 값이나 직접 값으로 초기화\narray nums[5] (10 20 30 40 50);\n\n\n\n\n문자형/숫자형 배열\n숫자형 배열 (기본)\ndata example;\n   array scores[3] score1-score3;\n   input score1-score3;\n   datalines;\n10 20 30\n;\nrun;\n-&gt; score1, score2, score3가 배열 scores[1], scores[2], scores[3]로 참조 가능\n문자형 배열\n\narray 선언 시 $ 기호로 문자형 선언\n\ndata example;\n   array names[3] $ name1-name3;\n   input name1 $ name2 $ name3 $;\n   datalines;\nKim Lee Park\n;\nrun;\n-&gt; names[1] = Kim, names[2] = Lee, names[3] = Park\n\n\nDIM 함수\n배열의 크기(요소 개수) 반환\ndata example;\n   array nums[5] (1 2 3 4 5);\n   do i=1 to dim(nums);\n      put nums[i]=;\n   end;\nrun;\n\nDIM(arrayname) → 배열 길이\nLBOUND / HBOUND도 있음 (배열 시작/끝 인덱스)\n\n\n\nTemporary array\n데이터셋 변수와 연결되지 않고, 프로그램 실행 중에만 존재하는 배열 (메모리에서만 사용)\ndata temp_array;\n   array temp[3] _temporary_;\n   do i=1 to 3;\n      temp[i] = i*10;\n      put temp[i]=;\n   end;\nrun;\n\n실제 데이터셋에는 저장되지 않음\n반복 계산용, lookup table 용도로 활용\n\n\n\nDataset 값으로 초기화\n배열을 데이터셋 값으로 채움 (array + set)\ndata init_array;\n   set scores_dataset;  /* dataset의 값 읽어오기 */\n   array scores[3] score1-score3;\n   do i=1 to dim(scores);\n      put scores[i]=;\n   end;\nrun;\n또는 DATA step 안에서 직접 초기화\ndata init_array;\narray nums[5] (10 20 30 40 50);\n   do i=1 to dim(nums);\n      put nums[i]=;\n   end;\nrun;\n\n\n시험에서\n\n이렇게 하면 7,8,9 이렇게 3개 가져옴\n\narray Farenht [7:9] Temp7-Temp9;\narray Celsius [7:9] TempC7-TempC9;\n\n또는 이렇게 해서 한 번에 4개 나열\n\narray Status[4] $ 5 StatusQ1-StatusQ4;\n\n2행 3열로 나타남\n\narray Avg [2013:2014,3] (40.9, 40.7, 38.6, 42.5, 42.6, 45.4): \n\nN = 1일 때만 작동 → 즉, 한 번의 데이터 스텝 실행 중에 array_data의 두 줄 모두 처리함.\nset array_data는 두 번 호출되며 각 줄을 Row=1, Row=2로 저장\n배열의 메모리 배치 순서: TwoD[1,1] → TwoD[1,2] → TwoD[1,3] → TwoD[2,1] → TwoD[2,2] → TwoD[2,3]\n\nRow=1 → OneD = Jack, Mary, Sally - TwoD[1,1] = Jack - TwoD[1,2] = Mary - TwoD[1,3] = Sally\nRow=2 → OneD = Christy, John, Marty - TwoD[2,1] = Christy - TwoD[2,2] = John - TwoD[2,3] = Marty\ndata new_data(drop=Row Column);\n  array TwoD[2,3] $;           /* 2행 3열 문자형 배열 선언 */\n  retain TwoD1-TwoD6;          /* 배열 값을 유지 */\n  \n  if _N_ = 1 then do Row = 1 to 2;   /* 최초 실행 시 2개의 행 처리 */\n    set array_data;                 /* 한 줄씩 읽음 */\n    \n    array OneD[3] Name1-Name3;      /* Name1~Name3을 1차원 배열로 묶음 */\n    \n    do Column = 1 to 3;\n      TwoD[Row, Column] = OneD[Column];   /* 값을 2차원 배열에 저장 */\n    end;\n  end;\nrun;",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -3261,7 +3287,7 @@
     "href": "posts/sas/2025-08-19-SAS1.html#hash-object",
     "title": "SAS Advanced Certificate",
     "section": "Hash object",
-    "text": "Hash object\nobject-name.definekey ()\nobject-name.definedata ()\nobject-name.definedone ()\n\nobject-name.find() 찾으면 &gt; 0\nobject-name.add ()\nobject-name.output ()\n\nhash 데이터셋 output하는 법\n-\ndata example1;\n    if _n_=1 then do;\n        declare hash h(dataset:\"sashelp.class\");\n        h.defineKey(\"name\");             /* 키 */\n        h.defineData(\"age\",\"height\",\"weight\"); /* 데이터 */\n        h.defineDone();\n    end;\n    set sashelp.class(keep=name);        /* 왼쪽 데이터 */\n    rc = h.find();                       /* 키로 찾기 */\n    if rc=0 then output;                 /* 매칭된 경우 출력 */\n    drop rc;\nrun;\n-\ndata work.StateCityPopulation; \n    if _N_=1 then do; \n        if 0 then set pg3.population.usstates; \n        declare hash States(dataset:'pg3.population_usstates'); \n        States.definekey('StateName'); \n        States.definedata('Capital', 'StatePop2017'); \n        States.definedone(); \n        end; \n    set pg3.population uscities; \n    StateName=stnamel(StateCode): \n    RC=States. find(key:StateName); \n    *(해시 객체 States에서 주 이름(StateName)을 키로 검색해서 해당 Capital과 StatePop2017 값을 찾아서 자동으로 변수에 바인딩합니다 성공 시 RC = 0);\n        if RC ne 0 then call missing(Capital, StatePop2017);\n        *(해시에서 값을 찾지 못했을 경우, Capital과 StatePop2017 값을 명시적으로 결측 처리합니다.)\n        PctPop«CityPop2017/StatePop2017; \n        format StatePop2017 comma14. PctPop percent8.1; \n        (해당하는 거만 데이터셋 만들어지게 하려면)\n            if RC = 0 then do;  /* 🔍 lookup 성공한 경우에만 */\n                PctPop = CityPop2017 / StatePop2017;\n                format StatePop2017 comma14. PctPop percent8.1;\n                output;           /* ✅ 해당 행만 데이터셋에 저장 */\n        end;\n    ()\nrun;\n\n\nhiter\ndata test;\n   input id name $ age;\n   datalines;\n1 Alice 14\n2 Bob 15\n3 Carol 13\n;\nrun;\n\ndata _null_;\n   if _N_ = 1 then do;\n      declare hash h(dataset:\"test\");\n      h.definekey(\"id\");\n      h.definedata(\"id\",\"name\",\"age\");\n      h.definedone();\n\n      declare hiter hi(\"h\");\n   end;\n\n   rc = hi.first();\n   do while (rc = 0);\n      putlog id= name= age=;\n      rc = hi.next();\n   end;\nrun;\n\n\nhiter는 iterator로, 순회하면서 데이터 검색한다.\nhi.first()로 첫번째 정해놓고,\ndo while로 rc가 0이 나올때까지 rc 검색\n\n\n\n\n\n\n\n\n\n구분\nfind\nhiter\n\n\n\n\n방식\nkey 값 직접 지정\n모든 key 순회\n\n\n반환 범위\n단일 key\n전체 key\n\n\n사용 목적\nlookup / join\n전체 탐색 / 조건 필터링\n\n\noutput 가능?\n가능 (if rc=0 then output;)\n가능 (output; inside loop)",
+    "text": "Hash object\n\n\n\n\n\n\n\n\n구분\n키워드 / 메서드\n설명\n\n\n\n\n선언\ndeclare hash h, declare hiter hi(\"h\")\n해시 객체, 반복자 생성\n\n\n주요 메서드\ndefineKey, defineData, defineDone, find, add, output\nkey–data 구조 정의, 검색/추가/출력\n\n\nIterator\nfirst, next, last, prev\nkey 순서로 순회\n\n\n활용\nLookup table, 정렬, 순회\nmerge 대체, 빠른 검색, 정렬 처리\n\n\n\n\n선언: DECLARE HASH, DECLARE HITER\n\nHash 객체 생성\n\ndeclare hash h(dataset:\"mydata\");\n\nIterator 생성 (순회용)\n\ndeclare hiter hi(\"h\");\n-&gt; h는 해시 객체 이름, hi는 반복자(iterator)\n\n\n주요 메서드: DEFINEKEY, DEFINEDATA, DEFINEDONE, FIND, ADD, OUTPUT\n\n\n\n메서드\n설명\n\n\n\n\ndefineKey\n해시의 key 지정 (중복 불가)\n\n\ndefineData\n저장할 데이터 변수 지정\n\n\ndefineDone\n선언 종료 (필수)\n\n\nfind\nkey 값으로 검색\n\n\nadd\n새로운 key–data 쌍 추가\n\n\noutput\n해시 객체 내용을 데이터셋으로 출력\n\n\n\nif _N_=1 then do;\n   declare hash h();\n   h.defineKey(\"id\");\n   h.defineData(\"name\",\"age\");\n   h.defineDone();\nend;\n\nrc = h.add();   /* 현재 PDV 값으로 추가 */\nrc = h.find();  /* key 값으로 검색 */\n\n\nIterator: FIRST, NEXT, LAST, PREV\n\n\n\n메서드\n설명\n\n\n\n\nfirst()\n첫 번째 key로 이동\n\n\nnext()\n다음 key로 이동\n\n\nlast()\n마지막 key로 이동\n\n\nprev()\n이전 key로 이동\n\n\n\nif _N_=1 then do;\n   declare hiter hi(\"h\");\nend;\n\nrc = hi.first();\ndo while (rc=0);\n   put id= name= age=;\n   rc = hi.next();\nend;\n\n\n활용: Lookup table, 정렬, 순회\n\nLookup Table\n\n작은 데이터셋을 메모리에 로딩 후 key 기반 검색 (데이터 step merge 대신 고속 검색)\n\n정렬(Sort)\n\nkey 순서로 정렬된 순회 가능 (hiter.first(), hiter.next())\n\n순회(Iteration)\n\n전체 key–data 쌍을 순회하며 처리\n\n\n\n\nhash 데이터셋 output하는 법\n-\ndata example1;\n    if _n_=1 then do;\n        declare hash h(dataset:\"sashelp.class\");\n        h.defineKey(\"name\");             /* 키 */\n        h.defineData(\"age\",\"height\",\"weight\"); /* 데이터 */\n        h.defineDone();\n    end;\n    set sashelp.class(keep=name);        /* 왼쪽 데이터 */\n    rc = h.find();                       /* 키로 찾기 */\n    if rc=0 then output;                 /* 매칭된 경우 출력 */\n    drop rc;\nrun;\n-\ndata work.StateCityPopulation; \n    if _N_=1 then do; \n        if 0 then set pg3.population.usstates; \n        declare hash States(dataset:'pg3.population_usstates'); \n        States.definekey('StateName'); \n        States.definedata('Capital', 'StatePop2017'); \n        States.definedone(); \n        end; \n    set pg3.population uscities; \n    StateName=stnamel(StateCode): \n    RC=States. find(key:StateName); \n    *(해시 객체 States에서 주 이름(StateName)을 키로 검색해서 해당 Capital과 StatePop2017 값을 찾아서 자동으로 변수에 바인딩합니다 성공 시 RC = 0);\n        if RC ne 0 then call missing(Capital, StatePop2017);\n        *(해시에서 값을 찾지 못했을 경우, Capital과 StatePop2017 값을 명시적으로 결측 처리합니다.)\n        PctPop«CityPop2017/StatePop2017; \n        format StatePop2017 comma14. PctPop percent8.1; \n        (해당하는 거만 데이터셋 만들어지게 하려면)\n            if RC = 0 then do;  /* 🔍 lookup 성공한 경우에만 */\n                PctPop = CityPop2017 / StatePop2017;\n                format StatePop2017 comma14. PctPop percent8.1;\n                output;           /* ✅ 해당 행만 데이터셋에 저장 */\n        end;\n    ()\nrun;\n\n\nhiter\ndata test;\n   input id name $ age;\n   datalines;\n1 Alice 14\n2 Bob 15\n3 Carol 13\n;\nrun;\n\ndata _null_;\n   if _N_ = 1 then do;\n      declare hash h(dataset:\"test\");\n      h.definekey(\"id\");\n      h.definedata(\"id\",\"name\",\"age\");\n      h.definedone();\n\n      declare hiter hi(\"h\");\n   end;\n\n   rc = hi.first();\n   do while (rc = 0);\n      putlog id= name= age=;\n      rc = hi.next();\n   end;\nrun;\n\n\nhiter는 iterator로, 순회하면서 데이터 검색한다.\nhi.first()로 첫번째 정해놓고,\ndo while로 rc가 0이 나올때까지 rc 검색\n\n\n\n\n\n\n\n\n\n구분\nfind\nhiter\n\n\n\n\n방식\nkey 값 직접 지정\n모든 key 순회\n\n\n반환 범위\n단일 key\n전체 key\n\n\n사용 목적\nlookup / join\n전체 탐색 / 조건 필터링\n\n\noutput 가능?\n가능 (if rc=0 then output;)\n가능 (output; inside loop)",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -3270,11 +3296,11 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#proc-fcmp",
-    "href": "posts/sas/2025-08-19-SAS1.html#proc-fcmp",
+    "objectID": "posts/sas/2025-08-19-SAS1.html#utility-procedures",
+    "href": "posts/sas/2025-08-19-SAS1.html#utility-procedures",
     "title": "SAS Advanced Certificate",
-    "section": "PROC FCMP",
-    "text": "PROC FCMP\n\n\nPROC FCMP OUTLIB=libref.table.package;\nFUNCTION function-name(arguments) &lt;$&gt; &lt;length&gt;;\n...programming statements...\nRETURN(expression);\nENDSUB;\nRUN;\nproc fcmp outlib-pg3. funcs.weather;\nfunction FtoC (TempF) ;\nTempC=round ( (TempF-32) *5/9,.01) ;\nreturn (TempC) ;\nendsub;\nrun;\n*function불러와야 쓸 수 있음;\noptions cmplib=pg3.funcs;\n\n\n에시\n\n두 수 중 큰 값을 반환하는 함수 mymax를 정의하고 호출하시오.\n\n\nproc fcmp outlib=work.funcs.math;\n   function mymax(x,y);\n      if x&gt;y then return(x);\n      else return(y);\n   endsub;\nrun;\n\noptions cmplib=work.funcs;\ndata ex8;\n   result=mymax(10,20);\n   put result=;\nrun;",
+    "section": "Utility Procedures",
+    "text": "Utility Procedures\n\n\n\n\n\n\n\n\n\n기능\n문법/옵션\n설명\n예시\n\n\n\n\nPROC FORMAT – PICTURE\nround, default=, prefix=, datatype=date\n숫자/날짜 포맷 정의\n$000,000,009, %Y-%0m-%0d\n\n\nPROC FCMP – 함수\nfunction … endsub;\n사용자 정의 함수\nfunction myadd(x,y) return(x+y);\n\n\nPROC FCMP 호출\noptions cmplib=…\n함수 등록 후 호출\nx=myadd(10,20)\n\n\n\n\nPROC FORMAT – PICTURE 문 (숫자/날짜 포맷 정의, 옵션: round, default, prefix 등)\n\nPICTURE 문은 숫자/날짜를 원하는 출력 형태로 사용자 정의 포맷 가능.\nVALUE와 달리 범주(label) 지정이 아니라, 숫자·날짜 표시 스타일을 직접 정의.\n\n\n\n\n코드\n설명\n예시 값\n\n\n\n\n%A\n요일 이름 (전체)\nWednesday\n\n\n%a\n요일 이름 (앞 3글자)\nWed\n\n\n%d\n월 중 일자 (1~31, 한 자리 가능)\n2\n\n\n%0d\n월 중 일자 (2자리, 0 채움)\n02\n\n\n%B\n월 이름 (전체)\nJanuary\n\n\n%3B\n월 이름 (앞 3글자)\nJan\n\n\n%m\n월 번호 (1~12, 한 자리 가능)\n1\n\n\n%0m\n월 번호 (2자리, 0 채움)\n01\n\n\n%Y\n연도 (4자리)\n2019\n\n\n%Oy\n연도 (2자리)\n19\n\n\n%H/%OH\n시 (24시간제, 한 자리 또는 두 자리)\n21\n\n\n%I/%OI\n시 (12시간제, 한 자리 또는 두 자리)\n9 또는 09\n\n\n%M/%OM\n분 (한 자리 또는 두 자리)\n13\n\n\n%S/%OS\n초 (한 자리 또는 두 자리)\n5 또는 05\n\n\n%p\n오전/오후 표시 (AM/PM)\nPM\n\n\n\n\n기본\n\nproc format;\n   picture format-name\n           low-high = 'template'\n           (옵션들);\nrun;\n\ntemplate : 출력할 형태 정의 (9은 숫자 자리 표시, 0은 강제로 0 채움)\n\nround → 반올림\ndefault=n → 출력 자릿수 기본값 지정\nprefix=‘문자’ → 출력값 앞에 문자 붙임\n\n숫자 포맷\n\nproc format;\n   picture myfmt\n       low-high = '000,000,009' (prefix='$');\nrun;\n\ndata _null_;\n   x=12345;\n   put x=myfmt.;\nrun;\n\n결과\n\n$000,012,345\n\n날짜 포맷 예시\n\nproc format;\n   picture mydate\n       low-high = '%Y-%0m-%0d' (datatype=date);\nrun;\n\ndata _null_;\n   x = '06SEP2025'd;\n   put x=mydate.;\nrun;\n\n결과\n\n2025-09-06\n\n시험에서\nproc format;\n    picture MyDate (default=15)\n    low-high = '%a-%d-%3B-¿y'\n    (datatype=date) ;\n    picture MyTime (default=14)\n    low-high\n    'H:%OH M:%OM S:%OS'\n    (datatype=time) ;\nrun;\n\n\n\nPROC FCMP – 사용자 정의 함수 (단일/다중 인자, 조건문 처리, CMPLIB= 옵션으로 호출)\n\n사용자 정의 함수(Function) 또는 서브루틴 작성 가능.\n만든 함수는 CMPLIB= 시스템 옵션으로 등록 후 호출 가능.\n기본\n\nproc fcmp outlib=work.funcs.mycat;\n   function myadd(x,y);\n      return(x+y);\n   endsub;\nrun;\n\noutlib= : 라이브러리.저장데이터셋.카테고리\nfunction : 사용자 정의 함수 선언\nendsub; : 함수 종료\n다중 인자 + 조건문 처리\n\nproc fcmp outlib=work.funcs.mycat;\n   function mygrade(score);\n      if score &gt;= 90 then return('A');\n      else if score &gt;= 80 then return('B');\n      else return('F');\n   endsub;\nrun;\n\nCMPLIB= 옵션으로 호출\n\noptions cmplib=work.funcs;\n\ndata _null_;\n   x = myadd(10,20);\n   g = mygrade(85);\n   put x= g=;\nrun;\n\n결과\n\nx=30 g=B\n\n시험에서\n\n\nPROC FCMP OUTLIB=libref.table.package;\nFUNCTION function-name(arguments) &lt;$&gt; &lt;length&gt;;\n...programming statements...\nRETURN(expression);\nENDSUB;\nRUN;\nproc fcmp outlib-pg3. funcs.weather;\nfunction FtoC (TempF) ;\nTempC=round ( (TempF-32) *5/9,.01) ;\nreturn (TempC) ;\nendsub;\nrun;\n*function불러와야 쓸 수 있음;\noptions cmplib=pg3.funcs;\n\n\n예시\n\n두 수 중 큰 값을 반환하는 함수 mymax를 정의하고 호출하시오.\n\n\nproc fcmp outlib=work.funcs.math;\n   function mymax(x,y);\n      if x&gt;y then return(x);\n      else return(y);\n   endsub;\nrun;\n\noptions cmplib=work.funcs;\ndata ex8;\n   result=mymax(10,20);\n   put result=;\nrun;",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -3283,50 +3309,11 @@
     ]
   },
   {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#lag",
-    "href": "posts/sas/2025-08-19-SAS1.html#lag",
+    "objectID": "posts/sas/2025-08-19-SAS1.html#고급-함수",
+    "href": "posts/sas/2025-08-19-SAS1.html#고급-함수",
     "title": "SAS Advanced Certificate",
-    "section": "lag",
-    "text": "lag\nlag1, lag2 있는 데이터 두 번 돌리면 아래처럼 이상하게 나타남(원래 데이터 10 20 30 40)\n큐를 초기화하거나 lag 대신 retain+by 등으로 대체 고려\ndata test;\n   input x;\n   lag1_x = lag1(x);\n   lag2_x = lag2(x);\n   datalines;\n10\n20\n30\n40\n;\nrun;\n\nproc print data=test; run;\n\n첫 번째 DATA step(정상 동작):\n\n\n\n\nx\nl1\nl2\n\n\n\n\n10\n.\n.\n\n\n20\n10\n.\n\n\n30\n20\n10\n\n\n40\n30\n20\n\n\n\n\n두 번째 DATA step:\n\n\n\n\nx\nl1\nl2\n\n\n\n\n10\n40❗\n30❗\n\n\n20\n10\n40\n\n\n30\n20\n10\n\n\n40\n30\n20",
-    "crumbs": [
-      "Main_Blog",
-      "Posts",
-      "Sas",
-      "SAS Advanced Certificate"
-    ]
-  },
-  {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#prx-정규표현식",
-    "href": "posts/sas/2025-08-19-SAS1.html#prx-정규표현식",
-    "title": "SAS Advanced Certificate",
-    "section": "PRX 정규표현식",
-    "text": "PRX 정규표현식\n\n\n\n패턴\n설명\n\n\n\n\n.\n아무 문자 하나 (줄바꿈 제외)\n\n\n 숫자 (digit, 0-9)\n\n\n\n\n알파벳/숫자/언더스코어\n\n\n\n공백 문자 (space, tab 등)\n\n\n^\n문자열의 시작\n\n\n$\n문자열의 끝\n\n\n+\n1개 이상 반복\n\n\n*\n0개 이상 반복\n\n\n?\n0개 또는 1개\n\n\n[abc]\na, b, 또는 c 중 하나\n\n\n[^abc]\na, b, c 이외의 문자\n\n\n(abc)\n그룹\n\n\n\n\nprxparse → 정규식 패턴 컴파일\n\n\nprxparse(‘//’) → “숫자 1개 이상” 정규식 생성\n“abc123xyz”에서 숫자는 4번째 위치 → pos=4\n\ndata _null_;\n   retain regex;\n   if _n_ = 1 then regex = prxparse('/\\d+/');  /* 숫자 찾기 */\n   str = \"abc123xyz\";\n   pos = prxmatch(regex, str);\n   put pos=;\nrun;\n\nprxmatch → 문자열에 패턴 매칭 (첫 번째 위치)\n\n\n“cat”은 “my cat is here”에서 4번째 → pos1=4\n“dog only”에는 없음 → pos2=0\n\ndata _null_;\n   regex = prxparse('/cat/');\n   str1 = \"my cat is here\";\n   str2 = \"dog only\";\n   pos1 = prxmatch(regex, str1);\n   pos2 = prxmatch(regex, str2);\n   put pos1= pos2=;\nrun;\n\nprxchange → 정규식 치환\n\n\n정규식 ()-()-() → 연도-월-일 캡처\n$3/$2/$1 → 일/월/연도로 재배치\n결과: 17/08/2025\n\ndata _null_;\n   str = \"2025-08-17\";\n   /* yyyy-mm-dd → dd/mm/yyyy 변환 */\n   new = prxchange('s/(\\d{4})-(\\d{2})-(\\d{2})/$3\\/$2\\/$1/', -1, str);\n   put new=;\nrun;\n\nprxsubstr → 매치 위치와 길이 반환\n\n\n첫 숫자 시작 = 14번째 (pos=14)\n길이 = 5 (len=5)\nmatched=12345\n\ndata _null_;\n   regex = prxparse('/\\d+/');  /* 숫자 찾기 */\n   str = \"Order number 12345 confirmed\";\n   call prxsubstr(regex, str, pos, len);\n   matched = substr(str, pos, len);\n   put pos= len= matched=;\nrun;\n\nprxnext → 여러 매치 순회\n\n\nprxnext는 여러 개의 매치를 순차적으로 반환할 때 사용.\n\ndata _null_;\n   regex = prxparse('/\\d+/');  /* 숫자 찾기 */\n   str = \"a1 b22 c333\";\n   start = 1;\n   stop = length(str);\n\n   do while (prxnext(regex, start, stop, str, pos, len) &gt; 0);\n      match = substr(str, pos, len);\n      put match=;\n   end;\nrun;",
-    "crumbs": [
-      "Main_Blog",
-      "Posts",
-      "Sas",
-      "SAS Advanced Certificate"
-    ]
-  },
-  {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#format",
-    "href": "posts/sas/2025-08-19-SAS1.html#format",
-    "title": "SAS Advanced Certificate",
-    "section": "Format",
-    "text": "Format\n\n\n\n코드\n설명\n예시 값\n\n\n\n\n%A\n요일 이름 (전체)\nWednesday\n\n\n%a\n요일 이름 (앞 3글자)\nWed\n\n\n%d\n월 중 일자 (1~31, 한 자리 가능)\n2\n\n\n%0d\n월 중 일자 (2자리, 0 채움)\n02\n\n\n%B\n월 이름 (전체)\nJanuary\n\n\n%3B\n월 이름 (앞 3글자)\nJan\n\n\n%m\n월 번호 (1~12, 한 자리 가능)\n1\n\n\n%0m\n월 번호 (2자리, 0 채움)\n01\n\n\n%Y\n연도 (4자리)\n2019\n\n\n%Oy\n연도 (2자리)\n19\n\n\n%H/%OH\n시 (24시간제, 한 자리 또는 두 자리)\n21\n\n\n%I/%OI\n시 (12시간제, 한 자리 또는 두 자리)\n9 또는 09\n\n\n%M/%OM\n분 (한 자리 또는 두 자리)\n13\n\n\n%S/%OS\n초 (한 자리 또는 두 자리)\n5 또는 05\n\n\n%p\n오전/오후 표시 (AM/PM)\nPM\n\n\n\nproc format;\n    picture MyDate (default=15)\n    low-high = '%a-%d-%3B-¿y'\n    (datatype=date) ;\n    picture MyTime (default=14)\n    low-high\n    'H:%OH M:%OM S:%OS'\n    (datatype=time) ;\nrun;",
-    "crumbs": [
-      "Main_Blog",
-      "Posts",
-      "Sas",
-      "SAS Advanced Certificate"
-    ]
-  },
-  {
-    "objectID": "posts/sas/2025-08-19-SAS1.html#count-find",
-    "href": "posts/sas/2025-08-19-SAS1.html#count-find",
-    "title": "SAS Advanced Certificate",
-    "section": "Count, Find",
-    "text": "Count, Find\ncount(txt, 'apple'); -&gt; cnt = 2\ntxt = 'apple pie and pineapple';\n  cnt = countw(txt); -&gt; cnt = 4\n str = \"catalog\";\n  pos = find(str, \"cat\");  /* 결과: 1 */\npos = findw(str, \"cat\");  /* 결과: 0 */",
+    "section": "고급 함수",
+    "text": "고급 함수\n\nFINDC, FINDW, COUNT, COUNTC, COUNTW\n\n\n\n\n\n\n\n\n\n함수\n설명\n예시\n결과\n\n\n\n\nFINDC\n문자열에서 특정 문자(집합)의 위치 반환\nfindc(\"abc123\",\"123\")\n4\n\n\nFINDW\n문자열에서 단어 위치 반환 (구분자 기반)\nfindw(\"cat dog pig\",\"dog\",\" \")\n2\n\n\nCOUNT\n특정 문자열이 포함된 횟수 (중첩 포함 가능)\ncount(\"banana\",\"ana\")\n2\n\n\nCOUNTC\n특정 문자(집합)가 나타나는 횟수\ncountc(\"banana\",\"a\")\n3\n\n\nCOUNTW\n단어 개수 (구분자 기준)\ncountw(\"cat dog pig\")\n3\n\n\n\n\n\nLAG\n시계열 데이터에서 이전 관측값 가져오기\nlag1, lag2 있는 데이터 두 번 돌리면 아래처럼 이상하게 나타남(원래 데이터 10 20 30 40)\n큐를 초기화하거나 lag 대신 retain+by 등으로 대체 고려\ndata test;\n   input x;\n   lag1_x = lag1(x);\n   lag2_x = lag2(x);\n   datalines;\n10\n20\n30\n40\n;\nrun;\n\nproc print data=test; run;\n\n첫 번째 DATA step(정상 동작):\n\n\n\n\nx\nl1\nl2\n\n\n\n\n10\n.\n.\n\n\n20\n10\n.\n\n\n30\n20\n10\n\n\n40\n30\n20\n\n\n\n\n두 번째 DATA step:\n\n\n\n\nx\nl1\nl2\n\n\n\n\n10\n40❗\n30❗\n\n\n20\n10\n40\n\n\n30\n20\n10\n\n\n40\n30\n20\n\n\n\n\n\nRegex 함수 (PRX)\n\n메타문자: () [] {} * + ? . | ^ $ \n\n\n\n패턴\n설명\n\n\n\n\n.\n아무 문자 하나 (줄바꿈 제외)\n\n\n 숫자 (digit, 0-9)\n\n\n\n\n알파벳/숫자/언더스코어\n\n\n\n공백 문자 (space, tab 등)\n\n\n^\n문자열의 시작\n\n\n$\n문자열의 끝\n\n\n+\n1개 이상 반복\n\n\n*\n0개 이상 반복\n\n\n?\n0개 또는 1개\n\n\n[abc]\na, b, 또는 c 중 하나\n\n\n[^abc]\na, b, c 이외의 문자\n\n\n(abc)\n그룹\n\n\n\n\n\n함수: PRXMATCH, PRXPARSE, PRXCHANGE\n\n\n\n\n\n\n\n\n\n함수\n설명\n예시\n결과\n\n\n\n\nPRXPARSE\n정규식 패턴을 컴파일 (패턴 ID 반환)\npattern=prxparse('/cat/');\n패턴 ID\n\n\nPRXMATCH\n문자열에서 정규식 매칭 위치 반환\nprxmatch('/dog/',\"my dog\")\n4\n\n\nPRXCHANGE\n정규식 기반 치환\nprxchange('s/dog/cat/',-1,\"dog dog\")\ncat cat\n\n\n\n\n\n시험에서\n\nprxparse → 정규식 패턴 컴파일\n\n\nprxparse(‘//’) → “숫자 1개 이상” 정규식 생성\n“abc123xyz”에서 숫자는 4번째 위치 → pos=4\n\ndata _null_;\n   retain regex;\n   if _n_ = 1 then regex = prxparse('/\\d+/');  /* 숫자 찾기 */\n   str = \"abc123xyz\";\n   pos = prxmatch(regex, str);\n   put pos=;\nrun;\n\nprxmatch → 문자열에 패턴 매칭 (첫 번째 위치)\n\n\n“cat”은 “my cat is here”에서 4번째 → pos1=4\n“dog only”에는 없음 → pos2=0\n\ndata _null_;\n   regex = prxparse('/cat/');\n   str1 = \"my cat is here\";\n   str2 = \"dog only\";\n   pos1 = prxmatch(regex, str1);\n   pos2 = prxmatch(regex, str2);\n   put pos1= pos2=;\nrun;\n\nprxchange → 정규식 치환\n\n\n정규식 ()-()-() → 연도-월-일 캡처\n$3/$2/$1 → 일/월/연도로 재배치\n결과: 17/08/2025\n\ndata _null_;\n   str = \"2025-08-17\";\n   /* yyyy-mm-dd → dd/mm/yyyy 변환 */\n   new = prxchange('s/(\\d{4})-(\\d{2})-(\\d{2})/$3\\/$2\\/$1/', -1, str);\n   put new=;\nrun;\n\nprxsubstr → 매치 위치와 길이 반환\n\n\n첫 숫자 시작 = 14번째 (pos=14)\n길이 = 5 (len=5)\nmatched=12345\n\ndata _null_;\n   regex = prxparse('/\\d+/');  /* 숫자 찾기 */\n   str = \"Order number 12345 confirmed\";\n   call prxsubstr(regex, str, pos, len);\n   matched = substr(str, pos, len);\n   put pos= len= matched=;\nrun;\n\nprxnext → 여러 매치 순회\n\n\nprxnext는 여러 개의 매치를 순차적으로 반환할 때 사용.\n\ndata _null_;\n   regex = prxparse('/\\d+/');  /* 숫자 찾기 */\n   str = \"a1 b22 c333\";\n   start = 1;\n   stop = length(str);\n\n   do while (prxnext(regex, start, stop, str, pos, len) &gt; 0);\n      match = substr(str, pos, len);\n      put match=;\n   end;\nrun;",
     "crumbs": [
       "Main_Blog",
       "Posts",
