@@ -1225,9 +1225,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#dictionary-table-기반-매크로" id="toc-dictionary-table-기반-매크로" class="nav-link" data-scroll-target="#dictionary-table-기반-매크로">Dictionary table 기반 매크로</a>
   <ul class="collapse">
   <li><a href="#반복적-매크로-호출-생성" id="toc-반복적-매크로-호출-생성" class="nav-link" data-scroll-target="#반복적-매크로-호출-생성">반복적 매크로 호출 생성</a></li>
-  </ul></li>
-  <li><a href="#minoperator" id="toc-minoperator" class="nav-link" data-scroll-target="#minoperator">minoperator</a></li>
   <li><a href="#오늘-날짜-표현-방법" id="toc-오늘-날짜-표현-방법" class="nav-link" data-scroll-target="#오늘-날짜-표현-방법">오늘 날짜 표현 방법</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#advanced-tech" id="toc-advanced-tech" class="nav-link" data-scroll-target="#advanced-tech">Advanced Tech</a>
   <ul class="collapse">
@@ -2659,6 +2658,14 @@ run;
    %else %put Non-positive;
 %mend;
 %check(10);</code></pre>
+<section id="minoperator" class="level4">
+<h4 class="anchored" data-anchor-id="minoperator">minoperator</h4>
+<ul>
+<li>minoperator는 in을 쓸 수 있게 해줌</li>
+</ul>
+<pre class="sas"><code>%macro avgfuel(loc) / minoperator;
+%else %if &amp;loc in ASIA EUROPE %then %do;</code></pre>
+</section>
 </section>
 <section id="반복문-do-end" class="level3">
 <h3 class="anchored" data-anchor-id="반복문-do-end">반복문: %DO-%END</h3>
@@ -3245,50 +3252,6 @@ ERROR: Something went wrong</code></pre>
 %put _all_;         /* 모든 매크로 변수 */</code></pre>
 <pre class="sas"><code>GLOBAL CITY London
 AUTOMATIC SYSDATE9 06SEP2025</code></pre>
-<ol start="4" type="1">
-<li>디버깅 활용</li>
-</ol>
-<ul>
-<li>보통 MLOGIC, MPRINT, SYMBOLGEN 옵션과 같이 %PUT을 넣어 매크로 변수 값이 제대로 넘어오는지 확인</li>
-</ul>
-<pre class="sas"><code>%macro demo(x);
-   %put NOTE: Parameter X = &amp;x;
-%mend;
-
-%demo(100);</code></pre>
-<ul>
-<li>log</li>
-</ul>
-<pre class="sas"><code>NOTE: Parameter X = 100</code></pre>
-<section id="put-vs-putlog" class="level4">
-<h4 class="anchored" data-anchor-id="put-vs-putlog">put vs putlog</h4>
-<ul>
-<li>put
-<ul>
-<li>%LET → 매크로 변수 name 생성 (Seoyeon)</li>
-<li>%PUT → 매크로 실행 시점에 로그에 문자열 출력</li>
-<li>결과 (로그):</li>
-</ul></li>
-</ul>
-<pre class="sas"><code>%let name=Mike;
-%put Hello, &amp;name.;</code></pre>
-<p>결과: Hellp, Mike</p>
-<ul>
-<li>put log
-<ul>
-<li>DATA step 실행 중, putlog 문이 SAS 로그에 메시지 기록</li>
-<li>“현재 값은” → 문자열 그대로 출력</li>
-<li>x= y= → 변수 이름과 값 함께 출력</li>
-<li>결과 (로그):</li>
-</ul></li>
-</ul>
-<pre class="sas"><code>data _null_;
-   x = 10;
-   y = 20;
-   putlog "현재 값은 " x= y=;
-run;</code></pre>
-<p>결과: 현재 값은 x=10 y=20</p>
-</section>
 <section id="put" class="level4">
 <h4 class="anchored" data-anchor-id="put">%put</h4>
 <ul>
@@ -3340,6 +3303,50 @@ GLOBAL GLOBAL2 CCC</code></pre>
     from sashelp.class
     where sex='F';
 quit;</code></pre>
+<ol start="4" type="1">
+<li>디버깅 활용</li>
+</ol>
+<ul>
+<li>보통 MLOGIC, MPRINT, SYMBOLGEN 옵션과 같이 %PUT을 넣어 매크로 변수 값이 제대로 넘어오는지 확인</li>
+</ul>
+<pre class="sas"><code>%macro demo(x);
+   %put NOTE: Parameter X = &amp;x;
+%mend;
+
+%demo(100);</code></pre>
+<ul>
+<li>log</li>
+</ul>
+<pre class="sas"><code>NOTE: Parameter X = 100</code></pre>
+</section>
+<section id="put-vs-putlog" class="level4">
+<h4 class="anchored" data-anchor-id="put-vs-putlog">put vs putlog</h4>
+<ul>
+<li>put
+<ul>
+<li>%LET → 매크로 변수 name 생성 (Seoyeon)</li>
+<li>%PUT → 매크로 실행 시점에 로그에 문자열 출력</li>
+<li>결과 (로그):</li>
+</ul></li>
+</ul>
+<pre class="sas"><code>%let name=Mike;
+%put Hello, &amp;name.;</code></pre>
+<p>결과: Hello, Mike</p>
+<ul>
+<li>put log
+<ul>
+<li>DATA step 실행 중, putlog 문이 SAS 로그에 메시지 기록</li>
+<li>“현재 값은” → 문자열 그대로 출력</li>
+<li>x= y= → 변수 이름과 값 함께 출력</li>
+<li>결과 (로그):</li>
+</ul></li>
+</ul>
+<pre class="sas"><code>data _null_;
+   x = 10;
+   y = 20;
+   putlog "현재 값은 " x= y=;
+run;</code></pre>
+<p>결과: 현재 값은 x=10 y=20</p>
 </section>
 </section>
 </section>
@@ -3448,17 +3455,8 @@ Student: Barbara</code></pre>
 %print_multi(sashelp.class sashelp.cars sashelp.iris);</code></pre>
 <p>-&gt; 3개 데이터셋 각각에 대해 proc print 실행</p>
 </section>
-</section>
-<section id="minoperator" class="level2">
-<h2 class="anchored" data-anchor-id="minoperator">minoperator</h2>
-<ul>
-<li>minoperator는 in을 쓸 수 있게 해줌</li>
-</ul>
-<pre class="sas"><code>%macro avgfuel(loc) / minoperator;
-%else %if &amp;loc in ASIA EUROPE %then %do;</code></pre>
-</section>
-<section id="오늘-날짜-표현-방법" class="level2">
-<h2 class="anchored" data-anchor-id="오늘-날짜-표현-방법">오늘 날짜 표현 방법</h2>
+<section id="오늘-날짜-표현-방법" class="level3">
+<h3 class="anchored" data-anchor-id="오늘-날짜-표현-방법">오늘 날짜 표현 방법</h3>
 <ul>
 <li>방법 1: <code>%SYSFUNC + date()</code>
 <ul>
@@ -3511,6 +3509,7 @@ Student: Barbara</code></pre>
 <pre class="sas"><code>%put &amp;=sysdate9;      /* 26AUG2025 */
 %put &amp;=sysdate;       /* 26AUG25   */
 %put &amp;=sysdatetime;   /* 26AUG25:15:30:45 */</code></pre>
+</section>
 </section>
 </section>
 <section id="advanced-tech" class="level1">
