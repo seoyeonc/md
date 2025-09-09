@@ -11064,7 +11064,7 @@
     "href": "posts/rshiny/2025-09-08-premier.html",
     "title": "[R Shiny]Premier League Top 6 Teams Match Statistics",
     "section": "",
-    "text": "link\ndata",
+    "text": "link\ndata\n\n\n\n\n열 이름\n의미\n\n\n\n\nDate\n경기 날짜와 시간\n\n\nOpponent\n상대 팀 이름\n\n\nIs_Home\n홈경기 여부 (1=홈, 0=원정)\n\n\nResult\n경기 결과 (1=승, 0=무, -1=패)\n\n\nGoals\n우리 팀이 넣은 골 수\n\n\nOpponent_Goals\n상대 팀이 넣은 골 수\n\n\nPossession\n우리 팀 점유율 (%)\n\n\nShots\n슈팅 개수\n\n\nShots_On_Target\n유효 슈팅 개수\n\n\nPasses_Completed\n성공한 패스 수\n\n\nPass_Accuracy\n패스 성공률 (%)\n\n\nCorners\n코너킥 수\n\n\nCrosses\n크로스 수\n\n\nFouls\n반칙 수\n\n\nOffsides\n오프사이드 수\n\n\nOpponent_Possession\n상대 팀 점유율 (%)\n\n\nOpponent_Shots\n상대 슈팅 개수\n\n\nOpponent_Shots_On_Target\n상대 유효 슈팅 개수\n\n\nOpponent_Passes_Completed\n상대 성공 패스 수\n\n\nOpponent_Pass_Accuracy\n상대 패스 성공률 (%)\n\n\nOpponent_Corners\n상대 코너킥 수\n\n\nOpponent_Crosses\n상대 크로스 수\n\n\nOpponent_Fouls\n상대 반칙 수\n\n\nOpponent_Offsides\n상대 오프사이드 수\n\n\nShot_Efficiency\n슈팅 효율 (Goals / Shots)\n\n\nSeason\n시즌 연도\n\n\nMonth\n경기 월\n\n\nDay_of_Week\n경기 요일 (1=월 … 7=일)\n\n\nLast5_Avg_Goals\n최근 5경기 평균 득점\n\n\nLast5_Win_Rate\n최근 5경기 승률\n\n\nteam\n데이터 소속 팀",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -11077,7 +11077,7 @@
     "href": "posts/rshiny/2025-09-08-premier.html#premier-league-top-6-teams-match-statistics",
     "title": "[R Shiny]Premier League Top 6 Teams Match Statistics",
     "section": "",
-    "text": "link\ndata",
+    "text": "link\ndata\n\n\n\n\n열 이름\n의미\n\n\n\n\nDate\n경기 날짜와 시간\n\n\nOpponent\n상대 팀 이름\n\n\nIs_Home\n홈경기 여부 (1=홈, 0=원정)\n\n\nResult\n경기 결과 (1=승, 0=무, -1=패)\n\n\nGoals\n우리 팀이 넣은 골 수\n\n\nOpponent_Goals\n상대 팀이 넣은 골 수\n\n\nPossession\n우리 팀 점유율 (%)\n\n\nShots\n슈팅 개수\n\n\nShots_On_Target\n유효 슈팅 개수\n\n\nPasses_Completed\n성공한 패스 수\n\n\nPass_Accuracy\n패스 성공률 (%)\n\n\nCorners\n코너킥 수\n\n\nCrosses\n크로스 수\n\n\nFouls\n반칙 수\n\n\nOffsides\n오프사이드 수\n\n\nOpponent_Possession\n상대 팀 점유율 (%)\n\n\nOpponent_Shots\n상대 슈팅 개수\n\n\nOpponent_Shots_On_Target\n상대 유효 슈팅 개수\n\n\nOpponent_Passes_Completed\n상대 성공 패스 수\n\n\nOpponent_Pass_Accuracy\n상대 패스 성공률 (%)\n\n\nOpponent_Corners\n상대 코너킥 수\n\n\nOpponent_Crosses\n상대 크로스 수\n\n\nOpponent_Fouls\n상대 반칙 수\n\n\nOpponent_Offsides\n상대 오프사이드 수\n\n\nShot_Efficiency\n슈팅 효율 (Goals / Shots)\n\n\nSeason\n시즌 연도\n\n\nMonth\n경기 월\n\n\nDay_of_Week\n경기 요일 (1=월 … 7=일)\n\n\nLast5_Avg_Goals\n최근 5경기 평균 득점\n\n\nLast5_Win_Rate\n최근 5경기 승률\n\n\nteam\n데이터 소속 팀",
     "crumbs": [
       "Main_Blog",
       "Posts",
