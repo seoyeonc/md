@@ -9,7 +9,7 @@
 <meta name="author" content="SEOYEON CHOI">
 <meta name="dcterms.date" content="2025-08-29">
 
-<title>Seoyeon’s Blog for classes - Medical knowledge</title>
+<title>Seoyeon’s Blog for classes - [EMA] Guideline on the investigation of bioequivalence</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -129,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/medical knowledge/2025-08-29-medicalknowledge.html">medical knowledge</a></li><li class="breadcrumb-item"><a href="../../posts/medical knowledge/2025-08-29-medicalknowledge.html">Medical knowledge</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Medical knowledge</h1>
+      <h1 class="title">[EMA] Guideline on the investigation of bioequivalence</h1>
                       </div>
   </div>
     
@@ -1164,8 +1193,26 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-08-29-medicalknowledge.out.ipynb" download="2025-08-29-medicalknowledge.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#main-guideline-text" id="toc-main-guideline-text" class="nav-link active" data-scroll-target="#main-guideline-text">MAIN GUIDELINE TEXT</a>
+  <ul class="collapse">
+  <li><a href="#design-conduct-and-evaluation-of-bioequivalence-studies" id="toc-design-conduct-and-evaluation-of-bioequivalence-studies" class="nav-link" data-scroll-target="#design-conduct-and-evaluation-of-bioequivalence-studies">4.1 DESIGN, CONDUCT AND EVALUATION OF BIOEQUIVALENCE STUDIES</a>
+  <ul class="collapse">
+  <li><a href="#study-design" id="toc-study-design" class="nav-link" data-scroll-target="#study-design">4.1.1 Study design</a></li>
+  <li><a href="#subjects" id="toc-subjects" class="nav-link" data-scroll-target="#subjects">4.1.3 Subjects</a></li>
+  <li><a href="#characteristics-to-be-investigated" id="toc-characteristics-to-be-investigated" class="nav-link" data-scroll-target="#characteristics-to-be-investigated">4.1.5 Characteristics to be investigated</a></li>
+  <li><a href="#bioanalytical-methodology" id="toc-bioanalytical-methodology" class="nav-link" data-scroll-target="#bioanalytical-methodology">4.1.7 Bioanalytical methodology</a></li>
+  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation">4.1.8 Evaluation</a></li>
+  <li><a href="#highly-variable-drugs-or-drug-products" id="toc-highly-variable-drugs-or-drug-products" class="nav-link" data-scroll-target="#highly-variable-drugs-or-drug-products">4.1.10 Highly variable drugs or drug products</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions">DEFINITIONS</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-08-29-medicalknowledge.out.ipynb" download="2025-08-29-medicalknowledge.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -1173,8 +1220,310 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p><a href="https://www.ema.europa.eu/en/investigation-bioequivalence-scientific-guideline">EMA</a></p>
+<p><a href="https://www.ema.europa.eu/en/documents/scientific-guideline/guideline-investigation-bioequivalence-rev1_en.pdf">Guideline on the investigation of bioequivalence (Rev.1)</a></p>
+<ul>
+<li>내가 필요한 부분만 찾아 공부</li>
+</ul>
+<section id="main-guideline-text" class="level1">
+<h1>MAIN GUIDELINE TEXT</h1>
+<section id="design-conduct-and-evaluation-of-bioequivalence-studies" class="level2">
+<h2 class="anchored" data-anchor-id="design-conduct-and-evaluation-of-bioequivalence-studies">4.1 DESIGN, CONDUCT AND EVALUATION OF BIOEQUIVALENCE STUDIES</h2>
+<section id="study-design" class="level3">
+<h3 class="anchored" data-anchor-id="study-design">4.1.1 Study design</h3>
+<p><strong>Standard design</strong></p>
+<ul>
+<li><p>If two formulations are compared, a randomised, <em>two-period, two-sequence single dose crossover design</em> is <em>recommended</em>.</p></li>
+<li><p>The treatment periods should be separated by <em>a wash out period</em> sufficient to ensure that drug concentrations are below <em>the lower limit of bioanalytical quantification</em> in all subjects at the beginning of the second period.</p>
+<ul>
+<li>LLOQ (Lower Limit of Quantification): The lowest drug concentration in a sample that can be quantified with acceptable accuracy and precision using a validated bioanalytical method (e.g., LC-MS/MS).
+<ul>
+<li>LLOQ: 분석법(예: LC-MS/MS)으로 정확하고 정밀하게 정량할 수 있는 최소 농도</li>
+</ul></li>
+<li>Below the LLOQ, the values are considered unreliable for quantification.
+<ul>
+<li>그 이하 농도에서는 측정값이 너무 불안정하거나 오류가 커서 신뢰할 수 없는 값으로 간주</li>
+</ul></li>
+</ul></li>
+<li><p>Normally at least 5 elimination half-lives are necessary toachieve this.</p>
+<ul>
+<li>최소 5배의 소실 반감기 필요</li>
+</ul></li>
+</ul>
+</section>
+<section id="subjects" class="level3">
+<h3 class="anchored" data-anchor-id="subjects">4.1.3 Subjects</h3>
+<p><strong>Number of subjects</strong></p>
+<ul>
+<li>The number of evaluable subjects in a bioequivalence study should not be less than 12.</li>
+</ul>
+<p><strong>Selection of subjects</strong></p>
+<ul>
+<li>Subjects should be 18 years of age or older and preferably have a Body Mass Index between 18.5 and 30 <span class="math inline">\(kg/m^2\)</span>.</li>
+<li>The subjects should be screened for suitability by <strong>means of clinical laboratory tests</strong>, <strong>a medical history</strong>, and a <strong>physical examination</strong>.</li>
+<li>Depending on the drug’s therapeutic class and safety profile, special medical investigations and precautions may have to be carried out before, during and after the completion of the study.</li>
+<li>Subjects could belong to either sex; however, the risk to women of <strong>childbearing potential</strong> should be considered.</li>
+<li>Subjects should preferably be <strong>non-smokers</strong> and without a history of <strong>alcohol or drug abuse</strong>.</li>
+<li>Phenotyping and/or genotyping of subjects may be considered for safety or pharmacokinetic reasons.</li>
+</ul>
+</section>
+<section id="characteristics-to-be-investigated" class="level3">
+<h3 class="anchored" data-anchor-id="characteristics-to-be-investigated">4.1.5 Characteristics to be investigated</h3>
+<p><strong>Pharmacokinetic parameters</strong></p>
+<ul>
+<li><font color="blue">Actual time</font> of sampling should be used in the estimation of the pharmacokinetic parameters.</li>
+<li>In studies to determine bioequivalence after a single dose, <span class="math inline">\(AUC_{(0-t)}\)</span>, <span class="math inline">\(AUC_{(0-∞)}\)</span>, residual area, <span class="math inline">\(C_max\)</span> and <span class="math inline">\(t_max\)</span> should be determined.</li>
+<li>In studies with a sampling period of 72 h, and where the concentration at 72 h is quantifiable, <span class="math inline">\(AUC_{(0-∞)}\)</span> and residual area do not need to be reported; it is sufficient to report AUC truncated at 72h, <span class="math inline">\(AUC_{(0-72h)}\)</span>.</li>
+<li>Additional parameters that may be reported include the terminal rate constant, <span class="math inline">\(λ_z\)</span>, and <span class="math inline">\(t_{1/2}\)</span>.</li>
+<li>In studies to determine bioequivalence for immediate release formulations at <font color="red">steady state</font>, <span class="math inline">\(AUC_{(0-τ)}\)</span>, <span class="math inline">\(C_{max,ss}\)</span>, and <span class="math inline">\(t_{max,ss}\)</span> should be determined.</li>
+</ul>
+</section>
+<section id="bioanalytical-methodology" class="level3">
+<h3 class="anchored" data-anchor-id="bioanalytical-methodology">4.1.7 Bioanalytical methodology</h3>
+<ul>
+<li>The lower limit of quantitation should be 1/20 of Cmax or lower, as pre-dose concentrations should be detectable <font color="blue">at 5% of <span class="math inline">\(C_{max}\)</span> or lower</font> (see section 4.1.8. Carry-over effects).
+<ul>
+<li>투여 전(pre-dose) 농도는 <span class="math inline">\(C_{max}\)</span>의 5% 이하에서도 검출 가능해야 한다</li>
+</ul></li>
+<li><em>Reanalysis</em> of study samples should be predefined in the study protocol (and/or SOP) before the actual start of the analysis of the samples. Normally reanalysis of subject samples because of a pharmacokinetic reason is not acceptable.</li>
+<li>This is especially important for bioequivalence studies, as this may bias the outcome of such a study.
+<ul>
+<li>재분석할거를 어떻게 미리 아는 걸까..</li>
+</ul></li>
+<li>Analysis of samples should be conducted without information on treatment.
+<ul>
+<li>맹검상태</li>
+</ul></li>
+</ul>
+</section>
+<section id="evaluation" class="level3">
+<h3 class="anchored" data-anchor-id="evaluation">4.1.8 Evaluation</h3>
+<p><strong>Subject accountability</strong></p>
+<ul>
+<li>Ideally, all treated subjects should be included in the statistical analysis.</li>
+<li>However, subjects in a crossover trial who do not provide evaluable data for both of the test and reference products (or who fail to provide evaluable data for the single period in a parallel group trial) should not be included.
+<ul>
+<li>a crossover trial에 포함되려면 reference,test 모두 값이 있는 대상자만 포함되어야 함</li>
+<li>a parallel group trial은 평가 가능한 데이터가 존재해야 함</li>
+</ul></li>
+<li>The data from all treated subjects should be treated equally.</li>
+<li>It is not acceptable to have a protocol which specifies that ‘spare’ subjects will be included in the analysis only if needed as replacements for other subjects who have been excluded.
+<ul>
+<li>예비군은 필요할때만 대체하고 이런 경우는 허용되지 않음</li>
+</ul></li>
+<li>It should be planned that all treated subjects should be included in the analysis, even if there are no drop-outs.</li>
+<li>In studies with more than two treatment arms (e.g.&nbsp;a three period study including two references, one from EU and another from USA, or a four period study including test and reference in fed and fasted states), the analysis for each comparison should be conducted excluding the data from the treatments that are not relevant for the comparison in question.</li>
+</ul>
+<p><strong>Reasons for exclusion</strong></p>
+<ul>
+<li>Unbiased assessment of results from randomised studies requires that all subjects are observed and treated according to the same rules. These rules should be independent from treatment or outcome.</li>
+<li>In consequence, the decision to exclude a subject from the statistical analysis must be made before bioanalysis.
+<ul>
+<li>모든 대상자들은 동등한 규칙에 따라서!</li>
+</ul></li>
+<li>In principle any reason for exclusion is valid provided it is specified in the protocol and the decision to exclude is made <font color="blue">before bioanalysis</font>.</li>
+<li>However the exclusion of data should be avoided, as <font color="green">the power of the study will be reduced</font> and a minimum of 12 evaluable subjects is required.</li>
+<li>Examples of reasons to exclude the results from a subject in a particular period are events such as vomiting and diarrhoea which could render the plasma concentration-time profile unreliable.</li>
+<li>In exceptional cases, the use of concomitant medication could be a reason for excluding a subject.</li>
+<li>The permitted reasons for exclusion must be pre-specified in the protocol.
+<ul>
+<li>protocol에 허용되는 제외 사유 정의</li>
+</ul></li>
+<li>If one of these events occurs it should be noted in the CRF as the study is being conducted.
+<ul>
+<li>만약 발생하면 CRF에 기재되어야 함.</li>
+</ul></li>
+<li>Exclusion of subjects based on these pre-specified criteria should be clearly described and listed in the study report.
+<ul>
+<li>시험 보고서에도 기재</li>
+</ul></li>
+<li>Exclusion of data cannot be accepted on the basis of statistical analysis or for pharmacokinetic reasons alone, because it is impossible to distinguish the formulation effects from other effects influencing the pharmacokinetics.
+<ul>
+<li>단순히 pk 결과나 통계 분석 배경만으로 제외하면 안 된다!</li>
+</ul></li>
+</ul>
+<p><em>The exceptions to this are:</em></p>
+<p><code>1</code></p>
+<ul>
+<li>A subject with lack of any measurable concentrations or only very low plasma concentrations for reference medicinal product.</li>
+<li>A subject is considered to have very low plasma concentrations if its <font color="red">AUC is less than 5% of reference medicinal product geometric mean AUC</font> (which should be calculated without inclusion of data from the outlying subject).</li>
+<li>The exclusion of data due to this reason will only be accepted in exceptional cases and may question the <em>validity</em> of the trial.</li>
+</ul>
+<p><code>2</code></p>
+<ul>
+<li>Subjects with <font color="blue">non-zero baseline concentrations &gt; 5% of <span class="math inline">\(C_{max}\)</span></font>. Such data should be excluded from bioequivalence calculation (see carry-over effects below).
+<ul>
+<li>be분석에서 제외하기, carryover effect에 영향을 줄 수 있음</li>
+</ul></li>
+</ul>
+<p><code>-</code></p>
+<ul>
+<li>The above can, for immediate release formulations, be the result of subject non-compliance and an insufficient wash-out period, respectively, and should as far as possible be avoided by mouth check of subjects after intake of study medication to ensure the subjects have swallowed the study medication and by designing the study with a sufficient wash-out period.</li>
+<li>The samples from subjects excluded from the statistical analysis should still be assayed and the results listed (see Presentation of data below).
+<ul>
+<li>통계 분석에서 제외되더라도 result는 be assayed(분석되어)야함.</li>
+</ul></li>
+<li>As stated in section 4.1.4, AUC(0-t) should cover at least 80% of AUC(0-∞).</li>
+<li>Subjects should not be excluded from the statistical analysis if AUC(0-t) covers less than 80% of AUC(0-∞), but if the percentage is less than 80% in more than 20% of the observations then the validity of the study may need to be discussed. This does not apply if the sampling period is 72 h or more and AUC(0-72h) is used instead of AUC(0-t).</li>
+</ul>
+<p><strong>Parameters to be analysed and acceptance limits</strong></p>
+<ul>
+<li>In studies to determine bioequivalence after a single dose, the parameters to be analysed are AUC(0-t), or, when relevant, <span class="math inline">\(AUC_{(0-72h)}\)</span>, and <span class="math inline">\(C_{max}\)</span>.</li>
+<li>For these parameters the 90% confidence interval for the ratio of the test and reference products should be contained within the acceptance interval of <font color="red">80.00- 125.00%</font>.</li>
+<li>To be inside the acceptance interval the lower bound should be ≥ 80.00% when rounded to <em>two decimal places</em> and the upper bound should be ≤ 125.00% when rounded to two decimal places.</li>
+<li>For studies to determine bioequivalence of immediate release formulations at steady state, <span class="math inline">\(AUC_{(0-τ)}\)</span> and <span class="math inline">\(C_{max,ss}\)</span> should be analysed using the same acceptance interval as stated above.</li>
+<li>In the rare case where urinary data has been used, <span class="math inline">\(Ae_{(0-t)}\)</span> should be analysed using the same acceptance interval as stated above for AUC(0-t). Rmax should be analysed using the same acceptance interval as for <span class="math inline">\(C_{max}\)</span>.</li>
+<li>A statistical evaluation of <span class="math inline">\(t_{max}\)</span> is not required.</li>
+<li>However, if rapid release is claimed to be clinically relevant and of importance for onset of action or is related to adverse events, there should be no apparent difference in <font color="blue">median <span class="math inline">\(t_{max}\)</span></font> and its variability between test and reference product.
+<ul>
+<li>최대 도달 시간은 통계 분석은 필요 없지만 임상적 결과 중요하다면 중앙값 비교 가능</li>
+<li><span class="math inline">\(T_{max} = C_{max}\)</span>에 도달한 시간.
+<ul>
+<li>농도–시간 곡선에서 채혈 시점에 따라 불연속적인 값(예: 0.5h, 1h, 1.5h …)으로만 측정.</li>
+<li>따라서 Tmax는 수학적으로 평균보다는 중앙값으로 대표치를 나타내는 것이 적절.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>Statistical analysis</strong></p>
+<ul>
+<li>The assessment of bioequivalence is based upon 90% confidence intervals for <font color="blue">the ratio of the population geometric means (test/reference)</font> for the parameters under consideration.</li>
+<li>This method is equivalent to two one-sided tests with the null hypothesis of bioinequivalence at the 5% significance level.</li>
+<li>The pharmacokinetic parameters under consideration should be analysed using <font color="blue">ANOVA</font>.</li>
+<li>The data should be transformed prior to analysis using <font color="blue">a logarithmic transformation</font>.</li>
+<li>A confidence interval for the difference between formulations on the log-transformed scale is obtained from the ANOVA model.</li>
+<li>This confidence interval is then back-transformed to obtain the desired confidence interval for the ratio on the original scale.</li>
+<li>A non-parametric analysis is not acceptable.</li>
+<li>The precise model to be used for the analysis should be pre-specified in the protocol.</li>
+<li>The statistical analysis should take into account sources of variation that can be reasonably assumed to have an effect on the response variable.</li>
+<li>The terms to be used in the ANOVA model are usually <font color="red">sequence, subject within sequence, period and formulation</font>.</li>
+<li>Fixed effects, rather than random effects, should be used for all terms.</li>
+</ul>
+<p><strong>Carry-over effects</strong></p>
+<ul>
+<li>A test for carry-over is not considered relevant and no decisions regarding the analysis (e.g.&nbsp;analysis of the first period only) should be made on the basis of such a test.
+<ul>
+<li>carryover effect 통계 검정 의미 없..</li>
+</ul></li>
+<li>The potential for carry-over can be directly addressed by examination of the pre-treatment plasma concentrations in period 2 (and beyond if applicable).</li>
+<li>If there are any subjects for whom the pre-dose concentration is greater than 5 percent of the <span class="math inline">\(C_{max}\)</span> value for the subject in that period, the statistical analysis should be performed with the data from that subject for that period excluded.
+<ul>
+<li>carryover effect있는 것으로 보고 제외</li>
+</ul></li>
+<li>In a 2-period trial this will result in the subject being removed from the analysis.</li>
+<li>The trial will no longer be considered acceptable if these exclusions result in fewer than 12 subjects being evaluable. This approach does not apply to endogenous drugs.</li>
+</ul>
+<p><strong>Presentation of data</strong></p>
+<ul>
+<li>All individual concentration data and pharmacokinetic parameters should be listed by formulation together with summary statistics such as geometric mean, median, arithmetic mean, standard deviation, coefficient of variation, minimum and maximum.</li>
+<li>Individual plasma concentration/time curves should be presented in linear/linear and log/linear scale.</li>
+<li>The method used to derive the pharmacokinetic parameters from the raw data should be specified.</li>
+<li>The number of points of the terminal log-linear phase used to estimate the terminal rate constant (which is needed for a reliable estimate of AUC∞) should be specified.</li>
+<li>For the pharmacokinetic parameters that were subject to statistical analysis, the point estimate and 90% confidence interval for the ratio of the test and reference products should be presented.</li>
+<li>The ANOVA tables, including the appropriate statistical tests of all effects in the model, should be submitted.</li>
+<li>The report should be sufficiently detailed to enable the pharmacokinetics and the statistical analysis to be repeated, e.g.&nbsp;data on actual time of blood sampling after dose, drug concentrations, the values of the pharmacokinetic parameters for each subject in each period and the randomisation scheme should be provided.</li>
+<li>Drop-out and withdrawal of subjects should be fully documented.</li>
+<li>If available, concentration data and pharmacokinetic parameters from such subjects should be presented in the individual listings, but should not be included in the summary statistics.</li>
+<li>The bioanalytical method should be documented in a pre-study validation report.</li>
+<li>A bioanalytical report should be provided as well.</li>
+<li>The bioanalytical report should include a brief description of the bioanalytical method used and the results for all calibration standards and quality control samples.</li>
+<li>A representative number of chromatograms or other raw data should be provided covering the whole concentration range for all standard and quality control samples as well as the specimens analysed.</li>
+<li>This should include all chromatograms from at least 20% of the subjects with QC samples and calibration standards of the runs including these subjects.</li>
+<li>If for a particular formulation at a particular strength multiple studies have been performed some of which demonstrate bioequivalence and some of which do not, the body of evidence must be considered as a whole. Only relevant studies, as defined in section 4.1, need be considered.</li>
+<li>The existence of a study which demonstrates bioequivalence does not mean that those which do not can be ignored.</li>
+<li>The applicant should thoroughly discuss the results and justify the claim that bioequivalence has been demonstrated.</li>
+<li>Alternatively, when relevant, a combined analysis of all studies can be provided in addition to the individual study analyses.</li>
+<li>It is not acceptable to pool together studies which fail to demonstrate bioequivalence in the absence of a study that does.</li>
+</ul>
+</section>
+<section id="highly-variable-drugs-or-drug-products" class="level3">
+<h3 class="anchored" data-anchor-id="highly-variable-drugs-or-drug-products">4.1.10 Highly variable drugs or drug products</h3>
+<ul>
+<li>Highly variable drug products (HVDP) are those whose intra-subject variability for a parameter is larger than 30%.
+<ul>
+<li>변동성 30% 초과하면 HVDP라 부르자</li>
+</ul></li>
+<li>If an applicant suspects that a drug product can be considered as highly variable in its rate and/or extent of absorption, a replicate cross-over design study can be carried out.
+<ul>
+<li>고변동 의심되면 replicate 가능</li>
+</ul></li>
+<li>Those HVDP for which a wider difference in <span class="math inline">\(C_{max}\)</span> is considered clinically irrelevant based on a sound clinical justification can be assessed with a widened acceptance range.</li>
+<li>If this is the case the acceptance criteria for <span class="math inline">\(C_{max}\)</span> can be widened to a maximum of 69.84 – 143.19%.</li>
+<li>For the acceptance interval to be widened the bioequivalence study must be of a replicate design where it has been demonstrated that the within-subject variability for Cmax of the reference compound in the study is &gt;30%.</li>
+<li>The applicant should justify that the calculated intra-subject variability is a reliable estimate and that it is <font color="blue">not the result of outliers</font>.
+<ul>
+<li>이상치 아님을 밝히는 것이 중요</li>
+</ul></li>
+<li>The request for widened interval must be prospectively specified in the protocol.</li>
+<li>The extent of the widening is defined based upon the within-subject variability seen in the bioequivalence study using scaled-average-bioequivalence according to <span class="math inline">\([U, L] = exp [±k·s_{WR}]\)</span>, where U is the upper limit of the acceptance range, L is the lower limit of the acceptance range, <font color="red">k is the regulatory constant set to 0.760</font> and <span class="math inline">\(s_{WR}\)</span> is the within-subject standard deviation of the log-transformed values of <span class="math inline">\(C_{max}\)</span> of the reference product.</li>
+<li>The table below gives examples of how different levels of variability lead to different acceptance limits using this methodology.</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Within-subject CV (%)</th>
+<th>Lower Limit</th>
+<th>Upper Limit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>30</td>
+<td>80.00</td>
+<td>125.00</td>
+</tr>
+<tr class="even">
+<td>35</td>
+<td>77.23</td>
+<td>129.48</td>
+</tr>
+<tr class="odd">
+<td>40</td>
+<td>74.62</td>
+<td>134.02</td>
+</tr>
+<tr class="even">
+<td>45</td>
+<td>72.15</td>
+<td>138.59</td>
+</tr>
+<tr class="odd">
+<td>≥50</td>
+<td>69.84</td>
+<td>143.19</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(CV(\%) = 100 \times \sqrt{e^{s_{WR}^2} - 1}\)</span></p>
+<ul>
+<li><font color="blue">The geometric mean ratio (GMR) should lie within the conventional acceptance range 80.00-125.00%.</font></li>
+<li>The possibility to widen the acceptance criteria based on high intra-subject variability does not apply to AUC where the acceptance range should remain at 80.00 – 125.00% regardless of variability.</li>
+<li>It is acceptable to apply either a 3-period or a 4-period crossover scheme in the replicate design study.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="definitions" class="level1">
+<h1>DEFINITIONS</h1>
+<p><strong>Pharmacokinetic parameters</strong></p>
+<ul>
+<li><span class="math inline">\(Ae_{(0-t)}\)</span> Cumulative urinary excretion of unchanged drug from administration until time t;</li>
+<li><span class="math inline">\(AUC_{(0-t)}\)</span>: Area under the plasma concentration curve from administration to last observed concentration at time t;</li>
+<li><span class="math inline">\(AUC_{(0-∞)}\)</span> : AUC(0-τ)): AUC(0-72h) Cmax,ss: residual area Rmax tmax: tmax,ss: Area under the plasma concentration curve extrapolated to infinite time;</li>
+<li><span class="math inline">\(AUC_{(0-τ))}\)</span>: AUC during a dosage interval at steady state;</li>
+<li><span class="math inline">\(AUC_{(0-72h)}\)</span>: Area under the plasma concentration curve from administration to 72h;</li>
+<li><span class="math inline">\(C_{max}\)</span>: Maximum plasma concentration;</li>
+<li><span class="math inline">\(C_{max,ss}\)</span>: Maximum plasma concentration at steady state;</li>
+<li>residual area: Extrapolated area <span class="math inline">\((AUC_{(0-∞)} - AUC_{(0-t))}/ AUC_{(0-∞)}\)</span>;</li>
+<li><span class="math inline">\(R_{max}\)</span> Maximal rate of urinary excretion;</li>
+<li><span class="math inline">\(t_{max}\)</span>: Time until <span class="math inline">\(C_{max}\)</span> is reached;</li>
+<li>$t_{max,ss}: Time until <span class="math inline">\(C_{max,ss}\)</span> is reached;</li>
+<li><span class="math inline">\(t_{1/2}\)</span>: Plasma concentration half-life;</li>
+<li><span class="math inline">\(λ_z\)</span>: Terminal rate constant;</li>
+<li>SmPC Summary of Product Characteristics</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
