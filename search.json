@@ -41,7 +41,7 @@
     "href": "posts/rshiny/2025-09-16-cars.html",
     "title": "[R Shiny]Cars",
     "section": "",
-    "text": "link\ndata",
+    "text": "link\ndata\n\n```mermaid erDiagram CARMODEL { VARCHAR model_id PK VARCHAR brand_name VARCHAR model_name INT year_introduced } SALES { VARCHAR sales_id PK VARCHAR model_id FK INT year INT units_sold VARCHAR region } PRICE { VARCHAR price_id PK VARCHAR model_id FK INT year DECIMAL entry_level_price } TRIM { VARCHAR trim_id PK VARCHAR model_id FK VARCHAR trim_name VARCHAR engine_type VARCHAR engine_size DECIMAL selling_price } ADVERTISEMENT { VARCHAR ad_id PK VARCHAR model_id FK VARCHAR trim_id FK DATE ad_date VARCHAR used_new VARCHAR seller_info VARCHAR location } IMAGE { VARCHAR image_id PK VARCHAR model_id FK INT year VARCHAR colour VARCHAR viewpoint VARCHAR filepath } IMAGEQUALITY { VARCHAR image_id FK INT quality_score VARCHAR predicted_viewpoint }\nCARMODEL ||--o{ SALES : has\nCARMODEL ||--o{ PRICE : has\nCARMODEL ||--o{ TRIM : has\nCARMODEL ||--o{ IMAGE : has\nTRIM ||--o{ ADVERTISEMENT : has\nIMAGE ||--o{ IMAGEQUALITY : has",
     "crumbs": [
       "Main_Blog",
       "Posts",
@@ -54,7 +54,7 @@
     "href": "posts/rshiny/2025-09-16-cars.html#cars",
     "title": "[R Shiny]Cars",
     "section": "",
-    "text": "link\ndata",
+    "text": "link\ndata\n\n```mermaid erDiagram CARMODEL { VARCHAR model_id PK VARCHAR brand_name VARCHAR model_name INT year_introduced } SALES { VARCHAR sales_id PK VARCHAR model_id FK INT year INT units_sold VARCHAR region } PRICE { VARCHAR price_id PK VARCHAR model_id FK INT year DECIMAL entry_level_price } TRIM { VARCHAR trim_id PK VARCHAR model_id FK VARCHAR trim_name VARCHAR engine_type VARCHAR engine_size DECIMAL selling_price } ADVERTISEMENT { VARCHAR ad_id PK VARCHAR model_id FK VARCHAR trim_id FK DATE ad_date VARCHAR used_new VARCHAR seller_info VARCHAR location } IMAGE { VARCHAR image_id PK VARCHAR model_id FK INT year VARCHAR colour VARCHAR viewpoint VARCHAR filepath } IMAGEQUALITY { VARCHAR image_id FK INT quality_score VARCHAR predicted_viewpoint }\nCARMODEL ||--o{ SALES : has\nCARMODEL ||--o{ PRICE : has\nCARMODEL ||--o{ TRIM : has\nCARMODEL ||--o{ IMAGE : has\nTRIM ||--o{ ADVERTISEMENT : has\nIMAGE ||--o{ IMAGEQUALITY : has",
     "crumbs": [
       "Main_Blog",
       "Posts",
