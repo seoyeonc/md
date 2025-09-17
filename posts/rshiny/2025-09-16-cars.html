@@ -1197,13 +1197,63 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://seoyeonchoi.shinyapps.io/cars/">link</a></li>
 <li><a href="https://www.kaggle.com/datasets/jockeroika/cars-dataset">data</a></li>
 </ul>
-<p>```mermaid erDiagram CARMODEL { VARCHAR model_id PK VARCHAR brand_name VARCHAR model_name INT year_introduced } SALES { VARCHAR sales_id PK VARCHAR model_id FK INT year INT units_sold VARCHAR region } PRICE { VARCHAR price_id PK VARCHAR model_id FK INT year DECIMAL entry_level_price } TRIM { VARCHAR trim_id PK VARCHAR model_id FK VARCHAR trim_name VARCHAR engine_type VARCHAR engine_size DECIMAL selling_price } ADVERTISEMENT { VARCHAR ad_id PK VARCHAR model_id FK VARCHAR trim_id FK DATE ad_date VARCHAR used_new VARCHAR seller_info VARCHAR location } IMAGE { VARCHAR image_id PK VARCHAR model_id FK INT year VARCHAR colour VARCHAR viewpoint VARCHAR filepath } IMAGEQUALITY { VARCHAR image_id FK INT quality_score VARCHAR predicted_viewpoint }</p>
-<pre><code>CARMODEL ||--o{ SALES : has
-CARMODEL ||--o{ PRICE : has
-CARMODEL ||--o{ TRIM : has
-CARMODEL ||--o{ IMAGE : has
-TRIM ||--o{ ADVERTISEMENT : has
-IMAGE ||--o{ IMAGEQUALITY : has</code></pre>
+<pre class="mermaid"><code>erDiagram
+    CARMODEL {
+        VARCHAR model_id PK
+        VARCHAR brand_name
+        VARCHAR model_name
+        INT year_introduced
+    }
+    SALES {
+        VARCHAR sales_id PK
+        VARCHAR model_id FK
+        INT year
+        INT units_sold
+        VARCHAR region
+    }
+    PRICE {
+        VARCHAR price_id PK
+        VARCHAR model_id FK
+        INT year
+        DECIMAL entry_level_price
+    }
+    TRIM {
+        VARCHAR trim_id PK
+        VARCHAR model_id FK
+        VARCHAR trim_name
+        VARCHAR engine_type
+        VARCHAR engine_size
+        DECIMAL selling_price
+    }
+    ADVERTISEMENT {
+        VARCHAR ad_id PK
+        VARCHAR model_id FK
+        VARCHAR trim_id FK
+        DATE ad_date
+        VARCHAR used_new
+        VARCHAR seller_info
+        VARCHAR location
+    }
+    IMAGE {
+        VARCHAR image_id PK
+        VARCHAR model_id FK
+        INT year
+        VARCHAR colour
+        VARCHAR viewpoint
+        VARCHAR filepath
+    }
+    IMAGEQUALITY {
+        VARCHAR image_id FK
+        INT quality_score
+        VARCHAR predicted_viewpoint
+    }
+
+    CARMODEL ||--o{ SALES : has
+    CARMODEL ||--o{ PRICE : has
+    CARMODEL ||--o{ TRIM : has
+    CARMODEL ||--o{ IMAGE : has
+    TRIM ||--o{ ADVERTISEMENT : has
+    IMAGE ||--o{ IMAGEQUALITY : has</code></pre>
 
 
 </section>
