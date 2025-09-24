@@ -1238,6 +1238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#gender-and-work-mode" id="toc-gender-and-work-mode" class="nav-link" data-scroll-target="#gender-and-work-mode">Gender and Work mode</a></li>
   <li><a href="#occupation" id="toc-occupation" class="nav-link" data-scroll-target="#occupation">Occupation</a></li>
   <li><a href="#trend-check" id="toc-trend-check" class="nav-link" data-scroll-target="#trend-check">Trend Check</a></li>
+  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation">Correlation</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-09-22-Screentime.out.ipynb" download="2025-09-22-Screentime.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
@@ -1255,9 +1256,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="import" class="level1">
 <h1>Import</h1>
-<div id="96b204c0-8770-48c2-af84-44f9b2264334" class="cell" data-execution_count="1">
+<div id="96b204c0-8770-48c2-af84-44f9b2264334" class="cell" data-execution_count="125">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span></code></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> spearmanr, pearsonr</span></code></pre></div>
 </div>
 </section>
 <section id="data" class="level1">
@@ -2747,8 +2749,325 @@ if (outputEl) {{
 <ul>
 <li><strong>screen_time_hours, sleep_hours에 따라 graph 확인해본 결과 stress_level_0_10, productivity_0_100, mental_wellness_index_0_100가 영향이 있어보였다.</strong></li>
 </ul>
-<div id="5c0fc2dc-37c7-4d09-ae08-c0574e05ed0d" class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>ㄴ</span></code></pre></div>
+</section>
+<section id="correlation" class="level2">
+<h2 class="anchored" data-anchor-id="correlation">Correlation</h2>
+<div id="5c0fc2dc-37c7-4d09-ae08-c0574e05ed0d" class="cell" data-execution_count="119">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="119">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">user_id</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">gender</th>
+<th data-quarto-table-cell-role="th">occupation</th>
+<th data-quarto-table-cell-role="th">work_mode</th>
+<th data-quarto-table-cell-role="th">screen_time_hours</th>
+<th data-quarto-table-cell-role="th">work_screen_hours</th>
+<th data-quarto-table-cell-role="th">leisure_screen_hours</th>
+<th data-quarto-table-cell-role="th">sleep_hours</th>
+<th data-quarto-table-cell-role="th">sleep_quality_1_5</th>
+<th data-quarto-table-cell-role="th">stress_level_0_10</th>
+<th data-quarto-table-cell-role="th">productivity_0_100</th>
+<th data-quarto-table-cell-role="th">exercise_minutes_per_week</th>
+<th data-quarto-table-cell-role="th">social_hours_per_week</th>
+<th data-quarto-table-cell-role="th">mental_wellness_index_0_100</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>U0001</td>
+<td>33</td>
+<td>Female</td>
+<td>Employed</td>
+<td>Remote</td>
+<td>10.79</td>
+<td>5.44</td>
+<td>5.35</td>
+<td>6.63</td>
+<td>1</td>
+<td>9.3</td>
+<td>44.7</td>
+<td>127</td>
+<td>0.7</td>
+<td>9.3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>U0002</td>
+<td>28</td>
+<td>Female</td>
+<td>Employed</td>
+<td>In-person</td>
+<td>7.40</td>
+<td>0.37</td>
+<td>7.03</td>
+<td>8.05</td>
+<td>3</td>
+<td>5.7</td>
+<td>78.0</td>
+<td>74</td>
+<td>2.1</td>
+<td>56.2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>U0003</td>
+<td>35</td>
+<td>Female</td>
+<td>Employed</td>
+<td>Hybrid</td>
+<td>9.78</td>
+<td>1.09</td>
+<td>8.69</td>
+<td>6.48</td>
+<td>1</td>
+<td>9.1</td>
+<td>51.8</td>
+<td>67</td>
+<td>8.0</td>
+<td>3.6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>U0004</td>
+<td>42</td>
+<td>Male</td>
+<td>Employed</td>
+<td>Hybrid</td>
+<td>11.13</td>
+<td>0.56</td>
+<td>10.57</td>
+<td>6.89</td>
+<td>1</td>
+<td>10.0</td>
+<td>37.0</td>
+<td>0</td>
+<td>5.7</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>U0005</td>
+<td>28</td>
+<td>Male</td>
+<td>Student</td>
+<td>Remote</td>
+<td>13.22</td>
+<td>4.09</td>
+<td>9.13</td>
+<td>5.79</td>
+<td>1</td>
+<td>10.0</td>
+<td>38.5</td>
+<td>143</td>
+<td>10.1</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">395</td>
+<td>U0396</td>
+<td>26</td>
+<td>Female</td>
+<td>Student</td>
+<td>Remote</td>
+<td>6.43</td>
+<td>2.99</td>
+<td>3.44</td>
+<td>7.75</td>
+<td>1</td>
+<td>5.9</td>
+<td>64.6</td>
+<td>252</td>
+<td>7.6</td>
+<td>39.3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">396</td>
+<td>U0397</td>
+<td>16</td>
+<td>Male</td>
+<td>Self-employed</td>
+<td>Remote</td>
+<td>9.59</td>
+<td>5.44</td>
+<td>4.15</td>
+<td>5.57</td>
+<td>1</td>
+<td>10.0</td>
+<td>47.4</td>
+<td>99</td>
+<td>7.0</td>
+<td>3.5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">397</td>
+<td>U0398</td>
+<td>40</td>
+<td>Male</td>
+<td>Student</td>
+<td>Remote</td>
+<td>8.72</td>
+<td>2.36</td>
+<td>6.36</td>
+<td>7.56</td>
+<td>1</td>
+<td>9.4</td>
+<td>57.3</td>
+<td>193</td>
+<td>10.1</td>
+<td>6.6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">398</td>
+<td>U0399</td>
+<td>29</td>
+<td>Female</td>
+<td>Retired</td>
+<td>Hybrid</td>
+<td>5.04</td>
+<td>0.94</td>
+<td>4.10</td>
+<td>7.32</td>
+<td>1</td>
+<td>7.1</td>
+<td>63.6</td>
+<td>97</td>
+<td>12.1</td>
+<td>21.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">399</td>
+<td>U0400</td>
+<td>39</td>
+<td>Female</td>
+<td>Employed</td>
+<td>Remote</td>
+<td>8.86</td>
+<td>3.82</td>
+<td>5.04</td>
+<td>6.55</td>
+<td>1</td>
+<td>10.0</td>
+<td>41.4</td>
+<td>88</td>
+<td>9.8</td>
+<td>8.4</td>
+</tr>
+</tbody>
+</table>
+
+<p>400 rows × 15 columns</p>
+</div>
+</div>
+</div>
+<ul>
+<li>1부터 5점 척도로 이루어진 <code>sleep_quality_1_5</code> 때문에 spearman correlation으로</li>
+</ul>
+<div id="200b10e3-ad05-458d-8479-33883f1a6975" class="cell" data-execution_count="122">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>spearman_corr, spearman_p <span class="op">=</span> spearmanr(df[<span class="st">'sleep_hours'</span>], df[<span class="st">'sleep_quality_1_5'</span>])</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Spearman correlation: </span><span class="sc">{</span>spearman_corr<span class="sc">:.3f}</span><span class="ss">, p-value: </span><span class="sc">{</span>spearman_p<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Spearman correlation: 0.626, p-value: 0.000</code></pre>
+</div>
+</div>
+<div id="c98a2333-749c-419c-8d69-8e1d4017022f" class="cell" data-execution_count="127">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.box(</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    df, </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'sleep_quality_1_5'</span>, </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'sleep_hours'</span>,</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    points<span class="op">=</span><span class="st">"all"</span>,  </span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Sleep Hours by Sleep Quality (1-5)"</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.violin(</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    df,</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'sleep_quality_1_5'</span>,</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'sleep_hours'</span>,</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>    box<span class="op">=</span><span class="va">True</span>,       </span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>    points<span class="op">=</span><span class="st">"all"</span>,  </span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Distribution of Sleep Hours by Sleep Quality"</span></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>                            <div id="e717fb58-5918-4707-902d-f718305abc7b" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("e717fb58-5918-4707-902d-f718305abc7b")) {                    Plotly.newPlot(                        "e717fb58-5918-4707-902d-f718305abc7b",                        [{"alignmentgroup":"True","boxpoints":"all","hovertemplate":"sleep_quality_1_5=%{x}<br>sleep_hours=%{y}<extra></extra>","legendgroup":"","marker":{"color":"#636efa"},"name":"","notched":false,"offsetgroup":"","orientation":"v","showlegend":false,"x":[1,3,1,1,1,1,2,2,4,2,1,3,1,2,1,1,1,1,3,1,1,1,3,1,1,1,2,2,2,1,1,1,1,1,1,1,1,3,1,1,2,2,3,1,1,1,2,1,2,1,1,1,1,1,2,2,2,3,2,2,1,1,1,1,1,2,1,1,3,2,1,1,1,2,2,1,1,2,1,2,1,2,3,1,3,2,1,1,1,2,1,1,1,1,3,1,2,1,1,1,1,1,2,1,1,1,1,1,2,1,2,1,1,2,1,1,2,1,3,1,1,1,2,1,1,1,2,3,1,1,3,3,1,1,1,1,1,1,2,2,1,3,2,2,2,1,4,1,1,1,1,2,1,1,2,1,1,1,1,1,1,2,2,1,2,1,3,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,2,1,1,1,3,1,1,1,1,1,1,2,1,1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,1,2,2,1,1,2,2,1,2,1,1,3,1,1,1,2,1,3,1,2,2,1,1,1,1,1,2,1,1,1,2,1,2,3,1,1,2,3,1,1,1,2,2,2,1,2,1,1,1,1,2,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,3,2,2,1,1,2,1,2,1,2,3,1,2,1,1,1,3,1,1,1,1,1,2,1,1,1,1,1,1,2,1,1,1,1,1,1,2,1,1,2,1,1,1,3,1,2,2,1,1,1,1,2,1,1,2,2,1,2,3,1,3,4,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1],"x0":" ","xaxis":"x","y":[6.63,8.05,6.48,6.89,5.79,7.19,7.44,6.78,8.48,7.78,6.4,8.01,6.96,7.59,5.54,7.13,6.53,7.06,9.2,6.98,6.68,5.49,8.36,6.34,6.21,7.08,7.74,8.06,7.11,7.18,6.91,6.5,7.42,7.38,7.28,7.57,6.63,7.64,7.03,6.22,7.28,7.08,7.96,6.45,6.31,7.47,7.33,6.5,7.67,7.08,6.93,6.33,6.2,7.48,8.22,7.08,7.12,8.37,7.1,7.49,5.89,7.57,5.89,6.3,7.14,7.21,6.56,6.06,8.15,8.01,5.68,7.29,6.93,7.92,6.84,7.09,7.26,8.75,5.65,7.61,7.89,8.18,8.89,6.72,8.04,7.32,7.91,7.03,6.8,8.66,6.64,5.87,6.76,7.81,8.3,6.84,8.28,5.9,7.49,7.01,6.72,7.15,7.82,7.33,6.61,7.66,6.14,6.69,6.22,6.45,7.33,6.79,6.38,8.1,5.65,6.67,8.93,6.16,7.26,7.53,5.29,7.17,8.79,5.88,5.68,6.47,7.65,7.56,6.63,7.69,8.55,8.29,6.67,4.76,6.75,7.3,6.68,6.85,8.59,8.1,6.5,7.82,7.99,7.58,7.83,6.69,9.0,5.83,6.95,6.95,7.65,8.09,7.12,6.19,8.02,6.5,5.56,6.57,5.71,6.57,6.14,7.64,6.68,5.49,8.03,5.74,7.89,6.65,6.49,7.07,7.75,7.85,6.83,7.47,6.39,7.99,7.18,7.15,5.7,6.42,8.06,6.3,6.18,8.57,7.72,6.33,5.86,6.12,7.53,6.35,6.39,7.81,6.66,7.94,7.87,7.18,6.17,5.1,5.47,5.89,6.76,7.27,6.11,7.1,7.08,7.43,5.83,6.7,5.66,7.54,7.27,6.1,7.07,6.98,5.16,7.06,7.59,6.85,5.74,6.54,6.25,5.95,6.68,7.64,6.58,7.18,6.98,6.09,6.78,7.15,5.78,7.93,6.79,6.86,7.46,6.39,6.94,6.6,7.14,5.2,5.81,7.72,8.24,6.17,6.59,7.29,7.65,5.2,6.39,6.26,7.17,9.74,6.33,5.88,7.63,8.03,7.14,7.25,7.87,7.66,6.32,6.57,7.91,7.93,7.1,6.82,8.13,5.93,6.98,6.39,8.01,7.19,7.99,7.21,5.48,6.69,8.16,8.39,6.21,7.03,7.16,6.46,7.76,7.58,6.04,7.27,6.71,6.47,6.6,7.25,7.81,7.83,6.75,6.76,7.63,6.14,7.31,7.68,8.17,8.49,6.49,7.35,6.41,7.44,6.95,5.69,7.21,4.64,5.87,6.97,7.28,6.9,6.42,6.37,7.35,7.86,7.36,8.13,6.98,6.28,6.17,5.97,7.7,8.07,7.18,7.95,7.03,8.1,6.32,8.02,6.83,7.3,7.92,6.67,7.62,7.95,6.63,5.58,8.45,6.64,7.09,7.92,7.18,6.87,7.61,5.41,7.02,7.07,7.12,5.62,7.66,8.39,7.5,7.11,6.21,7.48,6.41,6.39,8.73,6.19,5.43,8.64,6.26,6.39,5.73,8.02,6.22,6.7,7.92,7.31,6.55,5.39,6.31,7.72,6.77,6.96,7.26,8.28,6.84,8.64,6.84,6.24,8.02,9.1,5.64,6.66,5.64,7.41,7.21,6.75,6.03,5.67,6.98,8.06,5.92,7.75,5.57,7.56,7.32,6.55],"y0":" ","yaxis":"y","type":"box"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"sleep_quality_1_5"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"sleep_hours"}},"legend":{"tracegroupgap":0},"title":{"text":"Sleep Hours by Sleep Quality (1-5)"},"boxmode":"group"},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('e717fb58-5918-4707-902d-f718305abc7b');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+<div class="cell-output cell-output-display">
+<div>                            <div id="c6b52b0d-c85b-4b0a-81d2-40422242c3c1" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("c6b52b0d-c85b-4b0a-81d2-40422242c3c1")) {                    Plotly.newPlot(                        "c6b52b0d-c85b-4b0a-81d2-40422242c3c1",                        [{"alignmentgroup":"True","box":{"visible":true},"hovertemplate":"sleep_quality_1_5=%{x}<br>sleep_hours=%{y}<extra></extra>","legendgroup":"","marker":{"color":"#636efa"},"name":"","offsetgroup":"","orientation":"v","points":"all","scalegroup":"True","showlegend":false,"x":[1,3,1,1,1,1,2,2,4,2,1,3,1,2,1,1,1,1,3,1,1,1,3,1,1,1,2,2,2,1,1,1,1,1,1,1,1,3,1,1,2,2,3,1,1,1,2,1,2,1,1,1,1,1,2,2,2,3,2,2,1,1,1,1,1,2,1,1,3,2,1,1,1,2,2,1,1,2,1,2,1,2,3,1,3,2,1,1,1,2,1,1,1,1,3,1,2,1,1,1,1,1,2,1,1,1,1,1,2,1,2,1,1,2,1,1,2,1,3,1,1,1,2,1,1,1,2,3,1,1,3,3,1,1,1,1,1,1,2,2,1,3,2,2,2,1,4,1,1,1,1,2,1,1,2,1,1,1,1,1,1,2,2,1,2,1,3,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,2,1,1,1,3,1,1,1,1,1,1,2,1,1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,1,2,2,1,1,2,2,1,2,1,1,3,1,1,1,2,1,3,1,2,2,1,1,1,1,1,2,1,1,1,2,1,2,3,1,1,2,3,1,1,1,2,2,2,1,2,1,1,1,1,2,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,3,2,2,1,1,2,1,2,1,2,3,1,2,1,1,1,3,1,1,1,1,1,2,1,1,1,1,1,1,2,1,1,1,1,1,1,2,1,1,2,1,1,1,3,1,2,2,1,1,1,1,2,1,1,2,2,1,2,3,1,3,4,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1],"x0":" ","xaxis":"x","y":[6.63,8.05,6.48,6.89,5.79,7.19,7.44,6.78,8.48,7.78,6.4,8.01,6.96,7.59,5.54,7.13,6.53,7.06,9.2,6.98,6.68,5.49,8.36,6.34,6.21,7.08,7.74,8.06,7.11,7.18,6.91,6.5,7.42,7.38,7.28,7.57,6.63,7.64,7.03,6.22,7.28,7.08,7.96,6.45,6.31,7.47,7.33,6.5,7.67,7.08,6.93,6.33,6.2,7.48,8.22,7.08,7.12,8.37,7.1,7.49,5.89,7.57,5.89,6.3,7.14,7.21,6.56,6.06,8.15,8.01,5.68,7.29,6.93,7.92,6.84,7.09,7.26,8.75,5.65,7.61,7.89,8.18,8.89,6.72,8.04,7.32,7.91,7.03,6.8,8.66,6.64,5.87,6.76,7.81,8.3,6.84,8.28,5.9,7.49,7.01,6.72,7.15,7.82,7.33,6.61,7.66,6.14,6.69,6.22,6.45,7.33,6.79,6.38,8.1,5.65,6.67,8.93,6.16,7.26,7.53,5.29,7.17,8.79,5.88,5.68,6.47,7.65,7.56,6.63,7.69,8.55,8.29,6.67,4.76,6.75,7.3,6.68,6.85,8.59,8.1,6.5,7.82,7.99,7.58,7.83,6.69,9.0,5.83,6.95,6.95,7.65,8.09,7.12,6.19,8.02,6.5,5.56,6.57,5.71,6.57,6.14,7.64,6.68,5.49,8.03,5.74,7.89,6.65,6.49,7.07,7.75,7.85,6.83,7.47,6.39,7.99,7.18,7.15,5.7,6.42,8.06,6.3,6.18,8.57,7.72,6.33,5.86,6.12,7.53,6.35,6.39,7.81,6.66,7.94,7.87,7.18,6.17,5.1,5.47,5.89,6.76,7.27,6.11,7.1,7.08,7.43,5.83,6.7,5.66,7.54,7.27,6.1,7.07,6.98,5.16,7.06,7.59,6.85,5.74,6.54,6.25,5.95,6.68,7.64,6.58,7.18,6.98,6.09,6.78,7.15,5.78,7.93,6.79,6.86,7.46,6.39,6.94,6.6,7.14,5.2,5.81,7.72,8.24,6.17,6.59,7.29,7.65,5.2,6.39,6.26,7.17,9.74,6.33,5.88,7.63,8.03,7.14,7.25,7.87,7.66,6.32,6.57,7.91,7.93,7.1,6.82,8.13,5.93,6.98,6.39,8.01,7.19,7.99,7.21,5.48,6.69,8.16,8.39,6.21,7.03,7.16,6.46,7.76,7.58,6.04,7.27,6.71,6.47,6.6,7.25,7.81,7.83,6.75,6.76,7.63,6.14,7.31,7.68,8.17,8.49,6.49,7.35,6.41,7.44,6.95,5.69,7.21,4.64,5.87,6.97,7.28,6.9,6.42,6.37,7.35,7.86,7.36,8.13,6.98,6.28,6.17,5.97,7.7,8.07,7.18,7.95,7.03,8.1,6.32,8.02,6.83,7.3,7.92,6.67,7.62,7.95,6.63,5.58,8.45,6.64,7.09,7.92,7.18,6.87,7.61,5.41,7.02,7.07,7.12,5.62,7.66,8.39,7.5,7.11,6.21,7.48,6.41,6.39,8.73,6.19,5.43,8.64,6.26,6.39,5.73,8.02,6.22,6.7,7.92,7.31,6.55,5.39,6.31,7.72,6.77,6.96,7.26,8.28,6.84,8.64,6.84,6.24,8.02,9.1,5.64,6.66,5.64,7.41,7.21,6.75,6.03,5.67,6.98,8.06,5.92,7.75,5.57,7.56,7.32,6.55],"y0":" ","yaxis":"y","type":"violin"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"sleep_quality_1_5"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"sleep_hours"}},"legend":{"tracegroupgap":0},"title":{"text":"Distribution of Sleep Hours by Sleep Quality"},"violinmode":"group"},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('c6b52b0d-c85b-4b0a-81d2-40422242c3c1');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
 </div>
 
 
