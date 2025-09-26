@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="SEOYEON CHOI">
-<meta name="dcterms.date" content="2023-05-28">
+<meta name="dcterms.date" content="2025-09-26">
 
-<title>Seoyeon’s Blog for classes - Attention Mechanism</title>
+<title>Seoyeon’s Blog for classes - [SAP] Phase 2 SAP Study</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -102,9 +68,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -182,7 +145,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Machine Learning basic</a></li><li class="breadcrumb-item"><a href="../../posts/ml_basic/2023-05-28-Attention Mechanism.html">Attention Mechanism</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/medical knowledge/2025-08-29-medicalknowledge.html">medical knowledge</a></li><li class="breadcrumb-item"><a href="../../posts/medical knowledge/2025-09-26-Phase 2 SAP.html">[SAP] Phase 2 SAP Study</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -192,14 +155,11 @@ window.Quarto = {
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Machine Learning basic</a></li><li class="breadcrumb-item"><a href="../../posts/ml_basic/2023-05-28-Attention Mechanism.html">Attention Mechanism</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/medical knowledge/2025-08-29-medicalknowledge.html">medical knowledge</a></li><li class="breadcrumb-item"><a href="../../posts/medical knowledge/2025-09-26-Phase 2 SAP.html">[SAP] Phase 2 SAP Study</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Attention Mechanism</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">Attention Mechanism</div>
-              </div>
-                  </div>
+      <h1 class="title">[SAP] Phase 2 SAP Study</h1>
+                      </div>
   </div>
     
   
@@ -215,7 +175,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 28, 2023</p>
+        <p class="date">September 26, 2025</p>
       </div>
     </div>
     
@@ -252,11 +212,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../posts/ml_basic/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Machine Learning basic</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/ml_basic/2023-03-23-Support Vector Machine.html" class="sidebar-item-text sidebar-link">
@@ -313,7 +273,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ml_basic/2023-05-28-Attention Mechanism.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/ml_basic/2023-05-28-Attention Mechanism.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Attention Mechanism</span></a>
   </div>
 </li>
@@ -1118,13 +1078,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
  <span class="menu-text">medical knowledge</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/medical knowledge/2025-08-29-medicalknowledge.html" class="sidebar-item-text sidebar-link">
@@ -1139,7 +1099,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/medical knowledge/2025-09-26-Phase 2 SAP.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/medical knowledge/2025-09-26-Phase 2 SAP.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">[SAP] Phase 2 SAP Study</span></a>
   </div>
 </li>
@@ -1267,22 +1227,34 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#attention-function" id="toc-attention-function" class="nav-link active" data-scroll-target="#attention-function">Attention Function</a>
+  <li><a href="#abbreviations" id="toc-abbreviations" class="nav-link active" data-scroll-target="#abbreviations">Abbreviations</a></li>
+  <li><a href="#version" id="toc-version" class="nav-link" data-scroll-target="#version">Version</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. Introduction</a></li>
+  <li><a href="#study-objectives" id="toc-study-objectives" class="nav-link" data-scroll-target="#study-objectives">2. Study Objectives</a></li>
+  <li><a href="#endpoints" id="toc-endpoints" class="nav-link" data-scroll-target="#endpoints">3. Endpoints</a>
   <ul class="collapse">
-  <li><a href="#어텐션-모델의-요소" id="toc-어텐션-모델의-요소" class="nav-link" data-scroll-target="#어텐션-모델의-요소">어텐션 모델의 요소</a></li>
-  <li><a href="#dot-product-attention" id="toc-dot-product-attention" class="nav-link" data-scroll-target="#dot-product-attention">Dot-Product Attention</a>
+  <li><a href="#primary-endpoint" id="toc-primary-endpoint" class="nav-link" data-scroll-target="#primary-endpoint">3.1. Primary Endpoint</a></li>
+  <li><a href="#secondary-endpoints" id="toc-secondary-endpoints" class="nav-link" data-scroll-target="#secondary-endpoints">3.2. Secondary Endpoints</a></li>
+  </ul></li>
+  <li><a href="#sample-size" id="toc-sample-size" class="nav-link" data-scroll-target="#sample-size">4. Sample Size</a></li>
+  <li><a href="#randomization" id="toc-randomization" class="nav-link" data-scroll-target="#randomization">Randomization</a></li>
+  <li><a href="#planned-analyses" id="toc-planned-analyses" class="nav-link" data-scroll-target="#planned-analyses">6. Planned Analyses</a>
   <ul class="collapse">
-  <li><a href="#어텐션-스코어를-구한다." id="toc-어텐션-스코어를-구한다." class="nav-link" data-scroll-target="#어텐션-스코어를-구한다.">1. 어텐션 스코어를 구한다.</a></li>
-  <li><a href="#소프트맥스-함수를-통해-어텐션-분포를-구한다." id="toc-소프트맥스-함수를-통해-어텐션-분포를-구한다." class="nav-link" data-scroll-target="#소프트맥스-함수를-통해-어텐션-분포를-구한다.">2. 소프트맥스 함수를 통해 어텐션 분포를 구한다.</a></li>
-  <li><a href="#각-인코더의-어텐션-가중치와-은닉-상태를-가중합하여-어텐션-값을-구한다." id="toc-각-인코더의-어텐션-가중치와-은닉-상태를-가중합하여-어텐션-값을-구한다." class="nav-link" data-scroll-target="#각-인코더의-어텐션-가중치와-은닉-상태를-가중합하여-어텐션-값을-구한다.">3. 각 인코더의 어텐션 가중치와 은닉 상태를 가중합하여 어텐션 값을 구한다.</a></li>
-  <li><a href="#어텐션-값과-디코더의-t-시점의-은닉-상태를-연결한다." id="toc-어텐션-값과-디코더의-t-시점의-은닉-상태를-연결한다." class="nav-link" data-scroll-target="#어텐션-값과-디코더의-t-시점의-은닉-상태를-연결한다.">4. 어텐션 값과 디코더의 t 시점의 은닉 상태를 연결한다.</a></li>
-  <li><a href="#출력층-연산의-입력이-되는-tildes_t를-계산한다." id="toc-출력층-연산의-입력이-되는-tildes_t를-계산한다." class="nav-link" data-scroll-target="#출력층-연산의-입력이-되는-tildes_t를-계산한다.">5. 출력층 연산의 입력이 되는 <span class="math inline">\(\tilde{s}_t\)</span>를 계산한다.</a></li>
-  <li><a href="#tildes_t를-출력층의-입력으로-사용한다." id="toc-tildes_t를-출력층의-입력으로-사용한다." class="nav-link" data-scroll-target="#tildes_t를-출력층의-입력으로-사용한다.">6. <span class="math inline">\(\tilde{s}_t\)</span>를 출력층의 입력으로 사용한다.</a></li>
+  <li><a href="#analysis-populations" id="toc-analysis-populations" class="nav-link" data-scroll-target="#analysis-populations">6.1. Analysis Populations</a>
+  <ul class="collapse">
+  <li><a href="#safety-population" id="toc-safety-population" class="nav-link" data-scroll-target="#safety-population">6.1.1. Safety Population</a></li>
+  <li><a href="#evaluable-efficacy-population" id="toc-evaluable-efficacy-population" class="nav-link" data-scroll-target="#evaluable-efficacy-population">6.1.2. Evaluable Efficacy Population</a></li>
+  <li><a href="#per-protocol-population" id="toc-per-protocol-population" class="nav-link" data-scroll-target="#per-protocol-population">6.1.3. Per-Protocol Population</a></li>
+  <li><a href="#pharmacokinetics-pk-population" id="toc-pharmacokinetics-pk-population" class="nav-link" data-scroll-target="#pharmacokinetics-pk-population">6.1.4. Pharmacokinetics (PK) Population</a></li>
+  </ul></li>
+  <li><a href="#derived-data-and-clinical-assessments" id="toc-derived-data-and-clinical-assessments" class="nav-link" data-scroll-target="#derived-data-and-clinical-assessments">6.2. Derived Data and Clinical Assessments</a>
+  <ul class="collapse">
+  <li><a href="#screening" id="toc-screening" class="nav-link" data-scroll-target="#screening">6.2.1. Screening</a></li>
+  <li><a href="#baseline-and-change-form-baseline" id="toc-baseline-and-change-form-baseline" class="nav-link" data-scroll-target="#baseline-and-change-form-baseline">6.2.2. Baseline and Change form Baseline</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#다양한-종류의-어텐션" id="toc-다양한-종류의-어텐션" class="nav-link" data-scroll-target="#다양한-종류의-어텐션">다양한 종류의 어텐션</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-05-28-Attention Mechanism.out.ipynb" download="2023-05-28-Attention Mechanism.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-09-26-Phase 2 SAP.out.ipynb" download="2025-09-26-Phase 2 SAP.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -1291,301 +1263,404 @@ window.Quarto = {
 
 
 
-<blockquote class="blockquote">
-<p>Attention Mechanism</p>
-</blockquote>
-<p>Ref: <a href="https://wikidocs.net/22893">딥 러닝을 위한 자연어 처리 입문</a></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>my own summary</strong></p>
-<p>현재 디코더의 시점 t에서 단어를 예측하기 위해 인코더의 모든 은닉 상태 각각이 디코더의 현 시점의 은닉 상태와 얼마나 유사한지를 판단하는 스코어 값인 어텐션 스코어를 이용하여 인코더의 문맥context를 포함한 값을 입력으로 넣어 정확도를 높이는 방법</p>
-</div>
-</div>
-<p>RNN에 기반한 seq2seq 모델의 문제점</p>
-<ol type="1">
-<li>하나의 고정된 크기의 벡터에 모든 정보를 압축하려고 하니까 정보 손실이 발생</li>
-<li>RNN의 고질적인 문제인 기울기 소실 문제 존재</li>
-</ol>
-<p><span class="math inline">\(\to\)</span> 기계 번역 동안 입력 문장이 길면 품질이 떨어지는 현상 발생, 이의 대안으로 입력 시퀀스가 길어지면 출력 시퀀스의 정확도가 떨어지는 것을 보정해주기 위해 들장한 어텐션.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <ul>
-<li><p>그레디언트 기반의 학습에서 역전파할때 발생하는 문제로 0 근처의 숫자를 계속 곱하여 터지거나 0으로 가는 상황</p></li>
-<li><p>그레디언트 기반의 학습</p>
+<li><a href="https://cdn.clinicaltrials.gov/large-docs/59/NCT03402659/SAP_001.pdf">link</a>
 <ul>
-<li>소실함수의 기울기를 통하여 업데이트하는 방식</li>
-</ul></li>
-<li><p>역전파</p>
-<ul>
-<li>손실함수를 여러 단계로 쪼갠다(여러 합성 함수로 표현한다).</li>
-<li>각 단계의 미분값을 구한다,</li>
-<li>그것들을 모두 곱하여 기울기를 계산한다.</li>
+<li>google 검색에서 오픈된 자료를 활용하여 phase 2 sap study</li>
 </ul></li>
 </ul>
-<p>참고: <a href="https://seoyeonc.github.io/chch/big%20data%20analysis/%EA%B8%B0%EC%9A%B8%EA%B8%B0%EC%86%8C%EB%A9%B8/%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C/2022/01/23/bd-12%EC%A3%BC%EC%B0%A8.html">빅데이터 분석 12주차</a></p>
-</div>
-</div>
-<section id="attention-function" class="level1">
-<h1>Attention Function</h1>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    subgraph "Source"
-        subgraph B2
-            direction BT
-            Key1 --&gt; Value1
-            Key2 --&gt; Value2
-            Key3 --&gt; Value3
-        end
-    end
-  Query --&gt; Source --&gt; Attention\nValue
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p><span class="math display">\[Attention(Q, K, V) = \text{Attention Value}\]</span></p>
-<ol type="1">
-<li>주어진 쿼리에 대해서 모든 키와의 유사도를 각각 구한다.</li>
-<li>구한 유사도를 키와 맵핑되어 있는 각각의 값value에 반영한다.</li>
-<li>유사도가 반영된 값을 모두 더해서 리턴한다. 여기서 값 = <strong>어텐션 값 attention value</strong></li>
-</ol>
-<section id="어텐션-모델의-요소" class="level3">
-<h3 class="anchored" data-anchor-id="어텐션-모델의-요소">어텐션 모델의 요소</h3>
+<p>A Double-Blind, Placebo-Controlled Proof-of-Concept Study of a Selective p38 MAP Kinase Alpha Inhibitor, Neflamapimod, Administered for 24 Weeks in Subjects with Mild Alzheimer’s Disease</p>
 <ul>
-<li><code>Q</code>= Query
-<ul>
-<li>t 시점의 디코더 셀에서의 은닉 상태</li>
-</ul></li>
-<li><code>K</code> = Keys
-<ul>
-<li>모든 시점의 인코더 셀의 은닉 상태들</li>
-</ul></li>
-<li><code>V</code> = Values
-<ul>
-<li>모든 시점의 인코더 셀의 은닉 상태들</li>
-</ul></li>
+<li>A Double-Blind, 이중 눈가림</li>
+<li>Placebo-Controlled 위약 대조</li>
+<li>Proof-of-Concept Study 신약이 효과 있는지 증명하기위함</li>
+<li>of a Selective p38 MAP Kinase Alpha Inhibitor, 선택적 p38 MAPK 알파 억제제</li>
+<li>Neflamapimod, 약 이름</li>
+<li>Administered for 24 Weeks in 24주간 시행</li>
+<li>Subjects with Mild Alzheimer’s Disease 경증의 알츠하이머 병을 가진 사람들 대상</li>
 </ul>
-</section>
-<section id="dot-product-attention" class="level2">
-<h2 class="anchored" data-anchor-id="dot-product-attention">Dot-Product Attention</h2>
-<ul>
-<li>디코더의 마지막 LSTM 셀이 출력단어를 예측하기 위해 인코더의 모든 입력 단어들의 정보를 다시 참고하고자 함</li>
-<li>이 때, 소프트 맥스를 이용
-<ul>
-<li>인코더에 입력된 값들이 출력 단어를 예측할 때 얼마나 도움이 되었는지 수치화한 결과</li>
-<li>다시 디코더로 전달</li>
-<li>디코더가 출력 단어를 더 정확하게 예측하게 도와줌</li>
-</ul></li>
-</ul>
-<section id="어텐션-스코어를-구한다." class="level3">
-<h3 class="anchored" data-anchor-id="어텐션-스코어를-구한다.">1. 어텐션 스코어를 구한다.</h3>
-<ul>
-<li>인코더의 은닉 시점 time stamp = <span class="math inline">\(1,2, \dots, N\)</span></li>
-<li>인코더의 은닉 상태 hidden state = <span class="math inline">\(s_t\)</span>
-<ul>
-<li>단, 인코더와 디코더의 은닉 상태는 차원이 같음</li>
-</ul></li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>디코더의 현재시점 t에서 필요한 입력값</p>
-<p>seq2seq</p>
-<ul>
-<li>이전 시점인 t-1의 은닉 상태</li>
-<li>이전 시점 t-1에서 나온 출력 단어</li>
-</ul>
-<p>attention</p>
-<ul>
-<li>이전 시점인 t-1의 은닉 상태</li>
-<li>이전 시점 t-1에서 나온 출력 단어</li>
-<li>어텐션 값 <span class="math inline">\(a_t\)</span></li>
-</ul>
-</div>
-</div>
-<p><strong>attention score 어텐션 값</strong></p>
-<ul>
-<li>현재 디코더의 시점 t에서 단어를 예측하기 위해 인코더의 모든 은닉 상태 각각이 디코더의 현 시점의 은닉 상태 <span class="math inline">\(s_t\)</span>와 얼마나 유사한지를 판단하는 스코어 값</li>
-</ul>
-<p>닷 프로덕트 어텐션은 은닉 상태 <span class="math inline">\(s_t\)</span>를 전치(transpose)하고, 각 은닉 상태와 내적(dot product)를 수행하여 스칼라 결과 어텐션 스코어 score 추출</p>
-<ul>
-<li><strong>닷 프러덕트 어텐션이라고 부르는 이유</strong></li>
-</ul>
-<p><span class="math display">\[score(s_t, h_i) = s_t^\top h_i\]</span></p>
-<p><span class="math display">\[e^t = [s_t^\top h_1, \dots, s_t^\top h_N]\]</span></p>
-<p><span class="math inline">\(e^t\)</span>는 <span class="math inline">\(s_t\)</span>와 인코더의 모든 은닉 상태의 어텐션 스코어의 모음값</p>
-</section>
-<section id="소프트맥스-함수를-통해-어텐션-분포를-구한다." class="level3">
-<h3 class="anchored" data-anchor-id="소프트맥스-함수를-통해-어텐션-분포를-구한다.">2. 소프트맥스 함수를 통해 어텐션 분포를 구한다.</h3>
-<ul>
-<li><span class="math inline">\(e^t\)</span>에 소프트맥스 함수 적용해서 합이 1이 되는 확률 분포 도출
-<ul>
-<li>각각 값은 어텐션 가중치 Attention weight</li>
-<li>분포는 어텐션 분포 Attention Distribution <span class="math inline">\(\alpha^t\)</span></li>
-</ul></li>
-</ul>
-<p><span class="math display">\[\alpha^t = softmax(e^t)\]</span></p>
-</section>
-<section id="각-인코더의-어텐션-가중치와-은닉-상태를-가중합하여-어텐션-값을-구한다." class="level3">
-<h3 class="anchored" data-anchor-id="각-인코더의-어텐션-가중치와-은닉-상태를-가중합하여-어텐션-값을-구한다.">3. 각 인코더의 어텐션 가중치와 은닉 상태를 가중합하여 어텐션 값을 구한다.</h3>
-<ul>
-<li>어텐션의 최종 결과값을 얻기 위해 각 인코더의 은닉상태 <span class="math inline">\(s_t\)</span>와 어텐션 가중치 값attention weight를 곱하고 가중합weighted sum인 어텐션 값attention value <span class="math inline">\(a_t\)</span>을 구한다.</li>
-</ul>
-<p><span class="math display">\[a_t = \sum^N_{i=1} \alpha_i^t h_i\]</span></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>어텐션 값 attention value <span class="math inline">\(a_t\)</span>는 인코더의 문맥을 포함하고 있다고 하여 컨텐스트 벡터 context vector라고도 부른다.</p>
-<p>단, seq2seq에서는 인코더의 마지막 은닉 상태를 컨텍스트 벡터context vector라고 불렀음.</p>
-</div>
-</div>
-</section>
-<section id="어텐션-값과-디코더의-t-시점의-은닉-상태를-연결한다." class="level3">
-<h3 class="anchored" data-anchor-id="어텐션-값과-디코더의-t-시점의-은닉-상태를-연결한다.">4. 어텐션 값과 디코더의 t 시점의 은닉 상태를 연결한다.</h3>
-<ul>
-<li>어텐션 값<span class="math inline">\(a_t\)</span>와 디코더의 은닉 상태 <span class="math inline">\(s_t\)</span>를 결합concatenate하여 하나의 벡터로 만드는 작업을 수행한다. <span class="math inline">\(\to\)</span> <span class="math inline">\(v_t\)</span></li>
-<li>아 <span class="math inline">\(v_t\)</span>를 예측 연산의 입력으로 사용함으로써 인코더로부터 얻은 정보를 활용하여 <span class="math inline">\(\hat{y}\)</span>를 더 잘 예측할 수 있게 됨 <span class="math inline">\(\to\)</span> 어텐션 메커니즘의 핵심</li>
-</ul>
-</section>
-<section id="출력층-연산의-입력이-되는-tildes_t를-계산한다." class="level3">
-<h3 class="anchored" data-anchor-id="출력층-연산의-입력이-되는-tildes_t를-계산한다.">5. 출력층 연산의 입력이 되는 <span class="math inline">\(\tilde{s}_t\)</span>를 계산한다.</h3>
-<ul>
-<li>어텐션 값과 디코더의 t시점의 은닉 상태를 연결하고<span class="math inline">\(a_t s_t\)</span> tanh하이퍼볼릭탄젠트 함수를 통과하도록 해서 출력층 연산을 위한 새로운 벡터 <span class="math inline">\(\tilde{s}_t\)</span>를 얻는다.</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>seq2seq</p>
-<ul>
-<li>출력층의 입력이 t시점의 은닉 상태인 <span class="math inline">\(s_t\)</span></li>
-</ul>
-<p>attention</p>
-<ul>
-<li>출력층의 입력이 <span class="math inline">\(\tilde{s}_t\)</span></li>
-</ul>
-</div>
-</div>
-<p><span class="math display">\[\tilde{s}_t = tanh(W_c[a_t;s_t] + b_c\]</span></p>
-<p><span class="math inline">\(b_c\)</span>는 편향</p>
-<p>참고: <a href="https://seoyeonc.github.io/chch/special%20topics%20in%20machine%20learning/%EC%88%9C%ED%99%98%EC%8B%A0%EA%B2%BD%EB%A7%9D/embedding%20layer/2022/11/02/ml_(9%EC%A3%BC%EC%B0%A8)_10%EC%9B%9431%EC%9D%BC.html">기계학습 특강 9주차 tanh</a></p>
-<div id="3f9c1f24-cd07-4e1d-aeb3-9323d2f70639" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
-</div>
-<div id="672b967d-7325-4b97-b2ee-9314d046bd6a" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tanh <span class="op">=</span> torch.nn.Tanh()</span></code></pre></div>
-</div>
-<div id="b9e81c34-f188-4a5e-bed7-0d798d9245f5" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>_x <span class="op">=</span> torch.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">100</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.plot(_x,tanh(_x))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"tanh(x)"</span>, size<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>Text(0.5, 1.0, 'tanh(x)')</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2023-05-28-Attention Mechanism_files/figure-html/cell-4-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="tildes_t를-출력층의-입력으로-사용한다." class="level3">
-<h3 class="anchored" data-anchor-id="tildes_t를-출력층의-입력으로-사용한다.">6. <span class="math inline">\(\tilde{s}_t\)</span>를 출력층의 입력으로 사용한다.</h3>
-<p><span class="math display">\[\hat{y}_t = Softmax(W_y \tilde{s}_t + b_y)\]</span></p>
-</section>
-</section>
-</section>
-<section id="다양한-종류의-어텐션" class="level1">
-<h1>다양한 종류의 어텐션</h1>
-<p><span class="math inline">\(s_t\)</span>는 query, <span class="math inline">\(h_i\)</span>는 keys, <span class="math inline">\(W_a\)</span>, <span class="math inline">\(W_b\)</span>는 학습 가능한 가중치 행렬</p>
+<section id="abbreviations" class="level1">
+<h1>Abbreviations</h1>
 <table class="table">
 <colgroup>
-<col style="width: 40%">
-<col style="width: 27%">
-<col style="width: 31%">
+<col style="width: 56%">
+<col style="width: 44%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>이름</th>
-<th style="text-align: left;">스코어 함수</th>
-<th style="text-align: left;">defined by</th>
+<th>Abbreviation</th>
+<th>Definition</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>dot</td>
-<td style="text-align: left;"><span class="math inline">\(score(s_t,h_i) = s_t^\top h_i\)</span></td>
-<td style="text-align: left;">Luong et al.&nbsp;(2015)</td>
+<td>AD</td>
+<td>Alzheimer’s disease</td>
 </tr>
 <tr class="even">
-<td>scaled dot</td>
-<td style="text-align: left;"><span class="math inline">\(score(s_t,h_i) = \frac{s_t^\top h_i}{\sqrt{n}}\)</span></td>
-<td style="text-align: left;">Vaswani et al.&nbsp;(2017)</td>
+<td>ADR</td>
+<td>Adverse drug reaction</td>
 </tr>
 <tr class="odd">
-<td>general</td>
-<td style="text-align: left;"><span class="math inline">\(score(s_t,h_i) = s_t^\top W_a h_i\)</span> 단, <span class="math inline">\(W_a\)</span>는 학습 가능한 가중치 행렬</td>
-<td style="text-align: left;">Luong et al.&nbsp;(2015)</td>
+<td>AE</td>
+<td>Adverse event</td>
 </tr>
 <tr class="even">
-<td>concat</td>
-<td style="text-align: left;"><span class="math inline">\(score(s_t, h_i) = W_a^\top tanh(W_b[s_t;h_i]),score(s_t,h_i) = W_a^\top tanh(W_b s_t + W_c h_i)\)</span></td>
-<td style="text-align: left;">Bahdanau et al.&nbsp;(2015)</td>
+<td>ALT</td>
+<td>Alanine aminotransferase</td>
 </tr>
 <tr class="odd">
-<td>location-base</td>
-<td style="text-align: left;"><span class="math inline">\(\alpha_t = softmax(W_a s_t)\)</span> <span class="math inline">\(\alpha_t\)</span> 산출 시에 <span class="math inline">\(s_t\)</span>만 사용하는 방법</td>
-<td style="text-align: left;">Luong et al.&nbsp;(2015)</td>
+<td>APP</td>
+<td>Amyloid-Precursor-Protein 아밀로이드 전구 단백질, 알츠하이머 병의 핵심 단백질</td>
+</tr>
+<tr class="even">
+<td>AST</td>
+<td>Aspartate aminotransferase</td>
+</tr>
+<tr class="odd">
+<td>AUC</td>
+<td>Area under the time concentration curve</td>
+</tr>
+<tr class="even">
+<td>BID</td>
+<td>bis in die (twice a day)</td>
+</tr>
+<tr class="odd">
+<td>CDR</td>
+<td>Clinical Dementia Rating Scale</td>
+</tr>
+<tr class="even">
+<td>CRmax</td>
+<td>Maximum concentration</td>
+</tr>
+<tr class="odd">
+<td>CNS</td>
+<td>Central Nervous System</td>
+</tr>
+<tr class="even">
+<td>CT</td>
+<td>Computed tomography</td>
+</tr>
+<tr class="odd">
+<td>CRTrough</td>
+<td>Trough concentration</td>
+</tr>
+<tr class="even">
+<td>CYP</td>
+<td>Cytochrome P450</td>
+</tr>
+<tr class="odd">
+<td>ECG</td>
+<td>Electrocardiogram</td>
+</tr>
+<tr class="even">
+<td>eCRF</td>
+<td>Electronic case report form</td>
+</tr>
+<tr class="odd">
+<td>ES</td>
+<td>Effect sizes</td>
+</tr>
+<tr class="even">
+<td>FDA</td>
+<td>Food and Drug Administration</td>
+</tr>
+<tr class="odd">
+<td>HVLT-R</td>
+<td>Hopkins Verbal Learning Test – Revised</td>
+</tr>
+<tr class="even">
+<td>ICF</td>
+<td>Informed Consent Form</td>
+</tr>
+<tr class="odd">
+<td>ICH</td>
+<td>International Council on Harmonization</td>
+</tr>
+<tr class="even">
+<td>IEC</td>
+<td>Independent Ethics Committee</td>
+</tr>
+<tr class="odd">
+<td>IL-1beta</td>
+<td>Interleukin-1 beta</td>
+</tr>
+<tr class="even">
+<td>IND</td>
+<td>Investigational New Drug</td>
+</tr>
+<tr class="odd">
+<td>INR</td>
+<td>International normalized ratio</td>
+</tr>
+<tr class="even">
+<td>IRB</td>
+<td>Institutional Review Board</td>
+</tr>
+<tr class="odd">
+<td>IWRS</td>
+<td>Interactive Web Response System</td>
+</tr>
+<tr class="even">
+<td>LFT</td>
+<td>Liver function test</td>
+</tr>
+<tr class="odd">
+<td>LM</td>
+<td>Logical Memory</td>
+</tr>
+<tr class="even">
+<td>MAP</td>
+<td>Mitogen activated protein</td>
+</tr>
+<tr class="odd">
+<td>MCI</td>
+<td>Mild cognitive impairment 경도 인지 장애, 정상 노화와 치매 사이 단계</td>
+</tr>
+<tr class="even">
+<td>MedDRA</td>
+<td>Medical Dictionary for Regulatory Activities</td>
+</tr>
+<tr class="odd">
+<td>MMSE</td>
+<td>Mini-Mental State Examination 간이 정신 상태 검사</td>
+</tr>
+<tr class="even">
+<td>MRI</td>
+<td>Magnetic Resonance Imaging</td>
+</tr>
+<tr class="odd">
+<td>NFT</td>
+<td>Neurofibrillary Tangle</td>
+</tr>
+<tr class="even">
+<td>p38 alpha</td>
+<td>p38 mitogen activated protein kinase alpha</td>
+</tr>
+<tr class="odd">
+<td>PD</td>
+<td>Pharmacodynamic</td>
+</tr>
+<tr class="even">
+<td>PET</td>
+<td>Positron emission tomography 양전자 방출 단층 촬영</td>
+</tr>
+<tr class="odd">
+<td>PK</td>
+<td>Pharmacokinetic</td>
+</tr>
+<tr class="even">
+<td>PT</td>
+<td>Prothrombin time</td>
+</tr>
+<tr class="odd">
+<td>PTT</td>
+<td>Partial thromboplastin time</td>
+</tr>
+<tr class="even">
+<td>RA</td>
+<td>Rheumatoid arthritis 류머티즘 관절염</td>
+</tr>
+<tr class="odd">
+<td>SAE</td>
+<td>Serious adverse event</td>
+</tr>
+<tr class="even">
+<td>ULN</td>
+<td>Upper limit of normal</td>
+</tr>
+<tr class="odd">
+<td>VPA</td>
+<td>Verbal Paired Associates 언어쌍 연합 검사</td>
+</tr>
+<tr class="even">
+<td>VR</td>
+<td>Visual Reproduction</td>
+</tr>
+<tr class="odd">
+<td>WMS</td>
+<td>Wechsler Memory Scale 웩슬러 기억 척도</td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="version" class="level1">
+<h1>Version</h1>
+<p>버전 관리, 표로</p>
+<ul>
+<li>SAP Amendments before database lock
+<ul>
+<li>Version 버전</li>
+<li>Issue Date 발행 날짜</li>
+<li>Section 수정된 곳</li>
+<li>Revision/Addition 수정 내용</li>
+<li>Rationale 수정 이유</li>
+</ul></li>
+</ul>
+</section>
+<section id="introduction" class="level1">
+<h1>1. Introduction</h1>
+<ul>
+<li>This document details the planned statistical analyses for the EIP Pharma, LLC, protocol “EIPVX17-745-304” study titled “A Double-Blind, Placebo-Controlled Proof-of-Concept Study of a Selective p38 MAP Kinase Alpha Inhibitor, Neflamapimod, Administered for 24 Weeks in Subjects with Mild Alzheimer’s Disease”.
+<ul>
+<li>클라이언트, 계획서 주최, 연구 내용</li>
+</ul></li>
+<li>The proposed analyses are based on the contents of the final version 3.0 of the protocol (dated27- AUG-2018).
+<ul>
+<li>연구계획서 참고</li>
+</ul></li>
+<li>This is a Phase 2, multicenter, randomized, double-blind, placebo-controlled, proof-of-concept study of neflamapimod 40 mg or matching placebo administered twice daily for 24 weeks in subjects aged 55 to 85 years with CSF biomarker-confirmed AD; with CDR-Global score of 0.5 or 1.0, with CDR memory subscore of at least 0.5, and MMSE scores between 20 and 28, inclusive.
+<ul>
+<li>연구 목적 자세히</li>
+</ul></li>
+<li>All screening assessments should be conducted within 42 days of Day 1 (first dose of study drug).</li>
+<li>Once eligibility is confirmed and before the first dose of study drug, subjects are randomly assigned (1:1 basis) to receive placebo or neflamapimod treatment.</li>
+<li>Randomization is stratified by 1) background AD-specific therapy (cholinesterase inhibitor or memantine versus no cholinesterase inhibitor or memantine); and 2) CDR 0.5 versus 1.0. Dosing will start on Day 1 following completion of all Baseline procedures.</li>
+<li>Subjects will return to the clinic on Days 21, 42, 84, 126, and 168.</li>
+<li>A Follow-up Visit will be conducted 14 (±3) days following the last dose of study drug.</li>
+<li>Trough and maximum concentrations for PK analysis will be collected for each patient and summarized.</li>
+<li>An integrated population PK analysis including other study PK parameters will be completed and reported on outside of the standard reporting.
+<ul>
+<li>시험 내용 설명</li>
+</ul></li>
+</ul>
+</section>
+<section id="study-objectives" class="level1">
+<h1>2. Study Objectives</h1>
+<p>연구 대상자들</p>
+<ul>
+<li>Primary Objective
+<ul>
+<li>To evaluate the effect of administration of neflamapimod (VX-745) for 24-weeks on immediate and delayed recall aspects of episodic memory, as assessed by the Hopkins Verbal Learning Test – Revised (HVLT-R) in subjects with mild Alzheimer’s disease (AD).</li>
+<li>To evaluate effects of neflamapimod on immediate and delayed recall of Logical Memory (LM), Verbal Paired Associates (VPA) and Visual Reproduction (VR) components of the Wechsler Memory Scale® (WMS).</li>
+<li>To evaluate effects of neflamapimod on the Clinical Dementia Rating Scale-Sum of Boxes (CDR-SB) and (Mini-Mental State Examination) MMSE.</li>
+<li>To evaluate the effects of neflamapimod on AD-related cerebrospinal fluid (CSF) biomarkers (total tau, phospho-tau, amyloid-beta peptides, neurogranin, and neurofilament light chain).</li>
+</ul></li>
+</ul>
+</section>
+<section id="endpoints" class="level1">
+<h1>3. Endpoints</h1>
+<section id="primary-endpoint" class="level2">
+<h2 class="anchored" data-anchor-id="primary-endpoint">3.1. Primary Endpoint</h2>
+<p>1차 평가 변수</p>
+<ul>
+<li>The primary efficacy variable is:
+<ul>
+<li>Combined change in z-scores of total recall and delayed recall on the HVLT-R in neflamapimod-treated subjects compared to placebo-recipients at Week 24.</li>
+<li>The detailed calculation of combined change in z-scores is described in section 6.2.12.</li>
+</ul></li>
+</ul>
+<p>치료받은 대상자들과 위약 받은 대상자들을 24주간의 비교하는데 전체 리콜값과 지연된 리콜값의 zscore 표준화하여 변화를 비교</p>
+</section>
+<section id="secondary-endpoints" class="level2">
+<h2 class="anchored" data-anchor-id="secondary-endpoints">3.2. Secondary Endpoints</h2>
+<ul>
+<li>The secondary efficacy variables at Week 24 and follow-up when applicable are:
+<ul>
+<li>Change in WMS immediate and delayed recall composites in neflamapimod-treated subjects compared to placebo-recipients.</li>
+<li>Change in CDR-SB in neflamapimod-treated subjects compared to placebo-recipients.</li>
+<li>Change in MMSE in neflamapimod-treated subjects compared to placebo-recipients</li>
+<li>Change in CSF biomarkers [total tau (T-tau), <span class="math inline">\(P-tau_{181}\)</span>, <span class="math inline">\(Aβ_{1-40}\)</span>, <span class="math inline">\(Aβ_{1-42}\)</span>, neurogranin, neurofilament light chain] in neflamapimod-treated subjects compared to placeborecipients at the end of treatment.</li>
+</ul></li>
+</ul>
+<p>투약군과 위약군 간의 값 비교</p>
+</section>
+</section>
+<section id="sample-size" class="level1">
+<h1>4. Sample Size</h1>
+<p>Up to 76 subjects per treatment arm (152 total) provides 90% power to detect ES of 0.53 and 80% power to detect ES of 0.46. This level of ES is the minimum treatment effect amount considered clinically relevant and is less than the effect size seen in the Phase 2a studies.</p>
+<ul>
+<li>ES; Effect Size 효과 크기</li>
+<li>152명일때 76명씩
+<ul>
+<li>es 0.53을 검출할 수 있는 확률이 90%이고</li>
+<li>es 0.46을 검출할 수 있는 확률이 80%이고</li>
+</ul></li>
+</ul>
+</section>
+<section id="randomization" class="level1">
+<h1>Randomization</h1>
+<ul>
+<li>Randomization was stratified by 1) background AD-specific therapy (cholinesterase inhibitor or memantine versus no cholinesterase inhibitor or memantine); and 2) CDR-Global Score of 0.5 versus 1.0.</li>
+<li>Eligible subjects were randomized 1:1 to two treatment arms: Neflamapimod 40mg or placebo utilizing a central Interactive Web Response System (IWRS).</li>
+</ul>
+<p>조건을 만족한 대상자들이 투약군과 위약군 1대1로 나뉘어 배정</p>
+</section>
+<section id="planned-analyses" class="level1">
+<h1>6. Planned Analyses</h1>
+<ul>
+<li>No statistical analysis plan (SAP) prepared in advance of the data can be absolutely definitive and the final clinical study report (CSR) may contain additional tables or statistical tests if warranted by the data obtained.</li>
+<li>The justification for any such additional analyses will be fully documented in the final CSR.</li>
+</ul>
+<section id="analysis-populations" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-populations">6.1. Analysis Populations</h2>
+<section id="safety-population" class="level3">
+<h3 class="anchored" data-anchor-id="safety-population">6.1.1. Safety Population</h3>
+<ul>
+<li>The Safety Population is defined as all randomized subjects who receive at least one dose of study drug (neflamapimod or placebo).</li>
+</ul>
+<p>안전성 평가군은 최소한 한 번이라도 시험약이든 위약이든 투약한 랜덤화된 대상자로 정의</p>
+</section>
+<section id="evaluable-efficacy-population" class="level3">
+<h3 class="anchored" data-anchor-id="evaluable-efficacy-population">6.1.2. Evaluable Efficacy Population</h3>
+<ul>
+<li>The Efficacy Population used for efficacy analyses, consistent with the intent-to-treat (ITT) principles includes all subjects who received at least one dose of study drug and had at least one post-dose efficacy assessment.</li>
+</ul>
+<p>평가 효능 대상군은 시험약, 위약 둘 다를 최소한 한 번씩 모두 투약한 랜덤 배정된 대상자를 대상으로 함</p>
+</section>
+<section id="per-protocol-population" class="level3">
+<h3 class="anchored" data-anchor-id="per-protocol-population">6.1.3. Per-Protocol Population</h3>
+<ul>
+<li>The Per-Protocol Population (PP) will be a subset of the Efficacy Population.</li>
+<li>All protocol deviations will be assessed and documented on a case-by-case basis before the database lock, and deviations considered to have a significant impact on the efficacy results will lead to the relevant subject being excluded from the PP.</li>
+<li>Before database lock, potential subject exclusions from the PP will be reviewed by the Sponsor and documented in a subject evaluability document (WCT-TP-ST-016).</li>
+</ul>
+<p>pp분석군은 평가 효능 대상군에서 분류됨, db lock 전에 사례별로 기록되어야 하고, 효능 결과에 상당한 영향을 줄 것 같은 위반이 있다면 pp분석군에서 제외되어야 함. db lock 전에 pp분석군에서 제외된 대상자들은 스폰서의 검토가 이루어져야 하고, 기록화되어야 함</p>
+</section>
+<section id="pharmacokinetics-pk-population" class="level3">
+<h3 class="anchored" data-anchor-id="pharmacokinetics-pk-population">6.1.4. Pharmacokinetics (PK) Population</h3>
+<ul>
+<li>The Pharmakinetics (PK) Population includes all randomized subjects who received at least one dose of study drug in neflamapimod treatment group and had at least one post-dose PK data assessment.</li>
+</ul>
+<p>약동학 분석군은 모두 랜덤배정된 대상자이고 최소한 한 번이라도 시험약이든 위약이든 투약 받은 사람이어야 하며, 투약 후 최소 한 번이라도 pk 대이터 평가 진행한 대상자</p>
+</section>
+</section>
+<section id="derived-data-and-clinical-assessments" class="level2">
+<h2 class="anchored" data-anchor-id="derived-data-and-clinical-assessments">6.2. Derived Data and Clinical Assessments</h2>
+<ul>
+<li>This section describes the derivations required for statistical analysis.</li>
+<li>Unless otherwise stated, variables derived in the source data will not be re-calculated.</li>
+</ul>
+<section id="screening" class="level3">
+<h3 class="anchored" data-anchor-id="screening">6.2.1. Screening</h3>
+<ul>
+<li>For each variable where a subject is re-screened, his/her latest non-missing value from the original or re-screening assessment will be taken for tabulation purposes.</li>
+</ul>
+<p>평가 대상자가 재스크린될 경우 그들의 값은 최신화되어야 한다.</p>
+</section>
+<section id="baseline-and-change-form-baseline" class="level3">
+<h3 class="anchored" data-anchor-id="baseline-and-change-form-baseline">6.2.2. Baseline and Change form Baseline</h3>
+<ul>
+<li>Baseline is defined as the last non-missing value (either scheduled, unscheduled or repeat) before the subject receives first dose of study drug (Day 1).</li>
+<li>Visit 3 (Day 1) date is definded as the date of the first dose.</li>
+<li>Baseline score of MMSE for each subject is calculated using the average of Screen and Day 1 measurements.</li>
+<li>Change from baseline CHG=AVAL-BASE where AVAL is the post-baseline value, BASE is the baseline value.</li>
+<li>Baseline z-score will be used as a covariate in the MMRM and ANCOVA analysis.</li>
+<li>It will be calculated as below:
+<ul>
+<li>For baseline total recall, a z-score for each subject is defined by z=(x-m)/s where x is the subject’s total recall at baseline, and m and s are the overall mean and overall standard deviation of total recall at baseline across all subjects.</li>
+<li>Similarly, a baseline z-score for each subject for delayed recall can be calculated.</li>
+</ul></li>
+<li>A composite baseline z-score for each subject is calculated using equal weighting in the following way:
+<ul>
+<li>Z=0.5<em>z-score for total recall at baseline + 0.5</em>z-score for delayed recall at baseline.</li>
+</ul></li>
+<li>The calculation method can be referenced to Section 6.2.12.</li>
+</ul>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
