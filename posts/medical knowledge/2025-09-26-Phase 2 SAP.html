@@ -1251,7 +1251,22 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#screening" id="toc-screening" class="nav-link" data-scroll-target="#screening">6.2.1. Screening</a></li>
   <li><a href="#baseline-and-change-form-baseline" id="toc-baseline-and-change-form-baseline" class="nav-link" data-scroll-target="#baseline-and-change-form-baseline">6.2.2. Baseline and Change form Baseline</a></li>
+  <li><a href="#durationstudy-daytime" id="toc-durationstudy-daytime" class="nav-link" data-scroll-target="#durationstudy-daytime">6.2.3. Duration/Study Day/Time</a></li>
+  <li><a href="#conventions-for-missing-and-partial-dates" id="toc-conventions-for-missing-and-partial-dates" class="nav-link" data-scroll-target="#conventions-for-missing-and-partial-dates">6.2.4. Conventions for Missing and Partial Dates</a></li>
+  <li><a href="#missingpartial-startstop-date-of-adverse-events-and-concomitant-medications" id="toc-missingpartial-startstop-date-of-adverse-events-and-concomitant-medications" class="nav-link" data-scroll-target="#missingpartial-startstop-date-of-adverse-events-and-concomitant-medications">6.2.5. Missing/Partial Start/Stop Date of Adverse Events and Concomitant Medications</a></li>
+  <li><a href="#missing-last-dates-of-study-drug-dosing" id="toc-missing-last-dates-of-study-drug-dosing" class="nav-link" data-scroll-target="#missing-last-dates-of-study-drug-dosing">6.2.6. Missing Last Dates of Study Drug Dosing</a></li>
+  <li><a href="#missing-diagnosis-dates" id="toc-missing-diagnosis-dates" class="nav-link" data-scroll-target="#missing-diagnosis-dates">6.2.7. Missing Diagnosis Dates</a></li>
+  <li><a href="#exposure-to-study-drug" id="toc-exposure-to-study-drug" class="nav-link" data-scroll-target="#exposure-to-study-drug">6.2.8. Exposure to Study Drug</a></li>
+  <li><a href="#inexact-values" id="toc-inexact-values" class="nav-link" data-scroll-target="#inexact-values">6.2.9. Inexact Values</a></li>
+  <li><a href="#electrocardiogram-data" id="toc-electrocardiogram-data" class="nav-link" data-scroll-target="#electrocardiogram-data">6.2.10. Electrocardiogram Data</a></li>
+  <li><a href="#unschedueled-visits" id="toc-unschedueled-visits" class="nav-link" data-scroll-target="#unschedueled-visits">6.2.17 Unschedueled Visits</a></li>
+  <li><a href="#follow-up-visit" id="toc-follow-up-visit" class="nav-link" data-scroll-target="#follow-up-visit">6.2.18. Follow-Up Visit</a></li>
   </ul></li>
+  <li><a href="#conventions" id="toc-conventions" class="nav-link" data-scroll-target="#conventions">6.3. Conventions</a>
+  <ul class="collapse">
+  <li><a href="#decimal-places" id="toc-decimal-places" class="nav-link" data-scroll-target="#decimal-places">6.3.1. Decimal Places</a></li>
+  </ul></li>
+  <li><a href="#subject-disposition" id="toc-subject-disposition" class="nav-link" data-scroll-target="#subject-disposition">6.4. Subject Disposition</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-09-26-Phase 2 SAP.out.ipynb" download="2025-09-26-Phase 2 SAP.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
@@ -1644,22 +1659,169 @@ window.Quarto = {
 <li>Baseline is defined as the last non-missing value (either scheduled, unscheduled or repeat) before the subject receives first dose of study drug (Day 1).</li>
 <li>Visit 3 (Day 1) date is definded as the date of the first dose.</li>
 <li>Baseline score of MMSE for each subject is calculated using the average of Screen and Day 1 measurements.</li>
-<li>Change from baseline CHG=AVAL-BASE where AVAL is the post-baseline value, BASE is the baseline value.</li>
+<li>Change from baseline <strong>CHG=AVAL-BASE</strong> where AVAL is the post-baseline value, BASE is the baseline value.</li>
 <li>Baseline z-score will be used as a covariate in the MMRM and ANCOVA analysis.</li>
 <li>It will be calculated as below:
 <ul>
-<li>For baseline total recall, a z-score for each subject is defined by z=(x-m)/s where x is the subject’s total recall at baseline, and m and s are the overall mean and overall standard deviation of total recall at baseline across all subjects.</li>
+<li>For baseline total recall, a z-score for each subject is defined by z=(x-m)/s where x is the subject’s total recall at baseline, and <strong>m</strong> and <strong>s</strong> are the overall mean and overall standard deviation of total recall at baseline across all subjects.</li>
 <li>Similarly, a baseline z-score for each subject for delayed recall can be calculated.</li>
 </ul></li>
 <li>A composite baseline z-score for each subject is calculated using equal weighting in the following way:
 <ul>
-<li>Z=0.5<em>z-score for total recall at baseline + 0.5</em>z-score for delayed recall at baseline.</li>
+<li><span class="math inline">\(Z=0.5*z-score\)</span> for total recall at <span class="math inline">\(baseline + 0.5*z-score\)</span> for delayed recall at baseline.</li>
 </ul></li>
 <li>The calculation method can be referenced to Section 6.2.12.</li>
 </ul>
-
-
+<p>mmse 간이 상태 정신 검사의 baseline은 첫째날 측정치의 평균</p>
 </section>
+<section id="durationstudy-daytime" class="level3">
+<h3 class="anchored" data-anchor-id="durationstudy-daytime">6.2.3. Duration/Study Day/Time</h3>
+<ul>
+<li>Study day will be calculated as the number of days from first dose of study drug.
+<ul>
+<li>date of event – date of first dose of study drug + 1, for events on or after first dose</li>
+<li>date of event – date of first dose of study drug, for events before first dose.</li>
+<li>Duration (e.g., event duration/medication usage) = stop date-start date +1.</li>
+</ul></li>
+</ul>
+</section>
+<section id="conventions-for-missing-and-partial-dates" class="level3">
+<h3 class="anchored" data-anchor-id="conventions-for-missing-and-partial-dates">6.2.4. Conventions for Missing and Partial Dates</h3>
+<ul>
+<li>All rules explained below for partial/missing dates will be followed unless contradicted by any other data recorded on the electronic Case Report Form (eCRF).</li>
+<li>All dates presented in the individual subject listings will be as recorded on the eCRF (i.e., not completed as per the below rules).</li>
+</ul>
+</section>
+<section id="missingpartial-startstop-date-of-adverse-events-and-concomitant-medications" class="level3">
+<h3 class="anchored" data-anchor-id="missingpartial-startstop-date-of-adverse-events-and-concomitant-medications">6.2.5. Missing/Partial Start/Stop Date of Adverse Events and Concomitant Medications</h3>
+<ul>
+<li>Missing and partial start and stop date will be imputed for analysis purposes as follows:
+<ul>
+<li>Partial or missing stop date will be imputed as follows:
+<ul>
+<li>If the stop date is completely missing and the event has resolved or the subject has stopped taking the concomitant medication, the stop date will be imputed as the date of the subject’s last clinic visit in the study.
+<ul>
+<li>If only the year is known, the stop date will be imputed as “31-Dec” of that year or as the date of the subject’s last clinic visit in the study if in the same year.</li>
+<li>If the month and year are known, the stop date will be imputed as the last day of that month unless the stop date corresponds to the same month as the subject’s last clinic visit in which case the date of subject’s last clinic visit in the study will be used instead.</li>
+</ul></li>
+</ul></li>
+<li>Missing start date will be imputed as follows:
+<ul>
+<li>If the stop date occurs on or after the start of study drug or the event/concomitant medication is ongoing, the start date will be imputed as the date of the first dose of study drug.</li>
+<li>If the stop date occurs before the start of study drug, the start date of the event/concomitant medication will be imputed as the subject’s screening date or the stop date of the event/concomitant medication whichever the earlier.</li>
+</ul></li>
+<li>Partial start date (year present, but month and day missing)
+<ul>
+<li>If the stop date occurs on or after the start of study drug or the event/concomitant medication is ongoing, and the year is the same as the year of first dosing the start date will be imputed as “01-Jan” of the same year or the date of the first dose of study drug whichever is latest. If the year is different from the year of first dosing “01-Jan” will be used.</li>
+<li>If the stop date occurs before the start of study drug, the start date of the event/concomitant medication will be imputed as the “01-Jan” of the same year.</li>
+</ul></li>
+<li>Partial start date (month and year present, but day missing)
+<ul>
+<li>If the stop date occurs on or after the start of study drug or the event/concomitant medication is ongoing, the start date will be imputed as the first day of the same month and year unless this partial start date is in same month as the first dose of study drug in which case the date of first dose of study drug will be used.</li>
+<li>If the stop date occurs before the start of study drug, the start date will be imputed as the first day of the month and year of the partial stop date.</li>
+</ul></li>
+<li>Missing start/stop time of adverse events:
+<ul>
+<li>If the start time of the adverse event (AE) is missing, it will imputed only in the case where the start date of the AE corresponds to the date of the first dose of study drug. The time will be imputed as the same time as the first dose of study drug. In all other cases the time will not be imputed.</li>
+<li>If the stop time of the adverse event is missing, it will be imputed as 23:59 for stop time.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>날짜 imputation 방법 정의, 결측이거나 부분 결측인 날짜가 있을때, 이상반응과 병용약물에서</p>
+</section>
+<section id="missing-last-dates-of-study-drug-dosing" class="level3">
+<h3 class="anchored" data-anchor-id="missing-last-dates-of-study-drug-dosing">6.2.6. Missing Last Dates of Study Drug Dosing</h3>
+<ul>
+<li>If the date of last dose of study drug is completely missing then the date of last dose of study drug will be taken for analysis purposes as the date when the subject would have run out of study drug assuming full compliance from the date the study drug was last dispensed or the date of subject’s last clinic visit in the study or early withdrawal or death whichever the earlier</li>
+<li>If only the month and year of the last dose was recorded, then the date of last dosing will be taken for analysis purposes as the date the subject would have run out of study drug assuming full compliance from the date the study drug was last dispensed, the last day of the month of the recorded last dose or the date of subject’s last clinic visit in the study or early withdrawal or death whichever the earlier.</li>
+</ul>
+<p>시험 약물 복용에서 마지막 날짜가 결측일 경우 처리 방법</p>
+</section>
+<section id="missing-diagnosis-dates" class="level3">
+<h3 class="anchored" data-anchor-id="missing-diagnosis-dates">6.2.7. Missing Diagnosis Dates</h3>
+<ul>
+<li>If the month and year are present but the day is missing, the diagnosis date will be set to the first day of the relevant month. If only the year is recorded the diagnosis date will be set as “01-Jan” for that year.</li>
+</ul>
+<p>진단 날짜가 결측일 경우</p>
+</section>
+<section id="exposure-to-study-drug" class="level3">
+<h3 class="anchored" data-anchor-id="exposure-to-study-drug">6.2.8. Exposure to Study Drug</h3>
+<ul>
+<li>Exposure to study drug will be calculated as follows from the date of last dosing minus the first day of dosing + 1.</li>
+<li>The exposure calculation will not take into account breaks in therapy.</li>
+</ul>
+<p>break 있어도 노출 날짜에 포함 된다.</p>
+</section>
+<section id="inexact-values" class="level3">
+<h3 class="anchored" data-anchor-id="inexact-values">6.2.9. Inexact Values</h3>
+<ul>
+<li>In the case where a variable is recorded as “&gt; x”, “≥ x”, “&lt; x” or “≤ x”, a value of x will be taken for analysis purposes, Where a range of values is quoted the midpoint of the range will be taken.</li>
+</ul>
+<p>정확하지 않은 값들 처리 방법, 부등호 있으면 숫자만 사용 범위로 기록되면 midpoint중앙값 이용</p>
+</section>
+<section id="electrocardiogram-data" class="level3">
+<h3 class="anchored" data-anchor-id="electrocardiogram-data">6.2.10. Electrocardiogram Data</h3>
+<ul>
+<li>For 12-lead ECG data recorded on continuous scales, if more than one value is recorded at a visit, the mean value rounded to the integer will be presented.</li>
+<li>For overall interpretation if more than one value is recorded, the most severe (worst case) of the respective readings will be taken.</li>
+</ul>
+<p>심전도에서 한 개 이상의 값이 입력될 경우 처리 방법</p>
+<hr>
+<p>중략, 통계랑 관련 없다 판단, 단순 인지검사 소개 및 정의라서</p>
+<hr>
+</section>
+<section id="unschedueled-visits" class="level3">
+<h3 class="anchored" data-anchor-id="unschedueled-visits">6.2.17 Unschedueled Visits</h3>
+<ul>
+<li>In general, only scheduled post-baseline laboratory, ECG, and vital signs values will be tabulated. Post-baseline repeat/unscheduled assessments will be disregarded from table, although these post-baseline assessments will be listed in the relevant appendices to the CSR.</li>
+</ul>
+<p>예정되지 않은 방문을 한 대상자가 있다면 csr에 기록되어야 함</p>
+</section>
+<section id="follow-up-visit" class="level3">
+<h3 class="anchored" data-anchor-id="follow-up-visit">6.2.18. Follow-Up Visit</h3>
+<ul>
+<li>A follow-up visit should be scheduled 14 (+/- 3) days after the last dose of study drug for all subjects that complete or are withdrawn from the study.</li>
+</ul>
+</section>
+</section>
+<section id="conventions" class="level2">
+<h2 class="anchored" data-anchor-id="conventions">6.3. Conventions</h2>
+<ul>
+<li>All data listings, summaries, figures and statistical analyses will be generated using SAS version 9.3 or higher.</li>
+<li>Summaries will be presented by treatment group or overall.</li>
+<li>Treatment group labels will be displayed as follows:
+<ul>
+<li>Neflamapimod(40 mg)</li>
+<li>Placebo</li>
+</ul></li>
+<li>Listings will be sorted in the following order treatment group, subject, parameter, and visit unless otherwise stated.</li>
+<li>All data will be listed, subjects who were not randomized will be displayed after the randomized treatment groups.</li>
+<li>Continuous variables will be summarized by the number of non-missing observations, mean, median, standard deviation, and minimum and maximum.</li>
+<li>For all tabulations of changes from baseline data, the lower and upper 95% confidence limits for the mean for the individual treatments will be given.</li>
+<li>Categorical variables will be summarized by presenting the frequency and percent.</li>
+<li>Percentages will be based on the number of non-missing observations or the subject population unless otherwise specified.</li>
+<li>For each variable, all categories will be shown. Zero frequencies (but not the percent) within a category will be presented.</li>
+</ul>
+<p>SAS 버전 명시, table에 뭐 포함되는지. 모든 값은 리스팅으로 표현되어야 함. 기초통계량 제시해야함. 베이스라인 대비 변화량은 95%신뢰구간 하한 상한의 평균을 각 치료군당 제시해야 함, 문자형 값들은 빈도와 비율로 표시</p>
+<section id="decimal-places" class="level3">
+<h3 class="anchored" data-anchor-id="decimal-places">6.3.1. Decimal Places</h3>
+<ul>
+<li>Decimal places for derived data described in section 6.2 will be determined by the scale of measurement unless otherwise stated.</li>
+<li>No decimal places will be displayed if the smallest calculated value is ≥ 100; 1 decimal place will be displayed when the smallest value is within the interval (10, 100), with 10 being inclusive; 2 decimal places will be displayed when the smallest value is within (1, 10), with 1 being inclusive; and so on for even smaller scales of measurement.</li>
+<li>Derived data where it is known in advance the result will be an integer for example day, month, year, number of days and total scores (for rating scales) will be presented with zero decimal places.</li>
+<li>Means, medians and percentiles will be displayed to one more decimal place than the data, dispersion statistics (e.g.&nbsp;standard deviation) will have two more decimal places, and the minimum and maximum will be displayed to the same number of decimal places as reported in the raw data.</li>
+<li>Percentages will be displayed with one decimal place.</li>
+<li>P- Values will be quoted to 3 decimal places.</li>
+<li>P-values &lt; 0.001 will be presented as p&lt;0.001.</li>
+<li>Where this value is less than 0.05, 0.01 or 0.001, attention will be drawn to this fact using the conventional “<em>”, “<strong>” or “</strong></em>” annotation, respectively.</li>
+</ul>
+<p>값 표현하는 법 명시</p>
+</section>
+</section>
+<section id="subject-disposition" class="level2">
+<h2 class="anchored" data-anchor-id="subject-disposition">6.4. Subject Disposition</h2>
+
+
 </section>
 </section>
 
