@@ -8468,7 +8468,7 @@
     "href": "posts/sas/2025-10-04-questions_statistics.html#derived-datasetadam-derived-variables",
     "title": "[Statistics] Prepare for questions",
     "section": "1.2. Derived dataset(ADaM), Derived Variables",
-    "text": "1.2. Derived dataset(ADaM), Derived Variables\n당신이 만든 TFL(Table, Figure, Listing) 중에서 가장 복잡했던 사례를 설명해보세요.\nValidation 과정에서 동료의 프로그램 오류를 발견한 경험이 있나요? 어떻게 해결했나요?\nMeta-analysis를 할 때 주의해야 할 점은 무엇인가요?\nStatistical Analysis Plan(SAP)에서 가장 중요한 구성 요소는 무엇이라고 생각하나요?\nMissing data 처리를 어떻게 해왔나요? (LOCF, MMRM, multiple imputation 등)\nClinical study report(CSR)에 포함될 수 있는 통계 분석 결과의 예시를 말해보세요.",
+    "text": "1.2. Derived dataset(ADaM), Derived Variables",
     "crumbs": [
       "Main_Blog",
       "Posts",
