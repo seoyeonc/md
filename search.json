@@ -8468,7 +8468,254 @@
     "href": "posts/sas/2025-10-04-questions_statistics.html#derived-datasetadam-derived-variables",
     "title": "[Statistics] Prepare for questions",
     "section": "1.2. Derived dataset(ADaM), Derived Variables",
-    "text": "1.2. Derived dataset(ADaM), Derived Variables",
+    "text": "1.2. Derived dataset(ADaM), Derived Variables\n\n\n\n\n\n\n\n\nDataset\nFull Name\nDescription\n\n\n\n\nADSL\nSubject-Level Analysis Dataset\nOne record per subject; demographics, treatment, flags, population info\n\n\nADAE\nAdverse Events Analysis Dataset\nOne record per adverse event per subject\n\n\nADLB\nLaboratory Analysis Dataset\nOne record per lab test per visit\n\n\nADVS\nVital Signs Analysis Dataset\nVital signs (BP, HR, Temp) per visit\n\n\nADCM\nConcomitant Medications Dataset\nMedications used during study\n\n\nADPC\nPharmacokinetics Concentration Dataset\nPK concentration over time\n\n\nADPP\nPharmacokinetic Parameters Dataset\nDerived PK parameters (AUC, Cmax, Tmax)\n\n\n\n\nCommon ADaM Vriables\n\n\n\n\n\n\n\n\n\nVariable\nDescription\nExample\n\n\n\n\nSTUDYID\nStudy identifier\n“ABC123”\n\n\nUSUBJID\nUnique Subject ID (Study + Subject)\n“ABC123-001”\n\n\nSUBJID\nSubject ID (within site)\n“001”\n\n\nSITEID\nInvestigator site ID\n“101”\n\n\nAGE, SEX, RACE\nDemographics\n45, M, White\n\n\nTRT01P, TRT01A\nPlanned / Actual treatment for Period 1\n“Drug A”\n\n\nTRTSDT, TRTEDT\nTreatment start / end date\n2025-05-01 / 2025-08-01\n\n\nSAFFL\nSafety population flag\nY/N\n\n\nEFFFL\nEfficacy population flag\nY/N\n\n\nPPSFL\nPer-protocol population flag\nY/N\n\n\nANL01FL\nAnalysis record flag (main analysis record)\nY\n\n\n\n\nKey Analysis Variables\n\n\n\n\n\n\n\n\n\nVariable\nDescription\nExample\n\n\n\n\nPARAMCD\nParameter code\nHGB\n\n\nPARAM\nParameter name\nHemoglobin\n\n\nAVAL\nAnalysis value (주요 분석값)\n13.2\n\n\nBASE\nBaseline value\n12.8\n\n\nCHG\nChange from baseline (AVAL - BASE)\n0.4\n\n\nPCHG\nPercent change from baseline ((AVAL-BASE)/BASE*100)\n3.1\n\n\nAVISIT\nAnalysis visit label\n“Week 4”\n\n\nAVISITN\nNumeric visit order\n4\n\n\nAVISITDY\nDay of visit\n28\n\n\nADT\nAnalysis date\n2025-05-29\n\n\nADY\nAnalysis day (relative to ref date)\n29\n\n\nAVALCAT1, AVALCAT2\nCategorized analysis values\n“Low”, “Normal”, “High”\n\n\n\n\nTreatment\n\n\n\n\n\n\n\n\n\nVariable\nDescription\nExample\n\n\n\n\nTRT01P, TRT02P, …\nPlanned treatment for each period\n“Drug A”\n\n\nTRT01A, TRT02A, …\nActual treatment received\n“Placebo”\n\n\nTRTP\nFinal analysis treatment group (usually from ADSL)\n“Drug A”\n\n\nTRTPN\nNumeric code for treatment group\n1\n\n\nTRTSDT, TRTEDT\nStart / End date of treatment\n2025-05-01 / 2025-07-30\n\n\nTRTDUR\nTreatment duration (TRTEDT - TRTSDT + 1)\n91\n\n\n\n\nDate and Time\n\n\n\n\n\n\n\n\n\nVariable\nDescription\nExample\n\n\n\n\nADT\nAnalysis date\n2025-05-10\n\n\nATM\nAnalysis time (if applicable)\n10:30\n\n\nADTM\nCombined datetime (ADT + ATM)\n2025-05-10T10:30\n\n\nADY\nStudy day (ADT - Reference start date + 1)\n14\n\n\nTRTSDT, TRTEDT\nTreatment start and end date\n2025-05-01 / 2025-07-30\n\n\nASTDT, AENDT\nStart / End of analysis interval\n2025-05-01 / 2025-05-15\n\n\n\n\nPopulation Flags\n\n\n\n\n\n\n\n\n\nVariable\nDescription\nExample\n\n\n\n\nSAFFL\nSafety flag — included in safety analysis\nY\n\n\nEFFFL\nEfficacy flag — included in efficacy analysis\nY\n\n\nPPSFL\nPer-protocol flag\nY\n\n\nANL01FL\nPrimary analysis record flag\nY\n\n\nASEQ\nAnalysis sequence number\n1, 2, 3\n\n\nABLFL\nBaseline record flag\nY\n\n\nLSTCHGFL\nLast non-missing change record flag\nY\n\n\nBNRIND\nBaseline normal/abnormal indicator\nNORMAL / HIGH\n\n\n\n\nDerived Baseline Variables\n\n\n\n\n\n\n\n\n\nVariable\nDescription\nExample\n\n\n\n\nBMRKR1, BMRKR2\nBaseline marker values\nBMI, Disease Stage\n\n\nAGEGR1, AGEGR1N\nAge group variable\n“&lt;65”, 1\n\n\nSEX, RACE, REGION\nDemographics as covariates\n“F”, “Asian”, “EU”\n\n\nBASE\nBaseline value\n10.2\n\n\nCHG, PCHG\nDerived from BASE\n0.5, 5%\n\n\nVISITDY\nVisit day (nominal)\n14\n\n\n\n\nDerived analysis Variables\n\n\n\n\n\n\n\n\n\nVariable\nDescription\nExample\n\n\n\n\nAVAL\nNumeric analysis value\n15.3\n\n\nAVALC\nCharacter version of AVAL\n“15.3 mg/dL”\n\n\nAVALCAT1, AVALCAT2\nCategorized value\n“High”, “Normal”\n\n\nCHG, PCHG\nChange from baseline / % change\n+3.2, +2.5%\n\n\nR2BASE\nRatio to baseline\n1.05\n\n\nANRIND\nAnalysis result normal range indicator\nL, N, H\n\n\nANL01FL\nAnalysis inclusion flag\nY\n\n\nANL02FL\nSecondary analysis flag\nN\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\n\nVariable\nDescription\nExample\n\n\n\n\nPARAMCD\nShort parameter code\nHGB\n\n\nPARAM\nParameter name\nHemoglobin\n\n\nPARAMN\nNumeric parameter order\n1\n\n\nPARCAT1, PARCAT2\nParameter categories\n“Hematology”, “Blood”\n\n\nPARAMTYP\nParameter type (Derived, Observed, etc.)\n“Derived”",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#the-most-complex-tfls-i-developed",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#the-most-complex-tfls-i-developed",
+    "title": "[Statistics] Prepare for questions",
+    "section": "1.3. The most complex TFLs I developed",
+    "text": "1.3. The most complex TFLs I developed\n\nReal-world data tables\n\nall of the TFLs by RWD studies followed by SAP\n\nClinical trial 1 by 2 design\n\na steady state -&gt; baseline\npk/pd study,\nd",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#solution-when-i-fund-my-coworkers-erroe-during-validation",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#solution-when-i-fund-my-coworkers-erroe-during-validation",
+    "title": "[Statistics] Prepare for questions",
+    "section": "1.4. Solution when I fund my coworker’s erroe during Validation",
+    "text": "1.4. Solution when I fund my coworker’s erroe during Validation",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#about-meta-analysis",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#about-meta-analysis",
+    "title": "[Statistics] Prepare for questions",
+    "section": "1.5. About Meta-analysis",
+    "text": "1.5. About Meta-analysis",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#about-statistical-analysis-plansap",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#about-statistical-analysis-plansap",
+    "title": "[Statistics] Prepare for questions",
+    "section": "1.6. About Statistical Analysis Plan(SAP)",
+    "text": "1.6. About Statistical Analysis Plan(SAP)",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#handling-missing-data",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#handling-missing-data",
+    "title": "[Statistics] Prepare for questions",
+    "section": "1.7. handling Missing data",
+    "text": "1.7. handling Missing data",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#statistical-analysis-reports-for-clinical-study-reportcsr",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#statistical-analysis-reports-for-clinical-study-reportcsr",
+    "title": "[Statistics] Prepare for questions",
+    "section": "1.8. Statistical analysis reports for Clinical study report(CSR)",
+    "text": "1.8. Statistical analysis reports for Clinical study report(CSR)",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#priority-in-work",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#priority-in-work",
+    "title": "[Statistics] Prepare for questions",
+    "section": "2.1. Priority in work",
+    "text": "2.1. Priority in work\n\nnote down my timetable for making my lists\ndo my best\nif I condiser I can’t handle, I would tell my boss honestly to avoid any bad circumstance.",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#communication-with-clients",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#communication-with-clients",
+    "title": "[Statistics] Prepare for questions",
+    "section": "2.2. Communication with Clients",
+    "text": "2.2. Communication with Clients",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#submitting-or-applying-fda-or-ema-guidelines-to-the-studies",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#submitting-or-applying-fda-or-ema-guidelines-to-the-studies",
+    "title": "[Statistics] Prepare for questions",
+    "section": "2.3. Submitting or applying FDA or EMA guidelines to the Studies",
+    "text": "2.3. Submitting or applying FDA or EMA guidelines to the Studies",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#a-type-i-and-tpe-ii-error-in-clinical-trials",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#a-type-i-and-tpe-ii-error-in-clinical-trials",
+    "title": "[Statistics] Prepare for questions",
+    "section": "3.1. a Type I and Tpe II error in clinical trials",
+    "text": "3.1. a Type I and Tpe II error in clinical trials\n\n\n\n\n\n\n\n\n\nTrue (Reality)\nFalse (Reality)\n\n\n\n\nPositive (Reject H₀)\nCorrect decision (Power)\nType I Error (α)\n\n\nNegative (Fail to Reject H₀)\nType II Error (β)\nCorrect decision\n\n\n\n\n\n\n\n\n\n\n\nAspect\nType I Error\nType II Error\n\n\n\n\nAlso called\nFalse Positive\nFalse Negative\n\n\nSymbol\nα (alpha)\nβ (beta)\n\n\nDefinition\nConcluding that a treatment has an effect when it actually does not\nFailing to detect a true treatment effect that actually exists\n\n\nClinical trial example\nA new drug is declared effective when it is not → unnecessary approval\nA truly effective drug is rejected as ineffective → missed treatment opportunity\n\n\nControl method\nSet significance level (e.g., α = 0.05)\nEnsure sufficient statistical power (1 – β, e.g., 80%)\n\n\nClinical importance\nPrevents false claims of efficacy; highly controlled by regulators (FDA/EMA)\nAvoids missing truly beneficial therapies\n\n\nKey phrase\nType I error = claiming a false effect\nType II error = missing a true effect",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#consistency-in-multicenter-clinical-trials",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#consistency-in-multicenter-clinical-trials",
+    "title": "[Statistics] Prepare for questions",
+    "section": "3.2. Consistency in Multicenter clinical trials",
+    "text": "3.2. Consistency in Multicenter clinical trials\nReason: The results can become biased ot less generalizable.\n\n\n\n\n\n\n\nCategory\nKeywords / Phrases\n\n\n\n\nPurpose\nData consistency, reliability of treatment effect, site comparability\n\n\nChecks performed\nBaseline comparison, descriptive statistics, site-level summaries\n\n\nData balance\nTreatment allocation balance, randomization check\n\n\nOutlier detection\nSite-specific data patterns, unusual trends, data visualization (boxplot, scatterplot)\n\n\nStatistical test\nTreatment-by-site interaction, ANOVA, mixed model\n\n\nQuality control\nMissing data rate by site, protocol deviations, data entry errors\n\n\nCollaboration\nData management, clinical operations, root cause investigation\n\n\nTools / Techniques\nPROC MEANS, PROC FREQ, PROC GLM (SAS); boxplot, forest plot\n\n\nKey takeaway phrase\n“Check site-level summaries, treatment balance, outliers, and interaction effects.”",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#reason-for-interim-analysis-in-clinical-trials",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#reason-for-interim-analysis-in-clinical-trials",
+    "title": "[Statistics] Prepare for questions",
+    "section": "3.3. Reason for Interim analysis in clinical trials",
+    "text": "3.3. Reason for Interim analysis in clinical trials\n\n임상 결과 우연하게 좋게 결과가 나온다면 효과가 없는데 있다는 flase positive type I error가 나올 수 있다. 이를 방짐라기 위해 임상시험에서 결과를 판단하는 기준인 유의수준\\(\\alpha\\)를 나눈 alpha spending 방법을 써서(예: 중간분석 0.01, 최종분석 0.04, 누적 0.05)로 알파를 0.05 초과하지 않게 유지해서 확인. 이때 알파를 나누는 방법으로는 O’Brien fleming, Pocock 이 있다.\n\n\nPurpose\n\nassess safety, efficacy, or futility\navoid overall Type I error inflation\n\nMethod to control overall Type I error\n\nuse group sequential designs or alpha-spending methods\n\ndevide the total significance level across interim and final analyses so that the overall false-positive risk stays within 5%.\n\nuse O’Brien-Fleming, Pocock methods",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#survival-analysissurvival-data-or-time-to-time-data",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#survival-analysissurvival-data-or-time-to-time-data",
+    "title": "[Statistics] Prepare for questions",
+    "section": "3.4. Survival Analysis(Survival data or time-to-time data)",
+    "text": "3.4. Survival Analysis(Survival data or time-to-time data)\n\na Kaplan-Meier analysis to estimate survival probabilities and visualize survival curves for each group.\n\n생존 확률 추정 + considering censoring\n\na Log-rank test to compare whether ther is a significant difference between the treatment and control groups.\n\n군 간 생존률 비교\n\na Cox proportional hazards model to estimate the hazard ratio and its confidence interval to quantify the treatment effect.\n\n위험비 추정 + adjust for covariates",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#delivering-statistical-report-to-pm-or-dm",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#delivering-statistical-report-to-pm-or-dm",
+    "title": "[Statistics] Prepare for questions",
+    "section": "4.1. Delivering statistical report to PM or DM",
+    "text": "4.1. Delivering statistical report to PM or DM",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#replying-when-i-face-the-opposite-oppinion-from-clients",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#replying-when-i-face-the-opposite-oppinion-from-clients",
+    "title": "[Statistics] Prepare for questions",
+    "section": "4.2. Replying when I face the opposite oppinion from clients",
+    "text": "4.2. Replying when I face the opposite oppinion from clients",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#improving-experience-for-sops-or-internal-guideline",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#improving-experience-for-sops-or-internal-guideline",
+    "title": "[Statistics] Prepare for questions",
+    "section": "4.3. Improving experience for SOPs or internal guideline",
+    "text": "4.3. Improving experience for SOPs or internal guideline",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#motivation-as-a-biostatistician",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#motivation-as-a-biostatistician",
+    "title": "[Statistics] Prepare for questions",
+    "section": "5.1. Motivation as a Biostatistician",
+    "text": "5.1. Motivation as a Biostatistician",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#challenge-in-oncology-and-lufe-science",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#challenge-in-oncology-and-lufe-science",
+    "title": "[Statistics] Prepare for questions",
+    "section": "5.2. Challenge in oncology and lufe science",
+    "text": "5.2. Challenge in oncology and lufe science",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "Sas",
+      "[Statistics] Prepare for questions"
+    ]
+  },
+  {
+    "objectID": "posts/sas/2025-10-04-questions_statistics.html#my-goal-as-a-statistician-or-biostatistician",
+    "href": "posts/sas/2025-10-04-questions_statistics.html#my-goal-as-a-statistician-or-biostatistician",
+    "title": "[Statistics] Prepare for questions",
+    "section": "5.3. my goal as a statistician or biostatistician",
+    "text": "5.3. my goal as a statistician or biostatistician",
     "crumbs": [
       "Main_Blog",
       "Posts",

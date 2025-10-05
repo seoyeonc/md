@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -1216,11 +1245,42 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#basic-abbreviation" id="toc-basic-abbreviation" class="nav-link active" data-scroll-target="#basic-abbreviation">Basic Abbreviation</a></li>
+  <li><a href="#basic-abbreviation" id="toc-basic-abbreviation" class="nav-link active" data-scroll-target="#basic-abbreviation">0. Basic Abbreviation</a></li>
   <li><a href="#technical-knowledge" id="toc-technical-knowledge" class="nav-link" data-scroll-target="#technical-knowledge">1. Technical / Knowledge</a>
   <ul class="collapse">
   <li><a href="#difference-between-adam-and-sdtm" id="toc-difference-between-adam-and-sdtm" class="nav-link" data-scroll-target="#difference-between-adam-and-sdtm">1.1. Difference between ADaM and SDTM</a></li>
   <li><a href="#derived-datasetadam-derived-variables" id="toc-derived-datasetadam-derived-variables" class="nav-link" data-scroll-target="#derived-datasetadam-derived-variables">1.2. Derived dataset(ADaM), Derived Variables</a></li>
+  <li><a href="#the-most-complex-tfls-i-developed" id="toc-the-most-complex-tfls-i-developed" class="nav-link" data-scroll-target="#the-most-complex-tfls-i-developed">1.3. The most complex TFLs I developed</a></li>
+  <li><a href="#solution-when-i-fund-my-coworkers-erroe-during-validation" id="toc-solution-when-i-fund-my-coworkers-erroe-during-validation" class="nav-link" data-scroll-target="#solution-when-i-fund-my-coworkers-erroe-during-validation">1.4. Solution when I fund my coworker’s erroe during Validation</a></li>
+  <li><a href="#about-meta-analysis" id="toc-about-meta-analysis" class="nav-link" data-scroll-target="#about-meta-analysis">1.5. About Meta-analysis</a></li>
+  <li><a href="#about-statistical-analysis-plansap" id="toc-about-statistical-analysis-plansap" class="nav-link" data-scroll-target="#about-statistical-analysis-plansap">1.6. About Statistical Analysis Plan(SAP)</a></li>
+  <li><a href="#handling-missing-data" id="toc-handling-missing-data" class="nav-link" data-scroll-target="#handling-missing-data">1.7. handling Missing data</a></li>
+  <li><a href="#statistical-analysis-reports-for-clinical-study-reportcsr" id="toc-statistical-analysis-reports-for-clinical-study-reportcsr" class="nav-link" data-scroll-target="#statistical-analysis-reports-for-clinical-study-reportcsr">1.8. Statistical analysis reports for Clinical study report(CSR)</a></li>
+  </ul></li>
+  <li><a href="#experience-based" id="toc-experience-based" class="nav-link" data-scroll-target="#experience-based">2. Experience-Based</a>
+  <ul class="collapse">
+  <li><a href="#priority-in-work" id="toc-priority-in-work" class="nav-link" data-scroll-target="#priority-in-work">2.1. Priority in work</a></li>
+  <li><a href="#communication-with-clients" id="toc-communication-with-clients" class="nav-link" data-scroll-target="#communication-with-clients">2.2. Communication with Clients</a></li>
+  <li><a href="#submitting-or-applying-fda-or-ema-guidelines-to-the-studies" id="toc-submitting-or-applying-fda-or-ema-guidelines-to-the-studies" class="nav-link" data-scroll-target="#submitting-or-applying-fda-or-ema-guidelines-to-the-studies">2.3. Submitting or applying FDA or EMA guidelines to the Studies</a></li>
+  </ul></li>
+  <li><a href="#statistical-thinking-problem-solving" id="toc-statistical-thinking-problem-solving" class="nav-link" data-scroll-target="#statistical-thinking-problem-solving">3. Statistical Thinking &amp; Problem-Solving</a>
+  <ul class="collapse">
+  <li><a href="#a-type-i-and-tpe-ii-error-in-clinical-trials" id="toc-a-type-i-and-tpe-ii-error-in-clinical-trials" class="nav-link" data-scroll-target="#a-type-i-and-tpe-ii-error-in-clinical-trials">3.1. a Type I and Tpe II error in clinical trials</a></li>
+  <li><a href="#consistency-in-multicenter-clinical-trials" id="toc-consistency-in-multicenter-clinical-trials" class="nav-link" data-scroll-target="#consistency-in-multicenter-clinical-trials">3.2. Consistency in Multicenter clinical trials</a></li>
+  <li><a href="#reason-for-interim-analysis-in-clinical-trials" id="toc-reason-for-interim-analysis-in-clinical-trials" class="nav-link" data-scroll-target="#reason-for-interim-analysis-in-clinical-trials">3.3. Reason for Interim analysis in clinical trials</a></li>
+  <li><a href="#survival-analysissurvival-data-or-time-to-time-data" id="toc-survival-analysissurvival-data-or-time-to-time-data" class="nav-link" data-scroll-target="#survival-analysissurvival-data-or-time-to-time-data">3.4. Survival Analysis(Survival data or time-to-time data)</a></li>
+  </ul></li>
+  <li><a href="#soft-skills-collaboration" id="toc-soft-skills-collaboration" class="nav-link" data-scroll-target="#soft-skills-collaboration">4. Soft Skills &amp; Collaboration</a>
+  <ul class="collapse">
+  <li><a href="#delivering-statistical-report-to-pm-or-dm" id="toc-delivering-statistical-report-to-pm-or-dm" class="nav-link" data-scroll-target="#delivering-statistical-report-to-pm-or-dm">4.1. Delivering statistical report to PM or DM</a></li>
+  <li><a href="#replying-when-i-face-the-opposite-oppinion-from-clients" id="toc-replying-when-i-face-the-opposite-oppinion-from-clients" class="nav-link" data-scroll-target="#replying-when-i-face-the-opposite-oppinion-from-clients">4.2. Replying when I face the opposite oppinion from clients</a></li>
+  <li><a href="#improving-experience-for-sops-or-internal-guideline" id="toc-improving-experience-for-sops-or-internal-guideline" class="nav-link" data-scroll-target="#improving-experience-for-sops-or-internal-guideline">4.3. Improving experience for SOPs or internal guideline</a></li>
+  </ul></li>
+  <li><a href="#motivation-career-fit" id="toc-motivation-career-fit" class="nav-link" data-scroll-target="#motivation-career-fit">5. Motivation &amp; Career Fit</a>
+  <ul class="collapse">
+  <li><a href="#motivation-as-a-biostatistician" id="toc-motivation-as-a-biostatistician" class="nav-link" data-scroll-target="#motivation-as-a-biostatistician">5.1. Motivation as a Biostatistician</a></li>
+  <li><a href="#challenge-in-oncology-and-lufe-science" id="toc-challenge-in-oncology-and-lufe-science" class="nav-link" data-scroll-target="#challenge-in-oncology-and-lufe-science">5.2. Challenge in oncology and lufe science</a></li>
+  <li><a href="#my-goal-as-a-statistician-or-biostatistician" id="toc-my-goal-as-a-statistician-or-biostatistician" class="nav-link" data-scroll-target="#my-goal-as-a-statistician-or-biostatistician">5.3. my goal as a statistician or biostatistician</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-10-04-questions_statistics.out.ipynb" download="2025-10-04-questions_statistics.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
@@ -1233,7 +1293,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <section id="basic-abbreviation" class="level1">
-<h1>Basic Abbreviation</h1>
+<h1>0. Basic Abbreviation</h1>
 <table class="table">
 <colgroup>
 <col style="width: 3%">
@@ -1324,6 +1384,765 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="derived-datasetadam-derived-variables" class="level2">
 <h2 class="anchored" data-anchor-id="derived-datasetadam-derived-variables">1.2. Derived dataset(ADaM), Derived Variables</h2>
+<table class="table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 32%">
+<col style="width: 60%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Full Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>ADSL</strong></td>
+<td>Subject-Level Analysis Dataset</td>
+<td>One record per subject; demographics, treatment, flags, population info</td>
+</tr>
+<tr class="even">
+<td><strong>ADAE</strong></td>
+<td>Adverse Events Analysis Dataset</td>
+<td>One record per adverse event per subject</td>
+</tr>
+<tr class="odd">
+<td><strong>ADLB</strong></td>
+<td>Laboratory Analysis Dataset</td>
+<td>One record per lab test per visit</td>
+</tr>
+<tr class="even">
+<td><strong>ADVS</strong></td>
+<td>Vital Signs Analysis Dataset</td>
+<td>Vital signs (BP, HR, Temp) per visit</td>
+</tr>
+<tr class="odd">
+<td><strong>ADCM</strong></td>
+<td>Concomitant Medications Dataset</td>
+<td>Medications used during study</td>
+</tr>
+<tr class="even">
+<td><strong>ADPC</strong></td>
+<td>Pharmacokinetics Concentration Dataset</td>
+<td>PK concentration over time</td>
+</tr>
+<tr class="odd">
+<td><strong>ADPP</strong></td>
+<td>Pharmacokinetic Parameters Dataset</td>
+<td>Derived PK parameters (AUC, Cmax, Tmax)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Common ADaM Vriables</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 50%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>STUDYID</code></td>
+<td>Study identifier</td>
+<td>“ABC123”</td>
+</tr>
+<tr class="even">
+<td><code>USUBJID</code></td>
+<td>Unique Subject ID (Study + Subject)</td>
+<td>“ABC123-001”</td>
+</tr>
+<tr class="odd">
+<td><code>SUBJID</code></td>
+<td>Subject ID (within site)</td>
+<td>“001”</td>
+</tr>
+<tr class="even">
+<td><code>SITEID</code></td>
+<td>Investigator site ID</td>
+<td>“101”</td>
+</tr>
+<tr class="odd">
+<td><code>AGE</code>, <code>SEX</code>, <code>RACE</code></td>
+<td>Demographics</td>
+<td>45, M, White</td>
+</tr>
+<tr class="even">
+<td><code>TRT01P</code>, <code>TRT01A</code></td>
+<td>Planned / Actual treatment for Period 1</td>
+<td>“Drug A”</td>
+</tr>
+<tr class="odd">
+<td><code>TRTSDT</code>, <code>TRTEDT</code></td>
+<td>Treatment start / end date</td>
+<td>2025-05-01 / 2025-08-01</td>
+</tr>
+<tr class="even">
+<td><code>SAFFL</code></td>
+<td>Safety population flag</td>
+<td>Y/N</td>
+</tr>
+<tr class="odd">
+<td><code>EFFFL</code></td>
+<td>Efficacy population flag</td>
+<td>Y/N</td>
+</tr>
+<tr class="even">
+<td><code>PPSFL</code></td>
+<td>Per-protocol population flag</td>
+<td>Y/N</td>
+</tr>
+<tr class="odd">
+<td><code>ANL01FL</code></td>
+<td>Analysis record flag (main analysis record)</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Key Analysis Variables</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 54%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>PARAMCD</code></td>
+<td>Parameter code</td>
+<td>HGB</td>
+</tr>
+<tr class="even">
+<td><code>PARAM</code></td>
+<td>Parameter name</td>
+<td>Hemoglobin</td>
+</tr>
+<tr class="odd">
+<td><code>AVAL</code></td>
+<td>Analysis value (주요 분석값)</td>
+<td>13.2</td>
+</tr>
+<tr class="even">
+<td><code>BASE</code></td>
+<td>Baseline value</td>
+<td>12.8</td>
+</tr>
+<tr class="odd">
+<td><code>CHG</code></td>
+<td>Change from baseline (<code>AVAL - BASE</code>)</td>
+<td>0.4</td>
+</tr>
+<tr class="even">
+<td><code>PCHG</code></td>
+<td>Percent change from baseline (<code>(AVAL-BASE)/BASE*100</code>)</td>
+<td>3.1</td>
+</tr>
+<tr class="odd">
+<td><code>AVISIT</code></td>
+<td>Analysis visit label</td>
+<td>“Week 4”</td>
+</tr>
+<tr class="even">
+<td><code>AVISITN</code></td>
+<td>Numeric visit order</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td><code>AVISITDY</code></td>
+<td>Day of visit</td>
+<td>28</td>
+</tr>
+<tr class="even">
+<td><code>ADT</code></td>
+<td>Analysis date</td>
+<td>2025-05-29</td>
+</tr>
+<tr class="odd">
+<td><code>ADY</code></td>
+<td>Analysis day (relative to ref date)</td>
+<td>29</td>
+</tr>
+<tr class="even">
+<td><code>AVALCAT1</code>, <code>AVALCAT2</code></td>
+<td>Categorized analysis values</td>
+<td>“Low”, “Normal”, “High”</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Treatment</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 52%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>TRT01P</code>, <code>TRT02P</code>, …</td>
+<td>Planned treatment for each period</td>
+<td>“Drug A”</td>
+</tr>
+<tr class="even">
+<td><code>TRT01A</code>, <code>TRT02A</code>, …</td>
+<td>Actual treatment received</td>
+<td>“Placebo”</td>
+</tr>
+<tr class="odd">
+<td><code>TRTP</code></td>
+<td>Final analysis treatment group (usually from ADSL)</td>
+<td>“Drug A”</td>
+</tr>
+<tr class="even">
+<td><code>TRTPN</code></td>
+<td>Numeric code for treatment group</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td><code>TRTSDT</code>, <code>TRTEDT</code></td>
+<td>Start / End date of treatment</td>
+<td>2025-05-01 / 2025-07-30</td>
+</tr>
+<tr class="even">
+<td><code>TRTDUR</code></td>
+<td>Treatment duration (<code>TRTEDT - TRTSDT + 1</code>)</td>
+<td>91</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Date and Time</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 51%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ADT</code></td>
+<td>Analysis date</td>
+<td>2025-05-10</td>
+</tr>
+<tr class="even">
+<td><code>ATM</code></td>
+<td>Analysis time (if applicable)</td>
+<td>10:30</td>
+</tr>
+<tr class="odd">
+<td><code>ADTM</code></td>
+<td>Combined datetime (ADT + ATM)</td>
+<td>2025-05-10T10:30</td>
+</tr>
+<tr class="even">
+<td><code>ADY</code></td>
+<td>Study day (<code>ADT - Reference start date + 1</code>)</td>
+<td>14</td>
+</tr>
+<tr class="odd">
+<td><code>TRTSDT</code>, <code>TRTEDT</code></td>
+<td>Treatment start and end date</td>
+<td>2025-05-01 / 2025-07-30</td>
+</tr>
+<tr class="even">
+<td><code>ASTDT</code>, <code>AENDT</code></td>
+<td>Start / End of analysis interval</td>
+<td>2025-05-01 / 2025-05-15</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Population Flags</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 66%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>SAFFL</code></td>
+<td>Safety flag — included in safety analysis</td>
+<td>Y</td>
+</tr>
+<tr class="even">
+<td><code>EFFFL</code></td>
+<td>Efficacy flag — included in efficacy analysis</td>
+<td>Y</td>
+</tr>
+<tr class="odd">
+<td><code>PPSFL</code></td>
+<td>Per-protocol flag</td>
+<td>Y</td>
+</tr>
+<tr class="even">
+<td><code>ANL01FL</code></td>
+<td>Primary analysis record flag</td>
+<td>Y</td>
+</tr>
+<tr class="odd">
+<td><code>ASEQ</code></td>
+<td>Analysis sequence number</td>
+<td>1, 2, 3</td>
+</tr>
+<tr class="even">
+<td><code>ABLFL</code></td>
+<td>Baseline record flag</td>
+<td>Y</td>
+</tr>
+<tr class="odd">
+<td><code>LSTCHGFL</code></td>
+<td>Last non-missing change record flag</td>
+<td>Y</td>
+</tr>
+<tr class="even">
+<td><code>BNRIND</code></td>
+<td>Baseline normal/abnormal indicator</td>
+<td>NORMAL / HIGH</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Derived Baseline Variables</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 38%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>BMRKR1</code>, <code>BMRKR2</code></td>
+<td>Baseline marker values</td>
+<td>BMI, Disease Stage</td>
+</tr>
+<tr class="even">
+<td><code>AGEGR1</code>, <code>AGEGR1N</code></td>
+<td>Age group variable</td>
+<td>“&lt;65”, 1</td>
+</tr>
+<tr class="odd">
+<td><code>SEX</code>, <code>RACE</code>, <code>REGION</code></td>
+<td>Demographics as covariates</td>
+<td>“F”, “Asian”, “EU”</td>
+</tr>
+<tr class="even">
+<td><code>BASE</code></td>
+<td>Baseline value</td>
+<td>10.2</td>
+</tr>
+<tr class="odd">
+<td><code>CHG</code>, <code>PCHG</code></td>
+<td>Derived from BASE</td>
+<td>0.5, 5%</td>
+</tr>
+<tr class="even">
+<td><code>VISITDY</code></td>
+<td>Visit day (nominal)</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Derived analysis Variables</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 50%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>AVAL</code></td>
+<td>Numeric analysis value</td>
+<td>15.3</td>
+</tr>
+<tr class="even">
+<td><code>AVALC</code></td>
+<td>Character version of AVAL</td>
+<td>“15.3 mg/dL”</td>
+</tr>
+<tr class="odd">
+<td><code>AVALCAT1</code>, <code>AVALCAT2</code></td>
+<td>Categorized value</td>
+<td>“High”, “Normal”</td>
+</tr>
+<tr class="even">
+<td><code>CHG</code>, <code>PCHG</code></td>
+<td>Change from baseline / % change</td>
+<td>+3.2, +2.5%</td>
+</tr>
+<tr class="odd">
+<td><code>R2BASE</code></td>
+<td>Ratio to baseline</td>
+<td>1.05</td>
+</tr>
+<tr class="even">
+<td><code>ANRIND</code></td>
+<td>Analysis result normal range indicator</td>
+<td>L, N, H</td>
+</tr>
+<tr class="odd">
+<td><code>ANL01FL</code></td>
+<td>Analysis inclusion flag</td>
+<td>Y</td>
+</tr>
+<tr class="even">
+<td><code>ANL02FL</code></td>
+<td>Secondary analysis flag</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Parameters</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 49%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>PARAMCD</code></td>
+<td>Short parameter code</td>
+<td>HGB</td>
+</tr>
+<tr class="even">
+<td><code>PARAM</code></td>
+<td>Parameter name</td>
+<td>Hemoglobin</td>
+</tr>
+<tr class="odd">
+<td><code>PARAMN</code></td>
+<td>Numeric parameter order</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td><code>PARCAT1</code>, <code>PARCAT2</code></td>
+<td>Parameter categories</td>
+<td>“Hematology”, “Blood”</td>
+</tr>
+<tr class="odd">
+<td><code>PARAMTYP</code></td>
+<td>Parameter type (Derived, Observed, etc.)</td>
+<td>“Derived”</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-most-complex-tfls-i-developed" class="level2">
+<h2 class="anchored" data-anchor-id="the-most-complex-tfls-i-developed">1.3. The most complex TFLs I developed</h2>
+<ul>
+<li>Real-world data tables
+<ul>
+<li>all of the TFLs by RWD studies followed by SAP</li>
+</ul></li>
+<li>Clinical trial 1 by 2 design
+<ul>
+<li>a steady state -&gt; baseline</li>
+<li>pk/pd study,</li>
+<li>d</li>
+</ul></li>
+</ul>
+</section>
+<section id="solution-when-i-fund-my-coworkers-erroe-during-validation" class="level2">
+<h2 class="anchored" data-anchor-id="solution-when-i-fund-my-coworkers-erroe-during-validation">1.4. Solution when I fund my coworker’s erroe during Validation</h2>
+</section>
+<section id="about-meta-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="about-meta-analysis">1.5. About Meta-analysis</h2>
+</section>
+<section id="about-statistical-analysis-plansap" class="level2">
+<h2 class="anchored" data-anchor-id="about-statistical-analysis-plansap">1.6. About Statistical Analysis Plan(SAP)</h2>
+</section>
+<section id="handling-missing-data" class="level2">
+<h2 class="anchored" data-anchor-id="handling-missing-data">1.7. handling Missing data</h2>
+</section>
+<section id="statistical-analysis-reports-for-clinical-study-reportcsr" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-analysis-reports-for-clinical-study-reportcsr">1.8. Statistical analysis reports for Clinical study report(CSR)</h2>
+</section>
+</section>
+<section id="experience-based" class="level1">
+<h1>2. Experience-Based</h1>
+<section id="priority-in-work" class="level2">
+<h2 class="anchored" data-anchor-id="priority-in-work">2.1. Priority in work</h2>
+<ul>
+<li>note down my timetable for making my lists</li>
+<li>do my best</li>
+<li>if I condiser I can’t handle, I would tell my boss honestly to avoid any bad circumstance.</li>
+</ul>
+</section>
+<section id="communication-with-clients" class="level2">
+<h2 class="anchored" data-anchor-id="communication-with-clients">2.2. Communication with Clients</h2>
+</section>
+<section id="submitting-or-applying-fda-or-ema-guidelines-to-the-studies" class="level2">
+<h2 class="anchored" data-anchor-id="submitting-or-applying-fda-or-ema-guidelines-to-the-studies">2.3. Submitting or applying FDA or EMA guidelines to the Studies</h2>
+</section>
+</section>
+<section id="statistical-thinking-problem-solving" class="level1">
+<h1>3. Statistical Thinking &amp; Problem-Solving</h1>
+<section id="a-type-i-and-tpe-ii-error-in-clinical-trials" class="level2">
+<h2 class="anchored" data-anchor-id="a-type-i-and-tpe-ii-error-in-clinical-trials">3.1. a Type I and Tpe II error in clinical trials</h2>
+<table class="table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 32%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>True (Reality)</strong></th>
+<th><strong>False (Reality)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Positive (Reject H₀)</strong></td>
+<td>Correct decision (Power)</td>
+<td><strong>Type I Error (α)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Negative (Fail to Reject H₀)</strong></td>
+<td><strong>Type II Error (β)</strong></td>
+<td>Correct decision</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 40%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th><strong>Type I Error</strong></th>
+<th><strong>Type II Error</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Also called</strong></td>
+<td>False Positive</td>
+<td>False Negative</td>
+</tr>
+<tr class="even">
+<td><strong>Symbol</strong></td>
+<td>α (alpha)</td>
+<td>β (beta)</td>
+</tr>
+<tr class="odd">
+<td><strong>Definition</strong></td>
+<td>Concluding that a treatment has an effect when it actually does not</td>
+<td>Failing to detect a true treatment effect that actually exists</td>
+</tr>
+<tr class="even">
+<td><strong>Clinical trial example</strong></td>
+<td>A new drug is declared effective when it is not → unnecessary approval</td>
+<td>A truly effective drug is rejected as ineffective → missed treatment opportunity</td>
+</tr>
+<tr class="odd">
+<td><strong>Control method</strong></td>
+<td>Set significance level (e.g., α = 0.05)</td>
+<td>Ensure sufficient statistical power (1 – β, e.g., 80%)</td>
+</tr>
+<tr class="even">
+<td><strong>Clinical importance</strong></td>
+<td>Prevents false claims of efficacy; highly controlled by regulators (FDA/EMA)</td>
+<td>Avoids missing truly beneficial therapies</td>
+</tr>
+<tr class="odd">
+<td><strong>Key phrase</strong></td>
+<td>Type I error = claiming a false effect</td>
+<td>Type II error = missing a true effect</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="consistency-in-multicenter-clinical-trials" class="level2">
+<h2 class="anchored" data-anchor-id="consistency-in-multicenter-clinical-trials">3.2. Consistency in Multicenter clinical trials</h2>
+<p>Reason: The results can become biased ot less generalizable.</p>
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 78%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Category</th>
+<th><strong>Keywords / Phrases</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Purpose</strong></td>
+<td>Data consistency, reliability of treatment effect, site comparability</td>
+</tr>
+<tr class="even">
+<td><strong>Checks performed</strong></td>
+<td>Baseline comparison, descriptive statistics, site-level summaries</td>
+</tr>
+<tr class="odd">
+<td><strong>Data balance</strong></td>
+<td>Treatment allocation balance, randomization check</td>
+</tr>
+<tr class="even">
+<td><strong>Outlier detection</strong></td>
+<td>Site-specific data patterns, unusual trends, data visualization (boxplot, scatterplot)</td>
+</tr>
+<tr class="odd">
+<td><strong>Statistical test</strong></td>
+<td>Treatment-by-site interaction, ANOVA, mixed model</td>
+</tr>
+<tr class="even">
+<td><strong>Quality control</strong></td>
+<td>Missing data rate by site, protocol deviations, data entry errors</td>
+</tr>
+<tr class="odd">
+<td><strong>Collaboration</strong></td>
+<td>Data management, clinical operations, root cause investigation</td>
+</tr>
+<tr class="even">
+<td><strong>Tools / Techniques</strong></td>
+<td>PROC MEANS, PROC FREQ, PROC GLM (SAS); boxplot, forest plot</td>
+</tr>
+<tr class="odd">
+<td><strong>Key takeaway phrase</strong></td>
+<td>“Check site-level summaries, treatment balance, outliers, and interaction effects.”</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="reason-for-interim-analysis-in-clinical-trials" class="level2">
+<h2 class="anchored" data-anchor-id="reason-for-interim-analysis-in-clinical-trials">3.3. Reason for Interim analysis in clinical trials</h2>
+<blockquote class="blockquote">
+<p>임상 결과 우연하게 좋게 결과가 나온다면 효과가 없는데 있다는 flase positive type I error가 나올 수 있다. 이를 방짐라기 위해 임상시험에서 결과를 판단하는 기준인 유의수준<span class="math inline">\(\alpha\)</span>를 나눈 alpha spending 방법을 써서(예: 중간분석 0.01, 최종분석 0.04, 누적 0.05)로 알파를 0.05 초과하지 않게 유지해서 확인. 이때 알파를 나누는 방법으로는 O’Brien fleming, Pocock 이 있다.</p>
+</blockquote>
+<ul>
+<li>Purpose
+<ul>
+<li>assess safety, efficacy, or futility</li>
+<li>avoid overall Type I error inflation</li>
+</ul></li>
+<li>Method to control overall Type I error
+<ul>
+<li>use group sequential designs or alpha-spending methods
+<ul>
+<li>devide the total significance level across interim and final analyses so that the overall false-positive risk stays within 5%.</li>
+</ul></li>
+<li>use O’Brien-Fleming, Pocock methods</li>
+</ul></li>
+</ul>
+</section>
+<section id="survival-analysissurvival-data-or-time-to-time-data" class="level2">
+<h2 class="anchored" data-anchor-id="survival-analysissurvival-data-or-time-to-time-data">3.4. Survival Analysis(Survival data or time-to-time data)</h2>
+<ol type="1">
+<li><strong>a Kaplan-Meier</strong> analysis to estimate survival probabilities and visualize survival curves for each group.
+<ul>
+<li>생존 확률 추정 + considering censoring</li>
+</ul></li>
+<li><strong>a Log-rank test</strong> to compare whether ther is a significant difference between the treatment and control groups.
+<ul>
+<li>군 간 생존률 비교</li>
+</ul></li>
+<li><strong>a Cox proportional hazards model</strong> to estimate the hazard ratio and its confidence interval to quantify the treatment effect.
+<ul>
+<li>위험비 추정 + adjust for covariates</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="soft-skills-collaboration" class="level1">
+<h1>4. Soft Skills &amp; Collaboration</h1>
+<section id="delivering-statistical-report-to-pm-or-dm" class="level2">
+<h2 class="anchored" data-anchor-id="delivering-statistical-report-to-pm-or-dm">4.1. Delivering statistical report to PM or DM</h2>
+</section>
+<section id="replying-when-i-face-the-opposite-oppinion-from-clients" class="level2">
+<h2 class="anchored" data-anchor-id="replying-when-i-face-the-opposite-oppinion-from-clients">4.2. Replying when I face the opposite oppinion from clients</h2>
+</section>
+<section id="improving-experience-for-sops-or-internal-guideline" class="level2">
+<h2 class="anchored" data-anchor-id="improving-experience-for-sops-or-internal-guideline">4.3. Improving experience for SOPs or internal guideline</h2>
+</section>
+</section>
+<section id="motivation-career-fit" class="level1">
+<h1>5. Motivation &amp; Career Fit</h1>
+<section id="motivation-as-a-biostatistician" class="level2">
+<h2 class="anchored" data-anchor-id="motivation-as-a-biostatistician">5.1. Motivation as a Biostatistician</h2>
+</section>
+<section id="challenge-in-oncology-and-lufe-science" class="level2">
+<h2 class="anchored" data-anchor-id="challenge-in-oncology-and-lufe-science">5.2. Challenge in oncology and lufe science</h2>
+</section>
+<section id="my-goal-as-a-statistician-or-biostatistician" class="level2">
+<h2 class="anchored" data-anchor-id="my-goal-as-a-statistician-or-biostatistician">5.3. my goal as a statistician or biostatistician</h2>
 
 
 </section>
