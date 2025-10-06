@@ -1227,6 +1227,261 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<ul>
+<li>ADaM: Analysis Data Model
+<ul>
+<li><strong>Define Dataset and metadata standards that support</strong>:
+<ul>
+<li>efficient generation, replication, and review of clinical trial statistical analyses, and</li>
+<li>traceability among analysis results, analysis data, and data represented in the Study Data Tabulation Model (SDTM).</li>
+</ul></li>
+<li>standardize and organize data for statistical analysis, enabling efficient, accurate, and reproducible research by ensuring a clear lineage from raw data (SDTM) to analysis results.</li>
+</ul></li>
+<li>Why are they use ADaM dataset in Clinical trials?
+<ul>
+<li><strong>Standardization and Consistency</strong>
+<ul>
+<li>ADaM provides a consistent framework for creating analysis datasets, which reduces variability and ensures that data is prepared for analysis in the same way across different trials.</li>
+</ul></li>
+<li><strong>Analysis Readiness</strong>
+<ul>
+<li>It ensures that data is in a format that is ready for statistical analysis, which streamlines the generation of tables, listings, and figures (TLFs).</li>
+</ul></li>
+<li><strong>Traceability</strong>
+<ul>
+<li>ADaM establishes a clear lineage between the analysis results, the analysis datasets, and the source data in SDTM, allowing reviewers to quickly understand and validate the data.</li>
+</ul></li>
+<li><strong>Reproducibility</strong>
+<ul>
+<li>The standardized structure and clear definitions in ADaM allow for the replication of statistical analyses, promoting confidence in the study findings.</li>
+</ul></li>
+<li><strong>Regulatory Compliance</strong>
+<ul>
+<li>Regulatory agencies like the US Food and Drug Administration (<strong>FDA</strong>) and the Japanese Pharmaceuticals and Medical Devices Agency (PMDA) require clinical trial data to adhere to ADaM standards for submission.</li>
+</ul></li>
+<li><strong>Interoperability and Collaboration</strong>
+<ul>
+<li>Standardized ADaM datasets facilitate data exchange and integration between different systems and organizations, improving collaboration among statisticians, programmers, and researchers.</li>
+</ul></li>
+<li><strong>Efficiency</strong>
+<ul>
+<li>By providing a predictable and consistent data structure, ADaM helps statistical programmers efficiently develop TLFs and reuse programming code across projects.</li>
+</ul></li>
+</ul></li>
+<li>ADSL: Subject-Level Analysis Dataset
+<ul>
+<li>ADSL</li>
+</ul></li>
+<li>BDS: Basic Data Structure
+<ul>
+<li>ADLB</li>
+<li>ADEFF</li>
+<li>ADTTE</li>
+</ul></li>
+<li>OCCDS: Occurrence Data Structure
+<ul>
+<li>ADAE</li>
+<li>ADCM</li>
+</ul></li>
+<li>Other
+<ul>
+<li>ADMV</li>
+</ul></li>
+</ul>
+<p><a href="https://www.cdisc.org/kb/examples/adam-adsl-dataset-103765767">reference</a></p>
+<ul>
+<li>adsl example</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 22%">
+<col style="width: 7%">
+<col style="width: 14%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ow</th>
+<th>STUDYID</th>
+<th>USUBJID</th>
+<th>TRT01P</th>
+<th>ITTFL</th>
+<th>FASFL</th>
+<th>STRATAR</th>
+<th>STRAT1D</th>
+<th>STRAT1R</th>
+<th>STRAT2D</th>
+<th>STRAT2R</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>CR123</td>
+<td>CR123-001</td>
+<td>Drug A</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y, Non-Severe</td>
+<td>Prior anti-TNF-alpha Usage</td>
+<td>Y</td>
+<td>Disease Severity</td>
+<td>Non-Severe</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>CR123</td>
+<td>CR123-002</td>
+<td>Drug B</td>
+<td>Y</td>
+<td>Y</td>
+<td>N, Severe</td>
+<td>Prior anti-TNF-alpha Usage</td>
+<td>N</td>
+<td>Disease Severity</td>
+<td>Severe</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>ADSL Dataset Metadata</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 15%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 17%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dataset Name</th>
+<th>Description</th>
+<th>Class</th>
+<th>Structure</th>
+<th>Purpose</th>
+<th>Keys</th>
+<th>Location</th>
+<th>Documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ADSL</td>
+<td>Subject-Level Analysis Dataset</td>
+<td>SUBJECT LEVEL ANALYSIS DATASET</td>
+<td>One record per subject</td>
+<td>Analysis</td>
+<td>STUDYID, USUBJID</td>
+<td>ADSL.xpt</td>
+<td>ADSL.SAS</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>ADSL Variable Metadata</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 7%">
+<col style="width: 14%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable Name</th>
+<th>Variable Label</th>
+<th>Type</th>
+<th>Codelist</th>
+<th>Source/Derivation/Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>STUDYID</td>
+<td>Study Identifier</td>
+<td>text</td>
+<td></td>
+<td>DM.STUDYID</td>
+</tr>
+<tr class="even">
+<td>USUBJID</td>
+<td>Unique Subject Identifier</td>
+<td>text</td>
+<td></td>
+<td>DM.USUBJID</td>
+</tr>
+<tr class="odd">
+<td>TRT01P</td>
+<td>Planned Treatment for Period 01</td>
+<td>text</td>
+<td></td>
+<td>DM.ARM</td>
+</tr>
+<tr class="even">
+<td>ITTFL</td>
+<td>Intent-To-Treat Population Flag</td>
+<td>text</td>
+<td>Y; N</td>
+<td>Y if the subject has been assigned a Randomization number.</td>
+</tr>
+<tr class="odd">
+<td>FASFL</td>
+<td>Full Analysis Population Flag</td>
+<td>text</td>
+<td>Y; N</td>
+<td>Y if the subject has met the criteria defined in the SAP.</td>
+</tr>
+<tr class="even">
+<td>STRATAR</td>
+<td>Strata Used for Randomization</td>
+<td>text</td>
+<td>Prior TNF-alpha Usage (Y vs N), Disease Severity (Severe vs Non-Severe)</td>
+<td>Subject level values used at randomization to determine a subject’s treatment group</td>
+</tr>
+<tr class="odd">
+<td>STRAT1D</td>
+<td>Description of Stratification Factor 1</td>
+<td>text</td>
+<td>Prior anti-TNF-alpha Usage</td>
+<td>First factor captured in STRATAR</td>
+</tr>
+<tr class="even">
+<td>STRAT1R</td>
+<td>Strat Factor 1 Value Used for Rand</td>
+<td>text</td>
+<td>Y; N</td>
+<td>First factor subject value</td>
+</tr>
+<tr class="odd">
+<td>STRAT2D</td>
+<td>Description of Stratification Factor 2</td>
+<td>text</td>
+<td>Disease Severity</td>
+<td>Second factor captured in STRATAR</td>
+</tr>
+<tr class="even">
+<td>STRAT2R</td>
+<td>Strat Factor 2 Value Used for Rand</td>
+<td>text</td>
+<td>Severe; Non-Severe</td>
+<td>Second factor subject value</td>
+</tr>
+</tbody>
+</table>
 
 
 
