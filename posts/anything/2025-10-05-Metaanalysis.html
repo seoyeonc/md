@@ -1296,7 +1296,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#첫번째" id="toc-첫번째" class="nav-link" data-scroll-target="#첫번째">첫번째</a></li>
   <li><a href="#두번째" id="toc-두번째" class="nav-link" data-scroll-target="#두번째">두번째</a></li>
-  <li><a href="#세번째" id="toc-세번째" class="nav-link" data-scroll-target="#세번째">세번째</a></li>
+  <li><a href="#세번째_fishers-z-기반-상관계수-변환-분석" id="toc-세번째_fishers-z-기반-상관계수-변환-분석" class="nav-link" data-scroll-target="#세번째_fishers-z-기반-상관계수-변환-분석">세번째_Fisher’s z 기반 상관계수 변환 분석</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-10-05-Metaanalysis.out.ipynb" download="2025-10-05-Metaanalysis.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
@@ -2052,8 +2052,8 @@ Between-Study Variance (tau²): 0.0184
 </div>
 </div>
 </section>
-<section id="세번째" class="level2">
-<h2 class="anchored" data-anchor-id="세번째">세번째</h2>
+<section id="세번째_fishers-z-기반-상관계수-변환-분석" class="level2">
+<h2 class="anchored" data-anchor-id="세번째_fishers-z-기반-상관계수-변환-분석">세번째_Fisher’s z 기반 상관계수 변환 분석</h2>
 <ul>
 <li>import</li>
 </ul>
@@ -2129,7 +2129,14 @@ Between-Study Variance (tau²): 0.0184
 </div>
 </div>
 <ul>
-<li>Fisher’s z 변환</li>
+<li>Fisher’s z 변환
+<ul>
+<li>정규성 확보하기 위해</li>
+<li>r의 분포가 비대칭이라서</li>
+</ul></li>
+<li><span class="math inline">\(z_i = \tfrac{1}{2}\ln\frac{1+r_i}{1-r_i}\)</span></li>
+<li><span class="math inline">\(\mathrm{Var}(z_i) = \frac{1}{n_i-3}\)</span></li>
+<li><span class="math inline">\(SE_i = \sqrt{\frac{1}{n_i-3}}\)</span></li>
 </ul>
 <div id="ade4a190-c959-4a2d-9b8f-adea9d63cb51" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'z'</span>] <span class="op">=</span> np.arctanh(data[<span class="st">'r'</span>])  <span class="co"># Fisher’s z</span></span>
@@ -2216,8 +2223,13 @@ Between-Study Variance (tau²): 0.0184
 </div>
 </div>
 <ul>
-<li>고정효과 가중치</li>
+<li>고정효과 가중치
+<ul>
+<li>모든 연구가 동일한 효과를 추정한다고 가정하는 고정효과</li>
+<li>각 연구의 신뢰성, 즉 정밀도는 분산의 역수로 가중치를 부여</li>
+</ul></li>
 </ul>
+<p><span class="math inline">\(w_i^{FE} = \frac{1}{\mathrm{Var}(z_i)} = n_i - 3\)</span></p>
 <div id="3da82a66-ae36-4c59-a1e7-022ba444967f" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'w_FE'</span>] <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> data[<span class="st">'var_z'</span>]</span></code></pre></div>
 </div>
@@ -2308,8 +2320,9 @@ Between-Study Variance (tau²): 0.0184
 </div>
 </div>
 <ul>
-<li>고정효과 통합 효과</li>
+<li>고정효과 통합 효과 추정치 계산</li>
 </ul>
+<p><span class="math inline">\(\hat{z}_{FE} = \frac{\sum w_i^{FE} z_i}{\sum w_i^{FE}}\)</span></p>
 <div id="b3ecfaff-2cd3-4b97-a997-d0a88c559bfb" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>z_FE <span class="op">=</span> np.<span class="bu">sum</span>(data[<span class="st">'w_FE'</span>] <span class="op">*</span> data[<span class="st">'z'</span>]) <span class="op">/</span> np.<span class="bu">sum</span>(data[<span class="st">'w_FE'</span>])</span></code></pre></div>
 </div>
@@ -2320,7 +2333,10 @@ Between-Study Variance (tau²): 0.0184
 </div>
 </div>
 <ul>
-<li>이질성 체크를 위한 q 통계량</li>
+<li><p>이질성 체크를 위한 q 통계량</p></li>
+<li><p><span class="math inline">\(Q = \sum w_i^{FE}(z_i - \hat{z}_{FE})^2,\quad df = k-1\)</span></p></li>
+<li><p><span class="math inline">\(C = \sum w_i^{FE} - \frac{\sum (w_i^{FE})^2}{\sum w_i^{FE}}\)</span></p></li>
+<li><p><span class="math inline">\(\tau^2 = \max\left(0,\frac{Q - df}{C}\right)\)</span></p></li>
 </ul>
 <div id="e5cb9eb7-a346-4969-8468-c70c0dda3d10" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> np.<span class="bu">sum</span>(data[<span class="st">'w_FE'</span>] <span class="op">*</span> (data[<span class="st">'z'</span>] <span class="op">-</span> z_FE)<span class="op">**</span><span class="dv">2</span>)</span>
@@ -2352,10 +2368,15 @@ Between-Study Variance (tau²): 0.0184
 <pre><code>0.024961609290469623</code></pre>
 </div>
 </div>
-<p>이질성이 낮음</p>
+<p>이질성이 낮음, 타우로 보아 이질성이 존재하긴 하는 것으로 보임</p>
 <ul>
-<li>랜덤 효과 가중치</li>
+<li>랜덤 효과 가중치
+<ul>
+<li>연구 간 효과가 다름을 허용,</li>
+<li>총 분산을 연구 내 분산과 연구 간 분산의 합으로 사용</li>
+</ul></li>
 </ul>
+<p><span class="math inline">\(w_i^{RE} = \frac{1}{\mathrm{Var}(z_i) + \tau^2}\)</span></p>
 <div id="f1340d15-74ed-4cf8-9e81-926580b840fc" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'w_RE'</span>] <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (data[<span class="st">'var_z'</span>] <span class="op">+</span> tau2)</span></code></pre></div>
 </div>
@@ -2453,7 +2474,9 @@ Between-Study Variance (tau²): 0.0184
 </div>
 </div>
 <ul>
-<li>랜덤 효과 통합 효과</li>
+<li><p>랜덤 효과 모델의 통합 효과 계산</p></li>
+<li><p><span class="math inline">\(\hat{z}*{RE} = \frac{\sum w_i^{RE} z_i}{\sum w_i^{RE}}\)</span></p></li>
+<li><p><span class="math inline">\(SE(\hat{z}*{RE}) = \sqrt{\frac{1}{\sum w_i^{RE}}}\)</span></p></li>
 </ul>
 <div id="dff40e73-011b-45f7-9ced-419b638d432d" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>z_RE <span class="op">=</span> np.<span class="bu">sum</span>(data[<span class="st">'w_RE'</span>] <span class="op">*</span> data[<span class="st">'z'</span>]) <span class="op">/</span> np.<span class="bu">sum</span>(data[<span class="st">'w_RE'</span>])</span>
@@ -2474,6 +2497,7 @@ Between-Study Variance (tau²): 0.0184
 <ul>
 <li>95% ci</li>
 </ul>
+<p><span class="math inline">\(CI_z = \hat{z}*{RE} \pm 1.96\times SE*{\hat{z}_{RE}}\)</span></p>
 <div id="fb297570-ab8b-4113-830b-6674b7d0a468" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>ci_low_z <span class="op">=</span> z_RE <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> se_RE</span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>ci_high_z <span class="op">=</span> z_RE <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> se_RE</span></code></pre></div>
@@ -2491,8 +2515,13 @@ Between-Study Variance (tau²): 0.0184
 </div>
 </div>
 <ul>
-<li>상관계수 역변환</li>
+<li>상관계수 역변환
+<ul>
+<li>메타분석 결과를 상관계수로 해석하기 위해서</li>
+<li>계산은 z로 하고 해석은 r로 함</li>
+</ul></li>
 </ul>
+<p><span class="math inline">\(r = \tanh(z) = \frac{e^{2z}-1}{e^{2z}+1}\)</span></p>
 <div id="a7375877-d5db-436b-99e9-4a19bd342c21" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>r_RE <span class="op">=</span> np.tanh(z_RE)</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>r_low <span class="op">=</span> np.tanh(ci_low_z)</span>
@@ -2533,6 +2562,15 @@ Pooled correlation (r): 0.486
 95% CI for r: [0.341, 0.608]</code></pre>
 </div>
 </div>
+<ul>
+<li>연구 전반의 상관계수 r은 통계적으로 유의함</li>
+<li>이질성 타우도 중등도 수준으로 존재함</li>
+<li>중간 정도 양의 상관관계 r로 해석 가능함</li>
+</ul>
+<p><span class="math inline">\(z_i \pm 1.96SE_i \Rightarrow r_i^\text{low/high} = \tanh(z_i^\text{low/high})\)</span></p>
+<ul>
+<li>forest plot에 사용하기 위해서</li>
+</ul>
 <div id="1131f953-a67f-4c02-ae2a-3f215b2ad6ba" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'z_low'</span>] <span class="op">=</span> data[<span class="st">'z'</span>] <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> data[<span class="st">'se_z'</span>]</span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'z_high'</span>] <span class="op">=</span> data[<span class="st">'z'</span>] <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> data[<span class="st">'se_z'</span>]</span>
@@ -2660,6 +2698,11 @@ Pooled correlation (r): 0.486
 </div>
 </div>
 </div>
+<ul>
+<li>연구 효과의 크기는 검정색 점으로 표시</li>
+<li>가로선은 각 연구의 95% ci</li>
+<li>세로 점선은 전체 통합 상관계수 값 r_RE</li>
+</ul>
 <div id="6548aa51-4c73-43af-95f5-efdb78bb1c11" class="cell" data-execution_count="76">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>plt.errorbar(data[<span class="st">'r'</span>], <span class="bu">range</span>(<span class="bu">len</span>(data)), </span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>             xerr<span class="op">=</span>[data[<span class="st">'r'</span>] <span class="op">-</span> data[<span class="st">'r_low'</span>], data[<span class="st">'r_high'</span>] <span class="op">-</span> data[<span class="st">'r'</span>]], </span>
