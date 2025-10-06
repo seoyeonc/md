@@ -1380,6 +1380,7 @@ window.Quarto = {
 <li>가중치
 <ul>
 <li>샘플 수가 달라서 효과 크기 계산에 영향을 줄 수 있어서 조정해줘야 함</li>
+<li>se로</li>
 </ul></li>
 <li><span class="math inline">\(J = (1-\frac{3}{4df-1})\)</span></li>
 <li>Hedges’ Effect Size = <span class="math inline">\(g = d\times J\)</span></li>
@@ -1851,6 +1852,7 @@ Random-effects (OR): 0.7113867755772918 (95% CI 0.551555742161936 to 0.917533996
 <ul>
 <li>고정 효과 가중치 계산</li>
 </ul>
+<p><span class="math inline">\(w_i = \frac{1}{SE_i^2}\)</span></p>
 <div id="dba8539a-c9c2-4716-bc7d-b803f825a2a5" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'weight_FE'</span>] <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> data[<span class="st">'se'</span>]<span class="op">**</span><span class="dv">2</span></span></code></pre></div>
 </div>
@@ -1868,6 +1870,11 @@ Name: weight_FE, dtype: float64</code></pre>
 <ul>
 <li>고정효과 모델의 통합 효과 추정</li>
 </ul>
+<p><span class="math inline">\(\hat{\mu}_{FE} = \frac{\sum w_i y_i}{\sum w_i}\)</span></p>
+<ul>
+<li>(<span class="math inline">\(y_i\)</span>): 각 연구의 효과크기</li>
+<li>(<span class="math inline">\(w_i\)</span>): 각 연구의 가중치</li>
+</ul>
 <div id="0a75825b-6b35-485a-861f-3ee7e32f6b9f" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>fixed_effect <span class="op">=</span> np.<span class="bu">sum</span>(data[<span class="st">'weight_FE'</span>] <span class="op">*</span> data[<span class="st">'effect_size'</span>]) <span class="op">/</span> np.<span class="bu">sum</span>(data[<span class="st">'weight_FE'</span>])</span></code></pre></div>
 </div>
@@ -1878,8 +1885,12 @@ Name: weight_FE, dtype: float64</code></pre>
 </div>
 </div>
 <ul>
-<li>이질성 검정</li>
+<li>이질성 검정 Heterogeneity Test</li>
 </ul>
+<p>Cochran’s Q</p>
+<p><span class="math inline">\(Q = \sum w_i (y_i - \hat{\mu}_{FE})^2\)</span></p>
+<p>df = 연구 수 - 1</p>
+<p><span class="math inline">\(Q \sim \chi^2_{df}\)</span></p>
 <div id="219e5e70-73e1-48d0-9ea4-13a090f4b6ab" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Q_component'</span>] <span class="op">=</span> data[<span class="st">'weight_FE'</span>] <span class="op">*</span> (data[<span class="st">'effect_size'</span>] <span class="op">-</span> fixed_effect)<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> np.<span class="bu">sum</span>(data[<span class="st">'Q_component'</span>])</span>
@@ -1908,20 +1919,33 @@ Name: Q_component, dtype: float64</code></pre>
 <pre><code>4</code></pre>
 </div>
 </div>
+<p><span class="math inline">\(\chi^2_{0.05} = 9.49\)</span></p>
+<ul>
+<li>H0 = 이질성이 없다, 모든 연구가 동일하다.</li>
+<li>H1 = 이질성이 있다, 연구가 동일하지 않다.</li>
+</ul>
+<p>10.65 &gt; 9.49, 따라서 귀무가설 기각, 이질성이 있다.</p>
 <ul>
 <li>DerSimonian–Laird 추정량, 타우 값 구하기
 <ul>
 <li>랜덤 효과 모형 추정하기 위해서</li>
 </ul></li>
-<li>고정효과 모형의 가중치 : <span class="math inline">\(\frac{1}{s^2}\)</span>
+</ul>
+<p>랜덤 효과 모형은 <span class="math inline">\(y_i = \mu + u_i + \epsilon_i\)</span>같은 분포를 따르는 값으로 가정</p>
 <ul>
-<li>이질성 고혀 하지 않음</li>
+<li><p>(<span class="math inline">\(u_i \sim N(0, \tau^2)\)</span>): 연구 간의 분산(이질성)</p></li>
+<li><p>(<span class="math inline">\(\epsilon_i \sim N(0, SE_i^2)\)</span>): 연구 내의 표본 오차</p></li>
+<li><p>고정효과 모형의 가중치 : <span class="math inline">\(\frac{1}{s^2}\)</span></p>
+<ul>
+<li>이질성 고려 하지 않음</li>
 </ul></li>
-<li>랜덤 효과 가중치 : <span class="math inline">\(\frac{1}{s^2 + \tau^2}\)</span>
+<li><p>랜덤 효과 가중치 : <span class="math inline">\(\frac{1}{s^2 + \tau^2}\)</span></p>
 <ul>
 <li>이질성 고려는 연구 간 분산인 <span class="math inline">\(\tau^2\)</span>으로 고려</li>
 </ul></li>
 </ul>
+<p><span class="math inline">\(\tau^2 = \frac{Q - (k - 1)}{C}\)</span>, 타우가 음수면 0으로 처리</p>
+<p><span class="math inline">\(C = \sum w_i - \frac{\sum w_i^2}{\sum w_i}\)</span></p>
 <div id="c20312b2-edb1-4171-b9fd-026d1c8191a5" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.<span class="bu">sum</span>(data[<span class="st">'weight_FE'</span>]) <span class="op">-</span> (np.<span class="bu">sum</span>(data[<span class="st">'weight_FE'</span>]<span class="op">**</span><span class="dv">2</span>) <span class="op">/</span> np.<span class="bu">sum</span>(data[<span class="st">'weight_FE'</span>]))</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>tau_sq <span class="op">=</span> <span class="bu">max</span>(<span class="dv">0</span>, (Q <span class="op">-</span> df) <span class="op">/</span> C)</span></code></pre></div>
@@ -1941,6 +1965,8 @@ Name: Q_component, dtype: float64</code></pre>
 <ul>
 <li>랜덤 효과 가중치</li>
 </ul>
+<p><span class="math inline">\(y_i \sim N(\mu, SE_i^2 + \tau^2)\)</span>, 각 연구 효과의 분포, 연구내 오차+분산까지 함께 고려</p>
+<p><span class="math inline">\(w_i^* = \frac{1}{SE_i^2 + \tau^2}\)</span></p>
 <div id="ecaf4171-7fa1-44ab-8caa-39c060242e7d" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'weight_RE'</span>] <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (data[<span class="st">'se'</span>]<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> tau_sq)</span></code></pre></div>
 </div>
@@ -1956,8 +1982,10 @@ Name: weight_RE, dtype: float64</code></pre>
 </div>
 </div>
 <ul>
-<li>랜덤효과 통합 효과 추정</li>
+<li>랜덤 효과 모델의 통합 효과 추정</li>
 </ul>
+<p><span class="math inline">\(\hat{\mu}_{RE} = \frac{\sum w_i^* y_i}{\sum w_i^*}\)</span></p>
+<p><span class="math inline">\(SE_{\hat{\mu}_{RE}} = \sqrt{\frac{1}{\sum w_i^*}}\)</span></p>
 <div id="44d75f64-6227-40ef-b576-3ffad3e0ab2e" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>random_effect <span class="op">=</span> np.<span class="bu">sum</span>(data[<span class="st">'weight_RE'</span>] <span class="op">*</span> data[<span class="st">'effect_size'</span>]) <span class="op">/</span> np.<span class="bu">sum</span>(data[<span class="st">'weight_RE'</span>])</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>random_se <span class="op">=</span> np.sqrt(<span class="dv">1</span> <span class="op">/</span> np.<span class="bu">sum</span>(data[<span class="st">'weight_RE'</span>]))</span></code></pre></div>
@@ -1977,6 +2005,7 @@ Name: weight_RE, dtype: float64</code></pre>
 <ul>
 <li>95% 신뢰구간</li>
 </ul>
+<p><span class="math inline">\(CI = \hat{\mu}*{RE} \pm 1.96 \times SE*{\hat{\mu}_{RE}}\)</span></p>
 <div id="0f36839b-1386-4072-8491-ef8db4adf633" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>ci_low <span class="op">=</span> random_effect <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> random_se</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>ci_high <span class="op">=</span> random_effect <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> random_se</span></code></pre></div>
@@ -2001,7 +2030,10 @@ Between-Study Variance (tau²): 0.0184
 </div>
 </div>
 <ul>
-<li>forest plot</li>
+<li><p>연구 전체 효과는 0.296</p></li>
+<li><p>타우값으로 보아 이질성은 존재하지만 크지 않음을 보임</p></li>
+<li><p>신뢰구간이 0을 포함하지 않아 연구 효과가 유의함을 보임</p></li>
+<li><p>forest plot</p></li>
 </ul>
 <div id="c302a9c6-b876-433a-b8fe-ac5a6ec9a64a" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>plt.errorbar(data[<span class="st">'effect_size'</span>], <span class="bu">range</span>(<span class="bu">len</span>(data)), xerr<span class="op">=</span>data[<span class="st">'se'</span>]<span class="op">*</span><span class="fl">1.96</span>, fmt<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
