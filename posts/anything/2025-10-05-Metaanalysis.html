@@ -1292,7 +1292,12 @@ window.Quarto = {
   <li><a href="#문헌-검토" id="toc-문헌-검토" class="nav-link" data-scroll-target="#문헌-검토">1. 문헌 검토</a></li>
   <li><a href="#데이터-시트-작성" id="toc-데이터-시트-작성" class="nav-link" data-scroll-target="#데이터-시트-작성">2. 데이터 시트 작성</a></li>
   <li><a href="#효과-크기" id="toc-효과-크기" class="nav-link" data-scroll-target="#효과-크기">3. 효과 크기</a></li>
-  <li><a href="#실습" id="toc-실습" class="nav-link" data-scroll-target="#실습">4. 실습</a></li>
+  <li><a href="#실습" id="toc-실습" class="nav-link" data-scroll-target="#실습">4. 실습</a>
+  <ul class="collapse">
+  <li><a href="#첫번째" id="toc-첫번째" class="nav-link" data-scroll-target="#첫번째">첫번째</a></li>
+  <li><a href="#두번째" id="toc-두번째" class="nav-link" data-scroll-target="#두번째">두번째</a></li>
+  <li><a href="#세번째" id="toc-세번째" class="nav-link" data-scroll-target="#세번째">세번째</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-10-05-Metaanalysis.out.ipynb" download="2025-10-05-Metaanalysis.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -1410,6 +1415,8 @@ window.Quarto = {
 </section>
 <section id="실습" class="level1">
 <h1>4. 실습</h1>
+<section id="첫번째" class="level2">
+<h2 class="anchored" data-anchor-id="첫번째">첫번째</h2>
 <ul>
 <li>Import</li>
 </ul>
@@ -1768,8 +1775,880 @@ Random-effects (OR): 0.7113867755772918 (95% CI 0.551555742161936 to 0.917533996
 <li>pooled fixed, pooled random이 1보다 왼쪽에 위치</li>
 <li>전반적인 치료가 효과적임을 시각적으로 확인할 수 있음</li>
 </ul>
+</section>
+<section id="두번째" class="level2">
+<h2 class="anchored" data-anchor-id="두번째">두번째</h2>
+<ul>
+<li>import</li>
+</ul>
+<div id="496d2447-3981-4550-b7ec-b1e9831d1bc8" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
+</div>
+<ul>
+<li>데이터 연구의 효과 크기, 표준 오차</li>
+</ul>
+<div id="9f05f76c-cdb3-4093-b18b-b86fad142595" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'study'</span>: [<span class="st">'Study1'</span>, <span class="st">'Study2'</span>, <span class="st">'Study3'</span>, <span class="st">'Study4'</span>, <span class="st">'Study5'</span>],</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'effect_size'</span>: [<span class="fl">0.20</span>, <span class="fl">0.35</span>, <span class="fl">0.10</span>, <span class="fl">0.50</span>, <span class="fl">0.40</span>],</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'se'</span>: [<span class="fl">0.10</span>, <span class="fl">0.15</span>, <span class="fl">0.08</span>, <span class="fl">0.12</span>, <span class="fl">0.10</span>]</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+</div>
+<div id="9758f1db-e9e8-4f77-bf3b-b3b97ec47a0d" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
 
 
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">study</th>
+<th data-quarto-table-cell-role="th">effect_size</th>
+<th data-quarto-table-cell-role="th">se</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Study1</td>
+<td>0.20</td>
+<td>0.10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Study2</td>
+<td>0.35</td>
+<td>0.15</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Study3</td>
+<td>0.10</td>
+<td>0.08</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Study4</td>
+<td>0.50</td>
+<td>0.12</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Study5</td>
+<td>0.40</td>
+<td>0.10</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<ul>
+<li>고정 효과 가중치 계산</li>
+</ul>
+<div id="dba8539a-c9c2-4716-bc7d-b803f825a2a5" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'weight_FE'</span>] <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> data[<span class="st">'se'</span>]<span class="op">**</span><span class="dv">2</span></span></code></pre></div>
+</div>
+<div id="7bec284f-beb1-49a4-9f5c-38e31ed2620a" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'weight_FE'</span>]</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>0    100.000000
+1     44.444444
+2    156.250000
+3     69.444444
+4    100.000000
+Name: weight_FE, dtype: float64</code></pre>
+</div>
+</div>
+<ul>
+<li>고정효과 모델의 통합 효과 추정</li>
+</ul>
+<div id="0a75825b-6b35-485a-861f-3ee7e32f6b9f" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>fixed_effect <span class="op">=</span> np.<span class="bu">sum</span>(data[<span class="st">'weight_FE'</span>] <span class="op">*</span> data[<span class="st">'effect_size'</span>]) <span class="op">/</span> np.<span class="bu">sum</span>(data[<span class="st">'weight_FE'</span>])</span></code></pre></div>
+</div>
+<div id="0c42891f-53ef-4896-ac79-962dd720e169" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fixed_effect</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>0.2677991137370753</code></pre>
+</div>
+</div>
+<ul>
+<li>이질성 검정</li>
+</ul>
+<div id="219e5e70-73e1-48d0-9ea4-13a090f4b6ab" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Q_component'</span>] <span class="op">=</span> data[<span class="st">'weight_FE'</span>] <span class="op">*</span> (data[<span class="st">'effect_size'</span>] <span class="op">-</span> fixed_effect)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> np.<span class="bu">sum</span>(data[<span class="st">'Q_component'</span>])</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> <span class="bu">len</span>(data) <span class="op">-</span> <span class="dv">1</span></span></code></pre></div>
+</div>
+<div id="1a47313c-87e2-468e-8aad-e8547e489f66" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Q_component'</span>]</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>0    0.459672
+1    0.300310
+2    4.399460
+3    3.744254
+4    1.747707
+Name: Q_component, dtype: float64</code></pre>
+</div>
+</div>
+<div id="4fb7774c-ce4f-401f-8e97-a2c73c192a24" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>Q</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>10.651403249630723</code></pre>
+</div>
+</div>
+<div id="53e0b25b-013a-4113-b92b-14950db3a34b" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>4</code></pre>
+</div>
+</div>
+<ul>
+<li>DerSimonian–Laird 추정량, 타우 값 구하기
+<ul>
+<li>랜덤 효과 모형 추정하기 위해서</li>
+</ul></li>
+<li>고정효과 모형의 가중치 : <span class="math inline">\(\frac{1}{s^2}\)</span>
+<ul>
+<li>이질성 고혀 하지 않음</li>
+</ul></li>
+<li>랜덤 효과 가중치 : <span class="math inline">\(\frac{1}{s^2 + \tau^2}\)</span>
+<ul>
+<li>이질성 고려는 연구 간 분산인 <span class="math inline">\(\tau^2\)</span>으로 고려</li>
+</ul></li>
+</ul>
+<div id="c20312b2-edb1-4171-b9fd-026d1c8191a5" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.<span class="bu">sum</span>(data[<span class="st">'weight_FE'</span>]) <span class="op">-</span> (np.<span class="bu">sum</span>(data[<span class="st">'weight_FE'</span>]<span class="op">**</span><span class="dv">2</span>) <span class="op">/</span> np.<span class="bu">sum</span>(data[<span class="st">'weight_FE'</span>]))</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>tau_sq <span class="op">=</span> <span class="bu">max</span>(<span class="dv">0</span>, (Q <span class="op">-</span> df) <span class="op">/</span> C)</span></code></pre></div>
+</div>
+<div id="c9e6749b-ceca-4f05-a56c-58a95dc7591d" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>C</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>361.20958476940757</code></pre>
+</div>
+</div>
+<div id="54d30956-2fbd-4987-b1b3-ad55f2e23660" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>tau_sq</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>0.018414249040143577</code></pre>
+</div>
+</div>
+<ul>
+<li>랜덤 효과 가중치</li>
+</ul>
+<div id="ecaf4171-7fa1-44ab-8caa-39c060242e7d" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'weight_RE'</span>] <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (data[<span class="st">'se'</span>]<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> tau_sq)</span></code></pre></div>
+</div>
+<div id="605508e9-08b3-460f-b65b-5fe9b768a570" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'weight_RE'</span>] </span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>0    35.193610
+1    24.441363
+2    40.299426
+3    30.474566
+4    35.193610
+Name: weight_RE, dtype: float64</code></pre>
+</div>
+</div>
+<ul>
+<li>랜덤효과 통합 효과 추정</li>
+</ul>
+<div id="44d75f64-6227-40ef-b576-3ffad3e0ab2e" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>random_effect <span class="op">=</span> np.<span class="bu">sum</span>(data[<span class="st">'weight_RE'</span>] <span class="op">*</span> data[<span class="st">'effect_size'</span>]) <span class="op">/</span> np.<span class="bu">sum</span>(data[<span class="st">'weight_RE'</span>])</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>random_se <span class="op">=</span> np.sqrt(<span class="dv">1</span> <span class="op">/</span> np.<span class="bu">sum</span>(data[<span class="st">'weight_RE'</span>]))</span></code></pre></div>
+</div>
+<div id="27a71f0d-1ba5-4daf-b709-1f1e6133799b" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>random_effect</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>0.29551393503100565</code></pre>
+</div>
+</div>
+<div id="cdbe780a-2059-4f62-86c8-16279f1306df" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>random_se</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>0.07770812983895702</code></pre>
+</div>
+</div>
+<ul>
+<li>95% 신뢰구간</li>
+</ul>
+<div id="0f36839b-1386-4072-8491-ef8db4adf633" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>ci_low <span class="op">=</span> random_effect <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> random_se</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>ci_high <span class="op">=</span> random_effect <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> random_se</span></code></pre></div>
+</div>
+<div id="3ac902aa-156c-45de-b991-5d78ee4be25b" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>ci_high<span class="op">;</span>ci_low</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>0.1432060005466499</code></pre>
+</div>
+</div>
+<ul>
+<li>결과</li>
+</ul>
+<div id="33f93520-b7f8-444d-9c63-5ead78670050" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Random-Effects Mean Effect Size: </span><span class="sc">{</span>random_effect<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Between-Study Variance (tau²): </span><span class="sc">{</span>tau_sq<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"95% CI: [</span><span class="sc">{</span>ci_low<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>ci_high<span class="sc">:.3f}</span><span class="ss">]"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Random-Effects Mean Effect Size: 0.296
+Between-Study Variance (tau²): 0.0184
+95% CI: [0.143, 0.448]</code></pre>
+</div>
+</div>
+<ul>
+<li>forest plot</li>
+</ul>
+<div id="c302a9c6-b876-433a-b8fe-ac5a6ec9a64a" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>plt.errorbar(data[<span class="st">'effect_size'</span>], <span class="bu">range</span>(<span class="bu">len</span>(data)), xerr<span class="op">=</span>data[<span class="st">'se'</span>]<span class="op">*</span><span class="fl">1.96</span>, fmt<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>plt.axvline(random_effect, color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Pooled (Random Effects)'</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>plt.yticks(<span class="bu">range</span>(<span class="bu">len</span>(data)), data[<span class="st">'study'</span>])</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Effect Size (95% CI)'</span>)</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Forest Plot - Random Effects Meta-Analysis'</span>)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2025-10-05-Metaanalysis_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="세번째" class="level2">
+<h2 class="anchored" data-anchor-id="세번째">세번째</h2>
+<ul>
+<li>import</li>
+</ul>
+<div id="e7e66a67-62e5-4e2f-a8e0-8d23eaf7070d" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
+</div>
+<ul>
+<li>data</li>
+</ul>
+<div id="b159abe7-c12c-42d3-8358-705201866345" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'study'</span>: [<span class="st">'Fonda(2002)'</span>, <span class="st">'Newman(2012)'</span>, <span class="st">'Grant(2003)'</span>, <span class="st">'Granger(2020)'</span>, <span class="st">'Milland(2018)'</span>, <span class="st">'Finch(2021)'</span>],</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'r'</span>: [<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.7</span>, <span class="fl">0.45</span>],</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n'</span>: [<span class="dv">40</span>, <span class="dv">90</span>, <span class="dv">25</span>, <span class="dv">40</span>, <span class="dv">60</span>, <span class="dv">50</span>]</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">study</th>
+<th data-quarto-table-cell-role="th">r</th>
+<th data-quarto-table-cell-role="th">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Fonda(2002)</td>
+<td>0.50</td>
+<td>40</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Newman(2012)</td>
+<td>0.50</td>
+<td>90</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Grant(2003)</td>
+<td>0.40</td>
+<td>25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Granger(2020)</td>
+<td>0.20</td>
+<td>40</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Milland(2018)</td>
+<td>0.70</td>
+<td>60</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Finch(2021)</td>
+<td>0.45</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<ul>
+<li>Fisher’s z 변환</li>
+</ul>
+<div id="ade4a190-c959-4a2d-9b8f-adea9d63cb51" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'z'</span>] <span class="op">=</span> np.arctanh(data[<span class="st">'r'</span>])  <span class="co"># Fisher’s z</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'var_z'</span>] <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (data[<span class="st">'n'</span>] <span class="op">-</span> <span class="dv">3</span>)  <span class="co"># 분산(표준오차^2)</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'se_z'</span>] <span class="op">=</span> np.sqrt(data[<span class="st">'var_z'</span>])</span></code></pre></div>
+</div>
+<div id="e94cdbe7-d2eb-4a9e-ba0c-be63f0796ba4" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">study</th>
+<th data-quarto-table-cell-role="th">r</th>
+<th data-quarto-table-cell-role="th">n</th>
+<th data-quarto-table-cell-role="th">z</th>
+<th data-quarto-table-cell-role="th">var_z</th>
+<th data-quarto-table-cell-role="th">se_z</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Fonda(2002)</td>
+<td>0.50</td>
+<td>40</td>
+<td>0.549306</td>
+<td>0.027027</td>
+<td>0.164399</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Newman(2012)</td>
+<td>0.50</td>
+<td>90</td>
+<td>0.549306</td>
+<td>0.011494</td>
+<td>0.107211</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Grant(2003)</td>
+<td>0.40</td>
+<td>25</td>
+<td>0.423649</td>
+<td>0.045455</td>
+<td>0.213201</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Granger(2020)</td>
+<td>0.20</td>
+<td>40</td>
+<td>0.202733</td>
+<td>0.027027</td>
+<td>0.164399</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Milland(2018)</td>
+<td>0.70</td>
+<td>60</td>
+<td>0.867301</td>
+<td>0.017544</td>
+<td>0.132453</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Finch(2021)</td>
+<td>0.45</td>
+<td>50</td>
+<td>0.484700</td>
+<td>0.021277</td>
+<td>0.145865</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<ul>
+<li>고정효과 가중치</li>
+</ul>
+<div id="3da82a66-ae36-4c59-a1e7-022ba444967f" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'w_FE'</span>] <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> data[<span class="st">'var_z'</span>]</span></code></pre></div>
+</div>
+<div id="726f49a6-e659-4356-8858-27b05b5bd8a4" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="52">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">study</th>
+<th data-quarto-table-cell-role="th">r</th>
+<th data-quarto-table-cell-role="th">n</th>
+<th data-quarto-table-cell-role="th">z</th>
+<th data-quarto-table-cell-role="th">var_z</th>
+<th data-quarto-table-cell-role="th">se_z</th>
+<th data-quarto-table-cell-role="th">w_FE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Fonda(2002)</td>
+<td>0.50</td>
+<td>40</td>
+<td>0.549306</td>
+<td>0.027027</td>
+<td>0.164399</td>
+<td>37.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Newman(2012)</td>
+<td>0.50</td>
+<td>90</td>
+<td>0.549306</td>
+<td>0.011494</td>
+<td>0.107211</td>
+<td>87.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Grant(2003)</td>
+<td>0.40</td>
+<td>25</td>
+<td>0.423649</td>
+<td>0.045455</td>
+<td>0.213201</td>
+<td>22.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Granger(2020)</td>
+<td>0.20</td>
+<td>40</td>
+<td>0.202733</td>
+<td>0.027027</td>
+<td>0.164399</td>
+<td>37.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Milland(2018)</td>
+<td>0.70</td>
+<td>60</td>
+<td>0.867301</td>
+<td>0.017544</td>
+<td>0.132453</td>
+<td>57.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Finch(2021)</td>
+<td>0.45</td>
+<td>50</td>
+<td>0.484700</td>
+<td>0.021277</td>
+<td>0.145865</td>
+<td>47.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<ul>
+<li>고정효과 통합 효과</li>
+</ul>
+<div id="b3ecfaff-2cd3-4b97-a997-d0a88c559bfb" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>z_FE <span class="op">=</span> np.<span class="bu">sum</span>(data[<span class="st">'w_FE'</span>] <span class="op">*</span> data[<span class="st">'z'</span>]) <span class="op">/</span> np.<span class="bu">sum</span>(data[<span class="st">'w_FE'</span>])</span></code></pre></div>
+</div>
+<div id="fd1fb70f-1de0-47c5-bd79-e67979d85d6e" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>z_FE</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+<pre><code>0.5475692893176466</code></pre>
+</div>
+</div>
+<ul>
+<li>이질성 체크를 위한 q 통계량</li>
+</ul>
+<div id="e5cb9eb7-a346-4969-8468-c70c0dda3d10" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> np.<span class="bu">sum</span>(data[<span class="st">'w_FE'</span>] <span class="op">*</span> (data[<span class="st">'z'</span>] <span class="op">-</span> z_FE)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> <span class="bu">len</span>(data) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.<span class="bu">sum</span>(data[<span class="st">'w_FE'</span>]) <span class="op">-</span> (np.<span class="bu">sum</span>(data[<span class="st">'w_FE'</span>]<span class="op">**</span><span class="dv">2</span>) <span class="op">/</span> np.<span class="bu">sum</span>(data[<span class="st">'w_FE'</span>]))</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>tau2 <span class="op">=</span> <span class="bu">max</span>(<span class="dv">0</span>, (Q <span class="op">-</span> df) <span class="op">/</span> C)  <span class="co"># DerSimonian–Laird τ²</span></span></code></pre></div>
+</div>
+<div id="182fa568-8c45-4584-aa96-9988fbf6a9c9" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>Q</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+<pre><code>10.750737304131887</code></pre>
+</div>
+</div>
+<div id="4bbb771b-478b-4b91-93bf-67dd59916b0e" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>5</code></pre>
+</div>
+</div>
+<div id="3645266f-0160-43ba-a4df-50c651eb50b5" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>C</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>230.38327526132406</code></pre>
+</div>
+</div>
+<div id="5c43647d-ee31-48d0-b919-c449f1014708" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>tau2</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="60">
+<pre><code>0.024961609290469623</code></pre>
+</div>
+</div>
+<p>이질성이 낮음</p>
+<ul>
+<li>랜덤 효과 가중치</li>
+</ul>
+<div id="f1340d15-74ed-4cf8-9e81-926580b840fc" class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'w_RE'</span>] <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (data[<span class="st">'var_z'</span>] <span class="op">+</span> tau2)</span></code></pre></div>
+</div>
+<div id="a3fa666c-19ec-4016-abf4-315ed343de75" class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="62">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">study</th>
+<th data-quarto-table-cell-role="th">r</th>
+<th data-quarto-table-cell-role="th">n</th>
+<th data-quarto-table-cell-role="th">z</th>
+<th data-quarto-table-cell-role="th">var_z</th>
+<th data-quarto-table-cell-role="th">se_z</th>
+<th data-quarto-table-cell-role="th">w_FE</th>
+<th data-quarto-table-cell-role="th">w_RE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Fonda(2002)</td>
+<td>0.50</td>
+<td>40</td>
+<td>0.549306</td>
+<td>0.027027</td>
+<td>0.164399</td>
+<td>37.0</td>
+<td>19.234973</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Newman(2012)</td>
+<td>0.50</td>
+<td>90</td>
+<td>0.549306</td>
+<td>0.011494</td>
+<td>0.107211</td>
+<td>87.0</td>
+<td>27.430431</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Grant(2003)</td>
+<td>0.40</td>
+<td>25</td>
+<td>0.423649</td>
+<td>0.045455</td>
+<td>0.213201</td>
+<td>22.0</td>
+<td>14.201287</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Granger(2020)</td>
+<td>0.20</td>
+<td>40</td>
+<td>0.202733</td>
+<td>0.027027</td>
+<td>0.164399</td>
+<td>37.0</td>
+<td>19.234973</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Milland(2018)</td>
+<td>0.70</td>
+<td>60</td>
+<td>0.867301</td>
+<td>0.017544</td>
+<td>0.132453</td>
+<td>57.0</td>
+<td>23.526384</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Finch(2021)</td>
+<td>0.45</td>
+<td>50</td>
+<td>0.484700</td>
+<td>0.021277</td>
+<td>0.145865</td>
+<td>47.0</td>
+<td>21.627137</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<ul>
+<li>랜덤 효과 통합 효과</li>
+</ul>
+<div id="dff40e73-011b-45f7-9ced-419b638d432d" class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>z_RE <span class="op">=</span> np.<span class="bu">sum</span>(data[<span class="st">'w_RE'</span>] <span class="op">*</span> data[<span class="st">'z'</span>]) <span class="op">/</span> np.<span class="bu">sum</span>(data[<span class="st">'w_RE'</span>])</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>se_RE <span class="op">=</span> np.sqrt(<span class="dv">1</span> <span class="op">/</span> np.<span class="bu">sum</span>(data[<span class="st">'w_RE'</span>]))</span></code></pre></div>
+</div>
+<div id="2b3eec65-4797-4d13-8fce-e5c89f34e780" class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>z_RE</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="64">
+<pre><code>0.5304102438741388</code></pre>
+</div>
+</div>
+<div id="9ca8c6b3-1233-40f1-9a9a-43ef4660fc49" class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>se_RE</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<pre><code>0.08935156116618687</code></pre>
+</div>
+</div>
+<ul>
+<li>95% ci</li>
+</ul>
+<div id="fb297570-ab8b-4113-830b-6674b7d0a468" class="cell" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>ci_low_z <span class="op">=</span> z_RE <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> se_RE</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>ci_high_z <span class="op">=</span> z_RE <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> se_RE</span></code></pre></div>
+</div>
+<div id="4c427588-1bed-4a9b-8903-c0afd22bdc50" class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>ci_high_z</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="67">
+<pre><code>0.7055393037598651</code></pre>
+</div>
+</div>
+<div id="88eb736d-3d37-4c11-8005-0c45b0999092" class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>ci_low_z</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="68">
+<pre><code>0.3552811839884126</code></pre>
+</div>
+</div>
+<ul>
+<li>상관계수 역변환</li>
+</ul>
+<div id="a7375877-d5db-436b-99e9-4a19bd342c21" class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>r_RE <span class="op">=</span> np.tanh(z_RE)</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>r_low <span class="op">=</span> np.tanh(ci_low_z)</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>r_high <span class="op">=</span> np.tanh(ci_high_z)</span></code></pre></div>
+</div>
+<div id="a85fe809-9d1a-4b58-a95e-7d4e37f34c9a" class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>r_RE</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="70">
+<pre><code>0.4856946207056017</code></pre>
+</div>
+</div>
+<div id="b66ecf84-83af-4da6-ab97-3b282f2c374f" class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>r_low</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="71">
+<pre><code>0.34105082132846415</code></pre>
+</div>
+</div>
+<div id="3c351af7-b198-4cd9-92b7-4c4ab2e48c6c" class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>r_high</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="72">
+<pre><code>0.6078720252330513</code></pre>
+</div>
+</div>
+<ul>
+<li>결과 해석</li>
+</ul>
+<div id="733b7350-0ad3-4462-8234-30ac60575d93" class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Random-Effects Meta-Analysis (DerSimonian–Laird)"</span>)</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Between-study variance (tau²): </span><span class="sc">{</span>tau2<span class="sc">:.5f}</span><span class="ss">"</span>)</span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Pooled Fisher’s z: </span><span class="sc">{</span>z_RE<span class="sc">:.4f}</span><span class="ss"> (SE = </span><span class="sc">{</span>se_RE<span class="sc">:.4f}</span><span class="ss">)"</span>)</span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Pooled correlation (r): </span><span class="sc">{</span>r_RE<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"95% CI for r: [</span><span class="sc">{</span>r_low<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>r_high<span class="sc">:.3f}</span><span class="ss">]"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Random-Effects Meta-Analysis (DerSimonian–Laird)
+Between-study variance (tau²): 0.02496
+Pooled Fisher’s z: 0.5304 (SE = 0.0894)
+Pooled correlation (r): 0.486
+95% CI for r: [0.341, 0.608]</code></pre>
+</div>
+</div>
+<div id="1131f953-a67f-4c02-ae2a-3f215b2ad6ba" class="cell" data-execution_count="74">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'z_low'</span>] <span class="op">=</span> data[<span class="st">'z'</span>] <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> data[<span class="st">'se_z'</span>]</span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'z_high'</span>] <span class="op">=</span> data[<span class="st">'z'</span>] <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> data[<span class="st">'se_z'</span>]</span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'r_low'</span>] <span class="op">=</span> np.tanh(data[<span class="st">'z_low'</span>])</span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'r_high'</span>] <span class="op">=</span> np.tanh(data[<span class="st">'z_high'</span>])</span></code></pre></div>
+</div>
+<div id="2c6c7a04-3b99-4be4-8750-06ef9be38afb" class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="75">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">study</th>
+<th data-quarto-table-cell-role="th">r</th>
+<th data-quarto-table-cell-role="th">n</th>
+<th data-quarto-table-cell-role="th">z</th>
+<th data-quarto-table-cell-role="th">var_z</th>
+<th data-quarto-table-cell-role="th">se_z</th>
+<th data-quarto-table-cell-role="th">w_FE</th>
+<th data-quarto-table-cell-role="th">w_RE</th>
+<th data-quarto-table-cell-role="th">z_low</th>
+<th data-quarto-table-cell-role="th">z_high</th>
+<th data-quarto-table-cell-role="th">r_low</th>
+<th data-quarto-table-cell-role="th">r_high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Fonda(2002)</td>
+<td>0.50</td>
+<td>40</td>
+<td>0.549306</td>
+<td>0.027027</td>
+<td>0.164399</td>
+<td>37.0</td>
+<td>19.234973</td>
+<td>0.227084</td>
+<td>0.871528</td>
+<td>0.223260</td>
+<td>0.702150</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Newman(2012)</td>
+<td>0.50</td>
+<td>90</td>
+<td>0.549306</td>
+<td>0.011494</td>
+<td>0.107211</td>
+<td>87.0</td>
+<td>27.430431</td>
+<td>0.339172</td>
+<td>0.759440</td>
+<td>0.326738</td>
+<td>0.640747</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Grant(2003)</td>
+<td>0.40</td>
+<td>25</td>
+<td>0.423649</td>
+<td>0.045455</td>
+<td>0.213201</td>
+<td>22.0</td>
+<td>14.201287</td>
+<td>0.005776</td>
+<td>0.841522</td>
+<td>0.005775</td>
+<td>0.686615</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Granger(2020)</td>
+<td>0.20</td>
+<td>40</td>
+<td>0.202733</td>
+<td>0.027027</td>
+<td>0.164399</td>
+<td>37.0</td>
+<td>19.234973</td>
+<td>-0.119489</td>
+<td>0.524955</td>
+<td>-0.118924</td>
+<td>0.481515</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Milland(2018)</td>
+<td>0.70</td>
+<td>60</td>
+<td>0.867301</td>
+<td>0.017544</td>
+<td>0.132453</td>
+<td>57.0</td>
+<td>23.526384</td>
+<td>0.607692</td>
+<td>1.126909</td>
+<td>0.542501</td>
+<td>0.809959</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Finch(2021)</td>
+<td>0.45</td>
+<td>50</td>
+<td>0.484700</td>
+<td>0.021277</td>
+<td>0.145865</td>
+<td>47.0</td>
+<td>21.627137</td>
+<td>0.198805</td>
+<td>0.770596</td>
+<td>0.196227</td>
+<td>0.647276</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="6548aa51-4c73-43af-95f5-efdb78bb1c11" class="cell" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>plt.errorbar(data[<span class="st">'r'</span>], <span class="bu">range</span>(<span class="bu">len</span>(data)), </span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>             xerr<span class="op">=</span>[data[<span class="st">'r'</span>] <span class="op">-</span> data[<span class="st">'r_low'</span>], data[<span class="st">'r_high'</span>] <span class="op">-</span> data[<span class="st">'r'</span>]], </span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>             fmt<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>plt.axvline(r_RE, color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Pooled r (Random Effects)'</span>)</span>
+<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>plt.yticks(<span class="bu">range</span>(<span class="bu">len</span>(data)), data[<span class="st">'study'</span>])</span>
+<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Correlation (r)'</span>)</span>
+<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Forest Plot - Random Effects Meta-Analysis'</span>)</span>
+<span id="cb91-8"><a href="#cb91-8" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb91-9"><a href="#cb91-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2025-10-05-Metaanalysis_files/figure-html/cell-64-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
 </section>
 
 </main> <!-- /main -->
