@@ -1218,8 +1218,17 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-10-04-CDISC.out.ipynb" download="2025-10-04-CDISC.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#cdisc" id="toc-cdisc" class="nav-link active" data-scroll-target="#cdisc">CDISC</a>
+  <ul class="collapse">
+  <li><a href="#adam" id="toc-adam" class="nav-link" data-scroll-target="#adam">ADaM</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-10-04-CDISC.out.ipynb" download="2025-10-04-CDISC.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -1227,8 +1236,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="cdisc" class="level1">
+<h1>CDISC</h1>
+<section id="adam" class="level2">
+<h2 class="anchored" data-anchor-id="adam">ADaM</h2>
 <ul>
-<li>ADaM: Analysis Data Model
+<li><p>ADaM: Analysis Data Model</p>
 <ul>
 <li><strong>Define Dataset and metadata standards that support</strong>:
 <ul>
@@ -1237,7 +1250,7 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li>standardize and organize data for statistical analysis, enabling efficient, accurate, and reproducible research by ensuring a clear lineage from raw data (SDTM) to analysis results.</li>
 </ul></li>
-<li>Why are they use ADaM dataset in Clinical trials?
+<li><p>Why are they use ADaM dataset in Clinical trials?</p>
 <ul>
 <li><strong>Standardization and Consistency</strong>
 <ul>
@@ -1268,222 +1281,692 @@ ul.task-list li input[type="checkbox"] {
 <li>By providing a predictable and consistent data structure, ADaM helps statistical programmers efficiently develop TLFs and reuse programming code across projects.</li>
 </ul></li>
 </ul></li>
-<li>ADSL: Subject-Level Analysis Dataset
+<li><p>ADSL: Subject-Level Analysis Dataset</p>
 <ul>
 <li>ADSL</li>
 </ul></li>
-<li>BDS: Basic Data Structure
+<li><p>BDS: Basic Data Structure</p>
 <ul>
 <li>ADLB</li>
 <li>ADEFF</li>
 <li>ADTTE</li>
 </ul></li>
-<li>OCCDS: Occurrence Data Structure
+<li><p>OCCDS: Occurrence Data Structure</p>
 <ul>
 <li>ADAE</li>
 <li>ADCM</li>
 </ul></li>
-<li>Other
+<li><p>Other</p>
 <ul>
 <li>ADMV</li>
 </ul></li>
-</ul>
-<p><a href="https://www.cdisc.org/kb/examples/adam-adsl-dataset-103765767">reference</a></p>
+<li><p>ADSL</p></li>
+<li><p>SDTM Domain</p>
 <ul>
-<li>adsl example</li>
+<li>DM(Demographics)</li>
+<li>EX(Exposure)</li>
+<li>DS(Disposition)</li>
+<li>SV(Subject Visits)</li>
+<li>CM(Concomitent Medicine)
+<ul>
+<li>CMYN</li>
+</ul></li>
+<li>MH(Medical History)
+<ul>
+<li>MHYN</li>
+</ul></li>
+</ul></li>
 </ul>
 <table class="table">
 <colgroup>
-<col style="width: 3%">
-<col style="width: 7%">
-<col style="width: 8%">
-<col style="width: 6%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 7%">
-<col style="width: 22%">
-<col style="width: 7%">
-<col style="width: 14%">
-<col style="width: 10%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>ow</th>
-<th>STUDYID</th>
-<th>USUBJID</th>
-<th>TRT01P</th>
-<th>ITTFL</th>
-<th>FASFL</th>
-<th>STRATAR</th>
-<th>STRAT1D</th>
-<th>STRAT1R</th>
-<th>STRAT2D</th>
-<th>STRAT2R</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>CR123</td>
-<td>CR123-001</td>
-<td>Drug A</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y, Non-Severe</td>
-<td>Prior anti-TNF-alpha Usage</td>
-<td>Y</td>
-<td>Disease Severity</td>
-<td>Non-Severe</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>CR123</td>
-<td>CR123-002</td>
-<td>Drug B</td>
-<td>Y</td>
-<td>Y</td>
-<td>N, Severe</td>
-<td>Prior anti-TNF-alpha Usage</td>
-<td>N</td>
-<td>Disease Severity</td>
-<td>Severe</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>ADSL Dataset Metadata</li>
-</ul>
-<table class="table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 15%">
-<col style="width: 8%">
 <col style="width: 12%">
-<col style="width: 10%">
-<col style="width: 11%">
-<col style="width: 17%">
-<col style="width: 7%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Dataset Name</th>
-<th>Description</th>
-<th>Class</th>
-<th>Structure</th>
-<th>Purpose</th>
-<th>Keys</th>
-<th>Location</th>
-<th>Documentation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ADSL</td>
-<td>Subject-Level Analysis Dataset</td>
-<td>SUBJECT LEVEL ANALYSIS DATASET</td>
-<td>One record per subject</td>
-<td>Analysis</td>
-<td>STUDYID, USUBJID</td>
-<td>ADSL.xpt</td>
-<td>ADSL.SAS</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>ADSL Variable Metadata</li>
-</ul>
-<table class="table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 7%">
-<col style="width: 14%">
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 33%">
 <col style="width: 37%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Variable Name</th>
-<th>Variable Label</th>
+<th>Variable</th>
+<th>Label</th>
 <th>Type</th>
-<th>Codelist</th>
-<th>Source/Derivation/Comment</th>
+<th>Codelist / Controlled Terms</th>
+<th>Source / Derivation / Comment</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>STUDYID</td>
+<td><strong>STUDYID</strong></td>
 <td>Study Identifier</td>
 <td>text</td>
 <td></td>
-<td>DM.STUDYID</td>
+<td>Unique identifier for the study; copied from DM.STUDYID</td>
 </tr>
 <tr class="even">
-<td>USUBJID</td>
+<td><strong>USUBJID</strong></td>
 <td>Unique Subject Identifier</td>
 <td>text</td>
 <td></td>
-<td>DM.USUBJID</td>
+<td>Concatenation of STUDYID and SUBJECT ID; copied from DM.USUBJID</td>
 </tr>
 <tr class="odd">
-<td>TRT01P</td>
-<td>Planned Treatment for Period 01</td>
+<td><strong>SUBJID</strong></td>
+<td>Subject Identifier for the Study</td>
 <td>text</td>
 <td></td>
-<td>DM.ARM</td>
+<td>Copied from DM.SUBJID</td>
 </tr>
 <tr class="even">
-<td>ITTFL</td>
-<td>Intent-To-Treat Population Flag</td>
+<td><strong>SITEID</strong></td>
+<td>Investigator Site Identifier</td>
 <td>text</td>
-<td>Y; N</td>
-<td>Y if the subject has been assigned a Randomization number.</td>
+<td></td>
+<td>Copied from DM.SITEID</td>
 </tr>
 <tr class="odd">
-<td>FASFL</td>
-<td>Full Analysis Population Flag</td>
-<td>text</td>
-<td>Y; N</td>
-<td>Y if the subject has met the criteria defined in the SAP.</td>
+<td><strong>AGE</strong></td>
+<td>Age</td>
+<td>integer</td>
+<td></td>
+<td>Copied from DM.AGE or derived as (RFSTDTC - BRTHDTC)</td>
 </tr>
 <tr class="even">
-<td>STRATAR</td>
-<td>Strata Used for Randomization</td>
+<td><strong>AGEU</strong></td>
+<td>Age Units</td>
 <td>text</td>
-<td>Prior TNF-alpha Usage (Y vs N), Disease Severity (Severe vs Non-Severe)</td>
-<td>Subject level values used at randomization to determine a subject’s treatment group</td>
+<td>YEARS</td>
+<td>Copied from DM.AGEU</td>
 </tr>
 <tr class="odd">
-<td>STRAT1D</td>
-<td>Description of Stratification Factor 1</td>
+<td><strong>SEX</strong></td>
+<td>Sex</td>
 <td>text</td>
-<td>Prior anti-TNF-alpha Usage</td>
-<td>First factor captured in STRATAR</td>
+<td>M, F, U</td>
+<td>Copied from DM.SEX</td>
 </tr>
 <tr class="even">
-<td>STRAT1R</td>
-<td>Strat Factor 1 Value Used for Rand</td>
+<td><strong>RACE</strong></td>
+<td>Race</td>
 <td>text</td>
-<td>Y; N</td>
-<td>First factor subject value</td>
+<td>White, Black, Asian, Other</td>
+<td>Copied from DM.RACE</td>
 </tr>
 <tr class="odd">
-<td>STRAT2D</td>
-<td>Description of Stratification Factor 2</td>
+<td><strong>ARM</strong></td>
+<td>Description of Planned Arm</td>
 <td>text</td>
-<td>Disease Severity</td>
-<td>Second factor captured in STRATAR</td>
+<td></td>
+<td>Copied from DM.ARM</td>
 </tr>
 <tr class="even">
-<td>STRAT2R</td>
-<td>Strat Factor 2 Value Used for Rand</td>
+<td><strong>ARMCD</strong></td>
+<td>Planned Arm Code</td>
 <td>text</td>
-<td>Severe; Non-Severe</td>
-<td>Second factor subject value</td>
+<td></td>
+<td>Copied from DM.ARMCD</td>
+</tr>
+<tr class="odd">
+<td><strong>ACTARM</strong></td>
+<td>Description of Actual Arm</td>
+<td>text</td>
+<td></td>
+<td>Copied from DM.ACTARM</td>
+</tr>
+<tr class="even">
+<td><strong>ACTARMCD</strong></td>
+<td>Actual Arm Code</td>
+<td>text</td>
+<td></td>
+<td>Copied from DM.ACTARMCD</td>
+</tr>
+<tr class="odd">
+<td><strong>COUNTRY</strong></td>
+<td>Country</td>
+<td>text</td>
+<td></td>
+<td>Copied from DM.COUNTRY</td>
+</tr>
+<tr class="even">
+<td><strong>RFSTDTC</strong></td>
+<td>Date/Time of First Exposure</td>
+<td>date</td>
+<td></td>
+<td>Derived from EX.EXSTDTC (earliest date)</td>
+</tr>
+<tr class="odd">
+<td><strong>RFENDTC</strong></td>
+<td>Date/Time of Last Exposure</td>
+<td>date</td>
+<td></td>
+<td>Derived from EX.EXENDTC (latest date)</td>
+</tr>
+<tr class="even">
+<td><strong>RFXSTDTC</strong></td>
+<td>Date/Time of First Study Treatment</td>
+<td>date</td>
+<td></td>
+<td>Derived from EX dataset</td>
+</tr>
+<tr class="odd">
+<td><strong>RFXENDTC</strong></td>
+<td>Date/Time of Last Study Treatment</td>
+<td>date</td>
+<td></td>
+<td>Derived from EX dataset</td>
+</tr>
+<tr class="even">
+<td><strong>SAFFL</strong></td>
+<td>Safety Population Flag</td>
+<td>text</td>
+<td>Y / N</td>
+<td>Y if subject received at least one dose of study drug</td>
+</tr>
+<tr class="odd">
+<td><strong>FASFL</strong></td>
+<td>Full Analysis Set Flag</td>
+<td>text</td>
+<td>Y / N</td>
+<td>Y if subject is in the full analysis population per SAP</td>
+</tr>
+<tr class="even">
+<td><strong>ITTFL</strong></td>
+<td>Intent-to-Treat Flag</td>
+<td>text</td>
+<td>Y / N</td>
+<td>Y if subject is randomized and received at least one dose</td>
+</tr>
+<tr class="odd">
+<td><strong>PPSFL</strong></td>
+<td>Per-Protocol Flag</td>
+<td>text</td>
+<td>Y / N</td>
+<td>Y if subject met per-protocol criteria</td>
+</tr>
+<tr class="even">
+<td><strong>COMPFL</strong></td>
+<td>Completion Flag</td>
+<td>text</td>
+<td>Y / N</td>
+<td>Y if subject completed study as planned</td>
+</tr>
+<tr class="odd">
+<td><strong>DTHFL</strong></td>
+<td>Death Flag</td>
+<td>text</td>
+<td>Y / N</td>
+<td>Y if subject died during the study</td>
+</tr>
+<tr class="even">
+<td><strong>DTHDTC</strong></td>
+<td>Date of Death</td>
+<td>date</td>
+<td></td>
+<td>Derived from DS dataset</td>
+</tr>
+<tr class="odd">
+<td><strong>RFICDTC</strong></td>
+<td>Informed Consent Date</td>
+<td>date</td>
+<td></td>
+<td>Copied from DM.RFICDTC</td>
+</tr>
+<tr class="even">
+<td><strong>RFPENDTC</strong></td>
+<td>End of Participation Date</td>
+<td>date</td>
+<td></td>
+<td>Derived from DS dataset</td>
+</tr>
+<tr class="odd">
+<td><strong>DURDAYS</strong></td>
+<td>Study Duration (days)</td>
+<td>integer</td>
+<td></td>
+<td>Derived as RFENDTC - RFSTDTC + 1</td>
+</tr>
+<tr class="even">
+<td><strong>AGEGRP</strong></td>
+<td>Age Group</td>
+<td>text</td>
+<td>e.g., &lt;65, ≥65</td>
+<td>Derived based on age category per SAP</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>BDS
+<ul>
+<li>ADLB</li>
+</ul></li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 33%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Label</th>
+<th>Type</th>
+<th>Codelist / Controlled Terms</th>
+<th>Source / Derivation / Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>STUDYID</strong></td>
+<td>Study Identifier</td>
+<td>text</td>
+<td></td>
+<td>Copied from ADSL or SDTM.DM.STUDYID</td>
+</tr>
+<tr class="even">
+<td><strong>USUBJID</strong></td>
+<td>Unique Subject Identifier</td>
+<td>text</td>
+<td></td>
+<td>Copied from ADSL or SDTM.DM.USUBJID</td>
+</tr>
+<tr class="odd">
+<td><strong>PARAM</strong></td>
+<td>Parameter</td>
+<td>text</td>
+<td></td>
+<td>Descriptive name of laboratory test (e.g., Hemoglobin (g/dL))</td>
+</tr>
+<tr class="even">
+<td><strong>PARAMCD</strong></td>
+<td>Parameter Code</td>
+<td>text</td>
+<td></td>
+<td>Short name of test (e.g., HGB)</td>
+</tr>
+<tr class="odd">
+<td><strong>AVISIT</strong></td>
+<td>Analysis Visit</td>
+<td>text</td>
+<td></td>
+<td>Derived visit name (e.g., Week 4, Week 12)</td>
+</tr>
+<tr class="even">
+<td><strong>AVISITN</strong></td>
+<td>Analysis Visit (N)</td>
+<td>integer</td>
+<td></td>
+<td>Numeric representation of AVISIT</td>
+</tr>
+<tr class="odd">
+<td><strong>AVAL</strong></td>
+<td>Analysis Value</td>
+<td>float</td>
+<td></td>
+<td>Derived from LBSTRESN (numeric result)</td>
+</tr>
+<tr class="even">
+<td><strong>AVALC</strong></td>
+<td>Analysis Value (Character)</td>
+<td>text</td>
+<td></td>
+<td>Derived from LBSTRESC (character result)</td>
+</tr>
+<tr class="odd">
+<td><strong>BASE</strong></td>
+<td>Baseline Value</td>
+<td>float</td>
+<td></td>
+<td>AVAL where ABLFL = Y, per PARAMCD</td>
+</tr>
+<tr class="even">
+<td><strong>CHG</strong></td>
+<td>Change from Baseline</td>
+<td>float</td>
+<td></td>
+<td>AVAL – BASE</td>
+</tr>
+<tr class="odd">
+<td><strong>PCHG</strong></td>
+<td>Percent Change from Baseline</td>
+<td>float</td>
+<td></td>
+<td>((AVAL – BASE) / BASE) × 100</td>
+</tr>
+<tr class="even">
+<td><strong>ABLFL</strong></td>
+<td>Baseline Record Flag</td>
+<td>text</td>
+<td>Y</td>
+<td>Y for record used as baseline (usually AVISIT = “Baseline”)</td>
+</tr>
+<tr class="odd">
+<td><strong>DTYPE</strong></td>
+<td>Derivation Type</td>
+<td>text</td>
+<td>e.g., LOCF, NRI</td>
+<td>Used to indicate imputation or derivation method</td>
+</tr>
+<tr class="even">
+<td><strong>ANRLO</strong></td>
+<td>Analysis Normal Range – Low</td>
+<td>float</td>
+<td></td>
+<td>Copied from LBSTNRLO or derived from reference range dataset</td>
+</tr>
+<tr class="odd">
+<td><strong>ANRHI</strong></td>
+<td>Analysis Normal Range – High</td>
+<td>float</td>
+<td></td>
+<td>Copied from LBSTNRHI or derived from reference range dataset</td>
+</tr>
+<tr class="even">
+<td><strong>ANRIND</strong></td>
+<td>Analysis Reference Range Indicator</td>
+<td>text</td>
+<td>LOW, NORMAL, HIGH</td>
+<td>Derived based on AVAL, ANRLO, ANRHI</td>
+</tr>
+<tr class="odd">
+<td><strong>BNRIND</strong></td>
+<td>Baseline Reference Range Indicator</td>
+<td>text</td>
+<td>LOW, NORMAL, HIGH</td>
+<td>Derived using BASE, ANRLO, ANRHI</td>
+</tr>
+<tr class="even">
+<td><strong>SHIFT1</strong></td>
+<td>Baseline to Post-Baseline Shift</td>
+<td>text</td>
+<td>e.g., NORMAL→HIGH</td>
+<td>Derived comparison between BNRIND and ANRIND</td>
+</tr>
+<tr class="odd">
+<td><strong>ONTRTFL</strong></td>
+<td>On-Treatment Record Flag</td>
+<td>text</td>
+<td>Y / N</td>
+<td>Y if result occurred during treatment period</td>
+</tr>
+<tr class="even">
+<td><strong>SRCDOM</strong></td>
+<td>Source Domain</td>
+<td>text</td>
+<td></td>
+<td>Usually “LB” (Laboratory Domain)</td>
+</tr>
+<tr class="odd">
+<td><strong>SRCVAR</strong></td>
+<td>Source Variable</td>
+<td>text</td>
+<td></td>
+<td>Source variable (e.g., LBSTRESN) used for derivation</td>
+</tr>
+<tr class="even">
+<td><strong>SRCSEQ</strong></td>
+<td>Source Sequence Number</td>
+<td>float</td>
+<td></td>
+<td>Sequence number from LB domain (LBSEQ)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>OCCDS
+<ul>
+<li>ADAE</li>
+</ul></li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 33%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Label</th>
+<th>Type</th>
+<th>Codelist / Controlled Terms</th>
+<th>Source / Derivation / Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>STUDYID</strong></td>
+<td>Study Identifier</td>
+<td>text</td>
+<td></td>
+<td>Copied from SDTM.DM.STUDYID</td>
+</tr>
+<tr class="even">
+<td><strong>USUBJID</strong></td>
+<td>Unique Subject Identifier</td>
+<td>text</td>
+<td></td>
+<td>Copied from SDTM.DM.USUBJID</td>
+</tr>
+<tr class="odd">
+<td><strong>AESEQ</strong></td>
+<td>Sequence Number</td>
+<td>integer</td>
+<td></td>
+<td>Copied from SDTM.AE.AESEQ</td>
+</tr>
+<tr class="even">
+<td><strong>AETERM</strong></td>
+<td>Reported Term for the Adverse Event</td>
+<td>text</td>
+<td></td>
+<td>Copied from AE.AETERM</td>
+</tr>
+<tr class="odd">
+<td><strong>AEDECOD</strong></td>
+<td>Dictionary-Derived Term</td>
+<td>text</td>
+<td></td>
+<td>Coded term (e.g., MedDRA Preferred Term)</td>
+</tr>
+<tr class="even">
+<td><strong>AESOC</strong></td>
+<td>System Organ Class</td>
+<td>text</td>
+<td></td>
+<td>Coded from MedDRA SOC</td>
+</tr>
+<tr class="odd">
+<td><strong>AEHLT</strong></td>
+<td>High Level Term</td>
+<td>text</td>
+<td></td>
+<td>From MedDRA hierarchy</td>
+</tr>
+<tr class="even">
+<td><strong>AEHLGT</strong></td>
+<td>High Level Group Term</td>
+<td>text</td>
+<td></td>
+<td>From MedDRA hierarchy</td>
+</tr>
+<tr class="odd">
+<td><strong>AEBODSYS</strong></td>
+<td>Body System or Organ Class</td>
+<td>text</td>
+<td></td>
+<td>Usually matches AESOC</td>
+</tr>
+<tr class="even">
+<td><strong>AESTDTC</strong></td>
+<td>Start Date/Time of Adverse Event</td>
+<td>date</td>
+<td></td>
+<td>Copied from AE.AESTDTC</td>
+</tr>
+<tr class="odd">
+<td><strong>AEENDTC</strong></td>
+<td>End Date/Time of Adverse Event</td>
+<td>date</td>
+<td></td>
+<td>Copied from AE.AEENDTC</td>
+</tr>
+<tr class="even">
+<td><strong>AESEV</strong></td>
+<td>Severity / Intensity</td>
+<td>text</td>
+<td>MILD, MODERATE, SEVERE</td>
+<td>Copied from AE.AESEV</td>
+</tr>
+<tr class="odd">
+<td><strong>AESER</strong></td>
+<td>Serious Event</td>
+<td>text</td>
+<td>Y / N</td>
+<td>Copied from AE.AESER</td>
+</tr>
+<tr class="even">
+<td><strong>AEREL</strong></td>
+<td>Causality</td>
+<td>text</td>
+<td>RELATED, NOT RELATED</td>
+<td>Copied from AE.AEREL</td>
+</tr>
+<tr class="odd">
+<td><strong>AEACN</strong></td>
+<td>Action Taken with Study Treatment</td>
+<td>text</td>
+<td>DOSE REDUCED, DRUG WITHDRAWN, NONE</td>
+<td>Copied from AE.AEACN</td>
+</tr>
+<tr class="even">
+<td><strong>AEOUT</strong></td>
+<td>Outcome of Adverse Event</td>
+<td>text</td>
+<td>RECOVERED, NOT RECOVERED, FATAL, etc.</td>
+<td>Copied from AE.AEOUT</td>
+</tr>
+<tr class="odd">
+<td><strong>AETOXGR</strong></td>
+<td>Toxicity Grade</td>
+<td>text</td>
+<td>1–5</td>
+<td>Derived from AE or external CTCAE grading</td>
+</tr>
+<tr class="even">
+<td><strong>AESCONG</strong></td>
+<td>Congenital Anomaly or Birth Defect</td>
+<td>text</td>
+<td>Y / N</td>
+<td>Copied from AE.AESCONG</td>
+</tr>
+<tr class="odd">
+<td><strong>AESDISAB</strong></td>
+<td>Persisting Disability</td>
+<td>text</td>
+<td>Y / N</td>
+<td>Copied from AE.AESDISAB</td>
+</tr>
+<tr class="even">
+<td><strong>AESDTH</strong></td>
+<td>Results in Death</td>
+<td>text</td>
+<td>Y / N</td>
+<td>Copied from AE.AESDTH</td>
+</tr>
+<tr class="odd">
+<td><strong>AESLIFE</strong></td>
+<td>Life-Threatening</td>
+<td>text</td>
+<td>Y / N</td>
+<td>Copied from AE.AESLIFE</td>
+</tr>
+<tr class="even">
+<td><strong>AESHOSP</strong></td>
+<td>Requires/Prolongs Hospitalization</td>
+<td>text</td>
+<td>Y / N</td>
+<td>Copied from AE.AESHOSP</td>
+</tr>
+<tr class="odd">
+<td><strong>AERELNST</strong></td>
+<td>Investigator’s Causality Assessment</td>
+<td>text</td>
+<td></td>
+<td>Optional; if multiple assessors</td>
+</tr>
+<tr class="even">
+<td><strong>TRTEMFL</strong></td>
+<td>On-Treatment Flag</td>
+<td>text</td>
+<td>Y / N</td>
+<td>Y if AE start date between treatment start and end (from ADSL.RFSTDTC / RFENDTC)</td>
+</tr>
+<tr class="odd">
+<td><strong>AOCCUR</strong></td>
+<td>Occurrence Flag</td>
+<td>text</td>
+<td>Y / N</td>
+<td>Derived flag for analysis subset</td>
+</tr>
+<tr class="even">
+<td><strong>ASEV</strong></td>
+<td>Analysis Severity</td>
+<td>text</td>
+<td></td>
+<td>Derived, e.g., highest AESEV per subject</td>
+</tr>
+<tr class="odd">
+<td><strong>ADURN</strong></td>
+<td>Duration of AE (in days)</td>
+<td>float</td>
+<td></td>
+<td>Derived: AEENDTC – AESTDTC + 1</td>
+</tr>
+<tr class="even">
+<td><strong>SAFFL</strong></td>
+<td>Safety Population Flag</td>
+<td>text</td>
+<td>Y / N</td>
+<td>From ADSL.SAFFL</td>
+</tr>
+<tr class="odd">
+<td><strong>TRTA</strong></td>
+<td>Actual Treatment</td>
+<td>text</td>
+<td></td>
+<td>From ADSL.ACTARM or ADSL.TRTA</td>
+</tr>
+<tr class="even">
+<td><strong>SRCDOM</strong></td>
+<td>Source Domain</td>
+<td>text</td>
+<td></td>
+<td>Usually “AE”</td>
+</tr>
+<tr class="odd">
+<td><strong>SRCVAR</strong></td>
+<td>Source Variable</td>
+<td>text</td>
+<td></td>
+<td>Variable in AE domain (e.g., AESTDTC, AESEV)</td>
+</tr>
+<tr class="even">
+<td><strong>SRCSEQ</strong></td>
+<td>Source Sequence Number</td>
+<td>float</td>
+<td></td>
+<td>AESEQ from AE domain</td>
 </tr>
 </tbody>
 </table>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
