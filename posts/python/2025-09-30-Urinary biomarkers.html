@@ -1123,6 +1123,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">CDISC</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/medical knowledge/2025-10-13-phase 4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">[SAP] Phase 4</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -1366,12 +1372,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="data-1" class="level1">
 <h1>Data</h1>
-<div id="b518c9d5-bdc3-4d5c-9dd7-6ae7645c51f3" class="cell" data-execution_count="3">
+<div id="b518c9d5-bdc3-4d5c-9dd7-6ae7645c51f3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../../delete/Debernardi et al 2020 data.csv'</span>)</span></code></pre></div>
 </div>
-<div id="10fd1d90-2098-4e42-aea7-6c176e701bb5" class="cell" data-execution_count="4">
+<div id="10fd1d90-2098-4e42-aea7-6c176e701bb5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -1589,6 +1595,244 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>590 rows × 14 columns</p>
 </div>
 </div>
+</div>
+<div id="5c175333-7126-4213-985f-643d37aab586" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">diagnosis</th>
+<th data-quarto-table-cell-role="th">plasma_CA19_9</th>
+<th data-quarto-table-cell-role="th">creatinine</th>
+<th data-quarto-table-cell-role="th">LYVE1</th>
+<th data-quarto-table-cell-role="th">REG1B</th>
+<th data-quarto-table-cell-role="th">TFF1</th>
+<th data-quarto-table-cell-role="th">REG1A</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>590.000000</td>
+<td>590.000000</td>
+<td>350.000000</td>
+<td>590.000000</td>
+<td>590.000000</td>
+<td>590.000000</td>
+<td>590.000000</td>
+<td>306.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>59.079661</td>
+<td>2.027119</td>
+<td>654.002944</td>
+<td>0.855383</td>
+<td>3.063530</td>
+<td>111.774090</td>
+<td>597.868722</td>
+<td>735.281222</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>13.109520</td>
+<td>0.804873</td>
+<td>2430.317642</td>
+<td>0.639028</td>
+<td>3.438796</td>
+<td>196.267110</td>
+<td>1010.477245</td>
+<td>1477.247724</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>26.000000</td>
+<td>1.000000</td>
+<td>0.000000</td>
+<td>0.056550</td>
+<td>0.000129</td>
+<td>0.001104</td>
+<td>0.005293</td>
+<td>0.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>50.000000</td>
+<td>1.000000</td>
+<td>8.000000</td>
+<td>0.373230</td>
+<td>0.167179</td>
+<td>10.757216</td>
+<td>43.961000</td>
+<td>80.692000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>60.000000</td>
+<td>2.000000</td>
+<td>26.500000</td>
+<td>0.723840</td>
+<td>1.649862</td>
+<td>34.303353</td>
+<td>259.873974</td>
+<td>208.538500</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>69.000000</td>
+<td>3.000000</td>
+<td>294.000000</td>
+<td>1.139482</td>
+<td>5.205037</td>
+<td>122.741013</td>
+<td>742.736000</td>
+<td>649.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>89.000000</td>
+<td>3.000000</td>
+<td>31000.000000</td>
+<td>4.116840</td>
+<td>23.890323</td>
+<td>1403.897600</td>
+<td>13344.300000</td>
+<td>13200.000000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="3ae1dee1-83f5-448a-a9c1-5dd0f531e504" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cat_cols <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'object'</span>, <span class="st">'category'</span>]).columns</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> cat_cols:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">📊 </span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df[col].value_counts(dropna<span class="op">=</span><span class="va">False</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+📊 sample_id
+S1      1
+S588    1
+S302    1
+S288    1
+S497    1
+       ..
+S282    1
+S321    1
+S323    1
+S363    1
+S590    1
+Name: sample_id, Length: 590, dtype: int64
+
+📊 patient_cohort
+Cohort1    332
+Cohort2    258
+Name: patient_cohort, dtype: int64
+
+📊 sample_origin
+BPTB    409
+LIV     132
+ESP      29
+UCL      20
+Name: sample_origin, dtype: int64
+
+📊 sex
+F    299
+M    291
+Name: sex, dtype: int64
+
+📊 stage
+NaN    391
+III     76
+IIB     68
+IV      21
+IB      12
+IIA     11
+II       7
+IA       3
+I        1
+Name: stage, dtype: int64
+
+📊 benign_sample_diagnosis
+NaN                                                             382
+Pancreatitis                                                     41
+Pancreatitis (Chronic)                                           35
+Gallstones                                                       21
+Pancreatitis (Alcohol-Chronic)                                   11
+Cholecystitis                                                     9
+Serous cystadenoma - NOS                                          7
+Abdominal Pain                                                    6
+Choledocholiathiasis                                              6
+Pancreatitis (Alcohol-Chronic-Pseuodcyst)                         4
+Pancreatitis (Gallstone)                                          4
+Pancreatitis (Pseudocyst)                                         4
+Pancreatitis (Idiopathic)                                         4
+Pancreatitis (Autoimmune)                                         3
+Serous microcystic adenoma                                        3
+Gallstones - Incidental                                           3
+Cholecystitis (Chronic)                                           3
+Premalignant lesions-Mucinous cystadenoma-NOS                     3
+Gallstones                                                        2
+Gallbladder polyps                                                2
+Premalignant lesions-Adenoma-NOS                                  2
+Pancreatitis (Chronic-Pseudocyst)                                 2
+Cholecystitis (Chronic) Cholelithiasis                            2
+Premalignant lesions-Villous adenoma-NOS                          2
+Pancreatitis (Gallstone-Pseudocyst)                               1
+Pancreatitis (Gallstone-Alcohol-Pseudocyst)                       1
+Pancreato-jejunostomy Anastomoses Stricture                       1
+Premalignant lesions-Tubulovillous adenoma-NOS                    1
+Pancreatitis (Chronic) Choledocholithiasis                        1
+Premalignant lesions-Mucinous cystadenocarcinoma-noninvasive      1
+Pancreatitis (Hereditary-Chronic)                                 1
+Pancreatitis (Hypertriglyceridemia)                               1
+Pancreatitis (Idiopathic)                                         1
+Premalignant lesions-Tubular adenoma-NOS                          1
+Pancreatitis (Abscess)                                            1
+Pancreatitis (Chronic) (Later became PDAC)                        1
+Pancreatitis (Alcohol)                                            1
+Biliary Stricture (Secondary to Stent)                            1
+Cholecystitis                                                     1
+Cholecystitis (Chronic) Cholesterolsis                            1
+Choledochal Cyst                                                  1
+Choledocholiathiasis                                              1
+Cholelithiasis with adenomyomatous hyperplasia                    1
+Duodenal Stricture                                                1
+Duodenitis                                                        1
+Gallbladder Porcelain                                             1
+Gastritis                                                         1
+Gastritis and Reflux                                              1
+Ill defined lesion in uncinate process                            1
+Ischaemic Common Bile Duct Stricture                              1
+Pancreatitis                                                      1
+Pancreatitis (Acute)                                              1
+Simple benign liver cyst                                          1
+Name: benign_sample_diagnosis, dtype: int64</code></pre>
+</div>
+</div>
+<div id="72f88267-90cd-4752-8e2d-d2cec6194169" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'patient_cohort'</span>].value_counts(dropna<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>Cohort1    332
+Cohort2    258
+Name: patient_cohort, dtype: int64</code></pre>
+</div>
+</div>
+<div id="121595db-36e0-43a3-88e5-51375730c214" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 연속형 변수 (숫자형)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>num_cols <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'int64'</span>, <span class="st">'float64'</span>]).columns</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 범주형 변수 (object, category)</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>cat_cols <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'object'</span>, <span class="st">'category'</span>]).columns</span></code></pre></div>
 </div>
 
 
