@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -69,6 +103,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -1234,7 +1297,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#list-of-abbreviations" id="toc-list-of-abbreviations" class="nav-link active" data-scroll-target="#list-of-abbreviations">List of Abbreviations</a></li>
+  <li><a href="#study-objectives-and-endpoints" id="toc-study-objectives-and-endpoints" class="nav-link active" data-scroll-target="#study-objectives-and-endpoints">3. STUDY OBJECTIVES AND ENDPOINTS</a>
+  <ul class="collapse">
+  <li><a href="#study-objectives" id="toc-study-objectives" class="nav-link" data-scroll-target="#study-objectives">3.1. Study Objectives</a>
+  <ul class="collapse">
+  <li><a href="#primary-objective" id="toc-primary-objective" class="nav-link" data-scroll-target="#primary-objective">3.1.1. Primary Objective</a></li>
+  <li><a href="#secondary-objectives" id="toc-secondary-objectives" class="nav-link" data-scroll-target="#secondary-objectives">3.1.2. Secondary Objectives</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#study-design" id="toc-study-design" class="nav-link" data-scroll-target="#study-design">4. STUDY DESIGN</a>
+  <ul class="collapse">
+  <li><a href="#summary-of-study-design" id="toc-summary-of-study-design" class="nav-link" data-scroll-target="#summary-of-study-design">4.1. Summary of Study Design</a></li>
+  <li><a href="#sample-size-considerations" id="toc-sample-size-considerations" class="nav-link" data-scroll-target="#sample-size-considerations">4.2. Sample Size Considerations</a></li>
+  <li><a href="#randomization" id="toc-randomization" class="nav-link" data-scroll-target="#randomization">4.3. Randomization</a></li>
+  <li><a href="#clinical-assessments" id="toc-clinical-assessments" class="nav-link" data-scroll-target="#clinical-assessments">4.4. Clinical Assessments</a></li>
+  </ul></li>
+  <li><a href="#general-considerations-for-data-analyses-and-handling" id="toc-general-considerations-for-data-analyses-and-handling" class="nav-link" data-scroll-target="#general-considerations-for-data-analyses-and-handling">6. GENERAL CONSIDERATIONS FOR DATA ANALYSES AND HANDLING</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-10-13-phase 4.out.ipynb" download="2025-10-13-phase 4.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -1246,8 +1324,154 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><a href="https://cdn.clinicaltrials.gov/large-docs/62/NCT03891862/SAP_001.pdf">link</a></p>
-<section id="list-of-abbreviations" class="level1">
-<h1>List of Abbreviations</h1>
+<blockquote class="blockquote">
+<p>A Phase 4 clinical trial, also called post-marketing surveillance, is a study conducted after a drug has been approved and is on the market to continue monitoring its safety and effectiveness in the real world. T</p>
+</blockquote>
+<table class="table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 56%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>임상 단계</th>
+<th>주요 목적</th>
+<th>데이터 출처/특징</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Phase 1</strong></td>
+<td>안전성(Safety), 약동학(PK), 내약성(Tolerability)</td>
+<td>소수 건강 지원자</td>
+</tr>
+<tr class="even">
+<td><strong>Phase 2</strong></td>
+<td>효능 탐색(Efficacy), 용량 결정(Dose-finding)</td>
+<td>환자군 대상</td>
+</tr>
+<tr class="odd">
+<td><strong>Phase 3</strong></td>
+<td>효과 입증(Confirmatory efficacy), 안전성 평가</td>
+<td>대규모 환자군, 승인 전 마지막 단계</td>
+</tr>
+<tr class="even">
+<td><strong>Phase 4</strong></td>
+<td><strong>승인 후(Post-marketing)</strong> 효과 지속, 안전성, 현실 사용(RWD), 삶의 질(QOL) 등</td>
+<td><strong>실제 진료 환경(Real-world setting)</strong></td>
+</tr>
+</tbody>
+</table>
+<section id="study-objectives-and-endpoints" class="level1">
+<h1>3. STUDY OBJECTIVES AND ENDPOINTS</h1>
+<section id="study-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="study-objectives">3.1. Study Objectives</h2>
+<section id="primary-objective" class="level3">
+<h3 class="anchored" data-anchor-id="primary-objective">3.1.1. Primary Objective</h3>
+<p>The primary objective of this clinical study is:</p>
+<ul>
+<li><p>To evaluate the persistence of effect of valbenazine in subjects with tardive dyskinesia (TD) who receive placebo in a double-blind, randomized withdrawal period following open-label treatment with valbenazine.</p></li>
+<li><p>약 먹지 않아도 약 효과의 지속성을 평가하기 위함</p></li>
+</ul>
+</section>
+<section id="secondary-objectives" class="level3">
+<h3 class="anchored" data-anchor-id="secondary-objectives">3.1.2. Secondary Objectives</h3>
+<p>The secondary objectives of this clinical study are:</p>
+<ul>
+<li><p>To evaluate the relationship between subject clinical characteristics and persistence of effect of valbenazine during the double-blind, placebo-controlled treatment period.</p></li>
+<li><p>To evaluate the effect of valbenazine on measures of quality of life and disability when administered once daily for up to 16 weeks.</p></li>
+<li><p>To evaluate the safety and tolerability of valbenazine administered once daily for up to 16 weeks.</p></li>
+<li><p>군의 특성 사이 관계와 지속성 평가</p></li>
+<li><p>삶의 질 측정, 장애에서 효과 평가</p></li>
+<li><p>안전성 내약성 평가</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="study-design" class="level1">
+<h1>4. STUDY DESIGN</h1>
+<section id="summary-of-study-design" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-study-design">4.1. Summary of Study Design</h2>
+<ul>
+<li><p>This is a Phase 4, randomized, double-blind, placebo-controlled study to evaluate the persistence of effect of valbenazine 40 mg and 80 mg.</p></li>
+<li><p>Approximately 120 medically stable male and female subjects with clinical diagnoses of schizophrenia or schizoaffective disorder with neurolepticinduced TD or mood disorder with neuroleptic-induced TD will be enrolled.</p></li>
+<li><p>The study includes an initial open-label treatment period for 8 weeks, followed by a doubleblind, placebo-controlled treatment period for 8 weeks, for a total of up to 16 weeks of treatment.</p></li>
+<li><p>A final study visit will be conducted at Week 20 or upon early termination.</p></li>
+<li><p>Eligible subjects will be enrolled in the study on Day 1.</p></li>
+<li><p>Valbenazine will be self-administered at home (in the presence of the subject’s caregiver, if applicable) beginning on Day 1; the subject will be directed to take their dose at about the same time each day.</p></li>
+<li><p>During the open-label treatment period, subjects will receive 40 mg for the first week followed by 80 mg for 7 weeks.</p></li>
+<li><p>At the end of Week 8, subjects will be randomized 1:1 to valbenazine or placebo.</p></li>
+<li><p>Subjects randomized to valbenazine will continue with the same dose as the last dose they received during the open-label treatment period.</p></li>
+<li><p>Randomization will be stratified based on the use of concomitant antipsychotic medication; this will include up to 40 subjects who are not using antipsychotic medications (ie, have not used antipsychotic medication for at least 60 days prior to screening and have no plans for resuming antipsychotic treatment during the course of the study) and the remaining subjects will be using concomitant antipsychotic medications.</p></li>
+<li><p>At any time during treatment (open-label and placebo-controlled treatment periods), subjects who are unable to tolerate the 80 mg dose will have their dose decreased to 40 mg (during the double-blind, placebo-controlled treatment period, this will be done in a blinded manner; subjects receiving placebo will continue to receive placebo).</p></li>
+<li><p>Subjects who are unable to tolerate the 40 mg dose will be discontinued from the study.</p></li>
+<li><p><code>stratified</code> : 계층화된</p></li>
+</ul>
+</section>
+<section id="sample-size-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="sample-size-considerations">4.2. Sample Size Considerations</h2>
+<ul>
+<li>Approximately 120 subjects will be enrolled in this study.</li>
+<li>The 1:1 randomization to placebo or valbenazine during the double-blind, placebo-controlled treatment period will therefore provide a sample size of approximately 60 subjects in the placebo arm.</li>
+<li>The standard deviation (SD) for the Abnormal Involuntary Movement Scale (AIMS) dyskinesia total score change from the end of the open-label treatment period (end of Week 8) to visits during the double-blind, placebocontrolled treatment period in the placebo treatment arm is estimated to be 4.0 based on results from the previously reported Phase 3 study NBI-98854-1304.</li>
+<li>With this SD and a sample size of 60, the overall width of a two-sided 95% confidence interval (CI) for the AIMS dyskinesia total score mean change will be approximately 2.0.</li>
+<li>The width of the confidence interval will increase to approximately 2.2 if the placebo treatment arm sample size is 50 and to approximately 2.5 if the sample size is 40.</li>
+</ul>
+<p><span class="math inline">\(CI width = 2 \times Z_{1-\alpha /2)} \times \frac{SD}{\sqrt{n}}\)</span></p>
+<p>95% CI = 1.96</p>
+<p>SD = 4 from Phase 3 study</p>
+<p>n = sample number 60 from placebo arm based on 1:1 randomization to placebo or valbenazine</p>
+<div id="ed045e41-7d90-411c-a763-e5d7c7207458" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
+</div>
+<div id="94704151-0762-47fe-aacb-a447e379d16e" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"CI width = "</span>, <span class="bu">round</span>(<span class="dv">2</span> <span class="op">*</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="dv">4</span> <span class="op">/</span> np.sqrt(<span class="dv">60</span>),<span class="dv">2</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>CI width =  2.02</code></pre>
+</div>
+</div>
+</section>
+<section id="randomization" class="level2">
+<h2 class="anchored" data-anchor-id="randomization">4.3. Randomization</h2>
+<ul>
+<li>At the end of Week 8, subjects will be randomized 1:1 to valbenazine or placebo.</li>
+<li>Subjects randomized to valbenazine will continue with the same dose as the last dose they received during the open-label treatment period.</li>
+<li>Randomization will be stratified based on the use of concomitant antipsychotic medication (yes vs.&nbsp;no).</li>
+</ul>
+</section>
+<section id="clinical-assessments" class="level2">
+<h2 class="anchored" data-anchor-id="clinical-assessments">4.4. Clinical Assessments</h2>
+<ul>
+<li>Assessments of persistence of effect after randomization will be based on:
+<ul>
+<li>AIMS</li>
+<li>Adverse events (AEs) of TD</li>
+<li>Discontinuation from study during the double-blind, placebo-controlled treatment period due to lack of efficacy</li>
+</ul></li>
+<li>Health-related quality of life and disability assessments include:
+<ul>
+<li>EuroQol 5 Dimensions 5 Levels (EQ-5D-5L)</li>
+<li>Sheehan Disability Scale (SDS)</li>
+</ul></li>
+<li>Safety assessments include:
+<ul>
+<li>AEs</li>
+<li>Clinical laboratory tests (hematology, clinical chemistry, and urinalysis)</li>
+<li>Vital signs (including orthostatic blood pressures and pulse)</li>
+<li>Physical examinations</li>
+<li>12-lead electrocardiograms (ECGs)</li>
+<li>Suicidal ideation and behavior – evaluated using the Columbia-Suicide Severity Rating Scale (C-SSRS)</li>
+<li>Brief Psychiatric Rating Scale (BPRS)</li>
+</ul></li>
+<li>Blood samples for plasma valbenazine and metabolite concentration analyses are also collected.</li>
+<li>Subjects/caregivers will be asked to record and provide dosing times from the evening before the treatment period visits when these samples are collected.</li>
+<li>The schedule of assessments can be found in the protocol.</li>
+</ul>
+</section>
+</section>
+<section id="general-considerations-for-data-analyses-and-handling" class="level1">
+<h1>6. GENERAL CONSIDERATIONS FOR DATA ANALYSES AND HANDLING</h1>
 
 
 </section>
