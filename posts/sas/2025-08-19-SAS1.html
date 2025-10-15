@@ -1360,8 +1360,15 @@ ul.task-list li input[type="checkbox"] {
 <h1>시험 기본</h1>
 <section id="시험-구조" class="level2">
 <h2 class="anchored" data-anchor-id="시험-구조">시험 구조</h2>
-<p>Performance Based Exam (즉, 문제는 이론 + 코드 기반 실습)</p>
-<p>출제 영역 - SQL (35%) - Macro (35%) - Advanced Techniques (30%)</p>
+<ul>
+<li><p>Performance Based Exam (즉, 문제는 이론 + 코드 기반 실습)</p></li>
+<li><p>출제 영역</p>
+<ul>
+<li>SQL (35%)</li>
+<li>Macro (35%)</li>
+<li>Advanced Techniques (30%)</li>
+</ul></li>
+</ul>
 <section id="accessing-data-using-sql-35" class="level3">
 <h3 class="anchored" data-anchor-id="accessing-data-using-sql-35">1. Accessing Data Using SQL (35%)</h3>
 <ul>
@@ -1384,19 +1391,74 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="macro-processing-35" class="level3">
 <h3 class="anchored" data-anchor-id="macro-processing-35">2. Macro Processing (35%)</h3>
-<p>매크로 변수 - 생성: %LET, INTO:, CALL SYMPUTX - Scope 제어: %GLOBAL, %LOCAL, SYMPUTX 옵션 - 이름 구분자(.) 활용 - 매크로 프로그램 - 정의/호출: %MACRO … %MEND</p>
-<p>파라미터 유무 호출 - 조건문: %IF-%THEN-%ELSE - 반복문: %DO-%END - AUTOCALL facility (재사용 가능한 매크로 저장/호출)</p>
-<p>매크로 함수 - 기본: %SCAN, %SUBSTR, %UPCASE - Quoting: %STR, %NRSTR - Evaluation: %SYSEVALF - %SYSFUNC → DATA step 함수 호출</p>
-<p>디버깅 - MLOGIC, MPRINT, SYMBOLGEN - %PUT 로그 확인</p>
-<p>데이터 기반 매크로 - &amp;&amp; 간접 참조</p>
-<p>Dictionary table 기반 매크로 - 반복적 매크로 호출 생성</p>
+<ul>
+<li>매크로 변수
+<ul>
+<li>생성: %LET, INTO:, CALL SYMPUTX</li>
+<li>Scope 제어: %GLOBAL, %LOCAL, SYMPUTX 옵션</li>
+<li>이름 구분자(.) 활용</li>
+<li>매크로 프로그램</li>
+<li>정의/호출: %MACRO … %MEND</li>
+</ul></li>
+<li>파라미터 유무 호출
+<ul>
+<li>조건문: %IF-%THEN-%ELSE</li>
+<li>반복문: %DO-%END</li>
+<li>AUTOCALL facility (재사용 가능한 매크로 저장/호출)</li>
+</ul></li>
+<li>매크로 함수
+<ul>
+<li>기본: %SCAN, %SUBSTR, %UPCASE</li>
+<li>Quoting: %STR, %NRSTR</li>
+<li>Evaluation: %SYSEVALF</li>
+<li>%SYSFUNC → DATA step 함수 호출</li>
+</ul></li>
+<li>디버깅
+<ul>
+<li>MLOGIC, MPRINT, SYMBOLGEN</li>
+<li>%PUT 로그 확인</li>
+</ul></li>
+<li>데이터 기반 매크로
+<ul>
+<li>&amp;&amp; 간접 참조</li>
+</ul></li>
+<li>Dictionary table 기반 매크로
+<ul>
+<li>반복적 매크로 호출 생성</li>
+</ul></li>
+</ul>
 </section>
 <section id="advanced-techniques-30" class="level3">
 <h3 class="anchored" data-anchor-id="advanced-techniques-30">3. Advanced Techniques (30%)</h3>
-<p>배열 (Array) - 문자형/숫자형 배열 - DIM 함수 - Temporary array - Dataset 값으로 초기화</p>
-<p>Hash Object - 선언: DECLARE HASH, DECLARE HITER - 주요 메서드: DEFINEKEY, DEFINEDATA, DEFINEDONE, FIND, ADD, OUTPUT - Iterator: FIRST, NEXT, LAST, PREV - 활용: Lookup table, 정렬, 순회</p>
-<p>Utility Procedures - PROC FORMAT – PICTURE 문 (숫자/날짜 포맷 정의, 옵션: round, default, prefix 등) - PROC FCMP – 사용자 정의 함수 (단일/다중 인자, 조건문 처리, CMPLIB= 옵션으로 호출)</p>
-<p>고급 함수 - FINDC, FINDW, COUNT, COUNTC, COUNTW - LAG - Regex 함수 (PRX) - 메타문자: () [] {} * + ? . | ^ $ - 함수: PRXMATCH, PRXPARSE, PRXCHANGE</p>
+<ul>
+<li>배열 (Array)
+<ul>
+<li>문자형/숫자형 배열</li>
+<li>DIM 함수</li>
+<li>Temporary array</li>
+<li>Dataset 값으로 초기화</li>
+</ul></li>
+<li>Hash Object
+<ul>
+<li>선언: DECLARE HASH, DECLARE HITER</li>
+<li>주요 메서드: DEFINEKEY, DEFINEDATA, DEFINEDONE, FIND, ADD, OUTPUT</li>
+<li>Iterator: FIRST, NEXT, LAST, PREV</li>
+<li>활용: Lookup table, 정렬, 순회</li>
+</ul></li>
+<li>Utility Procedures
+<ul>
+<li>PROC FORMAT – PICTURE 문 (숫자/날짜 포맷 정의, 옵션: round, default, prefix 등)</li>
+<li>PROC FCMP – 사용자 정의 함수 (단일/다중 인자, 조건문 처리, CMPLIB= 옵션으로 호출)</li>
+</ul></li>
+<li>고급 함수
+<ul>
+<li>FINDC, FINDW, COUNT, COUNTC, COUNTW</li>
+<li>LAG</li>
+<li>Regex 함수 (PRX)</li>
+<li>메타문자: () [] {} * + ? . | ^ $ </li>
+<li>함수: PRXMATCH, PRXPARSE, PRXCHANGE</li>
+</ul></li>
+</ul>
 </section>
 </section>
 </section>
@@ -1407,11 +1469,21 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>array</p>
 </blockquote>
-<p>Open a new programming window to create ACT01.sas in c:.</p>
-<p>Write a SAS program that will: - Create output data set work.ACT01 using sashelp.pricedata as input. - Use an array to increase the values of the price1 through price17 variables by 10%.</p>
-<p>Run your program and troubleshoot as necessary. When you are finished with the project: 1. Ensure that you have saved your program as ACT01.sas in c:. 2. From the score.sas program, call the scoreit macro using ACT01 as the parameter: %scoreit(ACT01).</p>
-<p>What is the value for Response in the SAS log? ___</p>
-<p>Correct Solution: All price values for all price1-through price17 will be increased by 10%. For example, price2 in observation 5 will now be 126.50. Arrays and do loops would be used in the program.</p>
+<ul>
+<li><p>Open a new programming window to create ACT01.sas in c:.</p></li>
+<li><p>Write a SAS program that will:</p>
+<ul>
+<li>Create output data set work.ACT01 using sashelp.pricedata as input.</li>
+<li>Use an array to increase the values of the price1 through price17 variables by 10%.</li>
+</ul></li>
+<li><p>Run your program and troubleshoot as necessary. When you are finished with the project:</p>
+<ol type="1">
+<li>Ensure that you have saved your program as ACT01.sas in c:.</li>
+<li>From the score.sas program, call the scoreit macro using ACT01 as the parameter: %scoreit(ACT01).</li>
+</ol></li>
+<li><p>What is the value for Response in the SAS log? ___</p></li>
+<li><p>Correct Solution: All price values for all price1-through price17 will be increased by 10%. For example, price2 in observation 5 will now be 126.50. Arrays and do loops would be used in the program.</p></li>
+</ul>
 <pre class="sas"><code>
 data work.atc01; 
 set sashelp.pricedata; 
@@ -1430,14 +1502,20 @@ run;
 <blockquote class="blockquote">
 <p>symputx</p>
 </blockquote>
-<p>Open a new programming window to create MAC01.sas in c:.</p>
-<p>Write a DATA step that reads only the first observation of the sashelp.cars data set and stores the value of the Make variable in a macro variable named CarMaker.</p>
-<p>The macro variable must be defined from within the DATA Step.</p>
-<p>Run your program and troubleshoot as necessary.</p>
-<p>When you are finished with the project: 1. Ensure that you have saved your program as MAC01.sas in c:. 2. From the score.sas program, call the scoreit macro using MAC01 as the parameter: %scoreit(MAC01).</p>
-<p>What is the value for Response in the SAS log? __</p>
-<p>Correct Solution: The CarMaker macro variable will have a value of Acura.</p>
-<p>The program will include a symputx routine.</p>
+<ul>
+<li><p>Open a new programming window to create MAC01.sas in c:.</p></li>
+<li><p>Write a DATA step that reads only the first observation of the sashelp.cars data set and stores the value of the Make variable in a macro variable named CarMaker.</p></li>
+<li><p>The macro variable must be defined from within the DATA Step.</p></li>
+<li><p>Run your program and troubleshoot as necessary.</p></li>
+<li><p>When you are finished with the project:</p>
+<ol type="1">
+<li>Ensure that you have saved your program as MAC01.sas in c:.</li>
+<li>From the score.sas program, call the scoreit macro using MAC01 as the parameter: %scoreit(MAC01).</li>
+</ol></li>
+<li><p>What is the value for Response in the SAS log? __</p></li>
+<li><p>Correct Solution: The CarMaker macro variable will have a value of Acura.</p></li>
+<li><p>The program will include a symputx routine.</p></li>
+</ul>
 <pre class="sas"><code>
 data _null_; 
 set sashelp.cars; 
@@ -1452,14 +1530,27 @@ run;
 <blockquote class="blockquote">
 <p>proc sql, mean(), group by</p>
 </blockquote>
-<p>Open a new programming window to create SQL01.sas in c:.</p>
-<p>Write an SQL query that will: - Create output data set work.SQL01 using sashelp.cars as input. - Compute the average MPG_City for each group of Make.</p>
-<p>Name the calculated variable AvgCityMPG. - The output data should have 2 columns, Make and AvgCityMPG.</p>
-<p>Run your program and troubleshoot as necessary.</p>
-<p>When you are finished with the project: 1. Ensure that you have saved your program as SQL01.sas in c:. 2. From the score.sas program, call the scoreit macro using SQL01 as the parameter: %scoreit(SQL01).</p>
-<p>What is the value for Response in the SAS log? __</p>
-<p>Correct Solution: An SQL query with a group by clause will be written.</p>
-<p>The AvgCityMPG for MAKE=MINI will be 26.5.</p>
+<ul>
+<li><p>Open a new programming window to create SQL01.sas in c:.</p></li>
+<li><p>Write an SQL query that will:</p>
+<ul>
+<li>Create output data set work.SQL01 using sashelp.cars as input.</li>
+<li>Compute the average MPG_City for each group of Make.</li>
+</ul></li>
+<li><p>Name the calculated variable AvgCityMPG.</p>
+<ul>
+<li>The output data should have 2 columns, Make and AvgCityMPG.</li>
+</ul></li>
+<li><p>Run your program and troubleshoot as necessary.</p></li>
+<li><p>When you are finished with the project:</p>
+<ol type="1">
+<li>Ensure that you have saved your program as SQL01.sas in c:.</li>
+<li>From the score.sas program, call the scoreit macro using SQL01 as the parameter: %scoreit(SQL01).</li>
+</ol></li>
+<li><p>What is the value for Response in the SAS log? __</p></li>
+<li><p>Correct Solution: An SQL query with a group by clause will be written.</p></li>
+<li><p>The AvgCityMPG for MAKE=MINI will be 26.5.</p></li>
+</ul>
 <pre class="sas"><code>
 proc sql; 
     create table work.SQL01 as 
@@ -1482,12 +1573,12 @@ quit;
    where department = 'HR' and salary &gt; 40000
    order by Annual_Salary desc;
 quit;</code></pre>
-<p>-&gt; id, name, Annual_Salary만 출력, employees 테이블에서 HR 부서 &amp; 급여 &gt; 40000인 직원만 뽑음, 연봉 높은 사람 순으로 정렬,</p>
 <ul>
-<li><code>FROM employees</code>→ employees 테이블에서 데이터를 불러옴.</li>
-<li><code>SELECT id, name salary * 12 as Annual_Salary</code>→ 계산 열(연봉) 생성, AS로 새 이름 부여</li>
-<li><code>WHERE department = 'HR' and salary &gt; 40000</code>→ 부서가 HR이고, 월급이 40,000 초과인 직원만 필터링.</li>
-<li><code>ORDER BY Annual_Salary desc</code> → 연봉(Annual_Salary) 기준 내림차순 정렬.</li>
+<li><p>id, name, Annual_Salary만 출력, employees 테이블에서 HR 부서 &amp; 급여 &gt; 40000인 직원만 뽑음, 연봉 높은 사람 순으로 정렬,</p></li>
+<li><p><code>FROM employees</code>→ employees 테이블에서 데이터를 불러옴.</p></li>
+<li><p><code>SELECT id, name salary * 12 as Annual_Salary</code>→ 계산 열(연봉) 생성, AS로 새 이름 부여</p></li>
+<li><p><code>WHERE department = 'HR' and salary &gt; 40000</code>→ 부서가 HR이고, 월급이 40,000 초과인 직원만 필터링.</p></li>
+<li><p><code>ORDER BY Annual_Salary desc</code> → 연봉(Annual_Salary) 기준 내림차순 정렬.</p></li>
 </ul>
 </section>
 <section id="새-변수-생성-as-계산열-case-when" class="level2">
@@ -1503,7 +1594,9 @@ quit;</code></pre>
           salary * 12 as Annual_Salary
    from employees;
 quit;</code></pre>
-<p>-&gt; salary * 12 계산 열을 만들고, 새 변수 이름은 Annual_Salary.</p>
+<ul>
+<li>salary * 12 계산 열을 만들고, 새 변수 이름은 Annual_Salary.</li>
+</ul>
 <ol start="2" type="1">
 <li>계산 열 (Computed Column); 기존 컬럼을 이용해 계산된 새로운 컬럼을 만듦.</li>
 </ol>
@@ -1515,7 +1608,9 @@ quit;</code></pre>
           weight / (height*height) as BMI
    from health;
 quit;</code></pre>
-<p>-&gt; weight와 height를 활용해서 BMI라는 계산 열 생성.</p>
+<ul>
+<li>weight와 height를 활용해서 BMI라는 계산 열 생성.</li>
+</ul>
 <p><code>-</code> 특징 - SELECT 문에서만 존재 (원본 데이터셋에는 추가되지 않음). - 다른 계산열에 재사용 가능 (단, 순서상 앞에서 정의한 계산 열은 뒤에서 사용 가능).</p>
 <pre class="sas"><code>proc sql;
    select id,
@@ -1523,7 +1618,9 @@ quit;</code></pre>
           calculated Annual_Salary * 0.1 as Tax
    from employees;
 quit;</code></pre>
-<p>-&gt; CALCULATED 키워드: 이미 SELECT 안에서 만든 계산 열 재사용.</p>
+<ul>
+<li>CALCULATED 키워드: 이미 SELECT 안에서 만든 계산 열 재사용.</li>
+</ul>
 <ol start="3" type="1">
 <li>CASE WHEN; 조건문을 사용하여 새로운 변수를 생성.</li>
 </ol>
@@ -1540,8 +1637,15 @@ quit;</code></pre>
           end as Grade
    from exam;
 quit;</code></pre>
-<p>-&gt; 점수를 등급으로 변환하여 새 변수 Grade 생성.</p>
-<p><code>-</code> 특징: - END로 닫아야 함. - 반드시 AS 새변수명으로 이름 부여. - 문자형/숫자형 혼합 불가 (모두 같은 타입이어야 함).</p>
+<ul>
+<li><p>점수를 등급으로 변환하여 새 변수 Grade 생성.</p></li>
+<li><p>특징:</p>
+<ul>
+<li>END로 닫아야 함.</li>
+<li>반드시 AS 새변수명으로 이름 부여.</li>
+<li>문자형/숫자형 혼합 불가 (모두 같은 타입이어야 함).</li>
+</ul></li>
+</ul>
 </section>
 <section id="조인-inner-left-right-full-coalesce-함수-포함" class="level2">
 <h2 class="anchored" data-anchor-id="조인-inner-left-right-full-coalesce-함수-포함">조인: INNER, LEFT, RIGHT, FULL (COALESCE 함수 포함)</h2>
@@ -1557,7 +1661,9 @@ quit;</code></pre>
         inner join tableB as b
         on a.id = b.id;
 quit;</code></pre>
-<p>-&gt; tableA와 tableB에 동시에 존재하는 id 값만 결과에 출력됨.</p>
+<ul>
+<li>tableA와 tableB에 동시에 존재하는 id 값만 결과에 출력됨.</li>
+</ul>
 <ol start="2" type="1">
 <li>LEFT JOIN; 왼쪽 테이블(A)의 모든 행을 결과에 포함.</li>
 </ol>
@@ -1570,7 +1676,9 @@ quit;</code></pre>
         left join tableB as b
         on a.id = b.id;
 quit;</code></pre>
-<p>-&gt; tableA의 모든 id가 나오고, 매칭 안 되는 경우 score는 NULL.</p>
+<ul>
+<li>tableA의 모든 id가 나오고, 매칭 안 되는 경우 score는 NULL.</li>
+</ul>
 <ol start="3" type="1">
 <li>RIGHT JOIN; 오른쪽 테이블(B)의 모든 행을 결과에 포함.</li>
 </ol>
@@ -1583,7 +1691,9 @@ quit;</code></pre>
         right join tableB as b
         on a.id = b.id;
 quit;</code></pre>
-<p>-&gt; tableB의 모든 id가 나오고, 매칭 안 되는 경우 name은 NULL.</p>
+<ul>
+<li>tableB의 모든 id가 나오고, 매칭 안 되는 경우 name은 NULL.</li>
+</ul>
 <ol start="4" type="1">
 <li>FULL JOIN; 두 테이블(A, B) 모두의 모든 행을 결과에 포함.</li>
 </ol>
@@ -1596,7 +1706,9 @@ quit;</code></pre>
         full join tableB as b
         on a.id = b.id;
 quit;</code></pre>
-<p>-&gt; tableA와 tableB의 전체 id가 포함되며, 없는 부분은 NULL.</p>
+<ul>
+<li>tableA와 tableB의 전체 id가 포함되며, 없는 부분은 NULL.</li>
+</ul>
 <ol start="5" type="1">
 <li>COALESCE 함수; NULL 값을 처리하기 위해 사용. 여러 인수 중 처음으로 NULL이 아닌 값을 반환.</li>
 </ol>
@@ -1611,7 +1723,9 @@ quit;</code></pre>
         full join tableB as b
         on a.id = b.id;
 quit;</code></pre>
-<p>-&gt; a.id가 없으면 b.id를 대신 사용. 즉, 두 테이블을 FULL JOIN 할 때 키를 깔끔하게 하나로 합칠 수 있음.</p>
+<ul>
+<li>a.id가 없으면 b.id를 대신 사용. 즉, 두 테이블을 FULL JOIN 할 때 키를 깔끔하게 하나로 합칠 수 있음.</li>
+</ul>
 </section>
 <section id="set-operators-union-outer-union-except-intersect" class="level2">
 <h2 class="anchored" data-anchor-id="set-operators-union-outer-union-except-intersect">Set operators: UNION, OUTER UNION, EXCEPT, INTERSECT</h2>
@@ -1681,7 +1795,9 @@ quit;</code></pre>
    union
    select id, name from tableB;
 quit;</code></pre>
-<p>-&gt; tableA와 tableB의 행을 합치되, 중복은 제거.</p>
+<ul>
+<li>tableA와 tableB의 행을 합치되, 중복은 제거.</li>
+</ul>
 <ol start="2" type="1">
 <li>OUTER UNION; 두 테이블을 세로 + 가로 방향으로 합치는 개념.</li>
 </ol>
@@ -1694,7 +1810,9 @@ quit;</code></pre>
    outer union corr
    select id, score from tableB;
 quit;</code></pre>
-<p>-&gt; CORR 옵션: 같은 이름의 컬럼만 정렬해서 붙이고, 없는 값은 NULL.</p>
+<ul>
+<li>CORR 옵션: 같은 이름의 컬럼만 정렬해서 붙이고, 없는 값은 NULL.</li>
+</ul>
 <ol start="3" type="1">
 <li>EXCEPT; 첫 번째 SELECT 결과에서 두 번째 SELECT 결과를 뺀 것.</li>
 </ol>
@@ -1706,7 +1824,9 @@ quit;</code></pre>
    except
    select id from tableB;
 quit;</code></pre>
-<p>-&gt; tableA에는 있지만 tableB에는 없는 id만 출력.</p>
+<ul>
+<li>tableA에는 있지만 tableB에는 없는 id만 출력.</li>
+</ul>
 <ol start="4" type="1">
 <li>INTERSECT; 두 SELECT 결과에서 공통으로 존재하는 행만 반환.</li>
 </ol>
@@ -1718,7 +1838,9 @@ quit;</code></pre>
    intersect
    select id from tableB;
 quit;</code></pre>
-<p>-&gt; 두 테이블에 모두 존재하는 id만 출력.</p>
+<ul>
+<li>두 테이블에 모두 존재하는 id만 출력.</li>
+</ul>
 </section>
 <section id="집계-avg-count-max-min-sum-group-by-having" class="level2">
 <h2 class="anchored" data-anchor-id="집계-avg-count-max-min-sum-group-by-having">집계: AVG, COUNT, MAX, MIN, SUM, GROUP BY, HAVING</h2>
@@ -1778,7 +1900,9 @@ quit;</code></pre>
    from employees
    group by department;
 quit;</code></pre>
-<p>-&gt; 부서별 평균 급여 계산.</p>
+<ul>
+<li>부서별 평균 급여 계산.</li>
+</ul>
 <ol start="3" type="1">
 <li>HAVING</li>
 </ol>
@@ -1792,7 +1916,9 @@ quit;</code></pre>
    group by department
    having avg(salary) &gt; 50000;
 quit;</code></pre>
-<p>-&gt; 평균 급여가 50,000 초과인 부서만 출력.</p>
+<ul>
+<li>평균 급여가 50,000 초과인 부서만 출력.</li>
+</ul>
 <ol start="4" type="1">
 <li>WHERE vs HAVING 차이</li>
 </ol>
@@ -1898,7 +2024,9 @@ quit;</code></pre>
    select distinct department
    from employees;
 quit;</code></pre>
-<p>-&gt; 부서 이름(department)이 중복 없이 한 번씩만 출력.</p>
+<ul>
+<li>부서 이름(department)이 중복 없이 한 번씩만 출력.</li>
+</ul>
 <ol start="2" type="1">
 <li>여러 컬럼과 함께 사용</li>
 </ol>
@@ -1909,7 +2037,9 @@ quit;</code></pre>
    select distinct department, job_title
    from employees;
 quit;</code></pre>
-<p>-&gt; (department, job_title) 조합이 같은 경우 한 줄만 출력.</p>
+<ul>
+<li>(department, job_title) 조합이 같은 경우 한 줄만 출력.</li>
+</ul>
 <ol start="3" type="1">
 <li>COUNT(DISTINCT …)</li>
 </ol>
@@ -1921,7 +2051,9 @@ quit;</code></pre>
    select count(distinct department) as Dept_N
    from employees;
 quit;</code></pre>
-<p>-&gt; department의 고유 개수 출력.</p>
+<ul>
+<li>department의 고유 개수 출력.</li>
+</ul>
 <ol start="4" type="1">
 <li>DISTINCT와 GROUP BY 차이</li>
 </ol>
@@ -1941,7 +2073,9 @@ proc sql;
    from employees
    group by department;
 quit;</code></pre>
-<p>-&gt; DISTINCT: 그냥 고유 부서 목록, GROUP BY: 부서별 평균 급여</p>
+<ul>
+<li>DISTINCT: 그냥 고유 부서 목록, GROUP BY: 부서별 평균 급여</li>
+</ul>
 </section>
 <section id="서브쿼리-인라인-뷰-활용" class="level2">
 <h2 class="anchored" data-anchor-id="서브쿼리-인라인-뷰-활용">서브쿼리, 인라인 뷰 활용</h2>
@@ -1959,7 +2093,9 @@ quit;</code></pre>
    from employees
    where salary &gt; (select avg(salary) from employees);
 quit;</code></pre>
-<p>-&gt; 직원 급여가 전체 평균 급여보다 큰 행만 선택.</p>
+<ul>
+<li>직원 급여가 전체 평균 급여보다 큰 행만 선택.</li>
+</ul>
 <ol start="2" type="1">
 <li>다중 값 서브쿼리 (IN, EXISTS); 서브쿼리가 여러 행을 반환.</li>
 </ol>
@@ -1968,7 +2104,9 @@ quit;</code></pre>
    from employees
    where department in (select department from departments where region = 'EU');
 quit;</code></pre>
-<p>-&gt; 유럽(EU) 지역 부서에 속한 직원만 선택.</p>
+<ul>
+<li>유럽(EU) 지역 부서에 속한 직원만 선택.</li>
+</ul>
 <ol start="3" type="1">
 <li>상관 서브쿼리 (Correlated Subquery); 서브쿼리가 바깥 쿼리의 컬럼과 연결됨.</li>
 </ol>
@@ -1979,7 +2117,9 @@ quit;</code></pre>
                    from employees e2
                    where e1.department = e2.department);
 quit;</code></pre>
-<p>-&gt; 각 부서 평균 급여보다 급여가 높은 직원 선택.</p>
+<ul>
+<li>각 부서 평균 급여보다 급여가 높은 직원 선택.</li>
+</ul>
 <ol start="2" type="1">
 <li>인라인 뷰 (Inline View); FROM 절 안에 들어가는 서브쿼리 (일시적 테이블처럼 사용).</li>
 </ol>
@@ -1990,7 +2130,9 @@ quit;</code></pre>
          group by department) as dept_avg
    where Avg_Sal &gt; 50000;
 quit;</code></pre>
-<p>-&gt; 먼저 부서별 평균 급여(dept_avg)를 만든 후, 평균이 50,000 초과인 부서만 선택.</p>
+<ul>
+<li>먼저 부서별 평균 급여(dept_avg)를 만든 후, 평균이 50,000 초과인 부서만 선택.</li>
+</ul>
 </section>
 <section id="sas-확장-기능" class="level2">
 <h2 class="anchored" data-anchor-id="sas-확장-기능">SAS 확장 기능:</h2>
@@ -2042,7 +2184,9 @@ quit;</code></pre>
 <pre class="sas"><code>data emp_keep;
    set employees(keep=id name salary);
 run;</code></pre>
-<p>-&gt; employees에서 id, name, salary만 가져와서 새 데이터셋 생성</p>
+<ul>
+<li>employees에서 id, name, salary만 가져와서 새 데이터셋 생성</li>
+</ul>
 <ol start="2" type="1">
 <li>DROP=; 데이터셋에서 제외할 변수 지정</li>
 </ol>
@@ -2053,14 +2197,18 @@ run;</code></pre>
 <pre class="sas"><code>data emp_drop;
    set employees(drop=address phone);
 run;</code></pre>
-<p>-&gt; employees에서 address, phone 제외하고 나머지 변수 저장</p>
+<ul>
+<li>employees에서 address, phone 제외하고 나머지 변수 저장</li>
+</ul>
 <ol start="3" type="1">
 <li>RENAME=; 변수 이름 변경</li>
 </ol>
 <pre class="sas"><code>data emp_rename;
    set employees(rename=(salary=Monthly_Salary dept=Department));
 run;</code></pre>
-<p>-&gt; salary → Monthly_Salary, dept → Department로 변경</p>
+<ul>
+<li>salary → Monthly_Salary, dept → Department로 변경</li>
+</ul>
 <ol start="4" type="1">
 <li>OBS=; 읽어올 관측치 개수 제한</li>
 </ol>
@@ -2070,7 +2218,9 @@ run;</code></pre>
 <pre class="sas"><code>data emp_obs;
    set employees(obs=10);
 run;</code></pre>
-<p>-&gt; employees에서 앞의 10개 행만 불러옴</p>
+<ul>
+<li>employees에서 앞의 10개 행만 불러옴</li>
+</ul>
 <ol start="5" type="1">
 <li>함께 사용 예시</li>
 </ol>
@@ -2137,14 +2287,18 @@ run;</code></pre>
 <pre class="sas"><code>proc sql inobs=10;
    select * from employees;
 quit;</code></pre>
-<p>-&gt; employees에서 앞의 10개 행만 읽어서 SQL 실행.</p>
+<ul>
+<li>employees에서 앞의 10개 행만 읽어서 SQL 실행.</li>
+</ul>
 <ol start="2" type="1">
 <li>OUTOBS=; 출력 행 제한 (결과로 보여주는 행 개수 제한)</li>
 </ol>
 <pre class="sas"><code>proc sql outobs=5;
    select * from employees;
 quit;</code></pre>
-<p>-&gt; employees 전체를 읽지만, 결과는 앞의 5개 행만 출력.</p>
+<ul>
+<li>employees 전체를 읽지만, 결과는 앞의 5개 행만 출력.</li>
+</ul>
 <ol start="3" type="1">
 <li>NOPRINT; SQL 실행은 하지만 결과 테이블은 출력하지 않음.</li>
 </ol>
@@ -2157,7 +2311,9 @@ quit;</code></pre>
    from employees
    group by department;
 quit;</code></pre>
-<p>-&gt; 테이블은 생성되지만 로그/출력 창에는 결과 안 뜸.</p>
+<ul>
+<li>테이블은 생성되지만 로그/출력 창에는 결과 안 뜸.</li>
+</ul>
 <ol start="4" type="1">
 <li>NUMBER; 결과 출력 시, 각 행 왼쪽에 행 번호를 붙여줌.</li>
 </ol>
@@ -2165,7 +2321,9 @@ quit;</code></pre>
    select id, name, salary
    from employees;
 quit;</code></pre>
-<p>-&gt; 결과창에 1, 2, 3… 번호가 붙어서 출력됨.</p>
+<ul>
+<li>결과창에 1, 2, 3… 번호가 붙어서 출력됨.</li>
+</ul>
 </section>
 <section id="functions-scan-substr-length" class="level3">
 <h3 class="anchored" data-anchor-id="functions-scan-substr-length">Functions (SCAN, SUBSTR, LENGTH)</h3>
@@ -2221,10 +2379,10 @@ quit;</code></pre>
    word3 = scan(x,3);   /* Certification */
    put word1= word2= word3=;
 run;</code></pre>
-<p>-&gt; 시험에서는 이메일 주소에서 @ 앞부분 추출 같은 문제가 자주 나옴.</p>
 <ul>
-<li><code>scan("user@test.com", 1, "@")</code> → “user”</li>
-<li><code>scan("user@test.com", 2, "@")</code> → “test.com”</li>
+<li><p>시험에서는 이메일 주소에서 @ 앞부분 추출 같은 문제가 자주 나옴.</p></li>
+<li><p><code>scan("user@test.com", 1, "@")</code> → “user”</p></li>
+<li><p><code>scan("user@test.com", 2, "@")</code> → “test.com”</p></li>
 </ul>
 <ol start="2" type="1">
 <li>SUBSTR; 문자열에서 일정 위치부터 지정 길이만큼 잘라내기</li>
@@ -2384,7 +2542,9 @@ run;</code></pre>
    from dictionary.columns
    where libname='WORK' and memname='EMPLOYEES';
 quit;</code></pre>
-<p>-&gt; WORK 라이브러리의 EMPLOYEES 데이터셋 변수 정보 조회</p>
+<ul>
+<li>WORK 라이브러리의 EMPLOYEES 데이터셋 변수 정보 조회</li>
+</ul>
 <ol start="2" type="1">
 <li>데이터셋(테이블) 정보 조회</li>
 </ol>
@@ -2393,7 +2553,9 @@ quit;</code></pre>
    from dictionary.tables
    where libname='WORK';
 quit;</code></pre>
-<p>-&gt; WORK 라이브러리에 있는 모든 데이터셋의 행 수, 생성일, 수정일 확인</p>
+<ul>
+<li>WORK 라이브러리에 있는 모든 데이터셋의 행 수, 생성일, 수정일 확인</li>
+</ul>
 <ol start="3" type="1">
 <li>라이브러리 정보 확인</li>
 </ol>
@@ -2401,7 +2563,9 @@ quit;</code></pre>
    select libname, path, engine
    from dictionary.libnames;
 quit;</code></pre>
-<p>-&gt; 라이브러리 위치 및 엔진 확인</p>
+<ul>
+<li>라이브러리 위치 및 엔진 확인</li>
+</ul>
 </section>
 <section id="calculated-키워드" class="level3">
 <h3 class="anchored" data-anchor-id="calculated-키워드">CALCULATED 키워드</h3>
@@ -2491,7 +2655,9 @@ quit;</code></pre>
 quit;
 
 %put &amp;=avg_sal;</code></pre>
-<p>-&gt; 평균 급여를 &amp;avg_sal 매크로 변수에 저장</p>
+<ul>
+<li>평균 급여를 &amp;avg_sal 매크로 변수에 저장</li>
+</ul>
 <ol start="2" type="1">
 <li>여러 값 저장</li>
 </ol>
@@ -2503,9 +2669,9 @@ quit;
 quit;
 
 %put &amp;=namelist;</code></pre>
-<p>-&gt; Alice Bob Carol 이런 식으로 저장</p>
 <ul>
-<li>여러 개 매크로 변수에 순서대로 할당:</li>
+<li><p>Alice Bob Carol 이런 식으로 저장</p></li>
+<li><p>여러 개 매크로 변수에 순서대로 할당:</p></li>
 </ul>
 <pre class="sas"><code>proc sql noprint;
    select name
@@ -2523,8 +2689,8 @@ quit;
 run;
 
 %put &amp;=empname;</code></pre>
-<p>-&gt; 마지막 관측치의 name 값이 &amp;empname에 저장</p>
 <ul>
+<li><p>마지막 관측치의 name 값이 &amp;empname에 저장</p></li>
 <li><p>행 단위 반복 가능 → 관측치별 매크로 변수 만들 수 있음</p></li>
 <li><p>SYMPUTX는 공백 제거하고, 자동으로 문자/숫자 처리</p></li>
 <li><p>SYMPUT보다 SYMPUTX를 쓰는 게 권장됨</p></li>
@@ -2589,7 +2755,9 @@ run;
 <pre class="sas"><code>%global gvar;
 %let gvar = 100;
 %put &amp;=gvar;   /* 100 */</code></pre>
-<p>-&gt; 이미 존재하는 전역 변수면 값은 유지, 없으면 새로 생성</p>
+<ul>
+<li>이미 존재하는 전역 변수면 값은 유지, 없으면 새로 생성</li>
+</ul>
 <ol start="3" type="1">
 <li>%LOCAL</li>
 </ol>
@@ -2603,7 +2771,9 @@ run;
 %mend;
 %test;
 %put &amp;=lvar;   /* WARNING: macro variable not resolved */</code></pre>
-<p>-&gt; 매크로 종료 시 자동 소멸</p>
+<ul>
+<li>매크로 종료 시 자동 소멸</li>
+</ul>
 <ol start="4" type="1">
 <li>CALL SYMPUTX 옵션</li>
 </ol>
@@ -2651,7 +2821,9 @@ run;
 
 %put &amp;month.Sales;   /* 매크로 변수 monthSalses 찾으려 함 → 에러 */
 %put &amp;month.Sales;   /* month → Jan + Sales → JanSales */</code></pre>
-<p>-&gt; &amp;month.Sales 처럼 구분자 붙여야 원하는 결과 나옴.</p>
+<ul>
+<li>&amp;month.Sales 처럼 구분자 붙여야 원하는 결과 나옴.</li>
+</ul>
 <ol start="3" type="1">
 <li>루프에서 자주 쓰임</li>
 </ol>
@@ -2700,7 +2872,9 @@ run;
 %mend greet;
 
 %greet(Name);</code></pre>
-<p>%greet(Name); 실행 시 Hello, Name! 출력</p>
+<ul>
+<li>%greet(Name); 실행 시 Hello, Name! 출력</li>
+</ul>
 </section>
 <section id="파라미터-유무-호출" class="level3">
 <h3 class="anchored" data-anchor-id="파라미터-유무-호출">파라미터 유무 호출</h3>
@@ -3128,7 +3302,9 @@ options mautosource
 </ul>
 <pre class="sas"><code>%let curdate = %sysfunc(today(),yymmddn8.);
 %put &amp;=curdate;   /* 20250906 */</code></pre>
-<p>-&gt; 오늘 날짜를 YYYYMMDD 형태로 매크로 변수에 저장</p>
+<ul>
+<li>오늘 날짜를 YYYYMMDD 형태로 매크로 변수에 저장</li>
+</ul>
 <section id="macro-변수-저장" class="level4">
 <h4 class="anchored" data-anchor-id="macro-변수-저장">macro 변수 저장</h4>
 <ul>
@@ -3308,7 +3484,9 @@ MPRINT(STEP):   run;</code></pre>
 <li>log</li>
 </ul>
 <pre class="sas"><code>CITY=London</code></pre>
-<p>-&gt; &amp;=변수명 형태로 쓰면 변수명=값 형태로 깔끔하게 출력됨</p>
+<ul>
+<li>&amp;=변수명 형태로 쓰면 변수명=값 형태로 깔끔하게 출력됨</li>
+</ul>
 <ol start="2" type="1">
 <li>사용자 정의 메시지</li>
 </ol>
@@ -3321,7 +3499,9 @@ MPRINT(STEP):   run;</code></pre>
 <pre class="sas"><code>NOTE: Macro started!
 WARNING: Check input dataset
 ERROR: Something went wrong</code></pre>
-<p>-&gt; 실제 SAS 로그의 NOTE / WARNING / ERROR 스타일로 표시됨</p>
+<ul>
+<li>실제 SAS 로그의 NOTE / WARNING / ERROR 스타일로 표시됨</li>
+</ul>
 <ol start="3" type="1">
 <li>시스템 매크로 변수 출력</li>
 </ol>
@@ -3490,7 +3670,9 @@ This is loop number 3</code></pre>
 <pre class="sas"><code>City: Seoul
 City: London
 City: Paris</code></pre>
-<p>-&gt; 여기서 간접참조(&amp;&amp;) 활용됨 → &amp;&amp;city&amp;i → &amp;city1, &amp;city2, &amp;city3</p>
+<ul>
+<li>여기서 간접참조(&amp;&amp;) 활용됨 → &amp;&amp;city&amp;i → &amp;city1, &amp;city2, &amp;city3</li>
+</ul>
 <ol start="3" type="1">
 <li>SQL INTO: 이용해서 매크로 호출 생성</li>
 </ol>
@@ -3531,7 +3713,9 @@ Student: Barbara</code></pre>
 %mend;
 
 %print_multi(sashelp.class sashelp.cars sashelp.iris);</code></pre>
-<p>-&gt; 3개 데이터셋 각각에 대해 proc print 실행</p>
+<ul>
+<li>3개 데이터셋 각각에 대해 proc print 실행</li>
+</ul>
 </section>
 <section id="오늘-날짜-표현-방법" class="level3">
 <h3 class="anchored" data-anchor-id="오늘-날짜-표현-방법">오늘 날짜 표현 방법</h3>
@@ -3640,7 +3824,9 @@ Student: Barbara</code></pre>
 10 20 30
 ;
 run;</code></pre>
-<p>-&gt; score1, score2, score3가 배열 scores[1], scores[2], scores[3]로 참조 가능</p>
+<ul>
+<li>score1, score2, score3가 배열 scores[1], scores[2], scores[3]로 참조 가능</li>
+</ul>
 <p>문자형 배열</p>
 <ul>
 <li>array 선언 시 $ 기호로 문자형 선언</li>
@@ -3652,7 +3838,9 @@ run;</code></pre>
 Kim Lee Park
 ;
 run;</code></pre>
-<p>-&gt; names[1] = Kim, names[2] = Lee, names[3] = Park</p>
+<ul>
+<li>names[1] = Kim, names[2] = Lee, names[3] = Park</li>
+</ul>
 </section>
 <section id="dim-함수" class="level3">
 <h3 class="anchored" data-anchor-id="dim-함수">DIM 함수</h3>
@@ -3787,7 +3975,9 @@ run;</code></pre>
 <li>Iterator 생성 (순회용)</li>
 </ul>
 <pre class="sas"><code>declare hiter hi("h");</code></pre>
-<p>-&gt; h는 해시 객체 이름, hi는 반복자(iterator)</p>
+<ul>
+<li>h는 해시 객체 이름, hi는 반복자(iterator)</li>
+</ul>
 </section>
 <section id="주요-메서드-definekey-definedata-definedone-find-add-output" class="level3">
 <h3 class="anchored" data-anchor-id="주요-메서드-definekey-definedata-definedone-find-add-output">주요 메서드: DEFINEKEY, DEFINEDATA, DEFINEDONE, FIND, ADD, OUTPUT</h3>
