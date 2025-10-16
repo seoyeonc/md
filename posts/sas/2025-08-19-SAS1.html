@@ -4066,12 +4066,22 @@ array Celsius [7:9] TempC7-TempC9;</code></pre>
 </ul>
 <pre class="sas"><code>array Avg [2013:2014,3] (40.9, 40.7, 38.6, 42.5, 42.6, 45.4): </code></pre>
 <ul>
-<li><em>N</em> = 1일 때만 작동 → 즉, 한 번의 데이터 스텝 실행 중에 array_data의 두 줄 모두 처리함.</li>
-<li>set array_data는 두 번 호출되며 각 줄을 Row=1, Row=2로 저장</li>
-<li>배열의 메모리 배치 순서: TwoD[1,1] → TwoD[1,2] → TwoD[1,3] → TwoD[2,1] → TwoD[2,2] → TwoD[2,3]</li>
+<li><p><em>N</em> = 1일 때만 작동 → 즉, 한 번의 데이터 스텝 실행 중에 array_data의 두 줄 모두 처리함.</p></li>
+<li><p>set array_data는 두 번 호출되며 각 줄을 Row=1, Row=2로 저장</p></li>
+<li><p>배열의 메모리 배치 순서: TwoD[1,1] → TwoD[1,2] → TwoD[1,3] → TwoD[2,1] → TwoD[2,2] → TwoD[2,3]</p></li>
+<li><p>Row=1 → OneD = Jack, Mary, Sally</p>
+<ul>
+<li>TwoD[1,1] = Jack</li>
+<li>TwoD[1,2] = Mary</li>
+<li>TwoD[1,3] = Sally</li>
+</ul></li>
+<li><p>Row=2 → OneD = Christy, John, Marty</p>
+<ul>
+<li>TwoD[2,1] = Christy</li>
+<li>TwoD[2,2] = John</li>
+<li>TwoD[2,3] = Marty</li>
+</ul></li>
 </ul>
-<p>Row=1 → OneD = Jack, Mary, Sally - TwoD[1,1] = Jack - TwoD[1,2] = Mary - TwoD[1,3] = Sally</p>
-<p>Row=2 → OneD = Christy, John, Marty - TwoD[2,1] = Christy - TwoD[2,2] = John - TwoD[2,3] = Marty</p>
 <pre class="sas"><code>data new_data(drop=Row Column);
   array TwoD[2,3] $;           /* 2행 3열 문자형 배열 선언 */
   retain TwoD1-TwoD6;          /* 배열 값을 유지 */
@@ -4746,51 +4756,51 @@ proc print data=test; run;</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td>.</td>
+<td><code>.</code></td>
 <td>아무 문자 하나 (줄바꿈 제외)</td>
 </tr>
 <tr class="even">
-<td> 숫자 (digit, 0-9)</td>
-<td></td>
+<td><code>\d</code></td>
+<td>숫자 (digit, 0-9)</td>
 </tr>
 <tr class="odd">
-<td></td>
+<td><code>\w</code></td>
 <td>알파벳/숫자/언더스코어</td>
 </tr>
 <tr class="even">
-<td></td>
+<td><code>\s</code></td>
 <td>공백 문자 (space, tab 등)</td>
 </tr>
 <tr class="odd">
-<td>^</td>
+<td><code>^</code></td>
 <td>문자열의 시작</td>
 </tr>
 <tr class="even">
-<td>$</td>
+<td><code>$</code></td>
 <td>문자열의 끝</td>
 </tr>
 <tr class="odd">
-<td>+</td>
+<td><code>+</code></td>
 <td>1개 이상 반복</td>
 </tr>
 <tr class="even">
-<td>*</td>
+<td><code>*</code></td>
 <td>0개 이상 반복</td>
 </tr>
 <tr class="odd">
-<td>?</td>
+<td><code>?</code></td>
 <td>0개 또는 1개</td>
 </tr>
 <tr class="even">
-<td>[abc]</td>
+<td><code>[abc]</code></td>
 <td>a, b, 또는 c 중 하나</td>
 </tr>
 <tr class="odd">
-<td>[^abc]</td>
+<td><code>[^abc]</code></td>
 <td>a, b, c 이외의 문자</td>
 </tr>
 <tr class="even">
-<td>(abc)</td>
+<td><code>(abc)</code></td>
 <td>그룹</td>
 </tr>
 </tbody>
