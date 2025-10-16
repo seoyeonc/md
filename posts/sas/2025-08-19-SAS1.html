@@ -2560,6 +2560,52 @@ quit;</code></pre>
 <ul>
 <li>WORK 라이브러리의 EMPLOYEES 데이터셋 변수 정보 조회</li>
 </ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>변수명</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>libname</code></td>
+<td>라이브러리 이름 (예: WORK, SASHELP)</td>
+</tr>
+<tr class="even">
+<td><code>memname</code></td>
+<td>데이터셋 이름</td>
+</tr>
+<tr class="odd">
+<td><code>name</code></td>
+<td>변수 이름</td>
+</tr>
+<tr class="even">
+<td><code>type</code></td>
+<td>변수 유형 (<code>char</code> 또는 <code>num</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>length</code></td>
+<td>변수 길이 (문자는 바이트 단위, 숫자는 8이 기본)</td>
+</tr>
+<tr class="even">
+<td><code>label</code></td>
+<td>변수 라벨 (있을 경우)</td>
+</tr>
+<tr class="odd">
+<td><code>format</code></td>
+<td>변수 서식</td>
+</tr>
+<tr class="even">
+<td><code>informat</code></td>
+<td>입력 서식</td>
+</tr>
+<tr class="odd">
+<td><code>varnum</code></td>
+<td>변수의 순서 (데이터셋 내 위치)</td>
+</tr>
+</tbody>
+</table>
 <ol start="2" type="1">
 <li>데이터셋(테이블) 정보 조회</li>
 </ol>
@@ -3243,6 +3289,79 @@ options mautosource
 %loopx
 
 </code></pre>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 16%">
+<col style="width: 7%">
+<col style="width: 24%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>구문</th>
+<th>조건 검사 시점</th>
+<th>최소 반복</th>
+<th>반복 조건</th>
+<th>주요 용도</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>DO WHILE(condition);</code></td>
+<td>루프 <strong>시작 전</strong></td>
+<td>0회</td>
+<td>조건이 <strong>참이면</strong> 계속</td>
+<td>사전 조건 확인</td>
+</tr>
+<tr class="even">
+<td><code>DO UNTIL(condition);</code></td>
+<td>루프 <strong>끝난 후</strong></td>
+<td>1회</td>
+<td>조건이 <strong>참이 되면</strong> 종료</td>
+<td>최소 1회 실행 보장</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>x=1</code></li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 55%">
+<col style="width: 37%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>구문</th>
+<th>실행 순서 예시 (x 시작값=1, x&lt;3 조건)</th>
+<th>반복 횟수</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>do while (x &lt; 3); x+1; put x=; end;</code></td>
+<td>x=2, x=3 출력</td>
+<td>2회</td>
+</tr>
+<tr class="even">
+<td><code>do until (x &gt;= 3); x+1; put x=; end;</code></td>
+<td>x=2, x=3 출력</td>
+<td>2회</td>
+</tr>
+<tr class="odd">
+<td><code>do while (x &gt; 3); ... end;</code></td>
+<td>조건 거짓 → 아무 실행 없음</td>
+<td>0회</td>
+</tr>
+<tr class="even">
+<td><code>do until (x &gt; 3); ... end;</code></td>
+<td>조건 거짓이므로 최소 1회 실행 후 검사</td>
+<td>≥1회</td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="sysfunc-data-step-함수-호출" class="level3">
@@ -3531,14 +3650,17 @@ AUTOMATIC SYSDATE9 06SEP2025</code></pre>
 <section id="put" class="level4">
 <h4 class="anchored" data-anchor-id="put">%put</h4>
 <ul>
-<li>% put error:쓰고 log에 print 안 되게 한느 법</li>
+<li>% put error:쓰고 log에 print 안 되게 하는 법</li>
 </ul>
-<pre class="sas"><code>%macro name;
-    options nonotes;
-    %put error: this is error.
-%name;</code></pre>
+<pre class="sas"><code>%let a=0;
+
+%macro test;
+   %if &amp;a %then %put ERROR: Something wrong.;
+%mend;
+%test;</code></pre>
 <ul>
-<li><em>USER</em> 키워드는 사용자가 만든 모든 매크로 변수(전역 + 지역)를 로그에 보여줌</li>
+<li><p>a가 0이면 에러 log안 나오게</p></li>
+<li><p><em>USER</em> 키워드는 사용자가 만든 <code>모든 매크로 변수 + global + local</code>를 로그에 보여줌</p></li>
 </ul>
 <pre class="sas"><code>%let global1=AAA;
 
@@ -3786,9 +3908,30 @@ Student: Barbara</code></pre>
 <li>형식은 고정되어 있음</li>
 </ul></li>
 </ul>
-<pre class="sas"><code>%put &amp;=sysdate9;      /* 26AUG2025 */
-%put &amp;=sysdate;       /* 26AUG25   */
-%put &amp;=sysdatetime;   /* 26AUG25:15:30:45 */</code></pre>
+<pre class="sas"><code>%put &amp;=sysdate9;      /* SYSDATE9=16OCT2025 */
+%put &amp;=sysdate;       /* SYSDATE=26AUG25   */
+%put &amp;=sysdatetime;   /* SYSDATETIME=26AUG25:15:30:45 */</code></pre>
+<table class="table">
+<thead>
+<tr class="header">
+<th>구문</th>
+<th>의미</th>
+<th>결과 예시</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>%put &amp;var;</code></td>
+<td>변수 값만 출력</td>
+<td><code>London</code></td>
+</tr>
+<tr class="even">
+<td><code>%put &amp;=var;</code></td>
+<td>변수 이름과 값을 함께 출력</td>
+<td><code>VAR=London</code></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 </section>
@@ -4080,6 +4223,9 @@ do while (rc=0);
    put id= name= age=;
    rc = hi.next();
 end;</code></pre>
+<ul>
+<li><code>hiter</code>는 전체순환이라서 hi.first()처럼 지정해줘야 한다.</li>
+</ul>
 </section>
 <section id="활용-lookup-table-정렬-순회" class="level3">
 <h3 class="anchored" data-anchor-id="활용-lookup-table-정렬-순회">활용: Lookup table, 정렬, 순회</h3>
@@ -4113,6 +4259,9 @@ end;</code></pre>
     if rc=0 then output;                 /* 매칭된 경우 출력 */
     drop rc;
 run;</code></pre>
+<ul>
+<li><code>sashelp.class</code>에서 name이 <code>sashelp.class</code> 데이터에서 만들어진 hash와 일치하면 output</li>
+</ul>
 <p><code>-</code></p>
 <pre class="sas"><code>data work.StateCityPopulation; 
     if _N_=1 then do; 
@@ -4309,27 +4458,27 @@ run;
 <td>2019</td>
 </tr>
 <tr class="even">
-<td>%Oy</td>
+<td>%y</td>
 <td>연도 (2자리)</td>
 <td>19</td>
 </tr>
 <tr class="odd">
-<td>%H/%OH</td>
+<td>%H/%0H</td>
 <td>시 (24시간제, 한 자리 또는 두 자리)</td>
 <td>21</td>
 </tr>
 <tr class="even">
-<td>%I/%OI</td>
+<td>%I/%0I</td>
 <td>시 (12시간제, 한 자리 또는 두 자리)</td>
 <td>9 또는 09</td>
 </tr>
 <tr class="odd">
-<td>%M/%OM</td>
+<td>%M/%0M</td>
 <td>분 (한 자리 또는 두 자리)</td>
 <td>13</td>
 </tr>
 <tr class="even">
-<td>%S/%OS</td>
+<td>%S/%0S</td>
 <td>초 (한 자리 또는 두 자리)</td>
 <td>5 또는 05</td>
 </tr>
