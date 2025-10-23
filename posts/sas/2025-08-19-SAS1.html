@@ -1336,6 +1336,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p>(합격)!!</p>
 <section id="website" class="level1">
 <h1>Website</h1>
 <ul>
@@ -3276,15 +3277,14 @@ options mautosource
 </ul>
 <pre class="sas"><code>
 %macro loopx;
-   %let x=1.25;   /* 초기값 */
 
+    %global x;
+    %let x = 1.25;
+    
    %do %while(&amp;x &lt; 2);
-      %put NOTE: x=&amp;x;
-
-      /* x = x + 0.25 */
-      %let x = %sysevalf(&amp;x + 0.25);
+       &amp;x = %sysevalf(&amp;x + 0.25);
    %end;
-%mend;
+%mend loopx;
 
 %loopx
 
@@ -3320,45 +3320,6 @@ options mautosource
 <td>1회</td>
 <td>조건이 <strong>참이 되면</strong> 종료</td>
 <td>최소 1회 실행 보장</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><code>x=1</code></li>
-</ul>
-<table class="table">
-<colgroup>
-<col style="width: 55%">
-<col style="width: 37%">
-<col style="width: 7%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>구문</th>
-<th>실행 순서 예시 (x 시작값=1, x&lt;3 조건)</th>
-<th>반복 횟수</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>do while (x &lt; 3); x+1; put x=; end;</code></td>
-<td>x=2, x=3 출력</td>
-<td>2회</td>
-</tr>
-<tr class="even">
-<td><code>do until (x &gt;= 3); x+1; put x=; end;</code></td>
-<td>x=2, x=3 출력</td>
-<td>2회</td>
-</tr>
-<tr class="odd">
-<td><code>do while (x &gt; 3); ... end;</code></td>
-<td>조건 거짓 → 아무 실행 없음</td>
-<td>0회</td>
-</tr>
-<tr class="even">
-<td><code>do until (x &gt; 3); ... end;</code></td>
-<td>조건 거짓이므로 최소 1회 실행 후 검사</td>
-<td>≥1회</td>
 </tr>
 </tbody>
 </table>
