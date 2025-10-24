@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="SEOYEON CHOI">
-<meta name="dcterms.date" content="2022-11-28">
+<meta name="dcterms.date" content="2025-10-23">
 
-<title>Seoyeon’s Blog for classes - 고급회귀분석 실습 CH13</title>
+<title>Seoyeon’s Blog for classes - [R Shiny] Earthquakes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,44 +22,10 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,39 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -182,7 +116,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/rl/index.html">Advanced Regression Analysis</a></li><li class="breadcrumb-item"><a href="../../posts/rl/2022-11-28-rl-CH13.html">고급회귀분석 실습 CH13</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/rshiny/2025-08-20-rshiny.html">Rshiny</a></li><li class="breadcrumb-item"><a href="../../posts/rshiny/2025-10-23-Earthquake.html">[R Shiny] Earthquakes</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -192,14 +126,11 @@ window.Quarto = {
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/rl/index.html">Advanced Regression Analysis</a></li><li class="breadcrumb-item"><a href="../../posts/rl/2022-11-28-rl-CH13.html">고급회귀분석 실습 CH13</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/rshiny/2025-08-20-rshiny.html">Rshiny</a></li><li class="breadcrumb-item"><a href="../../posts/rshiny/2025-10-23-Earthquake.html">[R Shiny] Earthquakes</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">고급회귀분석 실습 CH13</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">Advanced Regression Analysis</div>
-              </div>
-                  </div>
+      <h1 class="title">[R Shiny] Earthquakes</h1>
+                      </div>
   </div>
     
   
@@ -215,7 +146,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 28, 2022</p>
+        <p class="date">October 23, 2025</p>
       </div>
     </div>
     
@@ -347,11 +278,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../posts/rl/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Advanced Regression Analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/rl/2022-09-21-rl_CH03, CH04.html" class="sidebar-item-text sidebar-link">
@@ -390,7 +321,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rl/2022-11-28-rl-CH13.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/rl/2022-11-28-rl-CH13.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">고급회귀분석 실습 CH13</span></a>
   </div>
 </li>
@@ -1235,13 +1166,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true">
  <span class="menu-text">Rshiny</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/rshiny/2025-08-20-rshiny.html" class="sidebar-item-text sidebar-link">
@@ -1268,7 +1199,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/rshiny/2025-10-23-Earthquake.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/rshiny/2025-10-23-Earthquake.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">[R Shiny] Earthquakes</span></a>
   </div>
 </li>
@@ -1305,22 +1236,8 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#가변수" id="toc-가변수" class="nav-link active" data-scroll-target="#가변수">가변수</a>
-  <ul class="collapse">
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a>
-  <ul class="collapse">
-  <li><a href="#교호작용" id="toc-교호작용" class="nav-link" data-scroll-target="#교호작용">교호작용</a></li>
-  <li><a href="#책-예제" id="toc-책-예제" class="nav-link" data-scroll-target="#책-예제">책 예제</a></li>
-  <li><a href="#구간별-회귀분석" id="toc-구간별-회귀분석" class="nav-link" data-scroll-target="#구간별-회귀분석">구간별 회귀분석</a></li>
-  </ul></li>
-  </ul></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2022-11-28-rl-CH13.out.ipynb" download="2022-11-28-rl-CH13.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
-    </div>
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-10-23-Earthquake.out.ipynb" download="2025-10-23-Earthquake.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -1328,578 +1245,155 @@ window.Quarto = {
 
 
 
-<p>chapter 13</p>
-<section id="가변수" class="level1">
-<h1>가변수</h1>
-<div id="a220df0d-ee61-434b-bd04-7d1aef029688" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
-</div>
-<section id="example" class="level2">
-<h2 class="anchored" data-anchor-id="example">Example</h2>
-<div id="a8687525-d408-46d7-9c76-41d04a7ba11a" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">26</span>,<span class="dv">21</span>,<span class="dv">30</span>,<span class="dv">22</span>,<span class="dv">1</span>,<span class="dv">12</span>,<span class="dv">19</span>,<span class="dv">4</span>,<span class="dv">16</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="dv">28</span>,<span class="dv">15</span>,<span class="dv">11</span>,<span class="dv">38</span>,<span class="dv">31</span>,<span class="dv">21</span>,<span class="dv">20</span>,<span class="dv">13</span>,<span class="dv">30</span>,<span class="dv">14</span>),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">151</span>,<span class="dv">92</span>,<span class="dv">175</span>,<span class="dv">31</span>,<span class="dv">104</span>,<span class="dv">277</span>,<span class="dv">210</span>,<span class="dv">120</span>,<span class="dv">290</span>,<span class="dv">238</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>         <span class="dv">164</span>,<span class="dv">272</span>,<span class="dv">295</span>,<span class="dv">68</span>,<span class="dv">85</span>,<span class="dv">224</span>,<span class="dv">166</span>,<span class="dv">305</span>,<span class="dv">124</span>,<span class="dv">246</span>),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x2 =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">each=</span><span class="dv">10</span>))</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-</div>
-<p>할 수 있는 경우의 수 1.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'M'</span>,<span class="st">'F'</span>), <span class="at">each=</span><span class="dv">10</span>))</span></code></pre></div>
+<p><a href="https://www.kaggle.com/datasets/ahmeduzaki/global-earthquake-tsunami-risk-assessment-dataset">link</a></p>
 <ul>
-<li>character로 넣어도 factor로 인식한다.</li>
-<li>조심할 점 <strong>알파벳 순으로 숫자가 부여된다.</strong></li>
-<li>따라서 F는 0, M은 1로 부여되었다.
+<li>About Dataset
 <ul>
-<li>참고: 강의록은 F는 1, M은 0으로 부여되어 결과가 다름</li>
-<li>해석의 결과가 다르진 않지만 어떻게 해석하느냐가 달라짐</li>
+<li>Global Earthquake-Tsunami Risk Assessment Dataset</li>
+</ul></li>
+<li>Overview
+<ul>
+<li>The Global Earthquake-Tsunami Risk Assessment Dataset is a comprehensive, machine learning-ready dataset containing seismic characteristics and tsunami potential indicators for 782 significant earthquakes recorded globally from 2001 to 2022. This dataset is specifically designed for tsunami risk prediction, earthquake analysis, and seismic hazard assessment applications.</li>
+</ul></li>
+<li>Dataset Information
+<ul>
+<li>Total Records: 782 earthquakes</li>
+<li>Time Period: January 1, 2001 to December 31, 2022 (22 years)</li>
+<li>Geographic Coverage: Global (Latitude: -61.85° to 71.63°, Longitude: -179.97° to 179.66°)</li>
+<li>File Format: CSV</li>
+<li>File Size: ~41KB</li>
+<li>Missing Values: None (100% complete dataset)</li>
+<li>Target Variable: Tsunami potential indicator (binary classification)</li>
+</ul></li>
+<li>Key Features
+<ul>
+<li>Tsunami Classification</li>
+<li>Non-Tsunami Events: 478 records (61.1%)</li>
+<li>Tsunami-Potential Events: 304 records (38.9%)</li>
+<li>Balanced Dataset: Suitable for binary classification tasks</li>
+<li>Seismic Magnitude Distribution</li>
+<li>Range: 6.5 - 9.1 Richter scale</li>
+<li>Mean Magnitude: 6.94</li>
+<li>Major Earthquakes (≥8.0): 28 events including the 2004 (9.1) and 2011 (9.1) mega-earthquakes</li>
+</ul></li>
+<li>Feature Description</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature Type</th>
+<th>Description</th>
+<th>Range/Values</th>
+<th>Tsunami Relevance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>magnitude</td>
+<td>Float</td>
+<td>Earthquake magnitude (Richter scale)</td>
+<td>6.5 - 9.1</td>
+</tr>
+<tr class="even">
+<td>cdi</td>
+<td>Integer</td>
+<td>Community Decimal Intensity (felt intensity)</td>
+<td>0 - 9</td>
+</tr>
+<tr class="odd">
+<td>mmi</td>
+<td>Integer</td>
+<td>Modified Mercalli Intensity (instrumental)</td>
+<td>1 - 9</td>
+</tr>
+<tr class="even">
+<td>sig</td>
+<td>Integer</td>
+<td>Event significance score 650 - 2910</td>
+<td>High - Overall hazard assessment</td>
+</tr>
+<tr class="odd">
+<td>nst</td>
+<td>Integer</td>
+<td>Number of seismic monitoring stations</td>
+<td>0 - 934</td>
+</tr>
+<tr class="even">
+<td>dmin</td>
+<td>Float</td>
+<td>Distance to nearest seismic station (degrees)</td>
+<td>0.0 - 17.7</td>
+</tr>
+<tr class="odd">
+<td>gap</td>
+<td>Float</td>
+<td>Azimuthal gap between stations (degrees)</td>
+<td>0.0 - 239.0</td>
+</tr>
+<tr class="even">
+<td>depth</td>
+<td>Float</td>
+<td>Earthquake focal depth (km)</td>
+<td>2.7 - 670.8</td>
+</tr>
+<tr class="odd">
+<td>latitude</td>
+<td>Float</td>
+<td>Epicenter latitude (WGS84)</td>
+<td>-61.85° to 71.63°</td>
+</tr>
+<tr class="even">
+<td>longitude</td>
+<td>Float</td>
+<td>Epicenter longitude (WGS84)</td>
+<td>-179.97° to 179.66°</td>
+</tr>
+<tr class="odd">
+<td>Year</td>
+<td>Integer</td>
+<td>Year of occurrence 2001 - 2022</td>
+<td>Medium - Temporal patterns</td>
+</tr>
+<tr class="even">
+<td>Month</td>
+<td>Integer</td>
+<td>Month of occurrence</td>
+<td>1 - 12</td>
+</tr>
+<tr class="odd">
+<td>tsunami</td>
+<td>Binary</td>
+<td>Tsunami potential (TARGET) 0, 1</td>
+<td>TARGET VARIABLE</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Data Quality Assessment
+<ul>
+<li>Zero missing values across all 782 records and 13 features</li>
+<li>100% data completeness ensures robust model training</li>
+<li>38.9% positive cases (tsunami events) provides good balance for binary classification</li>
+<li>Global representation of major seismic zones</li>
+<li>22-year temporal span captures diverse seismic patterns</li>
+<li>Major earthquake events included (28 earthquakes ≥8.0 magnitude)</li>
+</ul></li>
+<li>Machine Learning Applications
+<ul>
+<li>Tsunami Risk Prediction: Binary classification using seismic parameters</li>
+<li>Early Warning Systems: Real-time tsunami threat assessment</li>
+<li>Hazard Mapping: Geographic risk zone identification</li>
+<li>Magnitude Estimation: Earthquake strength prediction from network data</li>
 </ul></li>
 </ul>
-<ol start="2" type="1">
-<li></li>
-</ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">each=</span><span class="dv">10</span>))</span></code></pre></div>
-<ul>
-<li>M은 0, F는 1-&gt; 강의록과 같음</li>
-</ul>
-<div id="df4c5a11-b2f7-4e5b-a4bb-d03b39e410e7" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>A data.frame: 6 × 3</caption>
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th" scope="col">y</th>
-<th data-quarto-table-cell-role="th" scope="col">x1</th>
-<th data-quarto-table-cell-role="th" scope="col">x2</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;fct&gt;</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">1</td>
-<td>17</td>
-<td>151</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">2</td>
-<td>26</td>
-<td>92</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">3</td>
-<td>21</td>
-<td>175</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">4</td>
-<td>30</td>
-<td>31</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">5</td>
-<td>22</td>
-<td>104</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">6</td>
-<td>1</td>
-<td>277</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="24b71253-ed4f-4185-8822-4301ef78319e" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contrasts</span>(<span class="fu">factor</span>(dt<span class="sc">$</span>x2))</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>A matrix: 2 × 1 of type dbl</caption>
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th" scope="col">1</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">1</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>잘 부여되었나 확인 필요 - <strong>chracter일때는 이 함수를 사용해도 의미가 없어서 factor로 바꿔서 해줘야 한다.</strong></p>
-<div id="d935a0ab-f5b7-49ca-b6a1-da46ffb38e6f" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x1<span class="sc">+</span>x2, dt)</span></code></pre></div>
-</div>
-<div id="c3351b08-f83f-4b6a-9684-9ecbbed0ad3f" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>
-Call:
-lm(formula = y ~ x1 + x2, data = dt)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--5.0165 -1.7450 -0.6055  1.8803  6.1835 
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 33.834912   1.758659  19.239 5.64e-13 ***
-x1          -0.100918   0.008621 -11.707 1.47e-09 ***
-x21          7.933953   1.414702   5.608 3.13e-05 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 3.123 on 17 degrees of freedom
-Multiple R-squared:  0.8991,    Adjusted R-squared:  0.8872 
-F-statistic: 75.72 on 2 and 17 DF,  p-value: 3.42e-09</code></pre>
-</div>
-</div>
-<p><strong>1.</strong></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'M'</span>,<span class="st">'F'</span>), <span class="at">each=</span><span class="dv">10</span>))</span></code></pre></div>
-<p>로 입력한 경우</p>
-<p><span class="math inline">\(y = \beta_0 + \beta_1x_1 + \beta_2x_2\)</span></p>
-<p><span class="math inline">\(x_2 = 0\)</span>, F</p>
-<p><span class="math inline">\(x_2 = 1\)</span>, M</p>
-<p><span class="math inline">\(x_2\)</span>는 0 아니면 1 인 지수함수</p>
-<p><span class="math inline">\(E(y|M) : \beta_0 + \beta_1x_1 + \beta_2 = (\beta_0 + \beta_2) + \beta_1x_1\)</span></p>
-<p><span class="math inline">\(E(y|F) : \beta_0 + \beta_1x_1\)</span></p>
-<p><strong>2.</strong></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">each=</span><span class="dv">10</span>))</span></code></pre></div>
-<p>로 입력한 경우</p>
-<p><span class="math inline">\(y = \beta_0 + \beta_1x_1 + \beta_2x_2\)</span></p>
-<p><span class="math inline">\(x_2 = 0\)</span>, M</p>
-<p><span class="math inline">\(x_2 = 1\)</span>, F</p>
-<p><span class="math inline">\(E(y|M) : \beta_0 + \beta_1x_1\)</span></p>
-<p><span class="math inline">\(E(y|F) : \beta_0 + \beta_1x_1+ \beta_2 = (\beta_0 + \beta_2) + \beta_1x_1\)</span></p>
-<div id="aa482a0d-3513-4fef-9a9a-8f41aec5297a" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(x1, y, <span class="at">col=</span>x2)) <span class="sc">+</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">col=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"성별"</span>)) <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"남자"</span>, <span class="st">"여자"</span>), </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkorange"</span>, <span class="st">"steelblue"</span>))</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2022-11-28-rl-CH13_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="a1a397a9-fca2-44b1-bfd2-2bd933261526" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x1<span class="sc">+</span>x2, dt)</span></code></pre></div>
-</div>
-<div id="914824df-0f52-41ed-ba3c-3145953554e8" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>
-Call:
-lm(formula = y ~ x1 + x2, data = dt)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--5.0165 -1.7450 -0.6055  1.8803  6.1835 
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 33.834912   1.758659  19.239 5.64e-13 ***
-x1          -0.100918   0.008621 -11.707 1.47e-09 ***
-x21          7.933953   1.414702   5.608 3.13e-05 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 3.123 on 17 degrees of freedom
-Multiple R-squared:  0.8991,    Adjusted R-squared:  0.8872 
-F-statistic: 75.72 on 2 and 17 DF,  p-value: 3.42e-09</code></pre>
-</div>
-</div>
-<p><span class="math inline">\(\beta_2\)</span>가 유의함을 확인함(3.13e-05) - 남성과 여성이 차이가 있다.</p>
-<div id="a18a403e-700e-4d35-96b2-0665d749e71e" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(x1, y, <span class="at">col=</span>x2)) <span class="sc">+</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="fu">coef</span>(m)[<span class="dv">2</span>], <span class="at">intercept =</span> <span class="fu">coef</span>(m)[<span class="dv">1</span>], <span class="at">col=</span> <span class="st">'darkorange'</span>)<span class="sc">+</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="fu">coef</span>(m)[<span class="dv">2</span>], <span class="at">intercept =</span> <span class="fu">coef</span>(m)[<span class="dv">1</span>]<span class="sc">+</span><span class="fu">coef</span>(m)[<span class="dv">3</span>], <span class="at">col=</span> <span class="st">'steelblue'</span>)<span class="sc">+</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">col=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"성별"</span>)) <span class="sc">+</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"남자"</span>, <span class="st">"여자"</span>), <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkorange"</span>, <span class="st">"steelblue"</span>))</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2022-11-28-rl-CH13_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>기울기 차이 고려 안해서 기울기는 같을 것</p>
-<section id="교호작용" class="level3">
-<h3 class="anchored" data-anchor-id="교호작용">교호작용</h3>
-<div id="496c30e4-d4c7-41af-978e-36220312e011" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x1<span class="sc">*</span>x2, dt)</span></code></pre></div>
-</div>
-<p>곱하기로 교호작용 표현</p>
-<div id="f2dc8d5b-c33d-46af-b6b3-e11cd6b280c0" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>
-Call:
-lm(formula = y ~ x1 * x2, data = dt)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--5.0463 -1.7591 -0.6232  1.9311  6.1102 
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 33.656104   2.365392  14.229 1.68e-10 ***
-x1          -0.099858   0.012650  -7.894 6.59e-07 ***
-x21          8.313516   3.541379   2.348   0.0321 *  
-x1:x21      -0.002089   0.017766  -0.118   0.9078    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 3.218 on 16 degrees of freedom
-Multiple R-squared:  0.8992,    Adjusted R-squared:  0.8803 
-F-statistic: 47.56 on 3 and 16 DF,  p-value: 3.405e-08</code></pre>
-</div>
-</div>
-<p><span class="math inline">\(y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_1x_2\)</span> - 성별, 성적, 성별*성적</p>
-<p><span class="math inline">\(M : x_2=0 \to E(y|M) = \beta_0+\beta_1x_1\)</span></p>
-<p><span class="math inline">\(F : x_2=1 \to E(y|F) = \beta_0 + \beta_1x_1 + \beta_2 + \beta_3x_1 = (\beta_0+\beta_2) + (\beta_1+\beta_3)x_1\)</span></p>
-<ul>
-<li>식으로 봤을 때 절편, 기울기 모두 차이가 난다.</li>
-<li>절편 차이는 유의하다.</li>
-<li>기울기 차이는 거의 없다.</li>
-<li>교호작용은 없는 것으로 확인.</li>
-</ul>
-<div id="4c1f2fee-59ee-4f84-bbed-3cc6db23c73e" class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(x1, y, <span class="at">col=</span>x2)) <span class="sc">+</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="fu">coef</span>(m1)[<span class="dv">2</span>], <span class="at">intercept =</span> <span class="fu">coef</span>(m1)[<span class="dv">1</span>], <span class="at">col=</span> <span class="st">'darkorange'</span>)<span class="sc">+</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="fu">coef</span>(m1)[<span class="dv">2</span>]<span class="sc">+</span><span class="fu">coef</span>(m1)[<span class="dv">4</span>], <span class="at">intercept =</span> <span class="fu">coef</span>(m1)[<span class="dv">1</span>]<span class="sc">+</span><span class="fu">coef</span>(m1)[<span class="dv">3</span>], <span class="at">col=</span> <span class="st">'steelblue'</span>)<span class="sc">+</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">col=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"성별"</span>)) <span class="sc">+</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"남자"</span>, <span class="st">"여자"</span>), <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkorange"</span>, <span class="st">"steelblue"</span>))</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2022-11-28-rl-CH13_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="책-예제" class="level3">
-<h3 class="anchored" data-anchor-id="책-예제">책 예제</h3>
-<div id="1f1f8687-1f1c-44df-aa66-44b1e84ad506" class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR)</span></code></pre></div>
-</div>
-<div id="2b1e8ee0-ed49-4f3d-ad21-379f0f1a0735" class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Carseats)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>A data.frame: 6 × 11</caption>
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th" scope="col">Sales</th>
-<th data-quarto-table-cell-role="th" scope="col">CompPrice</th>
-<th data-quarto-table-cell-role="th" scope="col">Income</th>
-<th data-quarto-table-cell-role="th" scope="col">Advertising</th>
-<th data-quarto-table-cell-role="th" scope="col">Population</th>
-<th data-quarto-table-cell-role="th" scope="col">Price</th>
-<th data-quarto-table-cell-role="th" scope="col">ShelveLoc</th>
-<th data-quarto-table-cell-role="th" scope="col">Age</th>
-<th data-quarto-table-cell-role="th" scope="col">Education</th>
-<th data-quarto-table-cell-role="th" scope="col">Urban</th>
-<th data-quarto-table-cell-role="th" scope="col">US</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;fct&gt;</th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;fct&gt;</th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;fct&gt;</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">1</td>
-<td>9.50</td>
-<td>138</td>
-<td>73</td>
-<td>11</td>
-<td>276</td>
-<td>120</td>
-<td>Bad</td>
-<td>42</td>
-<td>17</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">2</td>
-<td>11.22</td>
-<td>111</td>
-<td>48</td>
-<td>16</td>
-<td>260</td>
-<td>83</td>
-<td>Good</td>
-<td>65</td>
-<td>10</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">3</td>
-<td>10.06</td>
-<td>113</td>
-<td>35</td>
-<td>10</td>
-<td>269</td>
-<td>80</td>
-<td>Medium</td>
-<td>59</td>
-<td>12</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">4</td>
-<td>7.40</td>
-<td>117</td>
-<td>100</td>
-<td>4</td>
-<td>466</td>
-<td>97</td>
-<td>Medium</td>
-<td>55</td>
-<td>14</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">5</td>
-<td>4.15</td>
-<td>141</td>
-<td>64</td>
-<td>3</td>
-<td>340</td>
-<td>128</td>
-<td>Bad</td>
-<td>38</td>
-<td>13</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">6</td>
-<td>10.81</td>
-<td>124</td>
-<td>113</td>
-<td>13</td>
-<td>501</td>
-<td>72</td>
-<td>Bad</td>
-<td>78</td>
-<td>16</td>
-<td>No</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="ff3127e2-766e-4e81-ab7f-1b69796d2ff6" class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(Carseats)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>400</li><li>11</li></ol>
-</div>
-</div>
-<p>• Sales : 판매량 (단위: 1,000)</p>
-<p>• Price : 각 지점에서의 카시트 가격</p>
-<p>• ShelveLoc : 진열대의 등급 (Bad, Medium, Good)</p>
-<p>• Urban :도시 여부 (Yes, No)</p>
-<p>• US: 미국 여부 (Yes, No)</p>
-<p><span class="math inline">\(\to\)</span> 세 개의 범주형 자료, 가변수 4개(3-2,2-1,2-1)</p>
-<div id="a7da2025-d3bd-4b70-ac1b-c5470becba53" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(fit<span class="ot">&lt;-</span><span class="fu">lm</span>(Sales<span class="sc">~</span>Price<span class="sc">+</span>ShelveLoc<span class="sc">+</span>US, </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data=</span>Carseats))</span></code></pre></div>
-</div>
-<div id="31ba1239-fb5f-4fbc-9e85-7c1f9d5a2310" class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>
-Call:
-lm(formula = fit &lt;- lm(Sales ~ Price + ShelveLoc + US, data = Carseats))
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--5.1720 -1.2587 -0.0056  1.2815  4.7462 
-
-Coefficients:
-                 Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)     11.476347   0.498083  23.041  &lt; 2e-16 ***
-Price           -0.057825   0.003938 -14.683  &lt; 2e-16 ***
-ShelveLocGood    4.827167   0.277294  17.408  &lt; 2e-16 ***
-ShelveLocMedium  1.893360   0.227486   8.323 1.42e-15 ***
-USYes            1.013071   0.195034   5.194 3.30e-07 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 1.857 on 395 degrees of freedom
-Multiple R-squared:  0.5718,    Adjusted R-squared:  0.5675 
-F-statistic: 131.9 on 4 and 395 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-</div>
-<div id="5a999dc4-3e5d-4391-b282-ac270d80158a" class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contrasts</span>(Carseats<span class="sc">$</span>ShelveLoc)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>A matrix: 3 × 2 of type dbl</caption>
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th" scope="col">Good</th>
-<th data-quarto-table-cell-role="th" scope="col">Medium</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Bad</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Good</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Medium</td>
-<td>0</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>알파벳 순으로 부여된 것 확인</p>
-<p><span class="math inline">\(y= \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_3 + \beta_4x_4 + \beta_5x_5\)</span></p>
-<div id="71f3449f-a64e-42fe-8185-99da9be9a0c8" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div>
-</div>
-<p><span class="math inline">\(H_0 : \beta_2 = \beta_3 = 0\)</span></p>
-<p><span class="math inline">\(\beta_2 = 0, \beta_3 = 0\)</span></p>
-<div id="9973cfde-5043-4a85-8a31-55869e51273a" class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>C<span class="ot">&lt;-</span><span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span></code></pre></div>
-</div>
-<div id="4212afe5-52d3-43fe-9434-8279c75e3bba" class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">linearHypothesis</span>(fit, C)</span></code></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>ERROR: Error in L %*% b: non-conformable arguments</code></pre>
-</div>
-</div>
-<p>유의미한 결과 확인</p>
-</section>
-<section id="구간별-회귀분석" class="level3">
-<h3 class="anchored" data-anchor-id="구간별-회귀분석">구간별 회귀분석</h3>
-<div id="9779213c-896c-4798-a949-944ef1555cb4" class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">377</span>,<span class="dv">249</span>,<span class="dv">355</span>,<span class="dv">475</span>,<span class="dv">139</span>,<span class="dv">452</span>,<span class="dv">440</span>,<span class="dv">257</span>),</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">480</span>,<span class="dv">720</span>,<span class="dv">570</span>,<span class="dv">300</span>,<span class="dv">800</span>,<span class="dv">400</span>,<span class="dv">340</span>,<span class="dv">650</span>)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-</div>
-<div id="6d0f086b-73de-4008-88f1-7ba7e2e6e10f" class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dt<span class="sc">$</span>x2 <span class="ot">=</span> <span class="fu">sapply</span>(dt<span class="sc">$</span>x1, <span class="cf">function</span>(x) <span class="fu">max</span>(<span class="dv">0</span>, x<span class="dv">-500</span>))</span></code></pre></div>
-</div>
-<div id="36578a76-82d0-42eb-beab-3c1feb7eb93b" class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1<span class="sc">+</span>x2, dt)</span></code></pre></div>
-</div>
-<div id="de011af5-4fb3-4ae8-9939-b82822c8393d" class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>
-Call:
-lm(formula = y ~ x1 + x2, data = dt)
-
-Residuals:
-      1       2       3       4       5       6       7       8 
--22.765  29.765  18.068   4.068 -17.463  20.605 -15.117 -17.160 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 589.5447    60.4213   9.757 0.000192 ***
-x1           -0.3954     0.1492  -2.650 0.045432 *  
-x2           -0.3893     0.2310  -1.685 0.152774    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 24.49 on 5 degrees of freedom
-Multiple R-squared:  0.9693,    Adjusted R-squared:  0.9571 
-F-statistic: 79.06 on 2 and 5 DF,  p-value: 0.0001645</code></pre>
-</div>
-</div>
-<div id="e9c90161-3da3-400b-8685-8e6d84ae5dbd" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>dt2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(dt[,<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>], <span class="fu">c</span>(<span class="dv">500</span>,<span class="dv">0</span>))</span></code></pre></div>
-</div>
-<div id="e05a291b-3376-40f2-be75-63808ae5b9c6" class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>dt2<span class="sc">$</span>y <span class="ot">&lt;-</span> <span class="fu">predict</span>(m, <span class="at">newdata =</span> dt2)</span></code></pre></div>
-</div>
-<p><strong>this is the predicted line of multiple linear regression</strong></p>
-<div id="c28f7ca1-10f3-4bbd-8e85-ef192fcc733b" class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dt, <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> y)) <span class="sc">+</span> </span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">'steelblue'</span>) <span class="sc">+</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color=</span><span class="st">'darkorange'</span>,<span class="at">data =</span> dt2, <span class="fu">aes</span>(<span class="at">x=</span>x1, <span class="at">y=</span>y))<span class="sc">+</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">500</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">'red'</span>)<span class="sc">+</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2022-11-28-rl-CH13_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
 
 
-</section>
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
