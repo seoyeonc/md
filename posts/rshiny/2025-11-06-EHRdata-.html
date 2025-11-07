@@ -1297,6 +1297,163 @@ ul.task-list li input[type="checkbox"] {
 <li><p>I have worked on a dashboard assessing no. of patients admitted, avg. duration of hospital stay, disease condition for which they are admitted etc.</p></li>
 <li><p>You can also do your analysis. Do share your findings with me. Thanks!</p></li>
 </ul>
+<hr>
+<p>1 Patient Identifiers (환자 식별자)</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 66%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>변수명</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>patientunitstayid</code></td>
+<td>각 환자의 병동(혹은 ICU 단위) 내 체류에 대한 고유 ID</td>
+</tr>
+<tr class="even">
+<td><code>patienthealthsystemstayid</code></td>
+<td>병원 시스템 내 환자의 전체 입원 단위별 고유 ID (한 환자가 여러 unit을 옮길 수 있음)</td>
+</tr>
+</tbody>
+</table>
+<p>2 Patient Demographics (환자 인적정보)</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>변수명</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>gender</code></td>
+<td>성별 — Male, Female, Unknown</td>
+</tr>
+<tr class="even">
+<td><code>age</code></td>
+<td>환자 나이</td>
+</tr>
+<tr class="odd">
+<td><code>ethnicity</code></td>
+<td>인종/민족 (예: Caucasian, Asian, African American 등)</td>
+</tr>
+</tbody>
+</table>
+<p>3 Hospital Details (병원 전체 입원 정보)</p>
+<table class="table">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 64%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>변수명</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>hospitalid</code></td>
+<td>병원 고유 ID</td>
+</tr>
+<tr class="even">
+<td><code>wardid</code></td>
+<td>병원 내 병동 ID</td>
+</tr>
+<tr class="odd">
+<td><code>apacheadmissiondx</code></td>
+<td>입원 시 진단명 (예: Sepsis, Stroke 등)</td>
+</tr>
+<tr class="even">
+<td><code>admissionheight</code></td>
+<td>환자 키 (cm 또는 m 단위)</td>
+</tr>
+<tr class="odd">
+<td><code>hospitaladmittime24</code></td>
+<td>병원 입원 시각 (24시간 형식)</td>
+</tr>
+<tr class="even">
+<td><code>hospitaladmitsource</code></td>
+<td>입원 출처 (예: 응급실, 외래, 타 병원 등)</td>
+</tr>
+<tr class="odd">
+<td><code>hospitaldischargeyear</code></td>
+<td>퇴원 연도</td>
+</tr>
+<tr class="even">
+<td><code>hospitaldischargetime24</code></td>
+<td>병원 퇴원 시각 (24시간 형식)</td>
+</tr>
+<tr class="odd">
+<td><code>hospitaldischargelocation</code></td>
+<td>환자가 퇴원 후 이동한 곳 (예: Home, Other hospital, Death 등)</td>
+</tr>
+<tr class="even">
+<td><code>hospitaldischargestatus</code></td>
+<td>퇴원 상태 (Alive, Expired 등 생존 여부)</td>
+</tr>
+</tbody>
+</table>
+<p>4 Hospital Unit Details (병원 내 세부 병동/Unit 정보)</p>
+<table class="table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 61%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>변수명</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>unittype</code></td>
+<td>입원한 병동/유닛 유형 (예: ICU, General Ward 등)</td>
+</tr>
+<tr class="even">
+<td><code>unitadmittime24</code></td>
+<td>병동 입실 시각 (24시간 형식)</td>
+</tr>
+<tr class="odd">
+<td><code>unitadmitsource</code></td>
+<td>병동 입실 출처 (예: 응급실, 수술실 등)</td>
+</tr>
+<tr class="even">
+<td><code>unitvisitnumber</code></td>
+<td>병동 방문 횟수 (입·재입원 구분 가능)</td>
+</tr>
+<tr class="odd">
+<td><code>unitstaytype</code></td>
+<td>입원 유형 (Admit, Readmit 등)</td>
+</tr>
+<tr class="even">
+<td><code>admissionweight</code></td>
+<td>입원 시 체중</td>
+</tr>
+<tr class="odd">
+<td><code>dischargeweight</code></td>
+<td>퇴원 시 체중</td>
+</tr>
+<tr class="even">
+<td><code>unitdischargetime24</code></td>
+<td>병동 퇴실 시각</td>
+</tr>
+<tr class="odd">
+<td><code>unitdischargelocation</code></td>
+<td>병동 퇴실 후 이동 장소</td>
+</tr>
+<tr class="even">
+<td><code>unitdischargestatus</code></td>
+<td>병동 퇴실 상태 (Alive, Expired)</td>
+</tr>
+</tbody>
+</table>
 
 
 
