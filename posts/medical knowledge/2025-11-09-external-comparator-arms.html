@@ -9,7 +9,7 @@
 <meta name="author" content="SEOYEON CHOI">
 <meta name="dcterms.date" content="2025-11-09">
 
-<title>Seoyeon’s Blog for classes - [R Shiny] EHR data</title>
+<title>Seoyeon’s Blog for classes - external comparator arms and quantitative bias analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/python/2025-08-18-supervised_learning.html">Python</a></li><li class="breadcrumb-item"><a href="../../posts/python/2025-11-09-ehr_python.html">[R Shiny] EHR data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/medical knowledge/2025-08-29-medicalknowledge.html">medical knowledge</a></li><li class="breadcrumb-item"><a href="../../posts/medical knowledge/2025-11-09-external-comparator-arms.html">external comparator arms and quantitative bias analysis</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -126,10 +126,10 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/python/2025-08-18-supervised_learning.html">Python</a></li><li class="breadcrumb-item"><a href="../../posts/python/2025-11-09-ehr_python.html">[R Shiny] EHR data</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/medical knowledge/2025-08-29-medicalknowledge.html">medical knowledge</a></li><li class="breadcrumb-item"><a href="../../posts/medical knowledge/2025-11-09-external-comparator-arms.html">external comparator arms and quantitative bias analysis</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">[R Shiny] EHR data</h1>
+      <h1 class="title">external comparator arms and quantitative bias analysis</h1>
                       </div>
   </div>
     
@@ -1055,13 +1055,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
  <span class="menu-text">medical knowledge</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/medical knowledge/2025-08-29-medicalknowledge.html" class="sidebar-item-text sidebar-link">
@@ -1098,17 +1098,23 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">[SAP] Phase 4</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/medical knowledge/2025-11-09-external-comparator-arms.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">external comparator arms and quantitative bias analysis</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
  <span class="menu-text">Python</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/python/2025-08-18-supervised_learning.html" class="sidebar-item-text sidebar-link">
@@ -1137,12 +1143,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../../posts/python/2025-09-30-Urinary biomarkers.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">[Kaggle] Urinary biomarkers for pancreatic cancer</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/python/2025-11-09-ehr_python.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">[R Shiny] EHR data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1254,8 +1254,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-11-09-ehr_python.out.ipynb" download="2025-11-09-ehr_python.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#ii.-background" id="toc-ii.-background" class="nav-link active" data-scroll-target="#ii.-background">II. BACKGROUND</a></li>
+  <li><a href="#ii.-design-and-analysis-of-externally-controlled-trials" id="toc-ii.-design-and-analysis-of-externally-controlled-trials" class="nav-link" data-scroll-target="#ii.-design-and-analysis-of-externally-controlled-trials">II. DESIGN AND ANALYSIS OF EXTERNALLY CONTROLLED TRIALS</a>
+  <ul class="collapse">
+  <li><a href="#a.-design-considerations" id="toc-a.-design-considerations" class="nav-link" data-scroll-target="#a.-design-considerations">A. Design Considerations</a>
+  <ul class="collapse">
+  <li><a href="#characteristics-of-study-populations" id="toc-characteristics-of-study-populations" class="nav-link" data-scroll-target="#characteristics-of-study-populations">2. Characteristics of Study Populations</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-11-09-external-comparator-arms.out.ipynb" download="2025-11-09-external-comparator-arms.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -1263,8 +1276,42 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p>GUIDANCE DOCUMENT: <a href="https://www.fda.gov/media/164960/download">Considerations for the Design and Conduct of Externally Controlled Trials for Drug and Biological Products</a></p>
+<section id="ii.-background" class="level1">
+<h1>II. BACKGROUND</h1>
+<ul>
+<li>임상시험 설계의 적합성</li>
+<li>The suitability of an externally controlled trial design warrants a case-by-case assessment, informed by issues including heterogeneity of the disease (e.g., clinical presentation, severity, prognosis), preliminary evidence regarding the drug product under investigation, the approach to ascertaining the outcome of interest, and whether the goal of the trial is to show superiority or non-inferiority.
+<ul>
+<li>heterogeneity 이질성</li>
+<li>clinical presentation 임상 증상</li>
+<li>non-inferiority 비열등성</li>
+</ul></li>
+<li>Of note, if the natural history of a disease is well-defined and the disease is known not to improve in the absence of an intervention or with available therapies, historical information can potentially serve as the control group.</li>
+<li>For example, objective response rate is often used as a single-arm trial endpoint in oncology given the established understanding that tumor shrinkage rarely occurs without an intervention.
+<ul>
+<li>shrinkage 축소</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="ii.-design-and-analysis-of-externally-controlled-trials" class="level1">
+<h1>II. DESIGN AND ANALYSIS OF EXTERNALLY CONTROLLED TRIALS</h1>
+<section id="a.-design-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="a.-design-considerations">A. Design Considerations</h2>
+<ul>
+<li>Specific design elements to prespecify in the protocol (i.e., before conducting an externally controlled trial) include suitable study data sources, baseline eligibility (inclusion and exclusion) criteria, appropriate exposure definitions and windows, well-defined and clinically meaningful endpoints, cogent analytic plans, and approaches to minimize missing data and sources of bias.
+<ul>
+<li>prespecify 미리 지정하다</li>
+</ul></li>
+</ul>
+<section id="characteristics-of-study-populations" class="level3">
+<h3 class="anchored" data-anchor-id="characteristics-of-study-populations">2. Characteristics of Study Populations</h3>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
