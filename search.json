@@ -6492,7 +6492,7 @@
   {
     "objectID": "posts/medical knowledge/2025-11-09-external-comparator-arms.html",
     "href": "posts/medical knowledge/2025-11-09-external-comparator-arms.html",
-    "title": "external comparator arms and quantitative bias analysis",
+    "title": "external comparator arms",
     "section": "",
     "text": "GUIDANCE DOCUMENT: Considerations for the Design and Conduct of Externally Controlled Trials for Drug and Biological Products",
     "crumbs": [
@@ -6505,9 +6505,35 @@
   {
     "objectID": "posts/medical knowledge/2025-11-09-external-comparator-arms.html#a.-design-considerations",
     "href": "posts/medical knowledge/2025-11-09-external-comparator-arms.html#a.-design-considerations",
-    "title": "external comparator arms and quantitative bias analysis",
+    "title": "external comparator arms",
     "section": "A. Design Considerations",
-    "text": "A. Design Considerations\n\nSpecific design elements to prespecify in the protocol (i.e., before conducting an externally controlled trial) include suitable study data sources, baseline eligibility (inclusion and exclusion) criteria, appropriate exposure definitions and windows, well-defined and clinically meaningful endpoints, cogent analytic plans, and approaches to minimize missing data and sources of bias.\n\nprespecify 미리 지정하다\n\n\n\n2. Characteristics of Study Populations",
+    "text": "A. Design Considerations\n\n2. Characteristics of Study Populations\n\nIn the absence of randomization, a major concern for externally controlled trials is that attributes of patients likely to influence outcomes in an external control arm will differ from corresponding attributes of participants in a treatment arm of the trial.\n\n무작위 배정이 없는 rwd, 치료군과 결과에 영향을 미칠 대조군이 다를 가능성이 있다는 점이다.\n\nA specific design consideration for externally controlled trials involves prespecifying plans regarding how to measure and analyze data on important confounding factors and sources of bias.\n\n외부 대조군의 주요한 디자인 고려사항은 주요한 교란 요인과 편향을 어떻게 고려할지에 관한 것이다.\n\nThe ability to identify confounding factors in an externally controlled trial is limited by both conceptual and practical concerns.\n\n교랸요인을 식별할 가능성은 외부 대조군 연구에서 개념적, 실제적으로 제한된다.\n\nConceptually, when seeking to provide evidence of effectiveness using an externally controlled trial design, a thorough understanding is needed—but is often difficult to verify—regarding the natural history of the disease involved and relevant prognostic factors influencing outcomes.\n\n개념적으로 연구할떄 실질적인 요소를 다 알아야 하지만 현실적으로 이는 어렵다.\n\nAccordingly, the protocol for an externally controlled trial should include specific plans for evaluating eligibility criteria to determine if the criteria can be applied in a manner that allows for selection of similar patients in the treatment and external control groups, recognizing the limitations of information available in many RWD sources.",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "medical knowledge",
+      "external comparator arms and quantitative bias analysis"
+    ]
+  },
+  {
+    "objectID": "posts/medical knowledge/2025-11-09-external-comparator-arms.html#b.-data-considerations-for-the-external-control-arm",
+    "href": "posts/medical knowledge/2025-11-09-external-comparator-arms.html#b.-data-considerations-for-the-external-control-arm",
+    "title": "external comparator arms",
+    "section": "B. Data Considerations for the External Control Arm",
+    "text": "B. Data Considerations for the External Control Arm\n\n3. Considerations for Assessing Comparability of Data Across Trial Arms\n\nThe table below summarizes important considerations, discussed above, regarding the comparability of data between the treatment arm and the external control arm. The relevance of each consideration can vary on a case-by-case basis, depending on attributes of the treatment arm, the selected data source for the external control arm, and the stage of the trial (design, conduct, or analysis).\n\n여러가지 이유로 비교가능을 평가해야함\nTime period, Geograpic region, Diagnosis, Prognosis, Treatments, Other treatment-related factors, Follow-up periods, Intercurrent events, Outcome",
+    "crumbs": [
+      "Main_Blog",
+      "Posts",
+      "medical knowledge",
+      "external comparator arms and quantitative bias analysis"
+    ]
+  },
+  {
+    "objectID": "posts/medical knowledge/2025-11-09-external-comparator-arms.html#c.-analysis-considerations",
+    "href": "posts/medical knowledge/2025-11-09-external-comparator-arms.html#c.-analysis-considerations",
+    "title": "external comparator arms",
+    "section": "C. Analysis Considerations",
+    "text": "C. Analysis Considerations\n\n1. General Considerations\n\nBefore conducting an externally controlled trial, sponsors should develop a statistical analysis plan that prespecifies analyses of interest, such as analyses of primary and secondary endpoints, calculations of statistical power and sample size, and plans to control the chance of erroneous conclusions (e.g., to control the overall type I error probability).\n\n외부 대조군 설계 전 sap를 꼭 만들어야 하고, 이떄 1차, 2차 평가항목, 검정력, 표본 크기, 제 1종 오휴제어 등에 대한 계획을 포함해야함\n\nIn general, the analytic method used should identify and manage sources of confounding and bias, including a strategy to account for differences in baseline factors and confounding variables between trial arms.\n\n분석 방법은 교란과 편향의 sources들을 식별하고 관리해야함, 군 간 교란 변수와 기저치 요소 차이에 대한 전략 포함해야함\n\nThe assumptions involved should be made explicit, and sensitivity analyses as well as model diagnostics should be conducted to examine such assumptions.\n\n분석 가정은 명확하게 정해져야 하고, 모델 진단에는 분석가정을 확인하는 것이 꼭 수행되어야 함\n\n\n\n\n2. Missing Data\n\nThe proposed analytical methods should include a strategy for dealing with missing data, including data that may not be available in a chosen data source based on the type and frequency of assessments conducted during the patient encounter, patients no longer being followed, or other reasons.\n\n분석 방법 제안할때는 결측값에 대한 전략을 꼭 포함해야함. 환자들을 더이상 추적할 수 없는 등의 경우가 생길 수 있음.\n\nAnalytical methods (such as strategies for imputing missing data) may be used in such situations, but these methods require assumptions regarding the pattern of missing information.\n\nimputation 같은 결측값에 대한 전략이 분석 방법에 포함되어야 하고, 결측값이 Missing at Random(MCAR), Missing not at Random(MNAR)인 경우 다른 분석 가정을 요구함\n\nsensitivity analyses should be used to evaluate the potential impact of plausible violations in missing data assumptions on the results of the primary and other key analyses.\n\n민감도 분석이 사용되어야 함\n\n\n\n\n3. Misclassification of Available Data\n\nMisclassification (mischaracterization) of data in externally controlled trials, especially in an external control arm using RWD sources, can occur when the value of a measurement is assigned to an incorrect category for subsequent analysis, potentially affecting estimates of the observed drug-outcome association.\n\n오분류는 외부적으로 시험을 제한할 수 있음. 특히 rwd에서 사용하는 외부 대조군은 부정확한 분류로 할당하는 등의 오류 발생할 수 있음\n\n\n\n\n4. Additional Analyses\n\nFor example, if the primary analysis of a time-to-event endpoint assumes proportional hazards, an appropriate sensitivity analysis could be estimation by a statistical method that does not assume proportional hazards.\n\n주효과 분석이 민감도 분석을 포함한다면, 비례 위험 가정을 하지 않는 통계적 방법으로 적절한 민감도 분석을 추정할 수 있다.",
     "crumbs": [
       "Main_Blog",
       "Posts",

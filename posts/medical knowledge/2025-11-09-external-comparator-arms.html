@@ -9,7 +9,7 @@
 <meta name="author" content="SEOYEON CHOI">
 <meta name="dcterms.date" content="2025-11-09">
 
-<title>Seoyeon’s Blog for classes - external comparator arms and quantitative bias analysis</title>
+<title>Seoyeon’s Blog for classes - external comparator arms</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/medical knowledge/2025-08-29-medicalknowledge.html">medical knowledge</a></li><li class="breadcrumb-item"><a href="../../posts/medical knowledge/2025-11-09-external-comparator-arms.html">external comparator arms and quantitative bias analysis</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">external comparator arms and quantitative bias analysis</h1>
+      <h1 class="title">external comparator arms</h1>
                       </div>
   </div>
     
@@ -1265,13 +1265,25 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#ii.-background" id="toc-ii.-background" class="nav-link active" data-scroll-target="#ii.-background">II. BACKGROUND</a></li>
-  <li><a href="#ii.-design-and-analysis-of-externally-controlled-trials" id="toc-ii.-design-and-analysis-of-externally-controlled-trials" class="nav-link" data-scroll-target="#ii.-design-and-analysis-of-externally-controlled-trials">II. DESIGN AND ANALYSIS OF EXTERNALLY CONTROLLED TRIALS</a>
+  <li><a href="#iii.-design-and-analysis-of-externally-controlled-trials" id="toc-iii.-design-and-analysis-of-externally-controlled-trials" class="nav-link" data-scroll-target="#iii.-design-and-analysis-of-externally-controlled-trials">III. DESIGN AND ANALYSIS OF EXTERNALLY CONTROLLED TRIALS</a>
   <ul class="collapse">
   <li><a href="#a.-design-considerations" id="toc-a.-design-considerations" class="nav-link" data-scroll-target="#a.-design-considerations">A. Design Considerations</a>
   <ul class="collapse">
   <li><a href="#characteristics-of-study-populations" id="toc-characteristics-of-study-populations" class="nav-link" data-scroll-target="#characteristics-of-study-populations">2. Characteristics of Study Populations</a></li>
   </ul></li>
+  <li><a href="#b.-data-considerations-for-the-external-control-arm" id="toc-b.-data-considerations-for-the-external-control-arm" class="nav-link" data-scroll-target="#b.-data-considerations-for-the-external-control-arm">B. Data Considerations for the External Control Arm</a>
+  <ul class="collapse">
+  <li><a href="#considerations-for-assessing-comparability-of-data-across-trial-arms" id="toc-considerations-for-assessing-comparability-of-data-across-trial-arms" class="nav-link" data-scroll-target="#considerations-for-assessing-comparability-of-data-across-trial-arms">3. Considerations for Assessing Comparability of Data Across Trial Arms</a></li>
   </ul></li>
+  <li><a href="#c.-analysis-considerations" id="toc-c.-analysis-considerations" class="nav-link" data-scroll-target="#c.-analysis-considerations">C. Analysis Considerations</a>
+  <ul class="collapse">
+  <li><a href="#general-considerations" id="toc-general-considerations" class="nav-link" data-scroll-target="#general-considerations">1. General Considerations</a></li>
+  <li><a href="#missing-data" id="toc-missing-data" class="nav-link" data-scroll-target="#missing-data">2. Missing Data</a></li>
+  <li><a href="#misclassification-of-available-data" id="toc-misclassification-of-available-data" class="nav-link" data-scroll-target="#misclassification-of-available-data">3. Misclassification of Available Data</a></li>
+  <li><a href="#additional-analyses" id="toc-additional-analyses" class="nav-link" data-scroll-target="#additional-analyses">4. Additional Analyses</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#glossary" id="toc-glossary" class="nav-link" data-scroll-target="#glossary">GLOSSARY</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-11-09-external-comparator-arms.out.ipynb" download="2025-11-09-external-comparator-arms.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -1301,22 +1313,116 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <hr>
 </section>
-<section id="ii.-design-and-analysis-of-externally-controlled-trials" class="level1">
-<h1>II. DESIGN AND ANALYSIS OF EXTERNALLY CONTROLLED TRIALS</h1>
+<section id="iii.-design-and-analysis-of-externally-controlled-trials" class="level1">
+<h1>III. DESIGN AND ANALYSIS OF EXTERNALLY CONTROLLED TRIALS</h1>
 <section id="a.-design-considerations" class="level2">
 <h2 class="anchored" data-anchor-id="a.-design-considerations">A. Design Considerations</h2>
-<ul>
-<li>Specific design elements to prespecify in the protocol (i.e., before conducting an externally controlled trial) include suitable study data sources, baseline eligibility (inclusion and exclusion) criteria, appropriate exposure definitions and windows, well-defined and clinically meaningful endpoints, cogent analytic plans, and approaches to minimize missing data and sources of bias.
-<ul>
-<li>prespecify 미리 지정하다</li>
-</ul></li>
-</ul>
 <section id="characteristics-of-study-populations" class="level3">
 <h3 class="anchored" data-anchor-id="characteristics-of-study-populations">2. Characteristics of Study Populations</h3>
-
-
+<ul>
+<li>In the absence of randomization, a major concern for externally controlled trials is that attributes of patients likely to influence outcomes in an external control arm will differ from corresponding attributes of participants in a treatment arm of the trial.
+<ul>
+<li>무작위 배정이 없는 rwd, 치료군과 결과에 영향을 미칠 대조군이 다를 가능성이 있다는 점이다.</li>
+</ul></li>
+<li>A specific design consideration for externally controlled trials involves prespecifying plans regarding how to measure and analyze data on important confounding factors and sources of bias.
+<ul>
+<li>외부 대조군의 주요한 디자인 고려사항은 주요한 교란 요인과 편향을 어떻게 고려할지에 관한 것이다.</li>
+</ul></li>
+<li>The ability to identify confounding factors in an externally controlled trial is limited by both conceptual and practical concerns.
+<ul>
+<li>교랸요인을 식별할 가능성은 외부 대조군 연구에서 개념적, 실제적으로 제한된다.</li>
+</ul></li>
+<li>Conceptually, when seeking to provide evidence of effectiveness using an externally controlled trial design, a thorough understanding is needed—but is often difficult to verify—regarding the natural history of the disease involved and relevant prognostic factors influencing outcomes.
+<ul>
+<li>개념적으로 연구할떄 실질적인 요소를 다 알아야 하지만 현실적으로 이는 어렵다.</li>
+</ul></li>
+<li>Accordingly, the protocol for an externally controlled trial should include specific plans for evaluating eligibility criteria to determine if the criteria can be applied in a manner that allows for selection of similar patients in the treatment and external control groups, recognizing the limitations of information available in many RWD sources.</li>
+</ul>
 </section>
 </section>
+<section id="b.-data-considerations-for-the-external-control-arm" class="level2">
+<h2 class="anchored" data-anchor-id="b.-data-considerations-for-the-external-control-arm">B. Data Considerations for the External Control Arm</h2>
+<section id="considerations-for-assessing-comparability-of-data-across-trial-arms" class="level3">
+<h3 class="anchored" data-anchor-id="considerations-for-assessing-comparability-of-data-across-trial-arms">3. Considerations for Assessing Comparability of Data Across Trial Arms</h3>
+<ul>
+<li>The table below summarizes important considerations, discussed above, regarding the comparability of data between the treatment arm and the external control arm. The relevance of each consideration can vary on a case-by-case basis, depending on attributes of the treatment arm, the selected data source for the external control arm, and the stage of the trial (design, conduct, or analysis).
+<ul>
+<li>여러가지 이유로 비교가능을 평가해야함</li>
+<li>Time period, Geograpic region, Diagnosis, Prognosis, Treatments, Other treatment-related factors, Follow-up periods, Intercurrent events, Outcome</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="c.-analysis-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="c.-analysis-considerations">C. Analysis Considerations</h2>
+<section id="general-considerations" class="level3">
+<h3 class="anchored" data-anchor-id="general-considerations">1. General Considerations</h3>
+<ul>
+<li>Before conducting an externally controlled trial, sponsors should develop a statistical analysis plan that prespecifies analyses of interest, such as analyses of primary and secondary endpoints, calculations of statistical power and sample size, and plans to control the chance of erroneous conclusions (e.g., to control the overall type I error probability).
+<ul>
+<li>외부 대조군 설계 전 sap를 꼭 만들어야 하고, 이떄 1차, 2차 평가항목, 검정력, 표본 크기, 제 1종 오휴제어 등에 대한 계획을 포함해야함</li>
+</ul></li>
+<li>In general, the analytic method used should identify and manage sources of confounding and bias, including a strategy to account for differences in baseline factors and confounding variables between trial arms.
+<ul>
+<li>분석 방법은 교란과 편향의 sources들을 식별하고 관리해야함, 군 간 교란 변수와 기저치 요소 차이에 대한 전략 포함해야함</li>
+</ul></li>
+<li>The assumptions involved should be made explicit, and sensitivity analyses as well as model diagnostics should be conducted to examine such assumptions.
+<ul>
+<li>분석 가정은 명확하게 정해져야 하고, 모델 진단에는 분석가정을 확인하는 것이 꼭 수행되어야 함</li>
+</ul></li>
+</ul>
+</section>
+<section id="missing-data" class="level3">
+<h3 class="anchored" data-anchor-id="missing-data">2. Missing Data</h3>
+<ul>
+<li>The proposed analytical methods should include a strategy for dealing with missing data, including data that may not be available in a chosen data source based on the type and frequency of assessments conducted during the patient encounter, patients no longer being followed, or other reasons.
+<ul>
+<li>분석 방법 제안할때는 결측값에 대한 전략을 꼭 포함해야함. 환자들을 더이상 추적할 수 없는 등의 경우가 생길 수 있음.</li>
+</ul></li>
+<li>Analytical methods (such as strategies for imputing missing data) may be used in such situations, but these methods require assumptions regarding the pattern of missing information.
+<ul>
+<li>imputation 같은 결측값에 대한 전략이 분석 방법에 포함되어야 하고, 결측값이 Missing at Random(MCAR), Missing not at Random(MNAR)인 경우 다른 분석 가정을 요구함</li>
+</ul></li>
+<li>sensitivity analyses should be used to evaluate the potential impact of plausible violations in missing data assumptions on the results of the primary and other key analyses.
+<ul>
+<li>민감도 분석이 사용되어야 함</li>
+</ul></li>
+</ul>
+</section>
+<section id="misclassification-of-available-data" class="level3">
+<h3 class="anchored" data-anchor-id="misclassification-of-available-data">3. Misclassification of Available Data</h3>
+<ul>
+<li>Misclassification (mischaracterization) of data in externally controlled trials, especially in an external control arm using RWD sources, can occur when the value of a measurement is assigned to an incorrect category for subsequent analysis, potentially affecting estimates of the observed drug-outcome association.
+<ul>
+<li>오분류는 외부적으로 시험을 제한할 수 있음. 특히 rwd에서 사용하는 외부 대조군은 부정확한 분류로 할당하는 등의 오류 발생할 수 있음</li>
+</ul></li>
+</ul>
+</section>
+<section id="additional-analyses" class="level3">
+<h3 class="anchored" data-anchor-id="additional-analyses">4. Additional Analyses</h3>
+<ul>
+<li>For example, if the primary analysis of a time-to-event endpoint assumes proportional hazards, an appropriate sensitivity analysis could be estimation by a statistical method that does not assume proportional hazards.
+<ul>
+<li>주효과 분석이 민감도 분석을 포함한다면, 비례 위험 가정을 하지 않는 통계적 방법으로 적절한 민감도 분석을 추정할 수 있다.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="glossary" class="level1">
+<h1>GLOSSARY</h1>
+<ul>
+<li><code>Bias</code>: Any systematic error in the design, conduct, analysis, or interpretation of a study that results in an erroneous estimate of a treatment’s effect on the outcome of interest.</li>
+<li><code>Confounding</code>: Distortion of the measure of the effect of a treatment on an outcome due to another factor that is associated with both the treatment and the outcome.</li>
+<li><code>Intercurrent Event</code>: An event occurring after treatment initiation that affects either the interpretation or the existence of the measurements associated with the clinical question of interest. Examples include switching or discontinuing treatment, using rescue medications, or experiencing terminal events such as death.</li>
+<li><code>Real-World Data (RWD)</code>: Data relating to patient health status and/or the delivery of healthcare routinely collected from a variety of sources.</li>
+<li><code>Real-World Evidence (RWE)</code>: Clinical evidence about the usage and potential benefits or risks of a medical product derived from analysis of RWD.</li>
+<li><code>Source Data</code>: All information in original records and certified copies of original records of clinical findings, observations, or other activities (in a clinical investigation) used for the reconstruction and evaluation of the study. Source data are contained in source documents (i.e.,original records or certified copies).</li>
+<li><code>Source Documents</code>: Original documents, data, and records (e.g., hospital records; clinical and office charts; laboratory notes; memoranda; subjects’ diaries or evaluation checklists; pharmacy dispensing records; recorded data from automated instruments; copies or transcriptions certified after verification as being accurate copies; microfiches; photographic negatives; microfilm or magnetic media; x-rays; subject files; and records kept at the pharmacy, at the laboratories, and at the medico-technical departments involved in the clinical trial).</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->
