@@ -9,7 +9,7 @@
 <meta name="author" content="SEOYEON CHOI">
 <meta name="dcterms.date" content="2025-11-14">
 
-<title>Seoyeon’s Blog for classes - [Kaggle] EHR data</title>
+<title>Seoyeon’s Blog for classes - [Kaggle] obsessive-compulsive disorder data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -166,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/python/2025-08-18-supervised_learning.html">Python</a></li><li class="breadcrumb-item"><a href="../../posts/python/2025-11-14-python_ehr.html">[Kaggle] EHR data</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">[Kaggle] EHR data</h1>
+      <h1 class="title">[Kaggle] obsessive-compulsive disorder data</h1>
                       </div>
   </div>
     
@@ -1312,16 +1312,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p><a href="https://www.kaggle.com/datasets/anuchhetry/electronic-health-record?resource=download">data kaggle</a></p>
-<div id="afe1241b-fab3-491a-81e8-6035a05e83d4" class="cell" data-execution_count="1">
+<p><a href="https://www.kaggle.com/datasets/ohinhaque/ocd-patient-dataset-demographics-and-clinical-data">data kaggle</a></p>
+<ul>
+<li>The “OCD Patient Dataset: Demographics &amp; Clinical Data” is a comprehensive collection of information pertaining to 1500 individuals diagnosed with Obsessive-Compulsive Disorder (OCD). This dataset encompasses a wide range of parameters, providing a detailed insight into the demographic and clinical profiles of these individuals.</li>
+<li>Included in this dataset are key demographic details such as age, gender, ethnicity, marital status, and education level, offering a comprehensive overview of the sample population. Additionally, clinical information like the date of OCD diagnosis, duration of symptoms, and any previous psychiatric diagnoses are recorded, providing context to the patients’ journeys.</li>
+<li>The dataset also delves into the specific nature of OCD symptoms, categorizing them into obsession and compulsion types. Severity of these symptoms is assessed using the Yale-Brown Obsessive-Compulsive Scale (Y-BOCS) scores for both obsessions and compulsions. Furthermore, it documents any co-occurring mental health conditions, including depression and anxiety diagnoses.</li>
+<li>Notably, the dataset outlines the medications prescribed to patients, offering valuable insights into the treatment approaches employed. It also records whether there is a family history of OCD, shedding light on potential genetic or environmental factors.</li>
+<li>Overall, this dataset serves as a valuable resource for researchers, clinicians, and mental health professionals seeking to gain a deeper understanding of OCD and its manifestations within a diverse patient population.</li>
+</ul>
+<div id="afe1241b-fab3-491a-81e8-6035a05e83d4" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div>
 </div>
-<div id="f6400959-d51f-4972-9303-5648834a8faa" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../../delete/EHR.csv'</span>)</span></code></pre></div>
+<div id="f6400959-d51f-4972-9303-5648834a8faa" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../../delete/ocd_patient_dataset.csv'</span>)</span></code></pre></div>
 </div>
-<div id="c57ffad3-8e36-4d4a-8d50-0c2247417580" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="c57ffad3-8e36-4d4a-8d50-0c2247417580" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
 <div>
 
 
@@ -1329,321 +1336,178 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">patientunitstayid</th>
-<th data-quarto-table-cell-role="th">patienthealthsystemstayid</th>
-<th data-quarto-table-cell-role="th">gender</th>
-<th data-quarto-table-cell-role="th">age</th>
-<th data-quarto-table-cell-role="th">ethnicity</th>
-<th data-quarto-table-cell-role="th">hospitalid</th>
-<th data-quarto-table-cell-role="th">wardid</th>
-<th data-quarto-table-cell-role="th">apacheadmissiondx</th>
-<th data-quarto-table-cell-role="th">admissionheight</th>
-<th data-quarto-table-cell-role="th">hospitaladmittime24</th>
-<th data-quarto-table-cell-role="th">...</th>
-<th data-quarto-table-cell-role="th">unitadmitsource</th>
-<th data-quarto-table-cell-role="th">unitvisitnumber</th>
-<th data-quarto-table-cell-role="th">unitstaytype</th>
-<th data-quarto-table-cell-role="th">admissionweight</th>
-<th data-quarto-table-cell-role="th">dischargeweight</th>
-<th data-quarto-table-cell-role="th">unitdischargetime24</th>
-<th data-quarto-table-cell-role="th">unitdischargeoffset</th>
-<th data-quarto-table-cell-role="th">unitdischargelocation</th>
-<th data-quarto-table-cell-role="th">unitdischargestatus</th>
-<th data-quarto-table-cell-role="th">uniquepid</th>
+<th data-quarto-table-cell-role="th">Patient ID</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Ethnicity</th>
+<th data-quarto-table-cell-role="th">Marital Status</th>
+<th data-quarto-table-cell-role="th">Education Level</th>
+<th data-quarto-table-cell-role="th">OCD Diagnosis Date</th>
+<th data-quarto-table-cell-role="th">Duration of Symptoms (months)</th>
+<th data-quarto-table-cell-role="th">Previous Diagnoses</th>
+<th data-quarto-table-cell-role="th">Family History of OCD</th>
+<th data-quarto-table-cell-role="th">Obsession Type</th>
+<th data-quarto-table-cell-role="th">Compulsion Type</th>
+<th data-quarto-table-cell-role="th">Y-BOCS Score (Obsessions)</th>
+<th data-quarto-table-cell-role="th">Y-BOCS Score (Compulsions)</th>
+<th data-quarto-table-cell-role="th">Depression Diagnosis</th>
+<th data-quarto-table-cell-role="th">Anxiety Diagnosis</th>
+<th data-quarto-table-cell-role="th">Medications</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>210014</td>
-<td>182373</td>
-<td>Male</td>
-<td>45</td>
-<td>Caucasian</td>
-<td>73</td>
-<td>89</td>
-<td>Hypertension, uncontrolled (for cerebrovascula...</td>
-<td>178.0</td>
-<td>13:08:59</td>
-<td>...</td>
-<td>Direct Admit</td>
-<td>1</td>
-<td>admit</td>
-<td>116.0</td>
-<td>112.7</td>
-<td>15:00:00</td>
-<td>4424</td>
-<td>Skilled Nursing Facility</td>
-<td>Alive</td>
-<td>002-10665</td>
+<td>1018</td>
+<td>32</td>
+<td>Female</td>
+<td>African</td>
+<td>Single</td>
+<td>Some College</td>
+<td>2016-07-15</td>
+<td>203</td>
+<td>MDD</td>
+<td>No</td>
+<td>Harm-related</td>
+<td>Checking</td>
+<td>17</td>
+<td>10</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>SNRI</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>200026</td>
-<td>174624</td>
+<td>2406</td>
+<td>69</td>
 <td>Male</td>
-<td>50</td>
-<td>Caucasian</td>
-<td>71</td>
-<td>87</td>
-<td>Ablation or mapping of cardiac conduction pathway</td>
-<td>177.8</td>
-<td>10:41:00</td>
-<td>...</td>
-<td>Operating Room</td>
-<td>1</td>
-<td>admit</td>
-<td>106.1</td>
-<td>106.1</td>
-<td>17:40:00</td>
-<td>1548</td>
-<td>Home</td>
-<td>Alive</td>
-<td>002-10715</td>
+<td>African</td>
+<td>Divorced</td>
+<td>Some College</td>
+<td>2017-04-28</td>
+<td>180</td>
+<td>None</td>
+<td>Yes</td>
+<td>Harm-related</td>
+<td>Washing</td>
+<td>21</td>
+<td>25</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>SSRI</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>221131</td>
-<td>190993</td>
+<td>1188</td>
+<td>57</td>
 <td>Male</td>
-<td>83</td>
-<td>Caucasian</td>
-<td>71</td>
-<td>87</td>
-<td>Endarterectomy, carotid</td>
-<td>175.3</td>
-<td>21:43:00</td>
-<td>...</td>
-<td>Operating Room</td>
-<td>1</td>
-<td>admit</td>
-<td>NaN</td>
-<td>72.1</td>
-<td>17:46:00</td>
-<td>1203</td>
-<td>Home</td>
-<td>Alive</td>
-<td>002-10249</td>
+<td>Hispanic</td>
+<td>Divorced</td>
+<td>College Degree</td>
+<td>2018-02-02</td>
+<td>173</td>
+<td>MDD</td>
+<td>No</td>
+<td>Contamination</td>
+<td>Checking</td>
+<td>3</td>
+<td>4</td>
+<td>No</td>
+<td>No</td>
+<td>Benzodiazepine</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>221215</td>
-<td>191054</td>
-<td>Male</td>
-<td>49</td>
-<td>Caucasian</td>
-<td>71</td>
-<td>87</td>
-<td>Infarction, acute myocardial (MI)</td>
-<td>185.4</td>
-<td>03:16:00</td>
-<td>...</td>
-<td>Emergency Department</td>
-<td>1</td>
-<td>admit</td>
-<td>145.3</td>
-<td>146.6</td>
-<td>19:07:00</td>
-<td>1562</td>
-<td>Home</td>
-<td>Alive</td>
-<td>002-10627</td>
+<td>6200</td>
+<td>27</td>
+<td>Female</td>
+<td>Hispanic</td>
+<td>Married</td>
+<td>College Degree</td>
+<td>2014-08-25</td>
+<td>126</td>
+<td>PTSD</td>
+<td>Yes</td>
+<td>Symmetry</td>
+<td>Washing</td>
+<td>14</td>
+<td>28</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>SSRI</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>217835</td>
-<td>188445</td>
-<td>Male</td>
-<td>57</td>
-<td>Caucasian</td>
-<td>73</td>
-<td>92</td>
-<td>CABG alone, coronary artery bypass grafting</td>
-<td>172.7</td>
-<td>01:09:00</td>
-<td>...</td>
-<td>Operating Room</td>
-<td>1</td>
-<td>admit</td>
-<td>NaN</td>
-<td>80.4</td>
-<td>08:25:00</td>
-<td>4719</td>
-<td>Floor</td>
-<td>Alive</td>
-<td>002-10324</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">1442</td>
-<td>1107527</td>
-<td>823049</td>
-<td>Male</td>
-<td>77</td>
-<td>Caucasian</td>
-<td>199</td>
-<td>487</td>
-<td>NaN</td>
-<td>172.7</td>
-<td>18:35:00</td>
-<td>...</td>
-<td>ICU to SDU</td>
-<td>2</td>
-<td>stepdown/other</td>
-<td>70.3</td>
-<td>NaN</td>
-<td>17:51:00</td>
-<td>4576</td>
-<td>Rehabilitation</td>
-<td>Alive</td>
-<td>010-10461</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1443</td>
-<td>1107528</td>
-<td>823049</td>
-<td>Male</td>
-<td>77</td>
-<td>Caucasian</td>
-<td>199</td>
-<td>487</td>
-<td>Pneumonia, other</td>
-<td>172.7</td>
-<td>18:35:00</td>
-<td>...</td>
-<td>Step-Down Unit (SDU)</td>
-<td>1</td>
-<td>admit</td>
-<td>75.3</td>
-<td>NaN</td>
-<td>13:35:00</td>
-<td>4651</td>
-<td>Step-Down Unit (SDU)</td>
-<td>Alive</td>
-<td>010-10461</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">1444</td>
-<td>1112115</td>
-<td>826318</td>
+<td>5824</td>
+<td>56</td>
 <td>Female</td>
-<td>78</td>
-<td>Caucasian</td>
-<td>199</td>
-<td>490</td>
-<td>Sepsis, GI</td>
-<td>162.6</td>
-<td>21:33:00</td>
-<td>...</td>
-<td>Step-Down Unit (SDU)</td>
-<td>1</td>
-<td>admit</td>
-<td>110.4</td>
-<td>NaN</td>
-<td>12:40:00</td>
-<td>4090</td>
-<td>Floor</td>
-<td>Alive</td>
-<td>010-10636</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1445</td>
-<td>1099377</td>
-<td>817241</td>
-<td>Male</td>
-<td>78</td>
-<td>Caucasian</td>
-<td>199</td>
-<td>491</td>
-<td>Pneumonia, bacterial</td>
-<td>195.6</td>
-<td>05:10:00</td>
-<td>...</td>
-<td>Step-Down Unit (SDU)</td>
-<td>1</td>
-<td>stepdown/other</td>
-<td>108.0</td>
-<td>NaN</td>
-<td>13:25:00</td>
-<td>10063</td>
-<td>Floor</td>
-<td>Alive</td>
-<td>010-10171</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">1446</td>
-<td>1098722</td>
-<td>816777</td>
-<td>Female</td>
-<td>78</td>
-<td>Caucasian</td>
-<td>199</td>
-<td>495</td>
-<td>Respiratory - medical, other</td>
-<td>162.6</td>
-<td>05:54:00</td>
-<td>...</td>
-<td>Step-Down Unit (SDU)</td>
-<td>1</td>
-<td>admit</td>
-<td>63.5</td>
-<td>NaN</td>
-<td>19:44:00</td>
-<td>12969</td>
-<td>Home</td>
-<td>Alive</td>
-<td>010-10099</td>
+<td>Hispanic</td>
+<td>Married</td>
+<td>High School</td>
+<td>2022-02-20</td>
+<td>168</td>
+<td>PTSD</td>
+<td>Yes</td>
+<td>Hoarding</td>
+<td>Ordering</td>
+<td>39</td>
+<td>18</td>
+<td>No</td>
+<td>No</td>
+<td>None</td>
 </tr>
 </tbody>
 </table>
 
-<p>1447 rows × 29 columns</p>
 </div>
 </div>
 </div>
-<div id="dd158197-c461-474b-9a5e-fadd16dce441" class="cell" data-execution_count="5">
+<div id="dd158197-c461-474b-9a5e-fadd16dce441" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>Index(['patientunitstayid', 'patienthealthsystemstayid', 'gender', 'age',
-       'ethnicity', 'hospitalid', 'wardid', 'apacheadmissiondx',
-       'admissionheight', 'hospitaladmittime24', 'hospitaladmitoffset',
-       'hospitaladmitsource', 'hospitaldischargeyear',
-       'hospitaldischargetime24', 'hospitaldischargeoffset',
-       'hospitaldischargelocation', 'hospitaldischargestatus', 'unittype',
-       'unitadmittime24', 'unitadmitsource', 'unitvisitnumber', 'unitstaytype',
-       'admissionweight', 'dischargeweight', 'unitdischargetime24',
-       'unitdischargeoffset', 'unitdischargelocation', 'unitdischargestatus',
-       'uniquepid'],
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>Index(['Patient ID', 'Age', 'Gender', 'Ethnicity', 'Marital Status',
+       'Education Level', 'OCD Diagnosis Date',
+       'Duration of Symptoms (months)', 'Previous Diagnoses',
+       'Family History of OCD', 'Obsession Type', 'Compulsion Type',
+       'Y-BOCS Score (Obsessions)', 'Y-BOCS Score (Compulsions)',
+       'Depression Diagnosis', 'Anxiety Diagnosis', 'Medications'],
       dtype='object')</code></pre>
 </div>
 </div>
-<div id="ee38def0-d283-4b41-b03b-7e2a80b0d5bd" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.age.values</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>array(['45', '50', '83', ..., '78', '78', '78'], dtype=object)</code></pre>
+<div id="fb9241c9-9e16-44dc-8f6c-b01963db1685" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 1500 entries, 0 to 1499
+Data columns (total 17 columns):
+ #   Column                         Non-Null Count  Dtype 
+---  ------                         --------------  ----- 
+ 0   Patient ID                     1500 non-null   int64 
+ 1   Age                            1500 non-null   int64 
+ 2   Gender                         1500 non-null   object
+ 3   Ethnicity                      1500 non-null   object
+ 4   Marital Status                 1500 non-null   object
+ 5   Education Level                1500 non-null   object
+ 6   OCD Diagnosis Date             1500 non-null   object
+ 7   Duration of Symptoms (months)  1500 non-null   int64 
+ 8   Previous Diagnoses             1500 non-null   object
+ 9   Family History of OCD          1500 non-null   object
+ 10  Obsession Type                 1500 non-null   object
+ 11  Compulsion Type                1500 non-null   object
+ 12  Y-BOCS Score (Obsessions)      1500 non-null   int64 
+ 13  Y-BOCS Score (Compulsions)     1500 non-null   int64 
+ 14  Depression Diagnosis           1500 non-null   object
+ 15  Anxiety Diagnosis              1500 non-null   object
+ 16  Medications                    1500 non-null   object
+dtypes: int64(5), object(12)
+memory usage: 199.3+ KB</code></pre>
+</div>
+</div>
+<div id="4061b6cb-70f7-40e7-a9b6-aa5bd29eadde" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Obsession Type'</span>].unique()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>array(['Harm-related', 'Contamination', 'Symmetry', 'Hoarding',
+       'Religious'], dtype=object)</code></pre>
 </div>
 </div>
 
