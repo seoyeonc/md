@@ -1337,6 +1337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data">Data</a></li>
   <li><a href="#regression-predict-overall_health_score" id="toc-regression-predict-overall_health_score" class="nav-link" data-scroll-target="#regression-predict-overall_health_score">Regression → Predict Overall_Health_Score</a></li>
   <li><a href="#classification" id="toc-classification" class="nav-link" data-scroll-target="#classification">Classification</a></li>
+  <li><a href="#dashboard" id="toc-dashboard" class="nav-link" data-scroll-target="#dashboard">Dashboard</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-11-17-holistichealthandlifestylescore.out.ipynb" download="2025-11-17-holistichealthandlifestylescore.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -2169,6 +2170,194 @@ if (outputEl) {{
 }}
 
                         })                };                });            </script>        </div>
+</div>
+</div>
+</section>
+<section id="dashboard" class="level1">
+<h1>Dashboard</h1>
+<div id="e7fb502b-14c2-454f-a506-18d2869a85da" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Physical_Activity</th>
+<th data-quarto-table-cell-role="th">Nutrition_Score</th>
+<th data-quarto-table-cell-role="th">Stress_Level</th>
+<th data-quarto-table-cell-role="th">Mindfulness</th>
+<th data-quarto-table-cell-role="th">Sleep_Hours</th>
+<th data-quarto-table-cell-role="th">Hydration</th>
+<th data-quarto-table-cell-role="th">BMI</th>
+<th data-quarto-table-cell-role="th">Alcohol</th>
+<th data-quarto-table-cell-role="th">Smoking</th>
+<th data-quarto-table-cell-role="th">Overall_Health_Score</th>
+<th data-quarto-table-cell-role="th">Health_Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>54.934283</td>
+<td>5.643011</td>
+<td>5.696572</td>
+<td>0.000000</td>
+<td>6.292214</td>
+<td>2.578565</td>
+<td>24.275932</td>
+<td>4.280610</td>
+<td>8.984006</td>
+<td>36.950187</td>
+<td>Poor</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>42.234714</td>
+<td>6.389001</td>
+<td>5.566647</td>
+<td>4.450144</td>
+<td>8.519054</td>
+<td>2.448713</td>
+<td>25.970141</td>
+<td>7.461846</td>
+<td>3.223304</td>
+<td>55.167774</td>
+<td>Average</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>57.953771</td>
+<td>5.805238</td>
+<td>3.126960</td>
+<td>9.129716</td>
+<td>6.702720</td>
+<td>3.261433</td>
+<td>25.193857</td>
+<td>0.000000</td>
+<td>4.600482</td>
+<td>78.304426</td>
+<td>Good</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>75.460597</td>
+<td>7.220836</td>
+<td>6.159168</td>
+<td>16.496689</td>
+<td>7.135854</td>
+<td>3.726265</td>
+<td>19.527300</td>
+<td>9.958423</td>
+<td>3.947706</td>
+<td>94.018274</td>
+<td>Good</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>40.316933</td>
+<td>9.394357</td>
+<td>2.019835</td>
+<td>25.241623</td>
+<td>8.076086</td>
+<td>3.049478</td>
+<td>23.348229</td>
+<td>4.320347</td>
+<td>8.084322</td>
+<td>100.000000</td>
+<td>Good</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9995</td>
+<td>71.022041</td>
+<td>7.775655</td>
+<td>3.845424</td>
+<td>26.196510</td>
+<td>7.085198</td>
+<td>1.938515</td>
+<td>22.419178</td>
+<td>6.763459</td>
+<td>15.932184</td>
+<td>94.186544</td>
+<td>Good</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9996</td>
+<td>5.033101</td>
+<td>9.754733</td>
+<td>7.889208</td>
+<td>17.650340</td>
+<td>6.962616</td>
+<td>1.620765</td>
+<td>25.706761</td>
+<td>1.282725</td>
+<td>0.982908</td>
+<td>90.447658</td>
+<td>Good</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9997</td>
+<td>30.893666</td>
+<td>7.756708</td>
+<td>3.997265</td>
+<td>21.165010</td>
+<td>7.750127</td>
+<td>2.612808</td>
+<td>25.287737</td>
+<td>1.124172</td>
+<td>3.221665</td>
+<td>100.000000</td>
+<td>Good</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9998</td>
+<td>54.915311</td>
+<td>10.000000</td>
+<td>1.215286</td>
+<td>23.146235</td>
+<td>7.397823</td>
+<td>0.754422</td>
+<td>25.847730</td>
+<td>2.986629</td>
+<td>6.557577</td>
+<td>100.000000</td>
+<td>Good</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9999</td>
+<td>57.887769</td>
+<td>3.760160</td>
+<td>4.542232</td>
+<td>18.559744</td>
+<td>9.273717</td>
+<td>2.494882</td>
+<td>18.798867</td>
+<td>0.000000</td>
+<td>3.821468</td>
+<td>96.818097</td>
+<td>Good</td>
+</tr>
+</tbody>
+</table>
+
+<p>10000 rows × 11 columns</p>
+</div>
 </div>
 </div>
 
