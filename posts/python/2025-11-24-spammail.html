@@ -1324,15 +1324,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div id="781e84e5-b5a9-4c37-96a5-84d8435b3545" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div>
+<p><a href="https://www.kaggle.com/datasets/somesh24/spambase">data</a></p>
+<ul>
+<li>SPAM E-mail Database
+<ul>
+<li>The “spam” concept is diverse: advertisements for products/websites, make money fast schemes, chain letters, pornography… Our collection of spam e-mails came from our postmaster and individuals who had filed spam. Our collection of non-spam e-mails came from filed work and personal e-mails, and hence the word ‘george’ and the area code ‘650’ are indicators of non-spam. These are useful when constructing a personalized spam filter. One would either have to blind such non-spam indicators or get a very wide collection of non-spam to generate a general purpose spam filter.</li>
+</ul></li>
+<li>Attribute Information:
+<ul>
+<li>The last column denotes whether the e-mail was considered spam (1) or not (0), i.e.&nbsp;unsolicited commercial e-mail. Most of the attributes indicate whether a particular word or character was frequently occurring in the e-mail. The run-length attributes (55-57) measure the length of sequences of consecutive capital letters.</li>
+<li>For the statistical measures of each attribute, see the end of this file. Here are the definitions of the attributes:</li>
+<li>48 continuous real [0,100] attributes of type word_freq_WORD = percentage of words in the e-mail that match WORD, i.e.&nbsp;100 * (number of times the WORD appears in the e-mail) / total number of words in e-mail. A “word” in this case is any string of alphanumeric characters bounded by non-alphanumeric characters or end-of-string.</li>
+<li>6 continuous real [0,100] attributes of type char_freq_CHAR = percentage of characters in the e-mail that match CHAR, i.e.&nbsp;100 * (number of CHAR occurrences) / total characters in e-mail</li>
+<li>1 continuous real [1,…] attribute of type capital_run_length_average = average length of uninterrupted sequences of capital letters</li>
+<li>1 continuous integer [1,…] attribute of type capital_run_length_longest = length of longest uninterrupted sequence of capital letters</li>
+<li>1 continuous integer [1,…] attribute of type capital_run_length_total = sum of length of uninterrupted sequences of capital letters = total number of capital letters in the e-mail</li>
+<li>1 nominal {0,1} class attribute of type spam = denotes whether the e-mail was considered spam (1) or not (0), i.e.&nbsp;unsolicited commercial e-mail.</li>
+</ul></li>
+</ul>
+<div id="781e84e5-b5a9-4c37-96a5-84d8435b3545" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
 </div>
 <div id="24a92204-083c-4aca-8c86-1267a1b6683e" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../../delete/spambase_csv.csv'</span>)</span></code></pre></div>
 </div>
-<div id="1b7bc1bc-7a52-49fe-a9ab-b1fbd79d8de8" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div id="1b7bc1bc-7a52-49fe-a9ab-b1fbd79d8de8" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -1377,7 +1397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0.00</td>
 <td>0.00</td>
 <td>...</td>
-<td>0.000</td>
+<td>0.00</td>
 <td>0.000</td>
 <td>0.0</td>
 <td>0.778</td>
@@ -1401,7 +1421,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0.00</td>
 <td>0.94</td>
 <td>...</td>
-<td>0.000</td>
+<td>0.00</td>
 <td>0.132</td>
 <td>0.0</td>
 <td>0.372</td>
@@ -1425,7 +1445,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0.64</td>
 <td>0.25</td>
 <td>...</td>
-<td>0.010</td>
+<td>0.01</td>
 <td>0.143</td>
 <td>0.0</td>
 <td>0.276</td>
@@ -1449,7 +1469,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0.31</td>
 <td>0.63</td>
 <td>...</td>
-<td>0.000</td>
+<td>0.00</td>
 <td>0.137</td>
 <td>0.0</td>
 <td>0.137</td>
@@ -1473,7 +1493,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0.31</td>
 <td>0.63</td>
 <td>...</td>
-<td>0.000</td>
+<td>0.00</td>
 <td>0.135</td>
 <td>0.0</td>
 <td>0.135</td>
@@ -1484,154 +1504,112 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>191</td>
 <td>1</td>
 </tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4596</td>
-<td>0.31</td>
-<td>0.00</td>
-<td>0.62</td>
-<td>0.0</td>
-<td>0.00</td>
-<td>0.31</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>...</td>
-<td>0.000</td>
-<td>0.232</td>
-<td>0.0</td>
-<td>0.000</td>
-<td>0.000</td>
-<td>0.000</td>
-<td>1.142</td>
-<td>3</td>
-<td>88</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">4597</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.0</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>...</td>
-<td>0.000</td>
-<td>0.000</td>
-<td>0.0</td>
-<td>0.353</td>
-<td>0.000</td>
-<td>0.000</td>
-<td>1.555</td>
-<td>4</td>
-<td>14</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4598</td>
-<td>0.30</td>
-<td>0.00</td>
-<td>0.30</td>
-<td>0.0</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>...</td>
-<td>0.102</td>
-<td>0.718</td>
-<td>0.0</td>
-<td>0.000</td>
-<td>0.000</td>
-<td>0.000</td>
-<td>1.404</td>
-<td>6</td>
-<td>118</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">4599</td>
-<td>0.96</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.0</td>
-<td>0.32</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>...</td>
-<td>0.000</td>
-<td>0.057</td>
-<td>0.0</td>
-<td>0.000</td>
-<td>0.000</td>
-<td>0.000</td>
-<td>1.147</td>
-<td>5</td>
-<td>78</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4600</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.65</td>
-<td>0.0</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>0.00</td>
-<td>...</td>
-<td>0.000</td>
-<td>0.000</td>
-<td>0.0</td>
-<td>0.125</td>
-<td>0.000</td>
-<td>0.000</td>
-<td>1.250</td>
-<td>5</td>
-<td>40</td>
-<td>0</td>
-</tr>
 </tbody>
 </table>
 
-<p>4601 rows × 58 columns</p>
+<p>5 rows × 58 columns</p>
+</div>
+</div>
+</div>
+<div id="536bdb3b-7bde-43cd-b56e-a5851f189c12" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 4601 entries, 0 to 4600
+Data columns (total 58 columns):
+ #   Column                      Non-Null Count  Dtype  
+---  ------                      --------------  -----  
+ 0   word_freq_make              4601 non-null   float64
+ 1   word_freq_address           4601 non-null   float64
+ 2   word_freq_all               4601 non-null   float64
+ 3   word_freq_3d                4601 non-null   float64
+ 4   word_freq_our               4601 non-null   float64
+ 5   word_freq_over              4601 non-null   float64
+ 6   word_freq_remove            4601 non-null   float64
+ 7   word_freq_internet          4601 non-null   float64
+ 8   word_freq_order             4601 non-null   float64
+ 9   word_freq_mail              4601 non-null   float64
+ 10  word_freq_receive           4601 non-null   float64
+ 11  word_freq_will              4601 non-null   float64
+ 12  word_freq_people            4601 non-null   float64
+ 13  word_freq_report            4601 non-null   float64
+ 14  word_freq_addresses         4601 non-null   float64
+ 15  word_freq_free              4601 non-null   float64
+ 16  word_freq_business          4601 non-null   float64
+ 17  word_freq_email             4601 non-null   float64
+ 18  word_freq_you               4601 non-null   float64
+ 19  word_freq_credit            4601 non-null   float64
+ 20  word_freq_your              4601 non-null   float64
+ 21  word_freq_font              4601 non-null   float64
+ 22  word_freq_000               4601 non-null   float64
+ 23  word_freq_money             4601 non-null   float64
+ 24  word_freq_hp                4601 non-null   float64
+ 25  word_freq_hpl               4601 non-null   float64
+ 26  word_freq_george            4601 non-null   float64
+ 27  word_freq_650               4601 non-null   float64
+ 28  word_freq_lab               4601 non-null   float64
+ 29  word_freq_labs              4601 non-null   float64
+ 30  word_freq_telnet            4601 non-null   float64
+ 31  word_freq_857               4601 non-null   float64
+ 32  word_freq_data              4601 non-null   float64
+ 33  word_freq_415               4601 non-null   float64
+ 34  word_freq_85                4601 non-null   float64
+ 35  word_freq_technology        4601 non-null   float64
+ 36  word_freq_1999              4601 non-null   float64
+ 37  word_freq_parts             4601 non-null   float64
+ 38  word_freq_pm                4601 non-null   float64
+ 39  word_freq_direct            4601 non-null   float64
+ 40  word_freq_cs                4601 non-null   float64
+ 41  word_freq_meeting           4601 non-null   float64
+ 42  word_freq_original          4601 non-null   float64
+ 43  word_freq_project           4601 non-null   float64
+ 44  word_freq_re                4601 non-null   float64
+ 45  word_freq_edu               4601 non-null   float64
+ 46  word_freq_table             4601 non-null   float64
+ 47  word_freq_conference        4601 non-null   float64
+ 48  char_freq_%3B               4601 non-null   float64
+ 49  char_freq_%28               4601 non-null   float64
+ 50  char_freq_%5B               4601 non-null   float64
+ 51  char_freq_%21               4601 non-null   float64
+ 52  char_freq_%24               4601 non-null   float64
+ 53  char_freq_%23               4601 non-null   float64
+ 54  capital_run_length_average  4601 non-null   float64
+ 55  capital_run_length_longest  4601 non-null   int64  
+ 56  capital_run_length_total    4601 non-null   int64  
+ 57  class                       4601 non-null   int64  
+dtypes: float64(55), int64(3)
+memory usage: 2.0 MB</code></pre>
+</div>
+</div>
+<div id="6b270af2-5c2a-469e-81e4-ea0149e561d6" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.bar(df[<span class="st">'class'</span>].value_counts().sort_index().index,df[<span class="st">'class'</span>].value_counts().sort_index().values, color<span class="op">=</span>[<span class="st">'skyblue'</span>,<span class="st">'pink'</span>])</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.xticks([<span class="dv">0</span>,<span class="dv">1</span>],[<span class="st">'Not Spam'</span>,<span class="st">'Spam'</span>],fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Spam Emails'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>Text(0.5, 1.0, 'Distribution of Spam Emails')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2025-11-24-spammail_files/figure-html/cell-6-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="e1c9ba51-84b6-4771-b868-4259b5c45f3c" class="cell" data-execution_count="87">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">6</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.bar(df[[col <span class="cf">for</span> col <span class="kw">in</span> df.columns <span class="cf">if</span> col.startswith(<span class="st">"word_freq"</span>)]].mean().sort_values().head(<span class="dv">15</span>).index,<span class="op">\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>       df[[col <span class="cf">for</span> col <span class="kw">in</span> df.columns <span class="cf">if</span> col.startswith(<span class="st">"word_freq"</span>)]].mean().sort_values().head(<span class="dv">15</span>).values)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Frequent Words in Emails'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Frequency'</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)<span class="op">;</span></span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2025-11-24-spammail_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
