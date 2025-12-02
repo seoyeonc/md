@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -1181,6 +1215,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">[Kaggle] Spam mail</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/python/2025-12-01-HeartDiseaseCleverland.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">[Kaggle] Heart Disease Cleveland</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -1490,6 +1530,34 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+<div id="9cb6786c-18a4-41c0-b4fb-7934c688f056" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div>
+</div>
+<div id="a8ae4b26-9138-4f14-b3ae-ba461966c838" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../../delete/EHR.csv'</span>)</span></code></pre></div>
+</div>
+<div id="f4f80b57-92f1-4267-8feb-71bdab2c2ab3" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'operator'</span>] <span class="op">=</span> df[<span class="st">'age'</span>].<span class="bu">str</span>.replace(<span class="vs">r'[0-9.]'</span>,<span class="st">''</span>,regex<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+</div>
+<div id="bffea5ea-9220-40c0-bf58-a188f3d809cd" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'age_numeric'</span>] <span class="op">=</span> df[<span class="st">'age'</span>].<span class="bu">str</span>.extract(<span class="vs">r'([0-9.]+)'</span>).astype(<span class="bu">float</span>)</span></code></pre></div>
+</div>
+<div id="0b2086a9-3787-4c86-8ab2-8fdb0372ae84" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>gender_missing <span class="op">=</span> (<span class="op">~</span>df[<span class="st">'gender'</span>].isin([<span class="st">'Male'</span>,<span class="st">'Female'</span>])).<span class="bu">sum</span>()</span></code></pre></div>
+</div>
+<div id="d30f1aa3-5781-45e5-b718-dadb1a99fa61" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>age_missing <span class="op">=</span> df[<span class="st">'age'</span>].isna().<span class="bu">sum</span>()</span></code></pre></div>
+</div>
+<div id="95b93610-3ed4-49f5-b0ad-cb678db885a2" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_gender <span class="op">=</span> df[df[<span class="st">'gender'</span>].isin([<span class="st">'Male'</span>,<span class="st">'Female'</span>])]</span></code></pre></div>
+</div>
+<div id="5eda633e-dd76-433d-b344-adf8844257f1" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_gender</span></code></pre></div>
+</div>
 
 
 

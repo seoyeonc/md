@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="SEOYEON CHOI">
-<meta name="dcterms.date" content="2023-04-27">
+<meta name="dcterms.date" content="2025-12-01">
 
-<title>Seoyeon’s Blog for classes - Clinical Trial Data and Survival Analysis</title>
+<title>Seoyeon’s Blog for classes - [Kaggle] Heart Disease Cleveland</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -69,35 +103,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -145,7 +150,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/anything/index.html">Anything</a></li><li class="breadcrumb-item"><a href="../../posts/anything/2023-04-27-Clinical Trial Data and Survival Analysis.html">Clinical Trial Data and Survival Analysis</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/python/2025-08-18-supervised_learning.html">Python</a></li><li class="breadcrumb-item"><a href="../../posts/python/2025-12-01-HeartDiseaseCleverland.html">[Kaggle] Heart Disease Cleveland</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -155,15 +160,11 @@ window.Quarto = {
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/anything/index.html">Anything</a></li><li class="breadcrumb-item"><a href="../../posts/anything/2023-04-27-Clinical Trial Data and Survival Analysis.html">Clinical Trial Data and Survival Analysis</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/python/2025-08-18-supervised_learning.html">Python</a></li><li class="breadcrumb-item"><a href="../../posts/python/2025-12-01-HeartDiseaseCleverland.html">[Kaggle] Heart Disease Cleveland</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Clinical Trial Data and Survival Analysis</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">Survival Analysis</div>
-                <div class="quarto-category">Cox Regression</div>
-              </div>
-                  </div>
+      <h1 class="title">[Kaggle] Heart Disease Cleveland</h1>
+                      </div>
   </div>
     
   
@@ -179,7 +180,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">April 27, 2023</p>
+        <p class="date">December 1, 2025</p>
       </div>
     </div>
     
@@ -806,11 +807,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../posts/anything/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Anything</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/anything/2023-04-17-Survival_Analysis.html" class="sidebar-item-text sidebar-link">
@@ -825,7 +826,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/anything/2023-04-27-Clinical Trial Data and Survival Analysis.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/anything/2023-04-27-Clinical Trial Data and Survival Analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Clinical Trial Data and Survival Analysis</span></a>
   </div>
 </li>
@@ -1141,13 +1142,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true">
  <span class="menu-text">Python</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/python/2025-08-18-supervised_learning.html" class="sidebar-item-text sidebar-link">
@@ -1216,7 +1217,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/python/2025-12-01-HeartDiseaseCleverland.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/python/2025-12-01-HeartDiseaseCleverland.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">[Kaggle] Heart Disease Cleveland</span></a>
   </div>
 </li>
@@ -1317,14 +1318,8 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#cox-회귀모형배종성2006임상시험자료와" id="toc-cox-회귀모형배종성2006임상시험자료와" class="nav-link active" data-scroll-target="#cox-회귀모형배종성2006임상시험자료와">Cox 회귀모형<span class="citation" data-cites="배종성2006임상시험자료와">[@배종성2006임상시험자료와]</span></a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-04-27-Clinical Trial Data and Survival Analysis.out.ipynb" download="2023-04-27-Clinical Trial Data and Survival Analysis.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
-    </div>
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2025-12-01-HeartDiseaseCleverland.out.ipynb" download="2025-12-01-HeartDiseaseCleverland.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -1332,24 +1327,12 @@ window.Quarto = {
 
 
 
-<blockquote class="blockquote">
-<p>Clinical Trial Data and Survival Analysis</p>
-</blockquote>
-<section id="cox-회귀모형배종성2006임상시험자료와" class="level1">
-<h1>Cox 회귀모형<span class="citation" data-cites="배종성2006임상시험자료와">[@배종성2006임상시험자료와]</span></h1>
-<p>Cox(1972)는 위험함수에 의한 비례위험모형(proportional hazard model)을 제안하였다. 이는 준모수적(semiparametric)방법으로, 생존시간의 분포에 대한 가정을 하지 않을 뿐만 아니라, 시간에 따라 변하는 공변량(time dependent variable)이 있는 경우에도 적용가능하기 때문에 생존분석에서 자주 사용되고 있다.</p>
-<p>p개의 공변량을 가진 cox 회귀모형</p>
-<p><span class="math display">\[h(t) = h_0(t)exp(\beta_1 x_1 + \dots + \beta_p x_p)\]</span></p>
-<p><span class="math inline">\(h_0(t)\)</span>는 모든 공변량 값들이 0일 때의 baseline haxart function(기저위험함수)</p>
-<p>비례위험모형이란 시간에 대해 두 개체 간 위험률(아래)이 일정, 즉 상수 값 산출</p>
-<p><span class="math inline">\(\frac{h(t|x_1)}{h(t|x_2)} = \frac{exp(\beta' x_1}{exp(\beta' x_2}\)</span></p>
-<p>비례위험 가정 만족 시, 개체 간 생존 시간 분포 곡선은 평행, 모형에서 만족해야 함</p>
-<p>모든 개체에서 기저 위험인 <span class="math inline">\(h_0(t)\)</span>는 공통으로 가지고 있지만 상대위험(relative risk)인 <span class="math inline">\(exp(\beta'x)\)</span>는 각 개체들의 상대적 위험도를 나타냄</p>
-<p><span class="math inline">\(exp(\beta'x)\)</span>를 통해 모수 <span class="math inline">\(\beta_j\)</span>의 해석이 이뤄지고, 이 <span class="math inline">\(\beta_j\)</span>는 공변량 <span class="math inline">\(x_j\)</span>의 한 단위 증가에 따른 상대위험 정도를 나타냄</p>
-<p>생존확률을 그림으로 나타내었을때 기저위험baseline hazard 가 다를때, 즉 곡선이 평행라지 않는다면 cox의 회귀분석의 비례위험모형 가정에 위배되어 그룹별로 층화된 모형 고려해야 함.</p>
+<p><a href="https://www.kaggle.com/datasets/ritwikb3/heart-disease-cleveland">data</a></p>
+<div id="981ca921-6fe2-4c03-bed8-1dac645ffe48" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../../delete/spambase_csv.csv'</span>)</span></code></pre></div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
