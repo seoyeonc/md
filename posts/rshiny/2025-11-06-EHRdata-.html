@@ -1552,11 +1552,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="d30f1aa3-5781-45e5-b718-dadb1a99fa61" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>age_missing <span class="op">=</span> df[<span class="st">'age'</span>].isna().<span class="bu">sum</span>()</span></code></pre></div>
 </div>
-<div id="95b93610-3ed4-49f5-b0ad-cb678db885a2" class="cell" data-execution_count="34">
+<div id="95b93610-3ed4-49f5-b0ad-cb678db885a2" class="cell" data-execution_count="77">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_gender <span class="op">=</span> df[df[<span class="st">'gender'</span>].isin([<span class="st">'Male'</span>,<span class="st">'Female'</span>])]</span></code></pre></div>
 </div>
-<div id="5eda633e-dd76-433d-b344-adf8844257f1" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_gender</span></code></pre></div>
+<div id="989f8828-1f60-4c5f-aa1c-ca6af6f4ca74" class="cell" data-execution_count="85">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sns.countplot(data <span class="op">=</span> df_gender, x<span class="op">=</span><span class="st">'gender'</span>, palette<span class="op">=</span>[<span class="st">'skyblue'</span>, <span class="st">'pink'</span>])</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">''</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Gender'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.text(x<span class="op">=</span><span class="fl">1.1</span>, y<span class="op">=</span>df_gender[<span class="st">'gender'</span>].value_counts().<span class="bu">max</span>(),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        s<span class="op">=</span><span class="ss">f"Missing value: </span><span class="sc">{</span>gender_missing<span class="sc">}</span><span class="ss">"</span>, ha<span class="op">=</span><span class="st">'left'</span>,va<span class="op">=</span><span class="st">'bottom'</span>,fontsize<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">'red'</span>,style<span class="op">=</span><span class="st">'italic'</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2025-11-06-EHRdata-_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="bdafc1c7-9293-4cc6-be3c-3bfe1b70b567" class="cell" data-execution_count="94">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[<span class="st">'age_numeric'</span>],bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">False</span>,color<span class="op">=</span><span class="st">'lightgrey'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">''</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age'</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>plt.text(x<span class="op">=</span><span class="dv">30</span>, y<span class="op">=</span>df[<span class="st">'age_numeric'</span>].value_counts().<span class="bu">max</span>(),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        s<span class="op">=</span><span class="ss">f"Missing value: </span><span class="sc">{</span>age_missing<span class="sc">}</span><span class="ss">"</span>, ha<span class="op">=</span><span class="st">'right'</span>,va<span class="op">=</span><span class="st">'bottom'</span>,fontsize<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">'red'</span>,style<span class="op">=</span><span class="st">'italic'</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2025-11-06-EHRdata-_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 
 
