@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,6 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -1328,8 +1331,232 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><a href="https://www.kaggle.com/datasets/ritwikb3/heart-disease-cleveland">data</a></p>
-<div id="981ca921-6fe2-4c03-bed8-1dac645ffe48" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../../delete/spambase_csv.csv'</span>)</span></code></pre></div>
+<div id="32054fa5-7bc6-4119-8b63-8cc695603f9d" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div>
+</div>
+<div id="981ca921-6fe2-4c03-bed8-1dac645ffe48" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../../delete/Heart_disease_cleveland_new.csv'</span>)</span></code></pre></div>
+</div>
+<div id="3c7c5a22-42bd-4603-8fdb-f6df704e96fd" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">cp</th>
+<th data-quarto-table-cell-role="th">trestbps</th>
+<th data-quarto-table-cell-role="th">chol</th>
+<th data-quarto-table-cell-role="th">fbs</th>
+<th data-quarto-table-cell-role="th">restecg</th>
+<th data-quarto-table-cell-role="th">thalach</th>
+<th data-quarto-table-cell-role="th">exang</th>
+<th data-quarto-table-cell-role="th">oldpeak</th>
+<th data-quarto-table-cell-role="th">slope</th>
+<th data-quarto-table-cell-role="th">ca</th>
+<th data-quarto-table-cell-role="th">thal</th>
+<th data-quarto-table-cell-role="th">target</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>63</td>
+<td>1</td>
+<td>0</td>
+<td>145</td>
+<td>233</td>
+<td>1</td>
+<td>2</td>
+<td>150</td>
+<td>0</td>
+<td>2.3</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>67</td>
+<td>1</td>
+<td>3</td>
+<td>160</td>
+<td>286</td>
+<td>0</td>
+<td>2</td>
+<td>108</td>
+<td>1</td>
+<td>1.5</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>67</td>
+<td>1</td>
+<td>3</td>
+<td>120</td>
+<td>229</td>
+<td>0</td>
+<td>2</td>
+<td>129</td>
+<td>1</td>
+<td>2.6</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>37</td>
+<td>1</td>
+<td>2</td>
+<td>130</td>
+<td>250</td>
+<td>0</td>
+<td>0</td>
+<td>187</td>
+<td>0</td>
+<td>3.5</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>41</td>
+<td>0</td>
+<td>1</td>
+<td>130</td>
+<td>204</td>
+<td>0</td>
+<td>2</td>
+<td>172</td>
+<td>0</td>
+<td>1.4</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">298</td>
+<td>45</td>
+<td>1</td>
+<td>0</td>
+<td>110</td>
+<td>264</td>
+<td>0</td>
+<td>0</td>
+<td>132</td>
+<td>0</td>
+<td>1.2</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">299</td>
+<td>68</td>
+<td>1</td>
+<td>3</td>
+<td>144</td>
+<td>193</td>
+<td>1</td>
+<td>0</td>
+<td>141</td>
+<td>0</td>
+<td>3.4</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">300</td>
+<td>57</td>
+<td>1</td>
+<td>3</td>
+<td>130</td>
+<td>131</td>
+<td>0</td>
+<td>0</td>
+<td>115</td>
+<td>1</td>
+<td>1.2</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">301</td>
+<td>57</td>
+<td>0</td>
+<td>1</td>
+<td>130</td>
+<td>236</td>
+<td>0</td>
+<td>2</td>
+<td>174</td>
+<td>0</td>
+<td>0.0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">302</td>
+<td>38</td>
+<td>1</td>
+<td>2</td>
+<td>138</td>
+<td>175</td>
+<td>0</td>
+<td>0</td>
+<td>173</td>
+<td>0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+<p>303 rows × 14 columns</p>
+</div>
+</div>
 </div>
 
 

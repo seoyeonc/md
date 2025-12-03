@@ -8936,7 +8936,7 @@
     "href": "posts/python/2025-12-01-HeartDiseaseCleverland.html",
     "title": "[Kaggle] Heart Disease Cleveland",
     "section": "",
-    "text": "data\n\ndf = pd.read_csv('../../../delete/spambase_csv.csv')",
+    "text": "data\n\nimport pandas as pd\n\n\ndf = pd.read_csv('../../../delete/Heart_disease_cleveland_new.csv')\n\n\ndf\n\n\n\n\n\n\n\n\nage\nsex\ncp\ntrestbps\nchol\nfbs\nrestecg\nthalach\nexang\noldpeak\nslope\nca\nthal\ntarget\n\n\n\n\n0\n63\n1\n0\n145\n233\n1\n2\n150\n0\n2.3\n2\n0\n2\n0\n\n\n1\n67\n1\n3\n160\n286\n0\n2\n108\n1\n1.5\n1\n3\n1\n1\n\n\n2\n67\n1\n3\n120\n229\n0\n2\n129\n1\n2.6\n1\n2\n3\n1\n\n\n3\n37\n1\n2\n130\n250\n0\n0\n187\n0\n3.5\n2\n0\n1\n0\n\n\n4\n41\n0\n1\n130\n204\n0\n2\n172\n0\n1.4\n0\n0\n1\n0\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n298\n45\n1\n0\n110\n264\n0\n0\n132\n0\n1.2\n1\n0\n3\n1\n\n\n299\n68\n1\n3\n144\n193\n1\n0\n141\n0\n3.4\n1\n2\n3\n1\n\n\n300\n57\n1\n3\n130\n131\n0\n0\n115\n1\n1.2\n1\n1\n3\n1\n\n\n301\n57\n0\n1\n130\n236\n0\n2\n174\n0\n0.0\n1\n1\n1\n1\n\n\n302\n38\n1\n2\n138\n175\n0\n0\n173\n0\n0.0\n0\n0\n1\n0\n\n\n\n\n303 rows × 14 columns",
     "crumbs": [
       "Main_Blog",
       "Posts",
