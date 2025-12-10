@@ -1530,32 +1530,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div id="9cb6786c-18a4-41c0-b4fb-7934c688f056" class="cell" data-execution_count="26">
+<div id="9cb6786c-18a4-41c0-b4fb-7934c688f056" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div>
 </div>
-<div id="a8ae4b26-9138-4f14-b3ae-ba461966c838" class="cell" data-execution_count="19">
+<div id="a8ae4b26-9138-4f14-b3ae-ba461966c838" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../../delete/EHR.csv'</span>)</span></code></pre></div>
 </div>
-<div id="f4f80b57-92f1-4267-8feb-71bdab2c2ab3" class="cell" data-execution_count="20">
+<div id="f4f80b57-92f1-4267-8feb-71bdab2c2ab3" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'operator'</span>] <span class="op">=</span> df[<span class="st">'age'</span>].<span class="bu">str</span>.replace(<span class="vs">r'[0-9.]'</span>,<span class="st">''</span>,regex<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 </div>
-<div id="bffea5ea-9220-40c0-bf58-a188f3d809cd" class="cell" data-execution_count="21">
+<div id="bffea5ea-9220-40c0-bf58-a188f3d809cd" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'age_numeric'</span>] <span class="op">=</span> df[<span class="st">'age'</span>].<span class="bu">str</span>.extract(<span class="vs">r'([0-9.]+)'</span>).astype(<span class="bu">float</span>)</span></code></pre></div>
 </div>
-<div id="0b2086a9-3787-4c86-8ab2-8fdb0372ae84" class="cell" data-execution_count="31">
+<div id="0b2086a9-3787-4c86-8ab2-8fdb0372ae84" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>gender_missing <span class="op">=</span> (<span class="op">~</span>df[<span class="st">'gender'</span>].isin([<span class="st">'Male'</span>,<span class="st">'Female'</span>])).<span class="bu">sum</span>()</span></code></pre></div>
 </div>
-<div id="d30f1aa3-5781-45e5-b718-dadb1a99fa61" class="cell" data-execution_count="33">
+<div id="d30f1aa3-5781-45e5-b718-dadb1a99fa61" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>age_missing <span class="op">=</span> df[<span class="st">'age'</span>].isna().<span class="bu">sum</span>()</span></code></pre></div>
 </div>
-<div id="95b93610-3ed4-49f5-b0ad-cb678db885a2" class="cell" data-execution_count="77">
+<div id="95b93610-3ed4-49f5-b0ad-cb678db885a2" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_gender <span class="op">=</span> df[df[<span class="st">'gender'</span>].isin([<span class="st">'Male'</span>,<span class="st">'Female'</span>])]</span></code></pre></div>
 </div>
-<div id="989f8828-1f60-4c5f-aa1c-ca6af6f4ca74" class="cell" data-execution_count="85">
+<div id="989f8828-1f60-4c5f-aa1c-ca6af6f4ca74" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sns.countplot(data <span class="op">=</span> df_gender, x<span class="op">=</span><span class="st">'gender'</span>, palette<span class="op">=</span>[<span class="st">'skyblue'</span>, <span class="st">'pink'</span>])</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">''</span>)</span>
@@ -1572,7 +1572,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="bdafc1c7-9293-4cc6-be3c-3bfe1b70b567" class="cell" data-execution_count="94">
+<div id="bdafc1c7-9293-4cc6-be3c-3bfe1b70b567" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[<span class="st">'age_numeric'</span>],bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">False</span>,color<span class="op">=</span><span class="st">'lightgrey'</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">''</span>)</span>
@@ -1592,16 +1592,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><code>ndarray.size</code> : Number of elements in the array.</li>
 </ul>
-<div id="c3d7d082-c32e-4711-b406-3df7c30f8e45" class="cell" data-execution_count="100">
+<div id="c3d7d082-c32e-4711-b406-3df7c30f8e45" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_ethnicity <span class="op">=</span> df[df[<span class="st">'ethnicity'</span>].notna() <span class="op">&amp;</span> (df[<span class="st">'ethnicity'</span>] <span class="op">!=</span> <span class="st">""</span>)].groupby(<span class="st">'ethnicity'</span>).size().reset_index(name<span class="op">=</span><span class="st">'n'</span>)</span></code></pre></div>
 </div>
-<div id="1cc79b72-bb6a-4291-8e69-d5fab8320e77" class="cell" data-execution_count="101">
+<div id="1cc79b72-bb6a-4291-8e69-d5fab8320e77" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_ethnicity[<span class="st">'prop'</span>] <span class="op">=</span> df_ethnicity[<span class="st">'n'</span>] <span class="op">/</span> df_ethnicity[<span class="st">'n'</span>].<span class="bu">sum</span>()</span></code></pre></div>
 </div>
-<div id="30c57629-8219-4383-b905-08e99697a490" class="cell" data-execution_count="104">
+<div id="30c57629-8219-4383-b905-08e99697a490" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_ethnicity <span class="op">=</span> df_ethnicity.sort_values(<span class="st">'n'</span>)</span></code></pre></div>
 </div>
-<div id="4ab2f616-39d3-4616-b6ea-7e7de12df753" class="cell">
+<div id="4ab2f616-39d3-4616-b6ea-7e7de12df753" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> df_ethnicity, y <span class="op">=</span> <span class="st">'ethnicity'</span>,x<span class="op">=</span><span class="st">'n'</span>,hue <span class="op">=</span> <span class="st">'ethnicity'</span>,dodge <span class="op">=</span> <span class="va">False</span>,palette<span class="op">=</span><span class="st">'tab20b'</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">'log'</span>)</span>
@@ -1610,6 +1610,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Ethnicity Distribution (logscale)'</span>)</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>plt.legend([],[],frameon<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2025-11-06-EHRdata-_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 
 
