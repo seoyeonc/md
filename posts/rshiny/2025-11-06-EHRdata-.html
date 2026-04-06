@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,6 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -150,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/rshiny/2025-08-20-rshiny.html">Rshiny</a></li><li class="breadcrumb-item"><a href="../../posts/rshiny/2025-11-06-EHRdata-.html">[R Shiny] EHR data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/rshiny/2025-09-08-India.html">Rshiny</a></li><li class="breadcrumb-item"><a href="../../posts/rshiny/2025-11-06-EHRdata-.html">[R Shiny] EHR data</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -160,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/rshiny/2025-08-20-rshiny.html">Rshiny</a></li><li class="breadcrumb-item"><a href="../../posts/rshiny/2025-11-06-EHRdata-.html">[R Shiny] EHR data</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/ml_basic/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/rshiny/2025-09-08-India.html">Rshiny</a></li><li class="breadcrumb-item"><a href="../../posts/rshiny/2025-11-06-EHRdata-.html">[R Shiny] EHR data</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">[R Shiny] EHR data</h1>
@@ -1089,178 +1092,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
- <span class="menu-text">medical knowledge</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/medical knowledge/2025-08-29-medicalknowledge.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Medical knowledge</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/medical knowledge/2025-09-18-FDA_bioequivalence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">[FDA] Bioequivalence Studies With Pharmacokinetic Endpoints for Drugs Submitted Under an Abbreviated New Drug Application</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/medical knowledge/2025-09-26-Phase 2 SAP.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">[SAP] Phase 2 SAP Study</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/medical knowledge/2025-10-04-CDISC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">CDISC</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/medical knowledge/2025-10-13-Bioequivalence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bioequivalence</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/medical knowledge/2025-10-13-phase 4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">[SAP] Phase 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/medical knowledge/2025-11-09-external-comparator-arms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">external comparator arms and quantitative bias analysis</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
- <span class="menu-text">Python</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/python/2025-08-18-supervised_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Supervised Learning</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/python/2025-09-03-perfumes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">[Kaggle] Perfumes Visualization</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/python/2025-09-15-medicalinsurance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">[Kaggle] Medical Insurance Cost Regression model</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/python/2025-09-22-Screentime.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">[Kaggle] Screen Time vs Mental Wellness Survey</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/python/2025-09-30-Urinary biomarkers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">[Kaggle] Urinary biomarkers for pancreatic cancer</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/python/2025-11-09-Pyspark.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Pyapark</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/python/2025-11-12-QBA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">QBA quantitative bias analysis</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/python/2025-11-13-RMANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Rpeated Measure ANOVA</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/python/2025-11-14-python_ocd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">[Kaggle] obsessive-compulsive disorder data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/python/2025-11-17-holistichealthandlifestylescore.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">[Kaggle] Holistic Health and Lifestyle Score</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/python/2025-11-24-spammail.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">[Kaggle] Spam mail</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/python/2025-12-01-HeartDiseaseCleverland.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">[Kaggle] Heart Disease Cleveland</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
- <span class="menu-text">R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/R/2025-08-21-rpackage.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R packages</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/R/2025-09-04-coffe_rggplot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">[Kaggle] Coffee Sales Visuzlization</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
  <span class="menu-text">Rshiny</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/rshiny/2025-08-20-rshiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R Shiny</span></a>
-  </div>
-</li>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/rshiny/2025-09-08-India.html" class="sidebar-item-text sidebar-link">
@@ -1289,23 +1127,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../posts/rshiny/2025-11-06-EHRdata-.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">[R Shiny] EHR data</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
- <span class="menu-text">Sas</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/sas/2025-08-19-SAS1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SAS Advanced Certificate</span></a>
   </div>
 </li>
       </ul>
@@ -1615,6 +1436,167 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figure class="figure">
 <p><img src="2025-11-06-EHRdata-_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
 </figure>
+</div>
+</div>
+</div>
+<div id="44b1851f-19d1-4b6e-af38-b2c2fac5a334" class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">5</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">patientunitstayid</th>
+<th data-quarto-table-cell-role="th">patienthealthsystemstayid</th>
+<th data-quarto-table-cell-role="th">gender</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">ethnicity</th>
+<th data-quarto-table-cell-role="th">hospitalid</th>
+<th data-quarto-table-cell-role="th">wardid</th>
+<th data-quarto-table-cell-role="th">apacheadmissiondx</th>
+<th data-quarto-table-cell-role="th">admissionheight</th>
+<th data-quarto-table-cell-role="th">hospitaladmittime24</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">unitstaytype</th>
+<th data-quarto-table-cell-role="th">admissionweight</th>
+<th data-quarto-table-cell-role="th">dischargeweight</th>
+<th data-quarto-table-cell-role="th">unitdischargetime24</th>
+<th data-quarto-table-cell-role="th">unitdischargeoffset</th>
+<th data-quarto-table-cell-role="th">unitdischargelocation</th>
+<th data-quarto-table-cell-role="th">unitdischargestatus</th>
+<th data-quarto-table-cell-role="th">uniquepid</th>
+<th data-quarto-table-cell-role="th">operator</th>
+<th data-quarto-table-cell-role="th">age_numeric</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>210014</td>
+<td>182373</td>
+<td>Male</td>
+<td>45</td>
+<td>Caucasian</td>
+<td>73</td>
+<td>89</td>
+<td>Hypertension, uncontrolled (for cerebrovascula...</td>
+<td>178.0</td>
+<td>13:08:59</td>
+<td>...</td>
+<td>admit</td>
+<td>116.0</td>
+<td>112.7</td>
+<td>15:00:00</td>
+<td>4424</td>
+<td>Skilled Nursing Facility</td>
+<td>Alive</td>
+<td>002-10665</td>
+<td></td>
+<td>45.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>200026</td>
+<td>174624</td>
+<td>Male</td>
+<td>50</td>
+<td>Caucasian</td>
+<td>71</td>
+<td>87</td>
+<td>Ablation or mapping of cardiac conduction pathway</td>
+<td>177.8</td>
+<td>10:41:00</td>
+<td>...</td>
+<td>admit</td>
+<td>106.1</td>
+<td>106.1</td>
+<td>17:40:00</td>
+<td>1548</td>
+<td>Home</td>
+<td>Alive</td>
+<td>002-10715</td>
+<td></td>
+<td>50.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>221131</td>
+<td>190993</td>
+<td>Male</td>
+<td>83</td>
+<td>Caucasian</td>
+<td>71</td>
+<td>87</td>
+<td>Endarterectomy, carotid</td>
+<td>175.3</td>
+<td>21:43:00</td>
+<td>...</td>
+<td>admit</td>
+<td>NaN</td>
+<td>72.1</td>
+<td>17:46:00</td>
+<td>1203</td>
+<td>Home</td>
+<td>Alive</td>
+<td>002-10249</td>
+<td></td>
+<td>83.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>221215</td>
+<td>191054</td>
+<td>Male</td>
+<td>49</td>
+<td>Caucasian</td>
+<td>71</td>
+<td>87</td>
+<td>Infarction, acute myocardial (MI)</td>
+<td>185.4</td>
+<td>03:16:00</td>
+<td>...</td>
+<td>admit</td>
+<td>145.3</td>
+<td>146.6</td>
+<td>19:07:00</td>
+<td>1562</td>
+<td>Home</td>
+<td>Alive</td>
+<td>002-10627</td>
+<td></td>
+<td>49.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>217835</td>
+<td>188445</td>
+<td>Male</td>
+<td>57</td>
+<td>Caucasian</td>
+<td>73</td>
+<td>92</td>
+<td>CABG alone, coronary artery bypass grafting</td>
+<td>172.7</td>
+<td>01:09:00</td>
+<td>...</td>
+<td>admit</td>
+<td>NaN</td>
+<td>80.4</td>
+<td>08:25:00</td>
+<td>4719</td>
+<td>Floor</td>
+<td>Alive</td>
+<td>002-10324</td>
+<td></td>
+<td>57.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 31 columns</p>
 </div>
 </div>
 </div>
